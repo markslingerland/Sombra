@@ -10,6 +10,4 @@ COPY . .
 WORKDIR /src/Sombra.Core.UnitTests
 RUN dotnet build -c Release -o /app
 
-ENV APSNETCORE_ENVIRONMENT docker
-
 RUN dotnet test

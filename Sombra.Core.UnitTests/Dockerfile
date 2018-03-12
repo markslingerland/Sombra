@@ -11,4 +11,3 @@ WORKDIR /src/Sombra.Core.UnitTests
 RUN dotnet build -c Release -o /app
 
 RUN dotnet test
-ENTRYPOINT ["dotnet", "Sombra.Core.UnitTests.dll"]

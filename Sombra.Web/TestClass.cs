@@ -2,6 +2,6 @@
 {
     public class TestClass
     {
-        public bool IsTrue => false;
+        public bool IsTrue => true;
     }
 }

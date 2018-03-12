@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.0</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>3d97df5d-6b98-41ff-a64a-b55d88123287</ProjectGuid>
+    <ProjectGuid>f35b4b63-459b-4625-887a-f89d91bf2adb</ProjectGuid>
     <DockerLaunchBrowser>True</DockerLaunchBrowser>
     <DockerServiceUrl>http://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>sombra.web</DockerServiceName>

@@ -5,13 +5,13 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.Web", "Sombra.Web\Sombra.Web.csproj", "{7A5F9150-536D-490F-B6AF-72E5EAA24154}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3D97DF5D-6B98-41FF-A64A-B55D88123287}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.Web.UnitTests", "Sombra.Web.UnitTests\Sombra.Web.UnitTests.csproj", "{7D68CDE1-3252-4574-B8B6-B9475D1596A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sombra.Web.UnitTests", "Sombra.Web.UnitTests\Sombra.Web.UnitTests.csproj", "{7D68CDE1-3252-4574-B8B6-B9475D1596A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.Core", "Sombra.Core\Sombra.Core.csproj", "{0F3CBAA2-7B5A-43E2-BF72-1ECB30588525}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sombra.Core", "Sombra.Core\Sombra.Core.csproj", "{0F3CBAA2-7B5A-43E2-BF72-1ECB30588525}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.Core.UnitTests", "Sombra.Core.UnitTests\Sombra.Core.UnitTests.csproj", "{49DE0E74-4A2D-4AD5-9B78-C7D954ADF13B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sombra.Core.UnitTests", "Sombra.Core.UnitTests\Sombra.Core.UnitTests.csproj", "{49DE0E74-4A2D-4AD5-9B78-C7D954ADF13B}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F35B4B63-459B-4625-887A-F89D91BF2ADB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,6 @@ Global
 		{7A5F9150-536D-490F-B6AF-72E5EAA24154}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A5F9150-536D-490F-B6AF-72E5EAA24154}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A5F9150-536D-490F-B6AF-72E5EAA24154}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3D97DF5D-6B98-41FF-A64A-B55D88123287}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D97DF5D-6B98-41FF-A64A-B55D88123287}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D97DF5D-6B98-41FF-A64A-B55D88123287}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D97DF5D-6B98-41FF-A64A-B55D88123287}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D68CDE1-3252-4574-B8B6-B9475D1596A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D68CDE1-3252-4574-B8B6-B9475D1596A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D68CDE1-3252-4574-B8B6-B9475D1596A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{49DE0E74-4A2D-4AD5-9B78-C7D954ADF13B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49DE0E74-4A2D-4AD5-9B78-C7D954ADF13B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49DE0E74-4A2D-4AD5-9B78-C7D954ADF13B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F35B4B63-459B-4625-887A-F89D91BF2ADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F35B4B63-459B-4625-887A-F89D91BF2ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F35B4B63-459B-4625-887A-F89D91BF2ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F35B4B63-459B-4625-887A-F89D91BF2ADB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

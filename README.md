@@ -10,11 +10,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-```
-Docker
-https://www.docker.com/get-docker 
 
-```
+* [Docker](https://www.docker.com/get-docker)
+
+
 
 ### Installing
 
@@ -23,7 +22,9 @@ A step by step series of examples that tell you have to get a development env ru
 Say what the step will be
 
 ```
-Give the example
+Open the solution and run the docker-compose up command
+
+Reach the web solution on http://localhost:80
 ```
 
 And repeat

@@ -6,7 +6,6 @@ FROM microsoft/aspnetcore-build:2.0 AS build
 WORKDIR /src
 COPY *.sln ./
 COPY Sombra.Web/Sombra.Web.csproj Sombra.Web/
-RUN dotnet restore
 COPY . .
 WORKDIR /src/Sombra.Web
 RUN dotnet build -c Release -o /app

@@ -1,5 +1,7 @@
 # Sombra
 
+[![Build Status](https://travis-ci.org/markslingerland/Sombra.svg?branch=master)](https://travis-ci.org/markslingerland/Sombra)
+
 One Paragraph of project description goes here
 
 ## Getting Started

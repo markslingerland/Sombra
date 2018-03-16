@@ -1,60 +1,30 @@
 sudo: required
-
 language: csharp
-
 services:
-  - docker    
-
+- docker
 env:
-  # You may want to update this to whatever the latest version is, or keep it
-  # the same as your local machines. However, I have only tested it with 1.8.0+.
-  # There should be a time in the future when this is not necessary - it is
-  # explained in more detail below.
   DOCKER_COMPOSE_VERSION: 1.19.0
-
 before_install:
-  # update is required to update the repositories to see the new packages for
-  # Docker.
-  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  - sudo apt-get update
-  - sudo apt-get -y install docker-ce
-
-  # Print out the current docker-compose version. Once this reports 1.6+ then we
-  # do not need the following steps.
-  - docker-compose --version
-
-  # As of the writing of this script Travis has docker-compose v1.4.2, we need
-  # to update it to 1.19+. $DOCKER_COMPOSE_VERSION is provide from the `env`
-  # above.
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
-
-  # Check that docker-compose is now running the latest version (or at least the
-  # one we specified). This is not to be confused with the version we printed
-  # before doing the update.
-  - docker-compose --version
-
-  # Setup your application stack. You may need to tweak these commands if you
-  # doing out-of-the-ordinary docker-compose builds.
-  - docker-compose build
-  - docker-compose up -d
-
-
-
+- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+- sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu
+  $(lsb_release -cs) stable"
+- sudo apt-get update
+- sudo apt-get -y install docker-ce
+- docker-compose --version
+- sudo rm /usr/local/bin/docker-compose
+- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname
+  -s`-`uname -m` > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin
+- docker-compose --version
+- docker-compose build
+- docker-compose up -d
 script:
-  # You will want this for logging. If one of your containers does not build for
-  # whatever reason it's best to report that now before your tests start
-  # otherwise it can be really tricky to debug why tests are failing sometimes.
-  - docker ps
-
+- docker ps
 after_script:
-  - docker-compose down
-
+- docker-compose down
 notifications:
   slack:
     secure: WQB36HqMnK8L64eTGjKtNSooNAg7DRzARF2MKgMiV06MPfNTJwIgorX3FlwriNKaRUmOaQ7tUKVGggL09kokDrF2wBCckym2P+q4g7rlkjgFqMw3Klp0krHRNwnoueh5nwkN3cjif9d+GcyjvTGUdlFuRMDwa/ih5W61Nk9JLN6h7FCg33jc9di4FtHnRSTC76M3E5AEY7c9lyt5HYXxgMHJXG8XEAgu6gNl1nr0EfkEyjYaCWHoBffrqrFuVQfekmok8xc+TAMvHbhIK1DcDFW2DkLr64+pidJv/ZQ1oYr6rIoJCLv+UbzgIfYO6b8CYkqPYRlA1WWGbBPFPAo36T4AGn4/e76IfRpEQOEGQsPBuRI8KbF5nCgZtLP/EyFqg1/i92lqXhMX/TI98uIHAVmHuGmQQkAIWqbfxwILT2XeMILxVNZSp2NEn6XT8EK5AjG8uFoQq5D3L85t5ERc/3gM5Xr2CmbPNiGPk834NIL0qyQ+dFCie5kPQvpFgaq1MtSTvQegPSEi1AIZLD7wGQtwaIPOWnZeFOLctrOFT2UB9Ov36W2ezWIMejKWNw+N/NnJPvVT450SmI8tvJE72sPMDvqDS5TkO7xxEPyxzhTibBPNP/nwSSY+nZ40P+LE+x4/DjJTc1YrVVsOKDJEHepp8mvAN7gifu8huewKPKQ=
-
-
+dd:
+  secure: lrqhn+3NwOYIEH5OJUffykf5xqA6kaB3Q73h7kthGmtBqzHbz2kDtw3jYKRbuACwQeSdUpMgy7BBNfItSW4izFORJw3G3z/jIxX1gc3a4YEjuL6PYvQO9TDKLOULkns8jkkKwtXrXrgbAYr0pI6QXeaoh5RCkmXnVZiE1s9TzAA9V6iElHvoiv1EJXloRy8Xo+yzqnfmvkS96iPBt2+Zg/g97qvCeyOP4LPPLgu05TZUh+4Pvl4U8jetCMlprZlbcr36OCKy8WTDSiq8H7UN+wI3CMqcH3MgNzInPRtgo7OLHrWD7b8JKNhgFgc/oBC6NDm8VvDivTZ6htTwhaxmurMARP6phTToOA0UVNkPXzSrnvVlMt1WrTRXKzgoDpTG8qAOn2zRdE4pdVaCfxtfQ5Ki8lmONtrdLxWBdkmc7Jt4qdmxCsRffqVTHIVUeXMVzXKYsokG6zPvN4530a+xB6M5ALSahzEJUAP1Wkatjuyza25jyaE4swd4hO30F+4syMYoMxHpDHpUHcfx8jjdC2POTxcS49QK1RXjyIEE77nhh/UeKaDt3Y9CxGYXmujkll4DWIN6L/RPRYOSTwzO67r7TxCk1meUxwms8d3FSPzORNQSBDVug8Lc683j6mHnXecarWJbNDvKMaq1i7p3Z/lRRfLL35O79JbwZtGEqtg=

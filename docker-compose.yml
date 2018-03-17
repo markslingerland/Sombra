@@ -20,3 +20,10 @@ services:
       context: .
       dockerfile: Sombra.Core.UnitTests/Dockerfile
 
+
+  sombra.emailservice:
+    image: sombraemailservice
+    build:
+      context: .
+      dockerfile: Sombra.EmailService/Dockerfile
+

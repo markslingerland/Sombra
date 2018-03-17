@@ -4,6 +4,9 @@ services:
 - docker
 env:
   DOCKER_COMPOSE_VERSION: 1.19.0
+addons:
+  ssh_known_hosts:
+    -$IP:$PORT
 before_install:
 - openssl aes-256-cbc -K $encrypted_5bd28a145847_key -iv $encrypted_5bd28a145847_iv
   -in rsa.enc -out rsa -d

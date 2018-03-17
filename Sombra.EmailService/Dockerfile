@@ -5,7 +5,6 @@ FROM microsoft/dotnet:2.0-sdk AS build
 WORKDIR /src
 COPY Sombra.sln ./
 COPY Sombra.EmailService/Sombra.EmailService.csproj Sombra.EmailService/
-RUN dotnet restore
 COPY . .
 WORKDIR /src/Sombra.EmailService
 RUN dotnet build -c Release -o /app

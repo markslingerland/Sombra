@@ -5,7 +5,7 @@ services:
 env:
   DOCKER_COMPOSE_VERSION: 1.19.0
 before_install:
-- openssl aes-256-cbc -K $encrypted_67b9829adc79_key -iv $encrypted_67b9829adc79_iv
+- openssl aes-256-cbc -K $encrypted_5bd28a145847_key -iv $encrypted_5bd28a145847_iv
   -in rsa.enc -out rsa -d
 - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu
@@ -25,8 +25,12 @@ script:
 - docker ps
 after_script:
 - docker-compose down
+<<<<<<< HEAD
 after_succes:
 - ./deploy.sh
+=======
+after_succes: "./deploy.sh"
+>>>>>>> 412b6625bb034a662baac60794f40c37fbe715c0
 notifications:
   slack:
     secure: WQB36HqMnK8L64eTGjKtNSooNAg7DRzARF2MKgMiV06MPfNTJwIgorX3FlwriNKaRUmOaQ7tUKVGggL09kokDrF2wBCckym2P+q4g7rlkjgFqMw3Klp0krHRNwnoueh5nwkN3cjif9d+GcyjvTGUdlFuRMDwa/ih5W61Nk9JLN6h7FCg33jc9di4FtHnRSTC76M3E5AEY7c9lyt5HYXxgMHJXG8XEAgu6gNl1nr0EfkEyjYaCWHoBffrqrFuVQfekmok8xc+TAMvHbhIK1DcDFW2DkLr64+pidJv/ZQ1oYr6rIoJCLv+UbzgIfYO6b8CYkqPYRlA1WWGbBPFPAo36T4AGn4/e76IfRpEQOEGQsPBuRI8KbF5nCgZtLP/EyFqg1/i92lqXhMX/TI98uIHAVmHuGmQQkAIWqbfxwILT2XeMILxVNZSp2NEn6XT8EK5AjG8uFoQq5D3L85t5ERc/3gM5Xr2CmbPNiGPk834NIL0qyQ+dFCie5kPQvpFgaq1MtSTvQegPSEi1AIZLD7wGQtwaIPOWnZeFOLctrOFT2UB9Ov36W2ezWIMejKWNw+N/NnJPvVT450SmI8tvJE72sPMDvqDS5TkO7xxEPyxzhTibBPNP/nwSSY+nZ40P+LE+x4/DjJTc1YrVVsOKDJEHepp8mvAN7gifu8huewKPKQ=

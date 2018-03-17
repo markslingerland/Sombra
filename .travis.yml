@@ -5,9 +5,9 @@ services:
 env:
   DOCKER_COMPOSE_VERSION: 1.19.0
 before_install:
-- ssh-keyscan -t $TRAVIS_SSH_KEY_TYPES -H $IP 2>&1 | tee -a $HOME/.ssh/known_hosts
 - openssl aes-256-cbc -K $encrypted_5bd28a145847_key -iv $encrypted_5bd28a145847_iv
   -in rsa.enc -out rsa -d
+- ssh-keyscan -t rsa -H $IP 2>&1 | tee -a $HOME/.ssh/known_hosts
 - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu
   $(lsb_release -cs) stable"

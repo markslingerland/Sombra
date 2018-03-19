@@ -8,7 +8,7 @@ chmod 600 config.txt
 mv config.txt ~/.ssh/config
 ls
 git config --global push.default matching
-git remote add deploy "$USER@$IP:$DEPLOY_DIR"
+git remote add deploy "$USER@$IP:$DEPLOY_DIR/.git"
 git remote add old https://github.com/markslingerland/Sombra.git
 git fetch --unshallow old
 git push --force deploy master -v

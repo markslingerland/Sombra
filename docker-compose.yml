@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: Sombra.Web/Dockerfile
+    depends_on:
+      - rabbitmq
 
   sombra.web.unittests:
     image: sombra.web.unittests
@@ -26,4 +28,9 @@ services:
     build:
       context: .
       dockerfile: Sombra.EmailService/Dockerfile
+    depends_on:
+      - rabbitmq
 
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq

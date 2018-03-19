@@ -9,6 +9,7 @@ namespace Sombra.Messaging
         protected Message()
         {
             Created = DateTime.UtcNow;
+            MessageType = GetType().FullName;
         }
         public DateTime Created { get; }
 
@@ -16,5 +17,7 @@ namespace Sombra.Messaging
         {
             return JsonConvert.SerializeObject(this);
         }
+
+        public string MessageType { get; }
     }
 }

@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
@@ -19,10 +19,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.EmailService", "Somb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sombra.LoggingService", "Sombra.LoggingService\Sombra.LoggingService.csproj", "{AE513E19-DF5E-4764-80F5-B66C4D6A1E7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sombra.IdentityService", "Sombra.IdentityService\Sombra.IdentityService.csproj", "{B5573E07-41F4-43F4-9179-938A67BD66D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7A5F9150-536D-490F-B6AF-72E5EAA24154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -57,6 +63,18 @@ Global
 		{AE513E19-DF5E-4764-80F5-B66C4D6A1E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE513E19-DF5E-4764-80F5-B66C4D6A1E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE513E19-DF5E-4764-80F5-B66C4D6A1E7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5573E07-41F4-43F4-9179-938A67BD66D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5573E07-41F4-43F4-9179-938A67BD66D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5573E07-41F4-43F4-9179-938A67BD66D9}.Debug|x64.ActiveCfg = Debug|x64
+		{B5573E07-41F4-43F4-9179-938A67BD66D9}.Debug|x64.Build.0 = Debug|x64
+		{B5573E07-41F4-43F4-9179-938A67BD66D9}.Debug|x86.ActiveCfg = Debug|x86
+		{B5573E07-41F4-43F4-9179-938A67BD66D9}.Debug|x86.Build.0 = Debug|x86
+		{B5573E07-41F4-43F4-9179-938A67BD66D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5573E07-41F4-43F4-9179-938A67BD66D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5573E07-41F4-43F4-9179-938A67BD66D9}.Release|x64.ActiveCfg = Release|x64
+		{B5573E07-41F4-43F4-9179-938A67BD66D9}.Release|x64.Build.0 = Release|x64
+		{B5573E07-41F4-43F4-9179-938A67BD66D9}.Release|x86.ActiveCfg = Release|x86
+		{B5573E07-41F4-43F4-9179-938A67BD66D9}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

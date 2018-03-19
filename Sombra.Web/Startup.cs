@@ -20,7 +20,7 @@ namespace Sombra.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddTransient(c => CreateBus());
+            services.AddScoped(c => CreateBus());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -17,6 +17,13 @@ services:
       - RABBITMQ_USER=rabbitmquser
       - RABBITMQ_PASSWORD=DEBmbwkSrzy9D1T9cJfa
 
+sombra.loggingservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RABBITMQ_HOST=localhost
+      - RABBITMQ_USER=rabbitmquser
+      - RABBITMQ_PASSWORD=DEBmbwkSrzy9D1T9cJfa
+
   rabbitmq:
     environment:
       - RABBITMQ_DEFAULT_USER=rabbitmquser

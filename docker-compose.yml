@@ -31,6 +31,16 @@ services:
     depends_on:
       - rabbitmq
 
+
+  sombra.loggingservice:
+    image: sombraloggingservice
+    build:
+      context: .
+      dockerfile: Sombra.LoggingService/Dockerfile
+    depends_on:
+      - rabbitmq
+
+
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
@@ -39,3 +49,9 @@ services:
   sqlserver:
     image: microsoft/mssql-server-linux:latest
     container_name: sqlserver
+  sombra.loggingservice:
+    image: sombra.loggingservice
+    build:
+      context: .
+      dockerfile: Sombra.LoggingService/Dockerfile
+

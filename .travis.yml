@@ -27,8 +27,11 @@ before_install:
 - docker-compose up -d
 script:
 - docker ps
-after_success:
-- "./deploy.sh"
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on: 
+    branch: master
 after_script:
 - docker-compose down
 notifications:

@@ -6,6 +6,8 @@ env:
   DOCKER_COMPOSE_VERSION: 1.19.0
 before_install:
 - openssl aes-256-cbc -K $encrypted_5bd28a145847_key -iv $encrypted_5bd28a145847_iv
+  -in stuff.tar.enc -out stuff.tar -d
+- openssl aes-256-cbc -K $encrypted_5bd28a145847_key -iv $encrypted_5bd28a145847_iv
   -in rsa.enc -out rsa -d
 - ssh-keyscan -t rsa -H $IP 2>&1 | tee -a $HOME/.ssh/known_hosts
 - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -25,8 +27,8 @@ before_install:
 - docker-compose up -d
 script:
 - docker ps
-after_success: 
-- ./deploy.sh
+after_success:
+- "./deploy.sh"
 after_script:
 - docker-compose down
 notifications:

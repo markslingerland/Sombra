@@ -16,5 +16,9 @@ git push --force deploy master -v
 # Skip this command if you don't need to execute any additional commands after deploying.
 ssh -o "StrictHostKeyChecking no" $USER@$IP -p $PORT <<EOF
   cd $DEPLOY_DIR
+  cd ..
+  cd $DIR
+  git pull 
+  docker-compose down 
   docker-compose up
 EOF

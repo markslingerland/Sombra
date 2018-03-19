@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace Sombra.Messaging
 {
@@ -9,6 +10,11 @@ namespace Sombra.Messaging
         {
             Created = DateTime.UtcNow;
         }
-        protected DateTime Created { get; }
+        public DateTime Created { get; }
+
+        public string ToJson()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

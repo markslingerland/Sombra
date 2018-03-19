@@ -1,4 +1,6 @@
 ﻿namespace Sombra.Messaging
 {
-    public interface IRequest<out TResponse> { }
+    public interface IRequest<TResponse> where TResponse : class
+    {
+    }
 }

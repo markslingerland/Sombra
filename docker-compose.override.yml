@@ -24,3 +24,12 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
+
+  
+  sqlserver:
+    environment:
+      - ACCEPT_EULA=Y 
+      - MSSQL_PID=Developer
+      - SA_PASSWORD=8jkGh47hnDw89Haq8LN2
+    ports:
+      - "1434:1433"

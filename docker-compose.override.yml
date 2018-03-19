@@ -4,9 +4,7 @@ services:
   sombra.web:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - RABBITMQ_HOST=localhost
-      - RABBITMQ_USER=rabbitmquser
-      - RABBITMQ_PASSWORD=DEBmbwkSrzy9D1T9cJfa
+      - RABBITMQ_CONNECTIONSTRING=host=localhost;username=rabbitmquser;password=DEBmbwkSrzy9D1T9cJfa
       - AUTHENTICATION_DB_CONNECTIONSTRING=server=sqlserver;user id=sa;password=8jkGh47hnDw89Haq8LN2;database=Authentication;
     ports:
       - "80:80"
@@ -14,16 +12,15 @@ services:
   sombra.emailservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - RABBITMQ_HOST=localhost
-      - RABBITMQ_USER=rabbitmquser
-      - RABBITMQ_PASSWORD=DEBmbwkSrzy9D1T9cJfa
+      - RABBITMQ_CONNECTIONSTRING=host=localhost;username=rabbitmquser;password=DEBmbwkSrzy9D1T9cJfa
 
   sombra.loggingservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - RABBITMQ_HOST=localhost
-      - RABBITMQ_USER=rabbitmquser
-      - RABBITMQ_PASSWORD=DEBmbwkSrzy9D1T9cJfa
+      - RABBITMQ_CONNECTIONSTRING=host=localhost;username=rabbitmquser;password=DEBmbwkSrzy9D1T9cJfa
+      - MONGO_CONNECTIONSTRING=mongodb://defaultuser:fsd2342lkghsff3f343sf@mongoserver/
+      - MONGO_DATABASE=logging
+      - MONGO_COLLECTION=rabbitmq
 
   rabbitmq:
     environment:
@@ -40,3 +37,11 @@ services:
       - SA_PASSWORD=8jkGh47hnDw89Haq8LN2
     ports:
       - "1434:1433"
+
+  
+  mongoserver:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=defaultuser
+      - MONGO_INITDB_ROOT_PASSWORD=fsd2342lkghsff3f343sf
+    ports:
+      - "27017:27017"

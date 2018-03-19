@@ -20,7 +20,7 @@ namespace Sombra.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddScoped(c => CreateBus());
+            services.AddScoped(c => RabbitHutch.CreateBus(Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,15 +44,6 @@ namespace Sombra.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-        }
-
-        private static IBus CreateBus()
-        {
-            var rabbitMqHost = Environment.GetEnvironmentVariable("RABBITMQ_HOST");
-            var rabbitMqUser = Environment.GetEnvironmentVariable("RABBITMQ_USER");
-            var rabbitMqPassword = Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD");
-
-            return RabbitHutch.CreateBus($"host={rabbitMqHost};username={rabbitMqUser};password={rabbitMqPassword}");
         }
     }
 }

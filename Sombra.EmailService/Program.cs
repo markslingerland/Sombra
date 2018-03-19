@@ -13,11 +13,7 @@ namespace Sombra.EmailService
         {
             Console.WriteLine("EmailService started..");
 
-            var rabbitMqHost = Environment.GetEnvironmentVariable("RABBITMQ_HOST");
-            var rabbitMqUser = Environment.GetEnvironmentVariable("RABBITMQ_USER");
-            var rabbitMqPassword = Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD");
-
-            var bus = RabbitHutch.CreateBus($"host={rabbitMqHost};username={rabbitMqUser};password={rabbitMqPassword}");
+            var bus = RabbitHutch.CreateBus(Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING"));
             var subscriber = new AutoSubscriber(bus, _subscriptionIdPrefix);
             subscriber.SubscribeAsync(Assembly.GetExecutingAssembly());
         }

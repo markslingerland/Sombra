@@ -6,7 +6,7 @@ eval "$(ssh-agent -s)" # Start ssh-agent cache
 ssh-add ~/.ssh/rsa
 chmod 600 config.txt
 mv config.txt ~/.ssh/config
-
+ls
 git config --global push.default matching
 git remote add deploy "$USER@$IP:$DEPLOY_DIR"
 git remote add old https://github.com/markslingerland/Sombra.git

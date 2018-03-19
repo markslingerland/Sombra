@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using Sombra.Core;
 
 namespace Sombra.IdentityService{
-    public class CredentialType
+    public class CredentialType : Entity
     {
-    public int Id { get; set; }
     public string Code { get; set; }
     public string Name { get; set; }
     public int? Position { get; set; }

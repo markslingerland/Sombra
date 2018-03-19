@@ -4,5 +4,23 @@ services:
   sombra.web:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - RABBITMQ_HOST=localhost
+      - RABBITMQ_USER=rabbitmquser
+      - RABBITMQ_PASSWORD=DEBmbwkSrzy9D1T9cJfa
     ports:
       - "80:80"
+  
+  sombra.emailservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RABBITMQ_HOST=localhost
+      - RABBITMQ_USER=rabbitmquser
+      - RABBITMQ_PASSWORD=DEBmbwkSrzy9D1T9cJfa
+
+  rabbitmq:
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbitmquser
+      - RABBITMQ_DEFAULT_PASS=DEBmbwkSrzy9D1T9cJfa
+    ports:
+      - "15672:15672"
+      - "5672:5672"

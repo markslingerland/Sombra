@@ -3,6 +3,8 @@ using EasyNetQ;
 using EasyNetQ.AutoSubscribe;
 using Sombra.Messaging;
 using Sombra.IdentityService.DAL;
+using Sombra.Messaging.Requests;
+using Sombra.Messaging.Responses;
 
 namespace Sombra.IdentityService
 {

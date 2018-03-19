@@ -5,6 +5,8 @@ using EasyNetQ;
 using EasyNetQ.AutoSubscribe;
 using System.Threading;
 using System.Threading.Tasks;
+using Sombra.Messaging.Requests;
+using Sombra.Messaging.Responses;
 
 namespace Sombra.IdentityService
 {

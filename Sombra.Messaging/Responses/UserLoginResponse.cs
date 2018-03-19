@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Sombra.Messaging{
+namespace Sombra.Messaging.Responses{
     public class UserLoginResponse : Message {
         public bool Success { get;set;}
 		public int UserId {get;set;}    

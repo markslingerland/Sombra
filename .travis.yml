@@ -28,7 +28,7 @@ before_install:
 script:
 - docker ps
 after_success:
-- "./deploy.sh"
+- test $TRAVIS_BRANCH = "master" && "./deploy.sh"
 after_script:
 - docker-compose down
 notifications:

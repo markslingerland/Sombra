@@ -15,7 +15,7 @@ namespace Sombra.EmailService
 
             var rabbitMqHost = Environment.GetEnvironmentVariable("RABBITMQ_HOST");
             var rabbitMqUser = Environment.GetEnvironmentVariable("RABBITMQ_USER");
-            var rabbitMqPassword = Environment.GetEnvironmentVariable("DEBmbwkSrzy9D1T9cJfa");
+            var rabbitMqPassword = Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD");
 
             var bus = RabbitHutch.CreateBus($"host={rabbitMqHost};username={rabbitMqUser};password={rabbitMqPassword}");
             var subscriber = new AutoSubscriber(bus, _subscriptionIdPrefix);

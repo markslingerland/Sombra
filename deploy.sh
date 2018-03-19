@@ -8,11 +8,13 @@ chmod 600 config.txt
 mv config.txt ~/.ssh/config
 
 git config --global push.default matching
-# git remote add deploy ssh://git@$IP:$PORT$DEPLOY_DIR
-git push deploy master
+git remote add deploy "$USER@$IP:$DEPLOY_DIR"
+git remote add old https://github.com/markslingerland/Sombra.git
+git fetch --unshallow old
+git push --force deploy master -v
 
 # Skip this command if you don't need to execute any additional commands after deploying.
-ssh -o "StrictHostKeyChecking no" docker-deployment@$IP -p $PORT <<EOF
+ssh -o "StrictHostKeyChecking no" $USER@$IP -p $PORT <<EOF
   cd $DEPLOY_DIR
   docker-compose up
 EOF

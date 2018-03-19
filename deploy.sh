@@ -11,7 +11,7 @@ git config --global push.default matching
 git remote add deploy "$USER@$IP:$DEPLOY_DIR"
 git remote add old https://github.com/markslingerland/Sombra.git
 git fetch --unshallow old
-git push deploy master
+git push --force deploy master -v
 
 # Skip this command if you don't need to execute any additional commands after deploying.
 ssh -o "StrictHostKeyChecking no" $USER@$IP -p $PORT <<EOF

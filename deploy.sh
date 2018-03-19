@@ -19,7 +19,7 @@ ssh -o "StrictHostKeyChecking no" $USER@$IP -p $PORT <<EOF
   cd ..
   cd $DIR
   git pull 
-  docker-compose down 
+  docker-compose build
   docker-compose up -d
   docker ps
 EOF

@@ -49,9 +49,3 @@ services:
   sqlserver:
     image: microsoft/mssql-server-linux:latest
     container_name: sqlserver
-  sombra.loggingservice:
-    image: sombra.loggingservice
-    build:
-      context: .
-      dockerfile: Sombra.LoggingService/Dockerfile
-

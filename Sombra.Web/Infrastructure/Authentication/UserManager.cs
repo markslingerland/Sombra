@@ -29,7 +29,7 @@ namespace Sombra.Web
         return null;
 
       Credential credential = this.context.Credentials.FirstOrDefault(
-        c => c.CredentialTypeId == credentialType.Id && string.Equals(c.Identifier, identifier, StringComparison.OrdinalIgnoreCase) && c.Secret == MD5Hasher.ComputeHash(secret)
+        // c => c.CredentialTypeId == credentialType.Id && string.Equals(c.Identifier, identifier, StringComparison.OrdinalIgnoreCase) && c.Secret == MD5Hasher.ComputeHash(secret)
       );
 
       if (credential == null)

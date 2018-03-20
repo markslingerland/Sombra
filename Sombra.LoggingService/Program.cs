@@ -28,16 +28,19 @@ namespace Sombra.LoggingService
                 .BuildServiceProvider();
 
             var bus = RabbitHutch.CreateBus(Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING"));
-            var subscriber = new AutoSubscriber(bus, _subscriptionIdPrefix);
+            var subscriber = new CustomAutoSubscriber(bus, serviceProvider, _subscriptionIdPrefix);
             subscriber.SubscribeAsync(Assembly.GetExecutingAssembly());
 
-            bus.RespondAsync<LogRequest, LogResponse>(async request =>
-            {
-                var handler = new LogRequestHandler(
-                    serviceProvider.GetService<IMongoCollection<LogEntry>>(),
-                    serviceProvider.GetService<IMapper>());
-                return await handler.Handle(request).ConfigureAwait(false);
-            });
+            var responder = new AutoResponder(bus, serviceProvider);
+            responder.RespondAsync(Assembly.GetExecutingAssembly());
+
+            //bus.RespondAsync<LogRequest, LogResponse>(async request =>
+            //{
+            //    var handler = new LogRequestHandler(
+            //        serviceProvider.GetService<IMongoCollection<LogEntry>>(),
+            //        serviceProvider.GetService<IMapper>());
+            //    return await handler.Handle(request).ConfigureAwait(false);
+            //});
 
             while (true)
             {

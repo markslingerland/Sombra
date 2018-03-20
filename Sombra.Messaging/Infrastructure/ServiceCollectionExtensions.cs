@@ -11,7 +11,7 @@ namespace Sombra.Messaging.Infrastructure
         {
             assembly.GetTypes()
                 .Where(x => x.GetInterfaces().Where(i => i.IsGenericType).Any(i => i.GetGenericTypeDefinition() == typeof(IConsumeAsync<>)) && !x.IsInterface && !x.IsAbstract)
-                .Select(serviceCollection.AddScoped);
+                .Select(serviceCollection.AddTransient);
 
             return serviceCollection;
         }
@@ -20,7 +20,7 @@ namespace Sombra.Messaging.Infrastructure
         {
             assembly.GetTypes()
                 .Where(x => x.GetInterfaces().Where(i => i.IsGenericType).Any(i => i.GetGenericTypeDefinition() == typeof(IAsyncRequestHandler<,>)) && !x.IsInterface && !x.IsAbstract)
-                .Select(serviceCollection.AddScoped);
+                .Select(serviceCollection.AddTransient);
 
             return serviceCollection;
         }

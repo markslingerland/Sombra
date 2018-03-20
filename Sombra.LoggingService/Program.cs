@@ -4,34 +4,36 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using EasyNetQ;
-using EasyNetQ.AutoSubscribe;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 
 namespace Sombra.LoggingService
 {
     class Program
     {
         private static string _subscriptionIdPrefix = "Sombra.LoggingService";
-        static async Task Main(string[] args)
-        {
-            Console.WriteLine("LoggingService started..");
+        private static System.IServiceProvider _serviceProvider;
 
-            var serviceProvider = new ServiceCollection()
+        public Program()
+        {
+            _serviceProvider = new ServiceCollection()
                 .AddConsumers(Assembly.GetExecutingAssembly())
                 .AddRequestHandlers(Assembly.GetExecutingAssembly())
                 .AddSingleton(GetMongoCollection())
                 .AddAutoMapper(Assembly.GetExecutingAssembly())
                 .BuildServiceProvider();
+        }
+
+        static async Task Main(string[] args)
+        {
+            Console.WriteLine("LoggingService started..");
 
             var bus = RabbitHutch.CreateBus(Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING"));
-            var subscriber = new CustomAutoSubscriber(bus, serviceProvider, _subscriptionIdPrefix);
+            var subscriber = new CustomAutoSubscriber(bus, _serviceProvider, _subscriptionIdPrefix);
             subscriber.SubscribeAsync(Assembly.GetExecutingAssembly());
 
-            var responder = new AutoResponder(bus, serviceProvider);
+            var responder = new AutoResponder(bus, _serviceProvider);
             responder.RespondAsync(Assembly.GetExecutingAssembly());
 
             //bus.RespondAsync<LogRequest, LogResponse>(async request =>

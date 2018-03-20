@@ -7,6 +7,7 @@ using EasyNetQ;
 using EasyNetQ.AutoSubscribe;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
+using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 
@@ -20,8 +21,10 @@ namespace Sombra.LoggingService
             Console.WriteLine("LoggingService started..");
 
             var serviceProvider = new ServiceCollection()
+                .AddConsumers(Assembly.GetExecutingAssembly())
+                .AddRequestHandlers(Assembly.GetExecutingAssembly())
                 .AddSingleton(GetMongoCollection())
-                .AddAutoMapper()
+                .AddAutoMapper(Assembly.GetExecutingAssembly())
                 .BuildServiceProvider();
 
             var bus = RabbitHutch.CreateBus(Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING"));

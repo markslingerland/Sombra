@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using EasyNetQ;
 using EasyNetQ.FluentConfiguration;
 
-namespace Sombra.Messaging
+namespace Sombra.Messaging.Infrastructure
 {
     public static class BusExtensions
     {

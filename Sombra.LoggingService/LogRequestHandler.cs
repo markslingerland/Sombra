@@ -6,6 +6,7 @@ using AutoMapper;
 using MongoDB.Driver;
 using Sombra.Core.Extensions;
 using Sombra.Messaging;
+using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 

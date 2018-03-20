@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Sombra.Messaging
+namespace Sombra.Messaging.Infrastructure
 {
     public interface IAsyncRequestHandler<in TRequest, TResponse>
         where TRequest : IRequest<TResponse>

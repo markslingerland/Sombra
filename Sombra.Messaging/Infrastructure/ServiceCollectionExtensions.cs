@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Reflection;
 using EasyNetQ.AutoSubscribe;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,17 +10,20 @@ namespace Sombra.Messaging.Infrastructure
     {
         public static IServiceCollection AddConsumers(this IServiceCollection serviceCollection, Assembly assembly)
         {
-            assembly.GetTypes()
-                .Where(x => x.GetInterfaces().Where(i => i.IsGenericType).Any(i => i.GetGenericTypeDefinition() == typeof(IConsumeAsync<>)) && !x.IsInterface && !x.IsAbstract)
-                .Select(serviceCollection.AddTransient);
-
-            return serviceCollection;
+            return serviceCollection.AddGenericInterfaceType(assembly, typeof(IConsumeAsync<>));
         }
 
         public static IServiceCollection AddRequestHandlers(this IServiceCollection serviceCollection, Assembly assembly)
         {
+            return serviceCollection.AddGenericInterfaceType(assembly, typeof(IAsyncRequestHandler<,>));
+        }
+
+        public static IServiceCollection AddGenericInterfaceType(this IServiceCollection serviceCollection, Assembly assembly, Type type)
+        {
+            if (!type.IsInterface || !type.IsGenericType) throw new ArgumentException($"The supplied type must be a generic interface. Current type: {type}", nameof(type));
+
             assembly.GetTypes()
-                .Where(x => x.GetInterfaces().Where(i => i.IsGenericType).Any(i => i.GetGenericTypeDefinition() == typeof(IAsyncRequestHandler<,>)) && !x.IsInterface && !x.IsAbstract)
+                .Where(x => x.GetInterfaces().Where(i => i.IsGenericType).Any(i => i.GetGenericTypeDefinition() == type) && !x.IsInterface && !x.IsAbstract)
                 .Select(serviceCollection.AddTransient);
 
             return serviceCollection;

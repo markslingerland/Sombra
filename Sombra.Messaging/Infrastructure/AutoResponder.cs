@@ -13,10 +13,10 @@ namespace Sombra.Messaging.Infrastructure
         protected readonly IBus Bus;
         public AutoResponderMessageDispatcher AutoResponderMessageDispatcher { get; }
 
-        public AutoResponder(IBus bus)
+        public AutoResponder(IBus bus, System.IServiceProvider serviceProvider)
         {
             Bus = bus;
-            AutoResponderMessageDispatcher = new AutoResponderMessageDispatcher();
+            AutoResponderMessageDispatcher = new AutoResponderMessageDispatcher(serviceProvider);
         }
 
         public void RespondAsync(Assembly assembly)

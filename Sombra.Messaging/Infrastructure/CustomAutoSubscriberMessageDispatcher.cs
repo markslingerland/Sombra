@@ -17,7 +17,7 @@ namespace Sombra.Messaging.Infrastructure
             where TMessage : class
             where TConsumer : IConsume<TMessage>
         {
-            var consumer = _serviceProvider.GetService<TConsumer>();
+            var consumer = _serviceProvider.GetRequiredService<TConsumer>();
 
             consumer.Consume(message);
         }
@@ -26,7 +26,7 @@ namespace Sombra.Messaging.Infrastructure
             where TMessage : class
             where TConsumer : IConsumeAsync<TMessage>
         {
-            var consumer = _serviceProvider.GetService<TConsumer>();
+            var consumer = _serviceProvider.GetRequiredService<TConsumer>();
 
             return consumer.Consume(message);
         }

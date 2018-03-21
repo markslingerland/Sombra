@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Sombra.Messaging.Infrastructure
@@ -13,7 +12,7 @@ namespace Sombra.Messaging.Infrastructure
             _serviceProvider = serviceProvider;
         }
 
-        public Task DispatchAsync<TRequest, TResponse, THandler>(TRequest message)
+        public Task<TResponse> DispatchAsync<TRequest, TResponse, THandler>(TRequest message)
             where TRequest : class, IRequest<TResponse>
             where THandler : IAsyncRequestHandler<TRequest, TResponse>
             where TResponse : class

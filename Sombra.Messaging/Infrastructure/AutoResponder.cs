@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using EasyNetQ;
-using EasyNetQ.FluentConfiguration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Sombra.Messaging.Infrastructure
@@ -27,13 +26,13 @@ namespace Sombra.Messaging.Infrastructure
 
         public void RespondAsync(params Type[] responderTypes)
         {
-            var genericBusRepondMethod = GetRespondMethodOfBus(nameof(Bus.SubscribeAsync), typeof(Func<,>));
+            var genericBusRepondMethod = GetRespondMethodOfBus(nameof(Bus.RespondAsync), typeof(Func<,>));
             var responderInfos = GetResponderInfos(responderTypes, typeof(IAsyncRequestHandler<,>));
-            Type SubscriberTypeFromRequestTypeDelegate(Type messageType, Type responseType) => typeof(Func<,>).MakeGenericType(messageType, typeof(Task).MakeGenericType(responseType));
-            InvokeMethods(responderInfos, nameof(AutoResponderMessageDispatcher.DispatchAsync), genericBusRepondMethod, SubscriberTypeFromRequestTypeDelegate);
+            Type ResponderTypeFromRequestTypeDelegate(Type messageType, Type responseType) => typeof(Func<,>).MakeGenericType(messageType, typeof(Task<>).MakeGenericType(responseType));
+            InvokeMethods(responderInfos, nameof(AutoResponderMessageDispatcher.DispatchAsync), genericBusRepondMethod, ResponderTypeFromRequestTypeDelegate);
         }
 
-        protected virtual void InvokeMethods(IEnumerable<KeyValuePair<Type, AutoResponderRequestHandlerInfo[]>> responderInfos, string dispatchName, MethodInfo genericBusRepondMethod, Func<Type, Type, Type> subscriberTypeFromRequestTypeDelegate)
+        protected virtual void InvokeMethods(IEnumerable<KeyValuePair<Type, AutoResponderRequestHandlerInfo[]>> responderInfos, string dispatchName, MethodInfo genericBusRepondMethod, Func<Type, Type, Type> responderTypeFromRequestTypeDelegate)
         {
             foreach (var kv in responderInfos)
             {
@@ -44,7 +43,7 @@ namespace Sombra.Messaging.Infrastructure
                             .GetMethod(dispatchName, BindingFlags.Instance | BindingFlags.Public)
                             .MakeGenericMethod(responderinfo.MessageType, responderinfo.ResponseType, responderinfo.ConcreteType);
 
-                    var dispatchDelegate = Delegate.CreateDelegate(subscriberTypeFromRequestTypeDelegate(responderinfo.MessageType, responderinfo.ResponseType), AutoResponderMessageDispatcher, dispatchMethod);
+                    var dispatchDelegate = Delegate.CreateDelegate(responderTypeFromRequestTypeDelegate(responderinfo.MessageType, responderinfo.ResponseType), AutoResponderMessageDispatcher, dispatchMethod);
 
                     var busRespondMethod = genericBusRepondMethod.MakeGenericMethod(responderinfo.MessageType, responderinfo.ResponseType);
                     busRespondMethod.Invoke(Bus, new object[] { dispatchDelegate });
@@ -57,9 +56,8 @@ namespace Sombra.Messaging.Infrastructure
             return typeof(IBus).GetMethods()
                 .Where(m => m.Name == methodName)
                 .Select(m => new { Method = m, Params = m.GetParameters() })
-                .Single(m => m.Params.Length == 2
+                .Single(m => m.Params.Length == 1
                              && m.Params[0].ParameterType.GetGenericTypeDefinition() == parmType
-                             && m.Params[1].ParameterType == typeof(Action<ISubscriptionConfiguration>)
                 ).Method;
         }
 

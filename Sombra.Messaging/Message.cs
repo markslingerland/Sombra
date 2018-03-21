@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace Sombra.Messaging
 {
     [Serializable]
-    public class Message : IMessage
+    public abstract class Message : IMessage
     {
         protected Message()
         {

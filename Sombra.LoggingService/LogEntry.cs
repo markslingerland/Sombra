@@ -6,7 +6,7 @@ namespace Sombra.LoggingService
 {
     public class LogEntry
     {
-        public LogEntry(Message message, DateTime received)
+        public LogEntry(IMessage message, DateTime received)
         {
             MessageType = message.MessageType;
             MessageCreated = message.Created;

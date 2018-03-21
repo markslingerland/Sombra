@@ -6,7 +6,8 @@ using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.LoggingService
 {
-    public class MessageHandler : IAsyncMessageHandler<Message>
+    public class MessageHandler<TMessage> : IAsyncMessageHandler<TMessage>
+        where TMessage: class, IMessage
     {
         private readonly IMongoCollection<LogEntry> _mongoCollection;
 
@@ -15,7 +16,7 @@ namespace Sombra.LoggingService
             _mongoCollection = mongoCollection;
         }
 
-        public async Task Consume(Message message)
+        public async Task Consume(TMessage message)
         {
             Console.WriteLine($"Message received. Type: {message.MessageType}");
             await _mongoCollection.InsertOneAsync(new LogEntry(message, DateTime.UtcNow)).ConfigureAwait(false);

@@ -32,11 +32,14 @@ namespace Sombra.LoggingService
                 .BuildServiceProvider(true);
 
             var bus = RabbitHutch.CreateBus(_rabbitMqConnectionString);
-            var subscriber = new CustomAutoSubscriber(bus, serviceProvider, _subscriptionIdPrefix);
-            subscriber.SubscribeAsync(Assembly.GetExecutingAssembly());
+            //var subscriber = new CustomAutoSubscriber(bus, serviceProvider, _subscriptionIdPrefix);
+            //subscriber.SubscribeAsync(Assembly.GetExecutingAssembly());
 
             var responder = new AutoResponder(bus, serviceProvider);
             responder.RespondAsync(Assembly.GetExecutingAssembly());
+
+            var logger = new MessageLogger(bus, serviceProvider, _subscriptionIdPrefix);
+            logger.Start();
 
             while (true)
             {

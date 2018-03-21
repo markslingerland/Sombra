@@ -17,7 +17,7 @@ namespace Sombra.Messaging.Infrastructure
             where THandler : IAsyncRequestHandler<TRequest, TResponse>
             where TResponse : class
         {
-            var handler = _serviceProvider.GetService<THandler>();
+            var handler = _serviceProvider.GetRequiredService<THandler>();
 
             return handler.Handle(message);
         }

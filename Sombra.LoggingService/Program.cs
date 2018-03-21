@@ -3,7 +3,6 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using EasyNetQ;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,8 +29,7 @@ namespace Sombra.LoggingService
                 .AddConsumers(Assembly.GetExecutingAssembly())
                 .AddRequestHandlers(Assembly.GetExecutingAssembly())
                 .AddSingleton(GetMongoCollection())
-                .AddAutoMapper(Assembly.GetExecutingAssembly())
-                .BuildServiceProvider();
+                .BuildServiceProvider(true);
 
             var bus = RabbitHutch.CreateBus(_rabbitMqConnectionString);
             var subscriber = new CustomAutoSubscriber(bus, serviceProvider, _subscriptionIdPrefix);
@@ -39,14 +37,6 @@ namespace Sombra.LoggingService
 
             var responder = new AutoResponder(bus, serviceProvider);
             responder.RespondAsync(Assembly.GetExecutingAssembly());
-
-            //bus.RespondAsync<LogRequest, LogResponse>(async request =>
-            //{
-            //    var handler = new LogRequestHandler(
-            //        serviceProvider.GetService<IMongoCollection<LogEntry>>(),
-            //        serviceProvider.GetService<IMapper>());
-            //    return await handler.Handle(request).ConfigureAwait(false);
-            //});
 
             while (true)
             {

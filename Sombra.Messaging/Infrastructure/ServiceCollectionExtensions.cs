@@ -22,11 +22,9 @@ namespace Sombra.Messaging.Infrastructure
         {
             if (!type.IsInterface || !type.IsGenericType) throw new ArgumentException($"The supplied type must be a generic interface. Current type: {type}", nameof(type));
 
-            assembly.GetTypes()
+            return assembly.GetTypes()
                 .Where(x => x.GetInterfaces().Where(i => i.IsGenericType).Any(i => i.GetGenericTypeDefinition() == type) && !x.IsInterface && !x.IsAbstract)
-                .Select(serviceCollection.AddTransient);
-
-            return serviceCollection;
+                .Aggregate(serviceCollection, (current, t) => current.AddTransient(t));
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Sombra.LoggingService
     class Program
     {
         private static string _subscriptionIdPrefix = "Sombra.LoggingService";
-        private static System.IServiceProvider _serviceProvider;
+        private static ServiceProvider _serviceProvider;
 
         public Program()
         {

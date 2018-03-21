@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using EasyNetQ;
 using EasyNetQ.FluentConfiguration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Sombra.Messaging.Infrastructure
 {
@@ -13,7 +14,7 @@ namespace Sombra.Messaging.Infrastructure
         protected readonly IBus Bus;
         public AutoResponderMessageDispatcher AutoResponderMessageDispatcher { get; }
 
-        public AutoResponder(IBus bus, System.IServiceProvider serviceProvider)
+        public AutoResponder(IBus bus, ServiceProvider serviceProvider)
         {
             Bus = bus;
             AutoResponderMessageDispatcher = new AutoResponderMessageDispatcher(serviceProvider);
@@ -67,7 +68,7 @@ namespace Sombra.Messaging.Infrastructure
             foreach (var concreteType in types.Where(t => t.GetTypeInfo().IsClass && !t.GetTypeInfo().IsAbstract))
             {
                 var subscriptionInfos = concreteType.GetInterfaces()
-                    .Where(i => i.GetTypeInfo().IsGenericType && i.GetGenericTypeDefinition() == interfaceType && !i.GetGenericArguments()[0].IsGenericParameter)
+                    .Where(i => i.GetTypeInfo().IsGenericType && i.GetGenericTypeDefinition() == interfaceType && !i.GetGenericArguments()[0].IsGenericParameter && !i.GetGenericArguments()[1].IsGenericParameter)
                     .Select(i => new AutoResponderRequestHandlerInfo(concreteType, i, i.GetGenericArguments()[0], i.GetGenericArguments()[1]))
                     .ToArray();
 

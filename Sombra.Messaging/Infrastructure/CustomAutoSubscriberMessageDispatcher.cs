@@ -6,9 +6,9 @@ namespace Sombra.Messaging.Infrastructure
 {
     public class CustomAutoSubscriberMessageDispatcher : IAutoSubscriberMessageDispatcher
     {
-        private readonly System.IServiceProvider _serviceProvider;
+        private readonly ServiceProvider _serviceProvider;
 
-        public CustomAutoSubscriberMessageDispatcher(System.IServiceProvider serviceProvider)
+        public CustomAutoSubscriberMessageDispatcher(ServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }

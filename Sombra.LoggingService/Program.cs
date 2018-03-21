@@ -26,7 +26,7 @@ namespace Sombra.LoggingService
             SetupConfiguration();
 
             var serviceProvider = new ServiceCollection()
-                .AddConsumers(Assembly.GetExecutingAssembly())
+                .AddMessageHandlers(Assembly.GetExecutingAssembly())
                 .AddRequestHandlers(Assembly.GetExecutingAssembly())
                 .AddSingleton(GetMongoCollection())
                 .BuildServiceProvider(true);

@@ -8,9 +8,9 @@ namespace Sombra.Messaging.Infrastructure
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddConsumers(this IServiceCollection serviceCollection, Assembly assembly)
+        public static IServiceCollection AddMessageHandlers(this IServiceCollection serviceCollection, Assembly assembly)
         {
-            return serviceCollection.AddGenericInterfaceType(assembly, typeof(IConsumeAsync<>));
+            return serviceCollection.AddGenericInterfaceType(assembly, typeof(IAsyncMessageHandler<>));
         }
 
         public static IServiceCollection AddRequestHandlers(this IServiceCollection serviceCollection, Assembly assembly)

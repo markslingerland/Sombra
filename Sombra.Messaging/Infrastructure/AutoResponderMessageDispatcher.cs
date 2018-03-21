@@ -15,7 +15,7 @@ namespace Sombra.Messaging.Infrastructure
         public Task<TResponse> DispatchAsync<TRequest, TResponse, THandler>(TRequest message)
             where TRequest : class, IRequest<TResponse>
             where THandler : IAsyncRequestHandler<TRequest, TResponse>
-            where TResponse : class
+            where TResponse : class, IMessage
         {
             var handler = _serviceProvider.GetRequiredService<THandler>();
 

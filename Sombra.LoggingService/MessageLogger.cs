@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using EasyNetQ;
 using Microsoft.Extensions.DependencyInjection;
+using Sombra.Messaging;
 
 namespace Sombra.LoggingService
 {
@@ -41,7 +42,7 @@ namespace Sombra.LoggingService
             }
         }
 
-        private MethodInfo GetSubscribeMethodOfBus(string methodName, Type parmType)
+        private static MethodInfo GetSubscribeMethodOfBus(string methodName, Type parmType)
         {
             return typeof(IBus).GetMethods()
                 .Where(m => m.Name == methodName)
@@ -52,10 +53,14 @@ namespace Sombra.LoggingService
                 ).Method;
         }
 
-        private IEnumerable<Type> GetAllMessageTypes()
+        private static IEnumerable<Type> GetAllMessageTypes()
         {
             return typeof(Messaging.IMessage).Assembly.GetTypes()
-                .Where(t => t.IsClass && !t.IsAbstract && typeof(Messaging.IMessage).IsAssignableFrom(t));
+                .Where(t => t.IsClass 
+                            && !t.IsAbstract 
+                            && !typeof(IRequest<>).IsAssignableFrom(t)
+                            && !typeof(IResponse).IsAssignableFrom(t)
+                            && typeof(Messaging.IMessage).IsAssignableFrom(t));
         }
     }
 }

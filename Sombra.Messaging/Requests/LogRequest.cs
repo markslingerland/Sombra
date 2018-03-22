@@ -4,7 +4,7 @@ using Sombra.Messaging.Responses;
 
 namespace Sombra.Messaging.Requests
 {
-    public class LogRequest : Message, IRequest<LogResponse>
+    public class LogRequest : Request<LogResponse>
     {
         public DateTime? From { get; set; }
         public DateTime? To { get; set; }

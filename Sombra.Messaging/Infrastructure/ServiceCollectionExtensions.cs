@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using EasyNetQ.AutoSubscribe;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Sombra.Messaging.Infrastructure
@@ -18,7 +17,7 @@ namespace Sombra.Messaging.Infrastructure
             return serviceCollection.AddGenericInterfaceType(assembly, typeof(IAsyncRequestHandler<,>));
         }
 
-        public static IServiceCollection AddGenericInterfaceType(this IServiceCollection serviceCollection, Assembly assembly, Type type)
+        private static IServiceCollection AddGenericInterfaceType(this IServiceCollection serviceCollection, Assembly assembly, Type type)
         {
             if (!type.IsInterface || !type.IsGenericType) throw new ArgumentException($"The supplied type must be a generic interface. Current type: {type}", nameof(type));
 

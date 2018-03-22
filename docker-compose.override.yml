@@ -16,11 +16,11 @@ services:
 
   sombra.loggingservice:
     environment:
+      - CONTAINER_TYPE=Docker
       - ASPNETCORE_ENVIRONMENT=Development
       - RABBITMQ_CONNECTIONSTRING=host=rabbitmq;username=rabbitmquser;password=DEBmbwkSrzy9D1T9cJfa
       - MONGO_CONNECTIONSTRING=mongodb://defaultuser:fsd2342lkghsff3f343sf@mongoserver/
       - MONGO_DATABASE=logging
-      - MONGO_COLLECTION=rabbitmq
 
   rabbitmq:
     environment:

@@ -1,4 +1,5 @@
 ﻿using System;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Sombra.Messaging;
 
@@ -6,7 +7,7 @@ namespace Sombra.LoggingService
 {
     public class LogEntry
     {
-        public LogEntry(Message message, DateTime received)
+        public LogEntry(IMessage message, DateTime received)
         {
             MessageType = message.MessageType;
             MessageCreated = message.Created;
@@ -15,7 +16,7 @@ namespace Sombra.LoggingService
         }
 
         [BsonId]
-        public int Id { get; set; }
+        public ObjectId Id { get; set; }
         public string Message { get; set; }
         public string MessageType { get; set; }
         public DateTime MessageReceived { get; set; }

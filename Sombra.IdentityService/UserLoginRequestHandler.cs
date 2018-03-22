@@ -2,12 +2,14 @@ using System.Threading.Tasks;
 using EasyNetQ;
 using EasyNetQ.AutoSubscribe;
 using Sombra.Messaging;
+using Sombra.Core;
 using Sombra.IdentityService.DAL;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
-using Sombra.Core;
+using Sombra.Messaging.Infrastructure;
 using System.Linq;
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace Sombra.IdentityService
 {
@@ -23,20 +25,16 @@ namespace Sombra.IdentityService
         {
             var response = new UserLoginResponse();
 
-            CredentialType credentialType = _context.CredentialTypes.FirstOrDefault(ct => string.Equals(ct.Code, message.loginTypeCode, StringComparison.OrdinalIgnoreCase));
+            var user = await _context.Users.Include(u => u.UserRoles).ThenInclude(ur => ur.Role.RolePermissions).ThenInclude(rp => rp.Permission)
+                .FirstOrDefaultAsync(u => u.Credentials.Any(c => c.CredentialType.Code.ToLower() == message.LoginTypeCode && c.Identifier.ToLower() == message.Identifier && c.Secret == message.Secret)).ConfigureAwait(false);
 
-            if (credentialType == null)
-                return null;
-
-            Credential credential = _context.Credentials.FirstOrDefault(
-                c => c.CredentialTypeId == credentialType.Id && string.Equals(c.Identifier, message.identifier, StringComparison.OrdinalIgnoreCase) && c.Secret == SHA256Hasher.ComputeHash(secret)
-            );
-
-            if (credential == null)
-                return null;
-
-            response.User = _context.Users.Find(credential.UserId);
-            response.Success = true;
+            if (user != null)          
+            {
+                response.Success = true;
+                response.UserKey = user.UserKey;
+                response.UserName = user.Name;
+                response.PermissionCodes = user.UserRoles.SelectMany(ur => ur.Role.RolePermissions.Select(rp => rp.Permission.Code));
+            }
 
             return response;
 

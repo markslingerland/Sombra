@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Sombra.Messaging.Messages
+﻿namespace Sombra.Messaging.Messages
 {
     public class Email : Message
     {

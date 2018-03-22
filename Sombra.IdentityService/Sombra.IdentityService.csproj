@@ -21,6 +21,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Sombra.Messaging\Sombra.Messaging.csproj" />
     <ProjectReference Include="..\Sombra.Core\Sombra.Core.csproj" />
+    <ProjectReference Include="..\Sombra.Infrastructure\Sombra.Infrastructure.csproj" />
+
   </ItemGroup>
 
 </Project>

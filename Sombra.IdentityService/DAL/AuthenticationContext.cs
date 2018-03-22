@@ -44,7 +44,7 @@ namespace Sombra.IdentityService.DAL
             modelBuilder.AddConfiguration(new RoleEntityTypeConfiguration());
             modelBuilder.AddConfiguration(new RolePermissionEntityTypeConfiguration());
             modelBuilder.AddConfiguration(new UserEntityTypeConfiguration());
-            modelBuilder.AddConfiguration(new UserRolEntityTypeConfiguration());                  
+            modelBuilder.AddConfiguration(new UserRoleEntityTypeConfiguration());                  
         }
     }
 }

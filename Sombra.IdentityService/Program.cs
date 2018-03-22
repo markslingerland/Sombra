@@ -18,7 +18,7 @@ namespace Sombra.IdentityService
             var context = new AuthenticationContext();
             var bus = RabbitHutch.CreateBus(Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING"));
             bus.RespondAsync<UserLoginRequest, UserLoginResponse>(async request => {
-                // Deze shit ga ik proberen weg te werken
+                // TODO: Deze shit ga ik proberen weg te werken
                 var handler = new UserLoginRequestHandler(context);
                 return await handler.Handle(request).ConfigureAwait(false);
             });

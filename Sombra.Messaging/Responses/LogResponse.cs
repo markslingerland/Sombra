@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Sombra.Messaging.Responses
 {
-    public class LogResponse : Message
+    public class LogResponse : Response
     {
         public IEnumerable<Log> Logs { get; set; }
     }

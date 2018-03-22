@@ -58,7 +58,7 @@ namespace Sombra.LoggingService
             return typeof(Messaging.IMessage).Assembly.GetTypes()
                 .Where(t => t.IsClass 
                             && !t.IsAbstract 
-                            && !typeof(IRequest<>).IsAssignableFrom(t)
+                            && !typeof(IRequest).IsAssignableFrom(t)
                             && !typeof(IResponse).IsAssignableFrom(t)
                             && typeof(Messaging.IMessage).IsAssignableFrom(t));
         }

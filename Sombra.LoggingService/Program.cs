@@ -7,6 +7,7 @@ using EasyNetQ;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
+using Sombra.Infrastructure.Extensions;
 using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.LoggingService
@@ -26,6 +27,7 @@ namespace Sombra.LoggingService
             SetupConfiguration();
 
             var serviceProvider = new ServiceCollection()
+                .AddAutoMapper(Assembly.GetExecutingAssembly())
                 .AddMessageHandlers(Assembly.GetExecutingAssembly())
                 .AddRequestHandlers(Assembly.GetExecutingAssembly())
                 .AddSingleton(GetMongoCollection())

@@ -14,11 +14,12 @@ namespace Sombra.LoggingService
     public class LogRequestHandler : IAsyncRequestHandler<LogRequest, LogResponse>
     {
         private readonly IMongoCollection<LogEntry> _logCollection;
-        private static readonly IMapper Mapper = LoggingMapper.Mapper;
+        private readonly IMapper _mapper;
 
-        public LogRequestHandler(IMongoCollection<LogEntry> logCollection)
+        public LogRequestHandler(IMongoCollection<LogEntry> logCollection, IMapper mapper)
         {
             _logCollection = logCollection;
+            _mapper = mapper;
         }
 
         public async Task<LogResponse> Handle(LogRequest message)
@@ -30,7 +31,7 @@ namespace Sombra.LoggingService
             if (message.To.HasValue) filter = filter.And(l => l.MessageCreated.CompareTo(message.To.Value) <= 0);
             if (message.MessageTypes?.Any() != null) filter = filter.And(l => message.MessageTypes.Select(t => t.FullName).Contains(l.MessageType));
 
-            var logs = await _logCollection.Find(filter).Project(l => Mapper.Map<Log>(l)).ToListAsync().ConfigureAwait(false);
+            var logs = await _logCollection.Find(filter).Project(l => _mapper.Map<Log>(l)).ToListAsync().ConfigureAwait(false);
 
             return new LogResponse
             {

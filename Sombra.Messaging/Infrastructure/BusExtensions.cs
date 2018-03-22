@@ -10,13 +10,13 @@ namespace Sombra.Messaging.Infrastructure
         public static async Task<TResponse> RequestAsync<TResponse>(this IBus bus, IRequest<TResponse> request)
             where TResponse : class, IResponse
         {
-            return await bus.RequestAsync<IRequest<TResponse>, TResponse>(request);
+            return await bus.RequestAsync<IRequest<TResponse>, TResponse>(request).ConfigureAwait(false);
         }
 
         public static async Task<TResponse> RequestAsync<TResponse>(this IBus bus, IRequest<TResponse> request, Action<IRequestConfiguration> configure)
             where TResponse : class, IResponse
         {
-            return await bus.RequestAsync<IRequest<TResponse>, TResponse>(request, configure);
+            return await bus.RequestAsync<IRequest<TResponse>, TResponse>(request, configure).ConfigureAwait(false);
         }
     }
 }

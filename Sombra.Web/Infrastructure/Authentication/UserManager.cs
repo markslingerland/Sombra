@@ -19,13 +19,11 @@ namespace Sombra.Web
 {
     public class UserManager : IUserManager
     {
-        private AuthenticationContext context;
         private readonly IBus _bus;
 
-        public UserManager(IBus bus, AuthenticationContext context)
+        public UserManager(IBus bus)
         {
             _bus = bus;
-            this.context = context;
         }
 
         public async Task<UserLoginResponse> ValidateAsync(UserLoginRequest userLoginRequest)
@@ -78,15 +76,6 @@ namespace Sombra.Web
             return currentUserId;
         }
 
-        public User GetCurrentUser(HttpContext httpContext)
-        {
-            int currentUserId = this.GetCurrentUserId(httpContext);
-
-            if (currentUserId == -1)
-                return null;
-
-            return this.context.Users.Find(currentUserId);
-        }
 
         private IEnumerable<Claim> GetUserClaims(UserLoginResponse userLoginResponse)
         {
@@ -113,5 +102,15 @@ namespace Sombra.Web
 
             return claims;
         }
+        
+        // public User GetCurrentUser(HttpContext httpContext)
+        // {
+        //     int currentUserId = this.GetCurrentUserId(httpContext);
+
+        //     if (currentUserId == -1)
+        //         return null;
+
+        //     return this.context.Users.Find(currentUserId);
+        // }
     }
 }

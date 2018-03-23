@@ -12,7 +12,8 @@ namespace Sombra.Web
     Task<UserLoginResponse> ValidateAsync(UserLoginRequest userLoginRequest);
     Task<bool> SignIn(HttpContext httpContext, LoginViewModel loginViewModel, bool isPersistent = false);
     void SignOut(HttpContext httpContext);
-    int GetCurrentUserId(HttpContext httpContext);
+    
+    // int GetCurrentUserId(HttpContext httpContext);
     User GetCurrentUser(HttpContext httpContext);
   }
 }

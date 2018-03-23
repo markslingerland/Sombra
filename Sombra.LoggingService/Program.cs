@@ -2,7 +2,6 @@
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using System.Threading.Tasks;
 using EasyNetQ;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,7 +17,7 @@ namespace Sombra.LoggingService
         private static string _mongoConnectionString;
         private static string _mongoDatabase;
 
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             Console.WriteLine("LoggingService started..");
 

@@ -1,11 +1,10 @@
 ﻿using System;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
+using Sombra.Infrastructure.DAL.Mongo;
 using Sombra.Messaging;
 
 namespace Sombra.LoggingService
 {
-    public class LogEntry
+    public class LogEntry : DocumentEntity
     {
         public LogEntry(IMessage message, DateTime received)
         {
@@ -15,8 +14,6 @@ namespace Sombra.LoggingService
             Message = message.ToJson();
         }
 
-        [BsonId]
-        public ObjectId Id { get; set; }
         public string Message { get; set; }
         public string MessageType { get; set; }
         public DateTime MessageReceived { get; set; }

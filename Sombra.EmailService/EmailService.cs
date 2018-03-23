@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using EasyNetQ.AutoSubscribe;
-using Sombra.Messaging.Messages;
+using Sombra.Messaging.Events;
 
 namespace Sombra.EmailService
 {

@@ -5,11 +5,25 @@ using System.Reflection;
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyModel;
+using MongoDB.Driver;
+using Sombra.Infrastructure.DAL;
+using Sombra.Infrastructure.DAL.Mongo;
 
 namespace Sombra.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {
+        public static IServiceCollection AddMongoDatabase(this IServiceCollection services, string connectionString, string databaseName)
+        {
+            return services.AddTransient(provider => new MongoClient(connectionString).GetDatabase(databaseName));
+        }
+
+        public static IServiceCollection AddDbContext<TContext>(this IServiceCollection services)
+            where TContext : SombraContext
+        {
+            return services.AddDbContext<TContext>(ServiceLifetime.Transient);
+        }
+
         public static IServiceCollection AddAutoMapper(this IServiceCollection services)
         {
             return services.AddAutoMapper(null, AppDomain.CurrentDomain.GetAssemblies());

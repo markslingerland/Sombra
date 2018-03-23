@@ -9,7 +9,7 @@ namespace Sombra.Messaging.Infrastructure
     {
         public static IServiceCollection AddMessageHandlers(this IServiceCollection serviceCollection, Assembly assembly)
         {
-            return serviceCollection.AddGenericInterfaceType(assembly, typeof(IAsyncMessageHandler<>));
+            return serviceCollection.AddGenericInterfaceType(assembly, typeof(IAsyncEventHandler<>));
         }
 
         public static IServiceCollection AddRequestHandlers(this IServiceCollection serviceCollection, Assembly assembly)

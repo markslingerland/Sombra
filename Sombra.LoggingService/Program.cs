@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using EasyNetQ;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MongoDB.Driver;
 using Sombra.Infrastructure.Extensions;
 using Sombra.Messaging.Infrastructure;
 
@@ -18,7 +17,6 @@ namespace Sombra.LoggingService
         private static string _rabbitMqConnectionString;
         private static string _mongoConnectionString;
         private static string _mongoDatabase;
-        private static readonly string _mongoCollection = "rabbitmq";
 
         static async Task Main(string[] args)
         {
@@ -30,7 +28,7 @@ namespace Sombra.LoggingService
                 .AddAutoMapper(Assembly.GetExecutingAssembly())
                 .AddMessageHandlers(Assembly.GetExecutingAssembly())
                 .AddRequestHandlers(Assembly.GetExecutingAssembly())
-                .AddSingleton(GetMongoCollection())
+                .AddMongoDatabase(_mongoConnectionString, _mongoDatabase)
                 .BuildServiceProvider(true);
 
             var bus = RabbitHutch.CreateBus(_rabbitMqConnectionString);
@@ -65,11 +63,6 @@ namespace Sombra.LoggingService
                 _mongoConnectionString = config["MONGO_CONNECTIONSTRING"];
                 _mongoDatabase = config["MONGO_DATABASE"];
             }
-        }
-
-        private static IMongoCollection<LogEntry> GetMongoCollection()
-        {
-            return new MongoClient(_mongoConnectionString).GetDatabase(_mongoDatabase).GetCollection<LogEntry>(_mongoCollection);
         }
     }
 }

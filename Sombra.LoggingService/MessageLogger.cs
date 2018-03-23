@@ -26,13 +26,13 @@ namespace Sombra.LoggingService
         {
             var genericBusSubscribeMethod = GetSubscribeMethodOfBus(nameof(_bus.SubscribeAsync), typeof(Func<,>));
             Type SubscriberTypeFromMessageTypeDelegate(Type messageType) => typeof(Func<,>).MakeGenericType(messageType, typeof(Task));
-            var types = GetAllMessageTypes();
+            var types = GetAllEventTypes();
 
             foreach (var messageType in types)
             {
                 var handlerType = typeof(MessageHandler<>).MakeGenericType(messageType);
                 var handler = _serviceProvider.GetRequiredService(handlerType);
-                var handleMethod = handlerType.GetMethod(nameof(MessageHandler<Messaging.IMessage>.Consume),
+                var handleMethod = handlerType.GetMethod(nameof(MessageHandler<IEvent>.Consume),
                     BindingFlags.Instance | BindingFlags.Public);
 
                 var busSubscribeMethod = genericBusSubscribeMethod.MakeGenericMethod(messageType);
@@ -53,14 +53,12 @@ namespace Sombra.LoggingService
                 ).Method;
         }
 
-        private static IEnumerable<Type> GetAllMessageTypes()
+        private static IEnumerable<Type> GetAllEventTypes()
         {
-            return typeof(Messaging.IMessage).Assembly.GetTypes()
+            return typeof(IEvent).Assembly.GetTypes()
                 .Where(t => t.IsClass 
-                            && !t.IsAbstract 
-                            && !typeof(IRequest).IsAssignableFrom(t)
-                            && !typeof(IResponse).IsAssignableFrom(t)
-                            && typeof(Messaging.IMessage).IsAssignableFrom(t));
+                            && !t.IsAbstract
+                            && typeof(IEvent).IsAssignableFrom(t));
         }
     }
 }

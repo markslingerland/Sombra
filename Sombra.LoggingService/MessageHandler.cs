@@ -6,8 +6,8 @@ using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.LoggingService
 {
-    public class MessageHandler<TMessage> : IAsyncMessageHandler<TMessage>
-        where TMessage: class, IMessage
+    public class MessageHandler<TMessage> : IAsyncEventHandler<TMessage>
+        where TMessage: class, IEvent
     {
         private readonly IMongoCollection<LogEntry> _mongoCollection;
 

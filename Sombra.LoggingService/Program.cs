@@ -39,10 +39,7 @@ namespace Sombra.LoggingService
             var logger = new MessageLogger(bus, serviceProvider, _subscriptionIdPrefix);
             logger.Start();
 
-            while (true)
-            {
-                Thread.Sleep(10000);
-            }
+            Thread.Sleep(Timeout.Infinite);
         }
 
         private static void SetupConfiguration()

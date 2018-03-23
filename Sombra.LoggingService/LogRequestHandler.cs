@@ -15,11 +15,12 @@ namespace Sombra.LoggingService
     {
         private readonly IMongoCollection<LogEntry> _logCollection;
         private readonly IMapper _mapper;
+        private static readonly string _mongoCollection = "rabbitmq";
 
-        public LogRequestHandler(IMongoCollection<LogEntry> logCollection, IMapper mapper)
+        public LogRequestHandler(IMongoDatabase database, IMapper mapper)
         {
-            _logCollection = logCollection;
-            _mapper = mapper;
+            _logCollection = database.GetCollection<LogEntry>(_mongoCollection);
+             _mapper = mapper;
         }
 
         public async Task<LogResponse> Handle(LogRequest message)

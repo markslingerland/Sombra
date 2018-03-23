@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using EasyNetQ;
 
 namespace Sombra.Messaging.Infrastructure
@@ -9,6 +10,16 @@ namespace Sombra.Messaging.Infrastructure
             where TResponse : class, IResponse
         {
             return await bus.RequestAsync<IRequest<TResponse>, TResponse>(request);
+        }
+
+        public static IBus WaitForConnection(this IBus bus, int retryInMs = 2500)
+        {
+            while (!bus.IsConnected)
+            {
+                Thread.Sleep(retryInMs);
+            }
+
+            return bus;
         }
     }
 }

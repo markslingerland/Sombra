@@ -16,7 +16,7 @@ namespace Sombra.Messaging.Infrastructure
         public override void SubscribeAsync(params Type[] consumerTypes)
         {
             var genericBusSubscribeMethod = GetSubscribeMethodOfBus(nameof(IBus.SubscribeAsync), typeof(Func<,>));
-            var subscriptionInfos = GetSubscriptionInfos(consumerTypes, typeof(IAsyncMessageHandler<>));
+            var subscriptionInfos = GetSubscriptionInfos(consumerTypes, typeof(IAsyncEventHandler<>));
             Type SubscriberTypeFromMessageTypeDelegate(Type messageType) => typeof(Func<,>).MakeGenericType(messageType, typeof(Task));
             InvokeMethods(subscriptionInfos, DispatchAsyncMethodName, genericBusSubscribeMethod, SubscriberTypeFromMessageTypeDelegate);
         }

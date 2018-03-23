@@ -1,4 +1,4 @@
-﻿namespace Sombra.Messaging.Messages
+﻿namespace Sombra.Messaging.Events
 {
     public class Email : Message
     {

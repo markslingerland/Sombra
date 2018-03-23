@@ -30,9 +30,9 @@ namespace Sombra.LoggingService
 
             if (message.From.HasValue) filter = filter.And(l => l.MessageCreated.CompareTo(message.From.Value) >= 0);
             if (message.To.HasValue) filter = filter.And(l => l.MessageCreated.CompareTo(message.To.Value) <= 0);
-            if (message.MessageTypes?.Any() != null) filter = filter.And(l => message.MessageTypes.Select(t => t.FullName).Contains(l.MessageType));
+            if (message.MessageTypes?.Any() != null) filter = filter.And(l => message.MessageTypes.Contains(l.MessageType));
 
-            var logs = await _logCollection.Find(filter).Project(l => _mapper.Map<Log>(l)).ToListAsync().ConfigureAwait(false);
+            var logs = await _logCollection.Find(filter).Project(l => _mapper.Map<Log>(l)).ToListAsync();
 
             return new LogResponse
             {

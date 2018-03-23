@@ -1,7 +1,9 @@
 ﻿using System;
+using AutoMapper;
 using EasyNetQ;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,8 +21,10 @@ namespace Sombra.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc(options =>
+                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
             services.AddScoped(c => RabbitHutch.CreateBus(Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING")));
+            services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -36,7 +36,7 @@ namespace Sombra.LoggingService
             var responder = new AutoResponder(bus, serviceProvider);
             responder.RespondAsync(Assembly.GetExecutingAssembly());
 
-            var logger = new MessageLogger(bus, serviceProvider, _subscriptionIdPrefix);
+            var logger = new EventLogger(bus, serviceProvider, _subscriptionIdPrefix);
             logger.Start();
 
             Thread.Sleep(Timeout.Infinite);

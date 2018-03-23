@@ -26,10 +26,9 @@ namespace Sombra.IdentityService
 
 
             //Keeping the program persistent
-            while (true)
-            {
-                Thread.Sleep(10000);
-            }
+            
+            Thread.Sleep(Timeout.Infinite);
+            
         }
     }
 }

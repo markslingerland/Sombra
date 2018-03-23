@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using Sombra.Messaging.Responses;
 using Sombra.Core;
+using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.Web
 {
@@ -23,118 +24,94 @@ namespace Sombra.Web
 
         public UserManager(IBus bus, AuthenticationContext context)
         {
-        _bus = bus;
-        this.context = context;
+            _bus = bus;
+            this.context = context;
         }
 
-        public async Task<bool> ValidateAsync(string loginTypeCode, string identifier, string secret)
+        public async Task<UserLoginResponse> ValidateAsync(UserLoginRequest userLoginRequest)
         {
-            var result = false;
+            return await _bus.RequestAsync(userLoginRequest);
+        }
 
+        public async Task<bool> SignIn(HttpContext httpContext, LoginViewModel loginViewModel, bool isPersistent = false)
+        {
             var userLoginRequest = new UserLoginRequest(){
-                LoginTypeCode = loginTypeCode,
-                Identifier = identifier,
-                Secret = SHA256Hasher.ComputeHash(secret)
+                LoginTypeCode = loginViewModel.LoginTypeCode,
+                Identifier = loginViewModel.Identifier,
+                Secret = SHA256Hasher.ComputeHash(loginViewModel.Secret)
             };
 
-            var response = await _bus.RequestAsync<UserLoginRequest, UserLoginResponse>(userLoginRequest);
+            var userLoginResponse = await ValidateAsync(userLoginRequest);
 
-            if(response.Success){
-                //SignIn(HttpContext.Current, response)
-                result = true;
+            if(userLoginResponse.Success){
+                ClaimsIdentity identity = new ClaimsIdentity(this.GetUserClaims(userLoginResponse), CookieAuthenticationDefaults.AuthenticationScheme);
+                ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+
+                await httpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties() { IsPersistent = isPersistent }
+                );
             }
 
-            return result;
-        }
-
-        public async void SignIn(HttpContext httpContext, User user, bool isPersistent = false)
-        {
-        ClaimsIdentity identity = new ClaimsIdentity(this.GetUserClaims(user), CookieAuthenticationDefaults.AuthenticationScheme);
-        ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-
-        await httpContext.SignInAsync(
-            CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties() { IsPersistent = isPersistent }
-        );
+            return userLoginResponse.Success;
         }
 
         public async void SignOut(HttpContext httpContext)
         {
-        await httpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await httpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
 
         public int GetCurrentUserId(HttpContext httpContext)
         {
-        if (!httpContext.User.Identity.IsAuthenticated)
-            return -1;
+            if (!httpContext.User.Identity.IsAuthenticated)
+                return -1;
 
-        Claim claim = httpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            Claim claim = httpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
 
-        if (claim == null)
-            return -1;
+            if (claim == null)
+                return -1;
 
-        int currentUserId;
+            int currentUserId;
 
-        if (!int.TryParse(claim.Value, out currentUserId))
-            return -1;
+            if (!int.TryParse(claim.Value, out currentUserId))
+                return -1;
 
-        return currentUserId;
+            return currentUserId;
         }
 
         public User GetCurrentUser(HttpContext httpContext)
         {
-        int currentUserId = this.GetCurrentUserId(httpContext);
+            int currentUserId = this.GetCurrentUserId(httpContext);
 
-        if (currentUserId == -1)
-            return null;
+            if (currentUserId == -1)
+                return null;
 
-        return this.context.Users.Find(currentUserId);
+            return this.context.Users.Find(currentUserId);
         }
 
-        private IEnumerable<Claim> GetUserClaims(User user)
+        private IEnumerable<Claim> GetUserClaims(UserLoginResponse userLoginResponse)
         {
-        List<Claim> claims = new List<Claim>();
+            List<Claim> claims = new List<Claim>();
 
-        claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
-        claims.Add(new Claim(ClaimTypes.Name, user.Name));
-        claims.AddRange(this.GetUserRoleClaims(user));
-        return claims;
+            claims.Add(new Claim(ClaimTypes.Sid, userLoginResponse.UserKey.ToString()));
+            claims.Add(new Claim(ClaimTypes.Name, userLoginResponse.UserName));
+            claims.AddRange(this.GetUserRoleClaims(userLoginResponse));
+            return claims;
         }
 
-        private IEnumerable<Claim> GetUserRoleClaims(User user)
+        private IEnumerable<Claim> GetUserRoleClaims(UserLoginResponse userLoginResponse)
         {
-        List<Claim> claims = new List<Claim>();
-        IEnumerable<Guid> roleIds = this.context.UserRoles.Where(ur => ur.UserId == user.Id).Select(ur => ur.RoleId).ToList();
+            List<Claim> claims = new List<Claim>();
+            IEnumerable<string> permissionCodes = userLoginResponse.PermissionCodes;
 
-        if (roleIds != null)
-        {
-            foreach (var roleId in roleIds)
+            if (permissionCodes != null)
             {
-            Role role = this.context.Roles.Find(roleId);
-
-            claims.Add(new Claim(ClaimTypes.Role, role.Code));
-            claims.AddRange(this.GetUserPermissionClaims(role));
+                foreach (var permissionCode in permissionCodes)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, permissionCode));
+                }
             }
-        }
 
-        return claims;
-        }
-
-        private IEnumerable<Claim> GetUserPermissionClaims(Role role)
-        {
-        List<Claim> claims = new List<Claim>();
-        IEnumerable<Guid> permissionIds = this.context.RolePermissions.Where(rp => rp.RoleId == role.Id).Select(rp => rp.PermissionId).ToList();
-
-        if (permissionIds != null)
-        {
-            foreach (var permissionId in permissionIds)
-            {
-            Permission permission = this.context.Permissions.Find(permissionId);
-
-            claims.Add(new Claim("Permission", permission.Code));
-            }
-        }
-
-        return claims;
+            return claims;
         }
     }
 }

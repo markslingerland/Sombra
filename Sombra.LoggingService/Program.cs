@@ -30,7 +30,7 @@ namespace Sombra.LoggingService
                 .AddMongoDatabase(_mongoConnectionString, _mongoDatabase)
                 .BuildServiceProvider(true);
 
-            var bus = RabbitHutch.CreateBus(_rabbitMqConnectionString);
+            var bus = RabbitHutch.CreateBus(_rabbitMqConnectionString).WaitForConnection();
 
             var responder = new AutoResponder(bus, serviceProvider);
             responder.RespondAsync(Assembly.GetExecutingAssembly());

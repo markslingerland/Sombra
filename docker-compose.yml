@@ -46,21 +46,21 @@ services:
     image: rabbitmq:3-management
     container_name: rabbitmq
     volumes:
-      - rabbitmqdata:/var/lib/rabbitmq
+      - rabbitmqdata: /var/lib/rabbitmq
 
 
   sqlserver:
     image: microsoft/mssql-server-linux:latest
     container_name: sqlserver
     volumes:
-      - sqlserverdata:/var/opt/mssql 
+      - sqlserverdata: /var/opt/mssql 
 
      
   mongoserver:
     image: mongo
     container_name: mongoserver
     volumes:
-      - mongoserverdata: /data/db:rw
+      - mongoserverdata: /data/db
 
 
 volumes:

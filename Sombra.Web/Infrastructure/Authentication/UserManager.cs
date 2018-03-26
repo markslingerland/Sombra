@@ -28,7 +28,7 @@ namespace Sombra.Web
 
         public async Task<UserLoginResponse> ValidateAsync(UserLoginRequest userLoginRequest)
         {
-            return await _bus.RequestAsync(userLoginRequest);
+            return await _bus.RequestAsync<UserLoginRequest, UserLoginResponse>(userLoginRequest);
         }
 
         public async Task<bool> SignIn(HttpContext httpContext, LoginViewModel loginViewModel, bool isPersistent = false)

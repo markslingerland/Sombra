@@ -21,7 +21,7 @@ namespace Sombra.Infrastructure.Extensions
         public static IServiceCollection AddDbContext<TContext>(this IServiceCollection services, string connectionString)
             where TContext : SombraContext
         {
-            return services.AddDbContext<TContext>(builder => builder.UseSqlServer(connectionString), ServiceLifetime.Transient);
+            return services.AddDbContext<TContext>(builders => builders.UseSqlServer(connectionString), ServiceLifetime.Transient);
         }
 
         public static IServiceCollection AddAutoMapper(this IServiceCollection services)

@@ -8,7 +8,11 @@ namespace Sombra.IdentityService.DAL
 {
     public class AuthenticationContext : SombraContext
     {
-        public AuthenticationContext(DbContextOptions options) : base(options)
+        // public AuthenticationContext() : base()
+        // {
+        // }
+
+        public AuthenticationContext(DbContextOptions<AuthenticationContext> options) : base(options)
         {
         }
 

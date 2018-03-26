@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using EasyNetQ;
 using Microsoft.AspNetCore.Mvc;
-using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
+using Sombra.Messaging.Responses;
 using Sombra.Web.Areas.Development.Models;
 
 namespace Sombra.Web.Areas.Development.Controllers
@@ -30,9 +31,10 @@ namespace Sombra.Web.Areas.Development.Controllers
         public async Task<IActionResult> Index(LogsQuery query)
         {
             var request = _mapper.Map<LogRequest>(query);
-            var logs = await _bus.RequestAsync(request);
+            var response = await _bus.RequestAsync<LogRequest, LogResponse>(request);
+            var logs = _mapper.Map<IEnumerable<LogViewModel>>(response.Logs);
 
-            return View();
+            return View("View", logs);
         }
     }
 }

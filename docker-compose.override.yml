@@ -4,22 +4,22 @@ services:
   sombra.web:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - RABBITMQ_CONNECTIONSTRING=host=rabbitmq;username=rabbitmquser;password=DEBmbwkSrzy9D1T9cJfa
-      - AUTHENTICATION_DB_CONNECTIONSTRING=server=sqlserver;user id=sa;password=8jkGh47hnDw89Haq8LN2;database=Authentication;
+      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
+      - AUTHENTICATION_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-sqlpassword};database=Authentication;
     ports:
       - "80:80"
   
   sombra.emailservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - RABBITMQ_CONNECTIONSTRING=host=rabbitmq;username=rabbitmquser;password=DEBmbwkSrzy9D1T9cJfa
+      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
 
   sombra.loggingservice:
     environment:
       - CONTAINER_TYPE=Docker
       - ASPNETCORE_ENVIRONMENT=Development
-      - RABBITMQ_CONNECTIONSTRING=host=rabbitmq;username=rabbitmquser;password=DEBmbwkSrzy9D1T9cJfa
-      - MONGO_CONNECTIONSTRING=mongodb://defaultuser:fsd2342lkghsff3f343sf@mongoserver/
+      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
+      - MONGO_CONNECTIONSTRING=mongodb://${DC_MONGOUSER:-mongouser}:${DC_MONGOPASSWORD:-mongopassword}@${DC_MONGOHOST:-mongoserver}/
       - MONGO_DATABASE=logging
 
   sombra.identityservice:
@@ -31,8 +31,8 @@ services:
 
   rabbitmq:
     environment:
-      - RABBITMQ_DEFAULT_USER=rabbitmquser
-      - RABBITMQ_DEFAULT_PASS=DEBmbwkSrzy9D1T9cJfa
+      - RABBITMQ_DEFAULT_USER=${DC_RABBITMQUSER:-rabbitmquser}
+      - RABBITMQ_DEFAULT_PASS=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
     ports:
       - "15672:15672"
       - "5672:5672"
@@ -40,13 +40,18 @@ services:
   sqlserver:
     environment:
       - ACCEPT_EULA=Y 
-      - SA_PASSWORD=8jkGh47hnDw89Haq8LN2
+      - SA_PASSWORD=${DC_SQLPASSWORD:-sqlpassword}
     ports:
       - "1434:1433"
   
   mongoserver:
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=defaultuser
-      - MONGO_INITDB_ROOT_PASSWORD=fsd2342lkghsff3f343sf
+      - MONGO_INITDB_ROOT_USERNAME=${DC_MONGOUSER:-mongouser}
+      - MONGO_INITDB_ROOT_PASSWORD=${DC_MONGOPASSWORD:-mongopassword}
     ports:
       - "27017:27017"
+
+
+  portainer:
+    ports:
+      - "9000:9000"

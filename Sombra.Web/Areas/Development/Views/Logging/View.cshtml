@@ -4,20 +4,24 @@
 }
 
 <h2>View</h2>
-
-<div class="row">
-    <div class="col-sm-2">MessageType</div>
-    <div class="col-sm-2">MessageCreated</div>
-    <div class="col-sm-3">MessageReceived</div>
-    <div class="col-sm-5">Message</div>
-</div>
-
-@foreach (var log in Model)
-{
-    <div class="row">
-        <div class="col-sm-2">@log.MessageType</div>
-        <div class="col-sm-2">@log.MessageCreated.ToString()</div>
-        <div class="col-sm-3">@log.MessageReceived.ToString()</div>
-        <div class="col-sm-5">@log.Message</div>
-    </div>
-}
+<table>
+    <thead>
+    <tr>
+        <td>MessageType</td>
+        <td>MessageCreated</td>
+        <td>MessageReceived</td>
+        <td>Message</td>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var log in Model)
+    {
+        <tr>
+            <td>@log.MessageType</td>
+            <td>@log.MessageCreated.ToString()</td>
+            <td>@log.MessageReceived.ToString()</td>
+            <td>@log.Message</td>
+        </tr>
+    }
+    </tbody>
+</table>

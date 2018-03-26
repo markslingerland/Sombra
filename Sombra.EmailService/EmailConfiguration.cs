@@ -9,7 +9,7 @@ namespace Sombra.EmailService
         public string SmtpServer { get; set; } //= "smtp.gmail.com";
         public int SmtpPort { get; set; } //= 465;
         public string SmtpUsername { get; set; } //= "ikdoneernu@gmail.com";
-        public string SmtpPassword { get; set; } //= "ikdoneernu@ikdoneer.nu";
+        public string SmtpPassword { get; set; } //= "";
         public string PopServer { get; set; }
         public int PopPort { get; set; }
         public string PopUsername { get; set; }

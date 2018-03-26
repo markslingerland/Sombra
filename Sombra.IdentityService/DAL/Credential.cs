@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Sombra.Core;
+using Sombra.Infrastructure.DAL;
 
 namespace Sombra.IdentityService{
     public class Credential : Entity

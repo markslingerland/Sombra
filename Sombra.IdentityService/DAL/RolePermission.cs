@@ -3,7 +3,7 @@ using Sombra.Core;
 
 namespace Sombra.IdentityService
 {
-  public class RolePermission
+  public class RolePermission 
   {
     public Guid RoleId { get; set; }
     public Guid PermissionId { get; set; }

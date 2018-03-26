@@ -24,6 +24,7 @@ services:
 
   sombra.identityservice:
     environment:
+      - CONTAINER_TYPE=Docker
       - ASPNETCORE_ENVIRONMENT=Development
       - RABBITMQ_CONNECTIONSTRING=host=localhost;username=rabbitmquser;password=DEBmbwkSrzy9D1T9cJfa
       - AUTHENTICATION_DB_CONNECTIONSTRING=server=sqlserver;user id=sa;password=8jkGh47hnDw89Haq8LN2;database=Authentication;

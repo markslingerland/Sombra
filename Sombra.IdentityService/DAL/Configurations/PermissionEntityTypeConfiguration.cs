@@ -1,10 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Sombra.IdentityService.DAL;
+using Sombra.Infrastructure.DAL;
 
 namespace Sombra.IdentityService 
 {
-    class PermissionEntityTypeConfiguration : DbEntityConfiguration<Permission> {
+    class PermissionEntityTypeConfiguration : EntityTypeConfiguration<Permission> {
         public override void Configure(EntityTypeBuilder<Permission> entity)
         {
             entity.Property(e => e.Code).IsRequired().HasMaxLength(32);

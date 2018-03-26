@@ -45,13 +45,28 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
+    volumes:
+      - rabbitmqdata:/var/lib/rabbitmq
 
 
   sqlserver:
     image: microsoft/mssql-server-linux:latest
     container_name: sqlserver
+    volumes:
+      - sqlserverdata:/var/opt/mssql 
 
      
   mongoserver:
     image: mongo
-    container_name: mongoserver
+    container_name: mongoserver    
+    volumes:
+      - mongoserverdata:/data/db
+
+
+volumes:
+  sqlserverdata:
+    external: true    
+  rabbitmqdata:
+    external: true
+  mongoserverdata:
+    external: true

@@ -16,6 +16,7 @@
   <ItemGroup>
     <PackageReference Include="EasyNetQ" Version="2.3.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
@@ -25,6 +26,10 @@
     <ProjectReference Include="..\Sombra.Messaging\Sombra.Messaging.csproj" />
     <ProjectReference Include="..\Sombra.Core\Sombra.Core.csproj" />
     <ProjectReference Include="..\Sombra.Infrastructure\Sombra.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>

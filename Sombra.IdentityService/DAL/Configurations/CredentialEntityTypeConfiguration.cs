@@ -10,7 +10,6 @@ namespace Sombra.IdentityService
         {
             entity.Property(e => e.Identifier).IsRequired().HasMaxLength(64);
             entity.Property(e => e.Secret).HasMaxLength(1024);
-            entity.ToTable("Credentials");
         }
     }
 }

@@ -17,8 +17,6 @@ namespace Sombra.IdentityService
             entity.HasOne(e => e.Permission)
                 .WithMany(r => r.RolePermissions)
                 .HasForeignKey(rp => rp.PermissionId);
-
-            entity.ToTable("RolePermissions");
         }
     }
 }

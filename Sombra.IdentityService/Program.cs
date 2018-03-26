@@ -40,7 +40,6 @@ namespace Sombra.IdentityService
             //Keeping the program persistent
             
             Thread.Sleep(Timeout.Infinite);
-            
         }
         private static void SetupConfiguration()
         {

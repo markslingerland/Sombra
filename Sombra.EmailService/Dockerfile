@@ -3,7 +3,7 @@ WORKDIR /app
 
 FROM microsoft/dotnet:2.0-sdk AS build
 WORKDIR /src
-COPY Sombra.sln ./
+COPY *.sln ./
 COPY Sombra.EmailService/Sombra.EmailService.csproj Sombra.EmailService/
 COPY . .
 WORKDIR /src/Sombra.EmailService

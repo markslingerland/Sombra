@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.EmailService", "Somb
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.LoggingService", "Sombra.LoggingService\Sombra.LoggingService.csproj", "{AE513E19-DF5E-4764-80F5-B66C4D6A1E7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sombra.Infrastructure", "Sombra.Infrastructure\Sombra.Infrastructure.csproj", "{3AC0E991-D8E2-49BC-A51D-6DA05B646F3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.Infrastructure", "Sombra.Infrastructure\Sombra.Infrastructure.csproj", "{3AC0E991-D8E2-49BC-A51D-6DA05B646F3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sombra.EmailService.UnitTest", "..\Sombra.EmailService.UnitTest\Sombra.EmailService.UnitTest.csproj", "{8F7283F4-E148-485B-834F-D8B233239C4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{3AC0E991-D8E2-49BC-A51D-6DA05B646F3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AC0E991-D8E2-49BC-A51D-6DA05B646F3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AC0E991-D8E2-49BC-A51D-6DA05B646F3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F7283F4-E148-485B-834F-D8B233239C4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F7283F4-E148-485B-834F-D8B233239C4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F7283F4-E148-485B-834F-D8B233239C4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F7283F4-E148-485B-834F-D8B233239C4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

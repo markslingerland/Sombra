@@ -26,10 +26,6 @@ namespace Sombra.IdentityService
             Console.WriteLine("UserLoginRequest received");
             var response = new UserLoginResponse();
 
-            // Get Credential where logintypecode = .... AND identifier = ... (FirstOrDefault()) Include user
-            // If not null then validatepassword 
-            //  if true then login succes
-
             var credential = await _context.Credentials.Include(c => c.User.UserRoles).ThenInclude(ur => ur.Role.RolePermissions).ThenInclude(rp => rp.Permission)
                 .FirstOrDefaultAsync(c => c.CredentialType.Code.ToLower() == message.LoginTypeCode.ToLower() && c.Identifier.ToLower() == message.Identifier.ToLower());
 
@@ -40,17 +36,6 @@ namespace Sombra.IdentityService
                 response.UserName = credential.User.Name;
                 response.PermissionCodes = credential.User.UserRoles.SelectMany(ur => ur.Role.RolePermissions.Select(rp => rp.Permission.Code)).ToList();
             }
-
-            // var user = await _context.Users.Include(u => u.UserRoles).ThenInclude(ur => ur.Role.RolePermissions).ThenInclude(rp => rp.Permission)
-            //     .FirstOrDefaultAsync(u => u.Credentials.Any(c => c.CredentialType.Code.ToLower() == message.LoginTypeCode.ToLower() && c.Identifier.ToLower() == message.Identifier.ToLower() && c.Secret == message.Secret)).ConfigureAwait(false);
-
-            // if (user != null)          
-            // {
-            //     response.Success = true;
-            //     response.UserKey = user.UserKey;
-            //     response.UserName = user.Name;
-            //     response.PermissionCodes = user.UserRoles.SelectMany(ur => ur.Role.RolePermissions.Select(rp => rp.Permission.Code));
-            // }
 
             return response;
 

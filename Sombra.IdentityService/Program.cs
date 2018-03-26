@@ -13,6 +13,7 @@ using Sombra.Messaging.Infrastructure;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using Sombra.Infrastructure.Extensions;
+using Sombra.Core;
 
 namespace Sombra.IdentityService
 {
@@ -22,17 +23,28 @@ namespace Sombra.IdentityService
         private static string _sqlConnectionString;
         static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Identity Service Started");
 
             SetupConfiguration();
 
             var serviceProvider = new ServiceCollection()
-                .AddAutoMapper(Assembly.GetExecutingAssembly())
                 .AddRequestHandlers(Assembly.GetExecutingAssembly())
                 .AddDbContext<AuthenticationContext>(_sqlConnectionString)
                 .BuildServiceProvider(true);
 
-            var bus = RabbitHutch.CreateBus(_rabbitMqConnectionString);
+            var db = serviceProvider.GetRequiredService<AuthenticationContext>();
+            var user = new Credential {
+              Secret = Encryption.CreateHash("newpassword"),
+              CredentialTypeId = new Guid(),
+              Identifier = "test",
+              UserId = new Guid(),
+              
+              
+            };
+
+            db.SaveChanges();
+
+            var bus = RabbitHutch.CreateBus(_rabbitMqConnectionString).WaitForConnection();
 
             var responder = new AutoResponder(bus, serviceProvider);
             responder.RespondAsync(Assembly.GetExecutingAssembly());

@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyModel;
 using MongoDB.Driver;
 using Sombra.Infrastructure.DAL;
-using Sombra.Infrastructure.DAL.Mongo;
+using Microsoft.EntityFrameworkCore;
 
 namespace Sombra.Infrastructure.Extensions
 {
@@ -18,10 +18,10 @@ namespace Sombra.Infrastructure.Extensions
             return services.AddTransient(provider => new MongoClient(connectionString).GetDatabase(databaseName));
         }
 
-        public static IServiceCollection AddDbContext<TContext>(this IServiceCollection services)
+        public static IServiceCollection AddDbContext<TContext>(this IServiceCollection services, string connectionString)
             where TContext : SombraContext
         {
-            return services.AddDbContext<TContext>(ServiceLifetime.Transient);
+            return services.AddDbContext<TContext>(builder => builder.UseSqlServer(connectionString), ServiceLifetime.Transient);
         }
 
         public static IServiceCollection AddAutoMapper(this IServiceCollection services)

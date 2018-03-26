@@ -7,7 +7,7 @@ namespace Sombra.Messaging.Infrastructure
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddMessageHandlers(this IServiceCollection serviceCollection, Assembly assembly)
+        public static IServiceCollection AddEventHandlers(this IServiceCollection serviceCollection, Assembly assembly)
         {
             return serviceCollection.AddGenericInterfaceType(assembly, typeof(IAsyncEventHandler<>));
         }

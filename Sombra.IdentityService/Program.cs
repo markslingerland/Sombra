@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Sombra.Messaging.Infrastructure;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using Sombra.Infrastructure.Extensions;
 
 namespace Sombra.IdentityService
 {
@@ -27,9 +28,8 @@ namespace Sombra.IdentityService
 
             var serviceProvider = new ServiceCollection()
                 .AddAutoMapper(Assembly.GetExecutingAssembly())
-                .AddMessageHandlers(Assembly.GetExecutingAssembly())
                 .AddRequestHandlers(Assembly.GetExecutingAssembly())
-                .AddMongoDatabase(_mongoConnectionString, _mongoDatabase)
+                .AddDbContext<AuthenticationContext>(_sqlConnectionString)
                 .BuildServiceProvider(true);
 
             var bus = RabbitHutch.CreateBus(_rabbitMqConnectionString);

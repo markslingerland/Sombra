@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using AutoMapper;
 using EasyNetQ;
 using Microsoft.AspNetCore.Builder;
@@ -11,6 +12,8 @@ namespace Sombra.Web
 {
     public class Startup
     {
+        private static string _rabbitMqConnectionString;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -21,9 +24,11 @@ namespace Sombra.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            SetupConfiguration();
+
             services.AddMvc(options =>
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
-            services.AddScoped(c => RabbitHutch.CreateBus(Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING")));
+            services.AddScoped(c => RabbitHutch.CreateBus(_rabbitMqConnectionString));
             services.AddAutoMapper();
         }
 
@@ -58,6 +63,22 @@ namespace Sombra.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private static void SetupConfiguration()
+        {
+            var isContainerized = Environment.GetEnvironmentVariable("CONTAINER_TYPE") != null;
+            if (isContainerized)
+            {
+                _rabbitMqConnectionString = Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING");
+            }
+            else
+            {
+                var config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json").Build();
+
+                _rabbitMqConnectionString = config["RABBITMQ_CONNECTIONSTRING"];
+            }
         }
     }
 }

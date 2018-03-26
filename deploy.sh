@@ -22,6 +22,7 @@ ssh -o "StrictHostKeyChecking no" $USER@$IP -p $PORT <<EOF
   docker volume create --name=sqlserverdata
   docker volume create --name=mongoserverdata
   docker volume create --name=rabbitmqdata
+  docker volume create --name=portainerdata
   docker-compose build
   docker-compose up -d
   docker ps

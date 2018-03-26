@@ -23,9 +23,12 @@ before_install:
 - chmod +x ./deploy.sh
 - sudo mv docker-compose /usr/local/bin
 - docker-compose --version
+
+#Run this manually on development machine
 - docker volume create --name=sqlserverdata
 - docker volume create --name=mongoserverdata
 - docker volume create --name=rabbitmqdata
+
 - docker-compose build
 - docker-compose up -d
 script:

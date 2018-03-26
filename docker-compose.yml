@@ -45,13 +45,39 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
+    volumes:
+      - rabbitmqdata:/var/lib/rabbitmq
 
 
   sqlserver:
     image: microsoft/mssql-server-linux:latest
     container_name: sqlserver
+    volumes:
+      - sqlserverdata:/var/opt/mssql 
 
 
   mongoserver:
     image: mongo
     container_name: mongoserver
+    volumes:
+      - mongoserverdata:/data/db
+
+
+  portainer:
+    image: portainer/portainer
+    container_name: "portainer-app"
+    command: --admin-password "$$2y$$05$$6uGMT4ikluG5DaH4kd1ZNO.cyos6h7QdVu8OWJLStb6eccRrbingO"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainerdata:/data portainer/portainer
+
+
+volumes:
+  sqlserverdata:
+    external: true
+  rabbitmqdata:
+    external: true
+  mongoserverdata:
+    external: true
+  portainerdata:
+    external: true

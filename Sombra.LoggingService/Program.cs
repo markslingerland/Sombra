@@ -2,7 +2,6 @@
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using System.Threading.Tasks;
 using EasyNetQ;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,7 +17,7 @@ namespace Sombra.LoggingService
         private static string _mongoConnectionString;
         private static string _mongoDatabase;
 
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             Console.WriteLine("LoggingService started..");
 
@@ -31,18 +30,15 @@ namespace Sombra.LoggingService
                 .AddMongoDatabase(_mongoConnectionString, _mongoDatabase)
                 .BuildServiceProvider(true);
 
-            var bus = RabbitHutch.CreateBus(_rabbitMqConnectionString);
+            var bus = RabbitHutch.CreateBus(_rabbitMqConnectionString).WaitForConnection();
 
             var responder = new AutoResponder(bus, serviceProvider);
             responder.RespondAsync(Assembly.GetExecutingAssembly());
 
-            var logger = new MessageLogger(bus, serviceProvider, _subscriptionIdPrefix);
+            var logger = new EventLogger(bus, serviceProvider, _subscriptionIdPrefix);
             logger.Start();
 
-            while (true)
-            {
-                Thread.Sleep(10000);
-            }
+            Thread.Sleep(Timeout.Infinite);
         }
 
         private static void SetupConfiguration()

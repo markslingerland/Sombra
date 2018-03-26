@@ -1,0 +1,15 @@
+@model Sombra.Web.Areas.Development.Models.AuthenticationViewModel
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>View</h2>
+<table>
+    <tr>
+        <td>@Model.Success.ToString()</td>
+        <td>@Model.UserKey.ToString()</td>
+        <td>@Model.UserName</td>
+    </tr>
+    
+    </tbody>
+</table>

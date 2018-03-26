@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Sombra.Messaging.Responses;
 
-namespace Sombra.Messaging.Requests
+namespace Sombra.Web.Areas.Development.Models
 {
-    public class LogRequest : Request<LogResponse>
+    public class LogsQuery
     {
         public DateTime? From { get; set; }
         public DateTime? To { get; set; }

@@ -1,0 +1,19 @@
+﻿@using Sombra.Messaging
+@model Sombra.Web.Areas.Development.Models.LogsQuery
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.EditorFor(m => m.From)
+    @Html.EditorFor(m => m.To)
+    @Html.DropDownListFor(m => m.MessageTypes, typeof(IEvent).Assembly.GetTypes()
+        .Where(t => t.IsClass 
+                    && !t.IsAbstract
+                    && typeof(IEvent).IsAssignableFrom(t)).Select(t => new SelectListItem() { Text = t.Name, Value = t.FullName }))
+    <input type="submit" value="Search" />
+}

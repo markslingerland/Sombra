@@ -1,11 +1,12 @@
+using System;
+using System.Collections.Generic;
 
-using Sombra.Messaging.Responses;
-
-namespace Sombra.Messaging.Requests{
-    public class UserLoginRequest : IRequest<UserLoginResponse>{
+namespace Sombra.Web.Areas.Development.Models
+{
+    public class AuthenticationQuery
+    {
         public string LoginTypeCode { get; set; }
         public string Identifier { get; set; }
         public string Secret { get; set; }
     }
 }
-

@@ -23,18 +23,34 @@ namespace Sombra.IdentityService
 
         public async Task<UserLoginResponse> Handle(UserLoginRequest message)
         {
+            Console.WriteLine("UserLoginRequest received");
             var response = new UserLoginResponse();
 
-            var user = await _context.Users.Include(u => u.UserRoles).ThenInclude(ur => ur.Role.RolePermissions).ThenInclude(rp => rp.Permission)
-                .FirstOrDefaultAsync(u => u.Credentials.Any(c => c.CredentialType.Code.ToLower() == message.LoginTypeCode && c.Identifier.ToLower() == message.Identifier && c.Secret == message.Secret)).ConfigureAwait(false);
+            // Get Credential where logintypecode = .... AND identifier = ... (FirstOrDefault()) Include user
+            // If not null then validatepassword 
+            //  if true then login succes
 
-            if (user != null)          
+            var credential = await _context.Credentials.Include(c => c.User.UserRoles).ThenInclude(ur => ur.Role.RolePermissions).ThenInclude(rp => rp.Permission)
+                .FirstOrDefaultAsync(c => c.CredentialType.Code.ToLower() == message.LoginTypeCode.ToLower() && c.Identifier.ToLower() == message.Identifier.ToLower());
+
+            if (credential != null && Encryption.ValidatePassword(message.Secret, credential.Secret))
             {
                 response.Success = true;
-                response.UserKey = user.UserKey;
-                response.UserName = user.Name;
-                response.PermissionCodes = user.UserRoles.SelectMany(ur => ur.Role.RolePermissions.Select(rp => rp.Permission.Code));
+                response.UserKey = credential.User.UserKey;
+                response.UserName = credential.User.Name;
+                response.PermissionCodes = credential.User.UserRoles.SelectMany(ur => ur.Role.RolePermissions.Select(rp => rp.Permission.Code)).ToList();
             }
+
+            // var user = await _context.Users.Include(u => u.UserRoles).ThenInclude(ur => ur.Role.RolePermissions).ThenInclude(rp => rp.Permission)
+            //     .FirstOrDefaultAsync(u => u.Credentials.Any(c => c.CredentialType.Code.ToLower() == message.LoginTypeCode.ToLower() && c.Identifier.ToLower() == message.Identifier.ToLower() && c.Secret == message.Secret)).ConfigureAwait(false);
+
+            // if (user != null)          
+            // {
+            //     response.Success = true;
+            //     response.UserKey = user.UserKey;
+            //     response.UserName = user.Name;
+            //     response.PermissionCodes = user.UserRoles.SelectMany(ur => ur.Role.RolePermissions.Select(rp => rp.Permission.Code));
+            // }
 
             return response;
 

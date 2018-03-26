@@ -40,54 +40,54 @@ namespace Sombra.IdentityService
                 // Seed the database.
 
                 //Generate roles
-                var roles = Builder<Role>.CreateListOfSize(10)
-                    .Build();
+                // var roles = Builder<Role>.CreateListOfSize(10)
+                //     .Build();
 
-                db.Roles.AddRange(roles.ToArray());
+                // db.Roles.AddRange(roles.ToArray());
 
                 //Generate Users
-                var users = Builder<User>.CreateListOfSize(10)
-                    .Build();
+                // var users = Builder<User>.CreateListOfSize(10)
+                //     .Build();
 
-                db.Users.AddRange(users.ToArray());
-
-                //Generate Permissions
-                var permissions = Builder<Permission>.CreateListOfSize(10)
-                    .Build();
-
-                db.Permissions.AddRange(permissions.ToArray());
-
-                //Generate credentialTypes
-                var credentialTypes = Builder<CredentialType>.CreateListOfSize(10)
-                    .Build();
-
-                db.CredentialTypes.AddRange(credentialTypes.ToArray());
+                // db.Users.AddRange(users.ToArray());
 
                 //Generate Permissions
-                var credentials = Builder<Credential>.CreateListOfSize(10)
-                    .TheFirst(1)
-                    .With(x => x.Secret = Encryption.CreateHash("admin"))
-                    .With(x => x.Identifier = "admin")
-                    .Build();
+                // var permissions = Builder<Permission>.CreateListOfSize(10)
+                //     .Build();
+
+                // db.Permissions.AddRange(permissions.ToArray());
+
+                // //Generate credentialTypes
+                // var credentialTypes = Builder<CredentialType>.CreateListOfSize(10)
+                //     .Build();
+
+                // db.CredentialTypes.AddRange(credentialTypes.ToArray());
+
+                // //Generate Permissions
+                // var credentials = Builder<Credential>.CreateListOfSize(10)
+                //     .TheFirst(1)
+                //     .With(x => x.Secret = Encryption.CreateHash("admin"))
+                //     .With(x => x.Identifier = "admin")
+                //     .Build();
                     
 
-                db.Credentials.AddRange(credentials.ToArray());
+                // db.Credentials.AddRange(credentials.ToArray());
 
-                for(var i = 0; i < 10; i++) {
-                    db.RolePermissions.Add(new RolePermission {
-                        Role = roles[i],
-                        Permission = permissions[i]
-                    });
-                }
+                // // for(var i = 0; i < 10; i++) {
+                // //     db.RolePermissions.Add(new RolePermission {
+                // //         Role = roles[i],
+                // //         Permission = permissions[i]
+                // //     });
+                // // }
 
-                for(var i = 0; i < 10; i++){
-                    db.UserRoles.Add(new UserRole{
-                        Role = roles[i],
-                        User = users[i]
-                    });
-                }                
+                // // for(var i = 0; i < 10; i++){
+                // //     db.UserRoles.Add(new UserRole{
+                // //         Role = roles[i],
+                // //         User = users[i]
+                // //     });
+                // // }                
 
-                db.SaveChanges();
+                // db.SaveChanges();
             }
             
 

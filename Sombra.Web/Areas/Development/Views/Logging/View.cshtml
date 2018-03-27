@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Sombra.Web.Areas.Development.Models.LogViewModel>
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>View</h2>
+<table>
+    <thead>
+    <tr>
+        <td>MessageType</td>
+        <td>MessageCreated</td>
+        <td>MessageReceived</td>
+        <td>Message</td>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var log in Model)
+    {
+        <tr>
+            <td>@log.MessageType</td>
+            <td>@log.MessageCreated.ToString()</td>
+            <td>@log.MessageReceived.ToString()</td>
+            <td>@log.Message</td>
+        </tr>
+    }
+    </tbody>
+</table>

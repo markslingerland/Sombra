@@ -39,13 +39,17 @@ namespace Sombra.Web.Areas.Development.Controllers
         {
             var request = _mapper.Map<UserLoginRequest>(query);
             var response = await _userManager.SignInAsync(HttpContext, request);
+            var result = new AuthenticationViewModel()
+                            { 
+                                Success = response
+                            };
 
-            return View("View", response);
+            return View("View", result);
         }
 
         [HttpGet]
         [Authorize]
-        public IActionResult Get()
+        public IActionResult Test()
         {
             return View("Test");
         }

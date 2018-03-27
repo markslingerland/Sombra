@@ -1,12 +1,7 @@
+@model Sombra.Web.Areas.Development.Models.AuthenticationViewModel
 @{
     ViewData["Title"] = "View";
 }
 
-<h2>View</h2>
-<table>
-    <tr>
-        <td>@response.ToString()</td>
-    </tr>
-    
-    </tbody>
-</table>
+<h2>Success: @Model.Success</h2>
+<a href="/Development/Authentication/Test">Test your authentication here</a>

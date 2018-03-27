@@ -22,6 +22,13 @@ services:
       - MONGO_CONNECTIONSTRING=mongodb://${DC_MONGOUSER:-mongouser}:${DC_MONGOPASSWORD:-mongopassword}@${DC_MONGOHOST:-mongoserver}/
       - MONGO_DATABASE=logging
 
+  sombra.identityservice:
+    environment:
+      - CONTAINER_TYPE=Docker
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RABBITMQ_CONNECTIONSTRING=host=localhost;username=rabbitmquser;password=DEBmbwkSrzy9D1T9cJfa
+      - AUTHENTICATION_DB_CONNECTIONSTRING=server=sqlserver;user id=sa;password=8jkGh47hnDw89Haq8LN2;database=Authentication;
+
   rabbitmq:
     environment:
       - RABBITMQ_DEFAULT_USER=${DC_RABBITMQUSER:-rabbitmquser}
@@ -29,7 +36,6 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
-
   
   sqlserver:
     environment:
@@ -37,7 +43,6 @@ services:
       - SA_PASSWORD=${DC_SQLPASSWORD:-sqlpassword}
     ports:
       - "1434:1433"
-
   
   mongoserver:
     environment:

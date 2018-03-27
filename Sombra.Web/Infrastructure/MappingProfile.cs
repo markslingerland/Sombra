@@ -11,6 +11,8 @@ namespace Sombra.Web.Infrastructure
         {
             CreateMap<LogsQuery, LogRequest>();
             CreateMap<Log, LogViewModel>();
+            CreateMap<AuthenticationQuery, UserLoginRequest>();
+            CreateMap<UserLoginResponse, LoginViewModel>();
         }
     }
 }

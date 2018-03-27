@@ -31,14 +31,8 @@ namespace Sombra.Web
             return await _bus.RequestAsync<UserLoginRequest, UserLoginResponse>(userLoginRequest);
         }
 
-        public async Task<bool> SignIn(HttpContext httpContext, LoginViewModel loginViewModel, bool isPersistent = false)
+        public async Task<bool> SignInAsync(HttpContext httpContext, UserLoginRequest userLoginRequest, bool isPersistent = false)
         {
-            var userLoginRequest = new UserLoginRequest(){
-                LoginTypeCode = loginViewModel.LoginTypeCode,
-                Identifier = loginViewModel.Identifier,
-                Secret = SHA256Hasher.ComputeHash(loginViewModel.Secret)
-            };
-
             var userLoginResponse = await ValidateAsync(userLoginRequest);
 
             if(userLoginResponse.Success){
@@ -102,15 +96,5 @@ namespace Sombra.Web
 
             return claims;
         }
-        
-        // public User GetCurrentUser(HttpContext httpContext)
-        // {
-        //     int currentUserId = this.GetCurrentUserId(httpContext);
-
-        //     if (currentUserId == -1)
-        //         return null;
-
-        //     return this.context.Users.Find(currentUserId);
-        // }
     }
 }

@@ -7,7 +7,7 @@ namespace Sombra.Messaging.Responses{
 		
         public Guid UserKey { get; set; }
         public string UserName { get; set; }
-        public IEnumerable<string> PermissionCodes { get; set; }
+        public List<string> PermissionCodes { get; set; }
     }
 }
 

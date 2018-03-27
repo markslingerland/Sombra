@@ -1,16 +1,19 @@
-﻿using System;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using EasyNetQ;
-using EasyNetQ.FluentConfiguration;
 
 namespace Sombra.Messaging.Infrastructure
 {
     public static class BusExtensions
     {
-        public static async Task<TResponse> RequestAsync<TResponse>(this IBus bus, IRequest<TResponse> request)
-            where TResponse : class, IResponse
+        public static IBus WaitForConnection(this IBus bus, int retryInMs = 2500)
         {
-            return await bus.RequestAsync<IRequest<TResponse>, TResponse>(request).ConfigureAwait(false);
+            while (!bus.IsConnected)
+            {
+                Thread.Sleep(retryInMs);
+            }
+
+            return bus;
         }
     }
 }

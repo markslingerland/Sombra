@@ -55,10 +55,10 @@ services:
     volumes:
       - sqlserverdata:/var/opt/mssql 
 
-     
+
   mongoserver:
     image: mongo
-    container_name: mongoserver    
+    container_name: mongoserver
     volumes:
       - mongoserverdata:/data/db
 
@@ -74,7 +74,7 @@ services:
 
 volumes:
   sqlserverdata:
-    external: true    
+    external: true
   rabbitmqdata:
     external: true
   mongoserverdata:

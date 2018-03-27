@@ -8,7 +8,7 @@ namespace Sombra.Infrastructure.DAL
     {
         public static void AddConfiguration<TEntity>(this ModelBuilder modelBuilder,
             EntityTypeConfiguration<TEntity> configuration)
-            where TEntity : class, IEntity
+            where TEntity : class
         {
             modelBuilder.Entity<TEntity>(configuration.Configure);
         }

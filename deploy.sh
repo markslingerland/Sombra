@@ -24,6 +24,6 @@ ssh -o "StrictHostKeyChecking no" $USER@$IP -p $PORT <<EOF
   docker volume create --name=rabbitmqdata
   docker volume create --name=portainerdata
   docker-compose build
-  docker-compose up -d
+  $DC_RABBITMQPASSWORD DC_SQLPASSWORD DC_MONGOPASSWORD docker-compose up -d
   docker ps
 EOF

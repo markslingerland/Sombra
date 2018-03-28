@@ -23,19 +23,14 @@ namespace Sombra.LoggingService
 
             SetupConfiguration();
 
-            var serviceProvider = new ServiceCollection()
-                .AddAutoMapper(Assembly.GetExecutingAssembly())
-                .AddEventHandlers(Assembly.GetExecutingAssembly())
-                .AddRequestHandlers(Assembly.GetExecutingAssembly())
-                .AddMongoDatabase(_mongoConnectionString, _mongoDatabase)
-                .BuildServiceProvider(true);
+            var serviceProvider = MessagingInstaller.Run(
+                Assembly.GetExecutingAssembly(),
+                _rabbitMqConnectionString,
+                services => services
+                    .AddAutoMapper(Assembly.GetExecutingAssembly())
+                    .AddMongoDatabase(_mongoConnectionString, _mongoDatabase));
 
-            var bus = RabbitHutch.CreateBus(_rabbitMqConnectionString).WaitForConnection();
-
-            var responder = new AutoResponder(bus, serviceProvider);
-            responder.RespondAsync(Assembly.GetExecutingAssembly());
-
-            var logger = new EventLogger(bus, serviceProvider, _subscriptionIdPrefix);
+            var logger = new EventLogger(serviceProvider.GetRequiredService<IBus>(), serviceProvider, _subscriptionIdPrefix);
             logger.Start();
 
             Thread.Sleep(Timeout.Infinite);

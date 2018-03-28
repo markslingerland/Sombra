@@ -5,7 +5,6 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
-      - AUTHENTICATION_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-sqlpassword};database=Authentication;
     ports:
       - "80:80"
   
@@ -26,8 +25,8 @@ services:
     environment:
       - CONTAINER_TYPE=Docker
       - ASPNETCORE_ENVIRONMENT=Development
-      - RABBITMQ_CONNECTIONSTRING=host=localhost;username=rabbitmquser;password=DEBmbwkSrzy9D1T9cJfa
-      - AUTHENTICATION_DB_CONNECTIONSTRING=server=sqlserver;user id=sa;password=8jkGh47hnDw89Haq8LN2;database=Authentication;
+      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
+      - AUTHENTICATION_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Authentication;
 
   rabbitmq:
     environment:
@@ -40,7 +39,7 @@ services:
   sqlserver:
     environment:
       - ACCEPT_EULA=Y 
-      - SA_PASSWORD=${DC_SQLPASSWORD:-sqlpassword}
+      - SA_PASSWORD=${DC_SQLPASSWORD:-HPlab1718}
     ports:
       - "1434:1433"
   

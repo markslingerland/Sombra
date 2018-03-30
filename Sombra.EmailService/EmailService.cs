@@ -6,10 +6,11 @@ using MailKit.Net.Pop3;
 using MailKit.Net.Smtp;
 using MimeKit;
 using Sombra.Messaging.Events;
+using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.EmailService
 {
-    public class EmailService : IConsumeAsync<Email>, IEmailService
+    public class EmailService : IAsyncEventHandler<Email>, IEmailService
     {
         private readonly IEmailConfiguration _emailConfiguration;
 
@@ -84,6 +85,7 @@ namespace Sombra.EmailService
 
         public Task Consume(Email message)
         {
+            // send enzo
             throw new System.NotImplementedException();
         }
     }

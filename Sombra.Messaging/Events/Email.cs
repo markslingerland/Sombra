@@ -1,6 +1,6 @@
 ﻿namespace Sombra.Messaging.Events
 {
-    public class Email : Message
+    public class Email : Event
     {
         public Email(string sender, string recipient, string subject, string body, bool isHtml = false)
         {

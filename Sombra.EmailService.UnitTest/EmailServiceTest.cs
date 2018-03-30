@@ -18,11 +18,9 @@ namespace Sombra.EmailService.UnitTest
 
             EmailService emailService = new EmailService(emailConfigurationMok);
             List<EmailAddress> toAddress = new List<EmailAddress>(){new EmailAddress(){
-                    Name = "TesterTo",
-                    Address = "testTo@test.nl" } };
+                    Name = "TesterTo", Address = "testTo@test.nl" } };
             List<EmailAddress> fromAddress = new List<EmailAddress>(){new EmailAddress(){
-                    Name = "TesterFrom",
-                    Address = "testFrom@test.nl" } };
+                    Name = "TesterFrom", Address = "testFrom@test.nl" } };
 
             // Test Variables
             MailboxAddress mailboxTestTo = new MailboxAddress(toAddress[0].Name, toAddress[0].Address);

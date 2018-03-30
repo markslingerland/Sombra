@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sombra\Sombra.EmailService\Sombra.EmailService.csproj" />
+    <ProjectReference Include="..\Sombra.EmailService\Sombra.EmailService.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,7 +1,4 @@
-using System;
-using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Sombra.Infrastructure.DAL;
 
 namespace Sombra.IdentityService.DAL

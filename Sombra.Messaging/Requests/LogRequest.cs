@@ -8,6 +8,6 @@ namespace Sombra.Messaging.Requests
     {
         public DateTime? From { get; set; }
         public DateTime? To { get; set; }
-        public IEnumerable<Type> MessageTypes { get; set; }
+        public List<string> MessageTypes { get; set; }
     }
 }

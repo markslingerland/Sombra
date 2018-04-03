@@ -30,6 +30,15 @@ services:
       dockerfile: Sombra.EmailService/Dockerfile
     depends_on:
       - rabbitmq
+  
+  sombra.identityservice:
+    image: sombraidentityservice
+    build:
+      context: .
+      dockerfile: Sombra.IdentityService/Dockerfile
+    depends_on:
+      - rabbitmq
+      - sqlserver
 
 
   sombra.loggingservice:
@@ -45,16 +54,11 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
-    volumes:
-      - rabbitmqdata:/var/lib/rabbitmq
 
 
   sqlserver:
     image: microsoft/mssql-server-linux:latest
     container_name: sqlserver
-    volumes:
-      - sqlserverdata:/var/opt/mssql 
-
 
   mongoserver:
     image: mongo
@@ -66,7 +70,7 @@ services:
   portainer:
     image: portainer/portainer
     container_name: "portainer-app"
-    command: --admin-password "$$2y$$05$$6uGMT4ikluG5DaH4kd1ZNO.cyos6h7QdVu8OWJLStb6eccRrbingO"
+    command: --admin-password "$$2y$$05$$oqKhCttN2CNtXdtgFzoUYOrGH.MyqRsk8he2coY4IniTOjjBFwOw."
     volumes:
       - portainerdata:/data portainer/portainer
 

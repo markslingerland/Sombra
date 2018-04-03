@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Sombra.IdentityService.DAL.Configurations;
 using Sombra.Infrastructure.DAL;
 
 namespace Sombra.IdentityService.DAL

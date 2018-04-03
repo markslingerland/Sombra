@@ -1,7 +1,4 @@
 using System.Threading.Tasks;
-using EasyNetQ;
-using EasyNetQ.AutoSubscribe;
-using Sombra.Messaging;
 using Sombra.Core;
 using Sombra.IdentityService.DAL;
 using Sombra.Messaging.Requests;

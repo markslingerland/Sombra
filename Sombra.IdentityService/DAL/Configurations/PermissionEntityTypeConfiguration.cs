@@ -1,9 +1,7 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Sombra.IdentityService.DAL;
 using Sombra.Infrastructure.DAL;
 
-namespace Sombra.IdentityService 
+namespace Sombra.IdentityService.DAL.Configurations
 {
     class PermissionEntityTypeConfiguration : EntityTypeConfiguration<Permission> {
         public override void Configure(EntityTypeBuilder<Permission> entity)

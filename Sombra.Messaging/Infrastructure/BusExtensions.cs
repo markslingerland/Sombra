@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using EasyNetQ;
+using Sombra.Core;
 
 namespace Sombra.Messaging.Infrastructure
 {
@@ -21,7 +22,7 @@ namespace Sombra.Messaging.Infrastructure
             while (!bus.IsConnected)
             {
                 Thread.Sleep(retryInMs);
-                Console.WriteLine("IBus.WaitForConnection: Waiting for bus to come online..");
+                ExtendedConsole.Log("IBus.WaitForConnection: Waiting for bus to come online..");
             }
 
             return bus;

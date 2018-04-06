@@ -1,20 +1,14 @@
 ﻿using System;
 using Sombra.IdentityService.DAL;
-using Sombra.Messaging;
-using EasyNetQ;
-using EasyNetQ.AutoSubscribe;
 using System.Threading;
 using System.Threading.Tasks;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 using System.IO;
 using Microsoft.Extensions.Configuration;
 using Sombra.Messaging.Infrastructure;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using Sombra.Infrastructure.DAL;
 using Sombra.Infrastructure.Extensions;
-using Sombra.Core;
-using System.Linq;
 
 namespace Sombra.IdentityService
 {
@@ -28,20 +22,13 @@ namespace Sombra.IdentityService
 
             SetupConfiguration();
 
-            var serviceProvider = new ServiceCollection()
-                .AddRequestHandlers(Assembly.GetExecutingAssembly())
-                .AddDbContext<AuthenticationContext>(_sqlConnectionString)
-                .BuildServiceProvider(true);
+            var serviceProvider = MessagingInstaller.Run(
+                Assembly.GetExecutingAssembly(),
+                _rabbitMqConnectionString,
+                services => services
+                    .AddDbContext<AuthenticationContext>(_sqlConnectionString),
+                ConnectionValidator.ValidateAllDbConnections);
 
-            var db = serviceProvider.GetRequiredService<AuthenticationContext>();          
-
-            var bus = RabbitHutch.CreateBus(_rabbitMqConnectionString).WaitForConnection();
-
-            var responder = new AutoResponder(bus, serviceProvider);
-            responder.RespondAsync(Assembly.GetExecutingAssembly());
-
-            //Keeping the program persistent
-            
             Thread.Sleep(Timeout.Infinite);
         }
         private static void SetupConfiguration()

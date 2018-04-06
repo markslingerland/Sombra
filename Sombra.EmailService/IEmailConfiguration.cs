@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Sombra.EmailService
+﻿namespace Sombra.EmailService
 {
     public interface IEmailConfiguration
     {
@@ -10,9 +6,5 @@ namespace Sombra.EmailService
         int SmtpPort { get; }
         string SmtpUsername { get; set; }
         string SmtpPassword { get; set; }
-        string PopServer { get; }
-        int PopPort { get; }
-        string PopUsername { get; }
-        string PopPassword { get; }
     }
 }

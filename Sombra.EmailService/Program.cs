@@ -2,8 +2,8 @@
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.EmailService
@@ -11,18 +11,18 @@ namespace Sombra.EmailService
     class Program
     {
         private static string _rabbitMqConnectionString;
+        private static IEmailConfiguration _emailConfiguration;
 
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             Console.WriteLine("EmailService started..");
 
-            // Laad de connectionstring in
             SetupConfiguration();
+            var serviceProvider = MessagingInstaller.Run(
+                Assembly.GetExecutingAssembly(),
+                _rabbitMqConnectionString,
+                services => services.AddSingleton(_emailConfiguration));
 
-            // Maak een bus aan, registreer alle handlers en start de autosubscriber en autoresponder
-            var serviceProvider = MessagingInstaller.Run(Assembly.GetExecutingAssembly(), _rabbitMqConnectionString);
-
-            // Laat de applicatie runnen
             Thread.Sleep(Timeout.Infinite);
         }
 
@@ -31,16 +31,22 @@ namespace Sombra.EmailService
             var isContainerized = Environment.GetEnvironmentVariable("CONTAINER_TYPE") != null;
             if (isContainerized)
             {
-                // Docker container. Haal de variabelen uit de environment (docker-compose-override)
                 _rabbitMqConnectionString = Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING");
             }
             else
             {
-                // Geen container. Haal ze uit de appsettings.json
                 var config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile("appsettings.json").Build();
 
                 _rabbitMqConnectionString = config["RABBITMQ_CONNECTIONSTRING"];
+                var emailConfig = config.GetSection("EmailConfiguration");
+                _emailConfiguration = new EmailConfiguration
+                {
+                    SmtpServer = emailConfig["SmtpServer"],
+                    SmtpPort = Convert.ToInt32(emailConfig["SmtpPort"]),
+                    SmtpUsername = emailConfig["SmtpUsername"],
+                    SmtpPassword = emailConfig["SmtpPassword"]
+                };
             }
         }
     }

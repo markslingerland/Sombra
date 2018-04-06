@@ -1,15 +1,13 @@
 ﻿using MimeKit;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Sombra.Messaging.Events;
+using System.Threading.Tasks;
 
 namespace Sombra.EmailService
 {
     public interface IEmailService
     {
-        MimeMessage CreateEmailMessage(EmailMessage emailMessage);
-        void Send(MimeMessage message);
-        List<EmailMessage> ReceiveEmail(int maxCount = 10);
+        MimeMessage CreateEmailMessage(Email emailMessage);
+        Task Send(MimeMessage message);
     }
 
 }

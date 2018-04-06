@@ -9,13 +9,13 @@ using Sombra.Messaging;
 
 namespace Sombra.LoggingService
 {
-    public class MessageLogger
+    public class EventLogger
     {
         private readonly IBus _bus;
         private readonly ServiceProvider _serviceProvider;
         private readonly string _subscriptionIdPrefix;
 
-        public MessageLogger(IBus bus, ServiceProvider serviceProvider, string subscriptionIdPrefix)
+        public EventLogger(IBus bus, ServiceProvider serviceProvider, string subscriptionIdPrefix)
         {
             _bus = bus;
             _serviceProvider = serviceProvider;
@@ -30,9 +30,9 @@ namespace Sombra.LoggingService
 
             foreach (var messageType in types)
             {
-                var handlerType = typeof(MessageHandler<>).MakeGenericType(messageType);
+                var handlerType = typeof(EventHandler<>).MakeGenericType(messageType);
                 var handler = _serviceProvider.GetRequiredService(handlerType);
-                var handleMethod = handlerType.GetMethod(nameof(MessageHandler<IEvent>.Consume),
+                var handleMethod = handlerType.GetMethod(nameof(EventHandler<IEvent>.Consume),
                     BindingFlags.Instance | BindingFlags.Public);
 
                 var busSubscribeMethod = genericBusSubscribeMethod.MakeGenericMethod(messageType);

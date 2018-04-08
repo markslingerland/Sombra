@@ -9,7 +9,7 @@ namespace Sombra.Messaging.Infrastructure
 {
     public static class MessagingInstaller
     {
-        public static ServiceProvider Run(Assembly assembly, string busConnectionString, Func<IServiceCollection, IServiceCollection> addAdditionalServices = null, Action<ServiceProvider> additionalAction = null)
+        public static ServiceProvider Run(Assembly assembly, string busConnectionString, Func<IServiceCollection, IServiceCollection> addAdditionalServices = null, params Action<ServiceProvider>[] additionalActions)
         {
             var installerStopwatch = new Stopwatch();
             installerStopwatch.Start();
@@ -34,16 +34,19 @@ namespace Sombra.Messaging.Infrastructure
             subscriber.SubscribeAsync(assembly);
             ExtendedConsole.Log("MessagingInstaller: AutoSubscribers initialized.");
 
-            if(additionalAction != null)
+            if(additionalActions != null)
             {
-                var additionalActionStopwatch = new Stopwatch();
-                additionalActionStopwatch.Start();
+                foreach (var additionalAction in additionalActions)
+                {
+                    var additionalActionStopwatch = new Stopwatch();
+                    additionalActionStopwatch.Start();
 
-                ExtendedConsole.Log($"MessagingInstaller: Running {nameof(additionalAction)}");
-                additionalAction(serviceProvider);
-                additionalActionStopwatch.Stop();
+                    ExtendedConsole.Log($"MessagingInstaller: Running {nameof(additionalAction)}");
+                    additionalAction(serviceProvider);
+                    additionalActionStopwatch.Stop();
 
-                ExtendedConsole.Log($"MessagingInstaller: {nameof(additionalAction)} finished running in {additionalActionStopwatch.ElapsedMilliseconds}ms.");
+                    ExtendedConsole.Log($"MessagingInstaller: {nameof(additionalAction)} finished running in {additionalActionStopwatch.ElapsedMilliseconds}ms.");
+                }
             }
 
             installerStopwatch.Stop();

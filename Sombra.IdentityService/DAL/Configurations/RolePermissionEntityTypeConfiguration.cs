@@ -3,7 +3,7 @@ using Sombra.Infrastructure.DAL;
 
 namespace Sombra.IdentityService.DAL.Configurations
 {
-    class RolePermissionEntityTypeConfiguration : EntityTypeConfiguration<RolePermission> {
+    public class RolePermissionEntityTypeConfiguration : EntityTypeConfiguration<RolePermission> {
         public override void Configure(EntityTypeBuilder<RolePermission> entity)
         {
             entity.HasKey(e => new { e.RoleId, e.PermissionId });

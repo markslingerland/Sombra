@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using Sombra.Core;
 using Sombra.Infrastructure.DAL;
 
 
-namespace Sombra.IdentityService
+namespace Sombra.IdentityService.DAL
 {
   public class Role : Entity
   {

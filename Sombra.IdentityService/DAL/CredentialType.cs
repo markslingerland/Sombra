@@ -1,16 +1,14 @@
-using System;
 using System.Collections.Generic;
-using Sombra.Core;
 using Sombra.Infrastructure.DAL;
 
-
-namespace Sombra.IdentityService{
+namespace Sombra.IdentityService.DAL
+{
     public class CredentialType : Entity
     {
-    public string Code { get; set; }
-    public string Name { get; set; }
-    public int? Position { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public int? Position { get; set; }
 
-    public virtual ICollection<Credential> Credentials { get; set; }
+        public virtual ICollection<Credential> Credentials { get; set; }
     }
 }

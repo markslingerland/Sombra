@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/markslingerland/Sombra.svg?branch=master)](https://travis-ci.org/markslingerland/Sombra)
 
-One Paragraph of project description goes here
+Sombra is an open-source crowdfunding platform for charities.
 
 ## Getting Started
 
@@ -14,6 +14,12 @@ What things you need to install the software and how to install them
 
 
 * [Docker](https://www.docker.com/get-docker)
+
+Without Docker:
+
+* [.NET Core](https://www.microsoft.com/net/download/dotnet-core/sdk-2.0.3)
+* [RabbitMQ](https://www.rabbitmq.com/download.html)
+* SQLEXPRESS running
 
 
 
@@ -29,37 +35,27 @@ Open the solution and run the docker-compose up command
 Reach the web solution on http://localhost:80
 ```
 
-And repeat
+Or if you're not using docker
 
 ```
-until finished
+Make sure RabbitMQ is running and a SQLEXPRESS instance
+
+dotnet run for the project
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+All the the unit tests are being run during build time.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+With the complete repo on your server or pc you can use this command to start all the services.
+
+```
+docker-compose up
+```
 
 ## Built With
 
@@ -69,7 +65,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://gist.github.com/) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -77,9 +73,11 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Mark Slingerland** - *Initial work* - [markslingerland](https://github.com/markslingerland)
+* **Jelle Kerkstra** - *Initial work* - [JelleKerkstra](https://github.com/JelleKerkstra)
+* **Ruben Everwijn** - *Initial work* - [rubenv](https://github.com/rubenv)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/markslingerland/sombra/contributors) who participated in this project.
 
 ## License
 

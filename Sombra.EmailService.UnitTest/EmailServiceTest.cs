@@ -14,7 +14,7 @@ namespace Sombra.EmailService.UnitTest
         public void SendTest()
         {
             // Arrange
-            var emailConfigurationMok = new EmailConfiguration(){ SmtpServer = "", SmtpPort = 465, SmtpUsername = "ikdoneernu@gmail.com" };
+            var emailConfigurationMock = new EmailConfiguration(){ SmtpServer = "", SmtpPort = 465, SmtpUsername = "ikdoneernu@gmail.com" };
             var mailboxTestTo = new EmailAddress("TestRecipient", "TestRecipient@Test.com");
             var mailboxTestFrom = new EmailAddress("TestSender", "TestSender@Test.com");
             var subjectTest = "Test Subject";

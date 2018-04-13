@@ -1,5 +1,4 @@
 ﻿using System;
-using Sombra.Core.Enums;
 using Sombra.Messaging.Responses;
 
 namespace Sombra.Messaging.Requests
@@ -7,7 +6,6 @@ namespace Sombra.Messaging.Requests
     public class UpdateUserRequest : Request<UpdateUserResponse>
     {
         public Guid UserKey { get; set; }
-        public UserType Type { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string AddressLine1 { get; set; }

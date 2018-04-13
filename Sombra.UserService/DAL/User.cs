@@ -7,7 +7,6 @@ namespace Sombra.UserService.DAL
     public class User : Entity
     {
         public Guid UserKey { get; set; }
-        public UserType Type { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string AddressLine1 { get; set; }

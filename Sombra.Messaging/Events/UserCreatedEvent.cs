@@ -1,12 +1,10 @@
 ﻿using System;
-using Sombra.Core.Enums;
 
 namespace Sombra.Messaging.Events
 {
     public class UserCreatedEvent : Event
     {
         public Guid UserKey { get; set; }
-        public UserType Type { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string AddressLine1 { get; set; }

@@ -21,7 +21,7 @@ namespace Sombra.EmailService.UnitTest
             var contentTest = "Test Content";
 
             var emailMessage = new Email(mailboxTestFrom, mailboxTestTo, subjectTest, contentTest, true);
-            var emailService = new EmailService(emailConfigurationMok);
+            var emailService = new EmailService(emailConfigurationMock);
             // Act
             var createdMessageResult = emailService.CreateEmailMessage(emailMessage);
 

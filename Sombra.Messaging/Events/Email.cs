@@ -1,8 +1,11 @@
-﻿namespace Sombra.Messaging.Events
+﻿using System.Collections.Generic;
+
+namespace Sombra.Messaging.Events
 {
-    public class Email : Message
+    public class Email : Event
     {
-        public Email(string sender, string recipient, string subject, string body, bool isHtml = false)
+        public Email() { }
+        public Email(EmailAddress sender, List<EmailAddress> recipient, string subject, string body, bool isHtml = false)
         {
             Sender = sender;
             Recipient = recipient;
@@ -10,11 +13,29 @@
             Body = body;
             IsHtml = isHtml;
         }
+        public Email(EmailAddress sender, EmailAddress recipient, string subject, string body, bool isHtml = false)
+        {
+            Sender = sender;
+            Recipient = new List<EmailAddress> { recipient };
+            Subject = subject;
+            Body = body;
+            IsHtml = isHtml;
+        }
 
-        public string Sender { get; set; }
-        public string Recipient { get; set; }
+        public EmailAddress Sender { get; set; }
+        public List<EmailAddress> Recipient { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
         public bool IsHtml { get; set; }
+    }
+    public class EmailAddress
+    {
+        public EmailAddress(string name, string address)
+        {
+            Name = name;
+            Address = address;
+        }
+        public string Name { get; set; }
+        public string Address { get; set; }
     }
 }

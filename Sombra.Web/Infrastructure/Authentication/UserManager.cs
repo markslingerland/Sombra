@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using Sombra.Messaging.Responses;
 using Sombra.Core;
 using Sombra.Messaging.Infrastructure;
+using UAParser;
 
 namespace Sombra.Web
 {
@@ -29,6 +30,22 @@ namespace Sombra.Web
         public async Task<UserLoginResponse> ValidateAsync(UserLoginRequest userLoginRequest)
         {
             return await _bus.RequestAsync(userLoginRequest);
+        }
+
+        public async Task<bool> ForgotPassword(HttpContext httpContext){
+            //Need values: Name, SecretToken, OperatingSystem and used browser.
+            var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
+
+            var userAgentParser = Parser.GetDefault();
+            ClientInfo clientInfo = userAgentParser.Parse(userAgent);
+
+            var operatingSystem = clientInfo.OS.Family;
+            var browser = clientInfo.UserAgent.Family;
+
+            // var name = _bus.RequestAsync(nameRequest);
+            // var secretToken = _bus.RequstAsync(secretTokenRequest)
+            
+            return false;
         }
 
         public async Task<bool> SignInAsync(HttpContext httpContext, UserLoginRequest userLoginRequest, bool isPersistent = false)

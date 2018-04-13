@@ -37,8 +37,8 @@ namespace Sombra.Web.Areas.Development.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(AuthenticationQuery query)
         {
-            var request = _mapper.Map<UserLoginRequest>(query);
-            var response = await _userManager.SignInAsync(HttpContext, request);
+            
+            var response = await _userManager.SignInAsync(HttpContext, query);
             var result = new AuthenticationViewModel()
                             { 
                                 Success = response

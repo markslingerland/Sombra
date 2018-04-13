@@ -15,16 +15,23 @@ using Sombra.Messaging.Responses;
 using Sombra.Core;
 using Sombra.Messaging.Infrastructure;
 using UAParser;
+using Sombra.Messaging.Events;
+using AutoMapper;
+using Sombra.Web.Areas.Development.Models;
+using Sombra.Web.Models;
+using Sombra.Web.Infrastructure;
 
 namespace Sombra.Web
 {
     public class UserManager : IUserManager
     {
         private readonly IBus _bus;
+        private readonly IMapper _mapper;
 
-        public UserManager(IBus bus)
+        public UserManager(IBus bus, IMapper mapper)
         {
             _bus = bus;
+            _mapper = mapper;
         }
 
         public async Task<UserLoginResponse> ValidateAsync(UserLoginRequest userLoginRequest)
@@ -32,24 +39,34 @@ namespace Sombra.Web
             return await _bus.RequestAsync(userLoginRequest);
         }
 
-        public async Task<bool> ForgotPassword(HttpContext httpContext){
-            //Need values: Name, SecretToken, OperatingSystem and used browser.
+        public async Task<bool> ForgotPassword(HttpContext httpContext, ForgotPasswordViewModel forgotPasswordViewModel){
             var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
 
             var userAgentParser = Parser.GetDefault();
-            ClientInfo clientInfo = userAgentParser.Parse(userAgent);
+            var clientInfo = userAgentParser.Parse(userAgent);
 
             var operatingSystem = clientInfo.OS.Family;
-            var browser = clientInfo.UserAgent.Family;
+            var browserName = clientInfo.UserAgent.Family;
 
-            // var name = _bus.RequestAsync(nameRequest);
-            // var secretToken = _bus.RequstAsync(secretTokenRequest)
+            var name = "name";
+            var secretToken = "secretToken";
+            var actionurl = "" + secretToken;
+
+            var emailTemplateRequest = new EmailTemplateRequest(EmailType.ForgotPasswordTemplate, TemplateContentBuilder.CreateForgotPasswordTempleteContent(name, actionurl, operatingSystem, browserName));
+
+            var response = await _bus.RequestAsync(emailTemplateRequest);
+            var email = new Email(new EmailAddress("noreply", "noreply@ikdoneer.nu"), new EmailAddress(name, forgotPasswordViewModel.EmailAdress), "Wachtwoord vergeten ikdoneer.nu", 
+                                                    response.Template, true);
+                                                    
+            await _bus.PublishAsync(email);
             
             return false;
         }
 
-        public async Task<bool> SignInAsync(HttpContext httpContext, UserLoginRequest userLoginRequest, bool isPersistent = false)
+        public async Task<bool> SignInAsync(HttpContext httpContext, AuthenticationQuery authenticationQuery, bool isPersistent = false)
         {
+            var userLoginRequest = _mapper.Map<UserLoginRequest>(authenticationQuery);
+
             var userLoginResponse = await ValidateAsync(userLoginRequest);
 
             if(userLoginResponse.Success){

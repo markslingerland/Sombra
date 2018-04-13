@@ -33,11 +33,11 @@ namespace Sombra.Web.Controllers
         [HttpGet]
         public IActionResult ForgotPassword()
         {
-            return View(new EmailTemplateRequest());
+            return View(new ForgotPasswordViewModel());
         }
 
         [HttpPost]
-        public IActionResult ForgotPassword(EmailTemplateRequest emailTemplateRequest)
+        public IActionResult ForgotPassword(ForgotPasswordViewModel forgotPasswordViewModel)
         {
             return View();
         }

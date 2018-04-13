@@ -5,18 +5,20 @@ namespace Sombra.Messaging.Events
     public class Email : Event
     {
         public Email() { }
-        public Email(EmailAddress sender, List<EmailAddress> recipient, string subject, string body, bool isHtml = false)
-        {
-            Sender = sender;
-            Recipient = recipient;
-            Subject = subject;
-            Body = body;
-            IsHtml = isHtml;
-        }
+
         public Email(EmailAddress sender, EmailAddress recipient, string subject, string body, bool isHtml = false)
         {
             Sender = sender;
             Recipient = new List<EmailAddress> { recipient };
+            Subject = subject;
+            Body = body;
+            IsHtml = isHtml;
+        }
+        
+        public Email(EmailAddress sender, List<EmailAddress> recipient, string subject, string body, bool isHtml = false)
+        {
+            Sender = sender;
+            Recipient = recipient;
             Subject = subject;
             Body = body;
             IsHtml = isHtml;

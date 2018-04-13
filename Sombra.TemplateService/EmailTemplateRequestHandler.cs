@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Sombra.TemplateService
 {
-    class TemplateService
+    class EmailTemplateRequestHandler
     {
+
     }
 }

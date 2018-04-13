@@ -1,10 +1,9 @@
 ﻿using System;
 using Sombra.Core.Enums;
-using Sombra.Messaging.Responses;
 
-namespace Sombra.Messaging.Requests
+namespace Sombra.Messaging.Events
 {
-    public class CreateUserRequest : Request<CreateUserResponse>
+    public class UserUpdatedEvent : Event
     {
         public Guid UserKey { get; set; }
         public UserType Type { get; set; }
@@ -18,5 +17,7 @@ namespace Sombra.Messaging.Requests
         public string EmailAddress { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime BirthDate { get; set; }
+
+        public DateTime UserCreated { get; set; }
     }
 }

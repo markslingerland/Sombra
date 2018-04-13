@@ -21,7 +21,7 @@ namespace Sombra.UserService
 
         public async Task<GetUserResponse> Handle(GetUserRequest message)
         {
-            var user = await _context.User.FirstOrDefaultAsync(u => u.UserKey == message.UserKey);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserKey == message.UserKey);
             return user != null ? _mapper.Map<GetUserResponse>(user) : new GetUserResponse();
         }
     }

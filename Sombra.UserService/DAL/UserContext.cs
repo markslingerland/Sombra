@@ -9,6 +9,6 @@ namespace Sombra.UserService.DAL
         {
         }
 
-        public DbSet<User> User { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

@@ -13,8 +13,21 @@ namespace Sombra.Messaging.Infrastructure
         {
             var requestMethod = typeof(IBus).GetMethod(nameof(IBus.RequestAsync));
             var typedRequestMethod = requestMethod.MakeGenericMethod(request.GetType(), typeof(TResponse));
-            
-            return await (Task<TResponse>)typedRequestMethod.Invoke(bus, new object[] { request });
+
+            try
+            {
+                return await (Task<TResponse>) typedRequestMethod.Invoke(bus, new object[] {request});
+            }
+            catch (TimeoutException ex)
+            {
+                ExtendedConsole.Log($"Request {request.GetType().Name} failed. Exception: {ex}");
+
+                var responseType = typeof(TResponse);
+                var response = (TResponse) Activator.CreateInstance(responseType);
+                response.Success = false;
+
+                return response;
+            }
         }
 
         public static IBus WaitForConnection(this IBus bus, int retryInMs = 2500)

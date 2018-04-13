@@ -2,7 +2,6 @@
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Sombra.Infrastructure.DAL;
 using Sombra.Infrastructure.Extensions;
@@ -15,7 +14,7 @@ namespace Sombra.UserService
     {
         private static string _rabbitMqConnectionString;
         private static string _sqlConnectionString;
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             Console.WriteLine("User Service Started");
 

@@ -13,7 +13,7 @@ namespace Sombra.UserService
         public MappingProfile()
         {
             CreateMap<User, GetUserResponse>()
-                .IgnoreMessageProperties()
+                .IgnoreResponseProperties()
                 .ForMember(d => d.UserExists, opt => opt.MapFrom(s => true));
 
             CreateMap<CreateUserRequest, User>()

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Sombra.Messaging.Responses
+﻿namespace Sombra.Messaging.Responses
 {
     public class CreateUserResponse : Response
     {

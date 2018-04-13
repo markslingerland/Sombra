@@ -40,6 +40,15 @@ services:
       - rabbitmq
       - sqlserver
 
+  sombra.userservice:
+    image: sombrauserservice
+    build:
+      context: .
+      dockerfile: Sombra.UserService/Dockerfile
+    depends_on:
+      - rabbitmq
+      - sqlserver
+
 
   sombra.loggingservice:
     image: sombraloggingservice

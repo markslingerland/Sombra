@@ -13,15 +13,11 @@ namespace Sombra.Web.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IBus _bus;
-        private readonly IMapper _mapper;
         private readonly IUserManager _userManager;
 
 
-        public AccountController(IBus bus, IMapper mapper, IUserManager userManager)
+        public AccountController(IUserManager userManager)
         {
-            _bus = bus;
-            _mapper = mapper;
             _userManager = userManager;
         }
 

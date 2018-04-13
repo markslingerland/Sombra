@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using MongoDB.Driver;
+using Sombra.Core;
 using Sombra.Core.Extensions;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
@@ -25,7 +26,7 @@ namespace Sombra.LoggingService
 
         public async Task<LogResponse> Handle(LogRequest message)
         {
-            Console.WriteLine("LogRequest received");
+            ExtendedConsole.Log("LogRequest received");
             Expression<Func<LogEntry, bool>> filter = l => true;
 
             if (message.From.HasValue) filter = filter.And(l => l.MessageCreated.CompareTo(message.From.Value) >= 0);

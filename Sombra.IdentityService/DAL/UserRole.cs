@@ -1,7 +1,6 @@
 using System;
-using Sombra.Core;
 
-namespace Sombra.IdentityService
+namespace Sombra.IdentityService.DAL
 {
   public class UserRole
   {

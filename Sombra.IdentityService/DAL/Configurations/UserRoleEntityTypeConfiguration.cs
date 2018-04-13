@@ -1,11 +1,9 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Sombra.IdentityService.DAL;
 using Sombra.Infrastructure.DAL;
 
-namespace Sombra.IdentityService 
+namespace Sombra.IdentityService.DAL.Configurations
 {
-    class UserRoleEntityTypeConfiguration : EntityTypeConfiguration<UserRole> {
+    public class UserRoleEntityTypeConfiguration : EntityTypeConfiguration<UserRole> {
         public override void Configure(EntityTypeBuilder<UserRole> entity)
         {
             entity.HasKey(e => new { e.UserId, e.RoleId });

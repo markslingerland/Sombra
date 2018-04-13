@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MongoDB.Driver;
+using Sombra.Core;
 using Sombra.Messaging;
 using Sombra.Messaging.Infrastructure;
 
@@ -19,7 +20,7 @@ namespace Sombra.LoggingService
 
         public async Task Consume(TMessage message)
         {
-            Console.WriteLine($"Message received. Type: {message.MessageType}");
+            ExtendedConsole.Log($"Message received. Type: {message.MessageType}");
             await _logCollection.InsertOneAsync(new LogEntry(message, DateTime.UtcNow));
         }
     }

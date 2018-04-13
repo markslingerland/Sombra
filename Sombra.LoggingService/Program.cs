@@ -5,6 +5,8 @@ using System.Threading;
 using EasyNetQ;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Sombra.Core;
+using Sombra.Infrastructure.DAL;
 using Sombra.Infrastructure.Extensions;
 using Sombra.Messaging.Infrastructure;
 
@@ -19,7 +21,7 @@ namespace Sombra.LoggingService
 
         static void Main(string[] args)
         {
-            Console.WriteLine("LoggingService started..");
+            ExtendedConsole.Log("LoggingService started..");
 
             SetupConfiguration();
 
@@ -28,7 +30,8 @@ namespace Sombra.LoggingService
                 _rabbitMqConnectionString,
                 services => services
                     .AddAutoMapper(Assembly.GetExecutingAssembly())
-                    .AddMongoDatabase(_mongoConnectionString, _mongoDatabase));
+                    .AddMongoDatabase(_mongoConnectionString, _mongoDatabase),
+                ConnectionValidator.ValidateAllDbConnections);
 
             var logger = new EventLogger(serviceProvider.GetRequiredService<IBus>(), serviceProvider, _subscriptionIdPrefix);
             logger.Start();

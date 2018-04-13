@@ -24,7 +24,7 @@ namespace Sombra.Messaging.Infrastructure
 
                 var responseType = typeof(TResponse);
                 var response = (TResponse) Activator.CreateInstance(responseType);
-                response.Success = false;
+                response.IsRequestSuccessful = false;
 
                 return response;
             }

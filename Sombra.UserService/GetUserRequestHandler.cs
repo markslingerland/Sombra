@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
@@ -9,15 +11,18 @@ namespace Sombra.UserService
     public class GetUserRequestHandler : IAsyncRequestHandler<GetUserRequest, GetUserResponse>
     {
         private readonly UserContext _context;
+        private readonly IMapper _mapper;
 
-        public GetUserRequestHandler(UserContext context)
+        public GetUserRequestHandler(UserContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
-        public Task<GetUserResponse> Handle(GetUserRequest message)
+        public async Task<GetUserResponse> Handle(GetUserRequest message)
         {
-            throw new System.NotImplementedException();
+            var user = await _context.User.FirstOrDefaultAsync(u => u.UserKey == message.UserKey);
+            return user != null ? _mapper.Map<GetUserResponse>(user) : new GetUserResponse();
         }
     }
 }

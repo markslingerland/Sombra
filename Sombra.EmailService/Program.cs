@@ -32,6 +32,13 @@ namespace Sombra.EmailService
             if (isContainerized)
             {
                 _rabbitMqConnectionString = Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING");
+                _emailConfiguration = new EmailConfiguration
+                {
+                    SmtpServer = Environment.GetEnvironmentVariable("SMTP_SERVER"),
+                    SmtpPort = Convert.ToInt32(Environment.GetEnvironmentVariable("SMTP_PORT")),
+                    SmtpUsername = Environment.GetEnvironmentVariable("SMTP_USERNAME"),
+                    SmtpPassword = Environment.GetEnvironmentVariable("SMTP_PASSWORD")
+                };
             }
             else
             {

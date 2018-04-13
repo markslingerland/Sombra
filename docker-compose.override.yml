@@ -13,6 +13,10 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - CONTAINER_TYPE=Docker
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
+      - SMTP_SERVER=${DC_SMTPSERVER}
+      - SMTP_PORT=${DC_SMTPPORT}
+      - SMTP_USERNAME=${DC_SMTPUSERNAME}
+      - SMTP_PASSWORD=${DC_SMTPPASSWORD}
 
   sombra.loggingservice:
     environment:

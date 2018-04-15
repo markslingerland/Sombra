@@ -1,8 +1,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Extensions.Configuration;
-using System.IO;
-using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using MailKit;
+using MailKit.Net.Smtp;
 using MimeKit;
+using Moq;
 using Sombra.Messaging.Events;
 
 namespace Sombra.EmailService.UnitTest
@@ -11,26 +13,28 @@ namespace Sombra.EmailService.UnitTest
     public class EmailServiceTest
     {
         [TestMethod]
-        public void SendTest()
+        public async Task SendTest()
         {
             // Arrange
-            var emailConfigurationMock = new EmailConfiguration(){ SmtpServer = "", SmtpPort = 465, SmtpUsername = "ikdoneernu@gmail.com" };
+            var smtpClientMock = new Mock<SmtpClient>();
+            smtpClientMock.Setup(m => m.DisconnectAsync(It.Is<bool>(p => true), It.IsAny<CancellationToken>())).Returns(Task.FromResult(true));
+            smtpClientMock.Setup(m => m.SendAsync(It.IsAny<MimeMessage>(), It.IsAny<CancellationToken>(), It.IsAny<ITransferProgress>())).Returns(Task.FromResult(true));
+
             var mailboxTestTo = new EmailAddress("TestRecipient", "TestRecipient@Test.com");
             var mailboxTestFrom = new EmailAddress("TestSender", "TestSender@Test.com");
             var subjectTest = "Test Subject";
             var contentTest = "Test Content";
 
             var emailMessage = new Email(mailboxTestFrom, mailboxTestTo, subjectTest, contentTest, true);
-            var emailService = new EmailService(emailConfigurationMock);
+            var emailService = new EmailService(smtpClientMock.Object);
             // Act
-            var createdMessageResult = emailService.CreateEmailMessage(emailMessage);
+            await emailService.Consume(emailMessage);
 
             // Assert
-            Assert.IsTrue(createdMessageResult.Subject.Contains(subjectTest));
-            Assert.IsTrue(createdMessageResult.HtmlBody.Contains(contentTest));
-            Assert.IsTrue(createdMessageResult.To[0].Name.Contains(mailboxTestTo.Name));
-            Assert.IsTrue(createdMessageResult.From[0].Name.Contains(mailboxTestFrom.Name));           
+            smtpClientMock.Verify(m => m.DisconnectAsync(It.Is<bool>(p => true), It.IsAny<CancellationToken>()), Times.Once);
+            smtpClientMock.Verify(m => m.SendAsync(It.Is<MimeMessage>(p =>
+                p.Subject == subjectTest && p.HtmlBody == contentTest && p.To[0].Name == mailboxTestTo.Name && p.From[0].Name == mailboxTestFrom.Name),
+                It.IsAny<CancellationToken>(), It.IsAny<ITransferProgress>()), Times.Once);         
         }
-
     }
 }

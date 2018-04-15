@@ -49,6 +49,11 @@ services:
       - rabbitmq
       - sqlserver
 
+  sombra.userservice.unittests:
+    image: sombra.userservice.unittests
+    build:
+      context: .
+      dockerfile: Sombra.UserService.UnitTests/Dockerfile
 
   sombra.loggingservice:
     image: sombraloggingservice

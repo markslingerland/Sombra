@@ -1,5 +1,4 @@
 ﻿using System;
-using Sombra.Core.Enums;
 using Sombra.Infrastructure.DAL;
 
 namespace Sombra.UserService.DAL

@@ -2,6 +2,7 @@
 using AutoMapper;
 using EasyNetQ;
 using Microsoft.EntityFrameworkCore;
+using Sombra.Core;
 using Sombra.Messaging.Events;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
@@ -36,7 +37,18 @@ namespace Sombra.UserService
             }
 
             _context.Entry(existingUser).CurrentValues.SetValues(message);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                ExtendedConsole.Log(ex);
+                return new UpdateUserResponse
+                {
+                    Success = false
+                };
+            }
 
             var userUpdatedEvent = _mapper.Map<UserUpdatedEvent>(existingUser);
             await _bus.PublishAsync(userUpdatedEvent);

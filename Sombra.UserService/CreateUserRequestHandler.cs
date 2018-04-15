@@ -1,6 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AutoMapper;
 using EasyNetQ;
+using Microsoft.EntityFrameworkCore;
+using Sombra.Core;
 using Sombra.Messaging.Events;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
@@ -25,8 +28,29 @@ namespace Sombra.UserService
         public async Task<CreateUserResponse> Handle(CreateUserRequest message)
         {
             var user = _mapper.Map<User>(message);
+            if (user.UserKey == default)
+            {
+                ExtendedConsole.Log("CreateUserRequestHandler: UserKey is empty");
+                return new CreateUserResponse
+                {
+                    Success = false
+                };
+            }
+
             _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                ExtendedConsole.Log(ex);
+                return new CreateUserResponse
+                {
+                    Success = false
+                };
+            }
 
             var userCreatedEvent = _mapper.Map<UserCreatedEvent>(user);
             await _bus.PublishAsync(userCreatedEvent);

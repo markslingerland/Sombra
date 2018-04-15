@@ -17,7 +17,7 @@ namespace Sombra.EmailService.UnitTest
         {
             // Arrange
             var smtpClientMock = new Mock<SmtpClient>();
-            smtpClientMock.Setup(m => m.DisconnectAsync(It.Is<bool>(p => true), It.IsAny<CancellationToken>())).Returns(Task.FromResult(true));
+            smtpClientMock.Setup(m => m.DisconnectAsync(It.IsAny<bool>(), It.IsAny<CancellationToken>())).Returns(Task.FromResult(true));
             smtpClientMock.Setup(m => m.SendAsync(It.IsAny<MimeMessage>(), It.IsAny<CancellationToken>(), It.IsAny<ITransferProgress>())).Returns(Task.FromResult(true));
 
             var mailboxTestTo = new EmailAddress("TestRecipient", "TestRecipient@Test.com");
@@ -34,7 +34,7 @@ namespace Sombra.EmailService.UnitTest
             smtpClientMock.Verify(m => m.DisconnectAsync(It.Is<bool>(p => true), It.IsAny<CancellationToken>()), Times.Once);
             smtpClientMock.Verify(m => m.SendAsync(It.Is<MimeMessage>(p =>
                 p.Subject == subjectTest && p.HtmlBody == contentTest && p.To[0].Name == mailboxTestTo.Name && p.From[0].Name == mailboxTestFrom.Name),
-                It.IsAny<CancellationToken>(), It.IsAny<ITransferProgress>()), Times.Once);         
+                It.IsAny<CancellationToken>(), It.IsAny<ITransferProgress>()), Times.Once);
         }
     }
 }

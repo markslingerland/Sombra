@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
 using EasyNetQ;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +17,7 @@ namespace Sombra.UserService.UnitTests
     public class CreateUserRequestHandlerTest
     {
         [TestMethod]
-        public async Task Handle_Success()
+        public async Task CreateUserRequestHandler_Handle_Returns_Success()
         {
             var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
@@ -71,7 +70,7 @@ namespace Sombra.UserService.UnitTests
         }
 
         [TestMethod]
-        public async Task Handle_UserKeyEmpty()
+        public async Task CreateUserRequestHandler_Handle_Returns_KeyEmpty()
         {
             var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();

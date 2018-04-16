@@ -17,7 +17,7 @@ namespace Sombra.UserService.UnitTests
     public class UpdateUserRequestHandlerTest
     {
         [TestMethod]
-        public async Task Handle_Success()
+        public async Task UpdateUserRequestHandler_Handle_Returns_User()
         {
             var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
@@ -77,7 +77,7 @@ namespace Sombra.UserService.UnitTests
         }
 
         [TestMethod]
-        public async Task Handle_UserKeyEmpty()
+        public async Task UpdateUserRequestHandler_Handle_Returns_UserKeyEmpty()
         {
             var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();

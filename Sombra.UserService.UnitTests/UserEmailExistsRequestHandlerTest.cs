@@ -1,12 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using EasyNetQ;
+﻿using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using Sombra.Messaging.Events;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.UserService.DAL;
@@ -17,7 +12,7 @@ namespace Sombra.UserService.UnitTests
     public class UserEmailExistsRequestHandlerTest
     {
         [TestMethod]
-        public async Task Handle_EmailExists()
+        public async Task UserEmailExistsRequestHandler_Handle_Returns_EmailExists()
         {
             var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
@@ -60,7 +55,7 @@ namespace Sombra.UserService.UnitTests
         }
 
         [TestMethod]
-        public async Task Handle_EmailNotExists()
+        public async Task UserEmailExistsRequestHandler_Handle__Returns_EmailNotExists()
         {
             var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();

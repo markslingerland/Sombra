@@ -41,7 +41,7 @@ services:
       - sqlserver
 
   sombra.userservice:
-    image: sombrauserservice
+    image: sombra.userservice
     build:
       context: .
       dockerfile: Sombra.UserService/Dockerfile

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Threading;
+using MailKit.Net.Smtp;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sombra.Messaging.Infrastructure;
@@ -11,7 +12,7 @@ namespace Sombra.EmailService
     class Program
     {
         private static string _rabbitMqConnectionString;
-        private static IEmailConfiguration _emailConfiguration;
+        private static EmailConfiguration _emailConfiguration;
 
         static void Main(string[] args)
         {
@@ -21,7 +22,14 @@ namespace Sombra.EmailService
             var serviceProvider = MessagingInstaller.Run(
                 Assembly.GetExecutingAssembly(),
                 _rabbitMqConnectionString,
-                services => services.AddSingleton(_emailConfiguration));
+                services => services.AddTransient(sp =>
+                {
+                    var client = new SmtpClient();
+                    client.Connect(_emailConfiguration.SmtpServer, _emailConfiguration.SmtpPort, true);
+                    client.AuthenticationMechanisms.Remove("XOAUTH2");
+                    client.Authenticate(_emailConfiguration.SmtpUsername, _emailConfiguration.SmtpPassword);
+                    return client;
+                }));
 
             Thread.Sleep(Timeout.Infinite);
         }

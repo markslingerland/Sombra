@@ -1,6 +1,6 @@
 ﻿namespace Sombra.EmailService
 {
-    public class EmailConfiguration : IEmailConfiguration
+    public class EmailConfiguration
     {
         public string SmtpServer { get; set; } 
         public int SmtpPort { get; set; } 

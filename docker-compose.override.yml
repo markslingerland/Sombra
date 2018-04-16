@@ -7,18 +7,6 @@ services:
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
     ports:
       - "80:80"
-
-  sombra.web.unittests:
-    image: sombra.web.unittests
-    build:
-      context: .
-      dockerfile: Sombra.Web.UnitTests/Dockerfile
-
-  sombra.core.unittests:
-    image: sombra.core.unittests
-    build:
-      context: .
-      dockerfile: Sombra.Core.UnitTests/Dockerfile
   
   sombra.emailservice:
     environment:
@@ -29,12 +17,6 @@ services:
       - SMTP_PORT=${DC_SMTPPORT}
       - SMTP_USERNAME=${DC_SMTPUSERNAME}
       - SMTP_PASSWORD=${DC_SMTPPASSWORD}
-
-  sombra.emailservice.unittests:
-    image: sombra.emailservice.unittests
-    build:
-      context: .
-      dockerfile: Sombra.Core.EmailService/Dockerfile
 
   sombra.loggingservice:
     environment:

@@ -8,21 +8,21 @@ using Sombra.UserService.DAL;
 
 namespace Sombra.UserService
 {
-    public class GetUserRequestHandler : IAsyncRequestHandler<GetUserRequest, GetUserResponse>
+    public class GetUserByKeyRequestHandler : IAsyncRequestHandler<GetUserByKeyRequest, GetUserByKeyResponse>
     {
         private readonly UserContext _context;
         private readonly IMapper _mapper;
 
-        public GetUserRequestHandler(UserContext context, IMapper mapper)
+        public GetUserByKeyRequestHandler(UserContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        public async Task<GetUserResponse> Handle(GetUserRequest message)
+        public async Task<GetUserByKeyResponse> Handle(GetUserByKeyRequest message)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.UserKey == message.UserKey);
-            return user != null ? _mapper.Map<GetUserResponse>(user) : new GetUserResponse();
+            return user != null ? _mapper.Map<GetUserByKeyResponse>(user) : new GetUserByKeyResponse();
         }
     }
 }

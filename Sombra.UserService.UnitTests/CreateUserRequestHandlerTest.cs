@@ -17,8 +17,6 @@ namespace Sombra.UserService.UnitTests
     [TestClass]
     public class CreateUserRequestHandlerTest
     {
-        private static readonly IMapper Mapper = Helper.GetMapper();
-
         [TestMethod]
         public async Task Handle_Success()
         {
@@ -49,7 +47,7 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = new UserContext(options))
                 {
-                    var handler = new CreateUserRequestHandler(context, Mapper, busMock.Object);
+                    var handler = new CreateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
@@ -101,7 +99,7 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = new UserContext(options))
                 {
-                    var handler = new CreateUserRequestHandler(context, Mapper, busMock.Object);
+                    var handler = new CreateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
                     response = await handler.Handle(request);
                 }
 

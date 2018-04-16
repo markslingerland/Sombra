@@ -2,7 +2,7 @@
 
 namespace Sombra.Messaging.Responses
 {
-    public class GetUserResponse : Response
+    public class GetUserByKeyResponse : Response
     {
         public bool UserExists { get; set; }
         public string FirstName { get; set; }

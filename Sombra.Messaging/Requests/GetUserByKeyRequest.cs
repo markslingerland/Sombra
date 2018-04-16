@@ -3,7 +3,7 @@ using Sombra.Messaging.Responses;
 
 namespace Sombra.Messaging.Requests
 {
-    public class GetUserRequest : Request<GetUserResponse>
+    public class GetUserByKeyRequest : Request<GetUserByKeyResponse>
     {
         public Guid UserKey { get; set; }
     }

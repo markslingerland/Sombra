@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Sombra.TemplateService.Templates
 {
-    class Template
+    class ChangePasswordTemplate 
     {
     }
 }

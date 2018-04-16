@@ -20,7 +20,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.LoggingService", "So
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.Infrastructure", "Sombra.Infrastructure\Sombra.Infrastructure.csproj", "{3AC0E991-D8E2-49BC-A51D-6DA05B646F3F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.EmailService.UnitTest", "Sombra.EmailService.UnitTest\Sombra.EmailService.UnitTest.csproj", "{23A64C21-5957-42A2-A0EA-799746211661}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.EmailService.UnitTests", "Sombra.EmailService.UnitTests\Sombra.EmailService.UnitTests.csproj", "{23A64C21-5957-42A2-A0EA-799746211661}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.IdentityService", "Sombra.IdentityService\Sombra.IdentityService.csproj", "{B5573E07-41F4-43F4-9179-938A67BD66D9}"
 EndProject

@@ -37,6 +37,7 @@ namespace Sombra.Infrastructure.DAL
                         {
                             connectionIsWorking = false;
                             Thread.Sleep(2500);
+                            ExtendedConsole.Log($"ConnectionValidator exception: {e}");
                             ExtendedConsole.Log($"Waiting for {connectionStringWrapper.ContextType.Name} to come online..");
                         }
                     }

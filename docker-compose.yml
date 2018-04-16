@@ -9,22 +9,8 @@ services:
     depends_on:
       - rabbitmq
 
-  sombra.web.unittests:
-    image: sombra.web.unittests
-    build:
-      context: .
-      dockerfile: Sombra.Web.UnitTests/Dockerfile
-
-
-  sombra.core.unittests:
-    image: sombra.core.unittests
-    build:
-      context: .
-      dockerfile: Sombra.Core.UnitTests/Dockerfile
-
-
   sombra.emailservice:
-    image: sombraemailservice
+    image: sombra.emailservice
     build:
       context: .
       dockerfile: Sombra.EmailService/Dockerfile
@@ -32,7 +18,7 @@ services:
       - rabbitmq
   
   sombra.identityservice:
-    image: sombraidentityservice
+    image: sombra.identityservice
     build:
       context: .
       dockerfile: Sombra.IdentityService/Dockerfile
@@ -42,7 +28,7 @@ services:
 
 
   sombra.loggingservice:
-    image: sombraloggingservice
+    image: sombra.loggingservice
     build:
       context: .
       dockerfile: Sombra.LoggingService/Dockerfile

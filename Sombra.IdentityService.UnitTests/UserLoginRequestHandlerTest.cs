@@ -33,9 +33,8 @@ namespace Sombra.IdentityService.UnitTests
                     context.Database.EnsureCreated();
 
                     var credentialType = new CredentialType(){
-                        Code = "1",
+                        Name = Core.Enums.CredentialType.Default,
                         Position = 1,
-                        Name = "test"
                     };
 
                     var user = new User(){
@@ -45,14 +44,12 @@ namespace Sombra.IdentityService.UnitTests
                     };
 
                     var permission = new Permission(){
-                        Code = "test",
-                        Name = "TestPermission",
+                        Name = Core.Enums.Permission.Default,
                         Position = 1
                     };
 
                     var role = new Role(){
-                        Code = "Admin",
-                        Name = "Admin",
+                        Name = Core.Enums.Role.Default,
                         Position = 1
                     };
 
@@ -88,7 +85,7 @@ namespace Sombra.IdentityService.UnitTests
                 {
                     Identifier = "admin",
                     Secret = "admin",
-                    LoginTypeCode = "1"
+                    LoginTypeCode = Core.Enums.CredentialType.Default
                 };
 
                 //Act
@@ -104,7 +101,7 @@ namespace Sombra.IdentityService.UnitTests
                     Assert.IsTrue(response.Success);
                     Assert.AreEqual(response.UserName, context.Users.Single().Name);
                     Assert.AreEqual(response.UserKey, context.Users.Single().UserKey);
-                    CollectionAssert.AreEqual(response.PermissionCodes, context.Permissions.Select(b => b.Code).ToList());
+                    CollectionAssert.AreEqual(response.PermissionCodes, context.Permissions.Select(b => b.Name).ToList());
                 }
 
 
@@ -135,9 +132,8 @@ namespace Sombra.IdentityService.UnitTests
                     context.Database.EnsureCreated();
 
                     var credentialType = new CredentialType(){
-                        Code = "1",
+                        Name = Core.Enums.CredentialType.Default,
                         Position = 1,
-                        Name = "test"
                     };
 
                     var user = new User(){
@@ -147,14 +143,12 @@ namespace Sombra.IdentityService.UnitTests
                     };
 
                     var permission = new Permission(){
-                        Code = "test",
-                        Name = "TestPermission",
+                        Name = Core.Enums.Permission.Default,
                         Position = 1
                     };
 
                     var role = new Role(){
-                        Code = "Admin",
-                        Name = "Admin",
+                        Name = Core.Enums.Role.Default,
                         Position = 1
                     };
 
@@ -190,7 +184,7 @@ namespace Sombra.IdentityService.UnitTests
                 {
                     Identifier = "admin",
                     Secret = "notAdmin",
-                    LoginTypeCode = "1"
+                    LoginTypeCode = Core.Enums.CredentialType.Default
                 };
 
                 //Act

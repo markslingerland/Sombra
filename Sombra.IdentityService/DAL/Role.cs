@@ -6,8 +6,8 @@ namespace Sombra.IdentityService.DAL
 {
   public class Role : Entity
   {
-    public string Code { get; set; }
-    public string Name { get; set; }
+    public Core.Enums.Role Name { get; set; }
+
     public int? Position { get; set; }
 
     public virtual ICollection<RolePermission> RolePermissions { get; set; }

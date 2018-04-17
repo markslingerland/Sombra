@@ -5,6 +5,7 @@ namespace Sombra.Messaging.Responses
     public class GetUserByEmailResponse : Response
     {
         public bool UserExists { get; set; }
+        public Guid UserKey { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string AddressLine1 { get; set; }

@@ -24,7 +24,7 @@ namespace Sombra.Web.Infrastructure.Authentication
             _httpContext = httpContextAccessor.HttpContext;
         }
 
-        public async Task<UserLoginResponse> ValidateAsync(UserLoginRequest userLoginRequest)
+        private async Task<UserLoginResponse> ValidateAsync(UserLoginRequest userLoginRequest)
         {
             return await _bus.RequestAsync(userLoginRequest);
         }

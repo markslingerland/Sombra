@@ -5,10 +5,12 @@ using EasyNetQ;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Sombra.Web.Infrastructure.Authentication;
 
 namespace Sombra.Web
 {
@@ -32,6 +34,7 @@ namespace Sombra.Web
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
             services.AddScoped(c => RabbitHutch.CreateBus(_rabbitMqConnectionString));
             services.AddAutoMapper();
+            services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUserManager, UserManager>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

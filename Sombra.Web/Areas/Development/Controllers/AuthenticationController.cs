@@ -39,7 +39,7 @@ namespace Sombra.Web.Areas.Development.Controllers
         {
             query.LoginTypeCode = Core.Enums.CredentialType.Default;
             var request = _mapper.Map<UserLoginRequest>(query);
-            var response = await _userManager.SignInAsync(HttpContext, request);
+            var response = await _userManager.SignInAsync(request);
             var result = new AuthenticationViewModel()
                             { 
                                 Success = response

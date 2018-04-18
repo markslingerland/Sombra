@@ -15,11 +15,13 @@ namespace Sombra.Web.Infrastructure.Authentication
     public class UserManager : IUserManager
     {
         private readonly IBus _bus;
+        private readonly HttpContext _httpContext;
         private static string _authenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 
-        public UserManager(IBus bus)
+        public UserManager(IBus bus, IHttpContextAccessor httpContextAccessor)
         {
             _bus = bus;
+            _httpContext = httpContextAccessor.HttpContext;
         }
 
         public async Task<UserLoginResponse> ValidateAsync(UserLoginRequest userLoginRequest)
@@ -27,12 +29,12 @@ namespace Sombra.Web.Infrastructure.Authentication
             return await _bus.RequestAsync(userLoginRequest);
         }
 
-        public async Task<bool> SignInAsync(HttpContext httpContext, UserLoginRequest userLoginRequest, bool isPersistent = false)
+        public async Task<bool> SignInAsync(UserLoginRequest userLoginRequest, bool isPersistent = false)
         {
             var userLoginResponse = await ValidateAsync(userLoginRequest);
 
             if(userLoginResponse.Success){
-                await httpContext.SignInAsync(
+                await _httpContext.SignInAsync(
                     _authenticationScheme, CreatePrincipal(userLoginResponse), new AuthenticationProperties { IsPersistent = isPersistent }
                 );
             }
@@ -46,9 +48,9 @@ namespace Sombra.Web.Infrastructure.Authentication
             return new SombraPrincipal(identity);
         }
 
-        public async void SignOut(HttpContext httpContext)
+        public async Task SignOut()
         {
-            await httpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await _httpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
 
         private IEnumerable<Claim> GetUserClaims(UserLoginResponse userLoginResponse)

@@ -9,7 +9,7 @@ namespace Sombra.LoggingService
         public LogEntry(IMessage message, DateTime received)
         {
             MessageType = message.MessageType;
-            MessageCreated = message.Created;
+            MessageCreated = message.MessageCreated;
             MessageReceived = received;
             Message = message.ToJson();
         }

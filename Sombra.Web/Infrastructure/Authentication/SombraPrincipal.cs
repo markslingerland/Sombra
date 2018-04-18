@@ -10,14 +10,14 @@ namespace Sombra.Web.Infrastructure.Authentication
     {
         public SombraPrincipal(SombraIdentity identity) : base(identity)
         {
-            Roles = identity.Roles;
-            Permissions = identity.Permissions;
-            Key = identity.UserKey;
+            Identity = identity;
         }
 
-        public Guid Key { get; }
-        public IEnumerable<Role> Roles { get; }
-        public IEnumerable<Permission> Permissions { get; }
+        public new SombraIdentity Identity { get; }
+        public Guid Key => Identity.UserKey;
+        public IEnumerable<Role> Roles => Identity.Roles;
+        public IEnumerable<Permission> Permissions => Identity.Permissions;
+
         public bool HasPermission(Permission permission) => Permissions.Contains(permission);
         public bool IsInRole(Role role) => Roles.Contains(role);
     }

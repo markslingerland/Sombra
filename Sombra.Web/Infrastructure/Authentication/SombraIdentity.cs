@@ -5,7 +5,7 @@ using Sombra.Core.Enums;
 
 namespace Sombra.Web.Infrastructure.Authentication
 {
-    public class SombraIdentity : ClaimsIdentity
+    public sealed class SombraIdentity : ClaimsIdentity
     {
         public SombraIdentity(IEnumerable<Claim> claims, Guid userKey, IEnumerable<Role> roles, IEnumerable<Permission> permissions, string authenticationType) : base(claims, authenticationType)
         {

@@ -7,7 +7,7 @@ using MimeKit;
 using Moq;
 using Sombra.Messaging.Events;
 
-namespace Sombra.EmailService.UnitTest
+namespace Sombra.EmailService.UnitTests
 {
     [TestClass]
     public class EmailServiceTest
@@ -25,8 +25,8 @@ namespace Sombra.EmailService.UnitTest
             var subjectTest = "Test Subject";
             var contentTest = "Test Content";
 
-            var emailMessage = new Email(mailboxTestFrom, mailboxTestTo, subjectTest, contentTest, true);
-            var emailService = new EmailService(smtpClientMock.Object);
+            var emailMessage = new EmailEvent(mailboxTestFrom, mailboxTestTo, subjectTest, contentTest, true);
+            var emailService = new EmailEventHandler(smtpClientMock.Object);
             // Act
             await emailService.Consume(emailMessage);
 

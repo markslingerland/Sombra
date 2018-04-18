@@ -7,16 +7,16 @@ using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.EmailService
 {
-    public class EmailService : IAsyncEventHandler<Email>
+    public class EmailEventHandler : IAsyncEventHandler<EmailEvent>
     {
         private readonly SmtpClient _smtpClient;
 
-        public EmailService(SmtpClient smtpClient)
+        public EmailEventHandler(SmtpClient smtpClient)
         {
             _smtpClient = smtpClient;
         }
 
-        private MimeMessage CreateEmailMessage(Email emailMessage)
+        private MimeMessage CreateEmailMessage(EmailEvent emailMessage)
         {
             var message = new MimeMessage();
             message.To.AddRange(emailMessage.Recipient.Select(x => new MailboxAddress(x.Name, x.Address)));
@@ -35,7 +35,7 @@ namespace Sombra.EmailService
             return message;
         }
 
-        public async Task Consume(Email message)
+        public async Task Consume(EmailEvent message)
         {
             var email = CreateEmailMessage(message);
             await _smtpClient.SendAsync(email);

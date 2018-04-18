@@ -4,7 +4,7 @@ namespace Sombra.Messaging
 {
     public interface IMessage
     {
-        DateTime Created { get; }
+        DateTime MessageCreated { get; }
         string ToJson();
         string MessageType { get; }
     }

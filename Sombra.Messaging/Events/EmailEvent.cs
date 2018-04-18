@@ -2,11 +2,16 @@
 
 namespace Sombra.Messaging.Events
 {
-    public class Email : Event
+    public class EmailEvent : Event
     {
+<<<<<<< HEAD:Sombra.Messaging/Events/Email.cs
         public Email() { }
 
         public Email(EmailAddress sender, EmailAddress recipient, string subject, string body, bool isHtml = false)
+=======
+        public EmailEvent() { }
+        public EmailEvent(EmailAddress sender, List<EmailAddress> recipient, string subject, string body, bool isHtml = false)
+>>>>>>> master:Sombra.Messaging/Events/EmailEvent.cs
         {
             Sender = sender;
             Recipient = new List<EmailAddress> { recipient };
@@ -14,8 +19,12 @@ namespace Sombra.Messaging.Events
             Body = body;
             IsHtml = isHtml;
         }
+<<<<<<< HEAD:Sombra.Messaging/Events/Email.cs
         
         public Email(EmailAddress sender, List<EmailAddress> recipient, string subject, string body, bool isHtml = false)
+=======
+        public EmailEvent(EmailAddress sender, EmailAddress recipient, string subject, string body, bool isHtml = false)
+>>>>>>> master:Sombra.Messaging/Events/EmailEvent.cs
         {
             Sender = sender;
             Recipient = recipient;

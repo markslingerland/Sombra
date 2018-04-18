@@ -16,11 +16,21 @@ namespace Sombra.Web.Areas.Development.Controllers
     [Area("Development")]
     public class AuthenticationController : Controller
     {
+<<<<<<< HEAD
         private readonly IUserManager _userManager;
 
 
         public AuthenticationController(IUserManager userManager)
         {
+=======
+        private readonly IMapper _mapper;
+        private readonly IUserManager _userManager;
+
+
+        public AuthenticationController(IMapper mapper, IUserManager userManager)
+        {
+            _mapper = mapper;
+>>>>>>> master
             _userManager = userManager;
         }
 
@@ -33,8 +43,14 @@ namespace Sombra.Web.Areas.Development.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(AuthenticationQuery query)
         {
+<<<<<<< HEAD
             
             var response = await _userManager.SignInAsync(HttpContext, query);
+=======
+            query.LoginTypeCode = Core.Enums.CredentialType.Default;
+            var request = _mapper.Map<UserLoginRequest>(query);
+            var response = await _userManager.SignInAsync(HttpContext, request);
+>>>>>>> master
             var result = new AuthenticationViewModel()
                             { 
                                 Success = response

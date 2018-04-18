@@ -1,25 +1,21 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using EasyNetQ;
-using EasyNetQ.AutoSubscribe;
 using System.Security.Claims;
-using Sombra.IdentityService;
-using Sombra.IdentityService.DAL;
 using Sombra.Messaging.Requests;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using Sombra.Messaging.Responses;
-using Sombra.Core;
 using Sombra.Messaging.Infrastructure;
 
-namespace Sombra.Web
+namespace Sombra.Web.Infrastructure.Authentication
 {
     public class UserManager : IUserManager
     {
         private readonly IBus _bus;
+        private static string _authenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 
         public UserManager(IBus bus)
         {
@@ -36,15 +32,18 @@ namespace Sombra.Web
             var userLoginResponse = await ValidateAsync(userLoginRequest);
 
             if(userLoginResponse.Success){
-                ClaimsIdentity identity = new ClaimsIdentity(this.GetUserClaims(userLoginResponse), CookieAuthenticationDefaults.AuthenticationScheme);
-                ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-
                 await httpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties() { IsPersistent = isPersistent }
+                    _authenticationScheme, CreatePrincipal(userLoginResponse), new AuthenticationProperties { IsPersistent = isPersistent }
                 );
             }
 
             return userLoginResponse.Success;
+        }
+
+        private SombraPrincipal CreatePrincipal(UserLoginResponse userLoginResponse)
+        {
+            var identity = new SombraIdentity(GetUserClaims(userLoginResponse), userLoginResponse.UserKey, userLoginResponse.Roles, userLoginResponse.Permissions, _authenticationScheme);
+            return new SombraPrincipal(identity);
         }
 
         public async void SignOut(HttpContext httpContext)
@@ -52,46 +51,25 @@ namespace Sombra.Web
             await httpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
 
-        public int GetCurrentUserId(HttpContext httpContext)
-        {
-            if (!httpContext.User.Identity.IsAuthenticated)
-                return -1;
-
-            Claim claim = httpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-
-            if (claim == null)
-                return -1;
-
-            int currentUserId;
-
-            if (!int.TryParse(claim.Value, out currentUserId))
-                return -1;
-
-            return currentUserId;
-        }
-
-
         private IEnumerable<Claim> GetUserClaims(UserLoginResponse userLoginResponse)
         {
-            List<Claim> claims = new List<Claim>();
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Sid, userLoginResponse.UserKey.ToString()),
+                new Claim(ClaimTypes.Name, userLoginResponse.UserName)
+            };
 
-            claims.Add(new Claim(ClaimTypes.Sid, userLoginResponse.UserKey.ToString()));
-            claims.Add(new Claim(ClaimTypes.Name, userLoginResponse.UserName));
-            claims.AddRange(this.GetUserRoleClaims(userLoginResponse));
+            claims.AddRange(GetUserRoleClaims(userLoginResponse));
             return claims;
         }
 
         private IEnumerable<Claim> GetUserRoleClaims(UserLoginResponse userLoginResponse)
         {
-            List<Claim> claims = new List<Claim>();
-            IEnumerable<string> permissionCodes = userLoginResponse.PermissionCodes;
+            var claims = new List<Claim>();
 
-            if (permissionCodes != null)
+            if (userLoginResponse.Permissions != null)
             {
-                foreach (var permissionCode in permissionCodes)
-                {
-                    claims.Add(new Claim(ClaimTypes.Role, permissionCode));
-                }
+                claims.AddRange(userLoginResponse.Permissions.Select(permission => new Claim(ClaimTypes.Role, permission.ToString())));
             }
 
             return claims;

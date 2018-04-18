@@ -4,11 +4,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Sombra.Web.Infrastructure;
 using Sombra.Web.Models;
 
 namespace Sombra.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : SombraController
     {
         public IActionResult Index()
         {

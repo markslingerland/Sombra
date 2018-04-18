@@ -10,11 +10,13 @@ using Sombra.Messaging.Responses;
 using Sombra.Web.Areas.Development.Models;
 using Sombra.Web.Models;
 using Sombra.Web;
+using Sombra.Web.Infrastructure;
+using Sombra.Web.Infrastructure.Authentication;
 
 namespace Sombra.Web.Areas.Development.Controllers
 {
     [Area("Development")]
-    public class AuthenticationController : Controller
+    public class AuthenticationController : SombraController
     {
         private readonly IMapper _mapper;
         private readonly IUserManager _userManager;

@@ -8,10 +8,10 @@ namespace Sombra.Messaging
     {
         protected Message()
         {
-            Created = DateTime.UtcNow;
+            MessageCreated = DateTime.UtcNow;
             MessageType = GetType().FullName;
         }
-        public DateTime Created { get; }
+        public DateTime MessageCreated { get; }
 
         public string ToJson()
         {

@@ -39,6 +39,20 @@ namespace Sombra.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View(new ChangePasswordViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel changePasswordViewModel)
+        {
+            var response = await _userManager.ChangePassword(HttpContext, changePasswordViewModel, Guid.Empty);
+            return View(response);
+        }
+
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

@@ -51,6 +51,7 @@ namespace Sombra.Web
             }
             return false;
         }
+        
         public async Task<bool> ForgotPassword(HttpContext httpContext, ForgotPasswordViewModel forgotPasswordViewModel)
         {
             var userAgent = httpContext.Request.Headers["User-Agent"].ToString();

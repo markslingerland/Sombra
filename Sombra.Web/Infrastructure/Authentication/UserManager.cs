@@ -20,6 +20,7 @@ using AutoMapper;
 using Sombra.Web.Areas.Development.Models;
 using Sombra.Web.Models;
 using Sombra.Web.Infrastructure;
+using Sombra.Web.ViewModels;
 
 namespace Sombra.Web
 {
@@ -39,27 +40,41 @@ namespace Sombra.Web
             return await _bus.RequestAsync(userLoginRequest);
         }
 
-        public async Task<bool> ForgotPassword(HttpContext httpContext, ForgotPasswordViewModel forgotPasswordViewModel){
+        public async Task<bool> ChangePassword(HttpContext httpContext, ChangePasswordViewModel changePasswordViewModel, Guid? id)
+        {
+            if(id.HasValue && id != Guid.Empty){
+                if(changePasswordViewModel.Password == changePasswordViewModel.VerifiedPassword){
+                    var changePasswordRequest = new ChangePasswordRequest(changePasswordViewModel.Password, id.Value);
+                    var response = await _bus.RequestAsync(changePasswordRequest);
+                    return response.Success;
+                }
+            }
+            return false;
+        }
+        public async Task<bool> ForgotPassword(HttpContext httpContext, ForgotPasswordViewModel forgotPasswordViewModel)
+        {
             var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
+            var forgotPasswordRequest = _mapper.Map<ForgotPasswordRequest>(forgotPasswordViewModel);
+            var getUserByEmailRequest = _mapper.Map<GetUserByEmailRequest>(forgotPasswordViewModel);
 
-            var userAgentParser = Parser.GetDefault();
-            var clientInfo = userAgentParser.Parse(userAgent);
+            var clientInfo = Parser.GetDefault().Parse(userAgent);
 
             var operatingSystem = clientInfo.OS.Family;
             var browserName = clientInfo.UserAgent.Family;
 
-            var name = "name";
-            var secretToken = "secretToken";
-            var actionurl = "" + secretToken;
+            var user = await _bus.RequestAsync(getUserByEmailRequest);
+            var name = String.Format("{0} {1}", user.FirstName, user.LastName);
+            var forgotPasswordResponse = await _bus.RequestAsync(forgotPasswordRequest);
+            var actionurl = "" + forgotPasswordResponse.Secret.ToString();
 
             var emailTemplateRequest = new EmailTemplateRequest(EmailType.ForgotPasswordTemplate, TemplateContentBuilder.CreateForgotPasswordTempleteContent(name, actionurl, operatingSystem, browserName));
-
             var response = await _bus.RequestAsync(emailTemplateRequest);
-            var email = new EmailEvent(new EmailAddress("noreply", "noreply@ikdoneer.nu"), new EmailAddress(name, forgotPasswordViewModel.EmailAdress), "Wachtwoord vergeten ikdoneer.nu", 
+
+            var email = new EmailEvent(new EmailAddress("noreply", "noreply@ikdoneer.nu"), new EmailAddress(name, forgotPasswordViewModel.EmailAdress), "Wachtwoord vergeten ikdoneer.nu",
                                                     response.Template, true);
-                                                    
+
             await _bus.PublishAsync(email);
-            
+
             return false;
         }
 
@@ -69,7 +84,8 @@ namespace Sombra.Web
 
             var userLoginResponse = await ValidateAsync(userLoginRequest);
 
-            if(userLoginResponse.Success){
+            if (userLoginResponse.Success)
+            {
                 ClaimsIdentity identity = new ClaimsIdentity(this.GetUserClaims(userLoginResponse), CookieAuthenticationDefaults.AuthenticationScheme);
                 ClaimsPrincipal principal = new ClaimsPrincipal(identity);
 

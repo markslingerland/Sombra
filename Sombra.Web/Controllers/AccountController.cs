@@ -8,6 +8,7 @@ using EasyNetQ;
 using Microsoft.AspNetCore.Mvc;
 using Sombra.Messaging.Requests;
 using Sombra.Web.Models;
+using Sombra.Web.ViewModels;
 
 namespace Sombra.Web.Controllers
 {

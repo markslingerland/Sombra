@@ -24,16 +24,16 @@ namespace Sombra.Web.Infrastructure.Authentication
             _httpContext = httpContextAccessor.HttpContext;
         }
 
-        private async Task<UserLoginResponse> ValidateAsync(UserLoginRequest userLoginRequest)
+        public async Task<bool> ValidateAsync(UserLoginRequest userLoginRequest)
         {
-            return await _bus.RequestAsync(userLoginRequest);
+            return (await _bus.RequestAsync(userLoginRequest)).Success;
         }
 
         public async Task<bool> SignInAsync(UserLoginRequest userLoginRequest, bool isPersistent = false)
         {
-            var userLoginResponse = await ValidateAsync(userLoginRequest);
+            var userLoginResponse = await _bus.RequestAsync(userLoginRequest);
 
-            if(userLoginResponse.Success){
+            if (userLoginResponse.Success){
                 await _httpContext.SignInAsync(
                     _authenticationScheme, CreatePrincipal(userLoginResponse), new AuthenticationProperties { IsPersistent = isPersistent }
                 );

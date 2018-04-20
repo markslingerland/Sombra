@@ -30,7 +30,7 @@ namespace Sombra.IdentityService
                 credential.SecurityToken = String.Empty;
                 _context.SaveChanges();
                 response.Success = true;
-           }           
+            }           
 
             return response;
         }

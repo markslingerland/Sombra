@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sombra.Infrastructure.DAL;
+using System;
 using System.Collections.Generic;
 using System.Text;
 

@@ -5,30 +5,28 @@ using System.Text;
 
 namespace Sombra.TemplateService
 {
-    public class Testclass
+    public class EmailTemplateService
     {
-        public class EmailTemplateService
+        private readonly Dictionary<string, string> _templateContent;
+        private readonly EmailType _type;
+
+        public EmailTemplateService(EmailTemplateRequest request) // + Context voeren
         {
-            private readonly Dictionary<string, string> _templateContent;
-            private readonly EmailType _type;
+            _type = request.EmailType;
+            _templateContent = request.TemplateContent;
+        }
 
-            public EmailTemplateService(EmailTemplateRequest request) // + Context voeren
+        public string Construct()
+        {
+            var template = string.Empty; // Haal je template uit je context aan de hand van je _type
+            foreach (var item in _templateContent)
             {
-                _type = request.EmailType;
-                _templateContent = request.TemplateContent;
+                template = template.Replace($"[[{item.Key}]]", item.Value);
             }
 
-            public string Construct()
-            {
-                var template = string.Empty; // Haal je template uit je context aan de hand van je _type
-                foreach (var item in _templateContent)
-                {
-                    template = template.Replace($"[[{item.Key}]]", item.Value);
-                }
-
-                return template;
-            }
+            return template;
         }
     }
 }
+
         

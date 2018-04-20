@@ -34,7 +34,7 @@ namespace Sombra.Web
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
             services.AddScoped(c => RabbitHutch.CreateBus(_rabbitMqConnectionString));
             services.AddAutoMapper();
-            services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUserManager, UserManager>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

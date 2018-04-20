@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
@@ -111,6 +112,12 @@ namespace Sombra.IdentityService.UnitTests
                     Assert.AreEqual(response.UserKey, context.Users.Single().UserKey);
                     CollectionAssert.AreEqual(response.PermissionCodes, context.Permissions.Select(b => b.Name.ToString()).ToList());
                 }
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> master
             }
             finally
             {

@@ -6,17 +6,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sombra.Core;
 using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 using Sombra.Web.Areas.Development.Models;
-using Sombra.Web.Models;
-using Sombra.Web;
-using Sombra.Web.Infrastructure;
 using Sombra.Web.Infrastructure.Authentication;
 
 namespace Sombra.Web.Areas.Development.Controllers
 {
     [Area("Development")]
-    public class AuthenticationController : SombraController
+    public class AuthenticationController : Controller
     {
         private readonly IMapper _mapper;
         private readonly IUserManager _userManager;

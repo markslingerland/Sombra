@@ -38,7 +38,7 @@ namespace Sombra.TemplateService
             if (isContainerized)
             {
                 _rabbitMqConnectionString = Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING");
-                _sqlConnectionString = Environment.GetEnvironmentVariable("USER_DB_CONNECTIONSTRING");
+                _sqlConnectionString = Environment.GetEnvironmentVariable("TEMPLATE_DB_CONNECTIONSTRING");
             }
             else
             {
@@ -46,7 +46,7 @@ namespace Sombra.TemplateService
                     .AddJsonFile("appsettings.json").Build();
 
                 _rabbitMqConnectionString = config["RABBITMQ_CONNECTIONSTRING"];
-                _sqlConnectionString = config["USER_DB_CONNECTIONSTRING"];
+                _sqlConnectionString = config["TEMPLATE_DB_CONNECTIONSTRING"];
             }
         }
     }

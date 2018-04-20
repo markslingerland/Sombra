@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
@@ -16,9 +17,10 @@ namespace Sombra.IdentityService.UnitTests
     public class UserLoginRequestHandlerTest
     {
         [TestMethod]
-        public async Task Handle_Success(){
+        public async Task Handle_Success()
+        {
 
-            
+
             var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
             try
@@ -32,40 +34,47 @@ namespace Sombra.IdentityService.UnitTests
                 {
                     context.Database.EnsureCreated();
 
-                    var credentialType = new CredentialType(){
+                    var credentialType = new CredentialType()
+                    {
                         Name = Core.Enums.CredentialType.Default,
                         Position = 1,
                     };
 
-                    var user = new User(){
+                    var user = new User()
+                    {
                         UserKey = Guid.NewGuid(),
                         Name = "Test User",
-                        Created = DateTime.UtcNow
+                        Created = DateTime.Now
                     };
 
-                    var permission = new Permission(){
+                    var permission = new Permission()
+                    {
                         Name = Core.Enums.Permission.Default,
                         Position = 1
                     };
 
-                    var role = new Role(){
+                    var role = new Role()
+                    {
                         Name = Core.Enums.Role.Default,
                         Position = 1
                     };
 
-                    var credential = new Credential(){
+                    var credential = new Credential()
+                    {
                         CredentialType = credentialType,
                         User = user,
                         Identifier = "Admin",
                         Secret = Core.Encryption.CreateHash("admin")
                     };
 
-                    var rolePermission = new RolePermission(){
+                    var rolePermission = new RolePermission()
+                    {
                         Role = role,
                         Permission = permission
                     };
 
-                    var userRole = new UserRole(){
+                    var userRole = new UserRole()
+                    {
                         User = user,
                         Role = role
                     };
@@ -101,12 +110,14 @@ namespace Sombra.IdentityService.UnitTests
                     Assert.IsTrue(response.Success);
                     Assert.AreEqual(response.UserName, context.Users.Single().Name);
                     Assert.AreEqual(response.UserKey, context.Users.Single().UserKey);
-                    CollectionAssert.AreEqual(response.PermissionCodes, context.Permissions.Select(b => b.Name).ToList());
+                    CollectionAssert.AreEqual(response.PermissionCodes, context.Permissions.Select(b => b.Name.ToString()).ToList());
                 }
 
 
 
-            } finally {
+            }
+            finally
+            {
                 connection.Close();
             }
 
@@ -115,9 +126,10 @@ namespace Sombra.IdentityService.UnitTests
         }
 
         [TestMethod]
-        public async Task Handle_WrongPassword(){
+        public async Task Handle_WrongPassword()
+        {
 
-            
+
             var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
             try
@@ -131,40 +143,47 @@ namespace Sombra.IdentityService.UnitTests
                 {
                     context.Database.EnsureCreated();
 
-                    var credentialType = new CredentialType(){
+                    var credentialType = new CredentialType()
+                    {
                         Name = Core.Enums.CredentialType.Default,
                         Position = 1,
                     };
 
-                    var user = new User(){
+                    var user = new User()
+                    {
                         UserKey = Guid.NewGuid(),
                         Name = "Test User",
                         Created = DateTime.Now
                     };
 
-                    var permission = new Permission(){
+                    var permission = new Permission()
+                    {
                         Name = Core.Enums.Permission.Default,
                         Position = 1
                     };
 
-                    var role = new Role(){
+                    var role = new Role()
+                    {
                         Name = Core.Enums.Role.Default,
                         Position = 1
                     };
 
-                    var credential = new Credential(){
+                    var credential = new Credential()
+                    {
                         CredentialType = credentialType,
                         User = user,
                         Identifier = "Admin",
                         Secret = Core.Encryption.CreateHash("admin")
                     };
 
-                    var rolePermission = new RolePermission(){
+                    var rolePermission = new RolePermission()
+                    {
                         Role = role,
                         Permission = permission
                     };
 
-                    var userRole = new UserRole(){
+                    var userRole = new UserRole()
+                    {
                         User = user,
                         Role = role
                     };
@@ -203,7 +222,9 @@ namespace Sombra.IdentityService.UnitTests
                     CollectionAssert.AreEqual(response.PermissionCodes, null);
                 }
 
-            } finally {
+            }
+            finally
+            {
                 connection.Close();
             }
 

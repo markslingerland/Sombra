@@ -24,7 +24,7 @@ namespace Sombra.Infrastructure.DAL
                 {
                     using (var connection = factory.CreateConnection())
                     {
-                        connection.ConnectionString = connectionStringWrapper.ConnectionString;
+                        connection.ConnectionString = connectionStringWrapper.ConnectionStringWithoutDatabase;
                         try
                         {
                             connection.Open();

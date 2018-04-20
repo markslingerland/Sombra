@@ -2,6 +2,6 @@
 {
     public interface IResponse : IMessage
     {
-        bool Success { get; set; }
+        bool IsRequestSuccessful { get; set; }
     }
 }

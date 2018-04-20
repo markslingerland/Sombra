@@ -7,16 +7,16 @@ using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.EmailService
 {
-    public class EmailService : IAsyncEventHandler<Email>, IEmailService
+    public class EmailEventHandler : IAsyncEventHandler<EmailEvent>
     {
-        private readonly IEmailConfiguration _emailConfiguration;
+        private readonly SmtpClient _smtpClient;
 
-        public EmailService(IEmailConfiguration emailConfiguration)
+        public EmailEventHandler(SmtpClient smtpClient)
         {
-            _emailConfiguration = emailConfiguration;
+            _smtpClient = smtpClient;
         }
 
-        public MimeMessage CreateEmailMessage(Email emailMessage)
+        private MimeMessage CreateEmailMessage(EmailEvent emailMessage)
         {
             var message = new MimeMessage();
             message.To.AddRange(emailMessage.Recipient.Select(x => new MailboxAddress(x.Name, x.Address)));
@@ -35,22 +35,11 @@ namespace Sombra.EmailService
             return message;
         }
 
-        public async Task Send(MimeMessage message)
-        {
-            using (var emailClient = new SmtpClient())
-            {
-                await emailClient.ConnectAsync(_emailConfiguration.SmtpServer, _emailConfiguration.SmtpPort, true);
-                emailClient.AuthenticationMechanisms.Remove("XOAUTH2");
-                emailClient.Authenticate(_emailConfiguration.SmtpUsername, _emailConfiguration.SmtpPassword);
-                await emailClient.SendAsync(message);
-                await emailClient.DisconnectAsync(true);
-            }
-        }
-
-        public async Task Consume(Email message)
+        public async Task Consume(EmailEvent message)
         {
             var email = CreateEmailMessage(message);
-            await Send(email);
+            await _smtpClient.SendAsync(email);
+            await _smtpClient.DisconnectAsync(true);
         }
     }
 }

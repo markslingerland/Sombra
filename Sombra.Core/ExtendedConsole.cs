@@ -11,7 +11,7 @@ namespace Sombra.Core
 
         public static void Log(string message)
         {
-            Console.WriteLine($"{DateTime.UtcNow:MM/dd/yyyy HH:mm} - {message}");
+            Console.WriteLine($"{DateTime.UtcNow:MM/dd/yyyy HH:mm:ss} - {message}");
         }
     }
 }

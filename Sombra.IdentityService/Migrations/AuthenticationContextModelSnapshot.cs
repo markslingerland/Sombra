@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
+using Sombra.Core.Enums;
 using Sombra.IdentityService.DAL;
 using System;
 
@@ -20,7 +21,7 @@ namespace Sombra.IdentityService.Migrations
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Sombra.IdentityService.Credential", b =>
+            modelBuilder.Entity("Sombra.IdentityService.DAL.Credential", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -45,17 +46,12 @@ namespace Sombra.IdentityService.Migrations
                     b.ToTable("Credentials");
                 });
 
-            modelBuilder.Entity("Sombra.IdentityService.CredentialType", b =>
+            modelBuilder.Entity("Sombra.IdentityService.DAL.CredentialType", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(32);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<int>("Name")
                         .HasMaxLength(64);
 
                     b.Property<int?>("Position");
@@ -65,17 +61,12 @@ namespace Sombra.IdentityService.Migrations
                     b.ToTable("CredentialTypes");
                 });
 
-            modelBuilder.Entity("Sombra.IdentityService.Permission", b =>
+            modelBuilder.Entity("Sombra.IdentityService.DAL.Permission", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(32);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<int>("Name")
                         .HasMaxLength(64);
 
                     b.Property<int?>("Position");
@@ -85,17 +76,12 @@ namespace Sombra.IdentityService.Migrations
                     b.ToTable("Permissions");
                 });
 
-            modelBuilder.Entity("Sombra.IdentityService.Role", b =>
+            modelBuilder.Entity("Sombra.IdentityService.DAL.Role", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(32);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<int>("Name")
                         .HasMaxLength(64);
 
                     b.Property<int?>("Position");
@@ -105,7 +91,7 @@ namespace Sombra.IdentityService.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("Sombra.IdentityService.RolePermission", b =>
+            modelBuilder.Entity("Sombra.IdentityService.DAL.RolePermission", b =>
                 {
                     b.Property<Guid>("RoleId");
 
@@ -118,7 +104,7 @@ namespace Sombra.IdentityService.Migrations
                     b.ToTable("RolePermissions");
                 });
 
-            modelBuilder.Entity("Sombra.IdentityService.User", b =>
+            modelBuilder.Entity("Sombra.IdentityService.DAL.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -136,7 +122,7 @@ namespace Sombra.IdentityService.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Sombra.IdentityService.UserRole", b =>
+            modelBuilder.Entity("Sombra.IdentityService.DAL.UserRole", b =>
                 {
                     b.Property<Guid>("UserId");
 
@@ -149,40 +135,40 @@ namespace Sombra.IdentityService.Migrations
                     b.ToTable("UserRoles");
                 });
 
-            modelBuilder.Entity("Sombra.IdentityService.Credential", b =>
+            modelBuilder.Entity("Sombra.IdentityService.DAL.Credential", b =>
                 {
-                    b.HasOne("Sombra.IdentityService.CredentialType", "CredentialType")
+                    b.HasOne("Sombra.IdentityService.DAL.CredentialType", "CredentialType")
                         .WithMany("Credentials")
                         .HasForeignKey("CredentialTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Sombra.IdentityService.User", "User")
+                    b.HasOne("Sombra.IdentityService.DAL.User", "User")
                         .WithMany("Credentials")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Sombra.IdentityService.RolePermission", b =>
+            modelBuilder.Entity("Sombra.IdentityService.DAL.RolePermission", b =>
                 {
-                    b.HasOne("Sombra.IdentityService.Permission", "Permission")
+                    b.HasOne("Sombra.IdentityService.DAL.Permission", "Permission")
                         .WithMany("RolePermissions")
                         .HasForeignKey("PermissionId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Sombra.IdentityService.Role", "Role")
+                    b.HasOne("Sombra.IdentityService.DAL.Role", "Role")
                         .WithMany("RolePermissions")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Sombra.IdentityService.UserRole", b =>
+            modelBuilder.Entity("Sombra.IdentityService.DAL.UserRole", b =>
                 {
-                    b.HasOne("Sombra.IdentityService.Role", "Role")
+                    b.HasOne("Sombra.IdentityService.DAL.Role", "Role")
                         .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Sombra.IdentityService.User", "User")
+                    b.HasOne("Sombra.IdentityService.DAL.User", "User")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

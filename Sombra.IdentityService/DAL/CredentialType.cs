@@ -5,8 +5,7 @@ namespace Sombra.IdentityService.DAL
 {
     public class CredentialType : Entity
     {
-        public string Code { get; set; }
-        public string Name { get; set; }
+        public Core.Enums.CredentialType Name { get; set; }
         public int? Position { get; set; }
 
         public virtual ICollection<Credential> Credentials { get; set; }

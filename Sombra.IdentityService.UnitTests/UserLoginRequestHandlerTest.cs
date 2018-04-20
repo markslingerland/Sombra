@@ -40,7 +40,7 @@ namespace Sombra.IdentityService.UnitTests
                     var user = new User(){
                         UserKey = Guid.NewGuid(),
                         Name = "Test User",
-                        Created = DateTime.Now
+                        Created = DateTime.UtcNow
                     };
 
                     var permission = new Permission(){

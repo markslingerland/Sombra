@@ -13,8 +13,14 @@ namespace Sombra.Infrastructure.DAL
     {
         public static void ValidateAllDbConnections(ServiceProvider serviceProvider)
         {
+            ValidateSqlConnections(serviceProvider);
+            ValidateMongoConnections(serviceProvider);
+        }
+
+        public static void ValidateSqlConnections(ServiceProvider serviceProvider)
+        {
             var connectionStrings = serviceProvider.GetServices<SqlConnectionStringWrapper>();
-            
+
             foreach (var connectionStringWrapper in connectionStrings)
             {
                 var factory = SqlClientFactory.Instance;
@@ -46,7 +52,10 @@ namespace Sombra.Infrastructure.DAL
 
                 ExtendedConsole.Log($"{connectionStringWrapper.ContextType.Name} is online.");
             }
+        }
 
+        public static void ValidateMongoConnections(ServiceProvider serviceProvider)
+        {
             var mongoConnectionStrings = serviceProvider.GetServices<MongoConnectionStringWrapper>();
             foreach (var connectionStringWrapper in mongoConnectionStrings)
             {
@@ -58,7 +67,7 @@ namespace Sombra.Infrastructure.DAL
                     Thread.Sleep(2500);
                     ExtendedConsole.Log($"Waiting for mongoserver for database {connectionStringWrapper.DatabaseName} to come online..");
                 }
-                
+
                 ExtendedConsole.Log($"Mongoserver for database {connectionStringWrapper.DatabaseName} is online.");
             }
         }

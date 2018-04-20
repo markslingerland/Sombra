@@ -34,9 +34,10 @@ namespace Sombra.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult ForgotPassword(ForgotPasswordViewModel forgotPasswordViewModel)
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel forgotPasswordViewModel)
         {
-            return View();
+            var response = await _userManager.ForgotPassword(HttpContext, forgotPasswordViewModel);
+            return View(response);
         }
 
         [HttpGet]

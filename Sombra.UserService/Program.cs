@@ -24,9 +24,10 @@ namespace Sombra.UserService
                 Assembly.GetExecutingAssembly(),
                 _rabbitMqConnectionString,
                 services => services
+                    .AddAutoMapper(Assembly.GetExecutingAssembly())
                     .AddDbContext<UserContext>(_sqlConnectionString),
                 ConnectionValidator.ValidateAllDbConnections);
-
+            
             Thread.Sleep(Timeout.Infinite);
         }
         private static void SetupConfiguration()

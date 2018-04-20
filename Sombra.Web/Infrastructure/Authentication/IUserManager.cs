@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Sombra.IdentityService;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.Web.Areas.Development.Models;

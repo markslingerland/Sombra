@@ -5,8 +5,6 @@ using System.Web;
 using EasyNetQ;
 using EasyNetQ.AutoSubscribe;
 using System.Security.Claims;
-using Sombra.IdentityService;
-using Sombra.IdentityService.DAL;
 using Sombra.Messaging.Requests;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -56,8 +54,8 @@ namespace Sombra.Web
         public async Task<bool> ForgotPassword(HttpContext httpContext, ForgotPasswordViewModel forgotPasswordViewModel)
         {
             var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
-            var forgotPasswordRequest = _mapper.Map<ForgotPasswordRequest>(forgotPasswordViewModel);
-            var getUserByEmailRequest = _mapper.Map<GetUserByEmailRequest>(forgotPasswordViewModel);
+            var forgotPasswordRequest = new ForgotPasswordRequest(forgotPasswordViewModel.EmailAdress);
+            var getUserByEmailRequest = new GetUserByEmailRequest(){ EmailAddress = forgotPasswordViewModel.EmailAdress };
 
             var clientInfo = UserAgentParser.Extract(userAgent);
 
@@ -77,7 +75,7 @@ namespace Sombra.Web
 
             await _bus.PublishAsync(email);
 
-            return false;
+            return true;
         }
 
         public async Task<bool> SignInAsync(HttpContext httpContext, AuthenticationQuery authenticationQuery, bool isPersistent = false)

@@ -5,7 +5,7 @@ using Sombra.Messaging.Responses;
 namespace Sombra.Messaging.Requests{
     public class ForgotPasswordResponse : Response
     {
-        public Guid Secret;
+        public string Secret;
         public bool Success;
     }    
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using EasyNetQ;
 using EasyNetQ.AutoSubscribe;
 using System.Security.Claims;
@@ -40,11 +41,11 @@ namespace Sombra.Web
             return await _bus.RequestAsync(userLoginRequest);
         }
 
-        public async Task<bool> ChangePassword(HttpContext httpContext, ChangePasswordViewModel changePasswordViewModel, Guid? id)
+        public async Task<bool> ChangePassword(HttpContext httpContext, ChangePasswordViewModel changePasswordViewModel, string id)
         {
-            if(id.HasValue && id != Guid.Empty){
+            if(id != String.Empty){
                 if(changePasswordViewModel.Password == changePasswordViewModel.VerifiedPassword){
-                    var changePasswordRequest = new ChangePasswordRequest(changePasswordViewModel.Password, id.Value);
+                    var changePasswordRequest = new ChangePasswordRequest(Core.Encryption.CreateHash(changePasswordViewModel.Password), id);
                     var response = await _bus.RequestAsync(changePasswordRequest);
                     return response.Success;
                 }
@@ -58,15 +59,15 @@ namespace Sombra.Web
             var forgotPasswordRequest = _mapper.Map<ForgotPasswordRequest>(forgotPasswordViewModel);
             var getUserByEmailRequest = _mapper.Map<GetUserByEmailRequest>(forgotPasswordViewModel);
 
-            var clientInfo = Parser.GetDefault().Parse(userAgent);
+            var clientInfo = UserAgentParser.Extract(userAgent);
 
-            var operatingSystem = clientInfo.OS.Family;
-            var browserName = clientInfo.UserAgent.Family;
+            var operatingSystem = clientInfo.OperatingSystem;
+            var browserName = clientInfo.BrowserName;
 
             var user = await _bus.RequestAsync(getUserByEmailRequest);
             var name = String.Format("{0} {1}", user.FirstName, user.LastName);
             var forgotPasswordResponse = await _bus.RequestAsync(forgotPasswordRequest);
-            var actionurl = "" + forgotPasswordResponse.Secret.ToString();
+            var actionurl = $"{httpContext.Request.Host}/Account/ChangePassword/{forgotPasswordResponse.Secret.ToString()}";
 
             var emailTemplateRequest = new EmailTemplateRequest(EmailType.ForgotPasswordTemplate, TemplateContentBuilder.CreateForgotPasswordTempleteContent(name, actionurl, operatingSystem, browserName));
             var response = await _bus.RequestAsync(emailTemplateRequest);

@@ -46,9 +46,9 @@ namespace Sombra.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel changePasswordViewModel)
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel changePasswordViewModel, string id)
         {
-            var response = await _userManager.ChangePassword(HttpContext, changePasswordViewModel, Guid.Empty);
+            var response = await _userManager.ChangePassword(HttpContext, changePasswordViewModel, id);
             return View(response);
         }
 

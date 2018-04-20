@@ -24,10 +24,10 @@ namespace Sombra.IdentityService
             Console.WriteLine("ChangePasswordRequest received");
             var response = new ChangePasswordResponse(false);
 
-            var credential = await _context.Credentials.Select(b => b).Where(c => c.SecurityToken == message.SecurityToken).FirstOrDefaultAsync(); 
+            var credential = await _context.Credentials.Select(b => b).Where(c => c.SecurityToken == message.SecurityToken && c.ExpirationDate > DateTime.Now).FirstOrDefaultAsync(); 
             if(credential != null){
                 credential.Secret = message.Password;
-                credential.SecurityToken = Guid.Empty;
+                credential.SecurityToken = String.Empty;
                 _context.SaveChanges();
                 response.Success = true;
            }           

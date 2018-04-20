@@ -26,8 +26,10 @@ namespace Sombra.IdentityService
 
             var credential = await _context.Credentials.Select(b => b).Where(c => c.Identifier == message.Email).FirstOrDefaultAsync(); 
             if(credential != null){
-                var SecurityToken = Guid.NewGuid();
+                string guid = Guid.NewGuid().ToString();
+                string SecurityToken = Core.Hash.SHA256(guid);
                 credential.SecurityToken = SecurityToken; 
+                credential.ExpirationDate = DateTime.Now.AddDays(1);
                 _context.SaveChanges();
                 response.Success = true;
                 response.Secret = SecurityToken;

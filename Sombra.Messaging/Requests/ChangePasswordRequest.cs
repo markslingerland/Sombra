@@ -5,13 +5,13 @@ namespace Sombra.Messaging.Requests
 {
     public class ChangePasswordRequest : Request<ChangePasswordResponse>
     {
-        public ChangePasswordRequest(string password, Guid securityToken)
+        public ChangePasswordRequest(string password, string securityToken)
         {
             Password = password;
             SecurityToken = securityToken;
 
         }
         public string Password { get; set; }
-        public Guid SecurityToken { get; set; }
+        public string SecurityToken { get; set; }
     }
 }

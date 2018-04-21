@@ -36,8 +36,17 @@ namespace Sombra.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel forgotPasswordViewModel)
         {
-            var response = await _userManager.ForgotPassword(HttpContext, forgotPasswordViewModel);
-            return View(response);
+             if(ModelState.IsValid){
+                try 
+                {
+                    var response = await _userManager.ForgotPassword(HttpContext, forgotPasswordViewModel);
+                    RedirectToAction("Index", "Home");
+                } catch(Exception x){
+                    ModelState.AddModelError("ChangePasswordError", x.ToString()); // Replace x with your error message
+
+                }
+            }   
+            return View(forgotPasswordViewModel);
         }
 
         [HttpGet]
@@ -49,9 +58,19 @@ namespace Sombra.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel changePasswordViewModel, string id)
         {
-            var response = await _userManager.ChangePassword(HttpContext, changePasswordViewModel, id);
-            return View(response);
+            if(ModelState.IsValid){
+                try 
+                {
+                    var response = await _userManager.ChangePassword(HttpContext, changePasswordViewModel, id);
+                    RedirectToAction("Index", "Home");
+                } catch(Exception x){
+                    ModelState.AddModelError("ChangePasswordError", x.ToString()); // Replace x with your error message
+                }
+            }   
+            return View(changePasswordViewModel);         
         }
+        
+
 
 
         public IActionResult Error()

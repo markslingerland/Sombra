@@ -3,11 +3,11 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Sombra.Messaging.Infrastructure
 {
-    public class AutoResponderMessageDispatcher
+    public class AutoResponderRequestDispatcher : IAutoResponderRequestDispatcher
     {
         private readonly ServiceProvider _serviceProvider;
 
-        public AutoResponderMessageDispatcher(ServiceProvider serviceProvider)
+        public AutoResponderRequestDispatcher(ServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }

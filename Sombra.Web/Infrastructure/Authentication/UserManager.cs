@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using Sombra.Messaging.Responses;
 using Sombra.Messaging.Infrastructure;
+using UAParser;
 
 namespace Sombra.Web.Infrastructure.Authentication
 {
@@ -29,7 +30,24 @@ namespace Sombra.Web.Infrastructure.Authentication
             return (await _bus.RequestAsync(userLoginRequest)).Success;
         }
 
-        public async Task<bool> SignInAsync(UserLoginRequest userLoginRequest, bool isPersistent = false)
+
+        public async Task<bool> ForgotPassword(HttpContext httpContext){
+            //Need values: Name, SecretToken, OperatingSystem and used browser.
+            var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
+
+            var userAgentParser = Parser.GetDefault();
+            ClientInfo clientInfo = userAgentParser.Parse(userAgent);
+
+            var operatingSystem = clientInfo.OS.Family;
+            var browser = clientInfo.UserAgent.Family;
+
+            // var name = _bus.RequestAsync(nameRequest);
+            // var secretToken = _bus.RequstAsync(secretTokenRequest)
+            
+            return false;
+        }
+
+        public async Task<bool> SignInAsync(HttpContext httpContext, UserLoginRequest userLoginRequest, bool isPersistent = false)
         {
             var userLoginResponse = await _bus.RequestAsync(userLoginRequest);
 

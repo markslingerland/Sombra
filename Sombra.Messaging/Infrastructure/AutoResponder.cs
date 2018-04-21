@@ -4,19 +4,18 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using EasyNetQ;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Sombra.Messaging.Infrastructure
 {
     public class AutoResponder
     {
         protected readonly IBus Bus;
-        public AutoResponderMessageDispatcher AutoResponderMessageDispatcher { get; }
+        public IAutoResponderRequestDispatcher AutoResponderMessageDispatcher { get; }
 
-        public AutoResponder(IBus bus, ServiceProvider serviceProvider)
+        public AutoResponder(IBus bus, IAutoResponderRequestDispatcher messageDispatcher)
         {
             Bus = bus;
-            AutoResponderMessageDispatcher = new AutoResponderMessageDispatcher(serviceProvider);
+            AutoResponderMessageDispatcher = messageDispatcher;
         }
 
         public void RespondAsync(Assembly assembly)

@@ -26,11 +26,11 @@ namespace Sombra.Messaging.Infrastructure
 
             ExtendedConsole.Log("MessagingInstaller: Services are registered.");
 
-            var responder = new AutoResponder(bus, serviceProvider);
+            var responder = new AutoResponder(bus, new AutoResponderRequestDispatcher(serviceProvider));
             responder.RespondAsync(assembly);
             ExtendedConsole.Log("MessagingInstaller: AutoResponders initialized.");
 
-            var subscriber = new CustomAutoSubscriber(bus, serviceProvider, assembly.FullName);
+            var subscriber = new CustomAutoSubscriber(bus, new CustomAutoSubscriberMessageDispatcher(serviceProvider), assembly.FullName);
             subscriber.SubscribeAsync(assembly);
             ExtendedConsole.Log("MessagingInstaller: AutoSubscribers initialized.");
 

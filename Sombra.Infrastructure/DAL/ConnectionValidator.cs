@@ -13,17 +13,24 @@ namespace Sombra.Infrastructure.DAL
     {
         public static void ValidateAllDbConnections(ServiceProvider serviceProvider)
         {
+            ValidateSqlConnections(serviceProvider);
+            ValidateMongoConnections(serviceProvider);
+        }
+
+        public static void ValidateSqlConnections(ServiceProvider serviceProvider)
+        {
             var connectionStrings = serviceProvider.GetServices<SqlConnectionStringWrapper>();
-            
+
             foreach (var connectionStringWrapper in connectionStrings)
             {
                 var factory = SqlClientFactory.Instance;
-                using (var connection = factory.CreateConnection())
+                var connectionIsWorking = false;
+
+                while (!connectionIsWorking)
                 {
-                    connection.ConnectionString = connectionStringWrapper.ConnectionString;
-                    var connectionIsWorking = false;
-                    while (!connectionIsWorking)
+                    using (var connection = factory.CreateConnection())
                     {
+                        connection.ConnectionString = connectionStringWrapper.ConnectionStringWithoutDatabase;
                         try
                         {
                             connection.Open();
@@ -42,18 +49,25 @@ namespace Sombra.Infrastructure.DAL
                         }
                     }
                 }
+
                 ExtendedConsole.Log($"{connectionStringWrapper.ContextType.Name} is online.");
             }
+        }
 
+        public static void ValidateMongoConnections(ServiceProvider serviceProvider)
+        {
             var mongoConnectionStrings = serviceProvider.GetServices<MongoConnectionStringWrapper>();
             foreach (var connectionStringWrapper in mongoConnectionStrings)
             {
-                var client = new MongoClient(connectionStringWrapper.ConnectionString);
-                while (client.Cluster.Description.State == ClusterState.Disconnected)
+                while (true)
                 {
+                    var client = new MongoClient(connectionStringWrapper.ConnectionString);
+                    if (client.Cluster.Description.State == ClusterState.Connected) break;
+
                     Thread.Sleep(2500);
                     ExtendedConsole.Log($"Waiting for mongoserver for database {connectionStringWrapper.DatabaseName} to come online..");
                 }
+
                 ExtendedConsole.Log($"Mongoserver for database {connectionStringWrapper.DatabaseName} is online.");
             }
         }

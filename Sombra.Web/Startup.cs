@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Sombra.Web.Infrastructure.Filters;
 
 namespace Sombra.Web
 {
@@ -29,7 +30,10 @@ namespace Sombra.Web
             SetupConfiguration();
 
             services.AddMvc(options =>
-                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
+            {
+                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                options.Filters.Add(new ValidatorActionFilter());
+            });
             services.AddScoped(c => RabbitHutch.CreateBus(_rabbitMqConnectionString));
             services.AddAutoMapper();
             services.AddScoped<IUserManager, UserManager>();

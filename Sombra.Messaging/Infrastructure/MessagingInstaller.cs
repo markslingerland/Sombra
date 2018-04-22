@@ -41,11 +41,11 @@ namespace Sombra.Messaging.Infrastructure
                     var additionalActionStopwatch = new Stopwatch();
                     additionalActionStopwatch.Start();
 
-                    ExtendedConsole.Log($"MessagingInstaller: Running {nameof(additionalAction)}");
+                    ExtendedConsole.Log($"MessagingInstaller: Running {additionalAction.Method.Name}");
                     additionalAction(serviceProvider);
                     additionalActionStopwatch.Stop();
 
-                    ExtendedConsole.Log($"MessagingInstaller: {nameof(additionalAction)} finished running in {additionalActionStopwatch.ElapsedMilliseconds}ms.");
+                    ExtendedConsole.Log($"MessagingInstaller: {additionalAction.Method.Name} finished running in {additionalActionStopwatch.ElapsedMilliseconds}ms.");
                 }
             }
 

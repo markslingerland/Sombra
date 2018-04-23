@@ -9,12 +9,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-<<<<<<< HEAD
 using Sombra.Web.Infrastructure.Filters;
-=======
 using Sombra.Web.Infrastructure.Authentication;
->>>>>>> master
 
 namespace Sombra.Web
 {

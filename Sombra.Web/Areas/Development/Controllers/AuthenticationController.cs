@@ -6,10 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sombra.Core;
 using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 using Sombra.Web.Areas.Development.Models;
-using Sombra.Web.Models;
-using Sombra.Web;
+using Sombra.Web.Infrastructure.Authentication;
 
 namespace Sombra.Web.Areas.Development.Controllers
 {
@@ -36,11 +34,12 @@ namespace Sombra.Web.Areas.Development.Controllers
         public async Task<IActionResult> Index(AuthenticationQuery query)
         {
             query.LoginTypeCode = Core.Enums.CredentialType.Default;
-            var response = await _userManager.SignInAsync(HttpContext, query);
+            var response = await _userManager.SignInAsync(query);
+
             var result = new AuthenticationViewModel()
-                            { 
-                                Success = response
-                            };
+            { 
+                Success = response
+            };
 
             return View("View", result);
         }

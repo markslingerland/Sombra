@@ -31,7 +31,8 @@ namespace Sombra.IdentityService
                 response.Success = true;
                 response.UserKey = credential.User.UserKey;
                 response.UserName = credential.User.Name;
-                response.PermissionCodes = credential.User.UserRoles.SelectMany(ur => ur.Role.RolePermissions.Select(rp => rp.Permission.Name.ToString())).ToList();
+                response.Roles = credential.User.UserRoles.Select(r => r.Role.Name).ToList();
+                response.Permissions = credential.User.UserRoles.SelectMany(ur => ur.Role.RolePermissions.Select(rp => rp.Permission.Name)).ToList();
             }
 
             return response;

@@ -5,6 +5,9 @@ namespace Sombra.Messaging.Requests
 {
     public class ChangePasswordRequest : Request<ChangePasswordResponse>
     {
+        public ChangePasswordRequest(){
+            
+        }
         public ChangePasswordRequest(string password, string securityToken)
         {
             Password = password;

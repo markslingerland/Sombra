@@ -5,9 +5,12 @@ namespace Sombra.Messaging.Requests
 {
     public class ForgotPasswordRequest : Request<ForgotPasswordResponse>
     {
+        public ForgotPasswordRequest(){
+
+        }
         public ForgotPasswordRequest(string email)
         {
-            this.Email = email;
+            Email = email;
 
         }
         public string Email { get; set; }

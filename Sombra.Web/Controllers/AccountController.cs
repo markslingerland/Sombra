@@ -56,12 +56,12 @@ namespace Sombra.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel changePasswordViewModel, string id)
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel changePasswordViewModel, string securityToken)
         {
             if(ModelState.IsValid){
                 try 
                 {
-                    var response = await _userManager.ChangePassword(HttpContext, changePasswordViewModel, id);
+                    var response = await _userManager.ChangePassword(HttpContext, changePasswordViewModel, securityToken);
                     RedirectToAction("Index", "Home");
                 } catch(Exception x){
                     ModelState.AddModelError("ChangePasswordError", x.ToString()); // Replace x with your error message

@@ -21,10 +21,10 @@ namespace Sombra.IdentityService
         public async Task<ChangePasswordResponse> Handle(ChangePasswordRequest message)
         {
             
-            Console.WriteLine("ChangePasswordRequest received");
+            ExtendedConsole.Log("ChangePasswordRequest received");
             var response = new ChangePasswordResponse(false);
 
-            var credential = await _context.Credentials.Select(b => b).Where(c => c.SecurityToken == message.SecurityToken && c.ExpirationDate > DateTime.Now).FirstOrDefaultAsync(); 
+            var credential = await _context.Credentials.Select(b => b).Where(c => c.SecurityToken == message.SecurityToken && c.ExpirationDate > DateTime.UtcNow).FirstOrDefaultAsync(); 
             if(credential != null){
                 credential.Secret = message.Password;
                 credential.SecurityToken = String.Empty;

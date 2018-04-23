@@ -39,11 +39,11 @@ namespace Sombra.Web
             return await _bus.RequestAsync(userLoginRequest);
         }
 
-        public async Task<bool> ChangePassword(HttpContext httpContext, ChangePasswordViewModel changePasswordViewModel, string id)
+        public async Task<bool> ChangePassword(HttpContext httpContext, ChangePasswordViewModel changePasswordViewModel, string securityToken)
         {
-            if(id != String.Empty){
+            if (!string.IsNullOrEmpty(securityToken)) { 
                 if(changePasswordViewModel.Password == changePasswordViewModel.VerifiedPassword){
-                    var changePasswordRequest = new ChangePasswordRequest(Core.Encryption.CreateHash(changePasswordViewModel.Password), id);
+                    var changePasswordRequest = new ChangePasswordRequest(Core.Encryption.CreateHash(changePasswordViewModel.Password), securityToken);
                     var response = await _bus.RequestAsync(changePasswordRequest);
                     return response.Success;
                 }
@@ -55,7 +55,7 @@ namespace Sombra.Web
         {
             var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
             var forgotPasswordRequest = new ForgotPasswordRequest(forgotPasswordViewModel.EmailAdress);
-            var getUserByEmailRequest = new GetUserByEmailRequest(){ EmailAddress = forgotPasswordViewModel.EmailAdress };
+            var getUserByEmailRequest = new GetUserByEmailRequest{ EmailAddress = forgotPasswordViewModel.EmailAdress };
 
             var clientInfo = UserAgentParser.Extract(userAgent);
 
@@ -63,7 +63,7 @@ namespace Sombra.Web
             var browserName = clientInfo.BrowserName;
 
             var user = await _bus.RequestAsync(getUserByEmailRequest);
-            var name = String.Format("{0} {1}", user.FirstName, user.LastName);
+            var name = $"{user.FirstName} {user.LastName}";
             var forgotPasswordResponse = await _bus.RequestAsync(forgotPasswordRequest);
             var actionurl = $"{httpContext.Request.Host}/Account/ChangePassword/{forgotPasswordResponse.Secret.ToString()}";
 

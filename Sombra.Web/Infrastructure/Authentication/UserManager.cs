@@ -10,12 +10,9 @@ using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using Sombra.Messaging.Responses;
 using Sombra.Messaging.Infrastructure;
-using UAParser;
 using Sombra.Messaging.Events;
 using AutoMapper;
 using Sombra.Web.Areas.Development.Models;
-using Sombra.Web.Models;
-using Sombra.Web.Infrastructure;
 using Sombra.Web.ViewModels;
 
 namespace Sombra.Web.Infrastructure.Authentication
@@ -23,38 +20,28 @@ namespace Sombra.Web.Infrastructure.Authentication
     public class UserManager : IUserManager
     {
         private readonly IBus _bus;
-<<<<<<< HEAD
+        private readonly IMapper _mapper;
         private readonly HttpContext _httpContext;
         private static string _authenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 
-        public UserManager(IBus bus, IHttpContextAccessor httpContextAccessor)
-        {
-            _bus = bus;
-            _httpContext = httpContextAccessor.HttpContext;
-=======
-        private readonly IMapper _mapper;
-
-        public UserManager(IBus bus, IMapper mapper)
+        public UserManager(IBus bus, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _bus = bus;
             _mapper = mapper;
->>>>>>> master
+            _httpContext = httpContextAccessor.HttpContext;
         }
 
-        public async Task<bool> ValidateAsync(UserLoginRequest userLoginRequest)
+        public async Task<UserLoginResponse> ValidateAsync(UserLoginRequest userLoginRequest)
         {
-            return (await _bus.RequestAsync(userLoginRequest)).Success;
+            return await _bus.RequestAsync(userLoginRequest);
         }
 
-<<<<<<< HEAD
-
-        public async Task<bool> ForgotPassword(HttpContext httpContext){
-            //Need values: Name, SecretToken, OperatingSystem and used browser.
-=======
-        public async Task<bool> ChangePassword(HttpContext httpContext, ChangePasswordViewModel changePasswordViewModel, string securityToken)
+        public async Task<bool> ChangePassword(ChangePasswordViewModel changePasswordViewModel, string securityToken)
         {
-            if (!string.IsNullOrEmpty(securityToken)) { 
-                if(changePasswordViewModel.Password == changePasswordViewModel.VerifiedPassword){
+            if (!string.IsNullOrEmpty(securityToken))
+            {
+                if (changePasswordViewModel.Password == changePasswordViewModel.VerifiedPassword)
+                {
                     var changePasswordRequest = new ChangePasswordRequest(Core.Encryption.CreateHash(changePasswordViewModel.Password), securityToken);
                     var response = await _bus.RequestAsync(changePasswordRequest);
                     return response.Success;
@@ -62,13 +49,12 @@ namespace Sombra.Web.Infrastructure.Authentication
             }
             return false;
         }
-        
-        public async Task<bool> ForgotPassword(HttpContext httpContext, ForgotPasswordViewModel forgotPasswordViewModel)
+
+        public async Task<bool> ForgotPassword(ForgotPasswordViewModel forgotPasswordViewModel)
         {
->>>>>>> master
-            var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
+            var userAgent = _httpContext.Request.Headers["User-Agent"].ToString();
             var forgotPasswordRequest = new ForgotPasswordRequest(forgotPasswordViewModel.EmailAdress);
-            var getUserByEmailRequest = new GetUserByEmailRequest{ EmailAddress = forgotPasswordViewModel.EmailAdress };
+            var getUserByEmailRequest = new GetUserByEmailRequest { EmailAddress = forgotPasswordViewModel.EmailAdress };
 
             var clientInfo = UserAgentParser.Extract(userAgent);
 
@@ -78,33 +64,22 @@ namespace Sombra.Web.Infrastructure.Authentication
             var user = await _bus.RequestAsync(getUserByEmailRequest);
             var name = $"{user.FirstName} {user.LastName}";
             var forgotPasswordResponse = await _bus.RequestAsync(forgotPasswordRequest);
-            var actionurl = $"{httpContext.Request.Host}/Account/ChangePassword/{forgotPasswordResponse.Secret.ToString()}";
+            var actionurl = $"{_httpContext.Request.Host}/Account/ChangePassword/{forgotPasswordResponse.Secret.ToString()}";
 
             var emailTemplateRequest = new EmailTemplateRequest(EmailType.ForgotPasswordTemplate, TemplateContentBuilder.CreateForgotPasswordTempleteContent(name, actionurl, operatingSystem, browserName));
             var response = await _bus.RequestAsync(emailTemplateRequest);
 
             var email = new EmailEvent(new EmailAddress("noreply", "noreply@ikdoneer.nu"), new EmailAddress(name, forgotPasswordViewModel.EmailAdress), "Wachtwoord vergeten ikdoneer.nu",
-                                                    response.Template, true);
+                response.Template, true);
 
             await _bus.PublishAsync(email);
 
             return true;
         }
-
-        public async Task<bool> SignInAsync(HttpContext httpContext, AuthenticationQuery authenticationQuery, bool isPersistent = false)
+        public async Task<bool> SignInAsync(AuthenticationQuery authenticationQuery, bool isPersistent = false)
         {
-<<<<<<< HEAD
-            var userLoginResponse = await _bus.RequestAsync(userLoginRequest);
-=======
             var userLoginRequest = _mapper.Map<UserLoginRequest>(authenticationQuery);
-
             var userLoginResponse = await ValidateAsync(userLoginRequest);
-
-            if (userLoginResponse.Success)
-            {
-                ClaimsIdentity identity = new ClaimsIdentity(this.GetUserClaims(userLoginResponse), CookieAuthenticationDefaults.AuthenticationScheme);
-                ClaimsPrincipal principal = new ClaimsPrincipal(identity);
->>>>>>> master
 
             if (userLoginResponse.Success){
                 await _httpContext.SignInAsync(

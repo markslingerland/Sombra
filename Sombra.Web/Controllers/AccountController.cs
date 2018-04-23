@@ -1,12 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
-using EasyNetQ;
 using Microsoft.AspNetCore.Mvc;
-using Sombra.Messaging.Requests;
+using Sombra.Web.Infrastructure.Authentication;
 using Sombra.Web.Models;
 using Sombra.Web.ViewModels;
 
@@ -39,7 +35,7 @@ namespace Sombra.Web.Controllers
              if(ModelState.IsValid){
                 try 
                 {
-                    var response = await _userManager.ForgotPassword(HttpContext, forgotPasswordViewModel);
+                    var response = await _userManager.ForgotPassword(forgotPasswordViewModel);
                     RedirectToAction("Index", "Home");
                 } catch(Exception x){
                     ModelState.AddModelError("ChangePasswordError", x.ToString()); // Replace x with your error message
@@ -61,7 +57,7 @@ namespace Sombra.Web.Controllers
             if(ModelState.IsValid){
                 try 
                 {
-                    var response = await _userManager.ChangePassword(HttpContext, changePasswordViewModel, securityToken);
+                    var response = await _userManager.ChangePassword(changePasswordViewModel, securityToken);
                     RedirectToAction("Index", "Home");
                 } catch(Exception x){
                     ModelState.AddModelError("ChangePasswordError", x.ToString()); // Replace x with your error message

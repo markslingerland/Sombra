@@ -34,16 +34,12 @@ namespace Sombra.Web.Areas.Development.Controllers
         public async Task<IActionResult> Index(AuthenticationQuery query)
         {
             query.LoginTypeCode = Core.Enums.CredentialType.Default;
-<<<<<<< HEAD
-            var request = _mapper.Map<UserLoginRequest>(query);
-            var response = await _userManager.SignInAsync(request);
-=======
-            var response = await _userManager.SignInAsync(HttpContext, query);
->>>>>>> master
+            var response = await _userManager.SignInAsync(query);
+
             var result = new AuthenticationViewModel()
-                            { 
-                                Success = response
-                            };
+            { 
+                Success = response
+            };
 
             return View("View", result);
         }

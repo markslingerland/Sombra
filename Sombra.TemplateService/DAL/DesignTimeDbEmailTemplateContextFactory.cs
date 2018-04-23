@@ -15,7 +15,7 @@ namespace Sombra.TemplateService.Templates.DAL
                 .Build();
 
             var builder = new DbContextOptionsBuilder<EmailTemplateContext>();
-            var connectionString = configuration["User_DB_CONNECTIONSTRING"];
+            var connectionString = configuration["TEMPLATE_DB_CONNECTIONSTRING"];
             builder.UseSqlServer(connectionString);
 
             return new EmailTemplateContext(builder.Options);

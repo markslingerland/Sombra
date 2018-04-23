@@ -16,7 +16,7 @@ namespace Sombra.IdentityService
     {
         private static string _rabbitMqConnectionString;
         private static string _sqlConnectionString;
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             Console.WriteLine("Identity Service Started");
 

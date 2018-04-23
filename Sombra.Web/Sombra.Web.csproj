@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sombra.IdentityService\Sombra.IdentityService.csproj" />
     <ProjectReference Include="..\Sombra.Core\Sombra.Core.csproj" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
     <PackageReference Include="EasyNetQ" Version="2.3.1" />

@@ -8,7 +8,7 @@ namespace Sombra.Messaging.Events
         public EmailEvent(EmailAddress sender, List<EmailAddress> recipient, string subject, string body, bool isHtml = false)
         {
             Sender = sender;
-            Recipient = recipient;
+            Recipient =  recipient;
             Subject = subject;
             Body = body;
             IsHtml = isHtml;

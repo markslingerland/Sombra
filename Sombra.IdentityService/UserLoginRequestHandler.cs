@@ -20,7 +20,7 @@ namespace Sombra.IdentityService
 
         public async Task<UserLoginResponse> Handle(UserLoginRequest message)
         {
-            Console.WriteLine("UserLoginRequest received");
+            ExtendedConsole.Log("UserLoginRequest received");
             var response = new UserLoginResponse();
 
             var credential = await _context.Credentials.Include(c => c.User.UserRoles).ThenInclude(ur => ur.Role.RolePermissions).ThenInclude(rp => rp.Permission)
@@ -31,7 +31,8 @@ namespace Sombra.IdentityService
                 response.Success = true;
                 response.UserKey = credential.User.UserKey;
                 response.UserName = credential.User.Name;
-                response.PermissionCodes = credential.User.UserRoles.SelectMany(ur => ur.Role.RolePermissions.Select(rp => rp.Permission.Name.ToString())).ToList();
+                response.Roles = credential.User.UserRoles.Select(r => r.Role.Name).ToList();
+                response.Permissions = credential.User.UserRoles.SelectMany(ur => ur.Role.RolePermissions.Select(rp => rp.Permission.Name)).ToList();
             }
 
             return response;

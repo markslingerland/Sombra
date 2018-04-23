@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Threading;
 using System.IO;
 using Microsoft.Extensions.Configuration;
-
+using System.Linq;
 
 namespace Sombra.TemplateService
 {

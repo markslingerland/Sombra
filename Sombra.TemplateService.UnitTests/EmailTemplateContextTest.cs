@@ -40,11 +40,8 @@ namespace Sombra.TemplateService.UnitTests
                     context.SaveChanges();
 
                 }
-                var request = new EmailTemplateRequest
-                {
-                    EmailType = EmailType.ForgotPasswordTemplate,
-                    TemplateContent = new Dictionary<string, string>() { { "test", "test" } },
-                };
+                var request = new EmailTemplateRequest(EmailType.ForgotPasswordTemplate, new Dictionary<string, string>() { { "test", "test" } } );
+
 
                 EmailTemplateResponse response;
 
@@ -95,11 +92,7 @@ namespace Sombra.TemplateService.UnitTests
                     context.SaveChanges();
 
                 }
-                var request = new EmailTemplateRequest
-                {
-                    EmailType = EmailType.ForgotPasswordTemplate,
-                    TemplateContent = new Dictionary<string, string>() { { "test", "test" } },
-                };
+                var request = new EmailTemplateRequest(EmailType.ForgotPasswordTemplate, new Dictionary<string, string>() { { "test", "test" } } );
 
                 EmailTemplateResponse response;
 

@@ -11,8 +11,7 @@ namespace Sombra.Web.Controllers
     public class AccountController : Controller
     {
         private readonly IUserManager _userManager;
-
-
+        
         public AccountController(IUserManager userManager)
         {
             _userManager = userManager;
@@ -32,13 +31,13 @@ namespace Sombra.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel forgotPasswordViewModel)
         {
-             if(ModelState.IsValid){
+             if (ModelState.IsValid){
                 try 
                 {
                     var response = await _userManager.ForgotPassword(forgotPasswordViewModel);
                     RedirectToAction("Index", "Home");
                 } catch(Exception x){
-                    ModelState.AddModelError("ChangePasswordError", x.ToString()); // Replace x with your error message
+                    ModelState.AddModelError("ChangePasswordError", x.ToString()); // TODO: Replace x with your error message
 
                 }
             }   
@@ -54,20 +53,17 @@ namespace Sombra.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel changePasswordViewModel, string securityToken)
         {
-            if(ModelState.IsValid){
+            if (ModelState.IsValid){
                 try 
                 {
                     var response = await _userManager.ChangePassword(changePasswordViewModel, securityToken);
                     RedirectToAction("Index", "Home");
                 } catch(Exception x){
-                    ModelState.AddModelError("ChangePasswordError", x.ToString()); // Replace x with your error message
+                    ModelState.AddModelError("ChangePasswordError", x.ToString()); // TODO: Replace x with your error message
                 }
-            }   
-            return View(changePasswordViewModel);         
+            }
+            return View(changePasswordViewModel);
         }
-        
-
-
 
         public IActionResult Error()
         {

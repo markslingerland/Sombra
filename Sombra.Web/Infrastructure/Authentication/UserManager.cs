@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using EasyNetQ;
 using System.Security.Claims;
 using Sombra.Messaging.Requests;
@@ -57,16 +56,12 @@ namespace Sombra.Web.Infrastructure.Authentication
             var getUserByEmailRequest = new GetUserByEmailRequest { EmailAddress = forgotPasswordViewModel.EmailAdress };
 
             var clientInfo = UserAgentParser.Extract(userAgent);
-
-            var operatingSystem = clientInfo.OperatingSystem;
-            var browserName = clientInfo.BrowserName;
-
             var user = await _bus.RequestAsync(getUserByEmailRequest);
             var name = $"{user.FirstName} {user.LastName}";
             var forgotPasswordResponse = await _bus.RequestAsync(forgotPasswordRequest);
-            var actionurl = $"{_httpContext.Request.Host}/Account/ChangePassword/{forgotPasswordResponse.Secret.ToString()}";
+            var actionurl = $"{_httpContext.Request.Host}/Account/ChangePassword/{forgotPasswordResponse.Secret}";
 
-            var emailTemplateRequest = new EmailTemplateRequest(EmailType.ForgotPasswordTemplate, TemplateContentBuilder.CreateForgotPasswordTempleteContent(name, actionurl, operatingSystem, browserName));
+            var emailTemplateRequest = new EmailTemplateRequest(EmailType.ForgotPasswordTemplate, TemplateContentBuilder.CreateForgotPasswordTempleteContent(name, actionurl, clientInfo.OperatingSystem, clientInfo.BrowserName));
             var response = await _bus.RequestAsync(emailTemplateRequest);
 
             var email = new EmailEvent(new EmailAddress("noreply", "noreply@ikdoneer.nu"), new EmailAddress(name, forgotPasswordViewModel.EmailAdress), "Wachtwoord vergeten ikdoneer.nu",

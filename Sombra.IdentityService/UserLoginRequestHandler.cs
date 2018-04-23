@@ -20,7 +20,7 @@ namespace Sombra.IdentityService
 
         public async Task<UserLoginResponse> Handle(UserLoginRequest message)
         {
-            Console.WriteLine("UserLoginRequest received");
+            ExtendedConsole.Log("UserLoginRequest received");
             var response = new UserLoginResponse();
 
             var credential = await _context.Credentials.Include(c => c.User.UserRoles).ThenInclude(ur => ur.Role.RolePermissions).ThenInclude(rp => rp.Permission)

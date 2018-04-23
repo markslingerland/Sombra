@@ -113,17 +113,11 @@ namespace Sombra.IdentityService.UnitTests
                     CollectionAssert.AreEqual(response.Permissions, context.Permissions.Select(b => b.Name.ToString()).ToList());
                     CollectionAssert.AreEqual(response.Roles, context.Roles.Select(b => b.Name).ToList());
                 }
-
-
-
             }
             finally
             {
                 connection.Close();
             }
-
-
-
         }
 
         [TestMethod]

@@ -8,20 +8,17 @@ using EasyNetQ;
 using Microsoft.AspNetCore.Mvc;
 using Sombra.Messaging.Requests;
 using Sombra.Web.Models;
+using Sombra.Web.ViewModels;
 
 namespace Sombra.Web.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IBus _bus;
-        private readonly IMapper _mapper;
         private readonly IUserManager _userManager;
 
 
-        public AccountController(IBus bus, IMapper mapper, IUserManager userManager)
+        public AccountController(IUserManager userManager)
         {
-            _bus = bus;
-            _mapper = mapper;
             _userManager = userManager;
         }
 
@@ -33,14 +30,48 @@ namespace Sombra.Web.Controllers
         [HttpGet]
         public IActionResult ForgotPassword()
         {
-            return View(new EmailTemplateRequest());
+            return View(new ForgotPasswordViewModel());
         }
 
         [HttpPost]
-        public IActionResult ForgotPassword(EmailTemplateRequest emailTemplateRequest)
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel forgotPasswordViewModel)
         {
-            return View();
+             if(ModelState.IsValid){
+                try 
+                {
+                    var response = await _userManager.ForgotPassword(HttpContext, forgotPasswordViewModel);
+                    RedirectToAction("Index", "Home");
+                } catch(Exception x){
+                    ModelState.AddModelError("ChangePasswordError", x.ToString()); // Replace x with your error message
+
+                }
+            }   
+            return View(forgotPasswordViewModel);
         }
+
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View(new ChangePasswordViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel changePasswordViewModel, string securityToken)
+        {
+            if(ModelState.IsValid){
+                try 
+                {
+                    var response = await _userManager.ChangePassword(HttpContext, changePasswordViewModel, securityToken);
+                    RedirectToAction("Index", "Home");
+                } catch(Exception x){
+                    ModelState.AddModelError("ChangePasswordError", x.ToString()); // Replace x with your error message
+                }
+            }   
+            return View(changePasswordViewModel);         
+        }
+        
+
+
 
         public IActionResult Error()
         {

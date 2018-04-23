@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using EasyNetQ;
 using EasyNetQ.AutoSubscribe;
 using System.Security.Claims;
-using Sombra.IdentityService;
-using Sombra.IdentityService.DAL;
 using Sombra.Messaging.Requests;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -15,16 +14,24 @@ using Sombra.Messaging.Responses;
 using Sombra.Core;
 using Sombra.Messaging.Infrastructure;
 using UAParser;
+using Sombra.Messaging.Events;
+using AutoMapper;
+using Sombra.Web.Areas.Development.Models;
+using Sombra.Web.Models;
+using Sombra.Web.Infrastructure;
+using Sombra.Web.ViewModels;
 
 namespace Sombra.Web
 {
     public class UserManager : IUserManager
     {
         private readonly IBus _bus;
+        private readonly IMapper _mapper;
 
-        public UserManager(IBus bus)
+        public UserManager(IBus bus, IMapper mapper)
         {
             _bus = bus;
+            _mapper = mapper;
         }
 
         public async Task<UserLoginResponse> ValidateAsync(UserLoginRequest userLoginRequest)
@@ -32,27 +39,53 @@ namespace Sombra.Web
             return await _bus.RequestAsync(userLoginRequest);
         }
 
-        public async Task<bool> ForgotPassword(HttpContext httpContext){
-            //Need values: Name, SecretToken, OperatingSystem and used browser.
-            var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
-
-            var userAgentParser = Parser.GetDefault();
-            ClientInfo clientInfo = userAgentParser.Parse(userAgent);
-
-            var operatingSystem = clientInfo.OS.Family;
-            var browser = clientInfo.UserAgent.Family;
-
-            // var name = _bus.RequestAsync(nameRequest);
-            // var secretToken = _bus.RequstAsync(secretTokenRequest)
-            
+        public async Task<bool> ChangePassword(HttpContext httpContext, ChangePasswordViewModel changePasswordViewModel, string securityToken)
+        {
+            if (!string.IsNullOrEmpty(securityToken)) { 
+                if(changePasswordViewModel.Password == changePasswordViewModel.VerifiedPassword){
+                    var changePasswordRequest = new ChangePasswordRequest(Core.Encryption.CreateHash(changePasswordViewModel.Password), securityToken);
+                    var response = await _bus.RequestAsync(changePasswordRequest);
+                    return response.Success;
+                }
+            }
             return false;
         }
-
-        public async Task<bool> SignInAsync(HttpContext httpContext, UserLoginRequest userLoginRequest, bool isPersistent = false)
+        
+        public async Task<bool> ForgotPassword(HttpContext httpContext, ForgotPasswordViewModel forgotPasswordViewModel)
         {
+            var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
+            var forgotPasswordRequest = new ForgotPasswordRequest(forgotPasswordViewModel.EmailAdress);
+            var getUserByEmailRequest = new GetUserByEmailRequest{ EmailAddress = forgotPasswordViewModel.EmailAdress };
+
+            var clientInfo = UserAgentParser.Extract(userAgent);
+
+            var operatingSystem = clientInfo.OperatingSystem;
+            var browserName = clientInfo.BrowserName;
+
+            var user = await _bus.RequestAsync(getUserByEmailRequest);
+            var name = $"{user.FirstName} {user.LastName}";
+            var forgotPasswordResponse = await _bus.RequestAsync(forgotPasswordRequest);
+            var actionurl = $"{httpContext.Request.Host}/Account/ChangePassword/{forgotPasswordResponse.Secret.ToString()}";
+
+            var emailTemplateRequest = new EmailTemplateRequest(EmailType.ForgotPasswordTemplate, TemplateContentBuilder.CreateForgotPasswordTempleteContent(name, actionurl, operatingSystem, browserName));
+            var response = await _bus.RequestAsync(emailTemplateRequest);
+
+            var email = new EmailEvent(new EmailAddress("noreply", "noreply@ikdoneer.nu"), new EmailAddress(name, forgotPasswordViewModel.EmailAdress), "Wachtwoord vergeten ikdoneer.nu",
+                                                    response.Template, true);
+
+            await _bus.PublishAsync(email);
+
+            return true;
+        }
+
+        public async Task<bool> SignInAsync(HttpContext httpContext, AuthenticationQuery authenticationQuery, bool isPersistent = false)
+        {
+            var userLoginRequest = _mapper.Map<UserLoginRequest>(authenticationQuery);
+
             var userLoginResponse = await ValidateAsync(userLoginRequest);
 
-            if(userLoginResponse.Success){
+            if (userLoginResponse.Success)
+            {
                 ClaimsIdentity identity = new ClaimsIdentity(this.GetUserClaims(userLoginResponse), CookieAuthenticationDefaults.AuthenticationScheme);
                 ClaimsPrincipal principal = new ClaimsPrincipal(identity);
 

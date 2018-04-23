@@ -44,6 +44,12 @@ services:
       - rabbitmq
       - sqlserver
 
+  sombra.identityservice.unittests:
+    image: sombra.identityservice.unittests
+    build:
+      context: .
+      dockerfile: Sombra.IdentityService.UnitTests/Dockerfile
+      
   sombra.templateservice:
     image: sombra.templateservice
     build:

@@ -9,6 +9,8 @@ namespace Sombra.IdentityService.DAL
         public Guid CredentialTypeId { get; set; }
         public string Identifier { get; set; }
         public string Secret { get; set; }
+        public string SecurityToken { get; set; }
+        public DateTime ExpirationDate { get; set; }
 
         public virtual User User { get; set; }
         public virtual CredentialType CredentialType { get; set; }

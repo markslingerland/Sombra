@@ -110,7 +110,7 @@ namespace Sombra.IdentityService.UnitTests
                     Assert.IsTrue(response.Success);
                     Assert.AreEqual(response.UserName, context.Users.Single().Name);
                     Assert.AreEqual(response.UserKey, context.Users.Single().UserKey);
-                    CollectionAssert.AreEqual(response.Permissions, context.Permissions.Select(b => b.Name.ToString()).ToList());
+                    CollectionAssert.AreEqual(response.Permissions, context.Permissions.Select(b => b.Name).ToList());
                     CollectionAssert.AreEqual(response.Roles, context.Roles.Select(b => b.Name).ToList());
                 }
             }

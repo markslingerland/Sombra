@@ -29,7 +29,7 @@ before_install:
 - docker volume create --name=rabbitmqdata
 - docker volume create --name=portainerdata
 
-- docker-compose build -f docker-compose.yml -f docker-compose.integration.yml
+- docker-compose build
 - docker-compose up -f docker-compose.yml -f docker-compose.integration.yml -d
 script:
 - docker ps

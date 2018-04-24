@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  sombra.integrationtests:
+    image: sombra.integrationtests
+    build:
+      context: .
+      dockerfile: Sombra.IntegrationTests/Dockerfile
+    depends_on:
+      - rabbitmq
+      - sombra.web

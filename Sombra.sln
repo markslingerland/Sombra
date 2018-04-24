@@ -34,6 +34,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.UserService.UnitTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.IdentityService.UnitTests", "Sombra.IdentityService.UnitTests\Sombra.IdentityService.UnitTests.csproj", "{D33B8FDD-1061-4FFC-9343-13AE76AB5C69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sombra.IntegrationTests", "Sombra.IntegrationTests\Sombra.IntegrationTests.csproj", "{39A70012-CE59-43A2-B8A2-2E6C327DD178}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -236,6 +238,18 @@ Global
 		{D33B8FDD-1061-4FFC-9343-13AE76AB5C69}.Release|x64.Build.0 = Release|Any CPU
 		{D33B8FDD-1061-4FFC-9343-13AE76AB5C69}.Release|x86.ActiveCfg = Release|Any CPU
 		{D33B8FDD-1061-4FFC-9343-13AE76AB5C69}.Release|x86.Build.0 = Release|Any CPU
+		{39A70012-CE59-43A2-B8A2-2E6C327DD178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39A70012-CE59-43A2-B8A2-2E6C327DD178}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39A70012-CE59-43A2-B8A2-2E6C327DD178}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{39A70012-CE59-43A2-B8A2-2E6C327DD178}.Debug|x64.Build.0 = Debug|Any CPU
+		{39A70012-CE59-43A2-B8A2-2E6C327DD178}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{39A70012-CE59-43A2-B8A2-2E6C327DD178}.Debug|x86.Build.0 = Debug|Any CPU
+		{39A70012-CE59-43A2-B8A2-2E6C327DD178}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39A70012-CE59-43A2-B8A2-2E6C327DD178}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39A70012-CE59-43A2-B8A2-2E6C327DD178}.Release|x64.ActiveCfg = Release|Any CPU
+		{39A70012-CE59-43A2-B8A2-2E6C327DD178}.Release|x64.Build.0 = Release|Any CPU
+		{39A70012-CE59-43A2-B8A2-2E6C327DD178}.Release|x86.ActiveCfg = Release|Any CPU
+		{39A70012-CE59-43A2-B8A2-2E6C327DD178}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

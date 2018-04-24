@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  sombra.integrationtests:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}

@@ -17,7 +17,7 @@ What things you need to install the software and how to install them
 
 Without Docker:
 
-* [.NET Core](https://www.microsoft.com/net/download/dotnet-core/sdk-2.0.3)
+* [.NET Core 2.1-Preview2](https://www.microsoft.com/net/download/dotnet-core/sdk-2.1.300-preview2)
 * [RabbitMQ](https://www.rabbitmq.com/download.html)
 * SQLEXPRESS running
 

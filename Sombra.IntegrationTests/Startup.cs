@@ -32,7 +32,7 @@ namespace Sombra.IntegrationTests
                 { "Sombra.UserService", false }
             };
 
-            var busConnectionString = "host=localhost";// Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING");
+            var busConnectionString = Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING");
             if (string.IsNullOrEmpty(busConnectionString))
                 throw new ArgumentNullException("The RabbitMQ connectionstring cannot be null or empty!");
 

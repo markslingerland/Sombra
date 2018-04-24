@@ -4,6 +4,7 @@ using System.Reflection;
 using EasyNetQ;
 using Microsoft.Extensions.DependencyInjection;
 using Sombra.Core;
+using Sombra.Messaging.Events;
 
 namespace Sombra.Messaging.Infrastructure
 {
@@ -20,6 +21,7 @@ namespace Sombra.Messaging.Infrastructure
 
             var serviceProvider = addAdditionalServices(new ServiceCollection())
                 .AddEventHandlers(assembly)
+                .AddTransient(typeof(PublishOnlineEventHandler))
                 .AddRequestHandlers(assembly)
                 .AddSingleton(bus)
                 .BuildServiceProvider(true);
@@ -30,7 +32,7 @@ namespace Sombra.Messaging.Infrastructure
             responder.RespondAsync(assembly);
             ExtendedConsole.Log("MessagingInstaller: AutoResponders initialized.");
 
-            var subscriber = new CustomAutoSubscriber(bus, new CustomAutoSubscriberMessageDispatcher(serviceProvider), assembly.FullName);
+            var subscriber = new CustomAutoSubscriber(bus, new CustomAutoSubscriberMessageDispatcher(serviceProvider), assembly.GetName().Name);
             subscriber.SubscribeAsync(assembly);
             ExtendedConsole.Log("MessagingInstaller: AutoSubscribers initialized.");
 
@@ -48,6 +50,12 @@ namespace Sombra.Messaging.Infrastructure
                     ExtendedConsole.Log($"MessagingInstaller: {nameof(additionalAction)} finished running in {additionalActionStopwatch.ElapsedMilliseconds}ms.");
                 }
             }
+
+            bus.Subscribe<PublishOnlineEvent>(assembly.GetName().Name, message =>
+            {
+                var handler = serviceProvider.GetRequiredService<PublishOnlineEventHandler>();
+                handler.Consume(message).GetAwaiter().GetResult();
+            });
 
             installerStopwatch.Stop();
             ExtendedConsole.Log($"MessagingInstaller: Finished running in {installerStopwatch.ElapsedMilliseconds}ms.");

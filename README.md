@@ -17,7 +17,7 @@ What things you need to install the software and how to install them
 
 Without Docker:
 
-* [.NET Core](https://www.microsoft.com/net/download/dotnet-core/sdk-2.0.3)
+* [.NET Core 2.1-Preview2](https://www.microsoft.com/net/download/dotnet-core/sdk-2.1.300-preview2)
 * [RabbitMQ](https://www.rabbitmq.com/download.html)
 * SQLEXPRESS running
 
@@ -40,14 +40,18 @@ Or if you're not using docker
 ```
 Make sure RabbitMQ is running and a SQLEXPRESS instance
 
-dotnet run for the project
+dotnet run for the web project and for every individual service
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-All the the unit tests are being run during build time.
+All the the unit tests are being run during build time (Docker).
+To run the individual test project user the command 
+```
+dotnet test 
+```
 
 ## Deployment
 

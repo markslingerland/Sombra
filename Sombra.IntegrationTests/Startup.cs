@@ -36,8 +36,8 @@ namespace Sombra.IntegrationTests
 
             var items = Assemblies.ToDictionary(assembly => assembly.GetName().Name, assembly => false);
 
-            Environment.SetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING", "host=localhost;username=rabbitmquser;password=rabbitmqpassword");
-            Environment.SetEnvironmentVariable("CONTAINER_TYPE", "Docker");
+            //Environment.SetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING", "host=localhost;username=rabbitmquser;password=rabbitmqpassword");
+            //Environment.SetEnvironmentVariable("CONTAINER_TYPE", "Docker");
             var busConnectionString = Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING");
             if (string.IsNullOrEmpty(busConnectionString))
                 throw new ArgumentNullException("The RabbitMQ connectionstring cannot be null or empty!");

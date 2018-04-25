@@ -20,5 +20,11 @@ namespace Sombra.Web.Infrastructure.Authentication
 
         public bool HasPermission(Permission permission) => Permissions.Contains(permission);
         public bool IsInRole(Role role) => Roles.Contains(role);
+
+        public bool IsDonator => IsInRole(Role.Donator);
+        public bool IsCharityOwner => IsInRole(Role.CharityOwner);
+        public bool IsCharityUser => IsInRole(Role.CharityUser);
+        public bool IsEventOrganiser => IsInRole(Role.EventOrganiser);
+        public bool IsEventParticipant => IsInRole(Role.EventParticipant);
     }
 }

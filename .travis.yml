@@ -30,7 +30,7 @@ before_install:
 - docker volume create --name=portainerdata
 
 - docker-compose -f docker-compose.yml -f docker-compose.integration.yml build
-- docker-compose -f docker-compose.yml -f docker-compose.integration.yml up -d
+- docker-compose -f docker-compose.yml -f docker-compose.integration.yml up
 script:
 - docker ps
 after_success:

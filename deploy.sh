@@ -27,7 +27,4 @@ ssh -o "StrictHostKeyChecking no" $USER@$IP -p $PORT <<EOF
   DC_RABBITMQPASSWORD=$DC_RABBITMQPASSWORD DC_SQLPASSWORD=$DC_SQLPASSWORD DC_MONGOPASSWORD=$DC_MONGOPASSWORD DC_SMTPSERVER=$DC_SMTPSERVER DC_SMTPPORT=$DC_SMTPPORT DC_SMTPUSERNAME=$DC_SMTPUSERNAME DC_SMTPPASSWORD=$DC_SMTPPASSWORD docker-compose up -d
   docker ps
   docker system prune -a -f
-  docker rm $(docker ps -qa --no-trunc --filter "status=exited")
-  docker rmi $(docker images -aq --filter dangling=true)
-  docker volume rm $(docker volume ls -qf dangling=true)
 EOF

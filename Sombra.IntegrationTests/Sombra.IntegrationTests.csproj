@@ -15,12 +15,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Sombra.EmailService\Sombra.EmailService.csproj" />
+    <ProjectReference Include="..\Sombra.IdentityService\Sombra.IdentityService.csproj" />
     <ProjectReference Include="..\Sombra.Infrastructure\Sombra.Infrastructure.csproj" />
     <ProjectReference Include="..\Sombra.Messaging\Sombra.Messaging.csproj" />
+    <ProjectReference Include="..\Sombra.TemplateService\Sombra.TemplateService.csproj" />
+    <ProjectReference Include="..\Sombra.UserService\Sombra.UserService.csproj" />
+    <ProjectReference Include="..\Sombra.Web\Sombra.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EasyNetQ" Version="2.3.1" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.0.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />

@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Threading;
 using System.Timers;
 using EasyNetQ;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.TestHost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.Messaging.Events;
 using Sombra.Messaging.Infrastructure;
@@ -16,6 +19,14 @@ namespace Sombra.IntegrationTests
     {
         private const int TimeoutInMs = 600000;
 
+        public static List<Assembly> Assemblies = new List<Assembly>
+        {
+            typeof(IdentityService.Program).Assembly,
+            typeof(EmailService.Program).Assembly,
+            typeof(TemplateService.Program).Assembly,
+            typeof(UserService.Program).Assembly,
+        };
+
         [AssemblyInitialize]
         public static void Run(TestContext context)
         {
@@ -23,15 +34,10 @@ namespace Sombra.IntegrationTests
             timer.Elapsed += TimerFinished;
             timer.Start();
 
-            var items = new Dictionary<string, bool>
-            {
-                { "Sombra.IdentityService", false},
-                { "Sombra.EmailService", false},
-                { "Sombra.LoggingService", false },
-                { "Sombra.TemplateService", false },
-                { "Sombra.UserService", false }
-            };
+            var items = Assemblies.ToDictionary(assembly => assembly.GetName().Name, assembly => false);
 
+            Environment.SetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING", "host=localhost;username=rabbitmquser;password=rabbitmqpassword");
+            Environment.SetEnvironmentVariable("CONTAINER_TYPE", "Docker");
             var busConnectionString = Environment.GetEnvironmentVariable("RABBITMQ_CONNECTIONSTRING");
             if (string.IsNullOrEmpty(busConnectionString))
                 throw new ArgumentNullException("The RabbitMQ connectionstring cannot be null or empty!");
@@ -45,6 +51,16 @@ namespace Sombra.IntegrationTests
             }
 
             timer.Stop();
+        }
+        private static TestServer _server;
+        private static HttpClient _client;
+
+        [TestInitialize]
+        public void InitTest()
+        {
+            _server = new TestServer(new WebHostBuilder()
+                .UseStartup<Web.Startup>());
+            _client = _server.CreateClient();
         }
 
         [TestMethod]

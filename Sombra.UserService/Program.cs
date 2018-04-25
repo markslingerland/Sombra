@@ -10,7 +10,7 @@ using Sombra.UserService.DAL;
 
 namespace Sombra.UserService
 {
-    class Program
+    public class Program
     {
         private static string _rabbitMqConnectionString;
         private static string _sqlConnectionString;

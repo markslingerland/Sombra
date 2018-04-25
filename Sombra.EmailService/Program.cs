@@ -9,7 +9,7 @@ using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.EmailService
 {
-    class Program
+    public class Program
     {
         private static string _rabbitMqConnectionString;
         private static EmailConfiguration _emailConfiguration;

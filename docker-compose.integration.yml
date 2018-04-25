@@ -8,4 +8,3 @@ services:
       dockerfile: Sombra.IntegrationTests/Dockerfile
     depends_on:
       - rabbitmq
-      - sombra.web

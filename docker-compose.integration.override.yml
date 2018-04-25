@@ -4,4 +4,5 @@ services:
   sombra.integrationtests:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - CONTAINER_TYPE=Docker
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}

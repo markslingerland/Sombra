@@ -80,16 +80,6 @@ services:
       context: .
       dockerfile: Sombra.UserService.UnitTests/Dockerfile
 
-  sombra.loggingservice:
-    image: sombra.loggingservice
-    build:
-      context: .
-      dockerfile: Sombra.LoggingService/Dockerfile
-    depends_on:
-      - rabbitmq
-      - mongoserver
-
-
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
@@ -98,13 +88,6 @@ services:
   sqlserver:
     image: microsoft/mssql-server-linux:latest
     container_name: sqlserver
-
-  mongoserver:
-    image: mongo
-    container_name: mongoserver
-    volumes:
-      - mongoserverdata:/data/db
-
 
   portainer:
     image: portainer/portainer
@@ -119,8 +102,6 @@ volumes:
   sqlserverdata:
     external: true
   rabbitmqdata:
-    external: true
-  mongoserverdata:
     external: true
   portainerdata:
     external: true

@@ -18,14 +18,6 @@ services:
       - SMTP_USERNAME=${DC_SMTPUSERNAME}
       - SMTP_PASSWORD=${DC_SMTPPASSWORD}
 
-  sombra.loggingservice:
-    environment:
-      - CONTAINER_TYPE=Docker
-      - ASPNETCORE_ENVIRONMENT=Development
-      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
-      - MONGO_CONNECTIONSTRING=mongodb://${DC_MONGOUSER:-mongouser}:${DC_MONGOPASSWORD:-mongopassword}@${DC_MONGOHOST:-mongoserver}/
-      - MONGO_DATABASE=logging
-
   sombra.identityservice:
     environment:
       - CONTAINER_TYPE=Docker
@@ -61,14 +53,6 @@ services:
       - SA_PASSWORD=${DC_SQLPASSWORD:-HPlab1718}
     ports:
       - "1434:1433"
-  
-  mongoserver:
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=${DC_MONGOUSER:-mongouser}
-      - MONGO_INITDB_ROOT_PASSWORD=${DC_MONGOPASSWORD:-mongopassword}
-    ports:
-      - "27017:27017"
-
 
   portainer:
     ports:

@@ -34,9 +34,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.UserService.UnitTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.IdentityService.UnitTests", "Sombra.IdentityService.UnitTests\Sombra.IdentityService.UnitTests.csproj", "{D33B8FDD-1061-4FFC-9343-13AE76AB5C69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sombra.CharityService", "CharityService\Sombra.CharityService.csproj", "{A19156DF-DEF8-46D2-824E-4DDC081443EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.CharityService", "CharityService\Sombra.CharityService.csproj", "{A19156DF-DEF8-46D2-824E-4DDC081443EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sombra.CharityService.Tests", "Sombra.CharityService.Tests\Sombra.CharityService.Tests.csproj", "{1760360D-8F05-4CE4-B65A-2253E7936B40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.CharityService.UnitTests", "Sombra.CharityService.Tests\Sombra.CharityService.UnitTests.csproj", "{1760360D-8F05-4CE4-B65A-2253E7936B40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

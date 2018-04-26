@@ -1,9 +1,10 @@
+﻿using System;
 using System.Collections.Generic;
-using Sombra.Messaging.Responses;
+using System.Text;
 
-namespace Sombra.Messaging.Requests
+namespace Sombra.Messaging.Events
 {
-    public class CharityRequest : Request<CharityResponse>
+    public class CharityCreatedEvent : Event
     {
         public string CharityId { get; set; }
         public string NameCharity { get; set; }

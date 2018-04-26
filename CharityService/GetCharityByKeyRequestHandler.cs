@@ -11,21 +11,21 @@ using System.Linq;
 
 namespace Sombra.CharityService
 {
-    public class CharityRequestHandler : IAsyncRequestHandler<CharityRequest, CharityResponse>
+    public class GetCharityByKeyRequestHandler : IAsyncRequestHandler<CharityRequest, CharityResponse>
     {
         private readonly CharityContext _charityeContext;
 
-        public CharityRequestHandler(CharityContext charityContext)
+        public GetCharityByKeyRequestHandler(CharityContext charityContext)
         {
             _charityeContext = charityContext;
         }
 
         public async Task<CharityResponse> Handle(CharityRequest message)
         {
-            var response = new CharityResponse();
+            var response = new CharityResponse(true);
 
             var charity = await _charityeContext.Charity.Where(b => b.CharityId.Equals(message.CharityId)).Select(a => a).FirstOrDefaultAsync();
-            if (charity == null) return new CharityResponse();
+            if (charity == null) return new CharityResponse(false);
 
             response.CharityId = charity.CharityId;
             response.NameCharity = charity.NameCharity;

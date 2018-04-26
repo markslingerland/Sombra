@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CharityService\Sombra.CharityService.csproj" />
+    <ProjectReference Include="..\Sombra.CharityService\Sombra.CharityService.csproj" />
   </ItemGroup>
 
 </Project>

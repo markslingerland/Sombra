@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace Sombra.CharityService.Tests
+namespace Sombra.CharityService.UnitTests
 {
     public class UnitTest1
     {

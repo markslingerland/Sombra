@@ -12,6 +12,10 @@ namespace Sombra.TemplateService.DAL
         {
         }
 
+        public EmailTemplateContext(DbContextOptions<EmailTemplateContext> options, bool seed) : base(options, seed)
+        {
+        }
+
         protected override void Seed(ModelBuilder modelBuilder)
         {
             var templateDirectory = $"{Directory.GetCurrentDirectory()}\\Seed";
@@ -19,8 +23,8 @@ namespace Sombra.TemplateService.DAL
 
 
             modelBuilder.Entity<TemplateEntity>().HasData(
-                new TemplateEntity { Id = Guid.NewGuid(), TemplateId = EmailType.ForgotPassword, Template = template }
-            );
+                    new TemplateEntity {Id = Guid.NewGuid(), TemplateId = EmailType.ForgotPassword, Template = template}
+                );
         }
 
         public DbSet<TemplateEntity> Template { get; set; }

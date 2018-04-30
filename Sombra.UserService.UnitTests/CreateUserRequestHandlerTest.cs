@@ -31,7 +31,7 @@ namespace Sombra.UserService.UnitTests
                     .UseSqlite(connection)
                     .Options;
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     context.Database.EnsureCreated();
                 }
@@ -44,13 +44,13 @@ namespace Sombra.UserService.UnitTests
                     LastName = "Doe"
                 };
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     var handler = new CreateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     Assert.AreEqual(1, context.Users.Count());
                     Assert.AreEqual(request.UserKey, context.Users.Single().UserKey);
@@ -84,7 +84,7 @@ namespace Sombra.UserService.UnitTests
                     .UseSqlite(connection)
                     .Options;
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     context.Database.EnsureCreated();
                 }
@@ -96,13 +96,13 @@ namespace Sombra.UserService.UnitTests
                     LastName = "Doe"
                 };
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     var handler = new CreateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     Assert.AreEqual(0, context.Users.Count());
                     Assert.IsFalse(response.Success);

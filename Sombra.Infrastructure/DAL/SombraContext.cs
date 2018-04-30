@@ -11,6 +11,11 @@ namespace Sombra.Infrastructure.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.AddConfigurations(GetType().Assembly);
+            Seed(modelBuilder);
+        }
+
+        protected void Seed(ModelBuilder modelBuilder)
+        {
         }
     }
 }

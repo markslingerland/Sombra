@@ -24,7 +24,7 @@ namespace Sombra.IdentityService
             var response = new UserLoginResponse();
 
             var credential = await _context.Credentials.Include(c => c.User.UserRoles).ThenInclude(ur => ur.Role.RolePermissions).ThenInclude(rp => rp.Permission)
-                .FirstOrDefaultAsync(c => c.CredentialType.Name.ToString().ToLower() == message.LoginTypeCode.ToString().ToLower() && c.Identifier.ToLower() == message.Identifier.ToLower());
+                .FirstOrDefaultAsync(c => c.CredentialType.Name == message.LoginTypeCode && c.Identifier.Equals(message.Identifier, StringComparison.OrdinalIgnoreCase) && c.User.IsActive);
 
             if (credential != null && Encryption.ValidatePassword(message.Secret, credential.Secret))
             {

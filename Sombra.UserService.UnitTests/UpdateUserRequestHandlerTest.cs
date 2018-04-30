@@ -6,6 +6,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Sombra.Core.Enums;
 using Sombra.Messaging.Events;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
@@ -122,7 +123,7 @@ namespace Sombra.UserService.UnitTests
                     Assert.AreEqual(1, context.Users.Count());
                     Assert.AreNotEqual(request.FirstName, context.Users.Single().FirstName);
                     Assert.IsFalse(response.Success);
-                    Assert.AreEqual(UpdateUserErrorType.NotFound, response.ErrorType);
+                    Assert.AreEqual(ErrorType.NotFound, response.ErrorType);
                 }
 
                 busMock.Verify(m => m.PublishAsync(It.IsAny<UserUpdatedEvent>()), Times.Never());
@@ -187,7 +188,7 @@ namespace Sombra.UserService.UnitTests
                 {
                     Assert.AreEqual(2, context.Users.Count());
                     Assert.AreNotEqual(request.EmailAddress, context.Users.Single(u => u.UserKey == request.UserKey).EmailAddress);
-                    Assert.AreEqual(UpdateUserErrorType.EmailExists, response.ErrorType);
+                    Assert.AreEqual(ErrorType.EmailExists, response.ErrorType);
                     Assert.IsFalse(response.Success);
                 }
 

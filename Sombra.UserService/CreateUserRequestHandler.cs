@@ -4,6 +4,7 @@ using AutoMapper;
 using EasyNetQ;
 using Microsoft.EntityFrameworkCore;
 using Sombra.Core;
+using Sombra.Core.Enums;
 using Sombra.Messaging.Events;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
@@ -33,7 +34,7 @@ namespace Sombra.UserService
                 ExtendedConsole.Log("CreateUserRequestHandler: UserKey is empty");
                 return new CreateUserResponse
                 {
-                    Success = false
+                    ErrorType = ErrorType.InvalidUserKey
                 };
             }
 
@@ -49,8 +50,7 @@ namespace Sombra.UserService
             {
                 return new CreateUserResponse
                 {
-                    Success = false,
-                    ErrorType = CreateUserErrorType.EmailExists
+                    ErrorType = ErrorType.EmailExists
                 };
             }
 
@@ -63,10 +63,7 @@ namespace Sombra.UserService
             catch (DbUpdateException ex)
             {
                 ExtendedConsole.Log(ex);
-                return new CreateUserResponse
-                {
-                    Success = false
-                };
+                return new CreateUserResponse();
             }
 
             var userCreatedEvent = _mapper.Map<UserCreatedEvent>(user);

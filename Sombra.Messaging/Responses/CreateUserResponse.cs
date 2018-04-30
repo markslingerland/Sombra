@@ -1,14 +1,10 @@
-﻿namespace Sombra.Messaging.Responses
+﻿using Sombra.Core.Enums;
+
+namespace Sombra.Messaging.Responses
 {
     public class CreateUserResponse : Response
     {
         public bool Success { get; set; }
-        public CreateUserErrorType ErrorType { get; set; }
-    }
-
-    public enum CreateUserErrorType
-    {
-        Other = 0,
-        EmailExists = 1
+        public ErrorType ErrorType { get; set; }
     }
 }

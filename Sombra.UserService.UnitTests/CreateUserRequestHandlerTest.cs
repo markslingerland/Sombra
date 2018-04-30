@@ -6,6 +6,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Sombra.Core.Enums;
 using Sombra.Messaging.Events;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
@@ -105,7 +106,7 @@ namespace Sombra.UserService.UnitTests
                 using (var context = new UserContext(options, false))
                 {
                     Assert.AreEqual(0, context.Users.Count());
-                    Assert.AreEqual(CreateUserErrorType.Other, response.ErrorType);
+                    Assert.AreEqual(ErrorType.Other, response.ErrorType);
                     Assert.IsFalse(response.Success);
                 }
 
@@ -163,7 +164,7 @@ namespace Sombra.UserService.UnitTests
                 using (var context = new UserContext(options, false))
                 {
                     Assert.AreEqual(1, context.Users.Count());
-                    Assert.AreEqual(CreateUserErrorType.EmailExists, response.ErrorType);
+                    Assert.AreEqual(ErrorType.EmailExists, response.ErrorType);
                     Assert.IsFalse(response.Success);
                 }
 

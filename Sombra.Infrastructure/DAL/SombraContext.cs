@@ -14,7 +14,7 @@ namespace Sombra.Infrastructure.DAL
             Seed(modelBuilder);
         }
 
-        protected void Seed(ModelBuilder modelBuilder)
+        protected virtual void Seed(ModelBuilder modelBuilder)
         {
         }
     }

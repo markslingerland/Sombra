@@ -33,7 +33,7 @@ namespace Sombra.Web.Areas.Development.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(AuthenticationQuery query)
         {
-            query.LoginTypeCode = Core.Enums.CredentialType.Default;
+            query.LoginTypeCode = Core.Enums.CredentialType.Email;
             var response = await _userManager.SignInAsync(query);
 
             var result = new AuthenticationViewModel()

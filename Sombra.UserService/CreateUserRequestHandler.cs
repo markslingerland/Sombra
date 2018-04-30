@@ -37,6 +37,23 @@ namespace Sombra.UserService
                 };
             }
 
+            var isEmailAddressUniqueHandler = new UserEmailExistsRequestHandler(_context);
+            var request = new UserEmailExistsRequest
+            {
+                CurrentUserKey = message.UserKey,
+                EmailAddress = message.EmailAddress
+            };
+
+            var response = await isEmailAddressUniqueHandler.Handle(request);
+            if (response.EmailExists)
+            {
+                return new CreateUserResponse
+                {
+                    Success = false,
+                    ErrorType = CreateUserErrorType.EmailExists
+                };
+            }
+
             _context.Users.Add(user);
 
             try

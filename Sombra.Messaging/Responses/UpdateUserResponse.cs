@@ -9,6 +9,7 @@
     public enum UpdateUserErrorType
     {
         Other = 0,
-        NotFound = 1
+        NotFound = 1,
+        EmailExists = 2
     }
 }

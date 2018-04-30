@@ -25,7 +25,7 @@ namespace Sombra.TemplateService
                 _rabbitMqConnectionString,
                 services => services
                     .AddDbContext<EmailTemplateContext>(_sqlConnectionString),
-                ConnectionValidator.ValidateAllDbConnections);
+                ConnectionValidator.ValidateAllDbConnections, DatabaseMigrationHelper.ForceMigrations);
 
             Thread.Sleep(Timeout.Infinite);
         }

@@ -18,13 +18,15 @@ namespace Sombra.TemplateService.DAL
 
         protected override void Seed(ModelBuilder modelBuilder)
         {
-            var templateDirectory = $"{Directory.GetCurrentDirectory()}\\Seed";
-            var template = File.ReadAllText($"{templateDirectory}\\{EmailType.ForgotPassword.ToString()}.html");
-
-
             modelBuilder.Entity<TemplateEntity>().HasData(
-                    new TemplateEntity {Id = Guid.NewGuid(), TemplateId = EmailType.ForgotPassword, Template = template}
+                    new TemplateEntity { Id = Guid.NewGuid(), TemplateId = EmailType.ForgotPassword, Template = GetTemplateFromFile(EmailType.ForgotPassword) },
+                    new TemplateEntity { Id = Guid.NewGuid(), TemplateId = EmailType.ConfirmAccount, Template = GetTemplateFromFile(EmailType.ConfirmAccount) }
                 );
+        }
+
+        private static string GetTemplateFromFile(EmailType emailType)
+        {
+            return File.ReadAllText($"{Directory.GetCurrentDirectory()}\\Seed\\{emailType.ToString()}.html");
         }
 
         public DbSet<TemplateEntity> Template { get; set; }

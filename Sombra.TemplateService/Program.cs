@@ -1,14 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Sombra.Infrastructure.DAL;
+﻿using Sombra.Infrastructure.DAL;
 using Sombra.Infrastructure.Extensions;
 using Sombra.Messaging.Infrastructure;
-using Sombra.TemplateService.Templates.DAL;
+using Sombra.TemplateService.DAL;
 using System;
 using System.Reflection;
 using System.Threading;
 using System.IO;
 using Microsoft.Extensions.Configuration;
-using System.Linq;
 
 namespace Sombra.TemplateService
 {

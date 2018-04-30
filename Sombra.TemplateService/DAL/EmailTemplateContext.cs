@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Sombra.Infrastructure.DAL;
 
-namespace Sombra.TemplateService.Templates.DAL
+namespace Sombra.TemplateService.DAL
 {
     public class EmailTemplateContext : SombraContext
     {

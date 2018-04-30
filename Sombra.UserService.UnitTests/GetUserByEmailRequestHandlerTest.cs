@@ -30,7 +30,7 @@ namespace Sombra.UserService.UnitTests
                     EmailAddress = "john@doe.test"
                 };
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     context.Database.EnsureCreated();
                     context.Users.Add(new User
@@ -43,13 +43,13 @@ namespace Sombra.UserService.UnitTests
                     context.SaveChanges();
                 }
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     var handler = new GetUserByEmailRequestHandler(context, Helper.GetMapper());
                     response = await handler.Handle(request);
                 }
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     Assert.IsTrue(response.UserExists);
                     Assert.AreEqual(context.Users.Single().FirstName, response.FirstName);
@@ -80,7 +80,7 @@ namespace Sombra.UserService.UnitTests
                     EmailAddress = "ellen@doe.test"
                 };
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     context.Database.EnsureCreated();
                     context.Users.Add(new User
@@ -93,7 +93,7 @@ namespace Sombra.UserService.UnitTests
                     context.SaveChanges();
                 }
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     var handler = new GetUserByEmailRequestHandler(context, Helper.GetMapper());
                     response = await handler.Handle(request);

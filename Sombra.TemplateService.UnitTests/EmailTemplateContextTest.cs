@@ -3,10 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
-using Sombra.TemplateService.Templates.DAL;
+using Sombra.TemplateService.DAL;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
 
 namespace Sombra.TemplateService.UnitTests
 {
@@ -31,7 +30,7 @@ namespace Sombra.TemplateService.UnitTests
 
                     var template = new TemplateEntity
                     {
-                        TemplateId = EmailType.ForgotPasswordTemplate,
+                        TemplateId = EmailType.ForgotPassword,
                         Template = "template [[test]]",
 
                     };
@@ -40,7 +39,7 @@ namespace Sombra.TemplateService.UnitTests
                     context.SaveChanges();
 
                 }
-                var request = new EmailTemplateRequest(EmailType.ForgotPasswordTemplate, new Dictionary<string, string>() { { "test", "test" } } );
+                var request = new EmailTemplateRequest(EmailType.ForgotPassword, new Dictionary<string, string>() { { "test", "test" } } );
 
 
                 EmailTemplateResponse response;
@@ -83,7 +82,7 @@ namespace Sombra.TemplateService.UnitTests
 
                     var template = new TemplateEntity
                     {
-                        TemplateId = EmailType.ForgotPasswordTemplate,
+                        TemplateId = EmailType.ForgotPassword,
                         Template = null,
 
                     };
@@ -92,7 +91,7 @@ namespace Sombra.TemplateService.UnitTests
                     context.SaveChanges();
 
                 }
-                var request = new EmailTemplateRequest(EmailType.ForgotPasswordTemplate, new Dictionary<string, string>() { { "test", "test" } } );
+                var request = new EmailTemplateRequest(EmailType.ForgotPassword, new Dictionary<string, string>() { { "test", "test" } } );
 
                 EmailTemplateResponse response;
 

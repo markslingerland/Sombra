@@ -7,6 +7,7 @@ COPY Sombra.sln ./
 COPY Sombra.UserService/Sombra.UserService.csproj Sombra.UserService/
 COPY . .
 WORKDIR /src/Sombra.UserService
+RUN dotnet restore -p:RestoreUseSkipNonexistentTargets=false
 RUN dotnet build -c Release -o /app
 
 FROM build AS publish

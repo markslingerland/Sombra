@@ -30,7 +30,7 @@ namespace Sombra.IdentityService.UnitTests
                     .UseSqlite(connection)
                     .Options;
 
-                using (var context = new AuthenticationContext(options))
+                using (var context = new AuthenticationContext(options, false))
                 {
                     context.Database.EnsureCreated();
 
@@ -98,14 +98,14 @@ namespace Sombra.IdentityService.UnitTests
                 };
 
                 //Act
-                using (var context = new AuthenticationContext(options))
+                using (var context = new AuthenticationContext(options, false))
                 {
                     var handler = new UserLoginRequestHandler(context);
                     response = await handler.Handle(request);
                 }
 
                 //Assert
-                using (var context = new AuthenticationContext(options))
+                using (var context = new AuthenticationContext(options, false))
                 {
                     Assert.IsTrue(response.Success);
                     Assert.AreEqual(response.UserName, context.Users.Single().Name);
@@ -134,7 +134,7 @@ namespace Sombra.IdentityService.UnitTests
                     .UseSqlite(connection)
                     .Options;
 
-                using (var context = new AuthenticationContext(options))
+                using (var context = new AuthenticationContext(options, false))
                 {
                     context.Database.EnsureCreated();
 
@@ -202,14 +202,14 @@ namespace Sombra.IdentityService.UnitTests
                 };
 
                 //Act
-                using (var context = new AuthenticationContext(options))
+                using (var context = new AuthenticationContext(options, false))
                 {
                     var handler = new UserLoginRequestHandler(context);
                     response = await handler.Handle(request);
                 }
 
                 //Assert
-                using (var context = new AuthenticationContext(options))
+                using (var context = new AuthenticationContext(options, false))
                 {
                     Assert.IsFalse(response.Success);
                     Assert.IsNull(response.UserName);

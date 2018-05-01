@@ -25,7 +25,7 @@ namespace Sombra.TemplateService.UnitTests
                     .UseSqlite(connection)
                     .Options;
 
-                using (var context = new EmailTemplateContext(options))
+                using (var context = new EmailTemplateContext(options, false))
                 {
                     context.Database.EnsureCreated();
 
@@ -46,14 +46,14 @@ namespace Sombra.TemplateService.UnitTests
                 EmailTemplateResponse response;
 
                 //Act
-                using (var context = new EmailTemplateContext(options))
+                using (var context = new EmailTemplateContext(options, false))
                 {
                     var handler = new EmailTemplateRequestHandler(context);
                     response = await handler.Handle(request);
                 }
 
                 //Assert
-                using (var context = new EmailTemplateContext(options))
+                using (var context = new EmailTemplateContext(options, false))
                 {
                     Assert.AreEqual(response.Template, "template test");
                     Assert.IsTrue(response.HasTemplate);
@@ -77,7 +77,7 @@ namespace Sombra.TemplateService.UnitTests
                     .UseSqlite(connection)
                     .Options;
 
-                using (var context = new EmailTemplateContext(options))
+                using (var context = new EmailTemplateContext(options, false))
                 {
                     context.Database.EnsureCreated();
 
@@ -97,14 +97,14 @@ namespace Sombra.TemplateService.UnitTests
                 EmailTemplateResponse response;
 
                 //Act
-                using (var context = new EmailTemplateContext(options))
+                using (var context = new EmailTemplateContext(options, false))
                 {
                     var handler = new EmailTemplateRequestHandler(context);
                     response = await handler.Handle(request);
                 }
 
                 //Assert
-                using (var context = new EmailTemplateContext(options))
+                using (var context = new EmailTemplateContext(options, false))
                 {
                     Assert.IsFalse(response.HasTemplate);
                 }

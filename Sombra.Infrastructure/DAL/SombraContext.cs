@@ -13,8 +13,8 @@ namespace Sombra.Infrastructure.DAL
 
         protected SombraContext(DbContextOptions options, bool seed) : base(options)
         {
-            if (Database.IsSqlServer()) Database.Migrate();
             _seed = seed;
+            if (Database.IsSqlServer()) Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -1,10 +1,7 @@
 ﻿using Sombra.Infrastructure.DAL;
 using Sombra.Messaging.Requests;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Sombra.TemplateService.Templates.DAL
+namespace Sombra.TemplateService.DAL
 {
     public class TemplateEntity : Entity
     {

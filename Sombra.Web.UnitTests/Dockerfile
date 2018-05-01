@@ -9,6 +9,6 @@ COPY Sombra.Web/Sombra.Web.csproj Sombra.Web/
 
 COPY . .
 WORKDIR /src/Sombra.Web.UnitTests
-RUN dotnet build -c Release -o /app
+RUN dotnet build -c Debug -o /app
 
 RUN dotnet test

@@ -7,7 +7,7 @@ COPY *.sln ./
 COPY Sombra.TemplateService.UnitTests/Sombra.TemplateService.UnitTests.csproj Sombra.TemplateService.UnitTests/
 COPY . .
 WORKDIR /src/Sombra.TemplateService.UnitTests
-RUN dotnet restore -p:RestoreUseSkipNonexistentTargets=false
+RUN dotnet restore -nowarn:msb3202,nu1503 -p:RestoreUseSkipNonexistentTargets=false
 RUN dotnet build -c Release -o /app
 
 RUN dotnet test

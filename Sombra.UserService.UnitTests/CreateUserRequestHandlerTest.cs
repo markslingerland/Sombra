@@ -106,7 +106,7 @@ namespace Sombra.UserService.UnitTests
                 using (var context = new UserContext(options, false))
                 {
                     Assert.AreEqual(0, context.Users.Count());
-                    Assert.AreEqual(ErrorType.Other, response.ErrorType);
+                    Assert.AreEqual(ErrorType.InvalidUserKey, response.ErrorType);
                     Assert.IsFalse(response.Success);
                 }
 

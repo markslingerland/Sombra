@@ -23,7 +23,6 @@ before_install:
 - chmod +x ./deploy.sh
 - sudo mv docker-compose /usr/local/bin
 - docker-compose --version
-- echo $TRAVIS_COMMIT
 - docker volume create --name=sqlserverdata
 - docker volume create --name=mongoserverdata
 - docker volume create --name=rabbitmqdata

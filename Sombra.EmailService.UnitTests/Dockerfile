@@ -8,6 +8,7 @@ COPY Sombra.EmailService.UnitTests/Sombra.EmailService.UnitTests.csproj Sombra.E
 
 COPY . .
 WORKDIR /src/Sombra.EmailService.UnitTests
+RUN dotnet restore -nowarn:msb3202,nu1503 -p:RestoreUseSkipNonexistentTargets=false
 RUN dotnet build -c Release -o /app
 
 RUN dotnet test

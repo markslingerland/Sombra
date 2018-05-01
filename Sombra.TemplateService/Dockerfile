@@ -7,6 +7,7 @@ COPY Sombra.sln ./
 COPY Sombra.TemplateService/Sombra.TemplateService.csproj Sombra.TemplateService/
 COPY . .
 WORKDIR /src/Sombra.TemplateService
+RUN dotnet restore -nowarn:msb3202,nu1503 -p:RestoreUseSkipNonexistentTargets=false
 RUN dotnet build -c Release -o /app
 
 FROM build AS publish

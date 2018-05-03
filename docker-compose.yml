@@ -35,9 +35,6 @@ services:
     build:
       context: .
       dockerfile: Sombra.CharityService.UnitTests/Dockerfile
-    depends_on:
-      - rabbitmq
-      - sqlserver
 
   sombra.emailservice:
     image: sombra.emailservice

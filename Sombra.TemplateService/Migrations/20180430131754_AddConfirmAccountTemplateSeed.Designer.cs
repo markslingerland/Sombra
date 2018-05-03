@@ -10,9 +10,10 @@ using Sombra.TemplateService.DAL;
 namespace Sombra.TemplateService.Migrations
 {
     [DbContext(typeof(EmailTemplateContext))]
-    partial class EmailTemplateContextModelSnapshot : ModelSnapshot
+    [Migration("20180430131754_AddConfirmAccountTemplateSeed")]
+    partial class AddConfirmAccountTemplateSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

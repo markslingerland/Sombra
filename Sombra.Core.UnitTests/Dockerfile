@@ -7,6 +7,6 @@ COPY *.sln ./
 COPY Sombra.Core.UnitTests/Sombra.Core.UnitTests.csproj Sombra.Core.UnitTests/
 COPY . .
 WORKDIR /src/Sombra.Core.UnitTests
-RUN dotnet build -c Release -o /app
+RUN dotnet build -c Debug -o /app
 
 RUN dotnet test

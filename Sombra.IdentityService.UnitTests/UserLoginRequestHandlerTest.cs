@@ -161,7 +161,6 @@ namespace Sombra.IdentityService.UnitTests
                     Assert.IsFalse(response.Success);
                     Assert.IsNull(response.UserName);
                     Assert.AreEqual(response.UserKey, Guid.Empty);
-                    Assert.IsNull(response.Permissions);
                     Assert.IsNull(response.Roles);
                 }
 

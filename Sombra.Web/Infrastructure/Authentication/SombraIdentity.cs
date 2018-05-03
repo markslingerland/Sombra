@@ -7,15 +7,13 @@ namespace Sombra.Web.Infrastructure.Authentication
 {
     public sealed class SombraIdentity : ClaimsIdentity
     {
-        public SombraIdentity(IEnumerable<Claim> claims, Guid userKey, IEnumerable<Role> roles, IEnumerable<Permission> permissions, string authenticationType) : base(claims, authenticationType)
+        public SombraIdentity(IEnumerable<Claim> claims, Guid userKey, IEnumerable<Role> roles, string authenticationType) : base(claims, authenticationType)
         {
             Roles = roles;
-            Permissions = permissions;
             UserKey = userKey;
         }
 
         public Guid UserKey { get; }
         public IEnumerable<Role> Roles { get; }
-        public IEnumerable<Permission> Permissions { get; }
     }
 }

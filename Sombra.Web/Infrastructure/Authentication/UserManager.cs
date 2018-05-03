@@ -87,7 +87,7 @@ namespace Sombra.Web.Infrastructure.Authentication
 
         private SombraPrincipal CreatePrincipal(UserLoginResponse userLoginResponse)
         {
-            var identity = new SombraIdentity(GetUserClaims(userLoginResponse), userLoginResponse.UserKey, userLoginResponse.Roles, userLoginResponse.Permissions, _authenticationScheme);
+            var identity = new SombraIdentity(GetUserClaims(userLoginResponse), userLoginResponse.UserKey, userLoginResponse.Roles, _authenticationScheme);
             return new SombraPrincipal(identity);
         }
 
@@ -112,10 +112,7 @@ namespace Sombra.Web.Infrastructure.Authentication
         {
             var claims = new List<Claim>();
 
-            if (userLoginResponse.Permissions != null)
-            {
-                claims.AddRange(userLoginResponse.Permissions.Select(permission => new Claim(ClaimTypes.Role, permission.ToString())));
-            }
+            claims.AddRange(userLoginResponse.Roles.Select(role => new Claim(ClaimTypes.Role, role.ToString())));
 
             return claims;
         }

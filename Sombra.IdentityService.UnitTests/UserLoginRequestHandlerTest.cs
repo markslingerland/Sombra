@@ -34,12 +34,6 @@ namespace Sombra.IdentityService.UnitTests
                 {
                     context.Database.EnsureCreated();
 
-                    var credentialType = new CredentialType()
-                    {
-                        Name = Core.Enums.CredentialType.Default,
-                        Position = 1,
-                    };
-
                     var user = new User()
                     {
                         UserKey = Guid.NewGuid(),
@@ -47,45 +41,25 @@ namespace Sombra.IdentityService.UnitTests
                         Created = DateTime.Now
                     };
 
-                    var permission = new Permission()
-                    {
-                        Name = Core.Enums.Permission.Default,
-                        Position = 1
-                    };
-
                     var role = new Role()
                     {
-                        Name = Core.Enums.Role.Default,
-                        Position = 1
+                        RoleName = Core.Enums.Role.Default,
+                        User = user,
+
                     };
 
                     var credential = new Credential()
                     {
-                        CredentialType = credentialType,
+                        CredentialType = Core.Enums.CredentialType.Default,
                         User = user,
                         Identifier = "Admin",
-                        Secret = Core.Encryption.CreateHash("admin")
+                        Secret = Core.Encryption.CreateHash("admin"),
+                        
                     };
 
-                    var rolePermission = new RolePermission()
-                    {
-                        Role = role,
-                        Permission = permission
-                    };
-
-                    var userRole = new UserRole()
-                    {
-                        User = user,
-                        Role = role
-                    };
-
-                    context.Add(credentialType);
                     context.Add(user);
-                    context.Add(permission);
                     context.Add(role);
                     context.Add(credential);
-                    context.Add(rolePermission);
-                    context.Add(userRole);
                     context.SaveChanges();
                 }
 
@@ -110,8 +84,7 @@ namespace Sombra.IdentityService.UnitTests
                     Assert.IsTrue(response.Success);
                     Assert.AreEqual(response.UserName, context.Users.Single().Name);
                     Assert.AreEqual(response.UserKey, context.Users.Single().UserKey);
-                    CollectionAssert.AreEqual(response.Permissions, context.Permissions.Select(b => b.Name).ToList());
-                    CollectionAssert.AreEqual(response.Roles, context.Roles.Select(b => b.Name).ToList());
+                    CollectionAssert.AreEqual(response.Roles, context.Roles.Select(b => b.RoleName).ToList());
                 }
             }
             finally
@@ -138,12 +111,6 @@ namespace Sombra.IdentityService.UnitTests
                 {
                     context.Database.EnsureCreated();
 
-                    var credentialType = new CredentialType()
-                    {
-                        Name = Core.Enums.CredentialType.Default,
-                        Position = 1,
-                    };
-
                     var user = new User()
                     {
                         UserKey = Guid.NewGuid(),
@@ -151,45 +118,25 @@ namespace Sombra.IdentityService.UnitTests
                         Created = DateTime.Now
                     };
 
-                    var permission = new Permission()
-                    {
-                        Name = Core.Enums.Permission.Default,
-                        Position = 1
-                    };
-
                     var role = new Role()
                     {
-                        Name = Core.Enums.Role.Default,
-                        Position = 1
+                        RoleName = Core.Enums.Role.Default,
+                        User = user,
+
                     };
 
                     var credential = new Credential()
                     {
-                        CredentialType = credentialType,
+                        CredentialType = Core.Enums.CredentialType.Default,
                         User = user,
                         Identifier = "Admin",
-                        Secret = Core.Encryption.CreateHash("admin")
+                        Secret = Core.Encryption.CreateHash("admin"),
+                        
                     };
 
-                    var rolePermission = new RolePermission()
-                    {
-                        Role = role,
-                        Permission = permission
-                    };
-
-                    var userRole = new UserRole()
-                    {
-                        User = user,
-                        Role = role
-                    };
-
-                    context.Add(credentialType);
                     context.Add(user);
-                    context.Add(permission);
                     context.Add(role);
                     context.Add(credential);
-                    context.Add(rolePermission);
-                    context.Add(userRole);
                     context.SaveChanges();
                 }
 

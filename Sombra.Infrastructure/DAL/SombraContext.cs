@@ -21,6 +21,8 @@ namespace Sombra.Infrastructure.DAL
             if (Database.IsSqlServer()) Database.Migrate();
         }
 
+        protected SombraContext() : this(GetOptions(), false) { }
+
         public static T GetInMemoryContext()
         {
             return new T();
@@ -40,7 +42,7 @@ namespace Sombra.Infrastructure.DAL
             _sqliteConnection = null;
         }
 
-        protected static DbContextOptions<T> GetOptions()
+        private static DbContextOptions<T> GetOptions()
         {
             if (_sqliteConnection == null)
                 throw new NullReferenceException($"You must call {nameof(OpenInMemoryConnection)} before creating an in-memory database context!");

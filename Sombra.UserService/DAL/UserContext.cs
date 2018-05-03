@@ -5,11 +5,9 @@ namespace Sombra.UserService.DAL
 {
     public class UserContext : SombraContext<UserContext>
     {
-        public UserContext() : base(GetOptions(), false) { }
+        public UserContext() { }
 
-        public UserContext(DbContextOptions<UserContext> options) : base(options)
-        {
-        }
+        public UserContext(DbContextOptions<UserContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
     }

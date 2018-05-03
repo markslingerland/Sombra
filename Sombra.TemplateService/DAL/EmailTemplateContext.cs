@@ -8,11 +8,9 @@ namespace Sombra.TemplateService.DAL
 {
     public class EmailTemplateContext : SombraContext<EmailTemplateContext>
     {
-        public EmailTemplateContext() : base(GetOptions(), false) { }
+        public EmailTemplateContext() { }
 
-        public EmailTemplateContext(DbContextOptions<EmailTemplateContext> options) : base(options)
-        {
-        }
+        public EmailTemplateContext(DbContextOptions<EmailTemplateContext> options) : base(options) { }
 
         protected override void Seed(ModelBuilder modelBuilder)
         {

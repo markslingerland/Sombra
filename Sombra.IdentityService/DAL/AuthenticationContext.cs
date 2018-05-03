@@ -3,13 +3,11 @@ using Sombra.Infrastructure.DAL;
 
 namespace Sombra.IdentityService.DAL
 {
-    public class AuthenticationContext : SombraContext
+    public class AuthenticationContext : SombraContext<AuthenticationContext>
     {
-        public AuthenticationContext(DbContextOptions<AuthenticationContext> options) : base(options)
-        {
-        }
+        public AuthenticationContext() : base(GetOptions(), false) { }
 
-        public AuthenticationContext(DbContextOptions<AuthenticationContext> options, bool seed) : base(options, seed)
+        public AuthenticationContext(DbContextOptions<AuthenticationContext> options) : base(options)
         {
         }
 

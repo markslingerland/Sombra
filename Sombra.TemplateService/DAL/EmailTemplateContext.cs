@@ -6,13 +6,11 @@ using Sombra.Messaging.Requests;
 
 namespace Sombra.TemplateService.DAL
 {
-    public class EmailTemplateContext : SombraContext
+    public class EmailTemplateContext : SombraContext<EmailTemplateContext>
     {
-        public EmailTemplateContext(DbContextOptions<EmailTemplateContext> options) : base(options)
-        {
-        }
+        public EmailTemplateContext() : base(GetOptions(), false) { }
 
-        public EmailTemplateContext(DbContextOptions<EmailTemplateContext> options, bool seed) : base(options, seed)
+        public EmailTemplateContext(DbContextOptions<EmailTemplateContext> options) : base(options)
         {
         }
 

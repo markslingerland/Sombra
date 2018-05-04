@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using Sombra.Messaging.Requests;
-using Sombra.TemplateService.Templates.DAL;
+using Sombra.TemplateService.DAL;
 using System;
 
 namespace Sombra.TemplateService.Migrations

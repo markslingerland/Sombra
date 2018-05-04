@@ -7,6 +7,7 @@ COPY *.sln ./
 COPY Sombra.TemplateService.UnitTests/Sombra.TemplateService.UnitTests.csproj Sombra.TemplateService.UnitTests/
 COPY . .
 WORKDIR /src/Sombra.TemplateService.UnitTests
-RUN dotnet build -c Release -o /app
+
+RUN dotnet build -c Debug -o /app
 
 RUN dotnet test

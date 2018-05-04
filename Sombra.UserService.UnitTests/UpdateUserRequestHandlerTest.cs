@@ -39,7 +39,7 @@ namespace Sombra.UserService.UnitTests
                     LastName = "Doe"
                 };
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     context.Database.EnsureCreated();
                     context.Users.Add(new User
@@ -52,13 +52,13 @@ namespace Sombra.UserService.UnitTests
                     context.SaveChanges();
                 }
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     var handler = new UpdateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     Assert.AreEqual(1, context.Users.Count());
                     Assert.AreEqual(request.UserKey, context.Users.Single().UserKey);
@@ -98,7 +98,7 @@ namespace Sombra.UserService.UnitTests
                     LastName = "Doe"
                 };
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     context.Database.EnsureCreated();
                     context.Users.Add(new User
@@ -111,13 +111,13 @@ namespace Sombra.UserService.UnitTests
                     context.SaveChanges();
                 }
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     var handler = new UpdateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
-                using (var context = new UserContext(options))
+                using (var context = new UserContext(options, false))
                 {
                     Assert.AreEqual(1, context.Users.Count());
                     Assert.AreNotEqual(request.FirstName, context.Users.Single().FirstName);

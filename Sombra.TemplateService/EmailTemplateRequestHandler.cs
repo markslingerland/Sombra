@@ -2,11 +2,8 @@
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
-using Sombra.TemplateService.Templates.DAL;
-using System;
-using System.Collections.Generic;
+using Sombra.TemplateService.DAL;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Sombra.TemplateService
@@ -24,15 +21,16 @@ namespace Sombra.TemplateService
         {
             var response = new EmailTemplateResponse();
 
-            var template = await _emailTemplateContext.Template.Where(b => b.TemplateId.Equals(message.EmailType)).Select(a => a.Template).FirstOrDefaultAsync();
-            if (template == null) return new EmailTemplateResponse();
+            var template = await _emailTemplateContext.Template.FirstOrDefaultAsync(b => b.TemplateId.Equals(message.EmailType));
+            if (template?.Template == null) return new EmailTemplateResponse();
+            var templateBody = template.Template;
 
             foreach (var item in message.TemplateContent)
             {
-                template = template.Replace($"[[{item.Key}]]", item.Value);
+                templateBody = templateBody.Replace($"[[{item.Key}]]", item.Value);
             }
 
-            response.Template = template;
+            response.Template = templateBody;
 
             return response;
         }

@@ -7,10 +7,11 @@ COPY *.sln ./
 COPY Sombra.EmailService/Sombra.EmailService.csproj Sombra.EmailService/
 COPY . .
 WORKDIR /src/Sombra.EmailService
-RUN dotnet build -c Release -o /app
+
+RUN dotnet build -c Debug -o /app
 
 FROM build AS publish
-RUN dotnet publish -c Release -o /app
+RUN dotnet publish -c Debug -o /app
 
 FROM base AS final
 WORKDIR /app

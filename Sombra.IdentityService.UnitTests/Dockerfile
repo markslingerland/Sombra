@@ -9,6 +9,7 @@ COPY Sombra.IdentityService/Sombra.IdentityService.csproj Sombra.IdentityService
 
 COPY . .
 WORKDIR /src/Sombra.IdentityService.UnitTests
-RUN dotnet build -c Release -o /app
+
+RUN dotnet build -c Debug -o /app
 
 RUN dotnet test

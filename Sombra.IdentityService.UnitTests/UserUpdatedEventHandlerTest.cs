@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Sombra.Core.Enums;
 using Sombra.IdentityService.DAL;
 using Sombra.Messaging.Events;
 
@@ -25,11 +26,6 @@ namespace Sombra.IdentityService.UnitTests
                     EmailAddress = "ellen@doe.com"
                 };
 
-                var credentialType = new CredentialType
-                {
-                    Name = Core.Enums.CredentialType.Email
-                };
-
                 var user = new User
                 {
                     UserKey = userUpdatedEvent.UserKey,
@@ -38,7 +34,7 @@ namespace Sombra.IdentityService.UnitTests
 
                 var credential = new Credential
                 {
-                    CredentialType = credentialType,
+                    CredentialType = CredentialType.Email,
                     User = user,
                     Identifier = "john@doe.com"
                 };
@@ -47,7 +43,6 @@ namespace Sombra.IdentityService.UnitTests
                 {
                     context.Database.EnsureCreated();
                     context.Users.Add(user);
-                    context.CredentialTypes.Add(credentialType);
                     context.Credentials.Add(credential);
 
                     context.SaveChanges();
@@ -85,11 +80,6 @@ namespace Sombra.IdentityService.UnitTests
                     LastName = "Doe"
                 };
 
-                var credentialType = new CredentialType
-                {
-                    Name = Core.Enums.CredentialType.Email
-                };
-
                 var user = new User
                 {
                     UserKey = Guid.NewGuid(),
@@ -98,7 +88,7 @@ namespace Sombra.IdentityService.UnitTests
 
                 var credential = new Credential
                 {
-                    CredentialType = credentialType,
+                    CredentialType = CredentialType.Email,
                     User = user,
                     Identifier = "john@doe.com"
                 };
@@ -107,7 +97,6 @@ namespace Sombra.IdentityService.UnitTests
                 {
                     context.Database.EnsureCreated();
                     context.Users.Add(user);
-                    context.CredentialTypes.Add(credentialType);
                     context.Credentials.Add(credential);
 
                     context.SaveChanges();

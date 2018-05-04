@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using EasyNetQ;
@@ -11,7 +12,7 @@ using Sombra.Messaging.Responses;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Events;
 using AutoMapper;
-using Sombra.Web.Areas.Development.Models;
+using Sombra.Core.Enums;
 using Sombra.Web.ViewModels;
 
 namespace Sombra.Web.Infrastructure.Authentication
@@ -35,10 +36,64 @@ namespace Sombra.Web.Infrastructure.Authentication
             return await _bus.RequestAsync(userLoginRequest);
         }
 
+        public async Task<RegisterAccountResultViewModel> RegisterAccount(RegisterAccountViewModel model)
+        {
+            var emailExistsMessage = "Dit e-mailadres kan niet worden gebruikt om een account te registeren!";
+
+            var emailExistsRequest = _mapper.Map<UserEmailExistsRequest>(model);
+            var emailExistsResponse = await _bus.RequestAsync(emailExistsRequest);
+            if (emailExistsResponse.EmailExists)
+            {
+                return new RegisterAccountResultViewModel
+                {
+                    Message = emailExistsMessage
+                };
+            }
+
+            var userKey = Guid.NewGuid();
+            var createIdentityRequest = _mapper.Map<CreateIdentityRequest>(model);
+            createIdentityRequest.UserKey = userKey;
+
+            var createIdentityResponse = await _bus.RequestAsync(createIdentityRequest);
+            if (createIdentityResponse.Success)
+            {
+                var createUserRequest = _mapper.Map<CreateUserRequest>(model);
+                createUserRequest.UserKey = userKey;
+                var createUserResponse = await _bus.RequestAsync(createUserRequest);
+                if (createUserResponse.Success)
+                {
+                    return new RegisterAccountResultViewModel
+                    {
+                        Success = true,
+                        Message = $"Het account is succesvol geregistreerd! Er is een e-mail verzonden naar {model.EmailAddress} om het account te activeren."
+                    };
+                }
+
+                return new RegisterAccountResultViewModel
+                {
+                    Message = "Er is een fout opgetreden bij het afronden van de registratie van je account. Probeer het later opnieuw!"
+                };
+
+            }
+
+            if (createIdentityResponse.ErrorType == ErrorType.EmailExists)
+            {
+                return new RegisterAccountResultViewModel
+                {
+                    Message = emailExistsMessage
+                };
+            }
+            return new RegisterAccountResultViewModel
+            {
+                Message = "Er is een fout opgetreden bij het registeren van je account. Probeer het later opnieuw!"
+            };
+        }
+
         public async Task<bool> ChangePassword(ChangePasswordViewModel changePasswordViewModel, string securityToken)
         {
             if (!string.IsNullOrEmpty(securityToken))
             {
+
                 if (changePasswordViewModel.Password == changePasswordViewModel.VerifiedPassword)
                 {
                     var changePasswordRequest = new ChangePasswordRequest(Core.Encryption.CreateHash(changePasswordViewModel.Password), securityToken);
@@ -72,7 +127,7 @@ namespace Sombra.Web.Infrastructure.Authentication
             return true;
         }
 
-        public async Task<bool> SignInAsync(AuthenticationQuery authenticationQuery, bool isPersistent = false)
+        public async Task<LoginResultViewModel> SignInAsync(LoginViewModel authenticationQuery, bool isPersistent = false)
         {
             var userLoginRequest = _mapper.Map<UserLoginRequest>(authenticationQuery);
             var userLoginResponse = await ValidateAsync(userLoginRequest);
@@ -83,7 +138,7 @@ namespace Sombra.Web.Infrastructure.Authentication
                 );
             }
 
-            return userLoginResponse.Success;
+            return new LoginResultViewModel {Success = userLoginResponse.Success};
         }
 
         private SombraPrincipal CreatePrincipal(UserLoginResponse userLoginResponse)

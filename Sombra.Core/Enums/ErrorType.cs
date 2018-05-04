@@ -9,6 +9,8 @@
         TokenInvalid = 4,
         InvalidEmail = 5,
         AlreadyActive = 6,
-        InvalidUserKey = 7
+        InvalidUserKey = 7,
+        InactiveAccount = 8,
+        InvalidPassword = 9
     }
 }

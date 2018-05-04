@@ -1,5 +1,4 @@
-@using Sombra.Messaging
-@model Sombra.Web.Areas.Development.Models.AuthenticationQuery
+@model Sombra.Web.ViewModels.LoginViewModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -9,7 +8,7 @@
 @using (Html.BeginForm(FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    @Html.EditorFor(m => m.LoginTypeCode)
+    @Html.EditorFor(m => m.CredentialType)
     @Html.EditorFor(m => m.Identifier)
     @Html.EditorFor(m => m.Secret)
     <input type="submit" value="Search" />

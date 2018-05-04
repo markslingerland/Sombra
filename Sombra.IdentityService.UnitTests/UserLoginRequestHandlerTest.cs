@@ -19,8 +19,6 @@ namespace Sombra.IdentityService.UnitTests
         [TestMethod]
         public async Task Handle_Success()
         {
-
-
             var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
             try

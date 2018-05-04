@@ -27,8 +27,6 @@ namespace Sombra.IdentityService.Migrations
 
                     b.Property<int>("CredentialType");
 
-                    b.Property<Guid>("CredentialTypeId");
-
                     b.Property<DateTime>("ExpirationDate");
 
                     b.Property<string>("Identifier")

@@ -22,11 +22,14 @@ namespace Sombra.IdentityService
 
         public async Task<CreateIdentityResponse> Handle(CreateIdentityRequest message)
         {
-            if (message.UserKey == default) return new CreateIdentityResponse();
+            if (message.UserKey == default) return new CreateIdentityResponse
+            {
+                ErrorType = ErrorType.InvalidUserKey
+            };
 
             if (message.CredentialType == CredentialType.Email)
             {
-                if (await _context.Credentials.AnyAsync(c => c.CredentialType == CredentialType.Email && c.Identifier == message.Identifier))
+                if (await _context.Credentials.AnyAsync(c => c.CredentialType == CredentialType.Email && c.Identifier.Equals(message.Identifier, StringComparison.OrdinalIgnoreCase)))
                 {
                     return new CreateIdentityResponse
                     {

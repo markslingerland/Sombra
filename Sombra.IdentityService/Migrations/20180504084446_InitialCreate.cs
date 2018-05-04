@@ -31,7 +31,6 @@ namespace Sombra.IdentityService.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     UserId = table.Column<Guid>(nullable: false),
-                    CredentialTypeId = table.Column<Guid>(nullable: false),
                     Identifier = table.Column<string>(maxLength: 64, nullable: false),
                     Secret = table.Column<string>(maxLength: 1024, nullable: true),
                     SecurityToken = table.Column<string>(nullable: true),

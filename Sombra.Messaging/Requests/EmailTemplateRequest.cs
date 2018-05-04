@@ -1,22 +1,22 @@
-using System.Collections.Generic;
+using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Responses;
 
 namespace Sombra.Messaging.Requests
 {
+    [Cachable]
     public class EmailTemplateRequest : Request<EmailTemplateResponse>
     {
         public EmailTemplateRequest()
         {
         }
 
-        public EmailTemplateRequest(EmailType emailType, Dictionary<string, string> templateContent)
+        public EmailTemplateRequest(EmailType emailType)
         {
             EmailType = emailType;
-            TemplateContent = templateContent;
         }
 
+        [CacheKey]
         public EmailType EmailType { get; set; }
-        public Dictionary<string, string> TemplateContent { get; set; }
     }
 
     public enum EmailType

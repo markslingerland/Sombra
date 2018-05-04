@@ -4,7 +4,6 @@ using AutoMapper;
 using EasyNetQ;
 using Microsoft.AspNetCore.Mvc;
 using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 using Sombra.Web.Areas.Development.Models;
 using Sombra.Messaging.Infrastructure;
 

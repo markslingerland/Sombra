@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
@@ -15,22 +15,17 @@ namespace Sombra.UserService.UnitTests
         [TestMethod]
         public async Task UserEmailExistsRequestHandler_Handle_Returns_EmailExists()
         {
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
+            UserContext.OpenInMemoryConnection();
 
             try
             {
-                var options = new DbContextOptionsBuilder<UserContext>()
-                    .UseSqlite(connection)
-                    .Options;
-
                 UserEmailExistsResponse response;
                 var request = new UserEmailExistsRequest
                 {
                     EmailAddress = "john@doe.test"
                 };
 
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
                     context.Users.Add(new User
@@ -41,7 +36,7 @@ namespace Sombra.UserService.UnitTests
                     context.SaveChanges();
                 }
 
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     var handler = new UserEmailExistsRequestHandler(context);
                     response = await handler.Handle(request);
@@ -51,29 +46,24 @@ namespace Sombra.UserService.UnitTests
             }
             finally
             {
-                connection.Close();
+                UserContext.CloseInMemoryConnection();
             }
         }
 
         [TestMethod]
         public async Task UserEmailExistsRequestHandler_Handle__Returns_EmailNotExists()
         {
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
+            UserContext.OpenInMemoryConnection();
 
             try
             {
-                var options = new DbContextOptionsBuilder<UserContext>()
-                    .UseSqlite(connection)
-                    .Options;
-
                 UserEmailExistsResponse response;
                 var request = new UserEmailExistsRequest
                 {
                     EmailAddress = "ellen@doe.test"
                 };
 
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
                     context.Users.Add(new User
@@ -84,7 +74,7 @@ namespace Sombra.UserService.UnitTests
                     context.SaveChanges();
                 }
 
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     var handler = new UserEmailExistsRequestHandler(context);
                     response = await handler.Handle(request);
@@ -94,7 +84,7 @@ namespace Sombra.UserService.UnitTests
             }
             finally
             {
-                connection.Close();
+                UserContext.CloseInMemoryConnection();
             }
         }
 

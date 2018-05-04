@@ -9,7 +9,7 @@ COPY Sombra.IdentityService/Sombra.IdentityService.csproj Sombra.IdentityService
 
 COPY . .
 WORKDIR /src/Sombra.IdentityService.UnitTests
-RUN dotnet restore -nowarn:msb3202,nu1503 -p:RestoreUseSkipNonexistentTargets=false
-RUN dotnet build -c Release -o /app
+
+RUN dotnet build -c Debug -o /app
 
 RUN dotnet test

@@ -2,8 +2,6 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using EasyNetQ;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Sombra.Core.Enums;
@@ -20,19 +18,14 @@ namespace Sombra.UserService.UnitTests
         [TestMethod]
         public async Task CreateUserRequestHandler_Handle_Returns_Success()
         {
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
+            UserContext.OpenInMemoryConnection();
 
             try
             {
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<UserCreatedEvent>())).Returns(Task.FromResult(true));
 
-                var options = new DbContextOptionsBuilder<UserContext>()
-                    .UseSqlite(connection)
-                    .Options;
-
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
                 }
@@ -45,13 +38,13 @@ namespace Sombra.UserService.UnitTests
                     LastName = "Doe"
                 };
 
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     var handler = new CreateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(1, context.Users.Count());
                     Assert.AreEqual(request.UserKey, context.Users.Single().UserKey);
@@ -66,26 +59,21 @@ namespace Sombra.UserService.UnitTests
             }
             finally
             {
-                connection.Close();
+                UserContext.CloseInMemoryConnection();
             }
         }
 
         [TestMethod]
         public async Task CreateUserRequestHandler_Handle_Returns_KeyEmpty()
         {
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
+            UserContext.OpenInMemoryConnection();
 
             try
             {
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<UserCreatedEvent>())).Returns(Task.FromResult(true));
 
-                var options = new DbContextOptionsBuilder<UserContext>()
-                    .UseSqlite(connection)
-                    .Options;
-
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
                 }
@@ -97,13 +85,13 @@ namespace Sombra.UserService.UnitTests
                     LastName = "Doe"
                 };
 
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     var handler = new CreateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(0, context.Users.Count());
                     Assert.AreEqual(ErrorType.InvalidUserKey, response.ErrorType);
@@ -172,7 +160,7 @@ namespace Sombra.UserService.UnitTests
             }
             finally
             {
-                connection.Close();
+                UserContext.CloseInMemoryConnection();
             }
         }
     }

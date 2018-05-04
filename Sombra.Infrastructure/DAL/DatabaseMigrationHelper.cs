@@ -14,7 +14,7 @@ namespace Sombra.Infrastructure.DAL
             foreach (var connectionString in connectionStrings)
             {
                 ExtendedConsole.Log($"Forcing migrations for {connectionString.ContextType.Name}");
-                using (var context = (SombraContext) serviceProvider.GetRequiredService(connectionString.ContextType))
+                using (var context = (DbContext) serviceProvider.GetRequiredService(connectionString.ContextType))
                 {
                     ExtendedConsole.Log($"Finished forcing migrations for {connectionString.ContextType.Name}");
                 }

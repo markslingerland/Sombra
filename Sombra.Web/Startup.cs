@@ -41,8 +41,7 @@ namespace Sombra.Web
             services.AddMemoryCache();
 
             services.AddScoped(c => RabbitHutch.CreateBus(_rabbitMqConnectionString));
-            services.AddScoped<ICachingBus>(sp =>
-                new CachingRabbitBus(sp.GetRequiredService<IMemoryCache>(), sp.GetRequiredService<IBus>()));
+            services.AddScoped<ICachingBus, CachingRabbitBus>();
 
             services.AddAutoMapper();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

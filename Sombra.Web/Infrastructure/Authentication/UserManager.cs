@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using EasyNetQ;
 using System.Security.Claims;
 using Sombra.Messaging.Requests;
 using Microsoft.AspNetCore.Authentication;
@@ -8,22 +7,22 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using Sombra.Messaging.Responses;
-using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Events;
 using AutoMapper;
 using Sombra.Web.Areas.Development.Models;
+using Sombra.Web.Infrastructure.Messaging;
 using Sombra.Web.ViewModels;
 
 namespace Sombra.Web.Infrastructure.Authentication
 {
     public class UserManager : IUserManager
     {
-        private readonly IBus _bus;
+        private readonly ICachingBus _bus;
         private readonly IMapper _mapper;
         private readonly HttpContext _httpContext;
         private static string _authenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 
-        public UserManager(IBus bus, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+        public UserManager(ICachingBus bus, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _bus = bus;
             _mapper = mapper;

@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using EasyNetQ;
+using Microsoft.EntityFrameworkCore;
 using Sombra.CharityService.DAL;
 using Sombra.Core;
+using Sombra.Messaging.Events;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
@@ -12,30 +15,53 @@ using System.Threading.Tasks;
 
 namespace Sombra.CharityService
 {
-    class ChangeCharityRequestHandler : IAsyncRequestHandler<CharityRequest, CharityResponse>
+    public class ChangeCharityRequestHandler : IAsyncRequestHandler<CharityRequest, CharityResponse>
     {
         private readonly CharityContext _context;
-        public ChangeCharityRequestHandler(CharityContext context)
+        private readonly IMapper _mapper;
+        private readonly IBus _bus;
+
+        public ChangeCharityRequestHandler(CharityContext context, IMapper mapper, IBus bus)
         {
             _context = context;
+            _mapper = mapper;
+            _bus = bus;
         }
 
         public async Task<CharityResponse> Handle(CharityRequest message)
         {
 
             ExtendedConsole.Log("ChangeCharityRequest received");
-            var response = new CharityResponse(false);
-
-            var charity = await _context.Charity.Where(b => b.CharityId.Equals(message.CharityId)).Select(a => a).FirstOrDefaultAsync();
-            if (charity != null)
+            var charity = await _context.Charity.FirstOrDefaultAsync(u => u.CharityId == message.CharityId);
+            if (charity == null)
             {
-                charity.NameCharity = message.NameCharity;
-                charity.NameOwner = message.NameOwner;
-                _context.SaveChanges();
-                response.Success = true;
+                return new CharityResponse
+                {
+                    Success = false,
+                };
             }
 
-            return response;
+            _context.Entry(charity).CurrentValues.SetValues(message);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                ExtendedConsole.Log(ex);
+                return new CharityResponse
+                {
+                    Success = false
+                };
+            }
+
+            var userUpdatedEvent = _mapper.Map<CharityCreatedEvent>(charity);
+            await _bus.PublishAsync(userUpdatedEvent);
+
+            return new CharityResponse
+            {
+                Success = true
+            };
         }
     }
 }

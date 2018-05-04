@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Sombra.Messaging.Responses{
     public class CharityResponse : Response {
+        public CharityResponse() { }
         public CharityResponse(bool success)
         {
             Success = success;

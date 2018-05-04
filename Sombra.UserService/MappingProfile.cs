@@ -1,5 +1,6 @@
 ﻿using System;
 using AutoMapper;
+using Sombra.Infrastructure.Extensions;
 using Sombra.Messaging.Events;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
@@ -21,7 +22,7 @@ namespace Sombra.UserService
                 .ForMember(d => d.UserExists, opt => opt.MapFrom(s => true));
 
             CreateMap<CreateUserRequest, User>()
-                .ForMember(d => d.Id, opt => opt.Ignore())
+                .IgnoreEntityProperties()
                 .ForMember(d => d.Created, opt => opt.MapFrom(s => DateTime.UtcNow));
 
             CreateMap<User, UserCreatedEvent>()

@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace Sombra.CharityService.UnitTests
 {
     [TestClass]
-    public class CharityContextTest
+    public class GetCharityByKeyRequestHandlerTests
     {
         [TestMethod]
-        public async Task CharityService_Handle_Returns_Charity()
+        public async Task GetCharityByKeyRequest_Handle_Returns_Charity()
         {
             var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
@@ -73,7 +73,7 @@ namespace Sombra.CharityService.UnitTests
         }
 
         [TestMethod]
-        public async Task CharityService_Handle_Returns_Null()
+        public async Task GetCharityByKeyRequest_Handle_Returns_Null()
         {
             var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();

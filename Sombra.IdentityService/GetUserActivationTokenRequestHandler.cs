@@ -29,7 +29,7 @@ namespace Sombra.IdentityService
                     ErrorType = ErrorType.InvalidEmail
                 };
 
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Credentials.Any(c => c.Identifier.Equals(message.EmailAddress, StringComparison.OrdinalIgnoreCase) && c.CredentialType.Name == CredentialType.Email));
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Credentials.Any(c => c.Identifier.Equals(message.EmailAddress, StringComparison.OrdinalIgnoreCase) && c.CredentialType == CredentialType.Email));
 
             if (user != null)
             {

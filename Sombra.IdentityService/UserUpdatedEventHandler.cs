@@ -26,7 +26,7 @@ namespace Sombra.IdentityService
             {
                 userToUpdate.Name = $"{message.FirstName} {message.LastName}";
 
-                var credential = await _context.Credentials.FirstOrDefaultAsync(c => c.UserId == userToUpdate.Id && c.CredentialType.Name == CredentialType.Email);
+                var credential = await _context.Credentials.FirstOrDefaultAsync(c => c.UserId == userToUpdate.Id && c.CredentialType == CredentialType.Email);
                 if (credential != null) credential.Identifier = message.EmailAddress;
 
                 await _context.SaveChangesAsync();

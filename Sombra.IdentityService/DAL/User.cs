@@ -14,6 +14,6 @@ namespace Sombra.IdentityService.DAL
         public DateTime ActivationTokenExpirationDate { get; set; }
         
         public virtual ICollection<Credential> Credentials { get; set; }
-        public virtual ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
     }
 }

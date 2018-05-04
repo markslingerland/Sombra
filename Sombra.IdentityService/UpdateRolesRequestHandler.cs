@@ -22,10 +22,10 @@ namespace Sombra.IdentityService
 
         public async Task<UpdateRolesResponse> Handle(UpdateRolesRequest message)
         {
-            var user = await _context.Users.Include(u => u.UserRoles).ThenInclude(ur => ur.Role).FirstOrDefaultAsync(u => u.UserKey == message.UserKey);
+            var user = await _context.Users.Include(u => u.Roles).FirstOrDefaultAsync(u => u.UserKey == message.UserKey);
             if (user != null)
             {
-                _context.UserRoles.RemoveRange(user.UserRoles);
+                _context.Roles.RemoveRange(user.Roles);
                 var response = new UpdateRolesResponse
                 {
                     Success = true,
@@ -34,16 +34,12 @@ namespace Sombra.IdentityService
 
                 foreach (var role in message.Roles)
                 {
-                    var existingRole = await _context.Roles.FirstOrDefaultAsync(r => r.Name == role);
-                    if (existingRole != null)
+                    _context.Roles.Add(new DAL.Role
                     {
-                        _context.UserRoles.Add(new UserRole
-                        {
-                            Role = existingRole,
-                            User = user
-                        });
-                        response.Roles.Add(role);
-                    }
+                        RoleName = role,
+                        User = user
+                    });
+                    response.Roles.Add(role);
                 }
 
                 try

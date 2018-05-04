@@ -23,7 +23,7 @@ namespace Sombra.IdentityService
             ExtendedConsole.Log("ForgotPasswordRequest received");
             var response = new ForgotPasswordResponse();
 
-            var credential = await _context.Credentials.FirstOrDefaultAsync(c => c.Identifier == message.Email && c.CredentialType.Name == CredentialType.Email && c.User.IsActive);
+            var credential = await _context.Credentials.FirstOrDefaultAsync(c => c.Identifier == message.Email && c.CredentialType == CredentialType.Email && c.User.IsActive);
 
             if (credential != null)
             {

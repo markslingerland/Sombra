@@ -26,7 +26,7 @@ namespace Sombra.IdentityService
 
             if (message.CredentialType == CredentialType.Email)
             {
-                if (await _context.Credentials.AnyAsync(c => c.CredentialType.Name == CredentialType.Email && c.Identifier == message.Identifier))
+                if (await _context.Credentials.AnyAsync(c => c.CredentialType == CredentialType.Email && c.Identifier == message.Identifier))
                 {
                     return new CreateIdentityResponse
                     {
@@ -49,19 +49,19 @@ namespace Sombra.IdentityService
             {
                 Identifier = message.Identifier,
                 Secret = message.Secret,
-                CredentialType = await _context.CredentialTypes.FirstOrDefaultAsync(c => c.Name == message.CredentialType),
+                CredentialType = message.CredentialType,
                 User = user
             };
 
-            var userRole = new UserRole
+            var userRole = new DAL.Role
             {
-                Role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == message.Role),
+                RoleName = message.Role,
                 User = user
             };
 
             try
             {
-                _context.UserRoles.Add(userRole);
+                _context.Roles.Add(userRole);
                 _context.Users.Add(user);
                 _context.Credentials.Add(credential);
                 await _context.SaveChangesAsync();

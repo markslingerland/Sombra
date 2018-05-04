@@ -61,7 +61,7 @@ namespace Sombra.Web.Infrastructure.Authentication
             var forgotPasswordResponse = await _bus.RequestAsync(forgotPasswordRequest);
             var actionurl = $"{_httpContext.Request.Host}/Account/ChangePassword/{forgotPasswordResponse.Secret}";
 
-            var emailTemplateRequest = new EmailTemplateRequest(EmailType.ForgotPassword, TemplateContentBuilder.CreateForgotPasswordTempleteContent(name, actionurl, clientInfo.OperatingSystem, clientInfo.BrowserName));
+            var emailTemplateRequest = new EmailTemplateRequest(EmailType.ForgotPassword, TemplateContentBuilder.CreateForgotPasswordTemplateContent(name, actionurl, clientInfo.OperatingSystem, clientInfo.BrowserName));
             var response = await _bus.RequestAsync(emailTemplateRequest);
 
             var email = new EmailEvent(new EmailAddress("noreply", "noreply@ikdoneer.nu"), new EmailAddress(name, forgotPasswordViewModel.EmailAdress), "Wachtwoord vergeten ikdoneer.nu",
@@ -71,6 +71,7 @@ namespace Sombra.Web.Infrastructure.Authentication
 
             return true;
         }
+
         public async Task<bool> SignInAsync(AuthenticationQuery authenticationQuery, bool isPersistent = false)
         {
             var userLoginRequest = _mapper.Map<UserLoginRequest>(authenticationQuery);

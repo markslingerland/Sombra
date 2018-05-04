@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.IdentityService.DAL;
 using Sombra.Messaging.Events;
@@ -15,15 +13,10 @@ namespace Sombra.IdentityService.UnitTests
         [TestMethod]
         public async Task UserUpdatedEventHandler_Consume_Updates_Name()
         {
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
+            AuthenticationContext.OpenInMemoryConnection();
 
             try
             {
-                var options = new DbContextOptionsBuilder<AuthenticationContext>()
-                    .UseSqlite(connection)
-                    .Options;
-
                 var userUpdatedEvent = new UserUpdatedEvent
                 {
                     UserKey = Guid.NewGuid(),
@@ -50,7 +43,7 @@ namespace Sombra.IdentityService.UnitTests
                     Identifier = "john@doe.com"
                 };
 
-                using (var context = new AuthenticationContext(options, false))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
                     context.Users.Add(user);
@@ -60,13 +53,13 @@ namespace Sombra.IdentityService.UnitTests
                     context.SaveChanges();
                 }
 
-                using (var context = new AuthenticationContext(options, false))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     var handler = new UserUpdatedEventHandler(context);
                     await handler.Consume(userUpdatedEvent);
                 }
 
-                using (var context = new AuthenticationContext(options, false))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     Assert.AreEqual("Ellen Doe", context.Users.Single().Name);
                     Assert.AreEqual("ellen@doe.com", context.Credentials.Single().Identifier);
@@ -74,22 +67,17 @@ namespace Sombra.IdentityService.UnitTests
             }
             finally
             {
-                connection.Close();
+                AuthenticationContext.CloseInMemoryConnection();
             }
         }
 
         [TestMethod]
         public async Task UserUpdatedEventHandler_Consume_Event_Has_No_UserKey()
         {
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
+            AuthenticationContext.OpenInMemoryConnection();
 
             try
             {
-                var options = new DbContextOptionsBuilder<AuthenticationContext>()
-                    .UseSqlite(connection)
-                    .Options;
-
                 var userUpdatedEvent = new UserUpdatedEvent
                 {
                     UserKey = Guid.Empty,
@@ -115,7 +103,7 @@ namespace Sombra.IdentityService.UnitTests
                     Identifier = "john@doe.com"
                 };
 
-                using (var context = new AuthenticationContext(options, false))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
                     context.Users.Add(user);
@@ -125,13 +113,13 @@ namespace Sombra.IdentityService.UnitTests
                     context.SaveChanges();
                 }
 
-                using (var context = new AuthenticationContext(options, false))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     var handler = new UserUpdatedEventHandler(context);
                     await handler.Consume(userUpdatedEvent);
                 }
 
-                using (var context = new AuthenticationContext(options, false))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     Assert.AreEqual("John Doe", context.Users.Single().Name);
                     Assert.AreEqual("john@doe.com", context.Credentials.Single().Identifier);
@@ -139,7 +127,7 @@ namespace Sombra.IdentityService.UnitTests
             }
             finally
             {
-                connection.Close();
+                AuthenticationContext.CloseInMemoryConnection();
             }
         }
     }

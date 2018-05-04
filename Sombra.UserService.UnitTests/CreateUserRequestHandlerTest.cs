@@ -102,24 +102,19 @@ namespace Sombra.UserService.UnitTests
             }
             finally
             {
-                connection.Close();
+                UserContext.CloseInMemoryConnection();
             }
         }
 
         [TestMethod]
         public async Task CreateUserRequestHandler_Handle_Returns_EmailExists()
         {
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
+            UserContext.OpenInMemoryConnection();
 
             try
             {
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<UserCreatedEvent>())).Returns(Task.FromResult(true));
-
-                var options = new DbContextOptionsBuilder<UserContext>()
-                    .UseSqlite(connection)
-                    .Options;
 
                 var user = new User
                 {
@@ -127,7 +122,7 @@ namespace Sombra.UserService.UnitTests
                     EmailAddress = "john@doe.com"
                 };
 
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
                     context.Users.Add(user);
@@ -143,13 +138,13 @@ namespace Sombra.UserService.UnitTests
                     EmailAddress = "john@doe.com"
                 };
 
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     var handler = new CreateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(1, context.Users.Count());
                     Assert.AreEqual(ErrorType.EmailExists, response.ErrorType);

@@ -118,24 +118,19 @@ namespace Sombra.UserService.UnitTests
             }
             finally
             {
-                connection.Close();
+                UserContext.CloseInMemoryConnection();
             }
         }
 
         [TestMethod]
         public async Task UpdateUserRequestHandler_Handle_Returns_UserEmailExists()
         {
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
+            UserContext.OpenInMemoryConnection();
 
             try
             {
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<UserUpdatedEvent>())).Returns(Task.FromResult(true));
-
-                var options = new DbContextOptionsBuilder<UserContext>()
-                    .UseSqlite(connection)
-                    .Options;
 
                 UpdateUserResponse response;
                 var request = new UpdateUserRequest()
@@ -146,7 +141,7 @@ namespace Sombra.UserService.UnitTests
                     EmailAddress = "ellen@doe.com"
                 };
 
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
                     context.Users.Add(new User
@@ -166,13 +161,13 @@ namespace Sombra.UserService.UnitTests
                     context.SaveChanges();
                 }
 
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     var handler = new UpdateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
-                using (var context = new UserContext(options, false))
+                using (var context = UserContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(2, context.Users.Count());
                     Assert.AreNotEqual(request.EmailAddress, context.Users.Single(u => u.UserKey == request.UserKey).EmailAddress);

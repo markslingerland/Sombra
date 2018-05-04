@@ -39,7 +39,13 @@ namespace Sombra.CharityService.UnitTests
                     context.SaveChanges();
 
                 }
-                var request = new CharityRequest();
+                var request = new CharityRequest()
+                {
+                    CharityId = "1",
+                    NameCharity = "testCharity",
+                    NameOwner = "testOwner"
+
+                };
 
                 CharityResponse response;
 
@@ -54,10 +60,10 @@ namespace Sombra.CharityService.UnitTests
                 using (var context = new CharityContext(options))
                 {
                     // TODO Fix unit test problem
-                    //Assert.AreEqual(response.CharityId, "1");
-                    //Assert.AreEqual(response.NameCharity, "testCharity");
-                    //Assert.AreEqual(response.NameOwner, "testOwner");
-                    //Assert.IsTrue(response.Success);
+                    Assert.AreEqual(response.CharityId, "1");
+                    Assert.AreEqual(response.NameCharity, "testCharity");
+                    Assert.AreEqual(response.NameOwner, "testOwner");
+                    Assert.IsTrue(response.Success);
                 }
             }
             finally
@@ -82,7 +88,13 @@ namespace Sombra.CharityService.UnitTests
                 {
                     context.Database.EnsureCreated();
 
-                    var charity = new CharityEntity();
+                    var charity = new CharityEntity
+                    {
+                        CharityId = "1",
+                        NameCharity = "testCharity",
+                        NameOwner = "testOwner"
+
+                    };
 
                     context.Add(charity);
                     context.SaveChanges();
@@ -102,7 +114,7 @@ namespace Sombra.CharityService.UnitTests
                 //Assert
                 using (var context = new CharityContext(options))
                 {
-                    //Assert.IsFalse(response.Success);
+                    Assert.IsFalse(response.Success);
                 }
             }
             finally

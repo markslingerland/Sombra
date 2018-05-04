@@ -1,5 +1,3 @@
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
@@ -15,16 +13,10 @@ namespace Sombra.TemplateService.UnitTests
         [TestMethod]
         public async Task EmailTemplateService_Handle_Returns_Template()
         {
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
+            EmailTemplateContext.OpenInMemoryConnection();
             try
             {
-                //Arrange
-                var options = new DbContextOptionsBuilder<EmailTemplateContext>()
-                    .UseSqlite(connection)
-                    .Options;
-
-                using (var context = new EmailTemplateContext(options, false))
+                using (var context = EmailTemplateContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
 
@@ -45,14 +37,14 @@ namespace Sombra.TemplateService.UnitTests
                 EmailTemplateResponse response;
 
                 //Act
-                using (var context = new EmailTemplateContext(options, false))
+                using (var context = EmailTemplateContext.GetInMemoryContext())
                 {
                     var handler = new EmailTemplateRequestHandler(context);
                     response = await handler.Handle(request);
                 }
 
                 //Assert
-                using (var context = new EmailTemplateContext(options, false))
+                using (var context = EmailTemplateContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(response.Template, "template test");
                     Assert.IsTrue(response.HasTemplate);
@@ -60,23 +52,18 @@ namespace Sombra.TemplateService.UnitTests
             }
             finally
             {
-                connection.Close();
+                EmailTemplateContext.CloseInMemoryConnection();
             }
             
         }
         [TestMethod]
         public async Task EmailTemplateService_Handle_Returns_Null()
         {
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
+            EmailTemplateContext.OpenInMemoryConnection();
             try
             {
                 //Arrange
-                var options = new DbContextOptionsBuilder<EmailTemplateContext>()
-                    .UseSqlite(connection)
-                    .Options;
-
-                using (var context = new EmailTemplateContext(options, false))
+                using (var context = EmailTemplateContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
 
@@ -96,21 +83,21 @@ namespace Sombra.TemplateService.UnitTests
                 EmailTemplateResponse response;
 
                 //Act
-                using (var context = new EmailTemplateContext(options, false))
+                using (var context = EmailTemplateContext.GetInMemoryContext())
                 {
                     var handler = new EmailTemplateRequestHandler(context);
                     response = await handler.Handle(request);
                 }
 
                 //Assert
-                using (var context = new EmailTemplateContext(options, false))
+                using (var context = EmailTemplateContext.GetInMemoryContext())
                 {
                     Assert.IsFalse(response.HasTemplate);
                 }
             }
             finally
             {
-                connection.Close();
+                EmailTemplateContext.CloseInMemoryConnection();
             }
 
         }

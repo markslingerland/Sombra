@@ -21,7 +21,7 @@ namespace Sombra.Infrastructure.Extensions
         }
 
         public static IServiceCollection AddDbContext<TContext>(this IServiceCollection services, string connectionString)
-            where TContext : SombraContext
+            where TContext : SombraContext<TContext>, new()
         {
             return services.AddDbContext<TContext>(builder => builder.UseSqlServer(connectionString), ServiceLifetime.Transient, ServiceLifetime.Singleton)
                 .AddSingleton(new SqlConnectionStringWrapper(connectionString, typeof(TContext)));

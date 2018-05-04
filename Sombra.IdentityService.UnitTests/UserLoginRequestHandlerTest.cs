@@ -1,12 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 using Sombra.IdentityService.DAL;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
@@ -19,16 +14,12 @@ namespace Sombra.IdentityService.UnitTests
         [TestMethod]
         public async Task Handle_Success()
         {
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
+            AuthenticationContext.OpenInMemoryConnection();
+
             try
             {
                 //Arrange
-                var options = new DbContextOptionsBuilder<AuthenticationContext>()
-                    .UseSqlite(connection)
-                    .Options;
-
-                using (var context = new AuthenticationContext(options, false))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
 
@@ -70,14 +61,14 @@ namespace Sombra.IdentityService.UnitTests
                 };
 
                 //Act
-                using (var context = new AuthenticationContext(options, false))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     var handler = new UserLoginRequestHandler(context);
                     response = await handler.Handle(request);
                 }
 
                 //Assert
-                using (var context = new AuthenticationContext(options, false))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     Assert.IsTrue(response.Success);
                     Assert.AreEqual(response.UserName, context.Users.Single().Name);
@@ -87,25 +78,19 @@ namespace Sombra.IdentityService.UnitTests
             }
             finally
             {
-                connection.Close();
+                AuthenticationContext.CloseInMemoryConnection();
             }
         }
 
         [TestMethod]
         public async Task Handle_WrongPassword()
         {
-
-
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
+            AuthenticationContext.OpenInMemoryConnection();
             try
             {
                 //Arrange
-                var options = new DbContextOptionsBuilder<AuthenticationContext>()
-                    .UseSqlite(connection)
-                    .Options;
 
-                using (var context = new AuthenticationContext(options, false))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
 
@@ -147,14 +132,14 @@ namespace Sombra.IdentityService.UnitTests
                 };
 
                 //Act
-                using (var context = new AuthenticationContext(options, false))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     var handler = new UserLoginRequestHandler(context);
                     response = await handler.Handle(request);
                 }
 
                 //Assert
-                using (var context = new AuthenticationContext(options, false))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     Assert.IsFalse(response.Success);
                     Assert.IsNull(response.UserName);
@@ -165,7 +150,7 @@ namespace Sombra.IdentityService.UnitTests
             }
             finally
             {
-                connection.Close();
+                AuthenticationContext.CloseInMemoryConnection();
             }
 
         }

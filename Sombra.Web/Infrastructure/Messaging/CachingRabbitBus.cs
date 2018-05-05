@@ -21,28 +21,37 @@ namespace Sombra.Web.Infrastructure.Messaging
 
         public IBus Bus { get; }
 
-        public async Task<TResponse> RequestAsync<TResponse>(IRequest<TResponse> request, bool skipCache = false)
+        public async Task<TResponse> RequestAsync<TResponse>(IRequest<TResponse> request, CachingOptions options = CachingOptions.None)
             where TResponse : class, IResponse
         {
-            if (skipCache) return await Bus.RequestAsync(request);
+            if (options == CachingOptions.SkipCache) return await Bus.RequestAsync(request);
 
             if (request.GetType().GetCustomAttribute(typeof(CachableAttribute)) is CachableAttribute cacheAttribute)
             {
                 var cacheKey = JsonConvert.SerializeObject(request, new JsonSerializerSettings
                 {
-                    ContractResolver = new CustomContractResolver<CacheKeyAttribute>()
+                    ContractResolver = new AttributeContractResolver<CacheKeyAttribute>()
                 });
 
-                return await _cache.GetOrCreateAsync(cacheKey, async entry =>
+                if (options == CachingOptions.RenewCache)
                 {
-                    entry.SlidingExpiration = cacheAttribute.LifeTime;
-                    return await Bus.RequestAsync(request);
-                });
+                    var response = await Bus.RequestAsync(request);
+                    return _cache.Set(cacheKey, response, cacheAttribute.LifeTime);
+                }
+
+                if (options == CachingOptions.None)
+                {
+                    return await _cache.GetOrCreateAsync(cacheKey, async entry =>
+                    {
+                        entry.SlidingExpiration = cacheAttribute.LifeTime;
+                        return await Bus.RequestAsync(request);
+                    });
+                }
             }
 
             return await Bus.RequestAsync(request);
         }
 
-        public async Task PublishAsync<T>(T message) where T : class => await Bus.PublishAsync(message);
+        public async Task PublishAsync<TEvent>(TEvent message) where TEvent : class, IEvent => await Bus.PublishAsync(message);
     }
 }

@@ -7,7 +7,7 @@ namespace Sombra.Web.Infrastructure.Messaging
     public interface ICachingBus
     {
         IBus Bus { get; }
-        Task<TResponse> RequestAsync<TResponse>(IRequest<TResponse> request, bool skipCache = false) where TResponse : class, IResponse;
-        Task PublishAsync<T>(T message) where T : class;
+        Task<TResponse> RequestAsync<TResponse>(IRequest<TResponse> request, CachingOptions options = CachingOptions.None) where TResponse : class, IResponse;
+        Task PublishAsync<TEvent>(TEvent message) where TEvent : class, IEvent;
     }
 }

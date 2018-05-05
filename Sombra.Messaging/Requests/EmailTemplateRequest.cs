@@ -1,4 +1,3 @@
-using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Responses;
 
 namespace Sombra.Messaging.Requests
@@ -24,5 +23,5 @@ namespace Sombra.Messaging.Requests
         Unkown = 0,
         ForgotPassword = 1,
         ConfirmAccount = 2
-    };
+    }
 }

@@ -6,12 +6,12 @@ using Newtonsoft.Json.Serialization;
 
 namespace Sombra.Core
 {
-    public class CustomContractResolver<T> : DefaultContractResolver
+    public class AttributeContractResolver<T> : DefaultContractResolver
         where T : Attribute
     {
         private readonly Type _attributeToSerialize;
 
-        public CustomContractResolver()
+        public AttributeContractResolver()
         {
             _attributeToSerialize = typeof(T);
         }

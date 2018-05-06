@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AutoMapper;
-using EasyNetQ;
 using Microsoft.AspNetCore.Http;
 using Sombra.Core.Enums;
 using Sombra.Messaging.Events;
-using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
 using Sombra.Web.Infrastructure;
+using Sombra.Web.Infrastructure.Messaging;
 using Sombra.Web.ViewModels;
 
 namespace Sombra.Web.Services
 {
     public class UserService
     {
-        private readonly IBus _bus;
+        private readonly ICachingBus _bus;
         private readonly IMapper _mapper;
         private readonly string _baseUrl;
         private readonly string _userAgent;
 
-        public UserService(IBus bus, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+        public UserService(ICachingBus bus, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _bus = bus;
             _mapper = mapper;
@@ -122,11 +121,14 @@ namespace Sombra.Web.Services
         private async Task SendActivationCodeEmail(string userName, string emailAddress, string activationToken)
         {
             var actionurl = $"{_baseUrl}/Account/ActivateAccount?Token={activationToken}";
-            var emailTemplateRequest = new EmailTemplateRequest(EmailType.ConfirmAccount, TemplateContentBuilder.CreateConfirmAccountTemplateContent(userName, actionurl));
+            var emailTemplateRequest = new EmailTemplateRequest(EmailType.ConfirmAccount);
             var response = await _bus.RequestAsync(emailTemplateRequest);
 
+            var template = TemplateContentBuilder.Build(response.Template,
+                TemplateContentBuilder.CreateConfirmAccountTemplateContent(userName, actionurl));
+
             var email = new EmailEvent(new EmailAddress("noreply", "noreply@ikdoneer.nu"), new EmailAddress(userName, emailAddress), "Account activatie ikdoneer.nu",
-                response.Template, true);
+                template, true);
 
             await _bus.PublishAsync(email);
         }
@@ -157,11 +159,13 @@ namespace Sombra.Web.Services
             var forgotPasswordResponse = await _bus.RequestAsync(forgotPasswordRequest);
             var actionurl = $"{_baseUrl}/Account/ChangePassword/{forgotPasswordResponse.Secret}";
 
-            var emailTemplateRequest = new EmailTemplateRequest(EmailType.ForgotPassword, TemplateContentBuilder.CreateForgotPasswordTemplateContent(name, actionurl, clientInfo.OperatingSystem, clientInfo.BrowserName));
+            var emailTemplateRequest = new EmailTemplateRequest(EmailType.ForgotPassword);
             var response = await _bus.RequestAsync(emailTemplateRequest);
+            var template = TemplateContentBuilder.Build(response.Template,
+                TemplateContentBuilder.CreateForgotPasswordTemplateContent(name, actionurl, clientInfo.OperatingSystem, clientInfo.BrowserName));
 
             var email = new EmailEvent(new EmailAddress("noreply", "noreply@ikdoneer.nu"), new EmailAddress(name, forgotPasswordViewModel.EmailAddress), "Wachtwoord vergeten ikdoneer.nu",
-                response.Template, true);
+                template, true);
 
             await _bus.PublishAsync(email);
 

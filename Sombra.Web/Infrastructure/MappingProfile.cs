@@ -37,6 +37,9 @@ namespace Sombra.Web.Infrastructure
 
             CreateMap<RegisterAccountViewModel, UserEmailExistsRequest>()
                 .ForMember(d => d.CurrentUserKey, opt => opt.Ignore());
+
+            CreateMap<ActivateAccountViewModel, ActivateUserRequest>()
+                .ForMember(d => d.ActivationToken, opt => opt.MapFrom(s => s.Token));
         }
     }
 }

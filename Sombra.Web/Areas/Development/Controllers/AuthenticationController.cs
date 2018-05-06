@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sombra.Web.Infrastructure.Authentication;
@@ -10,11 +9,11 @@ namespace Sombra.Web.Areas.Development.Controllers
     [Area("Development")]
     public class AuthenticationController : Controller
     {
-        private readonly IUserManager _userManager;
+        private readonly AuthenticationManager _authenticationManager;
         
-        public AuthenticationController(IUserManager userManager)
+        public AuthenticationController(AuthenticationManager authenticationManager)
         {
-            _userManager = userManager;
+            _authenticationManager = authenticationManager;
         }
 
         [HttpGet]
@@ -27,7 +26,7 @@ namespace Sombra.Web.Areas.Development.Controllers
         public async Task<IActionResult> Index(LoginViewModel query)
         {
             query.CredentialType = Core.Enums.CredentialType.Email;
-            var result = await _userManager.SignInAsync(query);
+            var result = await _authenticationManager.SignInAsync(query);
 
             return View("View", result);
         }

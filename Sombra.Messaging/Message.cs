@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.Messaging
 {
@@ -18,6 +19,7 @@ namespace Sombra.Messaging
             return JsonConvert.SerializeObject(this);
         }
 
+        [CacheKey]
         public string MessageType { get; }
     }
 }

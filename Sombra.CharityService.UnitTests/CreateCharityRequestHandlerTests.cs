@@ -20,19 +20,14 @@ namespace Sombra.CharityService.UnitTests
         [TestMethod]
         public async Task CreateCharityRequest_Handle_Returns_Success()
         {
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
+            CharityContext.OpenInMemoryConnection();
 
             try
             {
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<CharityCreatedEvent>())).Returns(Task.FromResult(true));
 
-                var options = new DbContextOptionsBuilder<CharityContext>()
-                    .UseSqlite(connection)
-                    .Options;
-
-                using (var context = new CharityContext(options))
+                using (var context = CharityContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
                 }
@@ -46,13 +41,13 @@ namespace Sombra.CharityService.UnitTests
 
                 };
 
-                using (var context = new CharityContext(options))
+                using (var context = CharityContext.GetInMemoryContext())
                 {
                     var handler = new CreateCharityRequestHandler(context, Helper.GetMapper(), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
-                using (var context = new CharityContext(options))
+                using (var context = CharityContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(request.CharityId, context.Charity.Single().CharityId);
                     Assert.AreEqual(request.NameCharity, context.Charity.Single().NameCharity);
@@ -64,7 +59,7 @@ namespace Sombra.CharityService.UnitTests
             }
             finally
             {
-                connection.Close();
+                CharityContext.CloseInMemoryConnection();
             }
         }
 

@@ -3,15 +3,11 @@ using Sombra.Infrastructure.DAL;
 
 namespace Sombra.UserService.DAL
 {
-    public class UserContext : SombraContext
+    public class UserContext : SombraContext<UserContext>
     {
-        public UserContext(DbContextOptions<UserContext> options) : base(options)
-        {
-        }
+        public UserContext() { }
 
-        public UserContext(DbContextOptions<UserContext> options, bool seed) : base(options, seed)
-        {
-        }
+        public UserContext(DbContextOptions<UserContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
     }

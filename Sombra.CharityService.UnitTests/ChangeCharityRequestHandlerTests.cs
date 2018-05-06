@@ -20,17 +20,17 @@ namespace Sombra.CharityService.UnitTests
         public async Task ChangeCharityRequest_Handle_Returns_Charity()
         {
 
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
+            CharityContext.OpenInMemoryConnection();
 
             try
             {
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<CharityCreatedEvent>())).Returns(Task.FromResult(true));
 
-                var options = new DbContextOptionsBuilder<CharityContext>()
-                    .UseSqlite(connection)
-                    .Options;
+                using (var context = CharityContext.GetInMemoryContext())
+                {
+                    context.Database.EnsureCreated();
+                }
 
                 CharityResponse response;
                 var request = new CharityRequest()
@@ -40,7 +40,7 @@ namespace Sombra.CharityService.UnitTests
                     NameOwner = "0"
                 };
 
-                using (var context = new CharityContext(options))
+                using (var context = CharityContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
                     context.Charity.Add(new CharityEntity
@@ -54,13 +54,13 @@ namespace Sombra.CharityService.UnitTests
                     context.SaveChanges();
                 }
 
-                using (var context = new CharityContext(options))
+                using (var context = CharityContext.GetInMemoryContext())
                 {
                     var handler = new ChangeCharityRequestHandler(context, Helper.GetMapper(), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
-                using (var context = new CharityContext(options))
+                using (var context = CharityContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(request.CharityId, context.Charity.Single().CharityId);
                     Assert.AreEqual(request.NameOwner, context.Charity.Single().NameOwner);
@@ -72,7 +72,7 @@ namespace Sombra.CharityService.UnitTests
             }
             finally
             {
-                connection.Close();
+                CharityContext.CloseInMemoryConnection();
             }
         }
     }

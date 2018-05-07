@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Authorization;
 namespace Sombra.Web.Infrastructure.Authentication.AuthorizationAttributes
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-    public class DefaultAttribute : AuthorizeAttribute
+    public class AnonymousAttribute : AuthorizeAttribute
     {
-        public DefaultAttribute()
+        public AnonymousAttribute()
         {
             Roles = Core.Enums.Role.Default.ToString();
         }

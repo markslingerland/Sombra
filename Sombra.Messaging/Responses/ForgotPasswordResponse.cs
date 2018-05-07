@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using Sombra.Messaging.Responses;
+using Sombra.Core.Enums;
 
-namespace Sombra.Messaging.Requests{
+namespace Sombra.Messaging.Responses
+{
     public class ForgotPasswordResponse : Response
     {
-        public string Secret;
-        public bool Success;
-    }    
+        public string Secret { get; set; }
+        public bool Success { get; set; }
+        public ErrorType ErrorType { get; set; }
+    }
 }

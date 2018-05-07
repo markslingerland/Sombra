@@ -52,7 +52,7 @@ namespace Sombra.Web.Services
                 var createUserResponse = await _bus.RequestAsync(createUserRequest);
                 if (createUserResponse.Success)
                 {
-                    await SendActivationCodeEmail(createIdentityRequest.UserName, model.EmailAddress, createIdentityResponse.ActivationToken);
+                    await SendActivationTokenEmail(createIdentityRequest.UserName, model.EmailAddress, createIdentityResponse.ActivationToken);
 
                     return new RegisterAccountResultViewModel
                     {
@@ -96,29 +96,57 @@ namespace Sombra.Web.Services
             }
 
 
-            if (response.ErrorType == ErrorType.TokenInvalid)
+            if (response.ErrorType == ErrorType.TokenInvalid || response.ErrorType == ErrorType.TokenExpired)
             {
                 return new ActivateAccountResultViewModel
                 {
-                    Message = ""
-                };
-            }
-
-            if (response.ErrorType == ErrorType.TokenExpired)
-            {
-                return new ActivateAccountResultViewModel
-                {
-                    Message = ""
+                    Message = "Je account kon niet worden geactiveerd omdat de gebruikte link ongeldig is. Vraag een nieuwe activatie-email aan en probeer het opnieuw"
                 };
             }
 
             return new ActivateAccountResultViewModel
             {
-                Message = ""
+                Message = "Er is een fout opgetreden bij het activeren van je account. Probeer het later opnieuw!"
             };
         }
 
-        private async Task SendActivationCodeEmail(string userName, string emailAddress, string activationToken)
+        public async Task<RequestActivationTokenResultViewModel> RequestActivationToken(RequestActivationTokenViewModel model)
+        {
+            var request = _mapper.Map<GetUserActivationTokenRequest>(model);
+            var response = await _bus.RequestAsync(request);
+            if (response.HasActivationToken)
+            {
+                await SendActivationTokenEmail(response.UserName, request.EmailAddress, response.ActivationToken);
+                return new RequestActivationTokenResultViewModel
+                {
+                    Success = true,
+                    Message = $"Er is een e-mail verzonden naar {request.EmailAddress} om het account te activeren."
+                };
+            }
+
+            if (response.ErrorType == ErrorType.InvalidEmail)
+            {
+                return new RequestActivationTokenResultViewModel
+                {
+                    Message = "Het opgegeven e-mailadres is ongeldig!"
+                };
+            }
+
+            if (response.ErrorType == ErrorType.AlreadyActive)
+            {
+                return new RequestActivationTokenResultViewModel
+                {
+                    Message = "Het account met dit e-mailadres is al geactiveerd!"
+                };
+            }
+
+            return new RequestActivationTokenResultViewModel
+            {
+                Message = "Er is een fout opgetreden bij het opnieuw aanvragen van een activatiecode. Probeer het later opnieuw!"
+            };
+        }
+
+        private async Task SendActivationTokenEmail(string userName, string emailAddress, string activationToken)
         {
             var actionurl = $"{_baseUrl}/Account/ActivateAccount?Token={activationToken}";
             var emailTemplateRequest = new EmailTemplateRequest(EmailType.ConfirmAccount);

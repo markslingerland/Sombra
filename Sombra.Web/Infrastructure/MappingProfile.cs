@@ -40,6 +40,8 @@ namespace Sombra.Web.Infrastructure
 
             CreateMap<ActivateAccountViewModel, ActivateUserRequest>()
                 .ForMember(d => d.ActivationToken, opt => opt.MapFrom(s => s.Token));
+
+            CreateMap<RequestActivationTokenViewModel, GetUserActivationTokenRequest>();
         }
     }
 }

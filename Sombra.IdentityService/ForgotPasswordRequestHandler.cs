@@ -5,6 +5,8 @@ using Sombra.Messaging.Requests;
 using Sombra.Messaging.Infrastructure;
 using System;
 using Microsoft.EntityFrameworkCore;
+using Sombra.Core.Enums;
+using Sombra.Messaging.Responses;
 using CredentialType = Sombra.Core.Enums.CredentialType;
 
 namespace Sombra.IdentityService
@@ -37,6 +39,7 @@ namespace Sombra.IdentityService
                 response.Secret = securityToken;
             }
 
+            response.ErrorType = ErrorType.InvalidEmail;
             return response;
         }
     }

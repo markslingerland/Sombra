@@ -57,6 +57,7 @@ namespace Sombra.IdentityService.UnitTests
                     Assert.IsFalse(context.Users.Single().IsActive);
                     Assert.IsNotNull(response.ActivationToken);
                     Assert.AreEqual(context.Users.Single().ActivationToken, response.ActivationToken);
+                    Assert.AreEqual(context.Users.Single().Name, response.UserName);
                 }
             }
             finally

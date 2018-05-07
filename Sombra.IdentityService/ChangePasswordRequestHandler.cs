@@ -6,6 +6,7 @@ using Sombra.Messaging.Responses;
 using Sombra.Messaging.Infrastructure;
 using System;
 using Microsoft.EntityFrameworkCore;
+using Sombra.Core.Enums;
 
 namespace Sombra.IdentityService
 {
@@ -21,19 +22,32 @@ namespace Sombra.IdentityService
         public async Task<ChangePasswordResponse> Handle(ChangePasswordRequest message)
         {
             ExtendedConsole.Log("ChangePasswordRequest received");
-            var response = new ChangePasswordResponse(false);
 
-            var credential = await _context.Credentials.FirstOrDefaultAsync(c => c.SecurityToken == message.SecurityToken && c.ExpirationDate > DateTime.UtcNow && c.User.IsActive);
+            var credential = await _context.Credentials.FirstOrDefaultAsync(c => c.SecurityToken == message.SecurityToken && c.User.IsActive);
 
             if (credential != null)
             {
-                credential.Secret = message.Password;
-                credential.SecurityToken = string.Empty;
-                await _context.SaveChangesAsync();
-                response.Success = true;
+                if (credential.ExpirationDate > DateTime.UtcNow)
+                {
+                    credential.Secret = message.Password;
+                    credential.SecurityToken = string.Empty;
+                    await _context.SaveChangesAsync();
+                    return new ChangePasswordResponse
+                    {
+                        Success = true
+                    };
+                }
+
+                return new ChangePasswordResponse
+                {
+                    ErrorType = ErrorType.TokenExpired
+                };
             }
 
-            return response;
+            return new ChangePasswordResponse
+            {
+                ErrorType = ErrorType.TokenInvalid
+            };
         }
     }
 }

@@ -54,7 +54,8 @@ namespace Sombra.IdentityService
 
                 return new GetUserActivationTokenResponse
                 {
-                    ActivationToken = user.ActivationToken
+                    ActivationToken = user.ActivationToken,
+                    UserName = user.Name
                 };
             }
 

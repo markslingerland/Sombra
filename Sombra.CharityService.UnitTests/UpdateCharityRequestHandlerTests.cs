@@ -14,10 +14,10 @@ using Sombra.CharityService.DAL;
 namespace Sombra.CharityService.UnitTests
 {
     [TestClass]
-    public class ChangeCharityRequestHandlerTests
+    public class UpdateCharityRequestHandlerTests
     {
         [TestMethod]
-        public async Task ChangeCharityRequest_Handle_Returns_Charity()
+        public async Task UpdateCharityRequest_Handle_Returns_Charity()
         {
 
             CharityContext.OpenInMemoryConnection();
@@ -43,7 +43,7 @@ namespace Sombra.CharityService.UnitTests
                 using (var context = CharityContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
-                    context.Charity.Add(new CharityEntity
+                    context.Charities.Add(new CharityEntity
                     {
                         CharityId = "1",
                         NameCharity = "testCharity",
@@ -56,15 +56,15 @@ namespace Sombra.CharityService.UnitTests
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    var handler = new ChangeCharityRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    var handler = new UpdateCharityRequestHandler(context, Helper.GetMapper(), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    Assert.AreEqual(request.CharityId, context.Charity.Single().CharityId);
-                    Assert.AreEqual(request.NameOwner, context.Charity.Single().NameOwner);
-                    Assert.AreEqual(request.NameCharity, context.Charity.Single().NameCharity);
+                    Assert.AreEqual(request.CharityId, context.Charities.Single().CharityId);
+                    Assert.AreEqual(request.NameOwner, context.Charities.Single().NameOwner);
+                    Assert.AreEqual(request.NameCharity, context.Charities.Single().NameCharity);
                     Assert.IsTrue(response.Success);
                 }
 

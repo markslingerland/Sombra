@@ -22,10 +22,10 @@ namespace Sombra.CharityService
 
         public async Task<CharityResponse> Handle(CharityRequest message)
         {
-            var response = new CharityResponse(true);
-
-            var charity = await _charityeContext.Charity.Where(b => b.CharityId.Equals(message.CharityId)).Select(a => a).FirstOrDefaultAsync();
+            var charity = await _charityeContext.Charities.Where(b => b.CharityId.Equals(message.CharityId)).Select(a => a).FirstOrDefaultAsync();
             if (charity == null) return new CharityResponse(false);
+
+            var response = new CharityResponse(true);
 
             response.CharityId = charity.CharityId;
             response.NameCharity = charity.NameCharity;

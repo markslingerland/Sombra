@@ -49,9 +49,9 @@ namespace Sombra.CharityService.UnitTests
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    Assert.AreEqual(request.CharityId, context.Charity.Single().CharityId);
-                    Assert.AreEqual(request.NameCharity, context.Charity.Single().NameCharity);
-                    Assert.AreEqual(request.NameOwner, context.Charity.Single().NameOwner);
+                    Assert.AreEqual(request.CharityId, context.Charities.Single().CharityId);
+                    Assert.AreEqual(request.NameCharity, context.Charities.Single().NameCharity);
+                    Assert.AreEqual(request.NameOwner, context.Charities.Single().NameOwner);
                     Assert.IsTrue(response.Success);
                 }
 

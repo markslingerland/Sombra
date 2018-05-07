@@ -37,7 +37,7 @@ namespace Sombra.CharityService
                 return new CharityResponse(false);
             }
 
-            _context.Charity.Add(charity);
+            _context.Charities.Add(charity);
 
             try
             {

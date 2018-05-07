@@ -15,13 +15,13 @@ using System.Threading.Tasks;
 
 namespace Sombra.CharityService
 {
-    public class ChangeCharityRequestHandler : IAsyncRequestHandler<CharityRequest, CharityResponse>
+    public class UpdateCharityRequestHandler : IAsyncRequestHandler<CharityRequest, CharityResponse>
     {
         private readonly CharityContext _context;
         private readonly IMapper _mapper;
         private readonly IBus _bus;
 
-        public ChangeCharityRequestHandler(CharityContext context, IMapper mapper, IBus bus)
+        public UpdateCharityRequestHandler(CharityContext context, IMapper mapper, IBus bus)
         {
             _context = context;
             _mapper = mapper;
@@ -32,7 +32,7 @@ namespace Sombra.CharityService
         {
 
             ExtendedConsole.Log("ChangeCharityRequest received");
-            var charity = await _context.Charity.FirstOrDefaultAsync(u => u.CharityId == message.CharityId);
+            var charity = await _context.Charities.FirstOrDefaultAsync(u => u.CharityId == message.CharityId);
             if (charity == null)
             {
                 return new CharityResponse

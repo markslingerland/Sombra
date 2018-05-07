@@ -14,7 +14,6 @@ namespace Sombra.CharityService
         public MappingProfile()
         {
             CreateMap<CharityEntity, CharityResponse>()
-                .IgnoreResponseProperties()
                 .ForMember(d => d.Success, opt => opt.MapFrom(s => true));
             CreateMap<CharityRequest, CharityEntity>()
                 .IgnoreEntityProperties();

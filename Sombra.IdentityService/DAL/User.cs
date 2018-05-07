@@ -11,6 +11,6 @@ namespace Sombra.IdentityService.DAL
         public DateTime Created { get; set; }
         
         public virtual ICollection<Credential> Credentials { get; set; }
-        public virtual ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
     }
 }

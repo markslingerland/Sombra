@@ -6,7 +6,7 @@ namespace Sombra.IdentityService.DAL.Configurations
     public class RoleEntityTypeConfiguration : EntityTypeConfiguration<Role> {
         public override void Configure(EntityTypeBuilder<Role> entity)
         {
-            entity.Property(e => e.Name).IsRequired().HasMaxLength(64);
+            entity.Property(e => e.RoleName).IsRequired().HasMaxLength(64);
         }
     }
 }

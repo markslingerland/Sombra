@@ -17,6 +17,7 @@ namespace Sombra.IdentityService.UnitTests
         public async Task UserLoginRequestHandler_Handle_Returns_Success()
         {
             AuthenticationContext.OpenInMemoryConnection();
+
             try
             {
                 //Arrange

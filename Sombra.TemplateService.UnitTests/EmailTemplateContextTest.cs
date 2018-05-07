@@ -31,7 +31,7 @@ namespace Sombra.TemplateService.UnitTests
                     context.SaveChanges();
 
                 }
-                var request = new EmailTemplateRequest(EmailType.ForgotPassword, new Dictionary<string, string>() { { "test", "test" } } );
+                var request = new EmailTemplateRequest(EmailType.ForgotPassword);
 
 
                 EmailTemplateResponse response;
@@ -44,11 +44,8 @@ namespace Sombra.TemplateService.UnitTests
                 }
 
                 //Assert
-                using (var context = EmailTemplateContext.GetInMemoryContext())
-                {
-                    Assert.AreEqual(response.Template, "template test");
-                    Assert.IsTrue(response.HasTemplate);
-                }
+                Assert.AreEqual(response.Template, "template [[test]]");
+                Assert.IsTrue(response.HasTemplate);
             }
             finally
             {
@@ -78,7 +75,7 @@ namespace Sombra.TemplateService.UnitTests
                     context.SaveChanges();
 
                 }
-                var request = new EmailTemplateRequest(EmailType.ForgotPassword, new Dictionary<string, string>() { { "test", "test" } } );
+                var request = new EmailTemplateRequest(EmailType.ForgotPassword);
 
                 EmailTemplateResponse response;
 
@@ -90,10 +87,7 @@ namespace Sombra.TemplateService.UnitTests
                 }
 
                 //Assert
-                using (var context = EmailTemplateContext.GetInMemoryContext())
-                {
-                    Assert.IsFalse(response.HasTemplate);
-                }
+                Assert.IsFalse(response.HasTemplate);
             }
             finally
             {

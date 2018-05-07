@@ -1,4 +1,5 @@
 ﻿using System;
+using AutoMapper;
 using Newtonsoft.Json;
 
 namespace Sombra.Messaging
@@ -11,13 +12,14 @@ namespace Sombra.Messaging
             MessageCreated = DateTime.UtcNow;
             MessageType = GetType().FullName;
         }
+
+        [IgnoreMap]
         public DateTime MessageCreated { get; }
 
-        public string ToJson()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
-
+        [CacheKey]
+        [IgnoreMap]
         public string MessageType { get; }
+
+        public string ToJson() => JsonConvert.SerializeObject(this);
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using EasyNetQ;
 using System.Security.Claims;
 using Sombra.Messaging.Requests;
 using Microsoft.AspNetCore.Authentication;
@@ -8,22 +7,22 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using Sombra.Messaging.Responses;
-using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Events;
 using AutoMapper;
 using Sombra.Web.Areas.Development.Models;
+using Sombra.Web.Infrastructure.Messaging;
 using Sombra.Web.ViewModels;
 
 namespace Sombra.Web.Infrastructure.Authentication
 {
     public class UserManager : IUserManager
     {
-        private readonly IBus _bus;
+        private readonly ICachingBus _bus;
         private readonly IMapper _mapper;
         private readonly HttpContext _httpContext;
         private static string _authenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 
-        public UserManager(IBus bus, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+        public UserManager(ICachingBus bus, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _bus = bus;
             _mapper = mapper;
@@ -61,11 +60,13 @@ namespace Sombra.Web.Infrastructure.Authentication
             var forgotPasswordResponse = await _bus.RequestAsync(forgotPasswordRequest);
             var actionurl = $"{_httpContext.Request.Host}/Account/ChangePassword/{forgotPasswordResponse.Secret}";
 
-            var emailTemplateRequest = new EmailTemplateRequest(EmailType.ForgotPassword, TemplateContentBuilder.CreateForgotPasswordTempleteContent(name, actionurl, clientInfo.OperatingSystem, clientInfo.BrowserName));
+            var emailTemplateRequest = new EmailTemplateRequest(EmailType.ForgotPassword);
             var response = await _bus.RequestAsync(emailTemplateRequest);
+            var template = TemplateContentBuilder.Build(response.Template,
+                TemplateContentBuilder.CreateForgotPasswordTempleteContent(name, actionurl, clientInfo.OperatingSystem, clientInfo.BrowserName));
 
             var email = new EmailEvent(new EmailAddress("noreply", "noreply@ikdoneer.nu"), new EmailAddress(name, forgotPasswordViewModel.EmailAdress), "Wachtwoord vergeten ikdoneer.nu",
-                response.Template, true);
+                template, true);
 
             await _bus.PublishAsync(email);
 
@@ -87,7 +88,7 @@ namespace Sombra.Web.Infrastructure.Authentication
 
         private SombraPrincipal CreatePrincipal(UserLoginResponse userLoginResponse)
         {
-            var identity = new SombraIdentity(GetUserClaims(userLoginResponse), userLoginResponse.UserKey, userLoginResponse.Roles, userLoginResponse.Permissions, _authenticationScheme);
+            var identity = new SombraIdentity(GetUserClaims(userLoginResponse), userLoginResponse.UserKey, userLoginResponse.Roles, _authenticationScheme);
             return new SombraPrincipal(identity);
         }
 
@@ -112,10 +113,7 @@ namespace Sombra.Web.Infrastructure.Authentication
         {
             var claims = new List<Claim>();
 
-            if (userLoginResponse.Permissions != null)
-            {
-                claims.AddRange(userLoginResponse.Permissions.Select(permission => new Claim(ClaimTypes.Role, permission.ToString())));
-            }
+            claims.AddRange(userLoginResponse.Roles.Select(role => new Claim(ClaimTypes.Role, role.ToString())));
 
             return claims;
         }

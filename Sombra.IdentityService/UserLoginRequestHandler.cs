@@ -23,16 +23,15 @@ namespace Sombra.IdentityService
             ExtendedConsole.Log("UserLoginRequest received");
             var response = new UserLoginResponse();
 
-            var credential = await _context.Credentials.Include(c => c.User.UserRoles).ThenInclude(ur => ur.Role.RolePermissions).ThenInclude(rp => rp.Permission)
-                .FirstOrDefaultAsync(c => c.CredentialType.Name.ToString().ToLower() == message.LoginTypeCode.ToString().ToLower() && c.Identifier.ToLower() == message.Identifier.ToLower());
+            var credential = await _context.Credentials.Include(c => c.User.Roles)
+                .FirstOrDefaultAsync(c => c.CredentialType.ToString().ToLower() == message.LoginTypeCode.ToString().ToLower() && c.Identifier.ToLower() == message.Identifier.ToLower());
 
             if (credential != null && Encryption.ValidatePassword(message.Secret, credential.Secret))
             {
                 response.Success = true;
                 response.UserKey = credential.User.UserKey;
                 response.UserName = credential.User.Name;
-                response.Roles = credential.User.UserRoles.Select(r => r.Role.Name).ToList();
-                response.Permissions = credential.User.UserRoles.SelectMany(ur => ur.Role.RolePermissions.Select(rp => rp.Permission.Name)).ToList();
+                response.Roles = credential.User.Roles.Select(r => r.RoleName).ToList();
             }
 
             return response;

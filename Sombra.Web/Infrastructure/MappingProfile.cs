@@ -2,6 +2,7 @@
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.Web.Areas.Development.Models;
+using Sombra.Web.ViewModels;
 
 namespace Sombra.Web.Infrastructure
 {
@@ -13,6 +14,8 @@ namespace Sombra.Web.Infrastructure
             CreateMap<Log, LogViewModel>();
             CreateMap<AuthenticationQuery, UserLoginRequest>();
             CreateMap<UserLoginResponse, LoginViewModel>();
+            CreateMap<ForgotPasswordViewModel, ForgotPasswordRequest>();
+            CreateMap<ForgotPasswordViewModel, GetUserByEmailRequest>();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Sombra.UserService.DAL
                 .Build();
 
             var builder = new DbContextOptionsBuilder<UserContext>();
-            var connectionString = configuration["User_DB_CONNECTIONSTRING"];
+            var connectionString = configuration["USER_DB_CONNECTIONSTRING"];
             builder.UseSqlServer(connectionString);
 
             return new UserContext(builder.Options);

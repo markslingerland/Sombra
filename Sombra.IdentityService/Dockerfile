@@ -1,16 +1,17 @@
-FROM microsoft/dotnet:2.0-runtime AS base
+FROM microsoft/dotnet:2.1-runtime AS base
 WORKDIR /app
 
-FROM microsoft/dotnet:2.0-sdk AS build
+FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
 COPY Sombra.sln ./
 COPY Sombra.IdentityService/Sombra.IdentityService.csproj Sombra.IdentityService/
 COPY . .
 WORKDIR /src/Sombra.IdentityService
-RUN dotnet build -c Release -o /app
+
+RUN dotnet build -c Debug -o /app
 
 FROM build AS publish
-RUN dotnet publish -c Release -o /app
+RUN dotnet publish -c Debug -o /app
 
 FROM base AS final
 WORKDIR /app

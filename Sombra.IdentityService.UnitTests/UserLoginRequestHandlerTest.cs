@@ -1,11 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 using Sombra.IdentityService.DAL;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
@@ -16,67 +12,43 @@ namespace Sombra.IdentityService.UnitTests
     public class UserLoginRequestHandlerTest
     {
         [TestMethod]
-        public async Task Handle_Success(){
+        public async Task Handle_Success()
+        {
+            AuthenticationContext.OpenInMemoryConnection();
 
-            
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
             try
             {
                 //Arrange
-                var options = new DbContextOptionsBuilder<AuthenticationContext>()
-                    .UseSqlite(connection)
-                    .Options;
-
-                using (var context = new AuthenticationContext(options))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
 
-                    var credentialType = new CredentialType(){
-                        Name = Core.Enums.CredentialType.Default,
-                        Position = 1,
-                    };
-
-                    var user = new User(){
+                    var user = new User()
+                    {
                         UserKey = Guid.NewGuid(),
                         Name = "Test User",
                         Created = DateTime.Now
                     };
 
-                    var permission = new Permission(){
-                        Name = Core.Enums.Permission.Default,
-                        Position = 1
+                    var role = new Role()
+                    {
+                        RoleName = Core.Enums.Role.Default,
+                        User = user,
+
                     };
 
-                    var role = new Role(){
-                        Name = Core.Enums.Role.Default,
-                        Position = 1
-                    };
-
-                    var credential = new Credential(){
-                        CredentialType = credentialType,
+                    var credential = new Credential()
+                    {
+                        CredentialType = Core.Enums.CredentialType.Default,
                         User = user,
                         Identifier = "Admin",
-                        Secret = Core.Encryption.CreateHash("admin")
+                        Secret = Core.Encryption.CreateHash("admin"),
+                        
                     };
 
-                    var rolePermission = new RolePermission(){
-                        Role = role,
-                        Permission = permission
-                    };
-
-                    var userRole = new UserRole(){
-                        User = user,
-                        Role = role
-                    };
-
-                    context.Add(credentialType);
                     context.Add(user);
-                    context.Add(permission);
                     context.Add(role);
                     context.Add(credential);
-                    context.Add(rolePermission);
-                    context.Add(userRole);
                     context.SaveChanges();
                 }
 
@@ -89,93 +61,65 @@ namespace Sombra.IdentityService.UnitTests
                 };
 
                 //Act
-                using (var context = new AuthenticationContext(options))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     var handler = new UserLoginRequestHandler(context);
                     response = await handler.Handle(request);
                 }
 
                 //Assert
-                using (var context = new AuthenticationContext(options))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     Assert.IsTrue(response.Success);
                     Assert.AreEqual(response.UserName, context.Users.Single().Name);
                     Assert.AreEqual(response.UserKey, context.Users.Single().UserKey);
-                    CollectionAssert.AreEqual(response.PermissionCodes, context.Permissions.Select(b => b.Name).ToList());
+                    CollectionAssert.AreEqual(response.Roles, context.Roles.Select(b => b.RoleName).ToList());
                 }
-
-
-
-            } finally {
-                connection.Close();
             }
-
-
-
+            finally
+            {
+                AuthenticationContext.CloseInMemoryConnection();
+            }
         }
 
         [TestMethod]
-        public async Task Handle_WrongPassword(){
-
-            
-            var connection = new SqliteConnection("DataSource=:memory:");
-            connection.Open();
+        public async Task Handle_WrongPassword()
+        {
+            AuthenticationContext.OpenInMemoryConnection();
             try
             {
                 //Arrange
-                var options = new DbContextOptionsBuilder<AuthenticationContext>()
-                    .UseSqlite(connection)
-                    .Options;
 
-                using (var context = new AuthenticationContext(options))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
 
-                    var credentialType = new CredentialType(){
-                        Name = Core.Enums.CredentialType.Default,
-                        Position = 1,
-                    };
-
-                    var user = new User(){
+                    var user = new User()
+                    {
                         UserKey = Guid.NewGuid(),
                         Name = "Test User",
                         Created = DateTime.Now
                     };
 
-                    var permission = new Permission(){
-                        Name = Core.Enums.Permission.Default,
-                        Position = 1
+                    var role = new Role()
+                    {
+                        RoleName = Core.Enums.Role.Default,
+                        User = user,
+
                     };
 
-                    var role = new Role(){
-                        Name = Core.Enums.Role.Default,
-                        Position = 1
-                    };
-
-                    var credential = new Credential(){
-                        CredentialType = credentialType,
+                    var credential = new Credential()
+                    {
+                        CredentialType = Core.Enums.CredentialType.Default,
                         User = user,
                         Identifier = "Admin",
-                        Secret = Core.Encryption.CreateHash("admin")
+                        Secret = Core.Encryption.CreateHash("admin"),
+                        
                     };
 
-                    var rolePermission = new RolePermission(){
-                        Role = role,
-                        Permission = permission
-                    };
-
-                    var userRole = new UserRole(){
-                        User = user,
-                        Role = role
-                    };
-
-                    context.Add(credentialType);
                     context.Add(user);
-                    context.Add(permission);
                     context.Add(role);
                     context.Add(credential);
-                    context.Add(rolePermission);
-                    context.Add(userRole);
                     context.SaveChanges();
                 }
 
@@ -188,23 +132,25 @@ namespace Sombra.IdentityService.UnitTests
                 };
 
                 //Act
-                using (var context = new AuthenticationContext(options))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     var handler = new UserLoginRequestHandler(context);
                     response = await handler.Handle(request);
                 }
 
                 //Assert
-                using (var context = new AuthenticationContext(options))
+                using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     Assert.IsFalse(response.Success);
-                    Assert.AreEqual(response.UserName, null);
+                    Assert.IsNull(response.UserName);
                     Assert.AreEqual(response.UserKey, Guid.Empty);
-                    CollectionAssert.AreEqual(response.PermissionCodes, null);
+                    Assert.IsNull(response.Roles);
                 }
 
-            } finally {
-                connection.Close();
+            }
+            finally
+            {
+                AuthenticationContext.CloseInMemoryConnection();
             }
 
         }

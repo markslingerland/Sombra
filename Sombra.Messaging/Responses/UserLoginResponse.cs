@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Sombra.Core.Enums;
 
 namespace Sombra.Messaging.Responses{
     public class UserLoginResponse : Response {
@@ -7,7 +8,7 @@ namespace Sombra.Messaging.Responses{
 		
         public Guid UserKey { get; set; }
         public string UserName { get; set; }
-        public List<string> PermissionCodes { get; set; }
+        public List<Role> Roles { get; set; }
     }
 }
 

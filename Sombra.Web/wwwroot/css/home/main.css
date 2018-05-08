@@ -214,7 +214,7 @@ body {
 /*dropdown*/
 
 #about {
-    margin-left: 50px;
+    margin-left: 25px;
     float: left;
 }
 
@@ -389,7 +389,7 @@ body {
     margin-top: 150px;
 }
 
-#home-contribute .contribute-textArea h3 {
+.standard-text .contribute-textArea h3 {
     font-family: 'Montserrat', sans-serif;
     font-size: 40px;
     font-weight: 200;
@@ -398,7 +398,7 @@ body {
     margin-bottom: 31px;
 }
 
-#home-contribute .contribute-textArea p {
+.standard-text .contribute-textArea p {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 22px;
     font-weight: 300;
@@ -407,7 +407,7 @@ body {
     margin-bottom: 20px;
 }
 
-#home-contribute .big-button {
+.standard-text .big-button {
     width: 250px;
     height: 40px;
     border-radius: 8px;
@@ -415,7 +415,7 @@ body {
     position: relative;
 }
 
-#home-contribute .big-button span{
+.standard-text .big-button span{
     font-family: 'Montserrat', sans-serif;
     font-size: 19px;
     font-weight: bold;
@@ -436,29 +436,120 @@ body {
     margin-left: auto;
     margin-right: auto;
     display: block;
+    opacity: 0.3;
+    z-index: 0;
 }
 
 #home-contribute .action-holder .action-items {
     width: 100%;
     position: relative;
-    background-color: red;
     margin-top: -60px;
 }
 
+#home-contribute .action-holder .action-item {
+   z-index: 100;
+}
+
 #home-contribute .action-holder .action-item:nth-child(1) {
+    top: 11px;
+    right: 25px;
+}
+
+#home-contribute .action-holder .action-item:nth-child(2) {
+    top: -19px;
+    right: 325px;
+}
+
+#home-contribute .action-holder .action-item:nth-child(3) {
+    top: 290px;
+    right: 219px;
+}
+
+#home-contribute .action-holder .action-item {
     width: 253px;
     height: 265px;
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -10px;
+    right: 25px;
 }
 
-#home-contribute .action-holder .action-item:nth-child(1) img {
+#home-contribute .action-holder .action-item img {
     width: 100%;
     height: 50%;
-    background-color: blue;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
+#home-contribute .action-holder .action-item .action-title {
+    color: white;
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#home-contribute .action-holder .action-item .colored-label {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#home-contribute .action-holder .action-item .colored-label a {
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: lightblue;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+#home-contribute .action-holder .action-item .action-information {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #838383;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#home-contribute .action-holder .action-item .action-btn-holder {
+    width: 100%;
+    position: absolute;
+    bottom: -25px;
+}
+
+#home-contribute .action-holder .action-item .action-btn-holder a {
+    width: 54px;
+    height: 54px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-radius: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+#home-contribute .action-holder .action-item .action-btn-holder i {
+    font-size: 25px;
+    margin-top: 15px;
+    color: orange;
+}
+
+#home-contribute .action-holder .items-holder {
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+#discover {
+    margin-top: 150px;
+    float: left;
+}

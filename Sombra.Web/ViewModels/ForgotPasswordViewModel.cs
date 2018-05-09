@@ -5,7 +5,7 @@ namespace Sombra.Web.ViewModels{
         [Display(Name = "e-mailadres")]
         [Required()]
         [EmailAddress()]
-        public string EmailAdress { get; set; }
+        public string EmailAddress { get; set; }
 
     }
 }

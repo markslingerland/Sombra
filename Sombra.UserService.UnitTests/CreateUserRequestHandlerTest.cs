@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using EasyNetQ;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Sombra.Core.Enums;
 using Sombra.Messaging.Events;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
@@ -93,6 +94,60 @@ namespace Sombra.UserService.UnitTests
                 using (var context = UserContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(0, context.Users.Count());
+                    Assert.AreEqual(ErrorType.InvalidUserKey, response.ErrorType);
+                    Assert.IsFalse(response.Success);
+                }
+
+                busMock.Verify(m => m.PublishAsync(It.IsAny<UserCreatedEvent>()), Times.Never());
+            }
+            finally
+            {
+                UserContext.CloseInMemoryConnection();
+            }
+        }
+
+        [TestMethod]
+        public async Task CreateUserRequestHandler_Handle_Returns_EmailExists()
+        {
+            UserContext.OpenInMemoryConnection();
+
+            try
+            {
+                var busMock = new Mock<IBus>();
+                busMock.Setup(m => m.PublishAsync(It.IsAny<UserCreatedEvent>())).Returns(Task.FromResult(true));
+
+                var user = new User
+                {
+                    UserKey = Guid.NewGuid(),
+                    EmailAddress = "john@doe.com"
+                };
+
+                using (var context = UserContext.GetInMemoryContext())
+                {
+                    context.Database.EnsureCreated();
+                    context.Users.Add(user);
+                    context.SaveChanges();
+                }
+
+                CreateUserResponse response;
+                var request = new CreateUserRequest
+                {
+                    UserKey = Guid.NewGuid(),
+                    FirstName = "John",
+                    LastName = "Doe",
+                    EmailAddress = "john@doe.com"
+                };
+
+                using (var context = UserContext.GetInMemoryContext())
+                {
+                    var handler = new CreateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    response = await handler.Handle(request);
+                }
+
+                using (var context = UserContext.GetInMemoryContext())
+                {
+                    Assert.AreEqual(1, context.Users.Count());
+                    Assert.AreEqual(ErrorType.EmailExists, response.ErrorType);
                     Assert.IsFalse(response.Success);
                 }
 

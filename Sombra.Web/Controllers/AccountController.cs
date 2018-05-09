@@ -2,17 +2,17 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Sombra.Web.Infrastructure.Authentication;
 using Sombra.Web.Models;
+using Sombra.Web.Services;
 using Sombra.Web.ViewModels;
 
 namespace Sombra.Web.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IUserManager _userManager;
+        private readonly UserService _userManager;
         
-        public AccountController(IUserManager userManager)
+        public AccountController(UserService userManager)
         {
             _userManager = userManager;
         }

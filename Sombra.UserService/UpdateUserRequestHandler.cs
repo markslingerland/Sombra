@@ -3,6 +3,7 @@ using AutoMapper;
 using EasyNetQ;
 using Microsoft.EntityFrameworkCore;
 using Sombra.Core;
+using Sombra.Core.Enums;
 using Sombra.Messaging.Events;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
@@ -31,8 +32,23 @@ namespace Sombra.UserService
             {
                 return new UpdateUserResponse
                 {
-                    Success = false,
-                    ErrorType = UpdateUserErrorType.NotFound
+                    ErrorType = ErrorType.NotFound
+                };
+            }
+
+            var isEmailAddressUniqueHandler = new UserEmailExistsRequestHandler(_context);
+            var request = new UserEmailExistsRequest
+            {
+                CurrentUserKey = message.UserKey,
+                EmailAddress = message.EmailAddress
+            };
+
+            var response = await isEmailAddressUniqueHandler.Handle(request);
+            if (response.EmailExists)
+            {
+                return new UpdateUserResponse
+                {
+                    ErrorType = ErrorType.EmailExists
                 };
             }
 
@@ -44,10 +60,7 @@ namespace Sombra.UserService
             catch (DbUpdateException ex)
             {
                 ExtendedConsole.Log(ex);
-                return new UpdateUserResponse
-                {
-                    Success = false
-                };
+                return new UpdateUserResponse();
             }
 
             var userUpdatedEvent = _mapper.Map<UserUpdatedEvent>(existingUser);

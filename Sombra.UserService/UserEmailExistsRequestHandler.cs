@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Sombra.Core.Extensions;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
@@ -19,10 +21,13 @@ namespace Sombra.UserService
 
         public async Task<UserEmailExistsResponse> Handle(UserEmailExistsRequest message)
         {
+            Expression<Func<User, bool>> filter = u => u.EmailAddress.Equals(message.EmailAddress, StringComparison.OrdinalIgnoreCase);
+            if (message.CurrentUserKey != default)
+                filter = filter.And(u => u.UserKey != message.CurrentUserKey);
+
             return new UserEmailExistsResponse
             {
-                EmailExists = await _context.Users.AnyAsync(u =>
-                    u.EmailAddress.Equals(message.EmailAddress, StringComparison.InvariantCultureIgnoreCase))
+                EmailExists = await _context.Users.AnyAsync(filter)
             };
         }
     }

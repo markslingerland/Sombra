@@ -1,0 +1,341 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+#header {
+    float: left;
+    width: 100%;
+    height: 100px;
+}
+
+#header .fixed-header {
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    height: 100px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.container {
+    width: 100% !important;
+    padding: 0;
+    margin: 0;
+}
+
+#header .logo {
+    margin-top: 15px;
+    float: left;
+    margin-left: 50px;
+}
+
+#header .big-menu {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #838383;
+}
+
+#header .big-menu ul {
+    float: right;
+    margin-top: 18px;
+    padding-left: 0;
+}
+
+#header .big-menu li {
+    display: inline-block;
+    padding-right: 43px;
+    height: 40px;
+}
+
+#header .big-menu li a {
+    text-decoration: none;
+    color: #838383;
+}
+
+#header .big-menu li:first-child {
+    margin-left: 0;
+}
+
+#header .big-menu li:nth-child(4) {
+    margin-right: 120px;
+}
+
+#header .big-menu li:nth-child(5), #header .big-menu li:nth-child(6) {
+    padding-right: 25px;
+}
+
+#header .big-menu li:nth-child(7) {
+    margin-right: 50px;
+    padding-right: 0;
+}
+
+#header .big-menu i {
+    color: #fda23f;
+}
+
+#header .big-menu .donate-btn {
+    width: 156px;
+    height: 40px;
+    border-radius: 8px;
+    background-image: linear-gradient(107deg, #fda23f, #f3646f);
+    margin-top: 12px;
+    position: relative;
+}
+
+#header .big-menu .donate-btn i {
+    position: absolute;
+    color: white;
+    top: 10px;
+    left: 15px;
+    font-size: 20px;
+}
+
+#header .big-menu .donate-btn i {
+    position: absolute;
+    color: white;
+    top: 10px;
+    left: 12px;
+    font-size: 20px;
+    z-index: 200;
+}
+
+#header .big-menu .donate-btn span {
+    position: absolute;
+    top: 8px;
+    left: 35px;
+    color: white;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+#header .big-menu .donate-btn a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/*Dropdown*/
+
+#header .dropdown-btn-holder {
+    float: right;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+#header .dropdown-btn {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: none;
+    background-color: white;
+}
+
+#header .dropdown-btn-holder i {
+    font-size: 15px;
+    color: #fda23f;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#header .header-dropdown-menu {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(122deg, #fda23f, #f3646f);
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+#header .dropdown-content {
+    position: relative;
+    top: 5%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#header .dropdown-content {
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+#header #header-close-dropdown {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color: white;
+    margin-top: 20px;
+    margin-right: 20px;
+    float: right;
+}
+
+#header-close-dropdown i {
+    font-size: 15px;
+    color: #fda23f;
+    padding-top: 5px;
+}
+
+#header .dropdown-content .dropdown-item {
+    display: inherit;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    margin-top: 15px;
+}
+
+#header .dropdown-content .dropdown-item a {
+    display: inherit;
+    text-align: center;
+    width: 80%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+.standard-text .contribute-textArea h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-weight: 200;
+    text-align: left;
+    color: #838383;
+    margin-bottom: 31px;
+}
+
+.standard-text .contribute-textArea p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    text-align: left;
+    color: #838383;
+    margin-bottom: 20px;
+}
+
+.standard-text .big-button {
+    width: 250px;
+    height: 40px;
+    border-radius: 8px;
+    background-image: linear-gradient(101deg, #fda23f, #f3646f);
+    position: relative;
+}
+
+.standard-text .big-button span{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    position: absolute;
+    top: 9px;
+    left: 13px;
+}
+
+footer {
+    width: 100%;
+    float: left;
+    height: 415px;
+    background-image: linear-gradient(114deg, #fda23f, #f3646f);
+    padding: 0;
+    margin: 0;
+}
+
+.body-content {
+    padding: 0 !important;
+    margin: 0;
+}
+
+footer .footer-holder {
+    padding-left: 165px;
+    padding-right: 165px;
+    margin-top: 45px;
+}
+
+footer .footer-holder a {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    
+}
+
+footer .footer-holder li  {
+list-style: none;
+padding-bottom: 16px;    
+}
+
+footer .footer-holder label a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+footer .footer-holder .updateArea {
+    text-align: right
+}
+
+footer .footer-holder .updateArea p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    padding-top: 16px;
+}
+footer .footer-holder .email-holder  {
+ position: relative;
+}
+footer .footer-holder .email-holder input:nth-child(1) {
+    width: 318px;
+    height: 50px;
+    border-radius: 8px;
+    background: transparent;
+    border: solid 1px #ffffff;
+}
+
+footer .footer-holder .email-holder input:nth-child(1)::-webkit-input-placeholder {
+    font-size: 19px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+   }
+
+   footer .footer-holder .email-holder input:nth-child(1)[type=text] {
+        padding-left: 25px;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 24px;
+        color: #ffffff;
+   }
+   footer .footer-holder .email-holder button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+footer .footer-holder .email-holder button i {
+    font-size: 30px;
+    color: white;
+}

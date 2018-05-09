@@ -17,9 +17,6 @@ namespace Sombra.UserService
             CreateMap<User, GetUserByEmailResponse>()
                 .ForMember(d => d.UserExists, opt => opt.UseValue(true));
 
-            CreateMap<User, GetUserByEmailResponse>()
-                .ForMember(d => d.UserExists, opt => opt.UseValue(true));
-
             CreateMap<CreateUserRequest, User>()
                 .ForMember(d => d.Id, opt => opt.Ignore())
                 .ForMember(d => d.Created, opt => opt.UseValue(DateTime.UtcNow));

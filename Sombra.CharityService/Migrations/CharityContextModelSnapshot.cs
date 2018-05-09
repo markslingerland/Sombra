@@ -2,9 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
 using Sombra.CharityService.DAL;
 using System;
 
@@ -30,6 +27,14 @@ namespace Sombra.CharityService.Migrations
                     b.Property<string>("NameCharity");
 
                     b.Property<string>("NameOwner");
+
+                    b.Property<string>("EmailCharity");
+
+                    b.Property<int>("Category");
+
+                    b.Property<string>("KVKNumber");
+
+                    b.Property<string>("IBAN");
 
                     b.HasKey("Id");
 

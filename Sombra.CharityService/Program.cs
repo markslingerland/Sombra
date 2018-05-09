@@ -7,7 +7,6 @@ using System.Reflection;
 using System.Threading;
 using System.IO;
 using Microsoft.Extensions.Configuration;
-using System.Linq;
 using Sombra.CharityService.DAL;
 
 namespace Sombra.CharityService

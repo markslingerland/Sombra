@@ -1,7 +1,4 @@
-﻿using System;
-using AutoMapper;
-using Sombra.Messaging.Events;
-using Sombra.Messaging.Infrastructure;
+﻿using AutoMapper;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.CharityService.DAL;

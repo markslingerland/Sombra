@@ -1,9 +1,5 @@
 ﻿using Sombra.Core.Enums;
 using Sombra.Infrastructure.DAL;
-using Sombra.Messaging.Requests;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Sombra.CharityService.DAL
 {

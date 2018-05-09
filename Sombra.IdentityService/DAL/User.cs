@@ -9,6 +9,9 @@ namespace Sombra.IdentityService.DAL
         public Guid UserKey { get; set; }
         public string Name { get; set; }
         public DateTime Created { get; set; }
+        public bool IsActive { get; set; } = false;
+        public string ActivationToken { get; set; }
+        public DateTime ActivationTokenExpirationDate { get; set; }
         
         public virtual ICollection<Credential> Credentials { get; set; }
         public virtual ICollection<Role> Roles { get; set; }

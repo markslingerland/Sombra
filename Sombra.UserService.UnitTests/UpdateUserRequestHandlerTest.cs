@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using EasyNetQ;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Sombra.Core.Enums;
 using Sombra.Messaging.Events;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
@@ -109,6 +110,68 @@ namespace Sombra.UserService.UnitTests
                 {
                     Assert.AreEqual(1, context.Users.Count());
                     Assert.AreNotEqual(request.FirstName, context.Users.Single().FirstName);
+                    Assert.IsFalse(response.Success);
+                    Assert.AreEqual(ErrorType.NotFound, response.ErrorType);
+                }
+
+                busMock.Verify(m => m.PublishAsync(It.IsAny<UserUpdatedEvent>()), Times.Never());
+            }
+            finally
+            {
+                UserContext.CloseInMemoryConnection();
+            }
+        }
+
+        [TestMethod]
+        public async Task UpdateUserRequestHandler_Handle_Returns_UserEmailExists()
+        {
+            UserContext.OpenInMemoryConnection();
+
+            try
+            {
+                var busMock = new Mock<IBus>();
+                busMock.Setup(m => m.PublishAsync(It.IsAny<UserUpdatedEvent>())).Returns(Task.FromResult(true));
+
+                UpdateUserResponse response;
+                var request = new UpdateUserRequest()
+                {
+                    UserKey = Guid.NewGuid(),
+                    FirstName = "Ellen",
+                    LastName = "Doe",
+                    EmailAddress = "ellen@doe.com"
+                };
+
+                using (var context = UserContext.GetInMemoryContext())
+                {
+                    context.Database.EnsureCreated();
+                    context.Users.Add(new User
+                    {
+                        UserKey = request.UserKey,
+                        FirstName = "John",
+                        LastName = request.LastName,
+                        EmailAddress = "john@doe.com"
+                    });
+
+                    context.Users.Add(new User
+                    {
+                        UserKey = Guid.NewGuid(),
+                        EmailAddress = "ellen@doe.com"
+                    });
+
+                    context.SaveChanges();
+                }
+
+                using (var context = UserContext.GetInMemoryContext())
+                {
+                    var handler = new UpdateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    response = await handler.Handle(request);
+                }
+
+                using (var context = UserContext.GetInMemoryContext())
+                {
+                    Assert.AreEqual(2, context.Users.Count());
+                    Assert.AreNotEqual(request.EmailAddress, context.Users.Single(u => u.UserKey == request.UserKey).EmailAddress);
+                    Assert.AreEqual(ErrorType.EmailExists, response.ErrorType);
                     Assert.IsFalse(response.Success);
                 }
 

@@ -15,7 +15,7 @@ namespace Sombra.SearchService.DAL
                 .Build();
 
             var builder = new DbContextOptionsBuilder<SearchContext>();
-            var connectionString = configuration["USER_DB_CONNECTIONSTRING"];
+            var connectionString = configuration["SEARCH_DB_CONNECTIONSTRING"];
             builder.UseSqlServer(connectionString);
 
             return new SearchContext(builder.Options);

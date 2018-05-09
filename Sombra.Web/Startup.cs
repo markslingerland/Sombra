@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Sombra.Messaging.Infrastructure;
 using Sombra.Web.Infrastructure.Filters;
 using Sombra.Web.Infrastructure.Authentication;
 using Sombra.Web.Infrastructure.Messaging;
@@ -40,7 +41,9 @@ namespace Sombra.Web
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddMemoryCache();
 
-            services.AddScoped(c => RabbitHutch.CreateBus(_rabbitMqConnectionString));
+            services.AddScoped(c => RabbitHutch.CreateBus(_rabbitMqConnectionString, sr =>
+                sr.Register<ITypeNameSerializer>(sp => new CustomTypeNameSerializer())));
+
             services.AddScoped<ICachingBus, CachingRabbitBus>();
 
             services.AddAutoMapper();

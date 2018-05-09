@@ -89,6 +89,15 @@ services:
       - rabbitmq
       - mongoserver
 
+  sombra.searchservice:
+    image: sombra.searchservice
+    build:
+      context: .
+      dockerfile: Sombra.SearchService/Dockerfile
+    depends_on:
+      - rabbitmq
+      - sqlserver
+
 
   rabbitmq:
     image: rabbitmq:3-management

@@ -25,19 +25,23 @@ namespace Sombra.CharityService.UnitTests
             try
             {
                 var busMock = new Mock<IBus>();
-                busMock.Setup(m => m.PublishAsync(It.IsAny<CharityCreatedEvent>())).Returns(Task.FromResult(true));
+                busMock.Setup(m => m.PublishAsync(It.IsAny<UpdateCharityEvent>())).Returns(Task.FromResult(true));
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
                 }
 
-                CharityResponse response;
-                var request = new CharityRequest()
+                UpdateCharityResponse response;
+                var request = new UpdateCharityRequest()
                 {
                     CharityId = "1",
                     NameCharity = "0",
-                    NameOwner = "0"
+                    NameOwner = "0",
+                    EmailCharity = "0",
+                    Category = Core.Enums.Category.None,
+                    KVKNumber = "0",
+                    IBAN = "0-0"
                 };
 
                 using (var context = CharityContext.GetInMemoryContext())
@@ -46,9 +50,13 @@ namespace Sombra.CharityService.UnitTests
                     context.Charities.Add(new CharityEntity
                     {
                         CharityId = "1",
-                        NameCharity = "testCharity",
-                        NameOwner = "testOwner"
-                        
+                        NameCharity = "0",
+                        NameOwner = "0",
+                        EmailCharity = "testEmail",
+                        Category = Core.Enums.Category.Dierenbescherming,
+                        KVKNumber = "kvk",
+                        IBAN = "1234-1234"
+
                     });
 
                     context.SaveChanges();
@@ -68,7 +76,7 @@ namespace Sombra.CharityService.UnitTests
                     Assert.IsTrue(response.Success);
                 }
 
-                busMock.Verify(m => m.PublishAsync(It.Is<CharityCreatedEvent>(e => e.CharityId == request.CharityId && e.NameCharity == request.NameCharity)), Times.Once);
+                busMock.Verify(m => m.PublishAsync(It.Is<UpdateCharityEvent>(e => e.CharityId == request.CharityId && e.NameCharity == request.NameCharity)), Times.Once);
             }
             finally
             {

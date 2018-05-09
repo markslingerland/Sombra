@@ -25,15 +25,15 @@ namespace Sombra.CharityService.UnitTests
             try
             {
                 var busMock = new Mock<IBus>();
-                busMock.Setup(m => m.PublishAsync(It.IsAny<CharityCreatedEvent>())).Returns(Task.FromResult(true));
+                busMock.Setup(m => m.PublishAsync(It.IsAny<CreatedCharityEvent>())).Returns(Task.FromResult(true));
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
                 }
 
-                CharityResponse response;
-                var request = new CharityRequest
+                CreateCharityResponse response;
+                var request = new CreateCharityRequest
                 {
                     CharityId = "1",
                     NameCharity = "testCharity",
@@ -55,7 +55,7 @@ namespace Sombra.CharityService.UnitTests
                     Assert.IsTrue(response.Success);
                 }
 
-                busMock.Verify(m => m.PublishAsync(It.Is<CharityCreatedEvent>(e => e.CharityId == request.CharityId && e.NameCharity == request.NameCharity)), Times.Once);
+                busMock.Verify(m => m.PublishAsync(It.Is<CreatedCharityEvent>(e => e.CharityId == request.CharityId && e.NameCharity == request.NameCharity)), Times.Once);
             }
             finally
             {

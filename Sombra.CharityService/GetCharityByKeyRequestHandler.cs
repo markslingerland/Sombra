@@ -8,30 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using AutoMapper;
+using Sombra.Core;
 
 namespace Sombra.CharityService
 {
-    public class GetCharityByKeyRequestHandler : IAsyncRequestHandler<CharityRequest, CharityResponse>
+    public class GetCharityByKeyRequestHandler : IAsyncRequestHandler<GetCharityRequest, GetCharityResponse>
     {
         private readonly CharityContext _charityeContext;
+        private readonly IMapper _mapper;
 
-        public GetCharityByKeyRequestHandler(CharityContext charityContext)
+        public GetCharityByKeyRequestHandler(CharityContext charityContext, IMapper mapper)
         {
             _charityeContext = charityContext;
+            _mapper = mapper;
         }
 
-        public async Task<CharityResponse> Handle(CharityRequest message)
+        public async Task<GetCharityResponse> Handle(GetCharityRequest message)
         {
+            ExtendedConsole.Log("GetCharityByKeyRequestHandler received");
             var charity = await _charityeContext.Charities.Where(b => b.CharityId.Equals(message.CharityId)).Select(a => a).FirstOrDefaultAsync();
-            if (charity == null) return new CharityResponse(false);
-
-            var response = new CharityResponse(true);
-
-            response.CharityId = charity.CharityId;
-            response.NameCharity = charity.NameCharity;
-            response.NameOwner = charity.NameOwner;
-
-            return response;
+            return charity != null ? _mapper.Map<GetCharityResponse>(charity) : new GetCharityResponse();
         }
     }
 }

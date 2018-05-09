@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Sombra.CharityService
 {
-    public class CreateCharityRequestHandler : IAsyncRequestHandler<CharityRequest, CharityResponse>
+    public class CreateCharityRequestHandler : IAsyncRequestHandler<CreateCharityRequest, CreateCharityResponse>
     {
         private readonly CharityContext _context;
         private readonly IMapper _mapper;
@@ -28,13 +28,13 @@ namespace Sombra.CharityService
             _bus = bus;
         }
 
-        public async Task<CharityResponse> Handle(CharityRequest message)
+        public async Task<CreateCharityResponse> Handle(CreateCharityRequest message)
         {
             var charity = _mapper.Map<CharityEntity>(message);
             if (charity.CharityId == default)
             {
-                ExtendedConsole.Log("CreateUserRequestHandler: UserKey is empty");
-                return new CharityResponse(false);
+                ExtendedConsole.Log("CreateCharityRequestHandler: CharityKey is empty");
+                return new CreateCharityResponse(false);
             }
 
             _context.Charities.Add(charity);
@@ -46,13 +46,13 @@ namespace Sombra.CharityService
             catch (DbUpdateException ex)
             {
                 ExtendedConsole.Log(ex);
-                return new CharityResponse(false);
+                return new CreateCharityResponse(false);
             }
 
-            var charityCreatedEvent = _mapper.Map<CharityCreatedEvent>(charity);
+            var charityCreatedEvent = _mapper.Map<CreatedCharityEvent>(charity);
             await _bus.PublishAsync(charityCreatedEvent);
 
-            return new CharityResponse(true);
+            return new CreateCharityResponse(true);
         }
     }
 }

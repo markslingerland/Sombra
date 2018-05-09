@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Sombra.CharityService
 {
-    public class UpdateCharityRequestHandler : IAsyncRequestHandler<CharityRequest, CharityResponse>
+    public class UpdateCharityRequestHandler : IAsyncRequestHandler<UpdateCharityRequest, UpdateCharityResponse>
     {
         private readonly CharityContext _context;
         private readonly IMapper _mapper;
@@ -28,14 +28,14 @@ namespace Sombra.CharityService
             _bus = bus;
         }
 
-        public async Task<CharityResponse> Handle(CharityRequest message)
+        public async Task<UpdateCharityResponse> Handle(UpdateCharityRequest message)
         {
 
-            ExtendedConsole.Log("ChangeCharityRequest received");
+            ExtendedConsole.Log("UpdateCharityRequest received");
             var charity = await _context.Charities.FirstOrDefaultAsync(u => u.CharityId == message.CharityId);
             if (charity == null)
             {
-                return new CharityResponse
+                return new UpdateCharityResponse
                 {
                     Success = false,
                 };
@@ -49,16 +49,16 @@ namespace Sombra.CharityService
             catch (DbUpdateException ex)
             {
                 ExtendedConsole.Log(ex);
-                return new CharityResponse
+                return new UpdateCharityResponse
                 {
                     Success = false
                 };
             }
 
-            var userUpdatedEvent = _mapper.Map<CharityCreatedEvent>(charity);
+            var userUpdatedEvent = _mapper.Map<UpdateCharityEvent>(charity);
             await _bus.PublishAsync(userUpdatedEvent);
 
-            return new CharityResponse
+            return new UpdateCharityResponse
             {
                 Success = true
             };

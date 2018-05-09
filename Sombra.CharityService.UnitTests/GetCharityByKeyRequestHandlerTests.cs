@@ -35,7 +35,7 @@ namespace Sombra.CharityService.UnitTests
                     context.SaveChanges();
 
                 }
-                var request = new CharityRequest()
+                var request = new GetCharityRequest()
                 {
                     CharityId = "1",
                     NameCharity = "testCharity",
@@ -43,12 +43,12 @@ namespace Sombra.CharityService.UnitTests
 
                 };
 
-                CharityResponse response;
+                GetCharityResponse response;
 
                 //Act
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    var handler = new GetCharityByKeyRequestHandler(context);
+                    var handler = new GetCharityByKeyRequestHandler(context, Helper.GetMapper());
                     response = await handler.Handle(request);
                 }
 
@@ -92,14 +92,14 @@ namespace Sombra.CharityService.UnitTests
                     context.SaveChanges();
 
                 }
-                var request = new CharityRequest();
+                var request = new GetCharityRequest();
 
-                CharityResponse response;
+                GetCharityResponse response;
 
                 //Act
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    var handler = new GetCharityByKeyRequestHandler(context);
+                    var handler = new GetCharityByKeyRequestHandler(context, Helper.GetMapper());
                     response = await handler.Handle(request);
                 }
 

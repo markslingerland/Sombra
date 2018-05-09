@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Sombra.Infrastructure.DAL;
 using Sombra.Infrastructure.Extensions;
 using Sombra.Messaging.Infrastructure;
+using Sombra.SearchService.DAL;
 
 namespace Sombra.SearchService
 {
@@ -23,7 +24,7 @@ namespace Sombra.SearchService
                 Assembly.GetExecutingAssembly(),
                 _rabbitMqConnectionString,
                 services => services
-                    .AddDbContext<>(_sqlConnectionString),
+                    .AddDbContext<SearchContext>(_sqlConnectionString),
                 ConnectionValidator.ValidateAllDbConnections, DatabaseMigrationHelper.ForceMigrations);
 
             Thread.Sleep(Timeout.Infinite);

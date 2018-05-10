@@ -80,6 +80,21 @@ services:
       context: .
       dockerfile: Sombra.UserService.UnitTests/Dockerfile
 
+  sombra.donateservice:
+    image: sombra.donateservice
+    build:
+      context: .
+      dockerfile: Sombra.DonateService/Dockerfile
+    depends_on:
+      - rabbitmq
+      - sqlserver
+
+  sombra.donateservice.unittests:
+    image: sombra.donateservice.unittests
+    build:
+      context: .
+      dockerfile: Sombra.DonateService.UnitTests/Dockerfile
+
   sombra.loggingservice:
     image: sombra.loggingservice
     build:

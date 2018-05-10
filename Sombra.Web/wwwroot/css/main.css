@@ -10,11 +10,13 @@ body {
 
 #header .fixed-header {
     width: 100%;
-    background-color: white;
+    background-color:white;
     position: fixed;
     height: 100px;
-    z-index: 1;
+    z-index: 5000;
     overflow: hidden;
+    padding-left: 165px;
+    padding-right: 165px;
 }
 
 .container {
@@ -26,7 +28,6 @@ body {
 #header .logo {
     margin-top: 15px;
     float: left;
-    margin-left: 50px;
 }
 
 #header .big-menu {
@@ -39,6 +40,7 @@ body {
     letter-spacing: normal;
     text-align: left;
     color: #838383;
+    z-index: 6000;
 }
 
 #header .big-menu ul {
@@ -49,7 +51,7 @@ body {
 
 #header .big-menu li {
     display: inline-block;
-    padding-right: 43px;
+    padding-right: 40px;
     height: 40px;
 }
 

@@ -1,8 +1,13 @@
 /*dropdown*/
 
 #about {
-    margin-left: 25px;
     float: left;
+    width: 100%;
+}
+
+#about .container {
+    padding-left: 165px;
+    padding-right: 165px;
 }
 
 #about img {
@@ -18,7 +23,6 @@
     position: absolute;
     top: 0;
     right: 0;
-    z-index: -1;
 }
 
 #about .about-text {

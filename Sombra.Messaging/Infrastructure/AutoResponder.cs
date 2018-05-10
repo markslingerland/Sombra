@@ -18,12 +18,12 @@ namespace Sombra.Messaging.Infrastructure
             AutoResponderMessageDispatcher = messageDispatcher;
         }
 
-        public void RespondAsync(Assembly assembly)
+        public virtual void RespondAsync(Assembly assembly)
         {
             RespondAsync(assembly.GetTypes().ToArray());
         }
 
-        public void RespondAsync(params Type[] responderTypes)
+        public virtual void RespondAsync(params Type[] responderTypes)
         {
             var genericBusRepondMethod = GetRespondMethodOfBus(nameof(Bus.RespondAsync), typeof(Func<,>));
             var responderInfos = GetResponderInfos(responderTypes, typeof(IAsyncRequestHandler<,>));

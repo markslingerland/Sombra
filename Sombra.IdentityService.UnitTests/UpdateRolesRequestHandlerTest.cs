@@ -7,7 +7,6 @@ using Sombra.Core.Extensions;
 using Sombra.IdentityService.DAL;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
-using Sombra.Messaging.Responses;
 
 namespace Sombra.IdentityService.UnitTests
 {

@@ -178,6 +178,13 @@
     width: 100%;
     float: left;
     margin-top: 150px;
+    padding-left: 165px;
+    padding-right: 165px;
+}
+
+#home-contribute .container {
+ padding: 0;
+ margin: 0;
 }
 
 #home-contribute .action-holder .action-holder-frame {

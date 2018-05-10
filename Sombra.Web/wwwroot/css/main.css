@@ -38,7 +38,7 @@ body {
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
-    text-align: left;
+    text-align: right;
     color: #838383;
     z-index: 6000;
 }
@@ -73,7 +73,6 @@ body {
 }
 
 #header .big-menu li:nth-child(7) {
-    margin-right: 50px;
     padding-right: 0;
 }
 

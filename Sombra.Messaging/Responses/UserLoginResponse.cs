@@ -10,6 +10,6 @@ namespace Sombra.Messaging.Responses
         public ErrorType ErrorType { get; set; }
         public Guid UserKey { get; set; }
         public string UserName { get; set; }
-        public List<Role> Roles { get; set; }
+        public Role Role { get; set; }
     }
 }

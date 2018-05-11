@@ -1,11 +1,11 @@
-using Sombra.Core.Enums;
+﻿using Sombra.Core.Enums;
 
 namespace Sombra.Messaging.Responses
 {
-    public class ForgotPasswordResponse : Response
+    public class CreateIdentityResponse : Response
     {
-        public string Secret { get; set; }
         public bool Success { get; set; }
+        public string ActivationToken { get; set; }
         public ErrorType ErrorType { get; set; }
     }
 }

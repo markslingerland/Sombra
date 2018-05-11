@@ -10,7 +10,7 @@ using Sombra.IdentityService.DAL;
 namespace Sombra.IdentityService.Migrations
 {
     [DbContext(typeof(AuthenticationContext))]
-    [Migration("20180503163448_InitialCreate")]
+    [Migration("20180504084446_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,8 +26,6 @@ namespace Sombra.IdentityService.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("CredentialType");
-
-                    b.Property<Guid>("CredentialTypeId");
 
                     b.Property<DateTime>("ExpirationDate");
 
@@ -71,7 +69,13 @@ namespace Sombra.IdentityService.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("ActivationToken");
+
+                    b.Property<DateTime>("ActivationTokenExpirationDate");
+
                     b.Property<DateTime>("Created");
+
+                    b.Property<bool>("IsActive");
 
                     b.Property<string>("Name")
                         .IsRequired()

@@ -15,7 +15,10 @@ namespace Sombra.IdentityService.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     UserKey = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(maxLength: 64, nullable: false),
-                    Created = table.Column<DateTime>(nullable: false)
+                    Created = table.Column<DateTime>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false),
+                    ActivationToken = table.Column<string>(nullable: true),
+                    ActivationTokenExpirationDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,7 +31,6 @@ namespace Sombra.IdentityService.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     UserId = table.Column<Guid>(nullable: false),
-                    CredentialTypeId = table.Column<Guid>(nullable: false),
                     Identifier = table.Column<string>(maxLength: 64, nullable: false),
                     Secret = table.Column<string>(maxLength: 1024, nullable: true),
                     SecurityToken = table.Column<string>(nullable: true),

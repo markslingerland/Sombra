@@ -1,4 +1,3 @@
-using System;
 using Sombra.Messaging.Responses;
 
 namespace Sombra.Messaging.Requests

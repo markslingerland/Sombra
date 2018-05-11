@@ -6,7 +6,6 @@ namespace Sombra.IdentityService.DAL
     public class Credential : Entity
     {
         public Guid UserId { get; set; }
-        public Guid CredentialTypeId { get; set; }
         public string Identifier { get; set; }
         public string Secret { get; set; }
         public string SecurityToken { get; set; }

@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Web.Infrastructure.Filters;
 using Sombra.Web.Infrastructure.Authentication;
+using Sombra.Web.Services;
 using Sombra.Web.Infrastructure.Messaging;
 
 namespace Sombra.Web
@@ -48,7 +49,8 @@ namespace Sombra.Web
 
             services.AddAutoMapper();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<IUserManager, UserManager>();
+            services.AddScoped<AuthenticationManager>();
+            services.AddScoped<UserService>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie();

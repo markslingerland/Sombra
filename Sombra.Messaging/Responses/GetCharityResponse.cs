@@ -16,7 +16,7 @@ namespace Sombra.Messaging.Responses{
         public string NameCharity { get; set; }
         public string EmailCharity { get; set; }
         public Category Category { get; set; }
-        public string KVKNumber { get; set; }
+        public int KVKNumber { get; set; }
         public string IBAN { get; set; }
     }
 

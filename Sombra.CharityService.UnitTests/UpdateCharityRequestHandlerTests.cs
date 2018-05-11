@@ -40,7 +40,7 @@ namespace Sombra.CharityService.UnitTests
                     NameOwner = "0",
                     EmailCharity = "0",
                     Category = Core.Enums.Category.None,
-                    KVKNumber = "0",
+                    KVKNumber = 0,
                     IBAN = "0-0"
                 };
 
@@ -54,7 +54,7 @@ namespace Sombra.CharityService.UnitTests
                         NameOwner = "0",
                         EmailCharity = "testEmail",
                         Category = Core.Enums.Category.Dierenbescherming,
-                        KVKNumber = "kvk",
+                        KVKNumber = 1,
                         IBAN = "1234-1234"
 
                     });
@@ -71,8 +71,12 @@ namespace Sombra.CharityService.UnitTests
                 using (var context = CharityContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(request.CharityId, context.Charities.Single().CharityId);
-                    Assert.AreEqual(request.NameOwner, context.Charities.Single().NameOwner);
                     Assert.AreEqual(request.NameCharity, context.Charities.Single().NameCharity);
+                    Assert.AreEqual(request.NameOwner, context.Charities.Single().NameOwner);
+                    Assert.AreEqual(request.EmailCharity, context.Charities.Single().EmailCharity);
+                    Assert.AreEqual(request.Category, context.Charities.Single().Category);
+                    Assert.AreEqual(request.KVKNumber, context.Charities.Single().KVKNumber);
+                    Assert.AreEqual(request.IBAN, context.Charities.Single().IBAN);
                     Assert.IsTrue(response.Success);
                 }
 

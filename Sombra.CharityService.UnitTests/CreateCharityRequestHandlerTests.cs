@@ -1,9 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using EasyNetQ;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Sombra.Messaging.Events;
@@ -36,8 +33,12 @@ namespace Sombra.CharityService.UnitTests
                 var request = new CreateCharityRequest
                 {
                     CharityId = "1",
-                    NameCharity = "testCharity",
-                    NameOwner = "testOwner"
+                    NameCharity = "testNameCharity",
+                    NameOwner = "testNAmeOwner",
+                    EmailCharity = "test@test.com",
+                    Category = Core.Enums.Category.None,
+                    KVKNumber = 0,
+                    IBAN = "0-IBAN"
 
                 };
 
@@ -52,6 +53,10 @@ namespace Sombra.CharityService.UnitTests
                     Assert.AreEqual(request.CharityId, context.Charities.Single().CharityId);
                     Assert.AreEqual(request.NameCharity, context.Charities.Single().NameCharity);
                     Assert.AreEqual(request.NameOwner, context.Charities.Single().NameOwner);
+                    Assert.AreEqual(request.EmailCharity, context.Charities.Single().EmailCharity);
+                    Assert.AreEqual(request.Category, context.Charities.Single().Category);
+                    Assert.AreEqual(request.KVKNumber, context.Charities.Single().KVKNumber);
+                    Assert.AreEqual(request.IBAN, context.Charities.Single().IBAN);
                     Assert.IsTrue(response.Success);
                 }
 

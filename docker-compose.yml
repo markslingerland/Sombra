@@ -21,6 +21,21 @@ services:
       context: .
       dockerfile: Sombra.Core.UnitTests/Dockerfile
 
+  sombra.charityservice:
+    image: sombra.charityservice
+    build:
+      context: .
+      dockerfile: Sombra.CharityService/Dockerfile
+    depends_on:
+      - rabbitmq
+      - sqlserver
+
+  sombra.charityservice.unittests:
+    image: sombra.charityservice.unittests
+    build:
+      context: .
+      dockerfile: Sombra.CharityService.UnitTests/Dockerfile
+
   sombra.emailservice:
     image: sombra.emailservice
     build:

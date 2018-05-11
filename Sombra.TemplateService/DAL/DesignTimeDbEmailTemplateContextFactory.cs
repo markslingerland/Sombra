@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Sombra.TemplateService.DAL
 {
-    public class DesignTimeDbContextUserFactory : IDesignTimeDbContextFactory<EmailTemplateContext>
+    public class DesignTimeDbContextEmailTemplateFactory : IDesignTimeDbContextFactory<EmailTemplateContext>
     {
         public EmailTemplateContext CreateDbContext(string[] args)
         {

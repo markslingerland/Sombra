@@ -107,48 +107,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12 action-holder">
                     <div class="action-items">
-                        <div class="items-holder">
-                        <div class="action-item">
-                            <img src="Assets/placeholder.jpg" alt="#">
-                             <h4 class="action-title">Klimmen tegen MS</h4>
-                             <div class="colored-label"><a href="#">Gezondheid</a></div>
-                            <div class="action-information">
-                                Werken aan een toekomst zonder hart- en vaatziekten
-                            </div>
-                            <div class="action-btn-holder">
-                                <a href="#"><i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                            
-                        </div>
-
-                         <div class="action-item">
-                            <img src="Assets/placeholder.jpg" alt="#">
-                             <h4 class="action-title">Klimmen tegen MS</h4>
-                             <div class="colored-label"><a href="#">Gezondheid</a></div>
-                            <div class="action-information">
-                                Werken aan een toekomst zonder hart- en vaatziekten
-                            </div>
-                            <div class="action-btn-holder">
-                                <a href="#"><i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                            
-                        </div>
-
-                         <div class="action-item">
-                            <img src="Assets/placeholder.jpg" alt="#">
-                             <h4 class="action-title">Klimmen tegen MS</h4>
-                             <div class="colored-label"><a href="#">Gezondheid</a></div>
-                            <div class="action-information">
-                                Werken aan een toekomst zonder hart- en vaatziekten
-                            </div>
-                            <div class="action-btn-holder">
-                                <a href="#"><i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                            
-                        </div>
+                        <div class="items-holder" id="top-charities">
                          <img class="action-holder-frame" src="Assets/shape-frame.svg">
                         </div>
                       
@@ -281,3 +240,11 @@
         </ul>
     </div>
 </div> -->
+@section Scripts
+{
+    <script>
+        $(document).ready(function() {
+            $('#top-charities').load('@Url.Action("GetTopCharities", "Search", new { Amount = 3})');
+        });
+    </script>
+}

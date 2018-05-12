@@ -1,0 +1,9 @@
+﻿@model Sombra.Web.ViewModels.Search.TopCharitiesViewModel
+
+@if (Model?.Charities != null)
+{
+    foreach (var charity in Model.Charities)
+    {
+        @await Html.PartialAsync("_ActionItem", charity)
+    }
+}

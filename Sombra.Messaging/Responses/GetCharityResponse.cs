@@ -11,13 +11,15 @@ namespace Sombra.Messaging.Responses{
 
         }
         public bool Success { get; set; }
-        public string CharityId { get; set; }
+        public Guid CharityKey { get; set; }
         public string NameOwner { get; set; }
         public string NameCharity { get; set; }
         public string EmailCharity { get; set; }
         public Category Category { get; set; }
         public int KVKNumber { get; set; }
         public string IBAN { get; set; }
+        public string CoverImage { get; set; }
+        public string Slogan { get; set; }
     }
 
     

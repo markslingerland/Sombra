@@ -23,20 +23,22 @@ namespace Sombra.CharityService.UnitTests
             try
             {
                 //Arrange
-
+                var key = Guid.NewGuid();
                 using (var context = CharityContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
 
                     var charity = new CharityEntity
                     {
-                        CharityId = "1",
+                        CharityKey = key,
                         NameCharity = "testNameCharity",
                         NameOwner = "testNAmeOwner",
                         EmailCharity = "test@test.com",
                         Category = Core.Enums.Category.None,
                         KVKNumber = 0,
-                        IBAN = "0-IBAN"
+                        IBAN = "0-IBAN",
+                        CoverImage = "",
+                        Slogan = "Test"
 
                     };
 
@@ -46,13 +48,15 @@ namespace Sombra.CharityService.UnitTests
                 }
                 var request = new GetCharityRequest()
                 {
-                    CharityId = "1",
+                    CharityKey = key,
                     NameCharity = "testNameCharity",
                     NameOwner = "testNAmeOwner",
                     EmailCharity = "test@test.com",
                     Category = Core.Enums.Category.None,
                     KVKNumber = 0,
-                    IBAN = "0-IBAN"
+                    IBAN = "0-IBAN",
+                    CoverImage = "",
+                    Slogan = "Test"
 
                 };
 
@@ -69,13 +73,15 @@ namespace Sombra.CharityService.UnitTests
                 using (var context = CharityContext.GetInMemoryContext())
                 {
                     // TODO Fix unit test problem
-                    Assert.AreEqual(request.CharityId, context.Charities.Single().CharityId);
+                    Assert.AreEqual(request.CharityKey, context.Charities.Single().CharityKey);
                     Assert.AreEqual(request.NameCharity, context.Charities.Single().NameCharity);
                     Assert.AreEqual(request.NameOwner, context.Charities.Single().NameOwner);
                     Assert.AreEqual(request.EmailCharity, context.Charities.Single().EmailCharity);
                     Assert.AreEqual(request.Category, context.Charities.Single().Category);
                     Assert.AreEqual(request.KVKNumber, context.Charities.Single().KVKNumber);
                     Assert.AreEqual(request.IBAN, context.Charities.Single().IBAN);
+                    Assert.AreEqual(request.CoverImage, context.Charities.Single().CoverImage);
+                    Assert.AreEqual(request.Slogan, context.Charities.Single().Slogan);
                     Assert.IsTrue(response.Success);
                 }
             }
@@ -99,13 +105,15 @@ namespace Sombra.CharityService.UnitTests
 
                     var charity = new CharityEntity
                     {
-                        CharityId = "1",
+                        CharityKey = Guid.NewGuid(),
                         NameCharity = "testNameCharity",
                         NameOwner = "testNAmeOwner",
                         EmailCharity = "test@test.com",
                         Category = Core.Enums.Category.None,
                         KVKNumber = 0,
-                        IBAN = "0-IBAN"
+                        IBAN = "0-IBAN",
+                        CoverImage = "",
+                        Slogan = "Test"
 
                     };
 

@@ -24,7 +24,7 @@ namespace Sombra.CharityService
         public async Task<GetCharityResponse> Handle(GetCharityRequest message)
         {
             ExtendedConsole.Log("GetCharityByKeyRequestHandler received");
-            var charity = await _charityeContext.Charities.Where(b => b.CharityId.Equals(message.CharityId)).Select(a => a).FirstOrDefaultAsync();
+            var charity = await _charityeContext.Charities.Where(b => b.CharityKey.Equals(message.CharityKey)).Select(a => a).FirstOrDefaultAsync();
             return charity != null ? _mapper.Map<GetCharityResponse>(charity) : new GetCharityResponse();
         }
     }

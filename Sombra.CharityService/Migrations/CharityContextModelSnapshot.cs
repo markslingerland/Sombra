@@ -26,7 +26,7 @@ namespace Sombra.CharityService.Migrations
 
                     b.Property<int>("Category");
 
-                    b.Property<string>("CharityId");
+                    b.Property<Guid>("CharityKey");
 
                     b.Property<string>("EmailCharity");
 
@@ -37,6 +37,10 @@ namespace Sombra.CharityService.Migrations
                     b.Property<string>("NameCharity");
 
                     b.Property<string>("NameOwner");
+
+                    b.Property<string>("CoverImage");
+
+                    b.Property<string>("Slogan");
 
                     b.HasKey("Id");
 

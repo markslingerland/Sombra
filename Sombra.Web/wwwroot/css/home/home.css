@@ -321,8 +321,61 @@
     position: relative;
 }
 
-#discover {
-    margin-top: 150px;
-    float: left;
+#the_story {
     width: 100%;
+    float: left;
+    margin-top: 150px;
+}
+
+#the_story .container {
+    padding: 0;
+    margin: 0;
+}
+
+#the_story .story_image {
+ width: 100%;
+ height: 460px;
+ background-image: url("../../Assets/mont-ventoux.jpg");
+ background-position: center;
+ position: relative;
+}
+
+#the_story .story_gradient {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
+}
+
+#the_story .story_gradient .text_container {
+width: 100%;
+padding-left: 165px;
+padding-right: 165px;
+}
+
+#the_story .story_gradient .text_container span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+#the_story .story_gradient .text_container h3{
+    width: 556px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.28;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
 }

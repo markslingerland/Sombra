@@ -26,8 +26,6 @@ namespace Sombra.IdentityService.Migrations
 
                     b.Property<int>("CredentialType");
 
-                    b.Property<Guid>("CredentialTypeId");
-
                     b.Property<DateTime>("ExpirationDate");
 
                     b.Property<string>("Identifier")
@@ -70,7 +68,13 @@ namespace Sombra.IdentityService.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("ActivationToken");
+
+                    b.Property<DateTime>("ActivationTokenExpirationDate");
+
                     b.Property<DateTime>("Created");
+
+                    b.Property<bool>("IsActive");
 
                     b.Property<string>("Name")
                         .IsRequired()

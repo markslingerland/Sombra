@@ -1,45 +1,32 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using AutoMapper;
-using EasyNetQ;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sombra.Core;
-using Sombra.Messaging.Requests;
-using Sombra.Web.Areas.Development.Models;
 using Sombra.Web.Infrastructure.Authentication;
+using Sombra.Web.ViewModels;
 
 namespace Sombra.Web.Areas.Development.Controllers
 {
     [Area("Development")]
     public class AuthenticationController : Controller
     {
-        private readonly IMapper _mapper;
-        private readonly IUserManager _userManager;
-
-
-        public AuthenticationController(IMapper mapper, IUserManager userManager)
+        private readonly AuthenticationManager _authenticationManager;
+        
+        public AuthenticationController(AuthenticationManager authenticationManager)
         {
-            _mapper = mapper;
-            _userManager = userManager;
+            _authenticationManager = authenticationManager;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            return View(new AuthenticationQuery());
+            return View(new LoginViewModel());
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(AuthenticationQuery query)
+        public async Task<IActionResult> Index(LoginViewModel query)
         {
-            query.LoginTypeCode = Core.Enums.CredentialType.Default;
-            var response = await _userManager.SignInAsync(query);
-
-            var result = new AuthenticationViewModel()
-            { 
-                Success = response
-            };
+            query.CredentialType = Core.Enums.CredentialType.Email;
+            var result = await _authenticationManager.SignInAsync(query);
 
             return View("View", result);
         }

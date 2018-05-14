@@ -14,5 +14,7 @@ namespace Sombra.Messaging.Events
         public Category Category { get; set; }
         public int KVKNumber { get; set; }
         public string IBAN { get; set; }
+        public string CoverImage { get; set; }
+        public string Slogan { get; set; }
     }
 }

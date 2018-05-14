@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Sombra.Core.Enums;
+﻿using Sombra.Core.Enums;
 
 namespace Sombra.Messaging.Responses
 {
@@ -7,6 +6,6 @@ namespace Sombra.Messaging.Responses
     {
         public bool Success { get; set; }
         public ErrorType ErrorType { get; set; }
-        public List<Role> Roles { get; set; }
+        public Role Role { get; set; }
     }
 }

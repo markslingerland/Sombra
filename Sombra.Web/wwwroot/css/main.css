@@ -240,17 +240,25 @@ body {
 
 .standard-text .big-button span{
     font-family: 'Montserrat', sans-serif;
-    font-size: 19px;
+    font-size: 17px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
-    text-align: center;
+    text-align: left;
     color: #ffffff;
     position: absolute;
     top: 9px;
     left: 13px;
+}
+
+.standard-text .big-button a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 footer {

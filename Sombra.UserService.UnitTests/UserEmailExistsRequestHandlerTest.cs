@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+using System;
+using System.Threading.Tasks;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
@@ -66,6 +69,48 @@ namespace Sombra.UserService.UnitTests
                     context.Users.Add(new User
                     {
                         EmailAddress = "john@doe.test"
+                    });
+
+                    context.SaveChanges();
+                }
+
+                using (var context = UserContext.GetInMemoryContext())
+                {
+                    var handler = new UserEmailExistsRequestHandler(context);
+                    response = await handler.Handle(request);
+                }
+
+                Assert.IsFalse(response.EmailExists);
+            }
+            finally
+            {
+                UserContext.CloseInMemoryConnection();
+            }
+        }
+
+        [TestMethod]
+        public async Task UserEmailExistsRequestHandler_Handle__Returns_EmailNotExistsForUser()
+        {
+            UserContext.OpenInMemoryConnection();
+
+            try
+            {
+                UserEmailExistsResponse response;
+                var key = Guid.NewGuid();
+
+                var request = new UserEmailExistsRequest
+                {
+                    EmailAddress = "john@doe.test",
+                    CurrentUserKey = key
+                };
+
+                using (var context = UserContext.GetInMemoryContext())
+                {
+                    context.Database.EnsureCreated();
+                    context.Users.Add(new User
+                    {
+                        EmailAddress = "john@doe.test",
+                        UserKey = key
                     });
 
                     context.SaveChanges();

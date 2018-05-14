@@ -26,8 +26,6 @@ namespace Sombra.IdentityService.Migrations
 
                     b.Property<int>("CredentialType");
 
-                    b.Property<Guid>("CredentialTypeId");
-
                     b.Property<DateTime>("ExpirationDate");
 
                     b.Property<string>("Identifier")
@@ -48,33 +46,24 @@ namespace Sombra.IdentityService.Migrations
                     b.ToTable("Credentials");
                 });
 
-            modelBuilder.Entity("Sombra.IdentityService.DAL.Role", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("RoleName")
-                        .HasMaxLength(64);
-
-                    b.Property<Guid>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Roles");
-                });
-
             modelBuilder.Entity("Sombra.IdentityService.DAL.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("ActivationToken");
+
+                    b.Property<DateTime>("ActivationTokenExpirationDate");
+
                     b.Property<DateTime>("Created");
+
+                    b.Property<bool>("IsActive");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(64);
+
+                    b.Property<int>("Role");
 
                     b.Property<Guid>("UserKey");
 
@@ -87,14 +76,6 @@ namespace Sombra.IdentityService.Migrations
                 {
                     b.HasOne("Sombra.IdentityService.DAL.User", "User")
                         .WithMany("Credentials")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Sombra.IdentityService.DAL.Role", b =>
-                {
-                    b.HasOne("Sombra.IdentityService.DAL.User", "User")
-                        .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

@@ -45,7 +45,8 @@ namespace Sombra.IdentityService
                 ActivationToken = activationToken,
                 Name = message.UserName,
                 UserKey = message.UserKey,
-                ActivationTokenExpirationDate = DateTime.UtcNow.AddDays(1)
+                ActivationTokenExpirationDate = DateTime.UtcNow.AddDays(1),
+                Role = message.Role
             };
 
             var credential = new Credential
@@ -56,15 +57,8 @@ namespace Sombra.IdentityService
                 User = user
             };
 
-            var userRole = new DAL.Role
-            {
-                RoleName = message.Role,
-                User = user
-            };
-
             try
             {
-                _context.Roles.Add(userRole);
                 _context.Users.Add(user);
                 _context.Credentials.Add(credential);
                 await _context.SaveChangesAsync();

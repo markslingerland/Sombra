@@ -12,19 +12,19 @@ namespace Sombra.CharityService
 {
     public class GetCharityByKeyRequestHandler : IAsyncRequestHandler<GetCharityRequest, GetCharityResponse>
     {
-        private readonly CharityContext _charityeContext;
+        private readonly CharityContext _context;
         private readonly IMapper _mapper;
 
-        public GetCharityByKeyRequestHandler(CharityContext charityContext, IMapper mapper)
+        public GetCharityByKeyRequestHandler(CharityContext context, IMapper mapper)
         {
-            _charityeContext = charityContext;
+            _context = context;
             _mapper = mapper;
         }
 
         public async Task<GetCharityResponse> Handle(GetCharityRequest message)
         {
             ExtendedConsole.Log("GetCharityByKeyRequestHandler received");
-            var charity = await _charityeContext.Charities.Where(b => b.CharityKey.Equals(message.CharityKey)).Select(a => a).FirstOrDefaultAsync();
+            var charity = await _context.Charities.Where(b => b.CharityKey.Equals(message.CharityKey)).Select(a => a).FirstOrDefaultAsync();
             return charity != null ? _mapper.Map<GetCharityResponse>(charity) : new GetCharityResponse();
         }
     }

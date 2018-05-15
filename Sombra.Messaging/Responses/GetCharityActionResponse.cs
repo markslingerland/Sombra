@@ -1,6 +1,6 @@
 using Sombra.Core.Enums;
 using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Sombra.Messaging.Responses{
     public class GetCharityActionResponse : Response {
@@ -13,7 +13,7 @@ namespace Sombra.Messaging.Responses{
         public bool Success { get; set; }
         public Guid CharityActionkey { get; set; }
         public Guid Charitykey { get; set; }
-        public ICollection UserKeys { get; set; }
+        public ICollection<Guid> UserKeys { get; set; }
         public string NameCharity { get; set; }
         public Category Category { get; set; }
         public string IBAN { get; set; }

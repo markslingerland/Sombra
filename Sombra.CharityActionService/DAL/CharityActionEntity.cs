@@ -1,7 +1,7 @@
 ﻿using Sombra.Core.Enums;
 using Sombra.Infrastructure.DAL;
 using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Sombra.CharityActionService.DAL
 {
@@ -10,7 +10,7 @@ namespace Sombra.CharityActionService.DAL
         // TODO at more data relevant for charityAction
         public Guid CharityActionkey { get; set; }
         public Guid Charitykey { get; set; }    
-        public ICollection UserKeys { get; set; }
+        public ICollection<Guid> UserKeys { get; set; }
         public string NameCharity { get; set; }
         public Category Category { get; set; }
         public string IBAN { get; set; }

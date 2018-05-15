@@ -2,7 +2,7 @@
 
 namespace Sombra.Messaging.Events
 {
-    public class CreateCharityEvent : Event
+    public class CharityUpdatedEvent : Event
     {
         public string CharityId { get; set; }
         public string NameOwner { get; set; }

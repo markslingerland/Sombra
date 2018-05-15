@@ -3,6 +3,7 @@ using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.CharityActionService.DAL;
 using Sombra.Infrastructure.Extensions;
+using System;
 
 namespace Sombra.CharityActionService
 {

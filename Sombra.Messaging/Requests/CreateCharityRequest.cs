@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Sombra.Core.Enums;
 using Sombra.Messaging.Responses;
 

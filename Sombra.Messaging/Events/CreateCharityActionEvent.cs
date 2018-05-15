@@ -1,12 +1,12 @@
 ﻿using Sombra.Core.Enums;
-using Sombra.Messaging.Responses;
 using System;
 using System.Collections;
 
-namespace Sombra.Messaging.Requests
+namespace Sombra.Messaging.Events
 {
-    public class GetCharityActionRequest : Request<GetCharityActionResponse>
+    public class CreateCharityActionEvent
     {
+        // TODO at more data relevant for charityAction
         public Guid CharityActionkey { get; set; }
         public Guid Charitykey { get; set; }
         public ICollection UserKeys { get; set; }

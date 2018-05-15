@@ -5,7 +5,7 @@ using System.Collections;
 
 namespace Sombra.Messaging.Requests
 {
-    public class GetCharityActionRequest : Request<GetCharityActionResponse>
+    public class UpdateCharityActionRequest : Request<UpdateCharityActionResponse>
     {
         public Guid CharityActionkey { get; set; }
         public Guid Charitykey { get; set; }
@@ -18,4 +18,3 @@ namespace Sombra.Messaging.Requests
         public string Discription { get; set; }
         public string CoverImage { get; set; }
     }
-}

@@ -45,6 +45,12 @@ services:
       - rabbitmq
       - sqlserver
 
+  sombra.charityactionservice.unittests:
+    image: sombra.charityactionservice.unittests
+    build:
+      context: .
+      dockerfile: Sombra.CharityActionService.UnitTests/Dockerfile
+
   sombra.emailservice:
     image: sombra.emailservice
     build:

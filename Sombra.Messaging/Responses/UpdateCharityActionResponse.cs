@@ -1,12 +1,18 @@
 ﻿using Sombra.Core.Enums;
-using Sombra.Messaging.Responses;
 using System;
 using System.Collections;
 
-namespace Sombra.Messaging.Requests
+namespace Sombra.Messaging.Responses
 {
-    public class GetCharityActionRequest : Request<GetCharityActionResponse>
+    public class UpdateCharityActionResponse : Response
     {
+        public UpdateCharityActionResponse() { }
+        public UpdateCharityActionResponse(bool success)
+        {
+            Success = success;
+
+        }
+        public bool Success { get; set; }
         public Guid CharityActionkey { get; set; }
         public Guid Charitykey { get; set; }
         public ICollection UserKeys { get; set; }
@@ -18,4 +24,3 @@ namespace Sombra.Messaging.Requests
         public string Discription { get; set; }
         public string CoverImage { get; set; }
     }
-}

@@ -10,7 +10,7 @@ using Sombra.CharityService.DAL;
 namespace Sombra.CharityService.Migrations
 {
     [DbContext(typeof(CharityContext))]
-    [Migration("20180511100632_InitialCreate")]
+    [Migration("20180514132215_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,17 +29,17 @@ namespace Sombra.CharityService.Migrations
 
                     b.Property<Guid>("CharityKey");
 
+                    b.Property<string>("CoverImage");
+
                     b.Property<string>("EmailCharity");
 
                     b.Property<string>("IBAN");
 
-                    b.Property<string>("KVKNumber");
+                    b.Property<int>("KVKNumber");
 
                     b.Property<string>("NameCharity");
 
                     b.Property<string>("NameOwner");
-
-                    b.Property<string>("CoverImage");
 
                     b.Property<string>("Slogan");
 

@@ -28,17 +28,17 @@ namespace Sombra.CharityService.Migrations
 
                     b.Property<Guid>("CharityKey");
 
+                    b.Property<string>("CoverImage");
+
                     b.Property<string>("EmailCharity");
 
                     b.Property<string>("IBAN");
 
-                    b.Property<string>("KVKNumber");
+                    b.Property<int>("KVKNumber");
 
                     b.Property<string>("NameCharity");
 
                     b.Property<string>("NameOwner");
-
-                    b.Property<string>("CoverImage");
 
                     b.Property<string>("Slogan");
 

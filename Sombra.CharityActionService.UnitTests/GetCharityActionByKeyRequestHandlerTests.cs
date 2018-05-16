@@ -8,6 +8,7 @@ using Sombra.Messaging.Responses;
 using Sombra.CharityActionService.DAL;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace Sombra.CharityActionService.UnitTests
 {
@@ -15,7 +16,7 @@ namespace Sombra.CharityActionService.UnitTests
     public class GetCharityActionByKeyRequestHandlerTests
     {
         [TestMethod]
-        public async Task GetCharityActionByKeyRequest_Handle_Returns_Charity()
+        public async Task GetCharityActionByKeyRequest_Handle_Returns_CharityAction()
         {
             CharityActionContext.OpenInMemoryConnection();
             try
@@ -23,7 +24,8 @@ namespace Sombra.CharityActionService.UnitTests
                 //Arrange
                 var keyAction = Guid.NewGuid();
                 var keyCharity = Guid.NewGuid();
-                var users = new Collection<Guid>();
+                var key = Guid.NewGuid();
+                var user = new UserKey() { Key = key };
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
@@ -32,7 +34,7 @@ namespace Sombra.CharityActionService.UnitTests
                     {
                         CharityActionkey = keyAction,
                         Charitykey = keyCharity,
-                        UserKeys = users,
+                        UserKeys = new Collection<UserKey>() { user },
                         NameCharity = "testNAmeOwner",
                         Category = Core.Enums.Category.None,
                         IBAN = "",
@@ -46,11 +48,13 @@ namespace Sombra.CharityActionService.UnitTests
                     context.SaveChanges();
 
                 }
-                var request = new GetCharityActionRequest()
+
+                var userRequest = new Sombra.Messaging.UserKey() { Key = key };
+                var request = new GetCharityActionRequest
                 {
                     CharityActionkey = keyAction,
                     Charitykey = keyCharity,
-                    UserKeys = users,
+                    UserKeys = new Collection<Sombra.Messaging.UserKey>() { userRequest },
                     NameCharity = "testNAmeOwner",
                     Category = Core.Enums.Category.None,
                     IBAN = "",
@@ -65,6 +69,7 @@ namespace Sombra.CharityActionService.UnitTests
                 //Act
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
+
                     var handler = new GetCharityActionByKeyRequestHandler(context, Helper.GetMapper());
                     response = await handler.Handle(request);
                 }
@@ -72,10 +77,11 @@ namespace Sombra.CharityActionService.UnitTests
                 //Assert
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    // TODO Fix unit test problem
+                    
                     Assert.AreEqual(request.CharityActionkey, context.CharityActions.Single().CharityActionkey);
                     Assert.AreEqual(request.Charitykey, context.CharityActions.Single().Charitykey);
-                    //Assert.AreEqual(request.UserKeys.ToString(), context.CharityActions.Single().UserKeys.ToString());
+                    // TODO Fix unit test problem UserKey in context returns null
+                    //Assert.AreEqual(request.UserKeys, context.CharityActions.Single().UserKeys);
                     Assert.AreEqual(request.NameCharity, context.CharityActions.Single().NameCharity);
                     Assert.AreEqual(request.Category, context.CharityActions.Single().Category);
                     Assert.AreEqual(request.IBAN, context.CharityActions.Single().IBAN);
@@ -104,7 +110,8 @@ namespace Sombra.CharityActionService.UnitTests
                     context.Database.EnsureCreated();
                     var keyAction = Guid.NewGuid();
                     var keyCharity = Guid.NewGuid();
-                    var users = new Collection<Guid>();
+                    var user = new UserKey() { Key = Guid.NewGuid() };
+                    var users = new Collection<UserKey>() { user };
                     var charity = new CharityActionEntity
                     {
                         CharityActionkey = keyAction,

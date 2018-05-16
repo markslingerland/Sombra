@@ -9,7 +9,7 @@ namespace Sombra.Messaging.Events
         // TODO at more data relevant for charityAction
         public Guid CharityActionkey { get; set; }
         public Guid Charitykey { get; set; }
-        public ICollection<Guid> UserKeys { get; set; }
+        public ICollection<UserKey> UserKeys { get; set; }
         public string NameCharity { get; set; }
         public Category Category { get; set; }
         public string IBAN { get; set; }

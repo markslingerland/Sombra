@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-    sombra.web.unittests:
+  sombra.web.unittests:
     image: sombra.web.unittests
     build:
       context: .

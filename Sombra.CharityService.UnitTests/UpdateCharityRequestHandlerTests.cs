@@ -25,7 +25,7 @@ namespace Sombra.CharityService.UnitTests
             try
             {
                 var busMock = new Mock<IBus>();
-                busMock.Setup(m => m.PublishAsync(It.IsAny<UpdateCharityEvent>())).Returns(Task.FromResult(true));
+                busMock.Setup(m => m.PublishAsync(It.IsAny<UpdatedCharityEvent>())).Returns(Task.FromResult(true));
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
@@ -80,7 +80,7 @@ namespace Sombra.CharityService.UnitTests
                     Assert.IsTrue(response.Success);
                 }
 
-                busMock.Verify(m => m.PublishAsync(It.Is<UpdateCharityEvent>(e => e.CharityId == request.CharityId && e.NameCharity == request.NameCharity)), Times.Once);
+                busMock.Verify(m => m.PublishAsync(It.Is<UpdatedCharityEvent>(e => e.CharityId == request.CharityId && e.NameCharity == request.NameCharity)), Times.Once);
             }
             finally
             {

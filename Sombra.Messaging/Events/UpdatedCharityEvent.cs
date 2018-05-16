@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Sombra.Messaging.Events
 {
-    public class UpdateCharityEvent : Event
+    public class UpdatedCharityEvent : Event
     {
         public string CharityId { get; set; }
         public string NameOwner { get; set; }

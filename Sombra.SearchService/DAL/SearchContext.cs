@@ -10,5 +10,6 @@ namespace Sombra.SearchService.DAL
         public SearchContext(DbContextOptions<SearchContext> options) : base(options) { }
 
         public DbSet<Content> Content { get; set; }
+        public DbSet<Category> Category { get; set; }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System.Threading.Tasks;
-using EasyNetQ;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 
 namespace Sombra.Messaging.DependencyValidation
 {
@@ -11,12 +8,12 @@ namespace Sombra.Messaging.DependencyValidation
         where TResponse : PingResponse<TInnerResponse>, new()
         where TInnerResponse : class, IResponse
     {
-        public async Task<TResponse> Handle(TRequest message)
+        public Task<TResponse> Handle(TRequest message)
         {
-            return new TResponse
+            return Task.FromResult(new TResponse
             {
                 IsOnline = true
-            };
+            });
         }
     }
 

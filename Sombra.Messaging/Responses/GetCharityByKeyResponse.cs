@@ -1,11 +1,12 @@
-using System;
 using Sombra.Core.Enums;
-using Sombra.Messaging.Responses;
+using System;
 
-namespace Sombra.Messaging.Requests
+namespace Sombra.Messaging.Responses
 {
-    public class CreateCharityRequest : Request<CreateCharityResponse>
+    public class GetCharityByKeyResponse : Response
     {
+        public bool Success { get; set; }
+
         public Guid CharityKey { get; set; }
         public Guid OwnerUserKey { get; set; }
         public string OwnerUserName { get; set; }

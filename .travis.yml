@@ -5,11 +5,11 @@ services:
 env:
   DOCKER_COMPOSE_VERSION: 1.19.0
 before_install:
-- openssl aes-256-cbc -K $encrypted_5bd28a145847_key -iv $encrypted_5bd28a145847_iv
-  -in stuff.tar.enc -out stuff.tar -d
+- openssl aes-256-cbc -K $encrypted_5d1704f041a8_key -iv $encrypted_5d1704f041a8_iv -in stuff.tar.enc -out stuff.tar -d
 - tar xvf stuff.tar
-
 - ssh-keyscan -t rsa -H $IP 2>&1 | tee -a $HOME/.ssh/known_hosts
+- chmod +x ./deploy.sh
+
 - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu
   $(lsb_release -cs) stable"
@@ -20,20 +20,19 @@ before_install:
 - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname
   -s`-`uname -m` > docker-compose
 - chmod +x docker-compose
-- chmod +x ./deploy.sh
 - sudo mv docker-compose /usr/local/bin
-- docker-compose --version
+
 - docker volume create --name=sqlserverdata
 - docker volume create --name=mongoserverdata
 - docker volume create --name=rabbitmqdata
 - docker volume create --name=portainerdata
 
-- docker-compose build
-- docker-compose up -d
+- docker-compose -f docker-compose.yml -f docker-compose.tests.yml build
+- docker-compose -f docker-compose.yml -f docker-compose.tests.yml up -d
 script:
 - docker ps
-after_success:
-- test $TRAVIS_BRANCH = "master" && $TRAVIS_PULL_REQUEST = false && "./deploy.sh"
+after_success:	
+- test $TRAVIS_BRANCH = "master" -a $TRAVIS_PULL_REQUEST = false && "./deploy.sh"
 after_script:
 - docker-compose down
 notifications:

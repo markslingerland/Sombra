@@ -7,6 +7,6 @@ namespace Sombra.CharityService.DAL
     {
         public CharityContext() { }
         public CharityContext(DbContextOptions<CharityContext> options, bool seed = false) : base(options, seed) { }
-        public DbSet<CharityEntity> Charities { get; set; }
+        public DbSet<Charity> Charities { get; set; }
     }
 }

@@ -1,11 +1,12 @@
+﻿using Sombra.Core.Enums;
+using Sombra.Infrastructure.DAL;
 using System;
-using Sombra.Core.Enums;
-using Sombra.Messaging.Responses;
 
-namespace Sombra.Messaging.Requests
+namespace Sombra.CharityService.DAL
 {
-    public class CreateCharityRequest : Request<CreateCharityResponse>
+    public class Charity : Entity
     {
+        // TODO at more data relevant for charity
         public Guid CharityKey { get; set; }
         public Guid OwnerUserKey { get; set; }
         public string OwnerUserName { get; set; }

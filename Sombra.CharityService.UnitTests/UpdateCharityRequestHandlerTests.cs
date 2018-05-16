@@ -89,11 +89,7 @@ namespace Sombra.CharityService.UnitTests
                     Assert.IsTrue(response.Success);
                 }
 
-<<<<<<< HEAD
-                busMock.Verify(m => m.PublishAsync(It.Is<UpdatedCharityEvent>(e => e.CharityId == request.CharityId && e.NameCharity == request.NameCharity)), Times.Once);
-=======
                 busMock.Verify(m => m.PublishAsync(It.Is<CharityUpdatedEvent>(e => e.CharityKey == request.CharityKey && e.Name == request.Name)), Times.Once);
->>>>>>> master
             }
             finally
             {

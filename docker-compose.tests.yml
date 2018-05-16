@@ -42,3 +42,4 @@ services:
     build:
       context: .
       dockerfile: Sombra.UserService.UnitTests/Dockerfile
+

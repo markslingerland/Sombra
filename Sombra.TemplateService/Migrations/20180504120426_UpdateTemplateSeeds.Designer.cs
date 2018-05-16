@@ -10,9 +10,10 @@ using Sombra.TemplateService.DAL;
 namespace Sombra.TemplateService.Migrations
 {
     [DbContext(typeof(EmailTemplateContext))]
-    partial class EmailTemplateContextModelSnapshot : ModelSnapshot
+    [Migration("20180504120426_UpdateTemplateSeeds")]
+    partial class UpdateTemplateSeeds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -470,7 +471,7 @@ namespace Sombra.TemplateService.Migrations
                                                 </td>
                                             </tr>
                                         </table>
-                                        <p>Voor jouw veiligheid: deze aanvraag is verstuurd vanaf een [[operating_system]] apparaat die [[browser_name]] gebruikt. Als je deze aanvraag niet zelf hebt verzonden, kunt je deze mail negeren. Als je naar aanleiding van deze e-mail vragen hebt, kun je <a href=""[[support_url]]"">contact met ons opnemen</a>.</p>
+                                        <p>Voor jouw veiligheid: deze aanvraag is verstuurd vanaf een [[operating_system]] apparaat die [[browser_name]] gebruikt. Als je deze aanvraag niet zelf hebt verzonden, kunt je deze mail negeren. Als je naar aanleiding van deze e-mail vragen hebt, mag je <a href=""[[support_url]]"">contact met ons opnemen</a>.</p>
                                         <p>
                                             Bedankt,
                                             <br>Het ikdoneer.nu Team
@@ -943,7 +944,7 @@ namespace Sombra.TemplateService.Migrations
                                                 </td>
                                             </tr>
                                         </table>
-                                        <p>Als je niet hebt geprobeerd om een account te registreren bij ikdoneer.nu, dan kun je deze mail negeren. Als je naar aanleiding van deze e-mail vragen hebt, kun je <a href=""[[support_url]]"">contact met ons opnemen</a>.</p>
+                                        <p>Als je niet hebt geprobeerd om een account te registreren bij ikdoneer.nu, dan mag je deze mail negeren. Als je naar aanleiding van deze e-mail vragen hebt, kan je <a href=""[[support_url]]"">contact met ons opnemen</a>.</p>
                                         <p>
                                             Bedankt,
                                             <br>Het ikdoneer.nu Team

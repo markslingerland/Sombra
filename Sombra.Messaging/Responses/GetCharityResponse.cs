@@ -1,13 +1,9 @@
 using Sombra.Core.Enums;
 
-namespace Sombra.Messaging.Responses{
-    public class GetCharityResponse : Response {
-        public GetCharityResponse() { }
-        public GetCharityResponse(bool success)
-        {
-            Success = success;
-
-        }
+namespace Sombra.Messaging.Responses
+{
+    public class GetCharityResponse : Response
+    {
         public bool Success { get; set; }
         public string CharityId { get; set; }
         public string NameOwner { get; set; }
@@ -17,7 +13,5 @@ namespace Sombra.Messaging.Responses{
         public int KVKNumber { get; set; }
         public string IBAN { get; set; }
     }
-
-    
 }
 

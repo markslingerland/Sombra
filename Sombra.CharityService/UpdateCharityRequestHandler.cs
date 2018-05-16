@@ -28,7 +28,7 @@ namespace Sombra.CharityService
         {
 
             ExtendedConsole.Log("UpdateCharityRequest received");
-            var charity = await _context.Charities.FirstOrDefaultAsync(u => u.CharityId == message.CharityId);
+            var charity = await _context.Charities.FirstOrDefaultAsync(u => u.CharityKey == message.CharityKey);
             if (charity == null)
             {
                 return new UpdateCharityResponse

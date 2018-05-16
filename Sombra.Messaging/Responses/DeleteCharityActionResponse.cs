@@ -13,6 +13,5 @@ namespace Sombra.Messaging.Responses
 
         }
         public bool Success { get; set; }
-        public Guid CharityActionkey { get; set; }
     }
 }

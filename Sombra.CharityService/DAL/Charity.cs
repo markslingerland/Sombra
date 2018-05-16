@@ -1,16 +1,21 @@
 ﻿using Sombra.Core.Enums;
+using Sombra.Infrastructure.DAL;
 using System;
 
-namespace Sombra.Messaging.Events
+namespace Sombra.CharityService.DAL
 {
-    public class CharityCreatedEvent : Event
+    public class Charity : Entity
     {
+        // TODO at more data relevant for charity
         public Guid CharityKey { get; set; }
+        public Guid OwnerUserKey { get; set; }
         public string OwnerUserName { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public Category Category { get; set; }
         public int KVKNumber { get; set; }
         public string IBAN { get; set; }
+        public string CoverImage { get; set; }
+        public string Slogan { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.CharityService.DAL;
 using Sombra.Infrastructure.Extensions;
+using Sombra.Messaging.Events;
 
 namespace Sombra.CharityService
 {
@@ -10,18 +11,12 @@ namespace Sombra.CharityService
     {
         public MappingProfile()
         {
-            CreateMap<CharityEntity, CreateCharityResponse>()
-                .ForMember(d => d.Success, opt => opt.MapFrom(s => true));
-            CreateMap<CreateCharityRequest, CharityEntity>()
+            CreateMap<CreateCharityRequest, Charity>()
                 .IgnoreEntityProperties();
-            CreateMap<CharityEntity, GetCharityResponse>()
-                .ForMember(d => d.Success, opt => opt.MapFrom(s => true));
-            CreateMap<GetCharityRequest, CharityEntity>()
-                .IgnoreEntityProperties();
-            CreateMap<CharityEntity, UpdateCharityResponse>()
-                .ForMember(d => d.Success, opt => opt.MapFrom(s => true));
-            CreateMap<UpdateCharityRequest, CharityEntity>()
-                .IgnoreEntityProperties();
+            CreateMap<Charity, GetCharityByKeyResponse>()
+                .ForMember(d => d.Success, opt => opt.UseValue(true));
+            CreateMap<Charity, CharityCreatedEvent>();
+            CreateMap<Charity, CharityUpdatedEvent>();
         }
     }
 }

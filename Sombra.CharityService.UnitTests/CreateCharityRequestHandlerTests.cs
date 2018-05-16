@@ -33,9 +33,9 @@ namespace Sombra.CharityService.UnitTests
                 var request = new CreateCharityRequest
                 {
                     CharityKey = Guid.NewGuid(),
-                    NameCharity = "testNameCharity",
-                    NameOwner = "testNAmeOwner",
-                    EmailCharity = "test@test.com",
+                    Name = "testName",
+                    OwnerUserName = "testOwnerUserName",
+                    Email = "test@test.com",
                     Category = Core.Enums.Category.None,
                     KVKNumber = 0,
                     IBAN = "0-IBAN",
@@ -53,9 +53,9 @@ namespace Sombra.CharityService.UnitTests
                 using (var context = CharityContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(request.CharityKey, context.Charities.Single().CharityKey);
-                    Assert.AreEqual(request.NameCharity, context.Charities.Single().NameCharity);
-                    Assert.AreEqual(request.NameOwner, context.Charities.Single().NameOwner);
-                    Assert.AreEqual(request.EmailCharity, context.Charities.Single().EmailCharity);
+                    Assert.AreEqual(request.Name, context.Charities.Single().Name);
+                    Assert.AreEqual(request.OwnerUserName, context.Charities.Single().OwnerUserName);
+                    Assert.AreEqual(request.Email, context.Charities.Single().Email);
                     Assert.AreEqual(request.Category, context.Charities.Single().Category);
                     Assert.AreEqual(request.KVKNumber, context.Charities.Single().KVKNumber);
                     Assert.AreEqual(request.IBAN, context.Charities.Single().IBAN);
@@ -64,7 +64,7 @@ namespace Sombra.CharityService.UnitTests
                     Assert.IsTrue(response.Success);
                 }
 
-                busMock.Verify(m => m.PublishAsync(It.Is<CharityCreatedEvent>(e => e.CharityKey == request.CharityKey && e.NameCharity == request.NameCharity)), Times.Once);
+                busMock.Verify(m => m.PublishAsync(It.Is<CharityCreatedEvent>(e => e.CharityKey == request.CharityKey && e.Name == request.Name)), Times.Once);
             }
             finally
             {

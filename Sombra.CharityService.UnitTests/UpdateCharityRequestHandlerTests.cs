@@ -2,8 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using EasyNetQ;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Sombra.Messaging.Events;
@@ -37,9 +35,9 @@ namespace Sombra.CharityService.UnitTests
                 var request = new UpdateCharityRequest()
                 {
                     CharityKey = newKey,
-                    NameCharity = "0",
-                    NameOwner = "0",
-                    EmailCharity = "0",
+                    Name = "0",
+                    OwnerUserName = "0",
+                    Email = "0",
                     Category = Core.Enums.Category.None,
                     KVKNumber = 0,
                     IBAN = "0-IBAN",
@@ -50,12 +48,12 @@ namespace Sombra.CharityService.UnitTests
                 using (var context = CharityContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
-                    context.Charities.Add(new CharityEntity
+                    context.Charities.Add(new Charity
                     {
                         CharityKey = newKey,
-                        NameCharity = "0",
-                        NameOwner = "0",
-                        EmailCharity = "testEmail",
+                        Name = "0",
+                        OwnerUserName = "0",
+                        Email = "testEmail",
                         Category = Core.Enums.Category.Dierenbescherming,
                         KVKNumber = 1,
                         IBAN = "1111-1111",
@@ -76,9 +74,9 @@ namespace Sombra.CharityService.UnitTests
                 using (var context = CharityContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(request.CharityKey, context.Charities.Single().CharityKey);
-                    Assert.AreEqual(request.NameCharity, context.Charities.Single().NameCharity);
-                    Assert.AreEqual(request.NameOwner, context.Charities.Single().NameOwner);
-                    Assert.AreEqual(request.EmailCharity, context.Charities.Single().EmailCharity);
+                    Assert.AreEqual(request.Name, context.Charities.Single().Name);
+                    Assert.AreEqual(request.OwnerUserName, context.Charities.Single().OwnerUserName);
+                    Assert.AreEqual(request.Email, context.Charities.Single().Email);
                     Assert.AreEqual(request.Category, context.Charities.Single().Category);
                     Assert.AreEqual(request.KVKNumber, context.Charities.Single().KVKNumber);
                     Assert.AreEqual(request.IBAN, context.Charities.Single().IBAN);
@@ -87,7 +85,7 @@ namespace Sombra.CharityService.UnitTests
                     Assert.IsTrue(response.Success);
                 }
 
-                busMock.Verify(m => m.PublishAsync(It.Is<CharityUpdatedEvent>(e => e.CharityKey == request.CharityKey && e.NameCharity == request.NameCharity)), Times.Once);
+                busMock.Verify(m => m.PublishAsync(It.Is<CharityUpdatedEvent>(e => e.CharityKey == request.CharityKey && e.Name == request.Name)), Times.Once);
             }
             finally
             {

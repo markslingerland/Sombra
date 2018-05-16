@@ -21,20 +21,20 @@ before_install:
 - chmod +x docker-compose
 - chmod +x ./deploy.sh
 - sudo mv docker-compose /usr/local/bin
-- docker-compose --version
+
 - docker volume create --name=sqlserverdata
 - docker volume create --name=mongoserverdata
 - docker volume create --name=rabbitmqdata
 - docker volume create --name=portainerdata
 
-- docker-compose build
-- docker-compose up -d
+- docker-compose -f docker-compose.yml -f docker-compose.tests.yml build
+- docker-compose -f docker-compose.yml -f docker-compose.tests.yml up -d
 script:
 - docker ps
 after_success:
 - echo $TRAVIS_BRANCH
 - echo $TRAVIS_PULL_REQUEST
-- test $TRAVIS_BRANCH = "master" && "./deploy.sh"
+- test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = false "./deploy.sh"
 after_script:
 - docker-compose down
 notifications:

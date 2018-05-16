@@ -32,6 +32,8 @@ before_install:
 script:
 - docker ps
 after_success:
+- echo $TRAVIS_BRANCH
+- echo $TRAVIS_PULL_REQUEST
 - test $TRAVIS_BRANCH = "master" && $TRAVIS_PULL_REQUEST = false && "./deploy.sh"
 after_script:
 - docker-compose down

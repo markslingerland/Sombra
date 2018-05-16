@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sombra.Messaging.Infrastructure;
@@ -35,7 +34,6 @@ namespace Sombra.Web
             SetupConfiguration();
 
             services.AddMvc(options =>
-
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                 options.Filters.Add(new ValidatorActionFilter());
@@ -73,20 +71,23 @@ namespace Sombra.Web
             app.UseStaticFiles();
             app.UseAuthentication();
 
-
-
-
             app.UseMvc(routes =>
             {
+                var hostnames = new[] { "localhost", "ikdoneer.nu" };
+                routes.MapSubdomainRoute(
+                    hostnames,
+                    "SubdomainRoute",
+                    "{Subdomain}",
+                    "{action}",
+                    new { controller = "Charity", action = "Index" });
+
                 routes.MapRoute(
+                    hostnames,
                     name: "areas",
-                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                );
-            });
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
-            app.UseMvc(routes =>
-            {
                 routes.MapRoute(
+                    hostnames,
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });

@@ -19,24 +19,30 @@ namespace Sombra.CharityService.Migrations
                 .HasAnnotation("ProductVersion", "2.1.0-preview2-30571")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Sombra.CharityService.DAL.CharityEntity", b =>
+            modelBuilder.Entity("Sombra.CharityService.DAL.Charity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Category");
 
-                    b.Property<string>("CharityId");
+                    b.Property<Guid>("CharityKey");
 
-                    b.Property<string>("EmailCharity");
+                    b.Property<string>("CoverImage");
+
+                    b.Property<string>("Email");
 
                     b.Property<string>("IBAN");
 
-                    b.Property<string>("KVKNumber");
+                    b.Property<int>("KVKNumber");
 
-                    b.Property<string>("NameCharity");
+                    b.Property<string>("Name");
 
-                    b.Property<string>("NameOwner");
+                    b.Property<Guid>("OwnerUserKey");
+
+                    b.Property<string>("OwnerUserName");
+
+                    b.Property<string>("Slogan");
 
                     b.HasKey("Id");
 

@@ -5,7 +5,7 @@ services:
 env:
   DOCKER_COMPOSE_VERSION: 1.19.0
 before_install:
-- openssl aes-256-cbc -K $encrypted_5bd28a145847_key -iv $encrypted_5bd28a145847_iv
+- openssl aes-256-cbc -K $encrypted_5d1704f041a8_key -iv $encrypted_5d1704f041a8_iv
   -in stuff.tar.enc -out stuff.tar -d
 - tar xvf stuff.tar
 

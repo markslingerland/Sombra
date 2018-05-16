@@ -48,9 +48,7 @@ namespace Sombra.IdentityService.UnitTests
                     Assert.IsTrue(context.Users.Count() == 1);
                     Assert.AreEqual(request.UserName, context.Users.Single().Name);
                     Assert.AreEqual(request.UserKey, context.Users.Single().UserKey);
-
-                    Assert.IsTrue(context.Roles.Count() == 1);
-                    Assert.AreEqual(request.Role, context.Roles.Single().RoleName);
+                    Assert.AreEqual(request.Role, context.Users.Single().Role);
 
                     Assert.IsTrue(context.Credentials.Count() == 1);
                     Assert.AreEqual(request.CredentialType, context.Credentials.Single().CredentialType);

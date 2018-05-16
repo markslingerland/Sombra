@@ -15,9 +15,9 @@ namespace Sombra.Web.Infrastructure.Authentication
 
         public new SombraIdentity Identity { get; }
         public Guid Key => Identity.UserKey;
-        public IEnumerable<Role> Roles => Identity.Roles;
+        public Role Role => Identity.Role;
 
-        public bool IsInRole(Role role) => Roles.Contains(role);
+        public bool IsInRole(Role role) => Role.HasFlag(role);
 
         public bool IsDonator => IsInRole(Role.Donator);
         public bool IsCharityOwner => IsInRole(Role.CharityOwner);

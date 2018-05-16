@@ -3,10 +3,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.Core.Enums;
+using Sombra.Core.Extensions;
 using Sombra.IdentityService.DAL;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
-using Role = Sombra.IdentityService.DAL.Role;
 
 namespace Sombra.IdentityService.UnitTests
 {
@@ -30,13 +30,8 @@ namespace Sombra.IdentityService.UnitTests
                         UserKey = Guid.NewGuid(),
                         Name = "Test User",
                         Created = DateTime.Now,
-                        IsActive = true
-                    };
-
-                    var role = new Role
-                    {
-                        RoleName = Core.Enums.Role.Default,
-                        User = user,
+                        IsActive = true,
+                        Role = Role.Donator
                     };
 
                     var credential = new Credential
@@ -48,7 +43,6 @@ namespace Sombra.IdentityService.UnitTests
                     };
 
                     context.Add(user);
-                    context.Add(role);
                     context.Add(credential);
                     context.SaveChanges();
                 }
@@ -74,7 +68,7 @@ namespace Sombra.IdentityService.UnitTests
                     Assert.IsTrue(response.Success);
                     Assert.AreEqual(response.UserName, context.Users.Single().Name);
                     Assert.AreEqual(response.UserKey, context.Users.Single().UserKey);
-                    CollectionAssert.AreEqual(response.Roles, context.Roles.Select(b => b.RoleName).ToList());
+                    Assert.IsTrue(response.Role.OnlyHasFlag(Role.Donator));
                 }
             }
             finally
@@ -100,13 +94,8 @@ namespace Sombra.IdentityService.UnitTests
                         UserKey = Guid.NewGuid(),
                         Name = "Test User",
                         Created = DateTime.Now,
-                        IsActive = true
-                    };
-
-                    var role = new Role
-                    {
-                        RoleName = Core.Enums.Role.Default,
-                        User = user,
+                        IsActive = true,
+                        Role = Role.Donator
                     };
 
                     var credential = new Credential
@@ -118,7 +107,6 @@ namespace Sombra.IdentityService.UnitTests
                     };
 
                     context.Add(user);
-                    context.Add(role);
                     context.Add(credential);
                     context.SaveChanges();
                 }
@@ -143,7 +131,7 @@ namespace Sombra.IdentityService.UnitTests
                 Assert.IsFalse(response.Success);
                 Assert.IsNull(response.UserName);
                 Assert.AreEqual(response.UserKey, Guid.Empty);
-                Assert.IsNull(response.Roles);
+                Assert.AreEqual(Role.Default, response.Role);
             }
             finally
             {
@@ -168,13 +156,8 @@ namespace Sombra.IdentityService.UnitTests
                         UserKey = Guid.NewGuid(),
                         Name = "Test User",
                         Created = DateTime.Now,
-                        IsActive = false
-                    };
-
-                    var role = new Role
-                    {
-                        RoleName = Core.Enums.Role.Default,
-                        User = user,
+                        IsActive = false,
+                        Role = Role.Donator
                     };
 
                     var credential = new Credential
@@ -186,7 +169,6 @@ namespace Sombra.IdentityService.UnitTests
                     };
 
                     context.Add(user);
-                    context.Add(role);
                     context.Add(credential);
                     context.SaveChanges();
                 }
@@ -211,7 +193,7 @@ namespace Sombra.IdentityService.UnitTests
                 Assert.IsFalse(response.Success);
                 Assert.IsNull(response.UserName);
                 Assert.AreEqual(response.UserKey, Guid.Empty);
-                Assert.IsNull(response.Roles);
+                Assert.AreEqual(Role.Default, response.Role);
             }
             finally
             {

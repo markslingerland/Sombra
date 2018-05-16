@@ -15,7 +15,7 @@ git push --force deploy master -v
 # Skip this command if you don't need to execute any additional commands after deploying.
 ssh -o "StrictHostKeyChecking no" $USER@$IP -p $PORT <<EOF
   cd $DEPLOY_DIR
-  git pull 
+  git pull old master
   docker volume create --name=sqlserverdata
   docker volume create --name=mongoserverdata
   docker volume create --name=rabbitmqdata

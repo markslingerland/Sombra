@@ -26,8 +26,8 @@ namespace Sombra.CharityService
 
         public async Task<CreateCharityResponse> Handle(CreateCharityRequest message)
         {
-            var charity = _mapper.Map<CharityEntity>(message);
-            if (charity.CharityId == default)
+            var charity = _mapper.Map<Charity>(message);
+            if (charity.CharityKey == default)
             {
                 ExtendedConsole.Log("CreateCharityRequestHandler: CharityKey is empty");
                 return new CreateCharityResponse(false);
@@ -45,7 +45,7 @@ namespace Sombra.CharityService
                 return new CreateCharityResponse(false);
             }
 
-            var charityCreatedEvent = _mapper.Map<CreatedCharityEvent>(charity);
+            var charityCreatedEvent = _mapper.Map<CharityCreatedEvent>(charity);
             await _bus.PublishAsync(charityCreatedEvent);
 
             return new CreateCharityResponse(true);

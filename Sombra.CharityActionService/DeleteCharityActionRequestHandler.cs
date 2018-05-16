@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace Sombra.CharityActionService
 {
-    public class DeleteCharityActionRequestHandler
+    public class DeleteCharityActionRequestHandler : IAsyncRequestHandler<DeleteCharityActionRequest, DeleteCharityActionResponse>
     {
         private readonly CharityActionContext _context;
         private readonly IMapper _mapper;
@@ -23,15 +23,16 @@ namespace Sombra.CharityActionService
             _context = context;
         }
 
-        public async Task Handle(GetCharityActionRequest message)
+        public async Task<DeleteCharityActionResponse> Handle(DeleteCharityActionRequest message)
         {
             ExtendedConsole.Log("DeletedCharityActionRequest received");
             var charityAction = await _context.CharityActions.FirstOrDefaultAsync(u => u.CharityActionkey == message.CharityActionkey);
-            if (charityAction != null)
+            if (charityAction == null)
             {
-                _context.CharityActions.Remove(charityAction);
+                return new DeleteCharityActionResponse(false);
+                
             }
-                      
+            _context.CharityActions.Remove(charityAction);
             try
             {
                 await _context.SaveChangesAsync();
@@ -39,10 +40,12 @@ namespace Sombra.CharityActionService
             catch (DbUpdateException ex)
             {
                 ExtendedConsole.Log(ex);
+                return new DeleteCharityActionResponse(false);
             }
+            var charityActionDeletedEvent = _mapper.Map<CharityActionDeletedEvent>(charityAction);
+            await _bus.PublishAsync(charityActionDeletedEvent);
 
-            var charityActionUpdatedEvent = _mapper.Map<CharityActionDeletedEvent>(charityAction);
-            await _bus.PublishAsync(charityActionUpdatedEvent);
-        }
+            return new DeleteCharityActionResponse(true);
+            }
     }
 }

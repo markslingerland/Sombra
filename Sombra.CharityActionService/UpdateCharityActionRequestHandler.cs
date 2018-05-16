@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Sombra.CharityActionService
 {
-    class UpdateCharityActionRequestHandler : IAsyncRequestHandler<UpdateCharityActionRequest, UpdateCharityActionResponse>
+    public class UpdateCharityActionRequestHandler : IAsyncRequestHandler<UpdateCharityActionRequest, UpdateCharityActionResponse>
     {
         private readonly CharityActionContext _context;
         private readonly IMapper _mapper;

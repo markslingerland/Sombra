@@ -6,9 +6,7 @@ using Moq;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.CharityActionService.DAL;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 
 namespace Sombra.CharityActionService.UnitTests
 {
@@ -81,7 +79,7 @@ namespace Sombra.CharityActionService.UnitTests
                     Assert.AreEqual(request.CharityActionkey, context.CharityActions.Single().CharityActionkey);
                     Assert.AreEqual(request.Charitykey, context.CharityActions.Single().Charitykey);
                     // TODO Fix unit test problem UserKey in context returns null
-                    //Assert.AreEqual(request.UserKeys, context.CharityActions.Single().UserKeys);
+                    Assert.AreEqual(request.UserKeys, context.CharityActions.Single().UserKeys);
                     Assert.AreEqual(request.NameCharity, context.CharityActions.Single().NameCharity);
                     Assert.AreEqual(request.Category, context.CharityActions.Single().Category);
                     Assert.AreEqual(request.IBAN, context.CharityActions.Single().IBAN);

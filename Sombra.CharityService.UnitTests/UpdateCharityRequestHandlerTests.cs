@@ -23,11 +23,7 @@ namespace Sombra.CharityService.UnitTests
             try
             {
                 var busMock = new Mock<IBus>();
-<<<<<<< HEAD
-                busMock.Setup(m => m.PublishAsync(It.IsAny<UpdatedCharityEvent>())).Returns(Task.FromResult(true));
-=======
                 busMock.Setup(m => m.PublishAsync(It.IsAny<CharityUpdatedEvent>())).Returns(Task.FromResult(true));
->>>>>>> master
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {

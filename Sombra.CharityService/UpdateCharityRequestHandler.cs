@@ -51,11 +51,7 @@ namespace Sombra.CharityService
                 };
             }
 
-<<<<<<< HEAD
-            var userUpdatedEvent = _mapper.Map<UpdatedCharityEvent>(charity);
-=======
             var userUpdatedEvent = _mapper.Map<CharityUpdatedEvent>(charity);
->>>>>>> master
             await _bus.PublishAsync(userUpdatedEvent);
 
             return new UpdateCharityResponse

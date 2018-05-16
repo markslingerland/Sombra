@@ -8,5 +8,6 @@ namespace Sombra.SearchService.DAL
         public string Name { get; set; }
         public Core.Enums.SearchContentType Type { get; set; }
         public string Description { get; set; }
+        public string Image { get; set; }
     }
 }

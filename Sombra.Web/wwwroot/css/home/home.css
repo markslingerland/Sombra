@@ -54,6 +54,15 @@
     position: relative;
 }
 
+#about .about-btn a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 500;
+}
+
 #about .about-btn i {
     position: absolute;
     color: #fda23f;
@@ -180,11 +189,16 @@
     margin-top: 150px;
     padding-left: 165px;
     padding-right: 165px;
+    text-align: left;
 }
 
 #home-contribute .container {
- padding: 0;
- margin: 0;
+ padding: 0 !important;
+ margin: 0 !important;
+}
+
+#home-contribute .contribute-textArea {
+    padding-right: 75px;
 }
 
 #home-contribute .action-holder .action-holder-frame {
@@ -209,17 +223,17 @@
 
 #home-contribute .action-holder .action-item:nth-child(1) {
     top: 11px;
-    right: 25px;
+    right: -20px;
 }
 
 #home-contribute .action-holder .action-item:nth-child(2) {
-    top: -19px;
-    right: 325px;
+    top: -25px;
+    right: 280px;
 }
 
 #home-contribute .action-holder .action-item:nth-child(3) {
-    top: 290px;
-    right: 219px;
+    top: 310px;
+    right: 160px;
 }
 
 #home-contribute .action-holder .action-item {
@@ -307,8 +321,61 @@
     position: relative;
 }
 
-#discover {
-    margin-top: 150px;
-    float: left;
+#the_story {
     width: 100%;
+    float: left;
+    margin-top: 150px;
+}
+
+#the_story .container {
+    padding: 0;
+    margin: 0;
+}
+
+#the_story .story_image {
+ width: 100%;
+ height: 460px;
+ background-image: url("../../Assets/mont-ventoux.jpg");
+ background-position: center;
+ position: relative;
+}
+
+#the_story .story_gradient {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
+}
+
+#the_story .story_gradient .text_container {
+width: 100%;
+padding-left: 165px;
+padding-right: 165px;
+}
+
+#the_story .story_gradient .text_container span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+#the_story .story_gradient .text_container h3{
+    width: 556px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.28;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
 }

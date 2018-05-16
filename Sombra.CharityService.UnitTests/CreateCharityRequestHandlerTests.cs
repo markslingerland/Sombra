@@ -7,7 +7,7 @@ using Sombra.Messaging.Events;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.CharityService.DAL;
-
+using System;
 
 namespace Sombra.CharityService.UnitTests
 {
@@ -22,7 +22,7 @@ namespace Sombra.CharityService.UnitTests
             try
             {
                 var busMock = new Mock<IBus>();
-                busMock.Setup(m => m.PublishAsync(It.IsAny<CreatedCharityEvent>())).Returns(Task.FromResult(true));
+                busMock.Setup(m => m.PublishAsync(It.IsAny<CharityCreatedEvent>())).Returns(Task.FromResult(true));
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
@@ -32,13 +32,15 @@ namespace Sombra.CharityService.UnitTests
                 CreateCharityResponse response;
                 var request = new CreateCharityRequest
                 {
-                    CharityId = "1",
-                    NameCharity = "testNameCharity",
-                    NameOwner = "testNAmeOwner",
-                    EmailCharity = "test@test.com",
+                    CharityKey = Guid.NewGuid(),
+                    Name = "testName",
+                    OwnerUserName = "testOwnerUserName",
+                    Email = "test@test.com",
                     Category = Core.Enums.Category.None,
                     KVKNumber = 0,
-                    IBAN = "0-IBAN"
+                    IBAN = "0-IBAN",
+                    CoverImage = "",
+                    Slogan = "Test"
 
                 };
 
@@ -50,17 +52,19 @@ namespace Sombra.CharityService.UnitTests
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    Assert.AreEqual(request.CharityId, context.Charities.Single().CharityId);
-                    Assert.AreEqual(request.NameCharity, context.Charities.Single().NameCharity);
-                    Assert.AreEqual(request.NameOwner, context.Charities.Single().NameOwner);
-                    Assert.AreEqual(request.EmailCharity, context.Charities.Single().EmailCharity);
+                    Assert.AreEqual(request.CharityKey, context.Charities.Single().CharityKey);
+                    Assert.AreEqual(request.Name, context.Charities.Single().Name);
+                    Assert.AreEqual(request.OwnerUserName, context.Charities.Single().OwnerUserName);
+                    Assert.AreEqual(request.Email, context.Charities.Single().Email);
                     Assert.AreEqual(request.Category, context.Charities.Single().Category);
                     Assert.AreEqual(request.KVKNumber, context.Charities.Single().KVKNumber);
                     Assert.AreEqual(request.IBAN, context.Charities.Single().IBAN);
+                    Assert.AreEqual(request.CoverImage, context.Charities.Single().CoverImage);
+                    Assert.AreEqual(request.Slogan, context.Charities.Single().Slogan);
                     Assert.IsTrue(response.Success);
                 }
 
-                busMock.Verify(m => m.PublishAsync(It.Is<CreatedCharityEvent>(e => e.CharityId == request.CharityId && e.NameCharity == request.NameCharity)), Times.Once);
+                busMock.Verify(m => m.PublishAsync(It.Is<CharityCreatedEvent>(e => e.CharityKey == request.CharityKey && e.Name == request.Name)), Times.Once);
             }
             finally
             {

@@ -17,14 +17,14 @@ namespace Sombra.Infrastructure.DAL
             return queryable.Skip((pageNumber - 1) * pageSize).Take(pageSize);
         }
 
-        public static async Task<IEnumerable<TDestination>> ProjectToPagedListAsync<TDestination, TSource>(this IOrderedQueryable<TSource> queryable, int pageNumber, int pageSize, IConfigurationProvider mapperConfiguration)
+        public static async Task<List<TDestination>> ProjectToPagedListAsync<TDestination, TSource>(this IOrderedQueryable<TSource> queryable, int pageNumber, int pageSize, IConfigurationProvider mapperConfiguration)
             where TSource : class
             where TDestination : class
         {
             return await queryable.ApplyPagination(pageNumber, pageSize).ProjectToListAsync<TDestination>(mapperConfiguration);
         }
 
-        public static async Task<IEnumerable<TDestination>> ProjectToPagedListAsync<TDestination, TKey, TSource>(this IQueryable<TSource> queryable, Expression<Func<TSource, TKey>> keySelector, SortOrder sortOrder, int pageNumber, int pageSize, IConfigurationProvider mapperConfiguration)
+        public static async Task<List<TDestination>> ProjectToPagedListAsync<TDestination, TKey, TSource>(this IQueryable<TSource> queryable, Expression<Func<TSource, TKey>> keySelector, SortOrder sortOrder, int pageNumber, int pageSize, IConfigurationProvider mapperConfiguration)
             where TSource : class
             where TDestination : class
         {

@@ -9,18 +9,6 @@ services:
     depends_on:
       - rabbitmq
 
-  sombra.web.unittests:
-    image: sombra.web.unittests
-    build:
-      context: .
-      dockerfile: Sombra.Web.UnitTests/Dockerfile
-
-  sombra.core.unittests:
-    image: sombra.core.unittests
-    build:
-      context: .
-      dockerfile: Sombra.Core.UnitTests/Dockerfile
-
   sombra.charityservice:
     image: sombra.charityservice
     build:
@@ -30,12 +18,6 @@ services:
       - rabbitmq
       - sqlserver
 
-  sombra.charityservice.unittests:
-    image: sombra.charityservice.unittests
-    build:
-      context: .
-      dockerfile: Sombra.CharityService.UnitTests/Dockerfile
-
   sombra.emailservice:
     image: sombra.emailservice
     build:
@@ -43,12 +25,6 @@ services:
       dockerfile: Sombra.EmailService/Dockerfile
     depends_on:
       - rabbitmq
-
-  sombra.emailservice.unittests:
-    image: sombra.emailservice.unittests
-    build:
-      context: .
-      dockerfile: Sombra.EmailService.UnitTests/Dockerfile
   
   sombra.identityservice:
     image: sombra.identityservice
@@ -58,12 +34,6 @@ services:
     depends_on:
       - rabbitmq
       - sqlserver
-
-  sombra.identityservice.unittests:
-    image: sombra.identityservice.unittests
-    build:
-      context: .
-      dockerfile: Sombra.IdentityService.UnitTests/Dockerfile
       
   sombra.templateservice:
     image: sombra.templateservice
@@ -74,12 +44,6 @@ services:
       - rabbitmq
       - sqlserver
 
-  sombra.templateservice.unittests:
-    image: sombra.templateservice.unittests
-    build:
-      context: .
-      dockerfile: Sombra.TemplateService.UnitTests/Dockerfile
-
   sombra.userservice:
     image: sombra.userservice
     build:
@@ -88,12 +52,6 @@ services:
     depends_on:
       - rabbitmq
       - sqlserver
-
-  sombra.userservice.unittests:
-    image: sombra.userservice.unittests
-    build:
-      context: .
-      dockerfile: Sombra.UserService.UnitTests/Dockerfile
 
   sombra.loggingservice:
     image: sombra.loggingservice

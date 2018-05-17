@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Linq.Expressions;
 using System;
+using Sombra.Core.Enums;
 using Sombra.Core.Extensions;
 using Sombra.Infrastructure.DAL;
 
@@ -35,7 +36,7 @@ namespace Sombra.SearchService
             return new GetSearchResultResponse
             {
                 TotalResult = _context.Content.Count(filter),
-                Results = await _context.Content.Where(filter).OrderBy(c => c.Name).ApplyPagination(message.PageNumber, message.PageSize).ProjectToListAsync<SearchResult>(_mapper.ConfigurationProvider)
+                Results = await _context.Content.Where(filter).ProjectToPagedListAsync<SearchResult>(c => c.Name, SortOrder.Asc, message.PageNumber, message.PageSize, _mapper.ConfigurationProvider)
             };
         }
     }

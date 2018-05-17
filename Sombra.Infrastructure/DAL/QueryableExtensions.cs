@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Text;
-using Core.Enums;
+using Sombra.Core.Enums;
 
 namespace Sombra.Infrastructure.DAL
 {
@@ -28,7 +28,7 @@ namespace Sombra.Infrastructure.DAL
             where TSource : class
             where TDestination : class
         {
-            var orderedQueryable = sortOrder == sortOrder.Asc
+            var orderedQueryable = sortOrder == SortOrder.Asc
                 ? queryable.OrderBy(keySelector)
                 : queryable.OrderByDescending(keySelector);
 

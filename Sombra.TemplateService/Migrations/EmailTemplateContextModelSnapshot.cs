@@ -33,7 +33,7 @@ namespace Sombra.TemplateService.Migrations
                     b.ToTable("Template");
 
                     b.HasData(
-                        new { Id = new Guid("52ef47fd-15c9-41ca-bfbb-86680dd5be19"), Template = @"<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
+                        new { Id = new Guid("c1fec679-7172-4eb8-abac-791177c30033"), Template = @"<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xmlns=""http://www.w3.org/1999/xhtml"">
 <head>
     <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"" />
@@ -447,7 +447,7 @@ namespace Sombra.TemplateService.Migrations
                                 <tr>
                                     <td class=""content-cell"">
                                         <h1>Hoi [[name]],</h1>
-                                        <p>Recentelijk heeft u een aanvraag gestuurd om uw ikdoneer.nu wachtwoord te herstellen. Gebruik de onderstaande knop om uw wachtwoord te herstellen.<strong> Deze aanvraag is geldig gedurende 24 uur.</strong></p>
+                                        <p>Recentelijk heb je een aanvraag gestuurd om je wachtwoord voor ikdoneer.nu te herstellen. Gebruik de onderstaande knop om je wachtwoord te herstellen.<strong> Deze aanvraag is geldig gedurende 24 uur.</strong></p>
                                         <!-- Action -->
                                         <table class=""body-action"" align=""center"" width=""100%"" cellpadding=""0"" cellspacing=""0"">
                                             <tr>
@@ -470,7 +470,7 @@ namespace Sombra.TemplateService.Migrations
                                                 </td>
                                             </tr>
                                         </table>
-                                        <p>Voor uw veiligheid, deze aanvraag is verstuurd vanaf een [[operating_system]] apparaat die [[browser_name]] gebruikt. Als u deze aanvraag om uw wachtwoord te herstellen niet heeft aangevraagd, kunt u deze mail negeren of <a href=""[[support_url]]"">neem contact op</a> als u vragen heeft.</p>
+                                        <p>Voor jouw veiligheid: deze aanvraag is verstuurd vanaf een [[operating_system]] apparaat die [[browser_name]] gebruikt. Als je deze aanvraag niet zelf hebt verzonden, kunt je deze mail negeren. Als je naar aanleiding van deze e-mail vragen hebt, kun je <a href=""[[support_url]]"">contact met ons opnemen</a>.</p>
                                         <p>
                                             Bedankt,
                                             <br>Het ikdoneer.nu Team
@@ -506,7 +506,7 @@ namespace Sombra.TemplateService.Migrations
     </table>
 </body>
 </html>", TemplateId = 1 },
-                        new { Id = new Guid("280f8681-ce34-4c2e-b47a-a7b42ade9beb"), Template = @"<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
+                        new { Id = new Guid("72fa8df9-8d0f-40ed-9b6e-fa8f16afac22"), Template = @"<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xmlns=""http://www.w3.org/1999/xhtml"">
 <head>
     <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"" />
@@ -920,7 +920,7 @@ namespace Sombra.TemplateService.Migrations
                                 <tr>
                                     <td class=""content-cell"">
                                         <h1>Hoi [[name]],</h1>
-                                        <p>Er is geprobeerd om een account te registreren op ikdoneer.nu met uw e-mailadres. Gebruik de onderstaande knop om uw e-mailadres te bevestigen en uw account te activeren. <strong> Deze aanvraag is geldig gedurende 24 uur.</strong></p>
+                                        <p>Er is geprobeerd om een account te registreren op ikdoneer.nu met het e-mailadres waar we deze mail naar sturen. Gebruik de onderstaande knop om je e-mailadres te bevestigen en je account te activeren. <strong>Deze aanvraag is geldig gedurende 24 uur.</strong></p>
                                         <!-- Action -->
                                         <table class=""body-action"" align=""center"" width=""100%"" cellpadding=""0"" cellspacing=""0"">
                                             <tr>
@@ -933,7 +933,7 @@ namespace Sombra.TemplateService.Migrations
                                                                 <table border=""0"" cellspacing=""0"" cellpadding=""0"">
                                                                     <tr>
                                                                         <td>
-                                                                            <a href=""[[action_url]]"" class=""button button--green"" target=""_blank"">Herstel uw wachtwoord</a>
+                                                                            <a href=""[[action_url]]"" class=""button button--green"" target=""_blank"">Activeer je account</a>
                                                                         </td>
                                                                     </tr>
                                                                 </table>
@@ -943,7 +943,7 @@ namespace Sombra.TemplateService.Migrations
                                                 </td>
                                             </tr>
                                         </table>
-                                        <p>Als u niet heeft geprobeerd om een account te registreren bij ikdoneer.nu, dan kunt u deze mail negeren of <a href=""[[support_url]]"">neem contact op</a> als u vragen heeft.</p>
+                                        <p>Als je niet hebt geprobeerd om een account te registreren bij ikdoneer.nu, dan kun je deze mail negeren. Als je naar aanleiding van deze e-mail vragen hebt, kun je <a href=""[[support_url]]"">contact met ons opnemen</a>.</p>
                                         <p>
                                             Bedankt,
                                             <br>Het ikdoneer.nu Team
@@ -952,7 +952,7 @@ namespace Sombra.TemplateService.Migrations
                                         <table class=""body-sub"">
                                             <tr>
                                                 <td>
-                                                    <p class=""sub"">Als u problemen heeft met de bovenstaande knop, kopieer en plak de onderstaande url in uw web browser.</p>
+                                                    <p class=""sub"">Als je problemen hebt met de bovenstaande knop, kopieer en plak de onderstaande url in uw web browser.</p>
                                                     <p class=""sub"">[[action_url]]</p>
                                                 </td>
                                             </tr>

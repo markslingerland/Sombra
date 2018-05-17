@@ -7,6 +7,7 @@ using EasyNetQ;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using Sombra.Core.Extensions;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
@@ -50,7 +51,7 @@ namespace Sombra.Web.Infrastructure.Authentication
 
         private SombraPrincipal CreatePrincipal(UserLoginResponse userLoginResponse)
         {
-            var identity = new SombraIdentity(GetUserClaims(userLoginResponse), userLoginResponse.UserKey, userLoginResponse.Roles, _authenticationScheme);
+            var identity = new SombraIdentity(GetUserClaims(userLoginResponse), userLoginResponse.UserKey, userLoginResponse.Role, _authenticationScheme);
             return new SombraPrincipal(identity);
         }
 
@@ -59,7 +60,7 @@ namespace Sombra.Web.Infrastructure.Authentication
             await _httpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
 
-        private IEnumerable<Claim> GetUserClaims(UserLoginResponse userLoginResponse)
+        private static IEnumerable<Claim> GetUserClaims(UserLoginResponse userLoginResponse)
         {
             var claims = new List<Claim>
             {
@@ -71,13 +72,9 @@ namespace Sombra.Web.Infrastructure.Authentication
             return claims;
         }
 
-        private IEnumerable<Claim> GetUserRoleClaims(UserLoginResponse userLoginResponse)
+        private static IEnumerable<Claim> GetUserRoleClaims(UserLoginResponse userLoginResponse)
         {
-            var claims = new List<Claim>();
-
-            claims.AddRange(userLoginResponse.Roles.Select(role => new Claim(ClaimTypes.Role, role.ToString())));
-
-            return claims;
+            return userLoginResponse.Role.GetFlags().Select(role => new Claim(ClaimTypes.Role, role.ToString()));
         }
     }
 }

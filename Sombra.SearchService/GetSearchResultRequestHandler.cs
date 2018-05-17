@@ -36,7 +36,7 @@ namespace Sombra.SearchService
             return new GetSearchResultResponse
             {
                 TotalResult = _context.Content.Count(filter),
-                Results = await _context.Content.Where(filter).ProjectToPagedListAsync<SearchResult>(c => c.Name, SortOrder.Asc, message.PageNumber, message.PageSize, _mapper.ConfigurationProvider)
+                Results = await _context.Content.Where(filter).OrderBy(c => c.Name).ApplyPagination(message.PageNumber, message.PageSize).ProjectToListAsync<SearchResult>(_mapper.ConfigurationProvider)
             };
         }
     }

@@ -1,0 +1,392 @@
+/*dropdown*/
+
+#about {
+    float: left;
+    width: 100%;
+}
+
+#about .container {
+    padding-left: 165px;
+    padding-right: 165px;
+}
+
+#about img {
+    width: 731.6px;
+    height: 888.4px;
+    position: absolute;
+    top: -92px;
+    right: -134px;
+    z-index: -1;
+}
+
+.header-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#about .about-text {
+    padding-top: 150px;
+    /*padding-left: 50px;*/
+}
+
+#about .about-text h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    font-weight: 800;
+    color: #838383;
+}
+
+#about .about-text p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 23px;
+    font-weight: 300;
+    color: #838383;
+}
+
+#about .about-btn {
+    margin-top: 60px;
+    width: 210px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    border: solid 1px #fda23f;
+    position: relative;
+}
+
+#about .about-btn a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 500;
+}
+
+#about .about-btn i {
+    position: absolute;
+    color: #fda23f;
+    top: 12px;
+    left: 11px;
+}
+
+#about .about-btn span {
+    position: absolute;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fda23f;
+    top: 5px;
+    left: 35px;
+}
+
+#home-info {
+    padding-top: 350px;
+    width: 100%;
+}
+
+#home-info p {
+    width: 729px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    color: #838383;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+/* OPTION */
+
+#option-container {
+    margin-top: 50px;
+    width: 100%;
+    float: left;
+}
+
+#option-container .outerBox {
+    padding-left: 68px;
+    padding-right: 68px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#option-container .option-box {
+    width: 284px;
+    height: 315px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    background-color: #ffffff;
+    position: relative;
+    text-align: center;
+}
+
+#option-container .option-box:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
+}
+
+#option-container .option-box h3 {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    color: #b1b1b1;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 70px;
+}
+
+#option-container .option-box p {
+    font-size: 18px;
+    font-weight: 300;
+    text-align: center;
+    color: #838383;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-bottom: 15px;
+}
+
+#option-container .option-box a {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fda23f;
+    text-align: center;
+
+}
+
+#option-container .option-box .option-shape {
+    position: absolute;
+    top: -40px;
+    left: 105px;
+}
+
+#option-container .outerBox:nth-child(1) .option-box .option-icon {
+    position: absolute;
+    top: -14px;
+    left: 129px;
+}
+
+#option-container .outerBox:nth-child(2) .option-box .option-icon {
+    position: absolute;
+    top: -9px;
+    left: 121px;
+}
+
+#option-container .outerBox:nth-child(3) .option-box .option-icon {
+    position: absolute;
+    top: -20px;
+    left: 127px;
+}
+
+#option-container .outerBox:nth-child(2) .option-box .option-shape {
+    transform: rotate(-43deg);
+}
+
+#option-container .outerBox:nth-child(3) .option-box .option-shape {
+    transform: rotate(137deg);
+}
+
+#option-container .home-options {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*/ Contribute /*/
+
+#home-contribute {
+    width: 100%;
+    float: left;
+    margin-top: 150px;
+    padding-left: 165px;
+    padding-right: 165px;
+    text-align: left;
+}
+
+#home-contribute .container {
+ padding: 0 !important;
+ margin: 0 !important;
+}
+
+#home-contribute .contribute-textArea {
+    padding-right: 75px;
+}
+
+#home-contribute .action-holder .action-holder-frame {
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+#home-contribute .action-holder .action-items {
+    width: 100%;
+    position: relative;
+    margin-top: -60px;
+}
+
+#home-contribute .action-holder .action-item {
+   z-index: 100;
+}
+
+#home-contribute .action-holder .action-item:nth-child(1) {
+    top: 11px;
+    right: -20px;
+}
+
+#home-contribute .action-holder .action-item:nth-child(2) {
+    top: -25px;
+    right: 280px;
+}
+
+#home-contribute .action-holder .action-item:nth-child(3) {
+    top: 310px;
+    right: 160px;
+}
+
+#home-contribute .action-holder .action-item {
+    width: 253px;
+    height: 265px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: -10px;
+    right: 25px;
+}
+
+#home-contribute .action-holder .action-item img {
+    width: 100%;
+    height: 50%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+#home-contribute .action-holder .action-item .action-title {
+    color: white;
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#home-contribute .action-holder .action-item .colored-label {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#home-contribute .action-holder .action-item .colored-label a {
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: lightblue;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+#home-contribute .action-holder .action-item .action-information {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #838383;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#home-contribute .action-holder .action-item .action-btn-holder {
+    width: 100%;
+    position: absolute;
+    bottom: -25px;
+}
+
+#home-contribute .action-holder .action-item .action-btn-holder a {
+    width: 54px;
+    height: 54px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-radius: 100%;
+    text-align: center;
+    margin-top: 15px;
+    box-shadow: 0px 0px 10px 0px #D3D3D3;
+}
+
+#home-contribute .action-holder .action-item .action-btn-holder i {
+    font-size: 25px;
+    margin-top: 15px;
+    color: orange;
+}
+
+#home-contribute .action-holder .items-holder {
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+#the_story {
+    width: 100%;
+    float: left;
+    margin-top: 150px;
+}
+
+#the_story .container {
+    padding: 0;
+    margin: 0;
+}
+
+#the_story .story_image {
+ width: 100%;
+ height: 460px;
+ background-image: url("../../Assets/mont-ventoux.jpg");
+ background-position: center;
+ position: relative;
+}
+
+#the_story .story_gradient {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
+}
+
+#the_story .story_gradient .text_container {
+width: 100%;
+padding-left: 165px;
+padding-right: 165px;
+}
+
+#the_story .story_gradient .text_container span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+#the_story .story_gradient .text_container h3{
+    width: 556px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.28;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}

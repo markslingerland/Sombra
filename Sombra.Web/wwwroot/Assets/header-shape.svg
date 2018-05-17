@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="744px" height="898px" viewBox="0 0 744 898" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Path 5</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="110.35421%" y2="122.826364%" id="linearGradient-1">
+            <stop stop-color="#FDA23F" offset="0%"></stop>
+            <stop stop-color="#F3646F" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="002-Doneer---Home" transform="translate(-696.000000, 0.000000)" fill="url(#linearGradient-1)">
+            <path d="M963.607131,0 C951.659214,133.109375 886.268589,282.709635 767.435256,448.800781 C648.601923,614.891927 678.029006,764.492188 855.716506,897.601562 L1440.18851,897.601562 L1440.18851,0 L963.607131,0 Z" id="Path-5"></path>
+        </g>
+    </g>
+</svg>

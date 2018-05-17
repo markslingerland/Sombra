@@ -1,15 +1,18 @@
-﻿@model Sombra.Web.ViewModels.Search.CharityItemViewModel
+﻿@using Sombra.Core.Extensions
+@model Sombra.Web.ViewModels.Search.CharityItemViewModel
 
 <div class="action-item">
-    <img src="Assets/placeholder.jpg" alt="#">
-    <h4 class="action-title">Klimmen tegen MS</h4>
-    <div class="colored-label"><a href="#">Gezondheid</a></div>
+    <img src="@Model.Image" alt="#">
+    <h4 class="action-title">@Model.Name</h4>
+    @foreach (var category in Model.Category.GetIndividualFlags())
+    {
+        <div class="colored-label"><a href="#">@category.GetDisplayName()</a></div>
+    }
     <div class="action-information">
-        Werken aan een toekomst zonder hart- en vaatziekten
+        @Model.Description
     </div>
     <div class="action-btn-holder">
         <a href="#"><i class="fas fa-arrow-right"></i>
         </a>
     </div>
-                            
 </div>

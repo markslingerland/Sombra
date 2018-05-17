@@ -300,6 +300,7 @@
 #home-contribute .action-holder .action-item .colored-label {
     margin-left: 10px;
     margin-top: 10px;
+    display: inline-block;
 }
 
 #home-contribute .action-holder .action-item .colored-label a {
@@ -423,4 +424,27 @@ padding-right: 165px;
     bottom: 48px;
     margin-bottom: 0;
     margin-top: 0;
+}
+
+#acties {
+    width: 100%;
+    float: left;
+    padding-left: 165px;
+    padding-right: 165px;
+    padding-bottom: 150px;
+}
+
+#acties .title {
+    width: 284px;
+    height: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 35px;
+    font-weight: 200;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    text-align: left;
+    color: #838383;
+    margin-top: 150px;
 }

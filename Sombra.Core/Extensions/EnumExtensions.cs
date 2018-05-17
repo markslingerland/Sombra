@@ -21,6 +21,11 @@ namespace Sombra.Core.Extensions
             return GetFlags(value, GetFlagValues(value.GetType()).ToArray());
         }
 
+        public static bool HasAnyFlag(this Enum value, Enum flag)
+        {
+            return flag.GetIndividualFlags().Any(f => value.HasFlag(f));
+        }
+
         private static IEnumerable<Enum> GetFlags(Enum value, Enum[] values)
         {
             var bits = Convert.ToUInt64(value);

@@ -103,6 +103,13 @@
     float: left;
 }
 
+#option-container .outerBox {
+    padding-left: 68px;
+    padding-right: 68px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
 #option-container .option-box {
     width: 284px;
     height: 315px;
@@ -110,9 +117,13 @@
     margin-right: auto;
     border-radius: 10px;
     background-color: #ffffff;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     position: relative;
     text-align: center;
+}
+
+#option-container .option-box:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
 }
 
 #option-container .option-box h3 {

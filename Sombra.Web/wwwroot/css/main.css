@@ -227,7 +227,7 @@ body {
     font-weight: 300;
     text-align: left;
     color: #838383;
-    margin-bottom: 20px;
+    margin-bottom: 37px;
 }
 
 .standard-text .big-button {
@@ -259,6 +259,31 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+.secondary-button {
+    width: 192px;
+    height: 40px;
+    border: solid 1px white;
+    border-radius: 8px;
+    position: relative;
+}
+
+.secondary-button label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-left: 15px;
+    text-align: center;
+    color: white;
+}
+
+.secondary-button a {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
 }
 
 footer {

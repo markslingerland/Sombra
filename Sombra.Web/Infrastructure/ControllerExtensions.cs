@@ -1,19 +1,10 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace Sombra.Web.Infrastructure
 {
     public static class ControllerExtensions
     {
-        public static string GetName(Type controller)
-        {
-            if (!controller.IsSubclassOf(typeof(Controller)))
-                throw new ArgumentException($"The supplied type ({controller}) must be a derived type of {nameof(Controller)}!", nameof(controller));
-
-            return nameof(controller).Replace(nameof(Controller), "");
-        }
-
         public static ContentResult CreateErrorResult(this ActionContext context)
         {
             var result = context.JsonNet(context.ModelState);

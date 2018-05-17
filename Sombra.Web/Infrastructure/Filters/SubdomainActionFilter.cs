@@ -14,7 +14,7 @@ namespace Sombra.Web.Infrastructure.Filters
                     context.Result = new RedirectToRouteResult(
                         new RouteValueDictionary
                         {
-                            { "Controller", ControllerExtensions.GetName(typeof(HomeController)) },
+                            { "Controller", nameof(HomeController).Replace("Controller", "") },
                             { "Action", nameof(HomeController.Index) }
                         });
         }

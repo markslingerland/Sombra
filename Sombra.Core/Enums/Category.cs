@@ -7,7 +7,7 @@ namespace Sombra.Core.Enums
     [Flags]
     public enum Category
     {
-        //TODO change to english
+        //TODO: change to english
         None = 0,
         KerkEnLevensbeschouwing = 1,
         SportEnRecreatie = 2,

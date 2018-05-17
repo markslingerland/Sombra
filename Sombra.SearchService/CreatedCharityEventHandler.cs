@@ -25,7 +25,7 @@ namespace Sombra.SearchService
                 Type = Core.Enums.SearchContentType.Charity,
                 Key = message.CharityKey,
                 Image = message.CoverImage,
-                Description = message.Slogan                
+                Description = message.Slogan                               
             };
     
             _context.Add(charityToCreate);

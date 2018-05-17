@@ -18,14 +18,14 @@ namespace Sombra.SearchService
 
         public async Task Consume(UpdatedCharityEvent message)
         {
-            ExtendedConsole.Log($"UpdatedCharityEvent received for charity with key {message.CharityId}"); //TODO: change CharityId to Key when ready
-            var charityToUpdate = await _context.Content.FirstOrDefaultAsync(u => u.Key == System.Guid.Parse(message.CharityId)); //TODO: change CharityId to Key when ready
+            ExtendedConsole.Log($"UpdatedCharityEvent received for charity with key {message.CharityKey}");
+            var charityToUpdate = await _context.Content.FirstOrDefaultAsync(u => u.Key == message.CharityKey);
 
             if (charityToUpdate != null)
             {
-                charityToUpdate.Name = message.NameCharity;
-                //TODO: add description
-                //TODO: add coverImage
+                charityToUpdate.Name = message.Name;
+                charityToUpdate.Description = message.Slogan;
+                charityToUpdate.Image = message.CoverImage;
                 //TODO: add catogories
 
                 await _context.SaveChangesAsync();

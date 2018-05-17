@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sombra.Messaging.Infrastructure;
+using Sombra.Web.Controllers;
 using Sombra.Web.Infrastructure.Filters;
 using Sombra.Web.Infrastructure.Authentication;
 using Sombra.Web.Services;
@@ -37,6 +38,7 @@ namespace Sombra.Web
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                 options.Filters.Add(new ValidatorActionFilter());
+                options.Filters.Add(new SubdomainActionFilter());
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddMemoryCache();
 
@@ -77,7 +79,7 @@ namespace Sombra.Web
                 routes.MapSubdomainRoute(
                     hostnames,
                     "SubdomainRoute",
-                    "{Subdomain}",
+                    $"{{{CharityController.SubdomainParameter}}}",
                     "{action}",
                     new { controller = "Charity", action = "Index" });
 

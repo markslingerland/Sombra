@@ -1,4 +1,5 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -34,11 +35,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.UserService.UnitTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.IdentityService.UnitTests", "Sombra.IdentityService.UnitTests\Sombra.IdentityService.UnitTests.csproj", "{D33B8FDD-1061-4FFC-9343-13AE76AB5C69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sombra.SearchService", "Sombra.SearchService\Sombra.SearchService.csproj", "{DA3F7D28-C6D1-4B0F-8899-BC5BD45E3F64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.SearchService", "Sombra.SearchService\Sombra.SearchService.csproj", "{DA3F7D28-C6D1-4B0F-8899-BC5BD45E3F64}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.CharityService", "Sombra.CharityService\Sombra.CharityService.csproj", "{0026C76A-042F-4659-A593-429332131513}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sombra.CharityService.UnitTests", "Sombra.CharityService.UnitTests\Sombra.CharityService.UnitTests.csproj", "{E86FA2E0-A9AF-47E9-9C47-16F972F04EEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.CharityService.UnitTests", "Sombra.CharityService.UnitTests\Sombra.CharityService.UnitTests.csproj", "{E86FA2E0-A9AF-47E9-9C47-16F972F04EEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -242,7 +243,6 @@ Global
 		{D33B8FDD-1061-4FFC-9343-13AE76AB5C69}.Release|x64.Build.0 = Release|Any CPU
 		{D33B8FDD-1061-4FFC-9343-13AE76AB5C69}.Release|x86.ActiveCfg = Release|Any CPU
 		{D33B8FDD-1061-4FFC-9343-13AE76AB5C69}.Release|x86.Build.0 = Release|Any CPU
-<<<<<<< HEAD
 		{DA3F7D28-C6D1-4B0F-8899-BC5BD45E3F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DA3F7D28-C6D1-4B0F-8899-BC5BD45E3F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA3F7D28-C6D1-4B0F-8899-BC5BD45E3F64}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -255,7 +255,6 @@ Global
 		{DA3F7D28-C6D1-4B0F-8899-BC5BD45E3F64}.Release|x64.Build.0 = Release|Any CPU
 		{DA3F7D28-C6D1-4B0F-8899-BC5BD45E3F64}.Release|x86.ActiveCfg = Release|Any CPU
 		{DA3F7D28-C6D1-4B0F-8899-BC5BD45E3F64}.Release|x86.Build.0 = Release|Any CPU
-=======
 		{0026C76A-042F-4659-A593-429332131513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0026C76A-042F-4659-A593-429332131513}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0026C76A-042F-4659-A593-429332131513}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -280,7 +279,6 @@ Global
 		{E86FA2E0-A9AF-47E9-9C47-16F972F04EEF}.Release|x64.Build.0 = Release|Any CPU
 		{E86FA2E0-A9AF-47E9-9C47-16F972F04EEF}.Release|x86.ActiveCfg = Release|Any CPU
 		{E86FA2E0-A9AF-47E9-9C47-16F972F04EEF}.Release|x86.Build.0 = Release|Any CPU
->>>>>>> master
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

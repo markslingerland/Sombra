@@ -1,24 +1,9 @@
-using System.IO;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
+using Sombra.Infrastructure.DAL;
 
 namespace Sombra.TemplateService.DAL
 {
-    public class DesignTimeDbContextUserFactory : IDesignTimeDbContextFactory<EmailTemplateContext>
+    public class DesignTimeDbEmailTemplateContextFactory : DesignTimeDbSombraContextFactory<EmailTemplateContext>
     {
-        public EmailTemplateContext CreateDbContext(string[] args)
-        {
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            var builder = new DbContextOptionsBuilder<EmailTemplateContext>();
-            var connectionString = configuration["TEMPLATE_DB_CONNECTIONSTRING"];
-            builder.UseSqlServer(connectionString);
-
-            return new EmailTemplateContext(builder.Options);
-        }
+        protected override string ConnectionStringName { get; } = "TEMPLATE_DB_CONNECTIONSTRING";
     }
 }

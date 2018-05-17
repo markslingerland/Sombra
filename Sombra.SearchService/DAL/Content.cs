@@ -10,7 +10,6 @@ namespace Sombra.SearchService.DAL
         public Core.Enums.SearchContentType Type { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
-        public virtual ICollection<Category> Categories { get; set; }
-
+        public Core.Enums.Category Category { get; set; }
     }
 }

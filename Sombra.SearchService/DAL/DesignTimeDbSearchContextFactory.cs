@@ -1,25 +1,13 @@
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Sombra.Infrastructure.DAL;
 
 namespace Sombra.SearchService.DAL
 {
-    public class DesignTimeDbSearchContextFactory
+    public class DesignTimeDbSearchContextFactory : DesignTimeDbSombraContextFactory<SearchContext>
     {
-        
-        public SearchContext CreateDbContext(string[] args)
-        {
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            var builder = new DbContextOptionsBuilder<SearchContext>();
-            var connectionString = configuration["SEARCH_DB_CONNECTIONSTRING"];
-            builder.UseSqlServer(connectionString);
-
-            return new SearchContext(builder.Options);
-        }
+        protected override string ConnectionStringName => "SEARCH_DB_CONNECTIONSTRING";
     }
     
 }

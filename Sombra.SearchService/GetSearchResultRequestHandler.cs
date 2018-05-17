@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 using Sombra.Messaging.Responses;
 using Sombra.Messaging.Requests;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Linq.Expressions;
+using System;
+using Sombra.Core.Extensions;
 
 namespace Sombra.SearchService
 {
@@ -21,8 +25,18 @@ namespace Sombra.SearchService
 
         public async Task<GetSearchResultResponse> Handle(GetSearchResultRequest message)
         {
-            var content = await _context.Content.FirstOrDefaultAsync(); //u => u.EmailAddress.Equals(message.EmailAddress, StringComparison.InvariantCultureIgnoreCase));
-            return content != null ? _mapper.Map<GetSearchResultResponse>(content) : new GetSearchResultResponse();
+            Expression<Func<Content, bool>> filter = c => true;
+
+            if (message.Categories.Equals(Core.Enums.Category.None)) filter = filter.And(l => l.Category.HasAnyFlag(message.Categories));
+            if (!String.IsNullOrEmpty(message.Keyword)) filter = filter.And(l => l.Name.Contains(message.Keyword));
+            if (message.SearchContentType.Equals(Core.Enums.SearchContentType.Default)) filter = filter.And(l => message.SearchContentType.HasFlag(l.Type));
+
+            return new GetSearchResultResponse
+            {
+                TotalResult = _context.Content.Count(filter),
+                Results = await _context.Content.Where(filter).OrderBy(c => c.Name).Take((message.PageNumber - 1) * message.PageSize)
+                                            .Take(message.PageSize).ProjectToListAsync<SearchResult>(_mapper.ConfigurationProvider)
+            };
         }
     }
 }

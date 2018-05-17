@@ -7,9 +7,8 @@ namespace Sombra.SearchService.DAL
     {
         public SearchContext() { }
 
-        public SearchContext(DbContextOptions<SearchContext> options) : base(options) { }
+        public SearchContext(DbContextOptions<SearchContext> options, bool seed) : base(options, seed) { }
 
         public DbSet<Content> Content { get; set; }
-        public DbSet<Category> Category { get; set; }
     }
 }

@@ -13,20 +13,19 @@ namespace Sombra.Infrastructure.DAL
 {
     public static class QueryableExtensions
     {
-        public static IQueryable<T> ApplyPagination<T>(this IOrderedQueryable<T> queryable, int pageNumber, int pageSize)
-            => queryable.Skip((pageNumber - 1) * pageSize).Take(pageSize);
+        public static Task<List<T>> ToPagedListAsync<T>(this IQueryable<T> queryable, int pageNumber, int pageSize)
+            => queryable.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
 
-        public static Task<List<TDestination>> ProjectToPagedListAsync<TDestination, TSource>(this IOrderedQueryable<TSource> queryable, int pageNumber, int pageSize, IConfigurationProvider mapperConfiguration)
-            => queryable.ApplyPagination(pageNumber, pageSize).ProjectToListAsync<TDestination>(mapperConfiguration);
+        public static Task<List<TDestination>> ProjectToPagedListAsync<TDestination>(this IQueryable queryable, int pageNumber, int pageSize, IConfigurationProvider mapperConfiguration)
+            => queryable.ProjectTo<TDestination>(mapperConfiguration).DecompileAsync().ToPagedListAsync(pageNumber, pageSize);
 
-        public static async Task<List<TDestination>> ProjectToPagedListAsync<TDestination, TKey, TSource>(this IQueryable<TSource> queryable, Expression<Func<TSource, TKey>> keySelector, SortOrder sortOrder, int pageNumber, int pageSize, IConfigurationProvider mapperConfiguration)
-        {
-            var orderedQueryable = sortOrder == SortOrder.Asc
+        public static Task<List<TDestination>> ProjectToPagedListAsync<TDestination, TSource, TKey>(this IQueryable<TSource> queryable, Expression<Func<TSource, TKey>> keySelector, SortOrder sortOrder, int pageNumber, int pageSize, IConfigurationProvider mapperConfiguration)
+            => queryable.OrderBy(keySelector, sortOrder).ProjectToPagedListAsync<TDestination>(pageNumber, pageSize, mapperConfiguration);
+
+        public static IOrderedQueryable<TSource> OrderBy<TSource, TKey>(this IQueryable<TSource> queryable, Expression<Func<TSource, TKey>> keySelector, SortOrder sortOrder)
+            => sortOrder == SortOrder.Asc
                 ? queryable.OrderBy(keySelector)
                 : queryable.OrderByDescending(keySelector);
-
-            return await orderedQueryable.ProjectToPagedListAsync<TDestination, TSource>(pageNumber, pageSize, mapperConfiguration);
-        }
 
         public static Task<List<TDestination>> ProjectToListAsync<TDestination>(this IQueryable queryable, IConfigurationProvider mapperConfiguration)
             => queryable.ProjectTo<TDestination>(mapperConfiguration).DecompileAsync().ToListAsync();

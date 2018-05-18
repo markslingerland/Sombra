@@ -59,7 +59,7 @@ namespace Sombra.CharityActionService.UnitTests
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
-                    context.CharityActions.Add(new CharityActionEntity
+                    context.CharityActions.Add(new CharityAction
                     {
                         CharityActionkey = keyAction,
                         Charitykey = keyCharity,

@@ -10,17 +10,17 @@ namespace Sombra.CharityActionService
     {
         public MappingProfile()
         {
-            CreateMap<CharityActionEntity, CreateCharityActionResponse>()
+            CreateMap<CharityAction, CreateCharityActionResponse>()
                 .ForMember(d => d.Success, opt => opt.UseValue(true));
-            CreateMap<CreateCharityActionRequest, CharityActionEntity>()
+            CreateMap<CreateCharityActionRequest, CharityAction>()
                 .IgnoreEntityProperties();
-            CreateMap<CharityActionEntity, GetCharityActionResponse>()
+            CreateMap<CharityAction, GetCharityActionResponse>()
                 .ForMember(d => d.Success, opt => opt.UseValue(true));
-            CreateMap<CharityActionEntity, UpdateCharityActionResponse>()
+            CreateMap<CharityAction, UpdateCharityActionResponse>()
                 .ForMember(d => d.Success, opt => opt.UseValue(true));
-            CreateMap<UpdateCharityActionRequest, CharityActionEntity>()
+            CreateMap<UpdateCharityActionRequest, CharityAction>()
                 .IgnoreEntityProperties();
-            CreateMap<CharityActionEntity, DeleteCharityActionResponse>()
+            CreateMap<CharityAction, DeleteCharityActionResponse>()
                 .ForMember(d => d.Success, opt => opt.UseValue(true));
         }
     }

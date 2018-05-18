@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Sombra.CharityActionService.DAL
 {
-    public class CharityActionEntity : Entity
+    public class CharityAction : Entity
     {
         // TODO at more data relevant for charityAction
         public Guid CharityActionkey { get; set; }

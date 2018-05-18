@@ -29,7 +29,7 @@ namespace Sombra.CharityActionService.UnitTests
                 {
                     context.Database.EnsureCreated();
 
-                    var charity = new CharityActionEntity
+                    var charity = new CharityAction
                     {
                         CharityActionkey = keyAction,
                         Charitykey = keyCharity,
@@ -103,7 +103,7 @@ namespace Sombra.CharityActionService.UnitTests
                     var keyCharity = Guid.NewGuid();
                     var user = new UserKey() { Key = Guid.NewGuid() };
                     var users = new Collection<UserKey>() { user };
-                    var charity = new CharityActionEntity
+                    var charity = new CharityAction
                     {
                         CharityActionkey = keyAction,
                         Charitykey = keyCharity,

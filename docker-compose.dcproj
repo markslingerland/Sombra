@@ -15,5 +15,6 @@
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
     <None Include="docker-compose.ci.build.yml" />
+	<None Include="docker-compose.tests.yml" />
   </ItemGroup>
 </Project>

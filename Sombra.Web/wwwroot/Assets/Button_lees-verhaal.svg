@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="210px" height="40px" viewBox="0 0 210 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 8</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="-----Web-1440" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="001-Doneer---Home" transform="translate(-166.000000, -613.000000)">
+            <g id="Group-8" transform="translate(166.000000, 613.000000)">
+                <path d="M8,0.5 C3.85786438,0.5 0.5,3.85786438 0.5,8 L0.5,32 C0.5,36.1421356 3.85786438,39.5 8,39.5 L202,39.5 C206.142136,39.5 209.5,36.1421356 209.5,32 L209.5,8 C209.5,3.85786438 206.142136,0.5 202,0.5 L8,0.5 Z" id="Rectangle" stroke="#F88356" fill="#FFFFFF"></path>
+                <text id="Lees-zijn-verhaal" font-family="Montserrat-Bold, Montserrat" font-size="18" font-weight="bold" fill="#F88356">
+                    <tspan x="41.586" y="26">Lees zijn verhaal</tspan>
+                </text>
+                <g id="Page-1" transform="translate(16.000000, 15.000000)" stroke="#F88356" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M11,5 L0,5" id="Stroke-1"></path>
+                    <polyline id="Stroke-3" points="6 0 12 5 6.3345166 10"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

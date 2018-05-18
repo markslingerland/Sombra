@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.CharityService.DAL;
+using Sombra.Infrastructure;
 
 namespace Sombra.CharityService.UnitTests
 {
@@ -51,7 +52,7 @@ namespace Sombra.CharityService.UnitTests
                 //Act
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    var handler = new GetCharityByKeyRequestHandler(context, Helper.GetMapper());
+                    var handler = new GetCharityByKeyRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
                     response = await handler.Handle(request);
                 }
 
@@ -114,7 +115,7 @@ namespace Sombra.CharityService.UnitTests
                 //Act
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    var handler = new GetCharityByKeyRequestHandler(context, Helper.GetMapper());
+                    var handler = new GetCharityByKeyRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
                     response = await handler.Handle(request);
                 }
 

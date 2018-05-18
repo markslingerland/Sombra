@@ -2,9 +2,9 @@
 
 namespace Sombra.Infrastructure
 {
-    public static class AutoMapperTestHelper
+    public static class AutoMapperHelper
     {
-        public static IMapper GetMapper(Profile profile)
+        public static IMapper BuildMapper(Profile profile)
         {
             if (MapperInstance != null) return MapperInstance;
 

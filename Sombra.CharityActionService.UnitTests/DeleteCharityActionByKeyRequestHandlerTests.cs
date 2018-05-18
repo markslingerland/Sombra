@@ -129,7 +129,7 @@ namespace Sombra.CharityActionService.UnitTests
                 //Act
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    var handler = new DeleteCharityActionRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    var handler = new DeleteCharityActionRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()), busMock.Object);
                     response = await handler.Handle(request);
                 }
 

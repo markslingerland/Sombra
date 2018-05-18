@@ -26,7 +26,7 @@ namespace Sombra.CharityActionService
                 _rabbitMqConnectionString,
                 services => services
                     .AddDbContext<CharityActionContext>(_sqlConnectionString),
-                ConnectionValidator.ValidateAllDbConnections);
+                ConnectionValidator.ValidateAllDbConnections, DatabaseMigrationHelper.ForceMigrations);
 
             Thread.Sleep(Timeout.Infinite);
         }

@@ -133,11 +133,9 @@ namespace Sombra.CharityActionService.UnitTests
                     response = await handler.Handle(request);
                 }
 
-                //Assert
-                using (var context = CharityActionContext.GetInMemoryContext())
-                {
-                    Assert.IsFalse(response.Success);
-                }
+                //Assert               
+                Assert.IsFalse(response.Success);
+                
             }
             finally
             {

@@ -3,7 +3,7 @@
 
 <div class="action-item">
     <img src="@Model.Image" alt="">
-    @foreach (var category in Model.Category.GetIndividualFlags())
+    @foreach (var category in Model.Category.GetIndividualFlags().Take(2))
     {
         <div class="colored-label"><a href="#">@category.GetDisplayName()</a></div>
     }

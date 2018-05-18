@@ -12,5 +12,11 @@ namespace Sombra.Messaging.Events
         public Category Category { get; set; }
         public string KVKNumber { get; set; }
         public string IBAN { get; set; }
+<<<<<<< HEAD
+=======
+        public string CoverImage { get; set; }
+        public string Slogan { get; set; }
+        public string Url { get; set; }
+>>>>>>> Charity
     }
 }

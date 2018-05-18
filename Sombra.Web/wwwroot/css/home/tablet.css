@@ -31,10 +31,6 @@
     font-size: 15px;
 }
 
-#about .about-btn {
-    margin-top: 30px;
-}
-
 #home-info {
     padding-top: 200px;
     width: 100%;
@@ -61,7 +57,6 @@
 /* OPTIONS */
 
 #option-container .home-options {
-    width: 90%;
     margin-left: auto;
     margin-right: auto;
 }

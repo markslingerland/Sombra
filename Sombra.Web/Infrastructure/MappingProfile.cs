@@ -4,6 +4,7 @@ using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.Web.Areas.Development.Models;
 using Sombra.Web.ViewModels;
+using Sombra.Web.ViewModels.Search;
 
 namespace Sombra.Web.Infrastructure
 {
@@ -42,6 +43,9 @@ namespace Sombra.Web.Infrastructure
                 .ForMember(d => d.ActivationToken, opt => opt.MapFrom(s => s.Token));
 
             CreateMap<RequestActivationTokenViewModel, GetUserActivationTokenRequest>();
+
+            CreateMap<TopCharitiesQuery, GetRandomCharitiesRequest>();
+            CreateMap<SearchResult, CharityItemViewModel>();
         }
     }
 }

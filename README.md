@@ -27,7 +27,7 @@ Without Docker:
 
 A step by step series of examples that tell you have to get a development env running
 
-Say what the step will be
+Using Docker
 
 ```
 Open the solution and run the docker-compose up command
@@ -35,7 +35,7 @@ Open the solution and run the docker-compose up command
 Reach the web solution on http://localhost:80
 ```
 
-Or if you're not using docker
+Or if you're not using Docker
 
 ```
 Make sure RabbitMQ is running and a SQLEXPRESS instance

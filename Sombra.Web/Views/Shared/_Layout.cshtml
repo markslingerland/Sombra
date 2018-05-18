@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,14 +12,17 @@
         <link rel="stylesheet" href="~/css/main.css" />
         <link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/home/desktop.css" />
         <link rel="stylesheet" media="screen and (min-width: 768px) and (max-width: 1200px)" href="~/css/home/tablet.css" />
-        <link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/home/mobile.css" />  
+        <link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/home/mobile.css" />
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+        />
     </environment>
 </head>
+
 <body>
 
     <nav id="header">
@@ -74,8 +78,8 @@
         @RenderBody()
         <hr />
         <footer>
-                <div class="footer-holder">
-                <div class="container">
+            <div class="footer-holder">
+                <div class="container"></div>
                     <div class="row">
                         <div class="col-md-2">
                             <div>
@@ -90,60 +94,68 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-2"><div>
+                        <div class="col-md-2">
+                            <div>
                                 <ul>
                                     <li><label><a href="#">Diensten voor</a></label></li>
                                     <li><a href="#">Donateurs</a></li>
                                     <li><a href="#">Goede doelen</a></li>
                                     <li><a href="#">Acties</a></li>
                                 </ul>
-                            </div></div>
-                        <div class="col-md-2"><div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div>
                                 <ul>
                                     <li><label><a href="#">Over doneren</a></label></li>
                                     <li><a href="#">ANBI-certificaat</a></li>
                                     <li><a href="#">Belasting</a></li>
                                     <li><a href="#">Betalingen</a></li>
-                                     <li><label><a href="#">Doneer nu</a></label></li>
+                                    <li><label><a href="#">Doneer nu</a></label></li>
                                 </ul>
-                            </div></div>
+                            </div>
+                        </div>
                         <div class="col-md-6 updateArea">
-                                <label><a href="#">Over doneren</a></label>
+                            <label><a href="#">Updates</a></label>
 
-                                <p>Meld je aan voor de nieuwsvideo en blijf op de hoogte van de laatste updates.</p>
+                            <p>Meld je aan voor de nieuwsvideo en blijf op de hoogte van de laatste updates.</p>
 
-                                <div class="sign-up-news">
-                                    <form action="action_page.php" id="form1">
+                            <div class="sign-up-news">
+                                <form action="action_page.php" id="form1">
 
-                            <div class="email-holder">
-                              <input type="text" placeholder="Email address" name="mail" required>
-                              <button type="submit" form="form1" value="Submit"> <i class="fas fa-arrow-right"></i></button>
-                                </div>
-                                    </form>
-                                </div>
+                                    <div class="email-holder">
+                                        <input type="text" placeholder="Email address" name="mail" required>
+                                        <button type="submit" form="form1" value="Submit"> <i class="fas fa-arrow-right"></i></button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
+                    <div class="footer-line"></div>
                 </div>
-                </div>
+            </div>
         </footer>
     </div>
 
     <environment include="Development">
-  
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- Latest compiled JavaScript -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
-          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+        <script src="~/js/main.js"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Latest compiled JavaScript -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
     </environment>
-    <environment exclude="Development">        
+    <environment exclude="Development">
     </environment>
 
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>

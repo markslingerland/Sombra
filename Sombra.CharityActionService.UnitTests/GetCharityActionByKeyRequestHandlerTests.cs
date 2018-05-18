@@ -130,7 +130,7 @@ namespace Sombra.CharityActionService.UnitTests
                 //Act
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    var handler = new GetCharityActionByKeyRequestHandler(context, Helper.GetMapper());
+                    var handler = new GetCharityActionByKeyRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
                     response = await handler.Handle(request);
                 }
 

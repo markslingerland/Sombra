@@ -103,7 +103,7 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    var handler = new UpdateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    var handler = new UpdateUserRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
@@ -164,7 +164,7 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    var handler = new UpdateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    var handler = new UpdateUserRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()), busMock.Object);
                     response = await handler.Handle(request);
                 }
 

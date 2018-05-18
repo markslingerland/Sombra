@@ -78,7 +78,6 @@ namespace Sombra.CharityActionService.UnitTests
             {
                 CharityActionContext.CloseInMemoryConnection();
             }
-        }
-
+        }      
     }
 }

@@ -20,13 +20,14 @@ namespace Sombra.CharityActionService.UnitTests
     public class UpdateCharityActionRequestHandlerTests
     {
         [TestMethod]
-        public async Task UpdateCharityActionRequest_Handle_Returns_Charity()
+        public async Task UpdateCharityActionRequest_Handle_Updates_Charity()
         {
 
             CharityActionContext.OpenInMemoryConnection();
 
             try
             {
+                //Arrange
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<CharityActionUpdatedEvent>())).Returns(Task.FromResult(true));
 
@@ -73,16 +74,16 @@ namespace Sombra.CharityActionService.UnitTests
                         Discription = "0-IBAN",
                         CoverImage = ""
 
-                    });                  
+                    });
                     context.SaveChanges();
                 }
-
+                //Act
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
                     var handler = new UpdateCharityActionRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()), busMock.Object);
                     response = await handler.Handle(request);
                 }
-
+                //Assert
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(request.CharityActionkey, context.CharityActions.Single().CharityActionkey);
@@ -99,6 +100,80 @@ namespace Sombra.CharityActionService.UnitTests
                 }
 
                 busMock.Verify(m => m.PublishAsync(It.Is<CharityActionUpdatedEvent>(e => e.CharityActionkey == request.CharityActionkey && e.NameCharity == request.NameCharity)), Times.Once);
+            }
+            finally
+            {
+                CharityActionContext.CloseInMemoryConnection();
+            }
+        }
+        [TestMethod]
+        public async Task UpdateCharityActionRequest_Handle_Returns_Null()
+        {
+
+            CharityActionContext.OpenInMemoryConnection();
+
+            try
+            {
+                //Arrange
+                var busMock = new Mock<IBus>();
+                busMock.Setup(m => m.PublishAsync(It.IsAny<CharityActionUpdatedEvent>())).Returns(Task.FromResult(true));
+
+                using (var context = CharityActionContext.GetInMemoryContext())
+                {
+                    context.Database.EnsureCreated();
+                }
+
+
+                UpdateCharityActionResponse response;
+                var keyAction = Guid.NewGuid();
+                var keyCharity = Guid.NewGuid();
+                var wrongKey = Guid.NewGuid();
+                var key = Guid.NewGuid();
+                var user = new UserKey { Key = key };
+                var userMessenging = new Messaging.UserKey { Key = key };
+                var request = new UpdateCharityActionRequest
+                {
+                    CharityActionkey = wrongKey,
+                    Charitykey = keyCharity,
+                    UserKeys = new List<Messaging.UserKey>() { userMessenging },
+                    NameCharity = "",
+                    Category = Core.Enums.Category.None,
+                    IBAN = "",
+                    NameAction = "",
+                    ActionType = "",
+                    Discription = "",
+                    CoverImage = ""
+
+                };
+
+                using (var context = CharityActionContext.GetInMemoryContext())
+                {
+                    context.Database.EnsureCreated();
+                    context.CharityActions.Add(new CharityAction
+                    {
+                        CharityActionkey = keyAction,
+                        Charitykey = keyCharity,
+                        UserKeys = new List<UserKey>() { new UserKey() { Key = Guid.NewGuid() } },
+                        NameCharity = "testNAmeOwner",
+                        Category = Core.Enums.Category.Dierenbescherming,
+                        IBAN = "",
+                        NameAction = "",
+                        ActionType = "",
+                        Discription = "0-IBAN",
+                        CoverImage = ""
+
+                    });
+                    context.SaveChanges();
+                }
+                //Act
+                using (var context = CharityActionContext.GetInMemoryContext())
+                {
+                    var handler = new UpdateCharityActionRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    response = await handler.Handle(request);
+                }
+
+                //Assert
+                Assert.IsFalse(response.Success);
             }
             finally
             {

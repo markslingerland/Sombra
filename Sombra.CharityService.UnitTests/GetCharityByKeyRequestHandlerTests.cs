@@ -120,10 +120,8 @@ namespace Sombra.CharityService.UnitTests
                 }
 
                 //Assert
-                using (var context = CharityContext.GetInMemoryContext())
-                {
-                    Assert.IsFalse(response.Success);
-                }
+                Assert.IsFalse(response.Success);
+                
             }
             finally
             {

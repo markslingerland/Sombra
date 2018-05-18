@@ -1,11 +1,9 @@
-﻿@{ ViewData["Title"] = "Home Page"; 
-} 
+﻿@{ ViewData["Title"] = "Home Page"; } 
 @section Styles{
 <link rel="stylesheet" href="~/css/home/home.css" />
 <link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/home/desktop.css" />
 <link rel="stylesheet" media="screen and (min-width: 768px) and (max-width: 1200px)" href="~/css/home/tablet.css" />
-<link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/home/mobile.css" /> 
-}
+<link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/home/mobile.css" /> }
 
 <img class="header-image" src="Assets/header-image-shape.svg" alt="#">
 
@@ -16,7 +14,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <p>Erik doneerde aan Unicef</p>
-                        <h3><span class="about-quotes">"</span>Anderen hebben mij laten zien hoe mooi de wereld kan zijn als je deelt<span class="about-quotes">"</span></h3>
+                        <h3><span class="about-quotes quote-shift">"</span>Anderen hebben mij laten zien hoe mooi de wereld kan zijn als je deelt<span class="about-quotes">"</span></h3>
 
                         <div class="about-btn">
                             <a href="#"></a>
@@ -44,51 +42,49 @@
     </div>
 </div>
 
-<div id="option-container">
-    <div class="container">
-        <div class="home-options">
-            <div class="row">
-                <div class="col-sm-12 col-md-4 outerBox">
-                    <div class="option-box">
-                        <div>
-                            <img class="option-shape" src="Assets/shape-frame.svg" alt="#">
-                            <img class="option-icon" src="Assets/search.svg" alt="#">
-                        </div>
-                        <h3>Kies een goed doel</h3>
-                        <p>Door gebruik te maken van het categorieënfilter , vind je gemakkelijk een goed doel dat bij jouw waarden en interesses past.</p>
-                        <a href="#">Start hier</a>
-                    </div>
-
-                </div>
-                <div class="col-sm-12 col-md-4 outerBox">
-                    <div class="option-box">
-                        <div>
-                            <img class="option-shape" src="Assets/shape-frame.svg" alt="#">
-                            <img class="option-icon" src="Assets/doneer.svg" alt="#">
-                        </div>
-                        <h3>Doneer nu</h3>
-                        <p>Kies het bedrag dat je wilt doneren en kies een betaalmogelijkheid. Vanaf €1,00 kun je al iets bijdragen!</p>
-                        <a href="#">Start hier</a>
-                    </div>
-
-                </div>
-                <div class="col-sm-12 col-md-4 outerBox">
-                    <div class="option-box">
-                        <div>
-                            <img class="option-shape" src="Assets/shape-frame.svg" alt="#">
-                            <img class="option-icon" src="Assets/share.svg" alt="#">
-                        </div>
-
-                        <h3>Deel jouw verhaal</h3>
-                        <p>Vertel ons de reden achter jouw donatie. Dat inspireert en motiveert anderen én jouzelf om je in te zetten voor degene die hulp kunnen gebruiken.</p>
-                        <a href="#">Start hier</a>
-                    </div>
-
-                </div>
+<div id="choose-flow">
+    <div class="flow-container">
+        <div class="flow-box">
+             <a class="clickable" href="#"></a>
+            <div class="flow-icon-holder">
+                <img class="flow-shape" src="Assets/shape-frame.svg" alt="#">
+                <img class="flow-icon" src="Assets/search.svg" alt="#">
             </div>
+
+            <h3 class="monster-700">Kies een goed doel</h3>
+            <p class="source-200">Door gebruik te maken van 
+het categorieënfilter, vind je gemakkelijk een goed doel 
+dat bij jouw waarden en interesses past. </p>
+            <a class="source-700 flow-start" href="#">Start nu</a>
+        </div>
+
+        <div class="flow-box">
+             <a class="clickable" href="#"></a>
+            <div class="flow-icon-holder">
+                <img class="flow-shape" src="Assets/shape-frame.svg" alt="#">
+                <img class="flow-icon" src="Assets/icons/doneer.png" alt="#">
+            </div>
+
+            <h3 class="monster-700">Doneer nu</h3>
+            <p class="source-200">Kies het bedrag dat je 
+wilt doneren en kies een betaalmogelijkheid. Vanaf €1,00 kun je al iets bijdragen! </p>
+            <a class="source-700 flow-start" href="#">Start nu</a>
+        </div>
+
+        <div class="flow-box">
+            <a class="clickable" href="#"></a>
+            <div class="flow-icon-holder">
+                <img class="flow-shape" src="Assets/shape-frame.svg" alt="#">
+                <img class="flow-icon" src="Assets/share.svg" alt="#">
+            </div>
+
+            <h3 class="monster-700">Deel jouw verhaal</h3>
+            <p class="source-200">Vertel ons de reden achter jouw donatie. Dat inspireert en motiveert anderen én jouzelf om je in te zetten voor degene die hulp kunnen gebruiken.</p>
+            <a class="source-700 flow-start" href="#">Start nu</a>
         </div>
     </div>
 </div>
+
 
 <div id="home-contribute" class="standard-text">
     <div class="container">
@@ -141,96 +137,103 @@
 
 <div id="acties">
     <h3 class="title">Lopende acties</h3>
-    <div class="main-carousel">
+    <div class="slider-container">
+        <div class="main-carousel">
 
-        <div class="carousel-cell">
-            <div class="carousel-container">
-                <div class="carousel-background">
-                    <div class="carousel-logo"></div>
-                    <div class="carousel-progress-bar">
-                        <div class="carousel-progress"></div>
+            <div class="carousel-cell">
+                <div class="carousel-container">
+                    <div class="carousel-background">
+                        <div class="carousel-logo"></div>
+                        <div class="carousel-progress-bar">
+                            <div class="carousel-progress"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-body">
-                    <label class="carousel-date">27/04/2018</label>
-                    <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
-                    <img class="carousel-poster-image" src="Assets/lianne.jpg">
-                    <label class="carousel-poster-name">Fabiene ter Beek</label>
+                    <div class="carousel-body">
+                        <label class="carousel-date">27/04/2018</label>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <img class="carousel-poster-image" src="Assets/lianne.jpg">
+                        <label class="carousel-poster-name">Fabiene ter Beek</label>
 
-                    <div class="carousel-money-holder">
+                        <div class="carousel-money-holder">
 
-                        <label class="carousel-reached">&euro; 6.800 </label>
-                        <label class="carousel-goal">behaald vam &euro; 15.000 </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-cell">
-            <div class="carousel-container">
-                <div class="carousel-background">
-                    <div class="carousel-logo"></div>
-                    <div class="carousel-progress-bar">
-                        <div class="carousel-progress"></div>
-                    </div>
-                </div>
-                <div class="carousel-body">
-                    <label class="carousel-date">27/04/2018</label>
-                    <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
-                    <img class="carousel-poster-image" src="Assets/person.jpg">
-                    <label class="carousel-poster-name">Fabiene ter Beek</label>
-
-                    <div class="carousel-money-holder">
-
-                        <label class="carousel-reached">&euro; 6.800 </label>
-                        <label class="carousel-goal">behaald vam &euro; 15.000 </label>
+                            <label class="carousel-reached">&euro; 6.800 </label>
+                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="carousel-cell">
-            <div class="carousel-container">
-                <div class="carousel-background">
-                    <div class="carousel-logo"></div>
-                    <div class="carousel-progress-bar">
-                        <div class="carousel-progress"></div>
+            <div class="carousel-cell">
+                <div class="carousel-container">
+                    <div class="carousel-background">
+                        <div class="carousel-logo"></div>
+                        <div class="carousel-progress-bar">
+                            <div class="carousel-progress"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-body">
-                    <label class="carousel-date">27/04/2018</label>
-                    <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
-                    <img class="carousel-poster-image" src="Assets/ArdHofman.png">
-                    <label class="carousel-poster-name">Fabiene ter Beek</label>
+                    <div class="carousel-body">
+                        <label class="carousel-date">27/04/2018</label>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <img class="carousel-poster-image" src="Assets/person.jpg">
+                        <label class="carousel-poster-name">Fabiene ter Beek</label>
 
-                    <div class="carousel-money-holder">
+                        <div class="carousel-money-holder">
 
-                        <label class="carousel-reached">&euro; 6.800 </label>
-                        <label class="carousel-goal">behaald vam &euro; 15.000 </label>
+                            <label class="carousel-reached">&euro; 6.800 </label>
+                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="carousel-cell">
-            <div class="carousel-container">
-                <div class="carousel-background">
-                    <div class="carousel-logo"></div>
-                    <div class="carousel-progress-bar">
-                        <div class="carousel-progress"></div>
+            <div class="carousel-cell">
+                <div class="carousel-container">
+                    <div class="carousel-background">
+                        <div class="carousel-logo"></div>
+                        <div class="carousel-progress-bar">
+                            <div class="carousel-progress"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-body">
-                    <label class="carousel-date">27/04/2018</label>
-                    <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
-                    <img class="carousel-poster-image" src="Assets/ArdHofman.png">
-                    <label class="carousel-poster-name">Fabiene ter Beek</label>
+                    <div class="carousel-body">
+                        <label class="carousel-date">27/04/2018</label>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <img class="carousel-poster-image" src="Assets/ArdHofman.png">
+                        <label class="carousel-poster-name">Fabiene ter Beek</label>
 
-                    <div class="carousel-money-holder">
-                        <label class="carousel-reached">&euro; 6.800 </label>
-                        <label class="carousel-goal">behaald vam &euro; 15.000 </label>
+                        <div class="carousel-money-holder">
+
+                            <label class="carousel-reached">&euro; 6.800 </label>
+                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="carousel-cell">
+                <div class="carousel-container">
+                    <div class="carousel-background">
+                        <div class="carousel-logo"></div>
+                        <div class="carousel-progress-bar">
+                            <div class="carousel-progress"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-body">
+                        <label class="carousel-date">27/04/2018</label>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <img class="carousel-poster-image" src="Assets/ArdHofman.png">
+                        <label class="carousel-poster-name">Fabiene ter Beek</label>
+
+                        <div class="carousel-money-holder">
+                            <label class="carousel-reached">&euro; 6.800 </label>
+                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+        <div class="button button--previous"></div>
+        <div class="button button--next"></div>
     </div>
+
+
 </div>
 @section Scripts {
 <script>

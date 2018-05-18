@@ -9,23 +9,22 @@ using Sombra.CharityService.DAL;
 namespace Sombra.CharityService.UnitTests
 {
     [TestClass]
-    public class GetCharityByKeyRequestHandlerTests
+    public class GetCharityByUrlRequestHandlerTests
     {
         [TestMethod]
-        public async Task GetCharityByKeyRequest_Handle_Returns_Charity()
+        public async Task GetCharityByUrlRequest_Handle_Returns_Charity()
         {
             CharityContext.OpenInMemoryConnection();
             try
             {
                 //Arrange
-                var key = Guid.NewGuid();
                 using (var context = CharityContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
 
                     var charity = new Charity
                     {
-                        CharityKey = key,
+                        CharityKey = Guid.NewGuid(),
                         Name = "testNameCharity",
                         OwnerUserName = "testNAmeOwner",
                         Email = "test@test.com",
@@ -33,33 +32,33 @@ namespace Sombra.CharityService.UnitTests
                         KVKNumber = "",
                         IBAN = "0-IBAN",
                         CoverImage = "",
-                        Slogan = "Test"
-
+                        Slogan = "Test",
+                        Url = "test"
                     };
 
                     context.Add(charity);
                     context.SaveChanges();
 
                 }
-                var request = new GetCharityByKeyRequest()
+                var request = new GetCharityByUrlRequest()
                 {
-                    CharityKey = key
+                    Url = "TEST"
                 };
 
-                GetCharityByKeyResponse response;
+                GetCharityByUrlResponse response;
 
                 //Act
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    var handler = new GetCharityByKeyRequestHandler(context, Helper.GetMapper());
+                    var handler = new GetCharityByUrlRequestHandler(context, Helper.GetMapper());
                     response = await handler.Handle(request);
                 }
 
                 //Assert
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    // TODO Fix unit test problem
-                    Assert.AreEqual(response.CharityKey, request.CharityKey);
+                    Assert.AreEqual(response.Url.ToLower(), request.Url.ToLower());
+                    Assert.AreEqual(response.CharityKey, context.Charities.Single().CharityKey);
                     Assert.AreEqual(response.Name, context.Charities.Single().Name);
                     Assert.AreEqual(response.OwnerUserName, context.Charities.Single().OwnerUserName);
                     Assert.AreEqual(response.Email, context.Charities.Single().Email);
@@ -78,7 +77,7 @@ namespace Sombra.CharityService.UnitTests
         }
 
         [TestMethod]
-        public async Task GetCharityByKeyRequest_Handle_Returns_Null()
+        public async Task GetCharityByUrlRequest_Handle_Returns_Null()
         {
             CharityContext.OpenInMemoryConnection();
             try
@@ -99,28 +98,31 @@ namespace Sombra.CharityService.UnitTests
                         KVKNumber = "",
                         IBAN = "0-IBAN",
                         CoverImage = "",
-                        Slogan = "Test"
-
+                        Slogan = "Test",
+                        Url = "test"
                     };
 
                     context.Add(charity);
                     context.SaveChanges();
 
                 }
-                var request = new GetCharityByKeyRequest();
 
-                GetCharityByKeyResponse response;
+                var request = new GetCharityByUrlRequest
+                {
+                    Url = "WeirdUrl"
+                };
+
+                GetCharityByUrlResponse response;
 
                 //Act
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    var handler = new GetCharityByKeyRequestHandler(context, Helper.GetMapper());
+                    var handler = new GetCharityByUrlRequestHandler(context, Helper.GetMapper());
                     response = await handler.Handle(request);
                 }
 
                 //Assert
                 Assert.IsFalse(response.Success);
-                
             }
             finally
             {

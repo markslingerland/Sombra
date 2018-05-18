@@ -37,7 +37,7 @@ namespace Sombra.CharityService.UnitTests
                     OwnerUserName = "testOwnerUserName",
                     Email = "test@test.com",
                     Category = Core.Enums.Category.None,
-                    KVKNumber = 0,
+                    KVKNumber = "",
                     IBAN = "0-IBAN",
                     CoverImage = "",
                     Slogan = "Test"
@@ -63,7 +63,6 @@ namespace Sombra.CharityService.UnitTests
                     Assert.AreEqual(request.Slogan, context.Charities.Single().Slogan);
                     Assert.IsTrue(response.Success);
                 }
-
                 busMock.Verify(m => m.PublishAsync(It.Is<CharityCreatedEvent>(e => e.CharityKey == request.CharityKey && e.Name == request.Name)), Times.Once);
             }
             finally

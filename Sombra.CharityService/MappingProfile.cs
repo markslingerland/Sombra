@@ -15,6 +15,8 @@ namespace Sombra.CharityService
                 .IgnoreEntityProperties();
             CreateMap<Charity, GetCharityByKeyResponse>()
                 .ForMember(d => d.Success, opt => opt.UseValue(true));
+            CreateMap<Charity, GetCharityByUrlResponse>()
+                .ForMember(d => d.Success, opt => opt.UseValue(true));
             CreateMap<Charity, CharityCreatedEvent>();
             CreateMap<Charity, CharityUpdatedEvent>();
         }

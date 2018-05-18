@@ -1,11 +1,13 @@
-﻿using Sombra.Core.Enums;
+using Sombra.Core.Enums;
+using Sombra.Messaging.Responses;
 using System;
 
-namespace Sombra.Messaging.Events
+namespace Sombra.Messaging.Requests
 {
-    public class CharityUpdatedEvent : Event
+    public class GetCharityRequest : Request<GetCharityResponse>
     {
         public Guid CharityKey { get; set; }
+        public Guid OwnerUserKey { get; set; }
         public string OwnerUserName { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
@@ -14,6 +16,5 @@ namespace Sombra.Messaging.Events
         public string IBAN { get; set; }
         public string CoverImage { get; set; }
         public string Slogan { get; set; }
-        public string Url { get; set; }
     }
 }

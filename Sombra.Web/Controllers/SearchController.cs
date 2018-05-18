@@ -26,17 +26,18 @@ namespace Sombra.Web.Controllers
             var request = _mapper.Map<GetRandomCharitiesRequest>(query);
             var response = await _bus.RequestAsync(request);
 
+            var model = new TopCharitiesViewModel
+            {
+                RequestedAmount = query.Amount
+            };
+
             if (response.IsRequestSuccessful)
             {
-                var model = new TopCharitiesViewModel
-                {
-                    Charities = _mapper.Map<List<CharityItemViewModel>>(response.Results)
-                };
-
+                model.Charities = _mapper.Map<List<CharityItemViewModel>>(response.Results);
                 return PartialView("_ActionItemsWrapper", model);
             }
 
-            return new StatusCodeResult((int) HttpStatusCode.ServiceUnavailable);
+            return PartialView("_ActionItemsWrapper", model);
         }
     }
 }

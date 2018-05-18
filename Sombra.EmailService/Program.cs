@@ -19,7 +19,7 @@ namespace Sombra.EmailService
             Console.WriteLine("EmailService started..");
 
             SetupConfiguration();
-            var serviceProvider = MessagingInstaller.Run(
+            var serviceProvider = ServiceInstaller.Run(
                 Assembly.GetExecutingAssembly(),
                 _rabbitMqConnectionString,
                 services => services.AddTransient(sp =>

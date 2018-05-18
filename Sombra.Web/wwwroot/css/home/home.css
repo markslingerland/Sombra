@@ -43,6 +43,13 @@
     font-size: 35px;
     font-weight: 300;
     color: #838383;
+    font-style: italic;
+}
+
+#about .about-quotes {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 200;
+
 }
 
 #about .about-btn {
@@ -51,8 +58,19 @@
     height: 40px;
     border-radius: 8px;
     background-color: #ffffff;
-    border: solid 1px #fda23f;
+    border: solid 1px #f88356;
     position: relative;
+}
+
+#about .about-btn .small-arrow {
+    background-image: url("../../Assets/icons/small-arrow-icon.svg");
+    width: 12px;
+    height: 10px;
+    background-size: contain;
+    position: absolute;
+    top: 15px;
+    left: 16px;
+    background-repeat: no-repeat;
 }
 
 #about .about-btn a {
@@ -74,9 +92,10 @@
 #about .about-btn span {
     position: absolute;
     font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    color: #fda23f;
-    top: 5px;
+    color: #f88356;
+    top: 8px;
     left: 35px;
 }
 
@@ -86,7 +105,6 @@
 }
 
 #home-info p {
-    width: 729px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -94,6 +112,8 @@
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 22px;
     font-weight: 300;
+    width: 630px;
+
 }
 
 #home-info bold {

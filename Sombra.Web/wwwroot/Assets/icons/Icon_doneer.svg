@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="95px" height="85px" viewBox="0 0 95 85" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="-35.3894479%" y1="-37.9286805%" x2="137.111984%" y2="155.324469%" id="linearGradient-1">
+            <stop stop-color="#FDA23F" offset="0%"></stop>
+            <stop stop-color="#F3646F" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="-----Web-1440" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="001-Doneer---Home" transform="translate(-674.000000, -1180.000000)">
+            <g id="Group-4" transform="translate(657.000000, 1152.000000)">
+                <path d="M49.775751,20 C41.8667831,20.017069 34.2810708,24.9816531 31.7466587,33.231236 L18.9184467,73.3392542 C18.2985343,75.2484948 18.0031293,77.1775975 18,79.0710105 L18,79.1324587 C18.0143947,87.4422485 23.6577566,95.0534523 32.2066644,97.2873134 L74.8416781,108.402309 C83.3959057,110.577205 92.4041932,106.68331 96.5661492,98.8899335 L108.816694,75.7431843 L108.817007,75.7422532 C110.283393,72.9448061 110.990925,69.9416004 111,66.9765671 L111,66.8604982 C110.980911,60.756949 108.000888,54.8309169 102.579393,51.2212977 L60.4040721,23.258309 C57.1230114,21.0421375 53.4595514,20.0083793 49.8602419,20 L49.775751,20 Z" id="Fill-1" fill="url(#linearGradient-1)" transform="translate(64.500000, 64.500000) rotate(-43.000000) translate(-64.500000, -64.500000) "></path>
+                <g id="Group" transform="translate(65.500000, 67.000000) rotate(-6.000000) translate(-65.500000, -67.000000) translate(36.000000, 57.000000)">
+                    <rect id="Rectangle-2" fill="#FFFFFF" x="1" y="0" width="58" height="20" rx="5"></rect>
+                    <text id="Doneer" font-family="Montserrat-Bold, Montserrat" font-size="12" font-weight="bold" fill="#F88356">
+                        <tspan x="7.216" y="14.3333333">Doneer</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

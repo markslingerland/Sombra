@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="74px" height="74px" viewBox="0 0 74 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 6</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="27" cy="27" r="27"></circle>
+        <filter x="-27.8%" y="-27.8%" width="155.6%" height="155.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="-----Web-1440" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="001-Doneer---Home" transform="translate(-1283.000000, -3229.000000)">
+            <g id="Group-6" transform="translate(1293.000000, 3239.000000)">
+                <g id="Oval">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <g id="Page-1" transform="translate(17.000000, 19.000000)" stroke="#F3646F" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M18.5621,8.0003 L0.0001,8.0003" id="Stroke-1"></path>
+                    <polyline id="Stroke-3" points="9.882 0.0003 19.46 8.0003 10.416 16.0003"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

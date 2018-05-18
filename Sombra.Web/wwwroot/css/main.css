@@ -28,6 +28,20 @@ body {
 #header .logo {
     margin-top: 15px;
     float: left;
+    background-image: url("../Assets/Logo_ikdoneer.nu.svg");
+    height: 62px;
+    width: 78px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+#header .logo a{
+ position: absolute;
+ top: 0;
+ bottom: 0;
+ left: 0;
+ right: 0;
 }
 
 #header .big-menu {
@@ -80,48 +94,44 @@ body {
     color: #fda23f;
 }
 
-#header .big-menu .donate-btn {
+#header .big-menu .icon-search {
+    color: #fda23f;
+    height: 28px;
+    width: 28px;
+    background-image: url("../Assets/icons/Icon_zoeken.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 23px;
+}
+
+#header .big-menu .icon-user-circle {
+    color: #fda23f;
+    height: 28px;
+    width: 28px;
+    background-image: url("../Assets/icons/Icon_profiel.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 23px;
+}
+
+
+
+#header .big-menu .donateSVG {
+    background-image: url("../Assets/Doneernubutton.svg");
     width: 156px;
     height: 40px;
-    border-radius: 8px;
-    background-image: linear-gradient(107deg, #fda23f, #f3646f);
-    margin-top: 12px;
+    margin-top: 15px;
     position: relative;
 }
 
-#header .big-menu .donate-btn i {
-    position: absolute;
-    color: white;
-    top: 10px;
-    left: 15px;
-    font-size: 20px;
+#header .big-menu .donateSVG a {
+ position: absolute;
+ top: 0;
+ bottom: 0;
+ left: 0;
+ right: 0;
 }
 
-#header .big-menu .donate-btn i {
-    position: absolute;
-    color: white;
-    top: 10px;
-    left: 12px;
-    font-size: 20px;
-    z-index: 200;
-}
-
-#header .big-menu .donate-btn span {
-    position: absolute;
-    top: 8px;
-    left: 35px;
-    color: white;
-    font-size: 19px;
-    font-weight: bold;
-}
-
-#header .big-menu .donate-btn a {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
 
 /*Dropdown*/
 
@@ -272,7 +282,7 @@ body {
 .secondary-button label {
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
-    margin-top: 5px;
+    margin-top: 7px;
     margin-left: 15px;
     text-align: center;
     color: white;
@@ -395,7 +405,6 @@ right: 0;
     }
 
     .carousel-cell .carousel-body .carousel-poster-image {
-        background-image: url("../Assets/lianne.jpg");
         width: 42px;
         height: 42px;
         background-size: contain;
@@ -415,13 +424,14 @@ right: 0;
         text-align: left;
         color: #838383;
         margin-top: 8px;
+        display: inherit;
     }
 
     .carousel-cell .carousel-body .carousel-money-holder {
         width: 149px;
     height: 147px;
+    background-image: url("../Assets/icons/Icon_acties.svg");
     border-radius: 5px;
-    background-image: linear-gradient(138deg, #fda23f, #f3646f);
     position: absolute;
     bottom: 5px;
     right: -5px;
@@ -439,6 +449,7 @@ right: 0;
         text-align: right;
         color: #ffffff;
         margin-top: 60px;
+        margin-bottom: 0;
         margin-left: -15px;
 
     }
@@ -447,23 +458,22 @@ right: 0;
         width: 195px;
         height: 19px;
         font-size: 14px;
-        font-weight: 300;
+        font-weight: 200;
         font-style: normal;
         font-stretch: normal;
         line-height: 1.5;
         letter-spacing: normal;
         text-align: right;
         color: #ffffff;
-        margin-top: 10px;
-        margin-left: -10px;
+        margin-top: 0;
+        margin-left: -15px;
     }
 
-  
-
-
-
-
-
+    .button--next {
+        width: 50px;
+        height: 50px; 
+        background-color: red;
+    }
 
 footer {
     width: 100%;
@@ -584,3 +594,29 @@ footer .footer-holder .footer-line {
     margin-top: 27px;
 }
 
+footer .footer-info {
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: white;
+}
+
+footer .footer-info-left {
+    float: left;
+    margin-top: 16px;
+}
+
+footer .footer-copyright {
+    font-weight: 600;
+    padding-right: 57px;
+}
+
+footer .footer-info-left p {
+    margin: 0;
+    display: inline-block;
+}
+
+footer .footer-info-left .footer-privacy, footer .footer-info-left .footer-help, footer .footer-info-left .footer-cookies {
+    padding-right: 30px;
+}

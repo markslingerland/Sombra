@@ -17,5 +17,6 @@ namespace Sombra.CharityService.DAL
         public string IBAN { get; set; }
         public string CoverImage { get; set; }
         public string Slogan { get; set; }
+        public string Url { get; set; }
     }
 }

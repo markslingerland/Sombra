@@ -27,9 +27,9 @@ namespace Sombra.SearchService
         {
             Expression<Func<Content, bool>> filter = c => true;
 
-            if (message.Categories.Equals(Core.Enums.Category.None)) filter = filter.And(l => l.Category.HasAnyFlag(message.Categories));
+            if (!message.Categories.Equals(Core.Enums.Category.None)) filter = filter.And(l => l.Category.HasAnyFlag(message.Categories));
             if (!string.IsNullOrEmpty(message.Keyword)) filter = filter.And(l => l.Name.Contains(message.Keyword));
-            if (message.SearchContentType.Equals(Core.Enums.SearchContentType.Default)) filter = filter.And(l => message.SearchContentType.HasFlag(l.Type));
+            if (!message.SearchContentType.Equals(Core.Enums.SearchContentType.Default)) filter = filter.And(l => message.SearchContentType.Equals(l.Type));
 
             return new GetSearchResultResponse
             {

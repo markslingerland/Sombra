@@ -54,6 +54,13 @@ services:
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - USER_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Users;
 
+  sombra.searchservice:
+    environment:
+      - CONTAINER_TYPE=Docker
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
+      - SEARCH_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Search;
+
   rabbitmq:
     environment:
       - RABBITMQ_DEFAULT_USER=${DC_RABBITMQUSER:-rabbitmquser}

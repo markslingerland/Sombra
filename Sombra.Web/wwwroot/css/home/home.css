@@ -35,17 +35,18 @@
     font-size: 50px;
     font-weight: 800;
     color: #838383;
+    margin-top: 0px;
 }
 
 #about .about-text p {
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 23px;
+    font-size: 35px;
     font-weight: 300;
     color: #838383;
 }
 
 #about .about-btn {
-    margin-top: 60px;
+    margin-top: 80px;
     width: 210px;
     height: 40px;
     border-radius: 8px;
@@ -95,17 +96,20 @@
     font-weight: 300;
 }
 
+#home-info bold {
+ font-weight: bold;
+}
 /* OPTION */
 
 #option-container {
-    margin-top: 50px;
+    margin-top: 40px;
     width: 100%;
     float: left;
 }
 
 #option-container .outerBox {
-    padding-left: 68px;
-    padding-right: 68px;
+    padding-left: 34px;
+    padding-right: 34px;
     margin-left: 0;
     margin-right: 0;
 }
@@ -121,9 +125,16 @@
     text-align: center;
 }
 
+#option-container .option-box a {
+ display: none;
+}
+
 #option-container .option-box:hover {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
 
+#option-container .option-box:hover a {
+    display: inline;   
 }
 
 #option-container .option-box h3 {
@@ -141,8 +152,8 @@
     font-weight: 300;
     text-align: center;
     color: #838383;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
     margin-bottom: 15px;
 }
 
@@ -151,7 +162,6 @@
     font-weight: 600;
     color: #fda23f;
     text-align: center;
-
 }
 
 #option-container .option-box .option-shape {
@@ -218,14 +228,13 @@
     margin-left: auto;
     margin-right: auto;
     display: block;
-    opacity: 0.3;
+    opacity: 0.2;
     z-index: 0;
 }
 
 #home-contribute .action-holder .action-items {
     width: 100%;
     position: relative;
-    margin-top: -60px;
 }
 
 #home-contribute .action-holder .action-item {
@@ -235,21 +244,44 @@
 #home-contribute .action-holder .action-item:nth-child(1) {
     top: 11px;
     right: -20px;
+    width: 253px;
+    height: 265px;
 }
 
 #home-contribute .action-holder .action-item:nth-child(2) {
-    top: -25px;
-    right: 280px;
+    width: 253px;
+    height: 265px;
+    top: 94px;
+    right: 264px;
 }
 
 #home-contribute .action-holder .action-item:nth-child(3) {
-    top: 310px;
-    right: 160px;
+    top: 324px;
+    right: 54px;
+    width: 179px;
+  height: 187px;
 }
 
+#home-contribute .action-holder .action-item:nth-child(3) .colored-label a {
+   font-size: 9px;
+}
+#home-contribute .action-holder .action-item:nth-child(3) .action-information {
+    font-size: 14px;
+    margin-top: 5px;
+ }
+
+ #home-contribute .action-holder .action-item:nth-child(3) .action-btn-holder a {
+    width: 38px;
+    height: 38px;
+    
+ }
+
+ #home-contribute .action-holder .action-item:nth-child(3) .action-btn-holder a i  {
+    font-size: 20px;
+    margin-top: 10px;
+ }
+
 #home-contribute .action-holder .action-item {
-    width: 253px;
-    height: 265px;
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
@@ -265,19 +297,10 @@
     border-top-right-radius: 8px;
 }
 
-#home-contribute .action-holder .action-item .action-title {
-    color: white;
-    position: absolute;
-    top: 45px;
-    width: 100%;
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
-}
-
 #home-contribute .action-holder .action-item .colored-label {
     margin-left: 10px;
     margin-top: 10px;
+    display: inline-block;
 }
 
 #home-contribute .action-holder .action-item .colored-label a {
@@ -335,7 +358,7 @@
 #the_story {
     width: 100%;
     float: left;
-    margin-top: 150px;
+    margin-top: 180px;
 }
 
 #the_story .container {
@@ -376,6 +399,14 @@ padding-right: 165px;
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
+    position: absolute;
+    bottom: 150px;
+}
+
+#the_story .story-btn-holder {
+    position: absolute;
+    right: 165px;
+    bottom: 58px;
 }
 
 #the_story .story_gradient .text_container h3{
@@ -389,4 +420,31 @@ padding-right: 165px;
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
+    position: absolute;
+    bottom: 48px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#acties {
+    width: 100%;
+    float: left;
+    padding-left: 165px;
+    padding-right: 165px;
+    padding-bottom: 150px;
+}
+
+#acties .title {
+    width: 284px;
+    height: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 35px;
+    font-weight: 200;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    text-align: left;
+    color: #838383;
+    margin-top: 150px;
 }

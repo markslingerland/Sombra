@@ -7,7 +7,7 @@ using Sombra.SearchService.DAL;
 
 namespace Sombra.SearchService
 {
-    public class UpdatedCharityEventHandler : IAsyncEventHandler<UpdatedCharityEvent>
+    public class UpdatedCharityEventHandler : IAsyncEventHandler<CharityUpdatedEvent>
     {
         private readonly SearchContext _context;
 
@@ -16,7 +16,7 @@ namespace Sombra.SearchService
             _context = context;
         }
 
-        public async Task Consume(UpdatedCharityEvent message)
+        public async Task Consume(CharityUpdatedEvent message)
         {
             ExtendedConsole.Log($"UpdatedCharityEvent received for charity with key {message.CharityKey}");
             var charityToUpdate = await _context.Content.FirstOrDefaultAsync(u => u.CharityKey == message.CharityKey);

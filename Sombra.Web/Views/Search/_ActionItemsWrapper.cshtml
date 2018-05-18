@@ -2,7 +2,7 @@
 @model TopCharitiesViewModel
 
 @{var numberOfCharities = 0;}
-@if (Model?.Charities != null)
+@if (Model.Charities != null)
 {
     numberOfCharities = Model.Charities.Count;
     foreach (var charity in Model.Charities)

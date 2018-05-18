@@ -41,6 +41,7 @@ namespace Sombra.CharityActionService.UnitTests
                     Category = Core.Enums.Category.None,
                     IBAN = "",
                     NameAction = "",
+                    ActionType = "",
                     Discription = "0-IBAN",
                     CoverImage = ""
 
@@ -59,12 +60,12 @@ namespace Sombra.CharityActionService.UnitTests
                 {
                     Assert.AreEqual(request.CharityActionkey, context.CharityActions.Single().CharityActionkey);
                     Assert.AreEqual(request.Charitykey, context.CharityActions.Single().Charitykey);
-                    // TODO Fix unit test problem UserKey in context returns null
-                    Assert.AreEqual(request.UserKeys, context.CharityActions.Single().UserKeys);
+                    CollectionAssert.AreEquivalent(request.UserKeys.Select(k => k.Key).ToList(), context.UserKeys.Select(u => u.Key).ToList());
                     Assert.AreEqual(request.NameCharity, context.CharityActions.Single().NameCharity);
                     Assert.AreEqual(request.Category, context.CharityActions.Single().Category);
                     Assert.AreEqual(request.IBAN, context.CharityActions.Single().IBAN);
                     Assert.AreEqual(request.NameAction, context.CharityActions.Single().NameAction);
+                    Assert.AreEqual(request.ActionType, context.CharityActions.Single().ActionType);
                     Assert.AreEqual(request.Discription, context.CharityActions.Single().Discription);
                     Assert.AreEqual(request.CoverImage, context.CharityActions.Single().CoverImage);
                     Assert.IsTrue(response.Success);

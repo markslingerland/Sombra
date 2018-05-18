@@ -30,7 +30,7 @@ namespace Sombra.CharityActionService
             if (charityAction.CharityActionkey == default)
             {
                 ExtendedConsole.Log("CreateCharityActionRequestHandler: CharityActionKey is empty");
-                return new CreateCharityActionResponse(false);
+                return new CreateCharityActionResponse();
             }
 
             _context.CharityActions.Add(charityAction);
@@ -42,13 +42,13 @@ namespace Sombra.CharityActionService
             catch (DbUpdateException ex)
             {
                 ExtendedConsole.Log(ex);
-                return new CreateCharityActionResponse(false);
+                return new CreateCharityActionResponse();
             }
 
             var charityActionCreatedEvent = _mapper.Map<CharityActionCreatedEvent>(charityAction);
             await _bus.PublishAsync(charityActionCreatedEvent);
 
-            return new CreateCharityActionResponse(true);
+            return new CreateCharityActionResponse() { Success = true };
         }
     }
 }

@@ -7,6 +7,7 @@ using Sombra.Messaging.Events;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Sombra.CharityActionService
@@ -28,16 +29,20 @@ namespace Sombra.CharityActionService
         {
 
             ExtendedConsole.Log("UpdateCharityActionRequest received");
-            var charityAction = await _context.CharityActions.FirstOrDefaultAsync(u => u.CharityActionkey == message.CharityActionkey);
+            var charityAction = await _context.CharityActions.Include(b => b.UserKeys).FirstOrDefaultAsync(b => b.CharityActionkey.Equals(message.CharityActionkey));
+
             if (charityAction == null)
             {
-                return new UpdateCharityActionResponse
-                {
-                    Success = false,
-                };
+                return new UpdateCharityActionResponse();
             }
 
             _context.Entry(charityAction).CurrentValues.SetValues(message);
+            _context.UserKeys.RemoveRange(charityAction.UserKeys);
+            var mappedKeys = _mapper.Map<List<UserKey>>(message.UserKeys);
+            _context.UserKeys.AddRange(mappedKeys);
+            charityAction.UserKeys = mappedKeys;
+
+
             try
             {
                 await _context.SaveChangesAsync();
@@ -45,10 +50,7 @@ namespace Sombra.CharityActionService
             catch (DbUpdateException ex)
             {
                 ExtendedConsole.Log(ex);
-                return new UpdateCharityActionResponse
-                {
-                    Success = false
-                };
+                return new UpdateCharityActionResponse();
             }
 
             var charityActionUpdatedEvent = _mapper.Map<CharityActionUpdatedEvent>(charityAction);

@@ -10,7 +10,7 @@ namespace Sombra.Messaging.Events
         public string Name { get; set; }
         public string Email { get; set; }
         public Category Category { get; set; }
-        public int KVKNumber { get; set; }
+        public string KVKNumber { get; set; }
         public string IBAN { get; set; }
     }
 }

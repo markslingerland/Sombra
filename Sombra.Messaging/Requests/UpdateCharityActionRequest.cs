@@ -9,7 +9,7 @@ namespace Sombra.Messaging.Requests
     {
         public Guid CharityActionkey { get; set; }
         public Guid Charitykey { get; set; }
-        public ICollection<UserKey> UserKeys { get; set; }
+        public List<UserKey> UserKeys { get; set; }
         public string NameCharity { get; set; }
         public Category Category { get; set; }
         public string IBAN { get; set; }

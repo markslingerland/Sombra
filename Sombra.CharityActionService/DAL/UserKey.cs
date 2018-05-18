@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Sombra.Infrastructure.DAL;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Sombra.CharityActionService.DAL
 {
-    public class UserKey 
+    public class UserKey : Entity
     {
-        [Key]
+        
         public Guid Key { get; set; }
     }
 }

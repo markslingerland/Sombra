@@ -10,5 +10,6 @@ namespace Sombra.CharityActionService.DAL
         {
         }
         public DbSet<CharityActionEntity> CharityActions { get; set; }
+        public DbSet<UserKey> UserKeys { get; set; }
     }
 }

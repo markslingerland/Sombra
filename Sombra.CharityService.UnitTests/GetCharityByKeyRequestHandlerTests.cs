@@ -30,7 +30,7 @@ namespace Sombra.CharityService.UnitTests
                         OwnerUserName = "testNAmeOwner",
                         Email = "test@test.com",
                         Category = Core.Enums.Category.None,
-                        KVKNumber = 0,
+                        KVKNumber = "",
                         IBAN = "0-IBAN",
                         CoverImage = "",
                         Slogan = "Test"
@@ -96,7 +96,7 @@ namespace Sombra.CharityService.UnitTests
                         OwnerUserName = "testNAmeOwner",
                         Email = "test@test.com",
                         Category = Core.Enums.Category.None,
-                        KVKNumber = 0,
+                        KVKNumber = "",
                         IBAN = "0-IBAN",
                         CoverImage = "",
                         Slogan = "Test"

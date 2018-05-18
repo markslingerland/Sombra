@@ -7,6 +7,7 @@ using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.CharityActionService.DAL;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace Sombra.CharityActionService.UnitTests
 {
@@ -23,7 +24,7 @@ namespace Sombra.CharityActionService.UnitTests
                 var keyAction = Guid.NewGuid();
                 var keyCharity = Guid.NewGuid();
                 var key = Guid.NewGuid();
-                var user = new UserKey() { Key = key };
+                var user = new UserKey { Key = key };
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
                     context.Database.EnsureCreated();
@@ -32,17 +33,18 @@ namespace Sombra.CharityActionService.UnitTests
                     {
                         CharityActionkey = keyAction,
                         Charitykey = keyCharity,
-                        UserKeys = new Collection<UserKey>() { user },
+                        UserKeys = new List<UserKey> { user },
                         NameCharity = "testNAmeOwner",
                         Category = Core.Enums.Category.None,
                         IBAN = "",
                         NameAction = "",
+                        ActionType = "",
                         Discription = "0-IBAN",
                         CoverImage = ""
 
                     };
-
-                    context.Add(charity);
+                    context.UserKeys.Add(user);
+                    context.CharityActions.Add(charity);
                     context.SaveChanges();
 
                 }
@@ -50,16 +52,7 @@ namespace Sombra.CharityActionService.UnitTests
                 var userRequest = new Sombra.Messaging.UserKey() { Key = key };
                 var request = new GetCharityActionRequest
                 {
-                    CharityActionkey = keyAction,
-                    Charitykey = keyCharity,
-                    UserKeys = new Collection<Sombra.Messaging.UserKey>() { userRequest },
-                    NameCharity = "testNAmeOwner",
-                    Category = Core.Enums.Category.None,
-                    IBAN = "",
-                    NameAction = "",
-                    Discription = "0-IBAN",
-                    CoverImage = ""
-
+                    CharityActionkey = keyAction
                 };
 
                 GetCharityActionResponse response;
@@ -76,16 +69,16 @@ namespace Sombra.CharityActionService.UnitTests
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
                     
-                    Assert.AreEqual(request.CharityActionkey, context.CharityActions.Single().CharityActionkey);
-                    Assert.AreEqual(request.Charitykey, context.CharityActions.Single().Charitykey);
-                    // TODO Fix unit test problem UserKey in context returns null
-                    Assert.AreEqual(request.UserKeys, context.CharityActions.Single().UserKeys);
-                    Assert.AreEqual(request.NameCharity, context.CharityActions.Single().NameCharity);
-                    Assert.AreEqual(request.Category, context.CharityActions.Single().Category);
-                    Assert.AreEqual(request.IBAN, context.CharityActions.Single().IBAN);
-                    Assert.AreEqual(request.NameAction, context.CharityActions.Single().NameAction);
-                    Assert.AreEqual(request.Discription, context.CharityActions.Single().Discription);
-                    Assert.AreEqual(request.CoverImage, context.CharityActions.Single().CoverImage);
+                    Assert.AreEqual(response.CharityActionkey, context.CharityActions.Single().CharityActionkey);
+                    Assert.AreEqual(response.Charitykey, context.CharityActions.Single().Charitykey);
+                    CollectionAssert.AreEquivalent(response.UserKeys.Select(k => k.Key).ToList(), context.UserKeys.Select(u => u.Key).ToList());
+                    Assert.AreEqual(response.NameCharity, context.CharityActions.Single().NameCharity);
+                    Assert.AreEqual(response.Category, context.CharityActions.Single().Category);
+                    Assert.AreEqual(response.IBAN, context.CharityActions.Single().IBAN);
+                    Assert.AreEqual(response.NameAction, context.CharityActions.Single().NameAction);
+                    Assert.AreEqual(response.ActionType, context.CharityActions.Single().ActionType);
+                    Assert.AreEqual(response.Discription, context.CharityActions.Single().Discription);
+                    Assert.AreEqual(response.CoverImage, context.CharityActions.Single().CoverImage);
                     Assert.IsTrue(response.Success);
                 }
             }
@@ -119,6 +112,7 @@ namespace Sombra.CharityActionService.UnitTests
                         Category = Core.Enums.Category.None,
                         IBAN = "",
                         NameAction = "",
+                        ActionType = "",
                         Discription = "0-IBAN",
                         CoverImage = ""
 

@@ -36,15 +36,6 @@ namespace Sombra.CharityActionService.UnitTests
                 var request = new DeleteCharityActionRequest
                 {
                     CharityActionkey = keyAction,
-                    Charitykey = keyCharity,
-                    UserKeys = new Collection<Sombra.Messaging.UserKey>() { new Sombra.Messaging.UserKey() { Key = Guid.NewGuid() } },
-                    NameCharity = "",
-                    Category = Core.Enums.Category.None,
-                    IBAN = "",
-                    NameAction = "",
-                    Discription = "",
-                    CoverImage = ""
-
                 };
 
                 using (var context = CharityActionContext.GetInMemoryContext())
@@ -59,6 +50,7 @@ namespace Sombra.CharityActionService.UnitTests
                         Category = Core.Enums.Category.Dierenbescherming,
                         IBAN = "",
                         NameAction = "",
+                        ActionType = "",
                         Discription = "0-IBAN",
                         CoverImage = ""
 
@@ -75,10 +67,10 @@ namespace Sombra.CharityActionService.UnitTests
 
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    Assert.AreEqual(request.CharityActionkey, context.CharityActions.Single().CharityActionkey);
+                    Assert.IsFalse(context.CharityActions.Any(i => i.CharityActionkey == request.CharityActionkey));
                 }
 
-                busMock.Verify(m => m.PublishAsync(It.Is<CharityActionDeletedEvent>(e => e.CharityActionkey == request.CharityActionkey && e.NameCharity == request.NameCharity)), Times.Once);
+                busMock.Verify(m => m.PublishAsync(It.Is<CharityActionDeletedEvent>(e => e.CharityActionkey == request.CharityActionkey)), Times.Once);
             }
             finally
             {

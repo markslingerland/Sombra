@@ -30,7 +30,7 @@ namespace Sombra.CharityService
             if (charity.CharityKey == default)
             {
                 ExtendedConsole.Log("CreateCharityRequestHandler: CharityKey is empty");
-                return new CreateCharityResponse(false);
+                return new CreateCharityResponse();
             }
 
             _context.Charities.Add(charity);
@@ -42,13 +42,13 @@ namespace Sombra.CharityService
             catch (DbUpdateException ex)
             {
                 ExtendedConsole.Log(ex);
-                return new CreateCharityResponse(false);
+                return new CreateCharityResponse();
             }
 
             var charityCreatedEvent = _mapper.Map<CharityCreatedEvent>(charity);
             await _bus.PublishAsync(charityCreatedEvent);
 
-            return new CreateCharityResponse(true);
+            return new CreateCharityResponse() { Success = true };
         }
     }
 }

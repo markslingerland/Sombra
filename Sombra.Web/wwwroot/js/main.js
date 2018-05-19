@@ -9,10 +9,7 @@ $("#header-close-dropdown").click(function () {
 var $carousel = $('.main-carousel').flickity({
     cellAlign: 'left',
     contain: true,
-    pageDots: false, 
-
     prevNextButtons: false,
-    pageDots: false
   });
 
   // Flickity instance
@@ -30,3 +27,21 @@ var $cellButtons = $cellButtonGroup.find('.button');
     $carousel.flickity('next');
   });
 
+  // Functie change on scroll
+  // Assign fixed-header
+  // call scroll functie js
+  // set pixel for start change
+  // if statement for remove and add
+  $(function() {
+    var header = $(".fixed-header");
+  
+    $(window).scroll(function() {    
+        var scroll = $(window).scrollTop();
+        if (scroll >= 100) {
+            header.addClass("scrolled");
+        } else {
+            header.removeClass("scrolled");
+        }
+    });
+  
+});

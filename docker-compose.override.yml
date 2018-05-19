@@ -15,6 +15,13 @@ services:
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - CHARITY_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Charities;
 
+  sombra.charityactionservice:
+    environment:
+      - CONTAINER_TYPE=Docker
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
+      - CHARITYACTION_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=CharityActions;
+
   sombra.emailservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

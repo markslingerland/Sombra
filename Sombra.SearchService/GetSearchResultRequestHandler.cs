@@ -18,9 +18,10 @@ namespace Sombra.SearchService
         private readonly SearchContext _context;
         private readonly IMapper _mapper;
 
-        public GetSearchResultRequestHandler(SearchContext context) 
+        public GetSearchResultRequestHandler(SearchContext context, IMapper mapper) 
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<GetSearchResultResponse> Handle(GetSearchResultRequest message)

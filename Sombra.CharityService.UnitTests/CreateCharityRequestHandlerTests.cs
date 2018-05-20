@@ -8,6 +8,7 @@ using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.CharityService.DAL;
 using System;
+using Sombra.Infrastructure;
 
 namespace Sombra.CharityService.UnitTests
 {
@@ -46,7 +47,7 @@ namespace Sombra.CharityService.UnitTests
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    var handler = new CreateCharityRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    var handler = new CreateCharityRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()), busMock.Object);
                     response = await handler.Handle(request);
                 }
 

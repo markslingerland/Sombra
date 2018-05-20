@@ -5,6 +5,7 @@ using EasyNetQ;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Sombra.Core.Enums;
+using Sombra.Infrastructure;
 using Sombra.Messaging.Events;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
@@ -48,7 +49,7 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    var handler = new UpdateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    var handler = new UpdateUserRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
@@ -102,7 +103,7 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    var handler = new UpdateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    var handler = new UpdateUserRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
@@ -163,7 +164,7 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    var handler = new UpdateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    var handler = new UpdateUserRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()), busMock.Object);
                     response = await handler.Handle(request);
                 }
 

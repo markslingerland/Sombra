@@ -22,7 +22,7 @@ namespace Sombra.IdentityService
 
             SetupConfiguration();
 
-            var serviceProvider = MessagingInstaller.Run(
+            var serviceProvider = ServiceInstaller.Run(
                 Assembly.GetExecutingAssembly(),
                 _rabbitMqConnectionString,
                 services => services

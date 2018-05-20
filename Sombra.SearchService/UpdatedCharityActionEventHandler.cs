@@ -8,8 +8,7 @@ using Sombra.SearchService.DAL;
 
 namespace Sombra.SearchService
 {
-    //TODO: change UpdatedCharityEventHandler -> UpdatedCharityActionEventHandler
-    public class UpdatedCharityActionEventHandler : IAsyncEventHandler<CharityUpdatedEvent>
+    public class UpdatedCharityActionEventHandler : IAsyncEventHandler<CharityActionUpdatedEvent>
     {
         private readonly SearchContext _context;
 
@@ -18,15 +17,15 @@ namespace Sombra.SearchService
             _context = context;
         }
 
-        public async Task Consume(CharityUpdatedEvent message)
+        public async Task Consume(CharityActionUpdatedEvent message)
         {
-            ExtendedConsole.Log($"UpdatedCharityActionEvent received for charity with key {message.CharityKey}"); //TODO: change to CharityActionKey
-            var charityToUpdate = await _context.Content.Where(c => c.Type == Core.Enums.SearchContentType.CharityAction).FirstOrDefaultAsync(u => u.CharityActionKey == message.CharityKey);
+            ExtendedConsole.Log($"UpdatedCharityActionEvent received for charity with key {message.CharityActionKey}");
+            var charityToUpdate = await _context.Content.Where(c => c.Type == Core.Enums.SearchContentType.CharityAction).FirstOrDefaultAsync(u => u.CharityActionKey == message.CharityActionKey);
 
             if (charityToUpdate != null)
             {
-                charityToUpdate.Name = message.Name;
-                charityToUpdate.Description = message.Slogan;
+                charityToUpdate.Name = message.NameAction;
+                charityToUpdate.Description = message.Description;
                 charityToUpdate.Image = message.CoverImage;
                 charityToUpdate.Category = message.Category;               
 

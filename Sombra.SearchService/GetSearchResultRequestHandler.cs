@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System;
 using Sombra.Core.Extensions;
 using Sombra.Infrastructure.DAL;
+using EasyNetQ;
 
 namespace Sombra.SearchService
 {
@@ -17,10 +18,9 @@ namespace Sombra.SearchService
         private readonly SearchContext _context;
         private readonly IMapper _mapper;
 
-        public GetSearchResultRequestHandler(SearchContext context, IMapper mapper)
+        public GetSearchResultRequestHandler(SearchContext context) 
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public async Task<GetSearchResultResponse> Handle(GetSearchResultRequest message)
@@ -31,11 +31,17 @@ namespace Sombra.SearchService
             if (!string.IsNullOrEmpty(message.Keyword)) filter = filter.And(l => l.Name.Contains(message.Keyword));
             if (!message.SearchContentType.Equals(Core.Enums.SearchContentType.Default)) filter = filter.And(l => message.SearchContentType.Equals(l.Type));
 
-            return new GetSearchResultResponse
-            {
-                TotalResult = _context.Content.Count(filter),
-                Results = await _context.Content.Where(filter).OrderBy(c => c.Name, message.SortOrder).ProjectToPagedListAsync<SearchResult>(message.PageNumber, message.PageSize, _mapper.ConfigurationProvider)
-            };
+            var response =  new GetSearchResultResponse();
+            
+            response.TotalResult = _context.Content.Count(filter);
+            var debug = _context.Content.Where(filter);
+            var debug1 = debug.OrderBy(c => c.Name, message.SortOrder);
+            var debug2 = await debug1.ProjectToPagedListAsync<SearchResult>(message.PageNumber, message.PageSize, _mapper.ConfigurationProvider);
+
+
+            response.Results = await _context.Content.Where(filter).OrderBy(c => c.Name, message.SortOrder).ProjectToPagedListAsync<SearchResult>(message.PageNumber, message.PageSize, _mapper.ConfigurationProvider);
+            
+            return response;
         }
     }
 }

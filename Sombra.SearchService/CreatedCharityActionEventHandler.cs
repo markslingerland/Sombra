@@ -7,8 +7,7 @@ using Sombra.Core;
 
 namespace Sombra.SearchService
 {
-    //TODO: CHANGE CharityCreatedEvent -> CharityActionCreatedEvent
-    public class CreatedCharityActionEventHandler : IAsyncEventHandler<CharityCreatedEvent>
+    public class CreatedCharityActionEventHandler : IAsyncEventHandler<CharityActionCreatedEvent>
     {
         private readonly SearchContext _context;
 
@@ -17,16 +16,17 @@ namespace Sombra.SearchService
             _context = context;
         }
 
-        public async Task Consume(CharityCreatedEvent message)
+        public async Task Consume(CharityActionCreatedEvent message)
         {
-            ExtendedConsole.Log($"CreatedCharityActionEvent received for charity with key {message.CharityKey}");
+            ExtendedConsole.Log($"CreatedCharityActionEvent received for charity with key {message.CharityActionKey}");
             var charityToCreate = new Content()
             {
-                Name = message.Name,
-                Type = Core.Enums.SearchContentType.Charity,
+                Name = message.NameAction,
+                Type = Core.Enums.SearchContentType.CharityAction,
+                CharityActionKey = message.CharityActionKey,
                 CharityKey = message.CharityKey,
                 Image = message.CoverImage,
-                Description = message.Slogan,
+                Description = message.Description,
                 Category = message.Category                              
             };
     

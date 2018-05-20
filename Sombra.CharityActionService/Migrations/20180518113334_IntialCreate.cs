@@ -13,14 +13,14 @@ namespace Sombra.CharityActionService.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    CharityActionkey = table.Column<Guid>(nullable: false),
-                    Charitykey = table.Column<Guid>(nullable: false),
+                    CharityActionKey = table.Column<Guid>(nullable: false),
+                    CharityKey = table.Column<Guid>(nullable: false),
                     NameCharity = table.Column<string>(nullable: true),
                     Category = table.Column<int>(nullable: false),
                     IBAN = table.Column<string>(nullable: true),
                     NameAction = table.Column<string>(nullable: true),
                     ActionType = table.Column<string>(nullable: true),
-                    Discription = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
                     CoverImage = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

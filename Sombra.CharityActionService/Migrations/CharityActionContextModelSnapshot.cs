@@ -28,13 +28,13 @@ namespace Sombra.CharityActionService.Migrations
 
                     b.Property<int>("Category");
 
-                    b.Property<Guid>("CharityActionkey");
+                    b.Property<Guid>("CharityActionKey");
 
-                    b.Property<Guid>("Charitykey");
+                    b.Property<Guid>("CharityKey");
 
                     b.Property<string>("CoverImage");
 
-                    b.Property<string>("Discription");
+                    b.Property<string>("Description");
 
                     b.Property<string>("IBAN");
 

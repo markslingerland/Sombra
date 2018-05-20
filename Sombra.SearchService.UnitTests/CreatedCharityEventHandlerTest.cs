@@ -28,9 +28,9 @@ namespace Sombra.SearchService.UnitTests
                     CoverImage = "No image given",
                     Email = "test@test.nl",
                     IBAN = "NotReallyAnIBAN",
-                    KVKNumber = 10,
+                    KVKNumber = "10",
                     Name = "TestName",
-                    OwnerUserKey = Guid.NewGuid(),
+                    Url = "test",
                     OwnerUserName = "TestOwnerName",
                     Slogan = "This is a very good testing slogan",
                 };                

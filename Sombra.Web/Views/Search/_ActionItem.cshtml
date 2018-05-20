@@ -1,0 +1,17 @@
+﻿@using Sombra.Core.Extensions
+@model Sombra.Web.ViewModels.Search.CharityItemViewModel
+
+<div class="action-item">
+    <img src="@Model.Image" alt="#">
+    @foreach (var category in Model.Category.GetIndividualFlags())
+    {
+        <div class="colored-label"><a href="#">@category.GetDisplayName()</a></div>
+    }
+    <div class="action-information">
+        @Model.Description
+    </div>
+    <div class="action-btn-holder">
+        <a href="#"><i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>

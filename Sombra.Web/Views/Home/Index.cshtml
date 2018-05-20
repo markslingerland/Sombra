@@ -1,4 +1,10 @@
-﻿@{ ViewData["Title"] = "Home Page"; }
+﻿@{ ViewData["Title"] = "Home Page"; } 
+@section Styles{
+<link rel="stylesheet" href="~/css/home/home.css" />
+<link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/home/desktop.css" />
+<link rel="stylesheet" media="screen and (min-width: 768px) and (max-width: 1200px)" href="~/css/home/tablet.css" />
+<link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/home/mobile.css" /> }
+
 <img class="header-image" src="Assets/header-image-shape.svg" alt="#">
 
 <div id="about">
@@ -7,12 +13,12 @@
             <div class="col-sm-12 about-text">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3>"Anderen hebben mij laten zien hoe mooi de wereld kan zijn als je deelt"</h3>
-                        <p>Erik van Woerden, Donateur</p>
+                        <p>Erik doneerde aan Unicef</p>
+                        <h3><span class="about-quotes quote-shift">"</span>Anderen hebben mij laten zien hoe mooi de wereld kan zijn als je deelt<span class="about-quotes">"</span></h3>
 
                         <div class="about-btn">
                             <a href="#"></a>
-                            <i class="fas fa-arrow-right"></i>
+                            <div class="small-arrow"></div>
                             <span>Lees zijn verhaal</span>
                         </div>
                     </div>
@@ -28,62 +34,61 @@
 
 <div id="home-info" class="col-md-12">
     <div class="container">
-        <p>Ik doneer nu is hét platform waar alle goede doelen samenkomen. Voor jou is dat een stuk makkelijker. Kies het goede doel wat bij jouw waarden en interesses past en doneer nu. Zo simpel is het!</p>
+        <p>
+            <bold>Ik doneer nu</bold> is hét platform waar alle goede doelen samenkomen. Voor jou is dat een stuk makkelijker. Kies het goede doel wat bij jouw waarden en interesses past en doneer nu.
+            <br>
+            <bold>Zo simpel is het!</bold>
+        </p>
     </div>
 </div>
 
-<div id="option-container">
-    <div class="container">
-        <div class="home-options">
-            <div class="row">
-                <div class="col-sm-12 col-md-4 outerBox">
-                    <div class="option-box">
-                        <div>
-                            <img class="option-shape" src="Assets/shape-frame.svg" alt="#">
-                            <img class="option-icon" src="Assets/search.svg" alt="#">
-                        </div>
-                        <h3>lorem ipsum</h3>
-                        <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam est ante, porta et finibus sed, dignissim a leo.</p>
-                        <a href="#">Start hier</a>
-                    </div>
-
-                </div>
-                <div class="col-sm-12 col-md-4 outerBox">
-                    <div class="option-box">
-                        <div>
-                            <img class="option-shape" src="Assets/shape-frame.svg" alt="#">
-                            <img class="option-icon" src="Assets/doneer.svg" alt="#">
-                        </div>
-                        <h3>lorem ipsum</h3>
-                        <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam est ante, porta et finibus sed, dignissim a leo.</p>
-                        <a href="#">Start hier</a>
-                    </div>
-
-                </div>
-                <div class="col-sm-12 col-md-4 outerBox">
-                    <div class="option-box">
-                        <div>
-                            <img class="option-shape" src="Assets/shape-frame.svg" alt="#">
-                            <img class="option-icon" src="Assets/share.svg" alt="#">
-                        </div>
-
-                        <h3>lorem ipsum</h3>
-                        <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam est ante, porta et finibus sed, dignissim a leo.</p>
-                        <a href="#">Start hier</a>
-                    </div>
-
-                </div>
+<div id="choose-flow">
+    <div class="flow-container">
+        <div class="flow-box">
+            <a class="clickable" href="#"></a>
+            <div class="flow-icon-holder">
+                <img class="flow-shape" src="Assets/shape-frame.svg" alt="#">
+                <img class="flow-icon" src="Assets/search.svg" alt="#">
             </div>
+
+            <h3 class="monster-700">Kies een goed doel</h3>
+            <p class="source-200">Door gebruik te maken van het categorieënfilter, vind je gemakkelijk een goed doel dat bij jouw waarden en interesses past. </p>
+            <a class="source-700 flow-start" href="#">Start nu</a>
+        </div>
+
+        <div class="flow-box">
+            <a class="clickable" href="#"></a>
+            <div class="flow-icon-holder">
+                <img class="flow-shape" src="Assets/shape-frame.svg" alt="#">
+                <img class="flow-icon" src="Assets/icons/doneer.png" alt="#">
+            </div>
+
+            <h3 class="monster-700">Doneer nu</h3>
+            <p class="source-200">Kies het bedrag dat je wilt doneren en kies een betaalmogelijkheid. Vanaf €1,00 kun je al iets bijdragen! </p>
+            <a class="source-700 flow-start" href="#">Start nu</a>
+        </div>
+
+        <div class="flow-box">
+            <a class="clickable" href="#"></a>
+            <div class="flow-icon-holder">
+                <img class="flow-shape" src="Assets/shape-frame.svg" alt="#">
+                <img class="flow-icon" src="Assets/share.svg" alt="#">
+            </div>
+
+            <h3 class="monster-700">Deel jouw verhaal</h3>
+            <p class="source-200">Vertel ons de reden achter jouw donatie. Dat inspireert en motiveert anderen én jouzelf om je in te zetten voor degene die hulp kunnen gebruiken.</p>
+            <a class="source-700 flow-start" href="#">Start nu</a>
         </div>
     </div>
 </div>
+
 
 <div id="home-contribute" class="standard-text">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-12 contribute-textArea">
                 <h3>Draag jouw steentje bij via deze goede doelen</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus convallis, diam quis fermentum bibendum, magna purus eleifend massa, nec tristique orci massa eget magna. Vestibulum ante ipsum primis in faucibus orci.</p>
+                <p>Wil je ziekten bestrijden, musea steunen of ga je liever voor internationale hulp? Op de pagina van de stichting vind je meer informatie over het goede doel, de lopende projecten en ervaringen van de donateurs die je voorgingen!</p>
 
                 <div class="big-button">
                     <span>Bekijk de goede doelen</span>
@@ -94,51 +99,9 @@
             </div>
             <div class="col-md-6 col-sm-12 action-holder">
                 <div class="action-items">
-                    <div class="items-holder">
-                        <div class="action-item">
-                            <img src="Assets/placeholder.jpg" alt="#">
-                            <h4 class="action-title">Klimmen tegen MS</h4>
-                            <div class="colored-label"><a href="#">Gezondheid</a></div>
-                            <div class="action-information">
-                                Werken aan een toekomst zonder hart- en vaatziekten
-                            </div>
-                            <div class="action-btn-holder">
-                                <a href="#"><i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-
-                        </div>
-
-                        <div class="action-item">
-                            <img src="Assets/placeholder.jpg" alt="#">
-                            <h4 class="action-title">Klimmen tegen MS</h4>
-                            <div class="colored-label"><a href="#">Gezondheid</a></div>
-                            <div class="action-information">
-                                Werken aan een toekomst zonder hart- en vaatziekten
-                            </div>
-                            <div class="action-btn-holder">
-                                <a href="#"><i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-
-                        </div>
-
-                        <div class="action-item">
-                            <img src="Assets/placeholder.jpg" alt="#">
-                            <h4 class="action-title">Klimmen tegen MS</h4>
-                            <div class="colored-label"><a href="#">Gezondheid</a></div>
-                            <div class="action-information">
-                                Werken aan een toekomst zonder hart- en vaatziekten
-                            </div>
-                            <div class="action-btn-holder">
-                                <a href="#"><i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-
-                        </div>
+                    <div class="items-holder" id="top-charities">
                         <img class="action-holder-frame" src="Assets/shape-frame.svg">
                     </div>
-
                 </div>
             </div>
         </div>
@@ -151,12 +114,183 @@
             <div class="story_gradient">
                 <div class="text_container">
 
-                    <span>Teil Dirksland, initiatiefnemer</span>
+                    <span>Naomie Dirksland, initiatiefnemer</span>
                     <h3>
                         “Geld heb ik niet, maar ik zet mijn talenten graag in voor wie ze nodig heeft. Daarmee kun je dus óók wat bereiken!”
                     </h3>
+
+                    <div class="story-btn-holder">
+                        <div class="secondary-button">
+                            <a href="#"></a>
+                            <label>Lees haar verhaal</label>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div id="acties">
+    <h3 class="title">Lopende acties</h3>
+    <div class="slider-container">
+        <div class="main-carousel">
+
+            <div class="carousel-cell">
+                <div class="carousel-container">
+                    <div class="carousel-background">
+                        <div class="carousel-logo"></div>
+                        <div class="carousel-progress-bar">
+                            <div class="carousel-progress"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-body">
+                        <label class="carousel-date">27/04/2018</label>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <img class="carousel-poster-image" src="Assets/lianne.jpg">
+                        <label class="carousel-poster-name">Fabiene ter Beek</label>
+
+                        <div class="carousel-money-holder">
+
+                            <label class="carousel-reached">&euro; 6.800 </label>
+                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="carousel-container">
+                    <div class="carousel-background">
+                        <div class="carousel-logo"></div>
+                        <div class="carousel-progress-bar">
+                            <div class="carousel-progress"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-body">
+                        <label class="carousel-date">27/04/2018</label>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <img class="carousel-poster-image" src="Assets/lianne.jpg">
+                        <label class="carousel-poster-name">Fabiene ter Beek</label>
+
+                        <div class="carousel-money-holder">
+
+                            <label class="carousel-reached">&euro; 6.800 </label>
+                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="carousel-container">
+                    <div class="carousel-background">
+                        <div class="carousel-logo"></div>
+                        <div class="carousel-progress-bar">
+                            <div class="carousel-progress"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-body">
+                        <label class="carousel-date">27/04/2018</label>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <img class="carousel-poster-image" src="Assets/lianne.jpg">
+                        <label class="carousel-poster-name">Fabiene ter Beek</label>
+
+                        <div class="carousel-money-holder">
+
+                            <label class="carousel-reached">&euro; 6.800 </label>
+                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="carousel-container">
+                    <div class="carousel-background">
+                        <div class="carousel-logo"></div>
+                        <div class="carousel-progress-bar">
+                            <div class="carousel-progress"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-body">
+                        <label class="carousel-date">27/04/2018</label>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <img class="carousel-poster-image" src="Assets/person.jpg">
+                        <label class="carousel-poster-name">Fabiene ter Beek</label>
+
+                        <div class="carousel-money-holder">
+
+                            <label class="carousel-reached">&euro; 6.800 </label>
+                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="carousel-container">
+                    <div class="carousel-background">
+                        <div class="carousel-logo"></div>
+                        <div class="carousel-progress-bar">
+                            <div class="carousel-progress"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-body">
+                        <label class="carousel-date">27/04/2018</label>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <img class="carousel-poster-image" src="Assets/ArdHofman.png">
+                        <label class="carousel-poster-name">Fabiene ter Beek</label>
+
+                        <div class="carousel-money-holder">
+
+                            <label class="carousel-reached">&euro; 6.800 </label>
+                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="carousel-container">
+                    <div class="carousel-background">
+                        <div class="carousel-logo"></div>
+                        <div class="carousel-progress-bar">
+                            <div class="carousel-progress"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-body">
+                        <label class="carousel-date">27/04/2018</label>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <img class="carousel-poster-image" src="Assets/ArdHofman.png">
+                        <label class="carousel-poster-name">Fabiene ter Beek</label>
+
+                        <div class="carousel-money-holder">
+                            <label class="carousel-reached">&euro; 6.800 </label>
+                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="button button--previous"></div>
+        <div class="button button--next"></div>
+    </div>
+
+    <div class="action-buttons">
+        <div class="all-actions">
+            <a href="#"></a>
+            <span class="monster-700">Bekijk alle acties</span>
+        </div>
+        <div class="make-actions">
+            <a href="#"></a>
+            <span class="monster-700">Start een actie</span>
+        </div>
+    </div>
+
+
+</div>
+@section Scripts {
+<script>
+    $(document).ready(function() {
+        $('#top-charities').load('@Url.Action("GetTopCharities", "Search", new { Amount = 3})');
+    });
+</script>
+}

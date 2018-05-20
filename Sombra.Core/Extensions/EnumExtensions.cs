@@ -1,11 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 
 namespace Sombra.Core.Extensions
 {
     public static class EnumExtensions
     {
+        public static string GetDisplayName(this Enum enumValue)
+        {
+            if (enumValue == null) return string.Empty;
+            var enumType = enumValue.GetType();
+
+            return enumType.GetCustomAttributes<FlagsAttribute>().Any()
+                ? string.Join(',', enumValue.GetIndividualFlags().Select(f => GetName(enumType, f)))
+                : GetName(enumType, enumValue);
+        }
+
+        private static string GetName(Type enumType, Enum enumValue)
+        {
+            var fieldInfo = enumType.GetMember(enumValue.ToString()).First();
+            if (fieldInfo.GetCustomAttribute<DisplayAttribute>() is DisplayAttribute attribute)
+                return attribute.GetName();
+
+            return Enum.GetName(enumType, enumValue);
+        }
+
         public static bool OnlyHasFlag(this Enum value, Enum flag)
         {
             return value.Equals(flag);
@@ -23,7 +44,7 @@ namespace Sombra.Core.Extensions
 
         public static bool HasAnyFlag(this Enum value, Enum flag)
         {
-            return flag.GetIndividualFlags().Any(f => value.HasFlag(f));
+            return flag.GetIndividualFlags().Any(value.HasFlag);
         }
 
         private static IEnumerable<Enum> GetFlags(Enum value, Enum[] values)

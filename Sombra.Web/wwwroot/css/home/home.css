@@ -32,26 +32,48 @@
 
 #about .about-text h3 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 50px;
+    width: 550px;
     font-weight: 800;
     color: #838383;
+    margin-top: 0px;
 }
 
 #about .about-text p {
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 23px;
+    font-size: 35px;
     font-weight: 300;
     color: #838383;
+    font-style: italic;
+}
+
+#about .about-quotes {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 200;
+}
+
+#about .quote-shift {
+    margin-left: -15px;
 }
 
 #about .about-btn {
-    margin-top: 60px;
+    margin-top: 80px;
     width: 210px;
     height: 40px;
     border-radius: 8px;
     background-color: #ffffff;
-    border: solid 1px #fda23f;
+    border: solid 1px #f88356;
     position: relative;
+}
+
+#about .about-btn .small-arrow {
+    background-image: url("../../Assets/icons/small-arrow-icon.svg");
+    width: 12px;
+    height: 10px;
+    background-size: contain;
+    position: absolute;
+    top: 15px;
+    left: 16px;
+    background-repeat: no-repeat;
 }
 
 #about .about-btn a {
@@ -73,9 +95,10 @@
 #about .about-btn span {
     position: absolute;
     font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    color: #fda23f;
-    top: 5px;
+    color: #f88356;
+    top: 8px;
     left: 35px;
 }
 
@@ -85,7 +108,6 @@
 }
 
 #home-info p {
-    width: 729px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -93,103 +115,118 @@
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 22px;
     font-weight: 300;
+    width: 630px;
+
 }
 
-/* OPTION */
+#home-info bold {
+ font-weight: bold;
+}
 
-#option-container {
-    margin-top: 50px;
+
+/* choose flow */
+
+#choose-flow {
     width: 100%;
     float: left;
+    text-align: center;
+    margin-top: 87px;
 }
 
-#option-container .outerBox {
-    padding-left: 68px;
-    padding-right: 68px;
-    margin-left: 0;
-    margin-right: 0;
-}
-
-#option-container .option-box {
-    width: 284px;
-    height: 315px;
+#choose-flow .flow-container {
     margin-left: auto;
     margin-right: auto;
-    border-radius: 10px;
-    background-color: #ffffff;
+    height: 350px;
+    padding-top: 5px;
+}
+
+#choose-flow .flow-box {
+    width: 284px;
+    height: 294px;
+    background-color: white;
+    display: inline-table;
+    border-radius: 8px;
+    text-align: center;
+    margin-left: 34px;
+    margin-right: 34px;
     position: relative;
-    text-align: center;
 }
 
-#option-container .option-box:hover {
+#choose-flow .flow-box:hover {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-
 }
 
-#option-container .option-box h3 {
-    font-size: 25px;
-    font-weight: bold;
-    text-align: center;
-    color: #b1b1b1;
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-top: 70px;
+#choose-flow .flow-box .flow-icon-holder {
+position: relative;
 }
 
-#option-container .option-box p {
-    font-size: 18px;
-    font-weight: 300;
-    text-align: center;
-    color: #838383;
-    padding-left: 25px;
-    padding-right: 25px;
-    margin-bottom: 15px;
-}
+#choose-flow .flow-box:nth-child(1) {}
 
-#option-container .option-box a {
-    font-size: 18px;
-    font-weight: 600;
-    color: #fda23f;
-    text-align: center;
-
-}
-
-#option-container .option-box .option-shape {
-    position: absolute;
-    top: -40px;
-    left: 105px;
-}
-
-#option-container .outerBox:nth-child(1) .option-box .option-icon {
-    position: absolute;
-    top: -14px;
-    left: 129px;
-}
-
-#option-container .outerBox:nth-child(2) .option-box .option-icon {
-    position: absolute;
-    top: -9px;
-    left: 121px;
-}
-
-#option-container .outerBox:nth-child(3) .option-box .option-icon {
-    position: absolute;
-    top: -20px;
-    left: 127px;
-}
-
-#option-container .outerBox:nth-child(2) .option-box .option-shape {
+#choose-flow .flow-box:nth-child(2) .flow-shape {
     transform: rotate(-43deg);
 }
 
-#option-container .outerBox:nth-child(3) .option-box .option-shape {
+#choose-flow .flow-box:nth-child(3) .flow-shape {
     transform: rotate(137deg);
 }
 
-#option-container .home-options {
-    width: 80%;
+#choose-flow .flow-box:nth-child(2) .flow-icon-holder .flow-icon {
+position: absolute;
+top: -15px;
+left: 107px;
+width: 75px;
+}
+
+#choose-flow .flow-box:nth-child(3) .flow-icon-holder .flow-icon {
+   top: -25px;
+ }
+
+
+#choose-flow .flow-box:nth-child(1) p{
+    width: 221px;
+}
+
+#choose-flow .flow-box .flow-icon-holder .flow-shape {
+    position: absolute;
+    top: -45px;
+    left: 96px;
+}
+
+#choose-flow .flow-box .flow-icon-holder .flow-icon {
+    position: absolute;
+    top: -20px;
+    left: 120px;
+}
+
+#choose-flow .flow-box h3 {
+    margin-top: 67px;
+    margin-bottom: 0;
+    font-size: 20px;
+    color: #B1B1B1;
+}
+
+#choose-flow .flow-box p {
+    margin-top: 7px;
+    width: 225px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #838383;
+  }
+
+  #choose-flow .flow-box .flow-start {
+      display: none;
+    font-size: 18px;
+    color: #fda23f;
+    width: 100%;
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+  }
+
+  #choose-flow .flow-box:hover .flow-start {
+    display: inline;
 }
 
 /*/ Contribute /*/
@@ -218,14 +255,13 @@
     margin-left: auto;
     margin-right: auto;
     display: block;
-    opacity: 0.3;
+    opacity: 0.2;
     z-index: 0;
 }
 
 #home-contribute .action-holder .action-items {
     width: 100%;
     position: relative;
-    margin-top: -60px;
 }
 
 #home-contribute .action-holder .action-item {
@@ -235,21 +271,44 @@
 #home-contribute .action-holder .action-item:nth-child(1) {
     top: 11px;
     right: -20px;
+    width: 253px;
+    height: 265px;
 }
 
 #home-contribute .action-holder .action-item:nth-child(2) {
-    top: -25px;
-    right: 280px;
+    width: 253px;
+    height: 265px;
+    top: 94px;
+    right: 264px;
 }
 
 #home-contribute .action-holder .action-item:nth-child(3) {
-    top: 310px;
-    right: 160px;
+    top: 324px;
+    right: 54px;
+    width: 179px;
+  height: 187px;
 }
 
+#home-contribute .action-holder .action-item:nth-child(3) .colored-label a {
+   font-size: 9px;
+}
+#home-contribute .action-holder .action-item:nth-child(3) .action-information {
+    font-size: 14px;
+    margin-top: 5px;
+ }
+
+ #home-contribute .action-holder .action-item:nth-child(3) .action-btn-holder a {
+    width: 38px;
+    height: 38px;
+    
+ }
+
+ #home-contribute .action-holder .action-item:nth-child(3) .action-btn-holder a i  {
+    font-size: 20px;
+    margin-top: 10px;
+ }
+
 #home-contribute .action-holder .action-item {
-    width: 253px;
-    height: 265px;
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
@@ -265,19 +324,10 @@
     border-top-right-radius: 8px;
 }
 
-#home-contribute .action-holder .action-item .action-title {
-    color: white;
-    position: absolute;
-    top: 45px;
-    width: 100%;
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
-}
-
 #home-contribute .action-holder .action-item .colored-label {
     margin-left: 10px;
     margin-top: 10px;
+    display: inline-block;
 }
 
 #home-contribute .action-holder .action-item .colored-label a {
@@ -335,7 +385,7 @@
 #the_story {
     width: 100%;
     float: left;
-    margin-top: 150px;
+    margin-top: 180px;
 }
 
 #the_story .container {
@@ -349,6 +399,7 @@
  background-image: url("../../Assets/mont-ventoux.jpg");
  background-position: center;
  position: relative;
+ background-size: cover;
 }
 
 #the_story .story_gradient {
@@ -376,6 +427,14 @@ padding-right: 165px;
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
+    position: absolute;
+    bottom: 150px;
+}
+
+#the_story .story-btn-holder {
+    position: absolute;
+    right: 165px;
+    bottom: 58px;
 }
 
 #the_story .story_gradient .text_container h3{
@@ -389,4 +448,80 @@ padding-right: 165px;
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
+    position: absolute;
+    bottom: 48px;
+    margin-bottom: 0;
+    margin-top: 0;
 }
+
+#acties {
+    width: 100%;
+    float: left;
+    padding-left: 165px;
+    padding-right: 165px;
+    padding-bottom: 120px;
+}
+
+#acties .title {
+    width: 284px;
+    height: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 35px;
+    font-weight: 200;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    text-align: left;
+    color: #838383;
+    margin-top: 150px;
+}
+
+#acties .action-buttons {
+    width: 100%;
+    text-align: center;
+    float: left;
+    margin-top: 84px;
+}
+
+#acties .action-buttons .all-actions, #acties .action-buttons .make-actions {
+width: 199px;
+height: 40px;
+border-radius: 8px;
+display: inline-block;
+position: relative;
+font-size: 19px;
+}
+
+#acties .action-buttons .all-actions a , #acties .action-buttons .make-actions a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    }
+
+#acties .action-buttons .all-actions {
+    margin-right: 16px;
+    background-image: linear-gradient(-140deg, #FDA23F 0%, #F3646F 100%);
+    color:white;
+}
+
+#acties .action-buttons .all-actions span {
+    position: absolute;
+    top: 7px;
+    left: 16px;
+}
+
+#acties .action-buttons .make-actions {
+    background-color: white;
+    border: 1px solid #F88356;
+    color: #F88356;
+    }
+
+    #acties .action-buttons .make-actions span {
+        position: absolute;
+        top: 6px;
+        left: 26px;
+ }

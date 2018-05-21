@@ -37,7 +37,7 @@ var $cellButtons = $cellButtonGroup.find('.button');
   
     $(window).scroll(function() {    
         var scroll = $(window).scrollTop();
-        if (scroll >= 100) {
+        if (scroll >= 1) {
             header.addClass("scrolled");
         } else {
             header.removeClass("scrolled");

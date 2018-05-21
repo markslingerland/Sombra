@@ -130,10 +130,11 @@ margin-bottom: 30px;
     top: 100%;
     left: 0;
     right: 0;
-    z-index: 99;
+    z-index: 300;
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border: solid 1px #b1b1b1;
+
   }
   /*hide the items when the select box is closed:*/
   .select-hide {

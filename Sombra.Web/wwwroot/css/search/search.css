@@ -1,0 +1,385 @@
+#filter {
+    width: 100%;
+    float: left;
+    padding-left: 165px;
+    padding-right: 165px;
+}
+
+#filter .signin-charity {
+font-size: 18px;
+font-style: normal;
+font-stretch: normal;
+line-height: normal;
+letter-spacing: normal;
+text-align: right;
+color: #f88356;
+float: right;
+text-decoration: underline;
+padding-top: 35px;
+}
+
+#filter .filter-title {
+font-size: 50px;
+font-style: normal;
+font-stretch: normal;
+line-height: 1.2;
+letter-spacing: normal;
+text-align: left;
+color: #838383;
+padding-top: 93px;
+margin-bottom: 30px;
+}
+
+#filter .filter-form {
+    position: relative;
+}
+
+#filter .filter-input {
+    width: 635px;
+    height: 50px;
+    border-radius: 8px;
+    border: solid 1px #b1b1b1;
+}
+
+#filter .filter-input::placeholder {
+    font-size: 18px;
+    font-style: italic;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: rgba(177, 177, 177, 0.7);
+}
+
+#filter .filter-input[type=text]{
+    font-size: 18px;
+    font-style: italic;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #838383;
+    padding-left: 20px;
+}
+
+#filter .submit-button {
+    margin-left: -45px;
+    border: none;
+    background-color: transparent;
+}
+
+#filter .submit-button i {
+    font-size: 15px;
+    color: #f88356;
+}
+
+/* CUSTOM SELECT */
+
+/*the container must be positioned relative:*/
+.custom-select {
+    position: relative;
+    width: 255px;
+    min-height: 50px;
+    border-radius: 8px;
+    border: solid 1px #b1b1b1;
+    float: right;
+    padding: 5px;
+  }
+
+  .custom-select i {
+    position: absolute;
+    top: 20px;
+    right: 21px;
+    color: #f88356;
+  }
+  .custom-select select {
+    display: none; /*hide original SELECT element:*/
+  }
+  .select-selected {
+    background-color: white;
+  }
+  /*style the arrow inside the select element:*/
+  .select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+  }
+  /*point the arrow upwards when the select box is open (active):*/
+  .select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+  }
+  /*style the items (options), including the selected item:*/
+  .select-items div,.select-selected {
+    color: #838383;
+    padding: 9px 16px;
+    padding-right: 35px;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    user-select: none;
+  }
+  /*style items (options):*/
+  .select-items {
+    position: absolute;
+    background-color: white;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border: solid 1px #b1b1b1;
+  }
+  /*hide the items when the select box is closed:*/
+  .select-hide {
+    display: none;
+  }
+  .select-items div:hover, .same-as-selected {
+    /* background-color: rgba(0, 0, 0, 0.1); */
+    background-color: #D3D3D3;
+  }
+
+  .select-items div:nth-child(1) {
+      display: none;
+  }
+
+  #selected-category {
+      width: 100%;
+      padding-left: 165px;
+      padding-right: 165px;
+      float: left;
+      margin-top: 11px;
+  }
+
+  #selected-category .selected-category {
+    border-radius: 5px;
+    background-color: rgba(177, 177, 177, 0.25);
+    padding: 1px 23px 2px 6px;
+    font-size: 15px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #838383;
+    position: relative;
+    margin-right: 16px;
+  }
+
+  #selected-category .selected-category .cross-holder {
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    position: absolute;
+    border-radius: 100%;
+    top: 5px;
+    right: 5px;
+  }
+
+  #selected-category .selected-category .cross-holder {
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    position: absolute;
+    border-radius: 100%;
+    top: 5px;
+    right: 5px;
+  }
+
+  #selected-category .selected-category .cross-holder .icon-holder{
+    width: 100%;
+    height: 100%;
+  }
+
+  #selected-category .selected-category .cross-holder .icon-holder i {
+    font-size: 5px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+  }
+ 
+#charity-results-holder {
+    width: 100%;
+    float: left;
+    padding-left: 165px;
+    padding-right: 165px;
+    margin-top: 85px;
+}
+
+#charity-results-holder .results {
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #838383;
+}
+
+#charity-results {
+ margin-top: 14px;
+ text-align: center;
+ width: 100%;
+}
+
+#charity-results .charity-holder {
+    width: 349px;
+    height: 365px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: inline-block;
+    margin-right: 28px;
+    margin-bottom: 50px;
+}
+
+#charity-results .charity-holder:nth-child(3n) {
+    margin-right: 0;
+}
+
+#charity-results .charity-holder .charity-background-image {
+    width: 349px;
+    height: 183.5px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-image: url("../../Assets/charities/Tear.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+#charity-results .charity-holder .charity-background-image .charity-logo {
+    background-image: url("../../Assets/charities/Logo_tear.png");
+    width: 70%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50px;
+    left: 60px;
+    z-index: 1;
+}
+
+#charity-results .charity-holder .charity-background-gradient {
+    width: 349px;
+    height: 183.5px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+    position: absolute;
+    top: 0;
+}
+
+.charity-btn {
+    background-image: url("../../Assets/Doneernubutton.svg");
+    width: 156px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 200;
+    top: 164px;
+    left: 97px;
+    position: absolute;
+}
+
+#charity-results-holder .charity-text-holder .charity-title {
+    font-size: 22px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: center;
+    color: #838383;
+    margin-top: 40.5px;
+    }
+
+#charity-results-holder .charity-text-holder {
+    padding-left: 14.5px;
+    padding-right: 14.5px;
+}
+
+#charity-results-holder .charity-text-holder .go-to-charity {
+    font-size: 18px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #f88356;
+}
+
+#charity-results-holder .charity-text-holder .charity-item-category {
+    font-size: 15px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #838383;
+    margin-right: 10px;
+    padding: 1px 6px 2px 6px;
+    border-radius: 5px;
+    background-color: rgba(177, 177, 177, 0.25);
+}
+
+#charity-results-holder .charity-text-holder .charity-item-category-holder {
+    position: absolute;
+    bottom: 12px;
+}
+
+#pagination {
+    text-align: center;
+    margin-bottom: 187px;
+}
+
+#pagination a {
+    display: inline-block;
+    width: 10px;
+    height: 23px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #838383;
+    margin-right: 10px;
+    margin-bottom: -13px;
+}
+
+#pagination a img {
+    position: absolute;
+    top: 13px;
+    left: 11px;
+}
+
+#pagination a:first-child {
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    background-color: white;
+    border-radius: 100%;
+    position: relative;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    margin-right: 27px;
+}
+
+#pagination a:last-child {
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    background-color: white;
+    border-radius: 100%;
+    position: relative;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    margin-left: 17px;
+}
+

@@ -20,6 +20,11 @@ namespace Sombra.Web.Controllers
             _mapper = mapper;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetTopCharities(TopCharitiesQuery query)
         {

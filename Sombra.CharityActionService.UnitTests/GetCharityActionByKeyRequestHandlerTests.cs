@@ -35,10 +35,10 @@ namespace Sombra.CharityActionService.UnitTests
                         CharityActionKey = keyAction,
                         CharityKey = keyCharity,
                         UserKeys = new List<UserKey> { user },
-                        NameCharity = "testNAmeOwner",
+                        CharityName = "testNAmeOwner",
                         Category = Core.Enums.Category.None,
                         IBAN = "",
-                        NameAction = "",
+                        Name = "",
                         ActionType = "",
                         Description = "0-IBAN",
                         CoverImage = ""
@@ -73,10 +73,10 @@ namespace Sombra.CharityActionService.UnitTests
                     Assert.AreEqual(response.CharityActionKey, context.CharityActions.Single().CharityActionKey);
                     Assert.AreEqual(response.CharityKey, context.CharityActions.Single().CharityKey);
                     CollectionAssert.AreEquivalent(response.UserKeys.Select(k => k.Key).ToList(), context.UserKeys.Select(u => u.Key).ToList());
-                    Assert.AreEqual(response.NameCharity, context.CharityActions.Single().NameCharity);
+                    Assert.AreEqual(response.CharityName, context.CharityActions.Single().CharityName);
                     Assert.AreEqual(response.Category, context.CharityActions.Single().Category);
                     Assert.AreEqual(response.IBAN, context.CharityActions.Single().IBAN);
-                    Assert.AreEqual(response.NameAction, context.CharityActions.Single().NameAction);
+                    Assert.AreEqual(response.Name, context.CharityActions.Single().Name);
                     Assert.AreEqual(response.ActionType, context.CharityActions.Single().ActionType);
                     Assert.AreEqual(response.Description, context.CharityActions.Single().Description);
                     Assert.AreEqual(response.CoverImage, context.CharityActions.Single().CoverImage);
@@ -109,10 +109,10 @@ namespace Sombra.CharityActionService.UnitTests
                         CharityActionKey = keyAction,
                         CharityKey = keyCharity,
                         UserKeys = users,
-                        NameCharity = "testNAmeOwner",
+                        CharityName = "testNAmeOwner",
                         Category = Core.Enums.Category.None,
                         IBAN = "",
-                        NameAction = "",
+                        Name = "",
                         ActionType = "",
                         Description = "0-IBAN",
                         CoverImage = ""

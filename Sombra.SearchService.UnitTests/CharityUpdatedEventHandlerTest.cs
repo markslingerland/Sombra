@@ -8,12 +8,12 @@ using Sombra.SearchService.DAL;
 namespace Sombra.SearchService.UnitTests
 {
     [TestClass]
-    public class UpdatedCharityEventHandlerTest
+    public class CharityUpdatedEventHandlerTest
     {
         [TestMethod]
-        public async Task UpdatedCharityEventHandler_Handle_Returns_Success()
+        public async Task CharityUpdatedEventHandler_Handle_Returns_Success()
         {
-            SearchContext.OpenInMemoryConnection();           
+            SearchContext.OpenInMemoryConnection();
 
             try
             {
@@ -48,7 +48,7 @@ namespace Sombra.SearchService.UnitTests
                 
                 using (var context = SearchContext.GetInMemoryContext())
                 {
-                    var handler = new UpdatedCharityEventHandler(context);
+                    var handler = new CharityUpdatedEventHandler(context);
                     await handler.Consume(updatedCharityEvent);      
                 }
 

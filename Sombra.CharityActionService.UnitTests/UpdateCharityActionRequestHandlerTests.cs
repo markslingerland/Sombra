@@ -48,10 +48,10 @@ namespace Sombra.CharityActionService.UnitTests
                     CharityActionKey = keyAction,
                     CharityKey = keyCharity,
                     UserKeys = new List<Messaging.UserKey>() { userMessenging },
-                    NameCharity = "",
+                    CharityName = "",
                     Category = Core.Enums.Category.None,
                     IBAN = "",
-                    NameAction = "",
+                    Name = "",
                     ActionType = "",
                     Description = "",
                     CoverImage = ""
@@ -66,10 +66,10 @@ namespace Sombra.CharityActionService.UnitTests
                         CharityActionKey = keyAction,
                         CharityKey = keyCharity,
                         UserKeys = new List<UserKey>() { new UserKey() { Key = Guid.NewGuid() } },
-                        NameCharity = "testNAmeOwner",
+                        CharityName = "testNAmeOwner",
                         Category = Core.Enums.Category.Dierenbescherming,
                         IBAN = "",
-                        NameAction = "",
+                        Name = "",
                         ActionType = "",
                         Description = "0-IBAN",
                         CoverImage = ""
@@ -89,17 +89,17 @@ namespace Sombra.CharityActionService.UnitTests
                     Assert.AreEqual(request.CharityActionKey, context.CharityActions.Single().CharityActionKey);
                     Assert.AreEqual(request.CharityKey, context.CharityActions.Single().CharityKey);
                     CollectionAssert.AreEquivalent(request.UserKeys.Select(k => k.Key).ToList(), context.UserKeys.Select(u => u.Key).ToList());
-                    Assert.AreEqual(request.NameCharity, context.CharityActions.Single().NameCharity);
+                    Assert.AreEqual(request.CharityName, context.CharityActions.Single().CharityName);
                     Assert.AreEqual(request.Category, context.CharityActions.Single().Category);
                     Assert.AreEqual(request.IBAN, context.CharityActions.Single().IBAN);
-                    Assert.AreEqual(request.NameAction, context.CharityActions.Single().NameAction);
+                    Assert.AreEqual(request.Name, context.CharityActions.Single().Name);
                     Assert.AreEqual(request.ActionType, context.CharityActions.Single().ActionType);
                     Assert.AreEqual(request.Description, context.CharityActions.Single().Description);
                     Assert.AreEqual(request.CoverImage, context.CharityActions.Single().CoverImage);
                     Assert.IsTrue(response.Success);
                 }
 
-                busMock.Verify(m => m.PublishAsync(It.Is<CharityActionUpdatedEvent>(e => e.CharityActionKey == request.CharityActionKey && e.NameCharity == request.NameCharity)), Times.Once);
+                busMock.Verify(m => m.PublishAsync(It.Is<CharityActionUpdatedEvent>(e => e.CharityActionKey == request.CharityActionKey && e.CharityName == request.CharityName)), Times.Once);
             }
             finally
             {
@@ -136,10 +136,10 @@ namespace Sombra.CharityActionService.UnitTests
                     CharityActionKey = wrongKey,
                     CharityKey = keyCharity,
                     UserKeys = new List<Messaging.UserKey>() { userMessenging },
-                    NameCharity = "",
+                    CharityName = "",
                     Category = Core.Enums.Category.None,
                     IBAN = "",
-                    NameAction = "",
+                    Name = "",
                     ActionType = "",
                     Description = "",
                     CoverImage = ""
@@ -154,10 +154,10 @@ namespace Sombra.CharityActionService.UnitTests
                         CharityActionKey = keyAction,
                         CharityKey = keyCharity,
                         UserKeys = new List<UserKey>() { new UserKey() { Key = Guid.NewGuid() } },
-                        NameCharity = "testNAmeOwner",
+                        CharityName = "testNAmeOwner",
                         Category = Core.Enums.Category.Dierenbescherming,
                         IBAN = "",
-                        NameAction = "",
+                        Name = "",
                         ActionType = "",
                         Description = "0-IBAN",
                         CoverImage = ""

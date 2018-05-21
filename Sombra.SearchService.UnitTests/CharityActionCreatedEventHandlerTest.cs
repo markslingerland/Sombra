@@ -10,12 +10,12 @@ using Sombra.SearchService.DAL;
 namespace Sombra.SearchService.UnitTests
 {
     [TestClass]
-    public class CreatedCharityActionEventHandlerTest
+    public class CharityActionCreatedEventHandlerTest
     {
         [TestMethod]
-        public async Task CreatedCharityActionEventHandler_Handle_Returns_Success()
+        public async Task CharityActionCreatedEventHandler_Handle_Returns_Success()
         {
-            SearchContext.OpenInMemoryConnection();           
+            SearchContext.OpenInMemoryConnection();
 
             try
             {
@@ -32,14 +32,14 @@ namespace Sombra.SearchService.UnitTests
                     Description = "This is a very good testing description",
                     ActionType = "ActionType",
                     CharityKey = Guid.NewGuid(),
-                    NameAction = "TestName",
-                    NameCharity = "TestName",
+                    Name = "TestName",
+                    CharityName = "TestName",
                     UserKeys = new List<UserKey>(){ new UserKey() { Key = Guid.NewGuid() } }
                 };                
                 
                 using (var context = SearchContext.GetInMemoryContext())
                 {
-                    var handler = new CreatedCharityActionEventHandler(context);
+                    var handler = new CharityActionCreatedEventHandler(context);
                     await handler.Consume(Event);
                 }
 
@@ -52,7 +52,7 @@ namespace Sombra.SearchService.UnitTests
                     Assert.AreEqual(Event.Category, context.Content.Single().Category);
                     Assert.AreEqual(Event.Description, context.Content.Single().Description);
                     Assert.AreEqual(Core.Enums.SearchContentType.CharityAction, context.Content.Single().Type);
-                    Assert.AreEqual(Event.NameCharity, context.Content.Single().Name);  
+                    Assert.AreEqual(Event.CharityName, context.Content.Single().Name);  
                 }
             }
             finally

@@ -8,12 +8,12 @@ using System;
 namespace Sombra.SearchService.UnitTests
 {
     [TestClass]
-    public class CreatedCharityEventHandlerTest
+    public class CharityCreatedEventHandlerTest
     {
         [TestMethod]
-        public async Task CreatedCharityEventHandler_Handle_Returns_Success()
+        public async Task CharityCreatedEventHandler_Handle_Returns_Success()
         {
-            SearchContext.OpenInMemoryConnection();           
+            SearchContext.OpenInMemoryConnection();
 
             try
             {
@@ -37,7 +37,7 @@ namespace Sombra.SearchService.UnitTests
                 
                 using (var context = SearchContext.GetInMemoryContext())
                 {
-                    var handler = new CreatedCharityEventHandler(context);
+                    var handler = new CharityCreatedEventHandler(context);
                     await handler.Consume(Event);
                 }
 

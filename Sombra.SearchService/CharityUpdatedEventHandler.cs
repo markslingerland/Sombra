@@ -7,11 +7,11 @@ using Sombra.SearchService.DAL;
 
 namespace Sombra.SearchService
 {
-    public class UpdatedCharityEventHandler : IAsyncEventHandler<CharityUpdatedEvent>
+    public class CharityUpdatedEventHandler : IAsyncEventHandler<CharityUpdatedEvent>
     {
         private readonly SearchContext _context;
 
-        public UpdatedCharityEventHandler(SearchContext context)
+        public CharityUpdatedEventHandler(SearchContext context)
         {
             _context = context;
         }

@@ -21,56 +21,56 @@ namespace Sombra.CharityActionService.Migrations
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Sombra.CharityActionService.DAL.CharityAction", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+            {
+                b.Property<Guid>("Id")
+                    .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ActionType");
+                b.Property<string>("ActionType");
 
-                    b.Property<int>("Category");
+                b.Property<int>("Category");
 
-                    b.Property<Guid>("CharityActionKey");
+                b.Property<Guid>("CharityActionkey");
 
-                    b.Property<Guid>("CharityKey");
+                b.Property<Guid>("Charitykey");
 
-                    b.Property<string>("CoverImage");
+                b.Property<string>("CoverImage");
 
-                    b.Property<string>("Description");
+                b.Property<string>("Discription");
 
-                    b.Property<string>("IBAN");
+                b.Property<string>("IBAN");
 
-                    b.Property<string>("NameAction");
+                b.Property<string>("NameAction");
 
-                    b.Property<string>("NameCharity");
+                b.Property<string>("NameCharity");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("CharityActions");
-                });
-
-            modelBuilder.Entity("Sombra.CharityActionService.DAL.UserKey", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid>("CharityActionId");
-
-                    b.Property<Guid>("Key");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CharityActionId");
-
-                    b.ToTable("UserKeys");
-                });
+                b.ToTable("CharityActions");
+            });
 
             modelBuilder.Entity("Sombra.CharityActionService.DAL.UserKey", b =>
-                {
-                    b.HasOne("Sombra.CharityActionService.DAL.CharityAction", "CharityAction")
-                        .WithMany("UserKeys")
-                        .HasForeignKey("CharityActionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
+            {
+                b.Property<Guid>("Id")
+                    .ValueGeneratedOnAdd();
+
+                b.Property<Guid>("CharityActionId");
+
+                b.Property<Guid>("Key");
+
+                b.HasKey("Id");
+
+                b.HasIndex("CharityActionId");
+
+                b.ToTable("UserKeys");
+            });
+
+            modelBuilder.Entity("Sombra.CharityActionService.DAL.UserKey", b =>
+            {
+                b.HasOne("Sombra.CharityActionService.DAL.CharityAction", "CharityAction")
+                    .WithMany("UserKeys")
+                    .HasForeignKey("CharityActionId")
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
 #pragma warning restore 612, 618
         }
     }

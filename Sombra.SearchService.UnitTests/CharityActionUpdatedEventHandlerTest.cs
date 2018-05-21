@@ -8,12 +8,12 @@ using Sombra.SearchService.DAL;
 namespace Sombra.SearchService.UnitTests
 {    
     [TestClass]
-    public class UpdatedCharityActionEventHandlerTest
+    public class CharityActionUpdatedEventHandlerTest
     {
         [TestMethod]
-        public async Task UpdatedCharityActionEventHandler_Handle_Returns_Success()
+        public async Task CharityActionUpdatedEventHandler_Handle_Returns_Success()
         {
-            SearchContext.OpenInMemoryConnection();           
+            SearchContext.OpenInMemoryConnection();
 
             try
             {
@@ -34,7 +34,7 @@ namespace Sombra.SearchService.UnitTests
                 var updatedCharityActionEvent = new CharityActionUpdatedEvent(){
                     CharityActionKey = content.CharityActionKey,
                     CoverImage = "pretty image",
-                    NameAction = "Pretty Charity Name",
+                    Name = "Pretty Charity Name",
                     Category = content.Category,
                     Description = content.Description,
                 };     
@@ -47,7 +47,7 @@ namespace Sombra.SearchService.UnitTests
                 
                 using (var context = SearchContext.GetInMemoryContext())
                 {
-                    var handler = new UpdatedCharityActionEventHandler(context);
+                    var handler = new CharityActionUpdatedEventHandler(context);
                     await handler.Consume(updatedCharityActionEvent);      
                 }
 
@@ -59,7 +59,7 @@ namespace Sombra.SearchService.UnitTests
                     Assert.AreEqual(content.Category, context.Content.Single().Category);
                     Assert.AreEqual(content.Description, context.Content.Single().Description);
                     Assert.AreEqual(Core.Enums.SearchContentType.CharityAction, context.Content.Single().Type);
-                    Assert.AreEqual(updatedCharityActionEvent.NameAction, context.Content.Single().Name);  
+                    Assert.AreEqual(updatedCharityActionEvent.Name, context.Content.Single().Name);  
                 }
             }
             finally

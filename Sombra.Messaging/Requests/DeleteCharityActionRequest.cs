@@ -7,6 +7,6 @@ namespace Sombra.Messaging.Requests
 {
     public class DeleteCharityActionRequest : Request<DeleteCharityActionResponse>
     {
-        public Guid CharityActionkey { get; set; }
+        public Guid CharityActionKey { get; set; }
     }
 }

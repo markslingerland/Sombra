@@ -7,25 +7,26 @@ using Sombra.Core;
 
 namespace Sombra.SearchService
 {
-    public class CreatedCharityEventHandler : IAsyncEventHandler<CharityCreatedEvent>
+    public class CharityActionCreatedEventHandler : IAsyncEventHandler<CharityActionCreatedEvent>
     {
         private readonly SearchContext _context;
 
-        public CreatedCharityEventHandler(SearchContext context)
+        public CharityActionCreatedEventHandler(SearchContext context)
         {
             _context = context;
         }
 
-        public async Task Consume(CharityCreatedEvent message)
+        public async Task Consume(CharityActionCreatedEvent message)
         {
-            ExtendedConsole.Log($"CreatedCharityEvent received for charity with key {message.CharityKey}");
+            ExtendedConsole.Log($"CreatedCharityActionEvent received for charity with key {message.CharityActionKey}");
             var charityToCreate = new Content()
             {
                 Name = message.Name,
-                Type = Core.Enums.SearchContentType.Charity,
-                Key = message.CharityKey,
+                Type = Core.Enums.SearchContentType.CharityAction,
+                CharityActionKey = message.CharityActionKey,
+                CharityKey = message.CharityKey,
                 Image = message.CoverImage,
-                Description = message.Slogan,
+                Description = message.Description,
                 Category = message.Category                              
             };
     

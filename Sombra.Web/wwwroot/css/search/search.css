@@ -131,8 +131,7 @@ margin-bottom: 30px;
     left: 0;
     right: 0;
     z-index: 300;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-radius: 8px;
     border: solid 1px #b1b1b1;
 
   }

@@ -29,12 +29,12 @@ body {
     font-weight: 200;
 }
 
-.source-300 {
+.monster-300 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
 }
 
-.source-400 {
+.monster-400 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
 }
@@ -47,24 +47,6 @@ body {
 .monster-800 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
-}
-
-
-#header {
-    float: left;
-    width: 100%;
-    height: 100px;
-}
-
-#header .fixed-header {
-    width: 100%;
-    background-color:white;
-    position: fixed;
-    height: 100px;
-    z-index: 5000;
-    overflow: hidden;
-    padding-left: 165px;
-    padding-right: 165px;
 }
 
 .container {
@@ -81,6 +63,114 @@ body {
     right: 0;
 }
 
+.scrolled {
+    background-color: white !important;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+#header {
+    float: left;
+    width: 100%;
+    height: 100px;
+}
+
+#header .fixed-header {
+    width: 100%;
+    background-color:transparent;
+    position: fixed;
+    height: 100px;
+    z-index: 5000;
+    overflow: hidden;
+    padding-left: 165px;
+    padding-right: 165px;
+    transition: 1s;
+    
+}
+
+#header .header-logo {
+    display: inline-block;
+    background-image: url("../Assets/Logo_ikdoneer.nu.svg");
+    height: 62px;
+    width: 78px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 82px;
+    margin-top: 15px;
+    vertical-align: middle;
+}
+
+#header .header-big-menu {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 30px;
+}
+
+#header .header-big-menu li {
+    display: inline-block;
+    padding-right: 43px;
+}
+
+#header .header-big-menu li a{
+    display: inline-block;
+    color: #838383;
+    font-size: 18px;
+}
+
+
+#header .header-icon-menu .icon-search {
+    color: #fda23f;
+    height: 28px;
+    width: 28px;
+    background-image: url("../Assets/icons/Icon_zoeken.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 25px;
+    left: 0;
+  
+}
+
+#header .header-icon-menu .icon-user-circle {
+    color: #fda23f;
+    height: 28px;
+    width: 28px;
+    background-image: url("../Assets/icons/Icon_profiel.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    position: absolute;
+    top: 25px;
+    left: 51px;
+}
+
+#header .header-icon-menu .donateSVG {
+    background-image: url("../Assets/Doneernubutton.svg");
+    width: 156px;
+    height: 40px;
+    position: absolute;
+    top: 19px;
+    right: 0;
+}
+
+#header .header-icon-menu li {
+    display: inline-block;
+    padding-right: 25px;
+}
+
+#header .header-icon-menu {
+    vertical-align: middle;
+    display: inline-block;
+    position: relative;
+    width: 265px;
+    float: right;
+    margin-top: 10px;
+}
+#header .header-icon-menu  ul {
+    margin: 0;
+    padding: 0;
+}
+
 #header .logo {
     margin-top: 15px;
     float: left;
@@ -92,101 +182,6 @@ body {
     position: relative;
 }
 
-#header .logo a{
- position: absolute;
- top: 0;
- bottom: 0;
- left: 0;
- right: 0;
-}
-
-#header .big-menu {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: right;
-    color: #838383;
-    z-index: 6000;
-}
-
-#header .big-menu ul {
-    float: right;
-    margin-top: 18px;
-    padding-left: 0;
-}
-
-#header .big-menu li {
-    display: inline-block;
-    padding-right: 40px;
-    height: 40px;
-}
-
-#header .big-menu li a {
-    text-decoration: none;
-    color: #838383;
-}
-
-#header .big-menu li:first-child {
-    margin-left: 0;
-}
-
-#header .big-menu li:nth-child(4) {
-    margin-right: 120px;
-}
-
-#header .big-menu li:nth-child(5), #header .big-menu li:nth-child(6) {
-    padding-right: 25px;
-}
-
-#header .big-menu li:nth-child(7) {
-    padding-right: 0;
-}
-
-#header .big-menu i {
-    color: #fda23f;
-}
-
-#header .big-menu .icon-search {
-    color: #fda23f;
-    height: 28px;
-    width: 28px;
-    background-image: url("../Assets/icons/Icon_zoeken.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-top: 23px;
-}
-
-#header .big-menu .icon-user-circle {
-    color: #fda23f;
-    height: 28px;
-    width: 28px;
-    background-image: url("../Assets/icons/Icon_profiel.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-top: 23px;
-}
-
-
-
-#header .big-menu .donateSVG {
-    background-image: url("../Assets/Doneernubutton.svg");
-    width: 156px;
-    height: 40px;
-    margin-top: 15px;
-    position: relative;
-}
-
-#header .big-menu .donateSVG a {
- position: absolute;
- top: 0;
- bottom: 0;
- left: 0;
- right: 0;
-}
 
 
 /*Dropdown*/
@@ -315,8 +310,8 @@ body {
     text-align: left;
     color: #ffffff;
     position: absolute;
-    top: 9px;
-    left: 13px;
+    top: 10px;
+    left: 20px;
 }
 
 .standard-text .big-button a {
@@ -532,8 +527,9 @@ right: 0;
     background-size: contain;
     cursor: pointer;
     float: right;
-    margin-right: -70px;
-    margin-top: -22%;
+    position: absolute;
+    top: 35%;
+    right: -65px;
     }
 
     .button--previous {
@@ -543,12 +539,18 @@ right: 0;
         background-size: contain;
         cursor: pointer;
         float: left;
-        margin-left: -70px;
-        margin-top: -22%;
+        position: absolute;
+    top: 35%;
+    left: -65px;
     }
 
     .slider-container {
         position: relative;
+    }
+
+    .flickity-page-dots {
+        bottom: -29px !important;
+        opacity: 0.5 !important;
     }
 
 footer {

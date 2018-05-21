@@ -8,6 +8,7 @@ using Sombra.Messaging.Events;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.CharityService.DAL;
+using Sombra.Infrastructure;
 
 namespace Sombra.CharityService.UnitTests
 {
@@ -39,7 +40,7 @@ namespace Sombra.CharityService.UnitTests
                     OwnerUserName = "0",
                     Email = "0",
                     Category = Core.Enums.Category.None,
-                    KVKNumber = 0,
+                    KVKNumber = "",
                     IBAN = "0-IBAN",
                     CoverImage = "",
                     Slogan = "0"
@@ -55,7 +56,7 @@ namespace Sombra.CharityService.UnitTests
                         OwnerUserName = "0",
                         Email = "testEmail",
                         Category = Core.Enums.Category.Dierenbescherming,
-                        KVKNumber = 1,
+                        KVKNumber = "1",
                         IBAN = "1111-1111",
                         CoverImage = "x",
                         Slogan = "Test2"
@@ -67,7 +68,7 @@ namespace Sombra.CharityService.UnitTests
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    var handler = new UpdateCharityRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    var handler = new UpdateCharityRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
@@ -84,7 +85,6 @@ namespace Sombra.CharityService.UnitTests
                     Assert.AreEqual(request.Slogan, context.Charities.Single().Slogan);
                     Assert.IsTrue(response.Success);
                 }
-
                 busMock.Verify(m => m.PublishAsync(It.Is<CharityUpdatedEvent>(e => e.CharityKey == request.CharityKey && e.Name == request.Name)), Times.Once);
             }
             finally

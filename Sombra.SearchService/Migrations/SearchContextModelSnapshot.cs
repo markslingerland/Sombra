@@ -26,11 +26,13 @@ namespace Sombra.SearchService.Migrations
 
                     b.Property<int>("Category");
 
+                    b.Property<Guid>("CharityActionKey");
+
+                    b.Property<Guid>("CharityKey");
+
                     b.Property<string>("Description");
 
                     b.Property<string>("Image");
-
-                    b.Property<Guid>("Key");
 
                     b.Property<string>("Name");
 

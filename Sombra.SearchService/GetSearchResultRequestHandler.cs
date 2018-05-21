@@ -17,7 +17,7 @@ namespace Sombra.SearchService
         private readonly SearchContext _context;
         private readonly IMapper _mapper;
 
-        public GetSearchResultRequestHandler(SearchContext context, IMapper mapper)
+        public GetSearchResultRequestHandler(SearchContext context, IMapper mapper) 
         {
             _context = context;
             _mapper = mapper;
@@ -34,7 +34,8 @@ namespace Sombra.SearchService
             return new GetSearchResultResponse
             {
                 TotalResult = _context.Content.Count(filter),
-                Results = await _context.Content.Where(filter).OrderBy(c => c.Name, message.SortOrder).ProjectToPagedListAsync<SearchResult>(message.PageNumber, message.PageSize, _mapper.ConfigurationProvider)
+                Results = await _context.Content.Where(filter).OrderBy(c => c.Name, message.SortOrder)
+                    .ProjectToPagedListAsync<SearchResult>(message.PageNumber, message.PageSize, _mapper)
             };
         }
     }

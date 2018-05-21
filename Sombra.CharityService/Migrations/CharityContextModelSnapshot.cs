@@ -34,7 +34,7 @@ namespace Sombra.CharityService.Migrations
 
                     b.Property<string>("IBAN");
 
-                    b.Property<int>("KVKNumber");
+                    b.Property<string>("KVKNumber");
 
                     b.Property<string>("Name");
 
@@ -43,6 +43,8 @@ namespace Sombra.CharityService.Migrations
                     b.Property<string>("OwnerUserName");
 
                     b.Property<string>("Slogan");
+
+                    b.Property<string>("Url");
 
                     b.HasKey("Id");
 

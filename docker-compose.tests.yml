@@ -19,6 +19,12 @@ services:
       context: .
       dockerfile: Sombra.CharityService.UnitTests/Dockerfile
 
+  sombra.charityactionservice.unittests:
+    image: sombra.charityactionservice.unittests
+    build:
+      context: .
+      dockerfile: Sombra.CharityActionService.UnitTests/Dockerfile
+
   sombra.emailservice.unittests:
     image: sombra.emailservice.unittests
     build:
@@ -42,4 +48,10 @@ services:
     build:
       context: .
       dockerfile: Sombra.UserService.UnitTests/Dockerfile
+
+  sombra.searchservice.unittests:
+    image: sombra.searchservice.unittests
+    build:
+      context: .
+      dockerfile: Sombra.SearchService.UnitTests/Dockerfile
 

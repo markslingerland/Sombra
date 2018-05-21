@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.CharityService.DAL;
+using Sombra.Infrastructure;
 
 namespace Sombra.CharityService.UnitTests
 {
@@ -30,7 +31,7 @@ namespace Sombra.CharityService.UnitTests
                         OwnerUserName = "testNAmeOwner",
                         Email = "test@test.com",
                         Category = Core.Enums.Category.None,
-                        KVKNumber = 0,
+                        KVKNumber = "",
                         IBAN = "0-IBAN",
                         CoverImage = "",
                         Slogan = "Test"
@@ -51,7 +52,7 @@ namespace Sombra.CharityService.UnitTests
                 //Act
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    var handler = new GetCharityByKeyRequestHandler(context, Helper.GetMapper());
+                    var handler = new GetCharityByKeyRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
                     response = await handler.Handle(request);
                 }
 
@@ -96,7 +97,7 @@ namespace Sombra.CharityService.UnitTests
                         OwnerUserName = "testNAmeOwner",
                         Email = "test@test.com",
                         Category = Core.Enums.Category.None,
-                        KVKNumber = 0,
+                        KVKNumber = "",
                         IBAN = "0-IBAN",
                         CoverImage = "",
                         Slogan = "Test"
@@ -114,15 +115,13 @@ namespace Sombra.CharityService.UnitTests
                 //Act
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    var handler = new GetCharityByKeyRequestHandler(context, Helper.GetMapper());
+                    var handler = new GetCharityByKeyRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
                     response = await handler.Handle(request);
                 }
 
                 //Assert
-                using (var context = CharityContext.GetInMemoryContext())
-                {
-                    Assert.IsFalse(response.Success);
-                }
+                Assert.IsFalse(response.Success);
+                
             }
             finally
             {

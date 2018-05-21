@@ -8,7 +8,7 @@ using Sombra.Messaging.DependencyValidation;
 
 namespace Sombra.Messaging.Infrastructure
 {
-    public static class MessagingInstaller
+    public static class ServiceInstaller
     {
         public static ServiceProvider Run(Assembly assembly, string busConnectionString, Func<IServiceCollection, IServiceCollection> addAdditionalServices = null, params Action<ServiceProvider>[] additionalActions)
         {
@@ -20,7 +20,7 @@ namespace Sombra.Messaging.Infrastructure
             var bus = RabbitHutch.CreateBus(busConnectionString, sr =>
                 sr.Register<ITypeNameSerializer>(sp => new CustomTypeNameSerializer()))
                 .WaitForConnection();
-            ExtendedConsole.Log($"MessagingInstaller: Bus connected: {bus.IsConnected}.");
+            ExtendedConsole.Log($"ServiceInstaller: Bus connected: {bus.IsConnected}.");
 
             var serviceProvider = addAdditionalServices(new ServiceCollection())
                 .AddEventHandlers(assembly)
@@ -29,19 +29,19 @@ namespace Sombra.Messaging.Infrastructure
                 .AddSingleton(bus)
                 .BuildServiceProvider(true);
 
-            ExtendedConsole.Log("MessagingInstaller: Services are registered.");
+            ExtendedConsole.Log("ServiceInstaller: Services are registered.");
 
             var responder = new AutoResponder(bus, new AutoResponderRequestDispatcher(serviceProvider));
             responder.RespondAsync(assembly);
-            ExtendedConsole.Log("MessagingInstaller: AutoResponders initialized.");
+            ExtendedConsole.Log("ServiceInstaller: AutoResponders initialized.");
 
             var pingResponder = new PingResponder(bus, new AutoResponderRequestDispatcher(serviceProvider));
             pingResponder.RespondAsync(assembly);
-            ExtendedConsole.Log("MessagingInstaller: PingResponder initialized.");
+            ExtendedConsole.Log("ServiceInstaller: PingResponder initialized.");
 
             var subscriber = new CustomAutoSubscriber(bus, new CustomAutoSubscriberMessageDispatcher(serviceProvider), assembly.FullName);
             subscriber.SubscribeAsync(assembly);
-            ExtendedConsole.Log("MessagingInstaller: AutoSubscribers initialized.");
+            ExtendedConsole.Log("ServiceInstaller: AutoSubscribers initialized.");
 
             if(additionalActions != null)
             {
@@ -50,16 +50,16 @@ namespace Sombra.Messaging.Infrastructure
                     var additionalActionStopwatch = new Stopwatch();
                     additionalActionStopwatch.Start();
 
-                    ExtendedConsole.Log($"MessagingInstaller: Running {additionalAction.Method.Name}");
+                    ExtendedConsole.Log($"ServiceInstaller: Running {additionalAction.Method.Name}");
                     additionalAction(serviceProvider);
                     additionalActionStopwatch.Stop();
 
-                    ExtendedConsole.Log($"MessagingInstaller: {additionalAction.Method.Name} finished running in {additionalActionStopwatch.ElapsedMilliseconds}ms.");
+                    ExtendedConsole.Log($"ServiceInstaller: {additionalAction.Method.Name} finished running in {additionalActionStopwatch.ElapsedMilliseconds}ms.");
                 }
             }
 
             installerStopwatch.Stop();
-            ExtendedConsole.Log($"MessagingInstaller: Finished running in {installerStopwatch.ElapsedMilliseconds}ms.");
+            ExtendedConsole.Log($"ServiceInstaller: Finished running in {installerStopwatch.ElapsedMilliseconds}ms.");
 
             return serviceProvider;
         }

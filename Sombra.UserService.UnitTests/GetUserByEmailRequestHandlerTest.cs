@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Sombra.Infrastructure;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.UserService.DAL;
@@ -38,7 +39,7 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    var handler = new GetUserByEmailRequestHandler(context, Helper.GetMapper());
+                    var handler = new GetUserByEmailRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
                     response = await handler.Handle(request);
                 }
 
@@ -83,7 +84,7 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    var handler = new GetUserByEmailRequestHandler(context, Helper.GetMapper());
+                    var handler = new GetUserByEmailRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
                     response = await handler.Handle(request);
                 }
 

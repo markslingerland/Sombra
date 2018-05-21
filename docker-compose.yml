@@ -18,6 +18,15 @@ services:
       - rabbitmq
       - sqlserver
 
+  sombra.charityactionservice:
+    image: sombra.charityactionservice
+    build:
+      context: .
+      dockerfile: Sombra.CharityActionService/Dockerfile
+    depends_on:
+      - rabbitmq
+      - sqlserver
+
   sombra.emailservice:
     image: sombra.emailservice
     build:

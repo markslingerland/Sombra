@@ -19,11 +19,6 @@ namespace Sombra.SearchService.UnitTests
 
             try
             {
-                using (var context = SearchContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
-
                 GetSearchResultResponse response;
                 var content = new Content(){
                     Category = Core.Enums.Category.MilieuEnNatuurbehoud | Core.Enums.Category.Gezondheid,
@@ -87,11 +82,6 @@ namespace Sombra.SearchService.UnitTests
 
             try
             {
-                using (var context = SearchContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
-
                 GetSearchResultResponse response;
                 var content = new Content(){
                     Category = Core.Enums.Category.MilieuEnNatuurbehoud,

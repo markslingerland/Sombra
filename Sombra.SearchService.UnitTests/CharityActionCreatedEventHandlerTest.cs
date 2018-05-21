@@ -19,11 +19,6 @@ namespace Sombra.SearchService.UnitTests
 
             try
             {
-                using (var context = SearchContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
-
                 var Event = new CharityActionCreatedEvent(){
                     Category = Core.Enums.Category.MilieuEnNatuurbehoud,
                     CharityActionKey = Guid.NewGuid(),

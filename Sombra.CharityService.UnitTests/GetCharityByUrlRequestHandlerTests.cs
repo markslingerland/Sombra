@@ -21,8 +21,6 @@ namespace Sombra.CharityService.UnitTests
                 //Arrange
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
-
                     var charity = new Charity
                     {
                         CharityKey = Guid.NewGuid(),
@@ -87,8 +85,6 @@ namespace Sombra.CharityService.UnitTests
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
-
                     var charity = new Charity
                     {
                         CharityKey = Guid.NewGuid(),

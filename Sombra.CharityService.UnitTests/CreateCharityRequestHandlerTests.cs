@@ -25,11 +25,6 @@ namespace Sombra.CharityService.UnitTests
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<CharityCreatedEvent>())).Returns(Task.FromResult(true));
 
-                using (var context = CharityContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
-
                 CreateCharityResponse response;
                 var request = new CreateCharityRequest
                 {

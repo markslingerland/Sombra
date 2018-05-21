@@ -37,10 +37,10 @@ namespace Sombra.SearchService
             response.TotalResult = _context.Content.Count(filter);
             var debug = _context.Content.Where(filter);
             var debug1 = debug.OrderBy(c => c.Name, message.SortOrder);
-            var debug2 = await debug1.ProjectToPagedListAsync<SearchResult>(message.PageNumber, message.PageSize, _mapper.ConfigurationProvider);
+            var debug2 = await debug1.ProjectToPagedListAsync<SearchResult>(message.PageNumber, message.PageSize, _mapper);
 
 
-            response.Results = await _context.Content.Where(filter).OrderBy(c => c.Name, message.SortOrder).ProjectToPagedListAsync<SearchResult>(message.PageNumber, message.PageSize, _mapper.ConfigurationProvider);
+            response.Results = await _context.Content.Where(filter).OrderBy(c => c.Name, message.SortOrder).ProjectToPagedListAsync<SearchResult>(message.PageNumber, message.PageSize, _mapper);
             
             return response;
         }

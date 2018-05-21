@@ -8,13 +8,8 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/home/home.css" />
         <link rel="stylesheet" href="~/css/main.css" />
-        <link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/home/desktop.css" />
-        <link rel="stylesheet" media="screen and (min-width: 768px) and (max-width: 1200px)" href="~/css/home/tablet.css" />
-        <link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/home/mobile.css" />
-        <!-- CSS -->
-        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"> @RenderSection("Styles", required: false)
 
     </environment>
     <environment exclude="Development">
@@ -28,7 +23,7 @@
     <nav id="header">
         <div class="fixed-header">
             <div class="logo">
-                <img src="~/Assets/logoText.svg" alt="#">
+<a href="ikdoneer.nu"></a>
             </div>
 
             <div class="big-menu">
@@ -38,13 +33,19 @@
                     <li><a href="#">Verhalen</a></li>
                     <li><a href="#">Ik Doneer Nu</a></li>
 
-                    <li><a href="#"><i class="fas fa-search"></i></a></li>
-                    <li><a href="#"><i class="far fa-user-circle"></i></a></li>
                     <li>
-                        <div class="donate-btn">
-                            <i class="fas fa-arrow-right"></i>
-                            <span>Doneer nu</span>
-                            <a href="#"></a>
+                        <a href="#">
+                            <div class="icon-search"></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="icon-user-circle"></div>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="donateSVG">
+                            <a href="www.ikdoneer.nu"></a>
                         </div>
                     </li>
                 </ul>
@@ -80,61 +81,76 @@
         <footer>
             <div class="footer-holder">
                 <div class="container"></div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div>
-                                <ul>
-                                    <li><label><a href="#">Ik Doneer Nu</a></label></li>
-                                    <li><a href="#">Goede doelen</a></li>
-                                    <li><a href="#">Acties</a></li>
-                                    <li><a href="#">Verhalen</a></li>
-                                    <li><a href="#">Ik Doneer Nu</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                    <li><a href="#">Log in</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div>
-                                <ul>
-                                    <li><label><a href="#">Diensten voor</a></label></li>
-                                    <li><a href="#">Donateurs</a></li>
-                                    <li><a href="#">Goede doelen</a></li>
-                                    <li><a href="#">Acties</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div>
-                                <ul>
-                                    <li><label><a href="#">Over doneren</a></label></li>
-                                    <li><a href="#">ANBI-certificaat</a></li>
-                                    <li><a href="#">Belasting</a></li>
-                                    <li><a href="#">Betalingen</a></li>
-                                    <li><label><a href="#">Doneer nu</a></label></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6 updateArea">
-                            <label><a href="#">Updates</a></label>
-
-                            <p>Meld je aan voor de nieuwsvideo en blijf op de hoogte van de laatste updates.</p>
-
-                            <div class="sign-up-news">
-                                <form action="action_page.php" id="form1">
-
-                                    <div class="email-holder">
-                                        <input type="text" placeholder="Email address" name="mail" required>
-                                        <button type="submit" form="form1" value="Submit"> <i class="fas fa-arrow-right"></i></button>
-                                    </div>
-                                </form>
-                            </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div>
+                            <ul>
+                                <li><label><a href="#">Ik Doneer Nu</a></label></li>
+                                <li><a href="#">Goede doelen</a></li>
+                                <li><a href="#">Acties</a></li>
+                                <li><a href="#">Verhalen</a></li>
+                                <li><a href="#">Ik Doneer Nu</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">Log in</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="footer-line"></div>
+                    <div class="col-md-2">
+                        <div>
+                            <ul>
+                                <li><label><a href="#">Diensten voor</a></label></li>
+                                <li><a href="#">Donateurs</a></li>
+                                <li><a href="#">Goede doelen</a></li>
+                                <li><a href="#">Acties</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div>
+                            <ul>
+                                <li><label><a href="#">Over doneren</a></label></li>
+                                <li><a href="#">ANBI-certificaat</a></li>
+                                <li><a href="#">Belasting</a></li>
+                                <li><a href="#">Betalingen</a></li>
+                                <li><label><a href="#">Doneer nu</a></label></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 updateArea">
+                        <label><a href="#">Updates</a></label>
+
+                        <p>Meld je aan voor de nieuwsvideo en blijf op de hoogte van de laatste updates.</p>
+
+                        <div class="sign-up-news">
+                            <form action="action_page.php" id="form1">
+
+                                <div class="email-holder">
+                                    <input type="text" placeholder="Email address" name="mail" required>
+                                    <button type="submit" form="form1" value="Submit"><div class="footer-email-arrow"></div></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-line"></div>
+                <div class="footer-info">
+                    <div class="footer-info-left">
+                        <p class="footer-copyright">&#xa9 2018 Ik Doneer Nu</p>
+                        <p class="footer-privacy">Privacy</p>
+                        <p class="footer-cookies">Cookies</p>
+                        <p class="footer-help">Help</p>
+                    </div>
+                    <div class="footer-info-right">
+                        <div class="footer-youtube"><a href="#"></a></div>
+                        <div class="footer-facebook">
+                            <a class="footer-facebook-link" href="#"></a>
+                            <a class="footer-instagram-link" href="#"></a>
+                            </div>
+                    </div>
                 </div>
             </div>
-        </footer>
+    </div>
+    </footer>
     </div>
 
     <environment include="Development">
@@ -148,8 +164,7 @@
         <!-- Latest compiled JavaScript -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,300i,400,700,800|Source+Sans+Pro:300,300i,400,700" rel="stylesheet">
 
     </environment>
     <environment exclude="Development">

@@ -9,6 +9,7 @@ using Sombra.CharityActionService.DAL;
 using System.Collections.ObjectModel;
 using Sombra.Messaging.Events;
 using EasyNetQ;
+using Sombra.Infrastructure;
 
 namespace Sombra.CharityActionService.UnitTests
 {
@@ -36,7 +37,7 @@ namespace Sombra.CharityActionService.UnitTests
                 var keyCharity = Guid.NewGuid();
                 var request = new DeleteCharityActionRequest
                 {
-                    CharityActionkey = keyAction,
+                    CharityActionKey = keyAction,
                 };
 
                 using (var context = CharityActionContext.GetInMemoryContext())
@@ -44,15 +45,15 @@ namespace Sombra.CharityActionService.UnitTests
                     context.Database.EnsureCreated();
                     context.CharityActions.Add(new CharityAction
                     {
-                        CharityActionkey = keyAction,
-                        Charitykey = keyCharity,
+                        CharityActionKey = keyAction,
+                        CharityKey = keyCharity,
                         UserKeys = new Collection<UserKey>() { new UserKey() { Key = Guid.NewGuid() } },
-                        NameCharity = "testNAmeOwner",
+                        CharityName = "testNAmeOwner",
                         Category = Core.Enums.Category.Dierenbescherming,
                         IBAN = "",
-                        NameAction = "",
+                        Name = "",
                         ActionType = "",
-                        Discription = "0-IBAN",
+                        Description = "0-IBAN",
                         CoverImage = ""
 
                     });
@@ -62,17 +63,17 @@ namespace Sombra.CharityActionService.UnitTests
                 //Act
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    var handler = new DeleteCharityActionRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    var handler = new DeleteCharityActionRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
                 //Assert
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    Assert.IsFalse(context.CharityActions.Any(i => i.CharityActionkey == request.CharityActionkey));
+                    Assert.IsFalse(context.CharityActions.Any(i => i.CharityActionKey == request.CharityActionKey));
                 }
 
-                busMock.Verify(m => m.PublishAsync(It.Is<CharityActionDeletedEvent>(e => e.CharityActionkey == request.CharityActionkey)), Times.Once);
+                busMock.Verify(m => m.PublishAsync(It.Is<CharityActionDeletedEvent>(e => e.CharityActionKey == request.CharityActionKey)), Times.Once);
             }
             finally
             {
@@ -102,7 +103,7 @@ namespace Sombra.CharityActionService.UnitTests
                 var wrongKey = Guid.NewGuid();
                 var request = new DeleteCharityActionRequest
                 {
-                    CharityActionkey = wrongKey,
+                    CharityActionKey = wrongKey,
                 };
 
                 using (var context = CharityActionContext.GetInMemoryContext())
@@ -110,15 +111,15 @@ namespace Sombra.CharityActionService.UnitTests
                     context.Database.EnsureCreated();
                     context.CharityActions.Add(new CharityAction
                     {
-                        CharityActionkey = keyAction,
-                        Charitykey = keyCharity,
+                        CharityActionKey = keyAction,
+                        CharityKey = keyCharity,
                         UserKeys = new Collection<UserKey>() { new UserKey() { Key = Guid.NewGuid() } },
-                        NameCharity = "testNAmeOwner",
+                        CharityName = "testNAmeOwner",
                         Category = Core.Enums.Category.Dierenbescherming,
                         IBAN = "",
-                        NameAction = "",
+                        Name = "",
                         ActionType = "",
-                        Discription = "0-IBAN",
+                        Description = "0-IBAN",
                         CoverImage = ""
 
                     });
@@ -128,7 +129,7 @@ namespace Sombra.CharityActionService.UnitTests
                 //Act
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    var handler = new DeleteCharityActionRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    var handler = new DeleteCharityActionRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()), busMock.Object);
                     response = await handler.Handle(request);
                 }
 

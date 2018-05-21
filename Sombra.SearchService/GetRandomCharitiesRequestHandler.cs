@@ -28,7 +28,7 @@ namespace Sombra.SearchService
             {
                 Results = await _context.Content.Where(c => c.Type == SearchContentType.Charity)
                     .OrderBy(c => Guid.NewGuid()).Take(message.Amount)
-                    .ProjectToListAsync<SearchResult>(_mapper.ConfigurationProvider)
+                    .ProjectToListAsync<SearchResult>(_mapper)
             };
         }
     }

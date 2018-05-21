@@ -28,7 +28,7 @@ namespace Sombra.CharityActionService
         public async Task<DeleteCharityActionResponse> Handle(DeleteCharityActionRequest message)
         {
             ExtendedConsole.Log("DeletedCharityActionRequest received");
-            var charityAction = await _context.CharityActions.Include(b => b.UserKeys).FirstOrDefaultAsync(b => b.CharityActionkey.Equals(message.CharityActionkey));
+            var charityAction = await _context.CharityActions.Include(b => b.UserKeys).FirstOrDefaultAsync(b => b.CharityActionKey.Equals(message.CharityActionKey));
             if (charityAction == null)
             {
                 return new DeleteCharityActionResponse();

@@ -10,7 +10,8 @@ namespace Sombra.Messaging.Responses
 
     public class SearchResult
     {
-        public System.Guid Key { get; set; }
+        public System.Guid CharityKey { get; set; }
+        public System.Guid CharityActionKey { get; set; }
         public string Name { get; set; }
         public Core.Enums.SearchContentType Type { get; set; }
         public string Description { get; set; }

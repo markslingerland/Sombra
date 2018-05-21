@@ -32,15 +32,15 @@ namespace Sombra.CharityActionService.UnitTests
 
                     var charity = new CharityAction
                     {
-                        CharityActionkey = keyAction,
-                        Charitykey = keyCharity,
+                        CharityActionKey = keyAction,
+                        CharityKey = keyCharity,
                         UserKeys = new List<UserKey> { user },
-                        NameCharity = "testNAmeOwner",
+                        CharityName = "testNAmeOwner",
                         Category = Core.Enums.Category.None,
                         IBAN = "",
-                        NameAction = "",
+                        Name = "",
                         ActionType = "",
-                        Discription = "0-IBAN",
+                        Description = "0-IBAN",
                         CoverImage = ""
 
                     };
@@ -53,7 +53,7 @@ namespace Sombra.CharityActionService.UnitTests
                 var userRequest = new Sombra.Messaging.UserKey() { Key = key };
                 var request = new GetCharityActionRequest
                 {
-                    CharityActionkey = keyAction
+                    CharityActionKey = keyAction
                 };
 
                 GetCharityActionResponse response;
@@ -70,15 +70,15 @@ namespace Sombra.CharityActionService.UnitTests
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
                     
-                    Assert.AreEqual(response.CharityActionkey, context.CharityActions.Single().CharityActionkey);
-                    Assert.AreEqual(response.Charitykey, context.CharityActions.Single().Charitykey);
+                    Assert.AreEqual(response.CharityActionKey, context.CharityActions.Single().CharityActionKey);
+                    Assert.AreEqual(response.CharityKey, context.CharityActions.Single().CharityKey);
                     CollectionAssert.AreEquivalent(response.UserKeys.Select(k => k.Key).ToList(), context.UserKeys.Select(u => u.Key).ToList());
-                    Assert.AreEqual(response.NameCharity, context.CharityActions.Single().NameCharity);
+                    Assert.AreEqual(response.CharityName, context.CharityActions.Single().CharityName);
                     Assert.AreEqual(response.Category, context.CharityActions.Single().Category);
                     Assert.AreEqual(response.IBAN, context.CharityActions.Single().IBAN);
-                    Assert.AreEqual(response.NameAction, context.CharityActions.Single().NameAction);
+                    Assert.AreEqual(response.Name, context.CharityActions.Single().Name);
                     Assert.AreEqual(response.ActionType, context.CharityActions.Single().ActionType);
-                    Assert.AreEqual(response.Discription, context.CharityActions.Single().Discription);
+                    Assert.AreEqual(response.Description, context.CharityActions.Single().Description);
                     Assert.AreEqual(response.CoverImage, context.CharityActions.Single().CoverImage);
                     Assert.IsTrue(response.Success);
                 }
@@ -106,15 +106,15 @@ namespace Sombra.CharityActionService.UnitTests
                     var users = new Collection<UserKey>() { user };
                     var charity = new CharityAction
                     {
-                        CharityActionkey = keyAction,
-                        Charitykey = keyCharity,
+                        CharityActionKey = keyAction,
+                        CharityKey = keyCharity,
                         UserKeys = users,
-                        NameCharity = "testNAmeOwner",
+                        CharityName = "testNAmeOwner",
                         Category = Core.Enums.Category.None,
                         IBAN = "",
-                        NameAction = "",
+                        Name = "",
                         ActionType = "",
-                        Discription = "0-IBAN",
+                        Description = "0-IBAN",
                         CoverImage = ""
 
                     };

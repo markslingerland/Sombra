@@ -10,9 +10,10 @@ using Sombra.CharityActionService.DAL;
 namespace Sombra.CharityActionService.Migrations
 {
     [DbContext(typeof(CharityActionContext))]
-    partial class CharityActionContextModelSnapshot : ModelSnapshot
+    [Migration("20180521165319_Renaming")]
+    partial class Renaming
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

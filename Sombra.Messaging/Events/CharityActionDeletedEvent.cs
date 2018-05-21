@@ -6,6 +6,6 @@ namespace Sombra.Messaging.Events
 {
     public class CharityActionDeletedEvent
     {
-        public Guid CharityActionkey { get; set; }
+        public Guid CharityActionKey { get; set; }
     }
 }

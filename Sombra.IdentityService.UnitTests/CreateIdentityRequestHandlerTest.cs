@@ -19,11 +19,6 @@ namespace Sombra.IdentityService.UnitTests
             AuthenticationContext.OpenInMemoryConnection();
             try
             {
-                using (var context = AuthenticationContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
-
                 CreateIdentityResponse response;
                 var request = new CreateIdentityRequest
                 {
@@ -68,11 +63,6 @@ namespace Sombra.IdentityService.UnitTests
             AuthenticationContext.OpenInMemoryConnection();
             try
             {
-                using (var context = AuthenticationContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
-
                 CreateIdentityResponse response;
                 var request = new CreateIdentityRequest();
 
@@ -104,8 +94,6 @@ namespace Sombra.IdentityService.UnitTests
             {
                 using (var context = AuthenticationContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
-
                     var user = new User
                     {
                         Id = Guid.NewGuid(),

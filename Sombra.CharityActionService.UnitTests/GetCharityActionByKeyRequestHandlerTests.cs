@@ -28,8 +28,6 @@ namespace Sombra.CharityActionService.UnitTests
                 var user = new UserKey { Key = key };
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
-
                     var charity = new CharityAction
                     {
                         CharityActionKey = keyAction,
@@ -99,7 +97,6 @@ namespace Sombra.CharityActionService.UnitTests
 
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     var keyAction = Guid.NewGuid();
                     var keyCharity = Guid.NewGuid();
                     var user = new UserKey() { Key = Guid.NewGuid() };

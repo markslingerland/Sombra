@@ -26,11 +26,6 @@ namespace Sombra.UserService.UnitTests
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<UserCreatedEvent>())).Returns(Task.FromResult(true));
 
-                using (var context = UserContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
-
                 CreateUserResponse response;
                 var request = new CreateUserRequest
                 {
@@ -73,11 +68,6 @@ namespace Sombra.UserService.UnitTests
             {
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<UserCreatedEvent>())).Returns(Task.FromResult(true));
-
-                using (var context = UserContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
 
                 CreateUserResponse response;
                 var request = new CreateUserRequest
@@ -125,7 +115,6 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Users.Add(user);
                     context.SaveChanges();
                 }

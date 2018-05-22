@@ -36,7 +36,6 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Users.Add(new User
                     {
                         UserKey = request.UserKey,
@@ -90,7 +89,6 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Users.Add(new User
                     {
                         UserKey = Guid.NewGuid(),
@@ -144,7 +142,6 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Users.Add(new User
                     {
                         UserKey = request.UserKey,

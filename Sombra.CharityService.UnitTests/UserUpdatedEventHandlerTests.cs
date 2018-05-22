@@ -33,9 +33,7 @@ namespace Sombra.CharityService.UnitTests
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Charities.Add(charity);
-
                     context.SaveChanges();
                 }
 
@@ -78,9 +76,7 @@ namespace Sombra.CharityService.UnitTests
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Charities.Add(charity);
-
                     context.SaveChanges();
                 }
 

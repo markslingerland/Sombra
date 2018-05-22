@@ -26,11 +26,6 @@ namespace Sombra.CharityService.UnitTests
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<CharityUpdatedEvent>())).Returns(Task.FromResult(true));
 
-                using (var context = CharityContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
-
                 UpdateCharityResponse response;
                 var newKey = Guid.NewGuid();
                 var request = new UpdateCharityRequest()
@@ -48,7 +43,6 @@ namespace Sombra.CharityService.UnitTests
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Charities.Add(new Charity
                     {
                         CharityKey = newKey,

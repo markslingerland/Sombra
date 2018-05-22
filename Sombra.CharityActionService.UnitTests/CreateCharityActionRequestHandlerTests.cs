@@ -26,10 +26,6 @@ namespace Sombra.CharityActionService.UnitTests
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<CharityActionCreatedEvent>())).Returns(Task.FromResult(true));
 
-                using (var context = CharityActionContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
                 var keyAction = Guid.NewGuid();
                 var keyCharity = Guid.NewGuid();
                 var userRequest = new Sombra.Messaging.UserKey() { Key = Guid.NewGuid() };

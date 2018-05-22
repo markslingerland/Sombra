@@ -20,7 +20,6 @@ namespace Sombra.IdentityService.UnitTests
             {
                 using (var context = AuthenticationContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Users.Add(new User
                     {
                         Id = Guid.NewGuid(),
@@ -64,7 +63,6 @@ namespace Sombra.IdentityService.UnitTests
             {
                 using (var context = AuthenticationContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Users.Add(new User
                     {
                         Id = Guid.NewGuid(),
@@ -108,7 +106,6 @@ namespace Sombra.IdentityService.UnitTests
             {
                 using (var context = AuthenticationContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Users.Add(new User
                     {
                         Id = Guid.NewGuid(),

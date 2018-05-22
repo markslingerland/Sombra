@@ -41,7 +41,6 @@ namespace Sombra.IdentityService.UnitTests
 
                 using (var context = AuthenticationContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Users.Add(user);
                     context.Credentials.Add(credential);
 
@@ -95,7 +94,6 @@ namespace Sombra.IdentityService.UnitTests
 
                 using (var context = AuthenticationContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Users.Add(user);
                     context.Credentials.Add(credential);
 

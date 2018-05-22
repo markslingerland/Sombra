@@ -140,7 +140,6 @@ margin-bottom: 30px;
     display: none;
   }
   .select-items div:hover, .same-as-selected {
-    /* background-color: rgba(0, 0, 0, 0.1); */
     background-color: #D3D3D3;
   }
 

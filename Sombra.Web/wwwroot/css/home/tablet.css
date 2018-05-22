@@ -2,14 +2,6 @@
     margin-left: 50px;
 }
 
-#header .dropdown-btn-holder {
-    display: inline;
-}
-
-#header .big-menu {
-    display: none;
-}
-
 .header-image {
     position: absolute;
     top: 0;

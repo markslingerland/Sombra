@@ -27,11 +27,6 @@ namespace Sombra.CharityActionService.UnitTests
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<CharityActionDeletedEvent>())).Returns(Task.FromResult(true));
 
-                using (var context = CharityActionContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
-
                 DeleteCharityActionResponse response;
                 var keyAction = Guid.NewGuid();
                 var keyCharity = Guid.NewGuid();
@@ -42,7 +37,6 @@ namespace Sombra.CharityActionService.UnitTests
 
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.CharityActions.Add(new CharityAction
                     {
                         CharityActionKey = keyAction,
@@ -92,11 +86,6 @@ namespace Sombra.CharityActionService.UnitTests
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<CharityActionDeletedEvent>())).Returns(Task.FromResult(true));
 
-                using (var context = CharityActionContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
-
                 DeleteCharityActionResponse response;
                 var keyAction = Guid.NewGuid();
                 var keyCharity = Guid.NewGuid();
@@ -108,7 +97,6 @@ namespace Sombra.CharityActionService.UnitTests
 
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.CharityActions.Add(new CharityAction
                     {
                         CharityActionKey = keyAction,

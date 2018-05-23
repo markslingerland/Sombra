@@ -1,8 +1,18 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
+﻿@{ ViewData["Title"] = "Charity"; }
 @section Styles{
-<link rel="stylesheet" href="~/css/charity/charity.css" />
-
-}
+    <link rel="stylesheet" href="~/css/charity/charity.css" />
+    <link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/charity/desktop.css" />
+    <link rel="stylesheet" media="screen and (min-width: 768px) and (max-width: 1200px)" href="~/css/charity/tablet.css" />
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/charity/mobile.css" /> 
+    }
+    <div id="charity-info">
+        <div class="back-site">
+            <img class="header-image" src=@ViewData["CharityImage"] alt="#">
+            <div class="main-storyboard">text</div>
+            <div class="Fill-1"><div class="Fill-7">@ViewData["CharityName"]</div></div>
+        </div>
+    </div>
+        @section Scripts {
+            <script src="../../wwwroot/js/charity.js">
+            </script>
+        }

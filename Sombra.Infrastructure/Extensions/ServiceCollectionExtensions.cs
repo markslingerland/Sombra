@@ -28,21 +28,6 @@ namespace Sombra.Infrastructure.Extensions
                 .AddSingleton(new SqlConnectionStringWrapper(connectionString, typeof(TContext)));
         }
 
-        public static IServiceCollection AddAutoMapper(this IServiceCollection services)
-        {
-            return services.AddAutoMapper(null, AppDomain.CurrentDomain.GetAssemblies());
-        }
-
-        public static IServiceCollection AddAutoMapper(this IServiceCollection services, Action<IMapperConfigurationExpression> additionalInitAction)
-        {
-            return services.AddAutoMapper(additionalInitAction, AppDomain.CurrentDomain.GetAssemblies());
-        }
-
-        public static IServiceCollection AddAutoMapper(this IServiceCollection services, Action<IMapperConfigurationExpression> additionalInitAction, DependencyContext dependencyContext)
-        {
-            return services.AddAutoMapper(additionalInitAction, AppDomain.CurrentDomain.GetAssemblies());
-        }
-
         private static readonly Action<IMapperConfigurationExpression> DefaultConfig = cfg => { };
 
         public static IServiceCollection AddAutoMapper(this IServiceCollection services, params Assembly[] assemblies)

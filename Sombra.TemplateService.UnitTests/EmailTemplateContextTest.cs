@@ -18,8 +18,6 @@ namespace Sombra.TemplateService.UnitTests
             {
                 using (var context = EmailTemplateContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
-
                     var template = new TemplateEntity
                     {
                         TemplateId = EmailType.ForgotPassword,
@@ -62,8 +60,6 @@ namespace Sombra.TemplateService.UnitTests
                 //Arrange
                 using (var context = EmailTemplateContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
-
                     var template = new TemplateEntity
                     {
                         TemplateId = EmailType.ForgotPassword,

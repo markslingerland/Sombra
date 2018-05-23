@@ -16,11 +16,6 @@ namespace Sombra.CharityActionService.UnitTests
             CharityActionContext.OpenInMemoryConnection();
             try
             {
-                using (var context = CharityActionContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
-
                 var charityUpdatedEvent = new CharityUpdatedEvent
                 {
                     CharityKey = Guid.NewGuid(),

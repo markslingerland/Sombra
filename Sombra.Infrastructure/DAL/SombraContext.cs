@@ -20,7 +20,10 @@ namespace Sombra.Infrastructure.DAL
 
         public static T GetInMemoryContext()
         {
-            return new T();
+            var context = new T();
+            context.Database.EnsureCreated();
+
+            return context;
         }
 
         public static void OpenInMemoryConnection()

@@ -27,7 +27,6 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Users.Add(new User
                     {
                         EmailAddress = "john@doe.test"
@@ -65,7 +64,6 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Users.Add(new User
                     {
                         EmailAddress = "john@doe.test"
@@ -106,7 +104,6 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Users.Add(new User
                     {
                         EmailAddress = "john@doe.test",

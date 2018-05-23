@@ -24,6 +24,7 @@ namespace Sombra.Infrastructure.Extensions
             where TContext : SombraContext<TContext>, new()
         {
             return services.AddDbContext<TContext>(builder => builder.UseSqlServer(connectionString), ServiceLifetime.Transient, ServiceLifetime.Singleton)
+                .AddTransient<SombraContextOptions>()
                 .AddSingleton(new SqlConnectionStringWrapper(connectionString, typeof(TContext)));
         }
 

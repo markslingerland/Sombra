@@ -1,29 +1,6 @@
 ﻿
 //TODO
 //This complete loop needs to get filled with info from the backend
-
- //<div class="carousel-cell">
- //   <div class="carousel-container">
- //       <div class="carousel-background">
- //           <div class="carousel-logo"></div>
- //           <div class="carousel-progress-bar">
- //               <div class="carousel-progress"></div>
- //           </div>
- //       </div>
- //       <div class="carousel-body">
- //           <label class="carousel-date">27/04/2018</label>
- //           <h4 class="carousel-title">Klimmen tegen MS &#64; Mont Ventoux</h4>
- //           <img class="carousel-poster-image" src="Assets/lianne.jpg">
- //               <label class="carousel-poster-name">Fabiene ter Beek</label>
-
- //               <div class="carousel-money-holder">
-
- //                   <label class="carousel-reached">&euro; 6.800 </label>
- //                   <label class="carousel-goal">behaald vam &euro; 15.000 </label>
- //               </div>
- //                   </div>
- //       </div>
- //   </div>
 for (x = 0; x < 4; x++) {
     // Make progress bar
     var carousel_progress = document.createElement('div');
@@ -39,7 +16,6 @@ for (x = 0; x < 4; x++) {
     carousel_background.className = "carousel-background";
     carousel_background.appendChild(carousel_progress_bar);
     carousel_background.appendChild(carousel_logo);
-
     // Make Moneyholder
     var carousel_money_holder = document.createElement('div');
     carousel_money_holder.className = "carousel-money-holder";
@@ -71,8 +47,7 @@ for (x = 0; x < 4; x++) {
     carousel_body.appendChild(title);
     carousel_body.appendChild(img);
     carousel_body.appendChild(labelimg);
-    carousel_body.appendChild(carousel_money_holder);   
-    
+    carousel_body.appendChild(carousel_money_holder);     
     // Make container
     var carousel_container = document.createElement('div');
     carousel_container.className = "carousel-container";

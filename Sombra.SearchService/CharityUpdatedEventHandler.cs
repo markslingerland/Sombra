@@ -23,7 +23,7 @@ namespace Sombra.SearchService
 
             if (charityToUpdate != null)
             {
-                charityToUpdate.Name = message.Name;
+                charityToUpdate.CharityName = message.Name;
                 charityToUpdate.Description = message.Slogan;
                 charityToUpdate.Image = message.CoverImage;
                 charityToUpdate.Category = message.Category; 

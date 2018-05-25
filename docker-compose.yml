@@ -80,6 +80,14 @@ services:
       - rabbitmq
       - sqlserver
 
+  sombra.timeservice:
+    image: sombra.timeservice
+    build:
+      context: .
+      dockerfile: Sombra.TimeService/Dockerfile
+    depends_on:
+      - rabbitmq
+      - sqlserver
 
   rabbitmq:
     image: rabbitmq:3-management

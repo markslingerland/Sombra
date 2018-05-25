@@ -20,8 +20,8 @@ namespace Sombra.Messaging.DependencyValidation
                 foreach (var responderinfo in kv.Value)
                 {
                     var messageType = typeof(Ping<,>).MakeGenericType(responderinfo.MessageType, responderinfo.ResponseType);
-                    var responseType = typeof(PingResponse<>).MakeGenericType(responderinfo.ResponseType);
-                    var concreteType = typeof(PingRequestHandler<,,>).MakeGenericType(messageType, responseType, responderinfo.ResponseType);
+                    var responseType = typeof(PingResponse);
+                    var concreteType = typeof(PingRequestHandler<,>).MakeGenericType(messageType, responseType);
 
                     var dispatchMethod =
                         AutoResponderMessageDispatcher.GetType()

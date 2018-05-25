@@ -1,10 +1,17 @@
-﻿@model Sombra.Web.ViewModels.Search.TopCharitiesViewModel
+﻿@using Sombra.Web.ViewModels.Search
+@model TopCharitiesViewModel
 
-@if (Model?.Charities != null)
+@{var numberOfCharities = 0;}
+@if (Model.Charities != null)
 {
+    numberOfCharities = Model.Charities.Count;
     foreach (var charity in Model.Charities)
     {
         @await Html.PartialAsync("_ActionItem", charity)
     }
 }
-<img class="action-holder-frame" src="Assets/shape-frame.svg">
+
+@for (var i = 0; i < Model.RequestedAmount - numberOfCharities; i++)
+{
+    @await Html.PartialAsync("_ActionItem", new CharityItemViewModel())
+}

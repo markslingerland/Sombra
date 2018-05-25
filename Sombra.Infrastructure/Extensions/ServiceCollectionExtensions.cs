@@ -24,22 +24,8 @@ namespace Sombra.Infrastructure.Extensions
             where TContext : SombraContext<TContext>, new()
         {
             return services.AddDbContext<TContext>(builder => builder.UseSqlServer(connectionString), ServiceLifetime.Transient, ServiceLifetime.Singleton)
+                .AddTransient<SombraContextOptions>()
                 .AddSingleton(new SqlConnectionStringWrapper(connectionString, typeof(TContext)));
-        }
-
-        public static IServiceCollection AddAutoMapper(this IServiceCollection services)
-        {
-            return services.AddAutoMapper(null, AppDomain.CurrentDomain.GetAssemblies());
-        }
-
-        public static IServiceCollection AddAutoMapper(this IServiceCollection services, Action<IMapperConfigurationExpression> additionalInitAction)
-        {
-            return services.AddAutoMapper(additionalInitAction, AppDomain.CurrentDomain.GetAssemblies());
-        }
-
-        public static IServiceCollection AddAutoMapper(this IServiceCollection services, Action<IMapperConfigurationExpression> additionalInitAction, DependencyContext dependencyContext)
-        {
-            return services.AddAutoMapper(additionalInitAction, AppDomain.CurrentDomain.GetAssemblies());
         }
 
         private static readonly Action<IMapperConfigurationExpression> DefaultConfig = cfg => { };

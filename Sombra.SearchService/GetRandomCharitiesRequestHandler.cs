@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Sombra.Core;
 using Sombra.Core.Enums;
 using Sombra.Infrastructure.DAL;
 using Sombra.Messaging.Infrastructure;
@@ -24,6 +25,7 @@ namespace Sombra.SearchService
 
         public async Task<GetRandomCharitiesResponse> Handle(GetRandomCharitiesRequest message)
         {
+            ExtendedConsole.Log("GetRandomCharitiesRequest received");
             return new GetRandomCharitiesResponse
             {
                 Results = await _context.Content.Where(c => c.Type == SearchContentType.Charity)

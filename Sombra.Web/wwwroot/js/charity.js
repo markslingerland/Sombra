@@ -47,12 +47,12 @@ for (x = 0; x < 4; x++) {
     carousel_body.appendChild(title);
     carousel_body.appendChild(img);
     carousel_body.appendChild(labelimg);
-    carousel_body.appendChild(carousel_money_holder);     
+    carousel_body.appendChild(carousel_money_holder);
     // Make container
     var carousel_container = document.createElement('div');
     carousel_container.className = "carousel-container";
     carousel_container.appendChild(carousel_background);
-    carousel_container.appendChild(carousel_body); 
+    carousel_container.appendChild(carousel_body);
     // Make cell
     var carousel_cell = document.createElement('div');
     carousel_cell.className = "carousel-cell";

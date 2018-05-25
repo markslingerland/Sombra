@@ -7,29 +7,64 @@
 }
 <div id="charity-info">
     <div class="back-site">
-        <img class="header-image" src=@ViewData["CharityImage"] alt="#">
-        <div class="main-storyboard">text</div>
-        <div class="Fill-1"><div class="Fill-7">@ViewData["CharityName"]</div></div>
+        <svg class="header-image" viewBox="0 0 1440 611" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+                <pattern id="pattern-1" width="1467.46324" height="978.308824" x="-1467.46324" y="-977.308824" patternUnits="userSpaceOnUse">
+                    <use xlink:href="#image-2" transform="scale(1.22288603,1.22288603)"></use>
+                </pattern>
+                <image id="image-2" width="1200" height="800" xlink:href=@ViewData["CharityImage"]></image>
+            </defs>
+            <g id="-----Web-1440" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="003-Doneer---Goede-doelen-detail" transform="translate(0.000000, -1.000000)" fill="url(#pattern-1)">
+                    <path d="M-1.13686838e-13,1 L-1.13686838e-13,561.651541 C226.20941,594.984874 466.20941,611.651541 720,611.651541 C973.79059,611.651541 1213.79059,594.984874 1440,561.651541 L1440,1 L-1.13686838e-13,1 Z" id="Path-4"></path>
+                </g>
+            </g>
+        </svg>
+        <div class="main-storyboard">
+            <div class="category">@ViewData["CharityCategory"]</div>
+            <div class="kvk_ambi">kvk nummer: @ViewData["CharityKvk"]   Ambi nummer: @ViewData["CharityAmbi"]</div>
+            <div id="about" class="standard-text">
+                <div class="container">
+                    <div class="row about-text">
+                        <h3>@ViewData["CharityName"]</h3>
+                        <p>@ViewData["CharityAbout"]</p>
+                        <div class="donate-btn">
+                            <a href="#" class="donateSVG"></a>
+                        </div>
+                        <div class="col-sm-6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="acties">
+                <h3 class="title">Lopende acties</h3>
+                <div class="slider-container">
+                    <div id="main-carousel" class="main-carousel"></div>
+                    <div class="button button--previous"></div>
+                    <div class="button button--next"></div>
+                </div>
+                <div class="action-buttons">
+                    <div class="all-actions">
+                        <a href="#"></a>
+                        <span class="monster-700">Bekijk alle acties</span>
+                    </div>
+                    <div class="make-actions">
+                        <a href="#"></a>
+                        <span class="monster-700">Start een actie</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            @*If only a logo is used we can remove the Fill-7*@
+            <img class="Fill-1" src="../../Assets/shape-frame.svg">
+            <div class="Fill-7">@ViewData["CharityName"]</div>
+        </div>
     </div>
 </div>
 
-<div id="acties">
-    <h3 class="title">Lopende acties</h3>
-    <div class="slider-container">
-        <div id="main-carousel" class="main-carousel"></div>
-        <div class="button button--previous"></div>
-        <div class="button button--next"></div>
-    </div>
-    <div class="action-buttons">
-        <div class="all-actions">
-            <a href="#"></a>
-            <span class="monster-700">Bekijk alle acties</span>
-        </div>
-        <div class="make-actions">
-            <a href="#"></a>
-            <span class="monster-700">Start een actie</span>
-        </div>
-    </div>
-</div>
 
 <script language="JavaScript" src="/js/charity.js"></script>

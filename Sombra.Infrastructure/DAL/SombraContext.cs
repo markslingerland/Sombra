@@ -10,13 +10,13 @@ namespace Sombra.Infrastructure.DAL
         private readonly bool _seed;
         private static SqliteConnection _sqliteConnection;
 
-        protected SombraContext(DbContextOptions options, bool seed = false) : base(options)
+        protected SombraContext(DbContextOptions options, SombraContextOptions sombraContextOptions) : base(options)
         {
-            _seed = seed;
+            _seed = sombraContextOptions.Seed;
             if (Database.IsSqlServer()) Database.Migrate();
         }
 
-        protected SombraContext() : this(GetOptions()) { }
+        protected SombraContext() : this(GetOptions(), new SombraContextOptions()) { }
 
         public static T GetInMemoryContext()
         {

@@ -52,6 +52,6 @@ namespace Sombra.Web.Infrastructure.Messaging
             return await Bus.RequestAsync(request);
         }
 
-        public async Task PublishAsync<TEvent>(TEvent message) where TEvent : class, IEvent => await Bus.PublishAsync(message);
+        public Task PublishAsync<TEvent>(TEvent message) where TEvent : class, IEvent => Bus.PublishAsync(message);
     }
 }

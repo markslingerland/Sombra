@@ -3,5 +3,6 @@
     public interface IResponse : IMessage
     {
         bool IsRequestSuccessful { get; set; }
+        IResponse RequestFailed();
     }
 }

@@ -21,7 +21,7 @@ namespace Sombra.SearchService
             ExtendedConsole.Log($"CreatedCharityEvent received for charity with key {message.CharityKey}");
             var charityToCreate = new Content()
             {
-                Name = message.Name,
+                CharityName = message.Name,
                 Type = Core.Enums.SearchContentType.Charity,
                 CharityKey = message.CharityKey,
                 Image = message.CoverImage,

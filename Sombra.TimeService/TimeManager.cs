@@ -61,7 +61,7 @@ namespace Sombra.TimeService
                         Created = _lastCheck[TimeInterval.Day]
                     });
                     await _context.SaveChangesAsync();
-                    await _bus.PublishAsync(new DayHasPassedEvent());
+                    await _bus.PublishAsync(new DayHasPassedEvent(now));
                 }
 
                 if (now.Subtract(_lastCheck[TimeInterval.Week]).Days > 7)
@@ -74,7 +74,7 @@ namespace Sombra.TimeService
                         Created = _lastCheck[TimeInterval.Week]
                     });
                     await _context.SaveChangesAsync();
-                    await _bus.PublishAsync(new WeekHasPassedEvent());
+                    await _bus.PublishAsync(new WeekHasPassedEvent(now));
                 }
 
                 if (now.Subtract(_lastCheck[TimeInterval.Month]).Minutes > (365.25 / 12 * 24 * 60))
@@ -87,7 +87,7 @@ namespace Sombra.TimeService
                         Created = _lastCheck[TimeInterval.Month]
                     });
                     await _context.SaveChangesAsync();
-                    await _bus.PublishAsync(new MonthHasPassedEvent());
+                    await _bus.PublishAsync(new MonthHasPassedEvent(now));
                 }
                 Thread.Sleep(10000);
             }

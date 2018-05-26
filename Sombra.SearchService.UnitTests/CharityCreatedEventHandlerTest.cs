@@ -44,7 +44,7 @@ namespace Sombra.SearchService.UnitTests
                     Assert.AreEqual(Event.Category, context.Content.Single().Category);
                     Assert.AreEqual(Event.Slogan, context.Content.Single().Description);
                     Assert.AreEqual(Core.Enums.SearchContentType.Charity, context.Content.Single().Type);
-                    Assert.AreEqual(Event.Name, context.Content.Single().Name);  
+                    Assert.AreEqual(Event.Name, context.Content.Single().CharityName);  
                 }
             }
             finally

@@ -23,17 +23,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.1.0-preview2-final" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.1.0-preview2-final" />
     <PackageReference Include="UAParser" Version="3.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Sombra.Core\Sombra.Core.csproj" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
-    <PackageReference Include="EasyNetQ" Version="2.3.1" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.0-preview2-final" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0-preview2-final" />
   </ItemGroup>
 
   <ItemGroup>
+	<ProjectReference Include="..\Sombra.Core\Sombra.Core.csproj" />
     <ProjectReference Include="..\Sombra.Messaging\Sombra.Messaging.csproj" />
   </ItemGroup>
 

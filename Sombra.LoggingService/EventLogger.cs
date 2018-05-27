@@ -32,7 +32,7 @@ namespace Sombra.LoggingService
             {
                 var handlerType = typeof(EventHandler<>).MakeGenericType(messageType);
                 var handler = _serviceProvider.GetRequiredService(handlerType);
-                var handleMethod = handlerType.GetMethod(nameof(EventHandler<IEvent>.Consume),
+                var handleMethod = handlerType.GetMethod(nameof(EventHandler<IEvent>.ConsumeAsync),
                     BindingFlags.Instance | BindingFlags.Public);
 
                 var busSubscribeMethod = genericBusSubscribeMethod.MakeGenericMethod(messageType);

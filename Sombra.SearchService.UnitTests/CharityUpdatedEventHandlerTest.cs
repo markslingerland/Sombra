@@ -44,7 +44,7 @@ namespace Sombra.SearchService.UnitTests
                 using (var context = SearchContext.GetInMemoryContext())
                 {
                     var handler = new CharityUpdatedEventHandler(context);
-                    await handler.Consume(updatedCharityEvent);      
+                    await handler.ConsumeAsync(updatedCharityEvent);      
                 }
 
                 using (var context = SearchContext.GetInMemoryContext())

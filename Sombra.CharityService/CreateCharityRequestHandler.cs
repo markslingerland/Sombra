@@ -15,13 +15,11 @@ namespace Sombra.CharityService
     {
         private readonly CharityContext _context;
         private readonly IMapper _mapper;
-        private readonly IBus _bus;
 
-        public CreateCharityRequestHandler(CharityContext context, IMapper mapper, IBus bus)
+        public CreateCharityRequestHandler(CharityContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
-            _bus = bus;
         }
 
         public async Task<CreateCharityResponse> Handle(CreateCharityRequest message)
@@ -45,10 +43,7 @@ namespace Sombra.CharityService
                 return new CreateCharityResponse();
             }
 
-            var charityCreatedEvent = _mapper.Map<CharityCreatedEvent>(charity);
-            await _bus.PublishAsync(charityCreatedEvent);
-
-            return new CreateCharityResponse() { Success = true };
+            return new CreateCharityResponse { Success = true };
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Sombra.IdentityService.UnitTests
                 using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     var handler = new UserUpdatedEventHandler(context);
-                    await handler.Consume(userUpdatedEvent);
+                    await handler.ConsumeAsync(userUpdatedEvent);
                 }
 
                 using (var context = AuthenticationContext.GetInMemoryContext())
@@ -103,7 +103,7 @@ namespace Sombra.IdentityService.UnitTests
                 using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     var handler = new UserUpdatedEventHandler(context);
-                    await handler.Consume(userUpdatedEvent);
+                    await handler.ConsumeAsync(userUpdatedEvent);
                 }
 
                 using (var context = AuthenticationContext.GetInMemoryContext())

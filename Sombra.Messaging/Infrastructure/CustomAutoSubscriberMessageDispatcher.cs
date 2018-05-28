@@ -15,7 +15,7 @@ namespace Sombra.Messaging.Infrastructure
 
         public void Dispatch<TMessage, TConsumer>(TMessage message)
             where TMessage : class
-            where TConsumer : IConsume<TMessage>
+            where TConsumer : class, IConsume<TMessage>
         {
             var consumer = _serviceProvider.GetRequiredService<TConsumer>();
 
@@ -24,11 +24,11 @@ namespace Sombra.Messaging.Infrastructure
 
         public Task DispatchAsync<TMessage, TConsumer>(TMessage message)
             where TMessage : class
-            where TConsumer : IConsumeAsync<TMessage>
+            where TConsumer : class, IConsumeAsync<TMessage>
         {
             var consumer = _serviceProvider.GetRequiredService<TConsumer>();
 
-            return consumer.Consume(message);
+            return consumer.ConsumeAsync(message);
         }
     }
 }

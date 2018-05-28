@@ -20,11 +20,10 @@ namespace Sombra.DonateService
 
             SetupConfiguration();
 
-            var serviceProvider = MessagingInstaller.Run(
+            var serviceProvider = ServiceInstaller.Run(
                 Assembly.GetExecutingAssembly(),
                 _rabbitMqConnectionString,
                 services => services
-                    .AddAutoMapper(Assembly.GetExecutingAssembly())
                     .AddDbContext<DonationsContext>(_sqlConnectionString),
                 ConnectionValidator.ValidateAllDbConnections, DatabaseMigrationHelper.ForceMigrations);
 

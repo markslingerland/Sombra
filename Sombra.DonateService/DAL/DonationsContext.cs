@@ -7,6 +7,6 @@ namespace Sombra.DonateService.DAL
     {
         public DonationsContext() { }
 
-        public DonationsContext(DbContextOptions<DonationsContext> options) : base(options) { }
+        public DonationsContext(DbContextOptions<DonationsContext> options, SombraContextOptions sombraContextOptions) : base(options, sombraContextOptions) { }
     }
 }

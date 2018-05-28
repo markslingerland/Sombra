@@ -2,6 +2,7 @@
 using Sombra.Messaging.Responses;
 using System;
 using System.Collections.Generic;
+using Sombra.Messaging.Shared;
 
 namespace Sombra.Messaging.Requests
 {

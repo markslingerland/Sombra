@@ -8,6 +8,7 @@ using Sombra.Infrastructure.DAL;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
+using Sombra.Messaging.Shared;
 using Sombra.SearchService.DAL;
 
 namespace Sombra.SearchService

@@ -1,12 +1,11 @@
-using Sombra.Core.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Sombra.Core.Enums;
 
-namespace Sombra.Messaging.Responses
+namespace Sombra.Messaging.Shared
 {
-    public class GetCharityActionResponse : Response
+    public class CharityAction
     {
-        public bool Success { get; set; }
         public Guid CharityActionKey { get; set; }
         public Guid CharityKey { get; set; }
         public List<UserKey> UserKeys { get; set; }

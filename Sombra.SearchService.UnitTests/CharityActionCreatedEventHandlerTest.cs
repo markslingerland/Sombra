@@ -19,18 +19,18 @@ namespace Sombra.SearchService.UnitTests
 
             try
             {
-                var Event = new CharityActionCreatedEvent(){
+                var Event = new CharityActionCreatedEvent
+                {
                     Category = Core.Enums.Category.MilieuEnNatuurbehoud,
                     CharityActionKey = Guid.NewGuid(),
                     CoverImage = "No image given",
                     IBAN = "NotReallyAnIBAN",
                     Description = "This is a very good testing description",
-                    ActionType = "ActionType",
                     CharityKey = Guid.NewGuid(),
                     Name = "TestNameAction",
                     CharityName = "TestName",
-                    UserKeys = new List<UserKey>(){ new UserKey() { Key = Guid.NewGuid() } }
-                };                
+                    UserKeys = new List<UserKey>{ new UserKey { Key = Guid.NewGuid() } }
+                };
                 
                 using (var context = SearchContext.GetInMemoryContext())
                 {
@@ -54,6 +54,6 @@ namespace Sombra.SearchService.UnitTests
             {
                 SearchContext.CloseInMemoryConnection();
             }
-        }        
+        }
     }
 }

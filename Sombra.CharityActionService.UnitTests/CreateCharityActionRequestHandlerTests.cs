@@ -33,7 +33,6 @@ namespace Sombra.CharityActionService.UnitTests
                     Category = Category.None,
                     IBAN = "",
                     Name = "",
-                    ActionType = "",
                     Description = "0-IBAN",
                     CoverImage = ""
 
@@ -55,7 +54,6 @@ namespace Sombra.CharityActionService.UnitTests
                     Assert.AreEqual(request.Category, context.CharityActions.Single().Category);
                     Assert.AreEqual(request.IBAN, context.CharityActions.Single().IBAN);
                     Assert.AreEqual(request.Name, context.CharityActions.Single().Name);
-                    Assert.AreEqual(request.ActionType, context.CharityActions.Single().ActionType);
                     Assert.AreEqual(request.Description, context.CharityActions.Single().Description);
                     Assert.AreEqual(request.CoverImage, context.CharityActions.Single().CoverImage);
                     Assert.IsFalse(context.CharityActions.Single().IsApproved);
@@ -86,7 +84,6 @@ namespace Sombra.CharityActionService.UnitTests
                     Category = Category.None,
                     IBAN = "",
                     Name = "",
-                    ActionType = "",
                     Description = "0-IBAN",
                     CoverImage = ""
 

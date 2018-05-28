@@ -8,6 +8,7 @@ using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.Messaging.Events;
 using System.Threading.Tasks;
+using Sombra.Core.Enums;
 
 namespace Sombra.CharityService
 {
@@ -28,7 +29,10 @@ namespace Sombra.CharityService
             if (charity.CharityKey == default)
             {
                 ExtendedConsole.Log("CreateCharityRequestHandler: CharityKey is empty");
-                return new CreateCharityResponse();
+                return new CreateCharityResponse
+                {
+                    ErrorType = ErrorType.InvalidKey
+                };
             }
 
             _context.Charities.Add(charity);

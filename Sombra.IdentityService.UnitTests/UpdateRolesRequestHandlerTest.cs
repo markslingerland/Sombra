@@ -95,7 +95,7 @@ namespace Sombra.IdentityService.UnitTests
                 using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     Assert.IsTrue(context.Users.Single().Role.OnlyHasFlag(Role.Donator));
-                    Assert.AreEqual(response.ErrorType, ErrorType.InvalidUserKey);
+                    Assert.AreEqual(response.ErrorType, ErrorType.InvalidKey);
                     Assert.IsFalse(response.Success);
                 }
             }

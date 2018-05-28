@@ -5,7 +5,9 @@ using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.CharityService.DAL;
 using System;
+using Sombra.Core.Enums;
 using Sombra.Infrastructure;
+using CreateCharityResponse = Sombra.Messaging.Responses.CreateCharityResponse;
 
 namespace Sombra.CharityService.UnitTests
 {
@@ -53,6 +55,46 @@ namespace Sombra.CharityService.UnitTests
                     Assert.AreEqual(request.Slogan, context.Charities.Single().Slogan);
                     Assert.IsFalse(context.Charities.Single().IsApproved);
                     Assert.IsTrue(response.Success);
+                }
+            }
+            finally
+            {
+                CharityContext.CloseInMemoryConnection();
+            }
+        }
+
+        public async Task CreateCharityRequest_Handle_Returns_InvalidKey()
+        {
+            CharityContext.OpenInMemoryConnection();
+
+            try
+            {
+                CreateCharityResponse response;
+                var request = new CreateCharityRequest
+                {
+                    CharityKey = Guid.Empty,
+                    Name = "testName",
+                    OwnerUserName = "testOwnerUserName",
+                    Email = "test@test.com",
+                    Category = Core.Enums.Category.None,
+                    KVKNumber = "",
+                    IBAN = "0-IBAN",
+                    CoverImage = "",
+                    Slogan = "Test"
+
+                };
+
+                using (var context = CharityContext.GetInMemoryContext())
+                {
+                    var handler = new CreateCharityRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
+                    response = await handler.Handle(request);
+                }
+
+                using (var context = CharityContext.GetInMemoryContext())
+                {
+                    Assert.IsFalse(context.Charities.Any());
+                    Assert.AreEqual(ErrorType.InvalidKey, response.ErrorType);
+                    Assert.IsFalse(response.Success);
                 }
             }
             finally

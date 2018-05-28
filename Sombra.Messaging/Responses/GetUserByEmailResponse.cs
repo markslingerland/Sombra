@@ -16,5 +16,6 @@ namespace Sombra.Messaging.Responses
         public string EmailAddress { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime BirthDate { get; set; }
+        public string ProfileImage { get; set; }
     }
 }

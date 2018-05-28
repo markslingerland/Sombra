@@ -17,5 +17,6 @@ namespace Sombra.Messaging.Events
         public DateTime BirthDate { get; set; }
 
         public DateTime UserCreated { get; set; }
+        public string ProfileImage { get; set; }
     }
 }

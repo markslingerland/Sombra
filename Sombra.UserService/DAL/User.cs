@@ -18,5 +18,6 @@ namespace Sombra.UserService.DAL
         public DateTime BirthDate { get; set; }
 
         public DateTime Created { get; set; }
+        public string ProfileImage { get; set; }
     }
 }

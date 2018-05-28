@@ -29,8 +29,7 @@ namespace Sombra.Messaging.Infrastructure
                     var responseType = genericArguments[1];
 
                     var pingRequestType = typeof(Ping<,>).MakeGenericType(requestType, responseType);
-                    var pingResponseType = typeof(PingResponse<>).MakeGenericType(responseType);
-                    var pingHandlerType = typeof(PingRequestHandler<,,>).MakeGenericType(pingRequestType, pingResponseType, responseType);
+                    var pingHandlerType = typeof(PingRequestHandler<,>).MakeGenericType(pingRequestType, typeof(PingResponse));
 
                     return current.AddTransient(pingHandlerType);
                 });

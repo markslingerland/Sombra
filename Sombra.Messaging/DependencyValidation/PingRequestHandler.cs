@@ -1,12 +1,14 @@
 ﻿using System.Threading.Tasks;
+using EasyNetQ;
 using Sombra.Messaging.Infrastructure;
+using Sombra.Messaging.Requests;
+using Sombra.Messaging.Responses;
 
 namespace Sombra.Messaging.DependencyValidation
 {
-    public class PingRequestHandler<TRequest, TResponse, TInnerResponse> : IAsyncRequestHandler<TRequest, TResponse>
+    public class PingRequestHandler<TRequest, TResponse> : IAsyncRequestHandler<TRequest, TResponse>
         where TRequest : class, IRequest<TResponse>
-        where TResponse : PingResponse<TInnerResponse>, new()
-        where TInnerResponse : class, IResponse
+        where TResponse : PingResponse, new()
     {
         public Task<TResponse> Handle(TRequest message)
         {
@@ -35,7 +37,7 @@ namespace Sombra.Messaging.DependencyValidation
     //        var ping = new Ping<EmailTemplateRequest, EmailTemplateResponse>();
     //        var response = bus.RequestAsync(ping);
 
-    //        var handler = new PingRequestHandler<Ping<EmailTemplateRequest, EmailTemplateResponse>, PingResponse<EmailTemplateResponse>, EmailTemplateResponse>();
+    //        var handler = new PingRequestHandler<Ping<EmailTemplateRequest, EmailTemplateResponse>, PingResponse>();
 
 
     //        var result = handler.Handle(ping);

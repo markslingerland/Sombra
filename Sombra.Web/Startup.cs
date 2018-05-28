@@ -42,10 +42,7 @@ namespace Sombra.Web
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddMemoryCache();
 
-            //services.AddScoped(c => RabbitHutch.CreateBus(_rabbitMqConnectionString, sr =>
-            //    sr.Register<ITypeNameSerializer>(sp => new CustomTypeNameSerializer())));
             services.AddScoped(c => RabbitHutch.CreateBus(_rabbitMqConnectionString));
-
             services.AddScoped<ICachingBus, CachingRabbitBus>();
 
             services.AddAutoMapper();

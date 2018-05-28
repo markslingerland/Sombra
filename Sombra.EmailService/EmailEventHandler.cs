@@ -35,7 +35,7 @@ namespace Sombra.EmailService
             return message;
         }
 
-        public async Task Consume(EmailEvent message)
+        public async Task ConsumeAsync(EmailEvent message)
         {
             var email = CreateEmailMessage(message);
             await _smtpClient.SendAsync(email);

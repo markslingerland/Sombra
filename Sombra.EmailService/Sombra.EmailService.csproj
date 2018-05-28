@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -14,15 +14,6 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <Compile Remove="Properties\Resources.Designer.cs" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <EmbeddedResource Remove="Properties\Resources.resx" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="EasyNetQ" Version="2.3.1" />
     <PackageReference Include="MailKit" Version="2.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.1.0-preview2-final" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.0-preview2-final" />
@@ -30,10 +21,6 @@
   
   <ItemGroup>
     <ProjectReference Include="..\Sombra.Messaging\Sombra.Messaging.csproj" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>

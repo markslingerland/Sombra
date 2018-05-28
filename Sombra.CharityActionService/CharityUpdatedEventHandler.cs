@@ -16,7 +16,7 @@ namespace Sombra.CharityActionService
             _context = context;
         }
 
-        public async Task Consume(CharityUpdatedEvent message)
+        public async Task ConsumeAsync(CharityUpdatedEvent message)
         {
             ExtendedConsole.Log("CharityUpdatedEvent received");
             var actionsToUpdate = _context.CharityActions.Where(a => a.CharityKey == message.CharityKey);

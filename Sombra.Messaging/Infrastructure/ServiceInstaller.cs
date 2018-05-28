@@ -17,10 +17,7 @@ namespace Sombra.Messaging.Infrastructure
 
             addAdditionalServices = addAdditionalServices ?? (s => s);
 
-            //var bus = RabbitHutch.CreateBus(busConnectionString, sr =>
-            //    sr.Register<ITypeNameSerializer>(sp => new CustomTypeNameSerializer()))
-            var bus = RabbitHutch.CreateBus(busConnectionString)
-                .WaitForConnection();
+            var bus = RabbitHutch.CreateBus(busConnectionString).WaitForConnection();
             ExtendedConsole.Log($"ServiceInstaller: Bus connected: {bus.IsConnected}.");
 
             var serviceProvider = addAdditionalServices(new ServiceCollection())
@@ -36,9 +33,9 @@ namespace Sombra.Messaging.Infrastructure
             responder.RespondAsync(assembly);
             ExtendedConsole.Log("ServiceInstaller: AutoResponders initialized.");
 
-            //var pingResponder = new PingResponder(bus, new AutoResponderRequestDispatcher(serviceProvider));
-            //pingResponder.RespondAsync(assembly);
-            //ExtendedConsole.Log("ServiceInstaller: PingResponder initialized.");
+            var pingResponder = new PingResponder(bus, new AutoResponderRequestDispatcher(serviceProvider));
+            pingResponder.RespondAsync(assembly);
+            ExtendedConsole.Log("ServiceInstaller: PingResponder initialized.");
 
             var subscriber = new CustomAutoSubscriber(bus, new CustomAutoSubscriberMessageDispatcher(serviceProvider), assembly.FullName);
             subscriber.SubscribeAsync(assembly);

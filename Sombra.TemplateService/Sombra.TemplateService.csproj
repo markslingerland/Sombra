@@ -18,7 +18,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.0-preview2-final" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.1.0-preview2-final" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.0-preview2-final" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.0-preview2-final" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +30,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Seed\ForgotPassword.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+	<None Update="Seed\ConfirmAccount.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

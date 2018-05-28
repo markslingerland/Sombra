@@ -1,6 +1,7 @@
 using Sombra.Core.Enums;
 using System;
 using System.Collections.Generic;
+using Sombra.Messaging.Shared;
 
 namespace Sombra.Messaging.Responses{
     public class GetCharityActionResponse : Response {

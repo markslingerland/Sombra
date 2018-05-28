@@ -48,7 +48,7 @@ namespace Sombra.CharityActionService.UnitTests
 
                 }
 
-                var userRequest = new Sombra.Messaging.UserKey() { Key = key };
+                var userRequest = new Messaging.Shared.UserKey { Key = key };
                 var request = new GetCharityActionRequest
                 {
                     CharityActionKey = keyAction

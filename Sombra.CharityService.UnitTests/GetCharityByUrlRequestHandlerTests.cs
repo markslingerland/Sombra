@@ -32,7 +32,8 @@ namespace Sombra.CharityService.UnitTests
                         IBAN = "0-IBAN",
                         CoverImage = "",
                         Slogan = "Test",
-                        Url = "test"
+                        Url = "test",
+                        IsApproved = true
                     };
 
                     context.Add(charity);
@@ -77,6 +78,59 @@ namespace Sombra.CharityService.UnitTests
 
         [TestMethod]
         public async Task GetCharityByUrlRequest_Handle_Returns_Null()
+        {
+            CharityContext.OpenInMemoryConnection();
+            try
+            {
+                //Arrange
+
+                using (var context = CharityContext.GetInMemoryContext())
+                {
+                    var charity = new Charity
+                    {
+                        CharityKey = Guid.NewGuid(),
+                        Name = "testNameCharity",
+                        OwnerUserName = "testNAmeOwner",
+                        Email = "test@test.com",
+                        Category = Core.Enums.Category.None,
+                        KVKNumber = "",
+                        IBAN = "0-IBAN",
+                        CoverImage = "",
+                        Slogan = "Test",
+                        Url = "test",
+                        IsApproved = true
+                    };
+
+                    context.Add(charity);
+                    context.SaveChanges();
+
+                }
+
+                var request = new GetCharityByUrlRequest
+                {
+                    Url = "WeirdUrl"
+                };
+
+                GetCharityByUrlResponse response;
+
+                //Act
+                using (var context = CharityContext.GetInMemoryContext())
+                {
+                    var handler = new GetCharityByUrlRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
+                    response = await handler.Handle(request);
+                }
+
+                //Assert
+                Assert.IsFalse(response.Success);
+            }
+            finally
+            {
+                CharityContext.CloseInMemoryConnection();
+            }
+        }
+
+        [TestMethod]
+        public async Task GetCharityByUrlRequest_Handle_Returns_Null_NotApproved()
         {
             CharityContext.OpenInMemoryConnection();
             try

@@ -25,6 +25,7 @@ namespace Sombra.CharityService
                 Assembly.GetExecutingAssembly(),
                 _rabbitMqConnectionString,
                 services => services
+                    .AddAutoMapper(Assembly.GetExecutingAssembly())
                     .AddDbContext<CharityContext>(_sqlConnectionString),
                 ConnectionValidator.ValidateAllDbConnections, DatabaseMigrationHelper.ForceMigrations);
 

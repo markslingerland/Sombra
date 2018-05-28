@@ -34,7 +34,7 @@ namespace Sombra.UserService
                 ExtendedConsole.Log("CreateUserRequestHandler: UserKey is empty");
                 return new CreateUserResponse
                 {
-                    ErrorType = ErrorType.InvalidUserKey
+                    ErrorType = ErrorType.InvalidKey
                 };
             }
 

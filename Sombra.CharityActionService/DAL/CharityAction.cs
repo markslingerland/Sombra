@@ -7,7 +7,6 @@ namespace Sombra.CharityActionService.DAL
 {
     public class CharityAction : Entity
     {
-        // TODO at more data relevant for charityAction
         public Guid CharityActionKey { get; set; }
         public Guid CharityKey { get; set; }    
         public virtual ICollection<UserKey> UserKeys { get; set; }
@@ -18,6 +17,6 @@ namespace Sombra.CharityActionService.DAL
         public string ActionType { get; set; }
         public string Description { get; set; }
         public string CoverImage { get; set; }
-
+        public bool IsApproved { get; set; }
     }
 }

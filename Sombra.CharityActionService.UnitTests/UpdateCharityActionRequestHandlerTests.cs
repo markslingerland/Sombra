@@ -2,16 +2,14 @@
 using System.Linq;
 using System.Threading.Tasks;
 using EasyNetQ;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Sombra.Messaging.Events;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.CharityActionService.DAL;
-using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using Sombra.Core.Enums;
 using Sombra.Infrastructure;
 
 namespace Sombra.CharityActionService.UnitTests
@@ -43,7 +41,7 @@ namespace Sombra.CharityActionService.UnitTests
                     CharityKey = keyCharity,
                     UserKeys = new List<Messaging.UserKey>() { userMessenging },
                     CharityName = "",
-                    Category = Core.Enums.Category.None,
+                    Category = Category.None,
                     IBAN = "",
                     Name = "",
                     ActionType = "",
@@ -60,7 +58,7 @@ namespace Sombra.CharityActionService.UnitTests
                         CharityKey = keyCharity,
                         UserKeys = new List<UserKey>() { new UserKey() { Key = Guid.NewGuid() } },
                         CharityName = "testNAmeOwner",
-                        Category = Core.Enums.Category.Dierenbescherming,
+                        Category = Category.Dierenbescherming,
                         IBAN = "",
                         Name = "",
                         ActionType = "",
@@ -116,7 +114,7 @@ namespace Sombra.CharityActionService.UnitTests
                 var keyCharity = Guid.NewGuid();
                 var wrongKey = Guid.NewGuid();
                 var key = Guid.NewGuid();
-                var user = new UserKey() { Key = key };
+
                 var userMessenging = new Messaging.UserKey { Key = key };
                 var request = new UpdateCharityActionRequest
                 {
@@ -124,7 +122,7 @@ namespace Sombra.CharityActionService.UnitTests
                     CharityKey = keyCharity,
                     UserKeys = new List<Messaging.UserKey>() { userMessenging },
                     CharityName = "",
-                    Category = Core.Enums.Category.None,
+                    Category = Category.None,
                     IBAN = "",
                     Name = "",
                     ActionType = "",
@@ -141,7 +139,7 @@ namespace Sombra.CharityActionService.UnitTests
                         CharityKey = keyCharity,
                         UserKeys = new List<UserKey>() { new UserKey() { Key = Guid.NewGuid() } },
                         CharityName = "testNAmeOwner",
-                        Category = Core.Enums.Category.Dierenbescherming,
+                        Category = Category.Dierenbescherming,
                         IBAN = "",
                         Name = "",
                         ActionType = "",
@@ -159,7 +157,12 @@ namespace Sombra.CharityActionService.UnitTests
                 }
 
                 //Assert
-                Assert.IsFalse(response.Success);
+                using (var context = CharityActionContext.GetInMemoryContext())
+                {
+                    Assert.AreEqual(ErrorType.NotFound, response.ErrorType);
+                    Assert.AreEqual("testNAmeOwner", context.CharityActions.Single().CharityName);
+                    Assert.IsFalse(response.Success);
+                }
             }
             finally
             {

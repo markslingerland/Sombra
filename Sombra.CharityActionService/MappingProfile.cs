@@ -19,7 +19,8 @@ namespace Sombra.CharityActionService
             CreateMap<CharityAction, UpdateCharityActionResponse>()
                 .ForMember(d => d.Success, opt => opt.UseValue(true));
             CreateMap<UpdateCharityActionRequest, CharityAction>()
-                .IgnoreEntityProperties();
+                .IgnoreEntityProperties()
+                .ForMember(d => d.IsApproved, opt => opt.UseValue(false));
             CreateMap<CharityAction, DeleteCharityActionResponse>()
                 .ForMember(d => d.Success, opt => opt.UseValue(true));
         }

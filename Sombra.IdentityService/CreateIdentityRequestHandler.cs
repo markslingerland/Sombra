@@ -24,7 +24,7 @@ namespace Sombra.IdentityService
         {
             if (message.UserKey == default) return new CreateIdentityResponse
             {
-                ErrorType = ErrorType.InvalidUserKey
+                ErrorType = ErrorType.InvalidKey
             };
 
             if (message.CredentialType == CredentialType.Email)

@@ -7,25 +7,23 @@ namespace Sombra.Infrastructure.DAL
 {
     public abstract class SombraContext<T> : DbContext where T : SombraContext<T>, new()
     {
-        private readonly bool _seed = true;
+        private readonly bool _seed;
         private static SqliteConnection _sqliteConnection;
 
-        protected SombraContext(DbContextOptions options) : base(options)
+        protected SombraContext(DbContextOptions options, SombraContextOptions sombraContextOptions) : base(options)
         {
+            _seed = sombraContextOptions.Seed;
             if (Database.IsSqlServer()) Database.Migrate();
         }
 
-        protected SombraContext(DbContextOptions options, bool seed) : base(options)
-        {
-            _seed = seed;
-            if (Database.IsSqlServer()) Database.Migrate();
-        }
-
-        protected SombraContext() : this(GetOptions(), false) { }
+        protected SombraContext() : this(GetOptions(), new SombraContextOptions()) { }
 
         public static T GetInMemoryContext()
         {
-            return new T();
+            var context = new T();
+            context.Database.EnsureCreated();
+
+            return context;
         }
 
         public static void OpenInMemoryConnection()

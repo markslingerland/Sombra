@@ -22,7 +22,7 @@ namespace Sombra.Infrastructure.DAL
             var connectionString = configuration[ConnectionStringName];
             builder.UseSqlServer(connectionString);
 
-            return (TContext) Activator.CreateInstance(typeof(TContext), builder.Options);
+            return (TContext) Activator.CreateInstance(typeof(TContext), builder.Options, new SombraContextOptions().UseSeed());
         }
     }
 }

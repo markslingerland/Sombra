@@ -9,7 +9,7 @@ namespace Sombra.Messaging.Infrastructure
 {
     public static class BusExtensions
     {
-        public static async Task<TResponse> RequestAsync<TResponse>(this IBus bus, IRequest<TResponse> request)
+        public static Task<TResponse> RequestAsync<TResponse>(this IBus bus, IRequest<TResponse> request)
             where TResponse : class, IResponse
         {
             var requestMethod = typeof(IBus).GetMethods().Single(m => m.Name == nameof(IBus.RequestAsync) && m.GetParameters().Length == 1);
@@ -17,17 +17,13 @@ namespace Sombra.Messaging.Infrastructure
 
             try
             {
-                return await (Task<TResponse>) typedRequestMethod.Invoke(bus, new object[] {request});
+                return (Task<TResponse>) typedRequestMethod.Invoke(bus, new object[] {request});
             }
             catch (TimeoutException ex)
             {
                 ExtendedConsole.Log($"Request {request.GetType().Name} failed. Exception: {ex}");
 
-                var responseType = typeof(TResponse);
-                var response = (TResponse) Activator.CreateInstance(responseType);
-                response.IsRequestSuccessful = false;
-
-                return response;
+                return Task.FromResult((TResponse)((TResponse) Activator.CreateInstance(typeof(TResponse))).RequestFailed());
             }
         }
 

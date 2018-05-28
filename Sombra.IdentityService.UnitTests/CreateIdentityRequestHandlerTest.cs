@@ -19,11 +19,6 @@ namespace Sombra.IdentityService.UnitTests
             AuthenticationContext.OpenInMemoryConnection();
             try
             {
-                using (var context = AuthenticationContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
-
                 CreateIdentityResponse response;
                 var request = new CreateIdentityRequest
                 {
@@ -48,9 +43,7 @@ namespace Sombra.IdentityService.UnitTests
                     Assert.IsTrue(context.Users.Count() == 1);
                     Assert.AreEqual(request.UserName, context.Users.Single().Name);
                     Assert.AreEqual(request.UserKey, context.Users.Single().UserKey);
-
-                    Assert.IsTrue(context.Roles.Count() == 1);
-                    Assert.AreEqual(request.Role, context.Roles.Single().RoleName);
+                    Assert.AreEqual(request.Role, context.Users.Single().Role);
 
                     Assert.IsTrue(context.Credentials.Count() == 1);
                     Assert.AreEqual(request.CredentialType, context.Credentials.Single().CredentialType);
@@ -70,11 +63,6 @@ namespace Sombra.IdentityService.UnitTests
             AuthenticationContext.OpenInMemoryConnection();
             try
             {
-                using (var context = AuthenticationContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
-
                 CreateIdentityResponse response;
                 var request = new CreateIdentityRequest();
 
@@ -106,8 +94,6 @@ namespace Sombra.IdentityService.UnitTests
             {
                 using (var context = AuthenticationContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
-
                     var user = new User
                     {
                         Id = Guid.NewGuid(),

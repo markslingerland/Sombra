@@ -7,10 +7,9 @@ namespace Sombra.IdentityService.DAL
     {
         public AuthenticationContext() { }
 
-        public AuthenticationContext(DbContextOptions<AuthenticationContext> options) : base(options) { }
+        public AuthenticationContext(DbContextOptions<AuthenticationContext> options, SombraContextOptions sombraContextOptions) : base(options, sombraContextOptions) { }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Credential> Credentials { get; set; }
-        public DbSet<Role> Roles { get; set; }
     }
 }

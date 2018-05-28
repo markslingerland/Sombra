@@ -5,6 +5,7 @@ using EasyNetQ;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Sombra.Core.Enums;
+using Sombra.Infrastructure;
 using Sombra.Messaging.Events;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
@@ -25,11 +26,6 @@ namespace Sombra.UserService.UnitTests
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<UserCreatedEvent>())).Returns(Task.FromResult(true));
 
-                using (var context = UserContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
-
                 CreateUserResponse response;
                 var request = new CreateUserRequest
                 {
@@ -40,7 +36,7 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    var handler = new CreateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    var handler = new CreateUserRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
@@ -73,11 +69,6 @@ namespace Sombra.UserService.UnitTests
                 var busMock = new Mock<IBus>();
                 busMock.Setup(m => m.PublishAsync(It.IsAny<UserCreatedEvent>())).Returns(Task.FromResult(true));
 
-                using (var context = UserContext.GetInMemoryContext())
-                {
-                    context.Database.EnsureCreated();
-                }
-
                 CreateUserResponse response;
                 var request = new CreateUserRequest
                 {
@@ -87,7 +78,7 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    var handler = new CreateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    var handler = new CreateUserRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()), busMock.Object);
                     response = await handler.Handle(request);
                 }
 
@@ -124,7 +115,6 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    context.Database.EnsureCreated();
                     context.Users.Add(user);
                     context.SaveChanges();
                 }
@@ -140,7 +130,7 @@ namespace Sombra.UserService.UnitTests
 
                 using (var context = UserContext.GetInMemoryContext())
                 {
-                    var handler = new CreateUserRequestHandler(context, Helper.GetMapper(), busMock.Object);
+                    var handler = new CreateUserRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()), busMock.Object);
                     response = await handler.Handle(request);
                 }
 

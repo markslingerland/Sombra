@@ -1,0 +1,244 @@
+@{ ViewData["Title"] = "Goede doelen"; } 
+@section Styles{
+<link rel="stylesheet" href="~/css/search/search.css" /> }
+
+
+<div id="filter">
+    <a href="#" class="signin-charity source-600">Een goed doel aanmelden</a>
+    <h2 class="monster-200 filter-title">@ViewData["Title"]</h2>
+
+    <div class="form-holders">
+        <form id="Categorieën" class="filter-form" action="filter-charityActions">
+            <input class="filter-input" type="text" placeholder="Zoeken..." name="Zoeken...">
+            <button class="submit-button monster-300" type="submit"><i class="fa fa-search"></i></button>
+
+            <div class="custom-select monster-300">
+                <select class="monster-300" form="Categorieën">
+            <option class="monster-300 option" value="" hidden>Categorieën</option>
+            <option class="monster-300 option" value="1">Kerk en levensbeschouwing</option>
+            <option class="monster-300 option" value="2">sport en recreatie</option>
+            <option class="monster-300 option" value="3">internationale hulp</option>
+            <option class="monster-300 option" value="4">maatschappelijke en sociale doelen</option>
+            <option class="monster-300 option" value="5">gezondheid</option>
+            <option class="monster-300 option" value="6">milieu en natuurbehoud</option>
+            <option class="monster-300 option" value="7">dierenbescherming</option>
+            <option class="monster-300 option" value="8">cultuur</option>
+            <option class="monster-300 option" value="9">onderwijs en onderzoek</option>
+            </select>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="selected-category">
+    <div class="selected-categories">
+        <a class="selected-category source-800" href="#">GEZONDHEID
+            <span class="cross-holder">
+                <span class="icon-holder">
+                    <i class="fas fa-times">
+                    </i>
+                </span>
+            </span>
+        </a>
+        <a class="selected-category source-800" href="#">maatschappelijke en sociale doelen
+            <span class="cross-holder">
+                <span class="icon-holder">
+                    <i class="fas fa-times">
+                    </i>
+                </span>
+            </span>
+        </a>
+    </div>
+</div>
+
+<div id="charity-results-holder">
+    <p class="results source-400"><span class="source-700">34 </span>zoekresultaten</p>
+
+    <div id="charity-results">
+        
+        <div class="charity-holder">
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
+                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
+                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
+                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
+                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
+                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
+                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
+                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
+                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
+                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<div id="pagination">
+  <a href="#"><img src="Assets/icons/arrow-icon-to-left.svg" alt="#"></a>
+  <a class="source-700" href="#">1</a>
+  <a class="source-300"href="#">2</a>
+  <a class="source-300"href="#">3</a>
+  <a class="source-300"href="#">4</a>
+  <a class="source-300"href="#">...</a>
+  <a class="source-300"href="#">12</a>
+  <a href="#"><img src="Assets/icons/icon-arrow-to-right.svg" alt="#"></a>
+</div>

@@ -1,4 +1,4 @@
-version: '3'
+version: '3.4'
 
 services:
   sombra.web:
@@ -9,17 +9,23 @@ services:
     depends_on:
       - rabbitmq
 
-  sombra.web.unittests:
-    image: sombra.web.unittests
+  sombra.charityservice:
+    image: sombra.charityservice
     build:
       context: .
-      dockerfile: Sombra.Web.UnitTests/Dockerfile
+      dockerfile: Sombra.CharityService/Dockerfile
+    depends_on:
+      - rabbitmq
+      - sqlserver
 
-  sombra.core.unittests:
-    image: sombra.core.unittests
+  sombra.charityactionservice:
+    image: sombra.charityactionservice
     build:
       context: .
-      dockerfile: Sombra.Core.UnitTests/Dockerfile
+      dockerfile: Sombra.CharityActionService/Dockerfile
+    depends_on:
+      - rabbitmq
+      - sqlserver
 
   sombra.emailservice:
     image: sombra.emailservice
@@ -28,12 +34,6 @@ services:
       dockerfile: Sombra.EmailService/Dockerfile
     depends_on:
       - rabbitmq
-
-  sombra.emailservice.unittests:
-    image: sombra.emailservice.unittests
-    build:
-      context: .
-      dockerfile: Sombra.EmailService.UnitTests/Dockerfile
   
   sombra.identityservice:
     image: sombra.identityservice
@@ -43,12 +43,6 @@ services:
     depends_on:
       - rabbitmq
       - sqlserver
-
-  sombra.identityservice.unittests:
-    image: sombra.identityservice.unittests
-    build:
-      context: .
-      dockerfile: Sombra.IdentityService.UnitTests/Dockerfile
       
   sombra.templateservice:
     image: sombra.templateservice
@@ -59,12 +53,6 @@ services:
       - rabbitmq
       - sqlserver
 
-  sombra.templateservice.unittests:
-    image: sombra.templateservice.unittests
-    build:
-      context: .
-      dockerfile: Sombra.TemplateService.UnitTests/Dockerfile
-
   sombra.userservice:
     image: sombra.userservice
     build:
@@ -73,12 +61,6 @@ services:
     depends_on:
       - rabbitmq
       - sqlserver
-
-  sombra.userservice.unittests:
-    image: sombra.userservice.unittests
-    build:
-      context: .
-      dockerfile: Sombra.UserService.UnitTests/Dockerfile
 
   sombra.donateservice:
     image: sombra.donateservice
@@ -89,12 +71,6 @@ services:
       - rabbitmq
       - sqlserver
 
-  sombra.donateservice.unittests:
-    image: sombra.donateservice.unittests
-    build:
-      context: .
-      dockerfile: Sombra.DonateService.UnitTests/Dockerfile
-
   sombra.loggingservice:
     image: sombra.loggingservice
     build:
@@ -104,6 +80,23 @@ services:
       - rabbitmq
       - mongoserver
 
+  sombra.searchservice:
+    image: sombra.searchservice
+    build:
+      context: .
+      dockerfile: Sombra.SearchService/Dockerfile
+    depends_on:
+      - rabbitmq
+      - sqlserver
+
+  sombra.timeservice:
+    image: sombra.timeservice
+    build:
+      context: .
+      dockerfile: Sombra.TimeService/Dockerfile
+    depends_on:
+      - rabbitmq
+      - sqlserver
 
   rabbitmq:
     image: rabbitmq:3-management

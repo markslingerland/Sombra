@@ -46,23 +46,6 @@ namespace Sombra.IdentityService.Migrations
                     b.ToTable("Credentials");
                 });
 
-            modelBuilder.Entity("Sombra.IdentityService.DAL.Role", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("RoleName")
-                        .HasMaxLength(64);
-
-                    b.Property<Guid>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Roles");
-                });
-
             modelBuilder.Entity("Sombra.IdentityService.DAL.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -80,6 +63,8 @@ namespace Sombra.IdentityService.Migrations
                         .IsRequired()
                         .HasMaxLength(64);
 
+                    b.Property<int>("Role");
+
                     b.Property<Guid>("UserKey");
 
                     b.HasKey("Id");
@@ -91,14 +76,6 @@ namespace Sombra.IdentityService.Migrations
                 {
                     b.HasOne("Sombra.IdentityService.DAL.User", "User")
                         .WithMany("Credentials")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Sombra.IdentityService.DAL.Role", b =>
-                {
-                    b.HasOne("Sombra.IdentityService.DAL.User", "User")
-                        .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

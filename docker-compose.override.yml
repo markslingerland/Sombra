@@ -1,13 +1,28 @@
-version: '3'
+version: '3.4'
 
 services:
   sombra.web:
     environment:
+      - CONTAINER_TYPE=Docker
       - ASPNETCORE_ENVIRONMENT=Development
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
     ports:
       - "80:80"
-  
+ 
+  sombra.charityservice:
+    environment:
+      - CONTAINER_TYPE=Docker
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
+      - CHARITY_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Charities;
+
+  sombra.charityactionservice:
+    environment:
+      - CONTAINER_TYPE=Docker
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
+      - CHARITYACTION_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=CharityActions;
+
   sombra.emailservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -48,11 +63,26 @@ services:
       - USER_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Users;
 
   sombra.donateservice:
-    environment:
+      environment:
       - CONTAINER_TYPE=Docker
       - ASPNETCORE_ENVIRONMENT=Development
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - DONATIONS_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Donations;
+
+  sombra.searchservice:
+    environment:
+      - CONTAINER_TYPE=Docker
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
+      - SEARCH_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Search;
+
+  sombra.timeservice:
+    environment:
+      - CONTAINER_TYPE=Docker
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
+      - TIME_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Time;
+
 
   rabbitmq:
     environment:

@@ -51,7 +51,7 @@ namespace Sombra.CharityService.UnitTests
                     Assert.AreEqual(request.IBAN, context.Charities.Single().IBAN);
                     Assert.AreEqual(request.CoverImage, context.Charities.Single().CoverImage);
                     Assert.AreEqual(request.Slogan, context.Charities.Single().Slogan);
-                    Assert.IsFalse(context.Charities.Single().IsActive);
+                    Assert.IsFalse(context.Charities.Single().IsApproved);
                     Assert.IsTrue(response.Success);
                 }
             }

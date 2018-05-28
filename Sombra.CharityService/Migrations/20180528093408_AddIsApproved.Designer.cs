@@ -10,8 +10,8 @@ using Sombra.CharityService.DAL;
 namespace Sombra.CharityService.Migrations
 {
     [DbContext(typeof(CharityContext))]
-    [Migration("20180528093408_AddIsActive")]
-    partial class AddIsActive
+    [Migration("20180528093408_AddIsApproved")]
+    partial class AddIsApproved
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,7 +35,7 @@ namespace Sombra.CharityService.Migrations
 
                     b.Property<string>("IBAN");
 
-                    b.Property<bool>("IsActive");
+                    b.Property<bool>("IsApproved");
 
                     b.Property<string>("KVKNumber");
 

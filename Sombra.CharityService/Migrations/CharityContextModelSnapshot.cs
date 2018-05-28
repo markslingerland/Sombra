@@ -34,7 +34,7 @@ namespace Sombra.CharityService.Migrations
 
                     b.Property<string>("IBAN");
 
-                    b.Property<bool>("IsActive");
+                    b.Property<bool>("IsApproved");
 
                     b.Property<string>("KVKNumber");
 

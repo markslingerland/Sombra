@@ -31,13 +31,13 @@ namespace Sombra.CharityService
             var charity = await _context.Charities.FirstOrDefaultAsync(b => b.CharityKey.Equals(message.CharityKey));
             if (charity != null)
             {
-                if (charity.IsActive)
+                if (charity.IsApproved)
                     return new ApproveCharityResponse
                     {
                         ErrorType = ErrorType.AlreadyActive
                     };
 
-                charity.IsActive = true;
+                charity.IsApproved = true;
                 await _context.SaveChangesAsync();
 
                 var charityCreatedEvent = _mapper.Map<CharityCreatedEvent>(charity);

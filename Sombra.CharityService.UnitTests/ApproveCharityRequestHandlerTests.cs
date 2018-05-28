@@ -58,7 +58,7 @@ namespace Sombra.CharityService.UnitTests
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    Assert.IsTrue(context.Charities.Single().IsActive);
+                    Assert.IsTrue(context.Charities.Single().IsApproved);
                     Assert.IsTrue(response.Success);
                 }
                 busMock.Verify(m => m.PublishAsync(It.Is<CharityCreatedEvent>(e => e.CharityKey == request.CharityKey)), Times.Once);
@@ -87,7 +87,7 @@ namespace Sombra.CharityService.UnitTests
                 var charity = new Charity
                 {
                     CharityKey = request.CharityKey,
-                    IsActive = true,
+                    IsApproved = true,
                     Name = "0",
                     OwnerUserName = "0",
                     Email = "testEmail",
@@ -112,7 +112,7 @@ namespace Sombra.CharityService.UnitTests
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    Assert.IsTrue(context.Charities.Single().IsActive);
+                    Assert.IsTrue(context.Charities.Single().IsApproved);
                     Assert.IsFalse(response.Success);
                     Assert.AreEqual(ErrorType.AlreadyActive, response.ErrorType);
                 }
@@ -166,7 +166,7 @@ namespace Sombra.CharityService.UnitTests
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    Assert.IsFalse(context.Charities.Single().IsActive);
+                    Assert.IsFalse(context.Charities.Single().IsApproved);
                     Assert.IsFalse(response.Success);
                     Assert.AreEqual(ErrorType.NotFound, response.ErrorType);
                 }

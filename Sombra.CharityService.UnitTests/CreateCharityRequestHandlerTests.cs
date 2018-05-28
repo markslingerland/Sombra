@@ -2,12 +2,11 @@
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 using Sombra.CharityService.DAL;
 using System;
 using Sombra.Core.Enums;
 using Sombra.Infrastructure;
-using CreateCharityResponse = Sombra.Messaging.Responses.CreateCharityResponse;
+using Sombra.Messaging.Responses;
 
 namespace Sombra.CharityService.UnitTests
 {
@@ -28,7 +27,7 @@ namespace Sombra.CharityService.UnitTests
                     Name = "testName",
                     OwnerUserName = "testOwnerUserName",
                     Email = "test@test.com",
-                    Category = Core.Enums.Category.None,
+                    Category = Category.None,
                     KVKNumber = "",
                     IBAN = "0-IBAN",
                     CoverImage = "",
@@ -63,6 +62,7 @@ namespace Sombra.CharityService.UnitTests
             }
         }
 
+        [TestMethod]
         public async Task CreateCharityRequest_Handle_Returns_InvalidKey()
         {
             CharityContext.OpenInMemoryConnection();
@@ -76,7 +76,7 @@ namespace Sombra.CharityService.UnitTests
                     Name = "testName",
                     OwnerUserName = "testOwnerUserName",
                     Email = "test@test.com",
-                    Category = Core.Enums.Category.None,
+                    Category = Category.None,
                     KVKNumber = "",
                     IBAN = "0-IBAN",
                     CoverImage = "",

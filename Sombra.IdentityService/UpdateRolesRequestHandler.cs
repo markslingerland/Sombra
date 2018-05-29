@@ -43,7 +43,7 @@ namespace Sombra.IdentityService
 
             return new UpdateRolesResponse
             {
-                ErrorType = ErrorType.InvalidUserKey
+                ErrorType = ErrorType.InvalidKey
             };
         }
     }

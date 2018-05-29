@@ -3,6 +3,7 @@ using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using Sombra.CharityActionService.DAL;
 using Sombra.Infrastructure.Extensions;
+using Sombra.Messaging.Events;
 
 namespace Sombra.CharityActionService
 {
@@ -10,18 +11,17 @@ namespace Sombra.CharityActionService
     {
         public MappingProfile()
         {
-            CreateMap<CharityAction, CreateCharityActionResponse>()
-                .ForMember(d => d.Success, opt => opt.UseValue(true));
             CreateMap<CreateCharityActionRequest, CharityAction>()
-                .IgnoreEntityProperties();
-            CreateMap<CharityAction, GetCharityActionResponse>()
+                .IgnoreEntityProperties()
+                .ForMember(d => d.IsApproved, opt => opt.UseValue(false));
+
+            CreateMap<CharityAction, Messaging.Shared.CharityAction>();
+            CreateMap<CharityAction, GetCharityActionByKeyResponse>()
+                .ForMember(d => d.Content, opt => opt.MapFrom(s => s))
                 .ForMember(d => d.Success, opt => opt.UseValue(true));
-            CreateMap<CharityAction, UpdateCharityActionResponse>()
-                .ForMember(d => d.Success, opt => opt.UseValue(true));
-            CreateMap<UpdateCharityActionRequest, CharityAction>()
-                .IgnoreEntityProperties();
-            CreateMap<CharityAction, DeleteCharityActionResponse>()
-                .ForMember(d => d.Success, opt => opt.UseValue(true));
+
+            CreateMap<CharityAction, CharityActionUpdatedEvent>();
+            CreateMap<CharityAction, CharityActionCreatedEvent>();
         }
     }
 }

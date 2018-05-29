@@ -1,14 +1,12 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using EasyNetQ;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using Sombra.Messaging.Events;
 using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 using Sombra.CharityService.DAL;
 using System;
+using Sombra.Core.Enums;
 using Sombra.Infrastructure;
+using Sombra.Messaging.Responses;
 
 namespace Sombra.CharityService.UnitTests
 {
@@ -22,9 +20,6 @@ namespace Sombra.CharityService.UnitTests
 
             try
             {
-                var busMock = new Mock<IBus>();
-                busMock.Setup(m => m.PublishAsync(It.IsAny<CharityCreatedEvent>())).Returns(Task.FromResult(true));
-
                 CreateCharityResponse response;
                 var request = new CreateCharityRequest
                 {
@@ -32,7 +27,7 @@ namespace Sombra.CharityService.UnitTests
                     Name = "testName",
                     OwnerUserName = "testOwnerUserName",
                     Email = "test@test.com",
-                    Category = Core.Enums.Category.None,
+                    Category = Category.None,
                     KVKNumber = "",
                     IBAN = "0-IBAN",
                     CoverImage = "",
@@ -42,7 +37,7 @@ namespace Sombra.CharityService.UnitTests
 
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    var handler = new CreateCharityRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()), busMock.Object);
+                    var handler = new CreateCharityRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
                     response = await handler.Handle(request);
                 }
 
@@ -57,9 +52,9 @@ namespace Sombra.CharityService.UnitTests
                     Assert.AreEqual(request.IBAN, context.Charities.Single().IBAN);
                     Assert.AreEqual(request.CoverImage, context.Charities.Single().CoverImage);
                     Assert.AreEqual(request.Slogan, context.Charities.Single().Slogan);
+                    Assert.IsFalse(context.Charities.Single().IsApproved);
                     Assert.IsTrue(response.Success);
                 }
-                busMock.Verify(m => m.PublishAsync(It.Is<CharityCreatedEvent>(e => e.CharityKey == request.CharityKey && e.Name == request.Name)), Times.Once);
             }
             finally
             {
@@ -67,5 +62,45 @@ namespace Sombra.CharityService.UnitTests
             }
         }
 
+        [TestMethod]
+        public async Task CreateCharityRequest_Handle_Returns_InvalidKey()
+        {
+            CharityContext.OpenInMemoryConnection();
+
+            try
+            {
+                CreateCharityResponse response;
+                var request = new CreateCharityRequest
+                {
+                    CharityKey = Guid.Empty,
+                    Name = "testName",
+                    OwnerUserName = "testOwnerUserName",
+                    Email = "test@test.com",
+                    Category = Category.None,
+                    KVKNumber = "",
+                    IBAN = "0-IBAN",
+                    CoverImage = "",
+                    Slogan = "Test"
+
+                };
+
+                using (var context = CharityContext.GetInMemoryContext())
+                {
+                    var handler = new CreateCharityRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
+                    response = await handler.Handle(request);
+                }
+
+                using (var context = CharityContext.GetInMemoryContext())
+                {
+                    Assert.IsFalse(context.Charities.Any());
+                    Assert.AreEqual(ErrorType.InvalidKey, response.ErrorType);
+                    Assert.IsFalse(response.Success);
+                }
+            }
+            finally
+            {
+                CharityContext.CloseInMemoryConnection();
+            }
+        }
     }
 }

@@ -37,7 +37,6 @@ namespace Sombra.CharityActionService.UnitTests
                         Category = Core.Enums.Category.None,
                         IBAN = "",
                         Name = "",
-                        ActionType = "",
                         Description = "0-IBAN",
                         CoverImage = ""
 
@@ -48,13 +47,12 @@ namespace Sombra.CharityActionService.UnitTests
 
                 }
 
-                var userRequest = new Sombra.Messaging.UserKey() { Key = key };
-                var request = new GetCharityActionRequest
+                var request = new GetCharityActionByKeyRequest
                 {
                     CharityActionKey = keyAction
                 };
 
-                GetCharityActionResponse response;
+                GetCharityActionByKeyResponse response;
 
                 //Act
                 using (var context = CharityActionContext.GetInMemoryContext())
@@ -68,16 +66,15 @@ namespace Sombra.CharityActionService.UnitTests
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
                     
-                    Assert.AreEqual(response.CharityActionKey, context.CharityActions.Single().CharityActionKey);
-                    Assert.AreEqual(response.CharityKey, context.CharityActions.Single().CharityKey);
-                    CollectionAssert.AreEquivalent(response.UserKeys.Select(k => k.Key).ToList(), context.UserKeys.Select(u => u.Key).ToList());
-                    Assert.AreEqual(response.CharityName, context.CharityActions.Single().CharityName);
-                    Assert.AreEqual(response.Category, context.CharityActions.Single().Category);
-                    Assert.AreEqual(response.IBAN, context.CharityActions.Single().IBAN);
-                    Assert.AreEqual(response.Name, context.CharityActions.Single().Name);
-                    Assert.AreEqual(response.ActionType, context.CharityActions.Single().ActionType);
-                    Assert.AreEqual(response.Description, context.CharityActions.Single().Description);
-                    Assert.AreEqual(response.CoverImage, context.CharityActions.Single().CoverImage);
+                    Assert.AreEqual(response.Content.CharityActionKey, context.CharityActions.Single().CharityActionKey);
+                    Assert.AreEqual(response.Content.CharityKey, context.CharityActions.Single().CharityKey);
+                    CollectionAssert.AreEquivalent(response.Content.UserKeys.Select(k => k.Key).ToList(), context.UserKeys.Select(u => u.Key).ToList());
+                    Assert.AreEqual(response.Content.CharityName, context.CharityActions.Single().CharityName);
+                    Assert.AreEqual(response.Content.Category, context.CharityActions.Single().Category);
+                    Assert.AreEqual(response.Content.IBAN, context.CharityActions.Single().IBAN);
+                    Assert.AreEqual(response.Content.Name, context.CharityActions.Single().Name);
+                    Assert.AreEqual(response.Content.Description, context.CharityActions.Single().Description);
+                    Assert.AreEqual(response.Content.CoverImage, context.CharityActions.Single().CoverImage);
                     Assert.IsTrue(response.Success);
                 }
             }
@@ -110,7 +107,6 @@ namespace Sombra.CharityActionService.UnitTests
                         Category = Core.Enums.Category.None,
                         IBAN = "",
                         Name = "",
-                        ActionType = "",
                         Description = "0-IBAN",
                         CoverImage = ""
 
@@ -120,9 +116,9 @@ namespace Sombra.CharityActionService.UnitTests
                     context.SaveChanges();
 
                 }
-                var request = new GetCharityActionRequest();
+                var request = new GetCharityActionByKeyRequest();
 
-                GetCharityActionResponse response;
+                GetCharityActionByKeyResponse response;
 
                 //Act
                 using (var context = CharityActionContext.GetInMemoryContext())

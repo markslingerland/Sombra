@@ -24,7 +24,7 @@ namespace Sombra.CharityActionService.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ActionType");
+                    b.Property<DateTime>("ActionEndDateTime");
 
                     b.Property<int>("Category");
 
@@ -34,13 +34,25 @@ namespace Sombra.CharityActionService.Migrations
 
                     b.Property<string>("CharityName");
 
+                    b.Property<decimal>("CollectedAmount");
+
                     b.Property<string>("CoverImage");
 
                     b.Property<string>("Description");
 
                     b.Property<string>("IBAN");
 
+                    b.Property<bool>("IsApproved");
+
                     b.Property<string>("Name");
+
+                    b.Property<string>("OrganiserImage");
+
+                    b.Property<Guid>("OrganiserUserKey");
+
+                    b.Property<string>("OrganiserUserName");
+
+                    b.Property<decimal>("TargetAmount");
 
                     b.HasKey("Id");
 

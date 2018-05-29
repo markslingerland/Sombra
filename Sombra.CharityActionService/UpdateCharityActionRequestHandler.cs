@@ -9,6 +9,7 @@ using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Sombra.Core.Enums;
 
 namespace Sombra.CharityActionService
 {
@@ -27,13 +28,15 @@ namespace Sombra.CharityActionService
 
         public async Task<UpdateCharityActionResponse> Handle(UpdateCharityActionRequest message)
         {
-
             ExtendedConsole.Log("UpdateCharityActionRequest received");
             var charityAction = await _context.CharityActions.Include(b => b.UserKeys).FirstOrDefaultAsync(b => b.CharityActionKey.Equals(message.CharityActionKey));
 
             if (charityAction == null)
             {
-                return new UpdateCharityActionResponse();
+                return new UpdateCharityActionResponse
+                {
+                    ErrorType = ErrorType.NotFound
+                };
             }
 
             _context.Entry(charityAction).CurrentValues.SetValues(message);
@@ -41,7 +44,6 @@ namespace Sombra.CharityActionService
             var mappedKeys = _mapper.Map<List<UserKey>>(message.UserKeys);
             _context.UserKeys.AddRange(mappedKeys);
             charityAction.UserKeys = mappedKeys;
-
 
             try
             {

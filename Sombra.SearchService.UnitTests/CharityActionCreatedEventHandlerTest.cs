@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sombra.Messaging;
 using Sombra.Messaging.Events;
+using Sombra.Messaging.Shared;
 using Sombra.SearchService.DAL;
 
 namespace Sombra.SearchService.UnitTests
@@ -29,7 +29,7 @@ namespace Sombra.SearchService.UnitTests
                     CharityKey = Guid.NewGuid(),
                     Name = "TestNameAction",
                     CharityName = "TestName",
-                    UserKeys = new List<UserKey>(){ new UserKey() { Key = Guid.NewGuid() } }
+                    UserKeys = new List<UserKey>{ new UserKey { Key = Guid.NewGuid() } }
                 };                
                 
                 using (var context = SearchContext.GetInMemoryContext())

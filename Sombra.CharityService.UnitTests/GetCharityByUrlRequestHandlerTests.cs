@@ -2,10 +2,10 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 using Sombra.CharityService.DAL;
 using Sombra.Infrastructure;
+using Sombra.Messaging.Requests.Charity;
+using Sombra.Messaging.Responses.Charity;
 
 namespace Sombra.CharityService.UnitTests
 {

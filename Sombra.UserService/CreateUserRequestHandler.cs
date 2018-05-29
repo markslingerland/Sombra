@@ -1,14 +1,13 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
 using EasyNetQ;
 using Microsoft.EntityFrameworkCore;
 using Sombra.Core;
 using Sombra.Core.Enums;
-using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.User;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.User;
+using Sombra.Messaging.Responses.User;
 using Sombra.UserService.DAL;
 
 namespace Sombra.UserService

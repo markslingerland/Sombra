@@ -1,13 +1,11 @@
-using Sombra.Core.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Sombra.Messaging.Shared;
+using Sombra.Core.Enums;
 
-namespace Sombra.Messaging.Responses.CharityAction
+namespace Sombra.Messaging.Shared
 {
-    public class GetCharityActionResponse : Response
+    public class CharityAction
     {
-        public bool Success { get; set; }
         public Guid CharityActionKey { get; set; }
         public Guid CharityKey { get; set; }
         public List<UserKey> UserKeys { get; set; }
@@ -15,8 +13,15 @@ namespace Sombra.Messaging.Responses.CharityAction
         public Category Category { get; set; }
         public string IBAN { get; set; }
         public string Name { get; set; }
-        public string ActionType { get; set; }
         public string Description { get; set; }
         public string CoverImage { get; set; }
+
+        public Guid OrganiserUserKey { get; set; }
+        public string OrganiserImage { get; set; }
+        public string OrganiserUserName { get; set; }
+
+        public decimal TargetAmount { get; set; }
+        public decimal CollectedAmount { get; set; }
+        public DateTime ActionEndDateTime { get; set; }
     }
 }

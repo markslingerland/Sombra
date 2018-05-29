@@ -47,7 +47,6 @@ namespace Sombra.CharityActionService.UnitTests
                         Category = Core.Enums.Category.Dierenbescherming,
                         IBAN = "",
                         Name = "",
-                        ActionType = "",
                         Description = "0-IBAN",
                         CoverImage = ""
 
@@ -107,7 +106,6 @@ namespace Sombra.CharityActionService.UnitTests
                         Category = Core.Enums.Category.Dierenbescherming,
                         IBAN = "",
                         Name = "",
-                        ActionType = "",
                         Description = "0-IBAN",
                         CoverImage = ""
 

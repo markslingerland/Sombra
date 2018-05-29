@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Sombra.DonateService.DAL;
-using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.Charity;
 using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.DonateService

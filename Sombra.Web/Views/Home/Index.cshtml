@@ -9,7 +9,7 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            $('#top-charities').load('@Url.Action("GetTopCharities", "Search", new { Amount = 3})');
+            $('#top-charities').load('@Url.Action("GetTopCharities", "Home", new { Amount = 3})');
         });
     </script>
 }

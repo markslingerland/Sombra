@@ -6,11 +6,10 @@ using Sombra.Messaging.Requests.Search;
 using Sombra.Messaging.Requests.User;
 using Sombra.Messaging.Responses.Identity;
 using Sombra.Messaging.Responses.Logging;
-using Sombra.Messaging.Responses.Search;
 using Sombra.Messaging.Shared;
 using Sombra.Web.Areas.Development.Models;
 using Sombra.Web.ViewModels;
-using Sombra.Web.ViewModels.Search;
+using Sombra.Web.ViewModels.Home;
 
 namespace Sombra.Web.Infrastructure
 {
@@ -54,6 +53,8 @@ namespace Sombra.Web.Infrastructure
             CreateMap<SearchResult, CharityItemViewModel>()
                 .ForMember(d => d.Key, opt => opt.MapFrom(s => s.CharityKey))
                 .ForMember(d => d.Name, opt => opt.MapFrom(s => s.CharityName));
+
+            CreateMap<CharityActionItemViewModel, CharityAction>();
         }
     }
 }

@@ -10,6 +10,7 @@ using System;
 using Sombra.Core.Enums;
 using Sombra.Core.Extensions;
 using Sombra.Infrastructure.DAL;
+using Sombra.Messaging.Shared;
 
 namespace Sombra.SearchService
 {

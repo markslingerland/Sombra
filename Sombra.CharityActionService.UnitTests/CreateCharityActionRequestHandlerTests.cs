@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
+using Shared = Sombra.Messaging.Shared;
 using Sombra.CharityActionService.DAL;
 using System.Collections.ObjectModel;
 using System;
@@ -23,17 +24,16 @@ namespace Sombra.CharityActionService.UnitTests
             {
                 var keyAction = Guid.NewGuid();
                 var keyCharity = Guid.NewGuid();
-                var userRequest = new Messaging.UserKey { Key = Guid.NewGuid() };
+                var userRequest = new Shared.UserKey { Key = Guid.NewGuid() };
                 var request = new CreateCharityActionRequest
                 {
                     CharityActionKey = keyAction,
                     CharityKey = keyCharity,
-                    UserKeys = new Collection<Messaging.UserKey> { userRequest },
+                    UserKeys = new Collection<Shared.UserKey> { userRequest },
                     CharityName = "testNAmeOwner",
                     Category = Category.None,
                     IBAN = "",
                     Name = "",
-                    ActionType = "",
                     Description = "0-IBAN",
                     CoverImage = ""
 
@@ -55,7 +55,6 @@ namespace Sombra.CharityActionService.UnitTests
                     Assert.AreEqual(request.Category, context.CharityActions.Single().Category);
                     Assert.AreEqual(request.IBAN, context.CharityActions.Single().IBAN);
                     Assert.AreEqual(request.Name, context.CharityActions.Single().Name);
-                    Assert.AreEqual(request.ActionType, context.CharityActions.Single().ActionType);
                     Assert.AreEqual(request.Description, context.CharityActions.Single().Description);
                     Assert.AreEqual(request.CoverImage, context.CharityActions.Single().CoverImage);
                     Assert.IsFalse(context.CharityActions.Single().IsApproved);
@@ -76,17 +75,16 @@ namespace Sombra.CharityActionService.UnitTests
             try
             {
                 var keyCharity = Guid.NewGuid();
-                var userRequest = new Messaging.UserKey { Key = Guid.NewGuid() };
+                var userRequest = new Shared.UserKey { Key = Guid.NewGuid() };
                 var request = new CreateCharityActionRequest
                 {
                     CharityActionKey = Guid.Empty,
                     CharityKey = keyCharity,
-                    UserKeys = new Collection<Messaging.UserKey> { userRequest },
+                    UserKeys = new Collection<Shared.UserKey> { userRequest },
                     CharityName = "testNAmeOwner",
                     Category = Category.None,
                     IBAN = "",
                     Name = "",
-                    ActionType = "",
                     Description = "0-IBAN",
                     CoverImage = ""
 

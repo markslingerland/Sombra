@@ -6,7 +6,6 @@ namespace Sombra.CharityService.DAL
 {
     public class Charity : Entity
     {
-        // TODO at more data relevant for charity
         public Guid CharityKey { get; set; }
         public Guid OwnerUserKey { get; set; }
         public string OwnerUserName { get; set; }
@@ -18,5 +17,6 @@ namespace Sombra.CharityService.DAL
         public string CoverImage { get; set; }
         public string Slogan { get; set; }
         public string Url { get; set; }
+        public bool IsApproved { get; set; }
     }
 }

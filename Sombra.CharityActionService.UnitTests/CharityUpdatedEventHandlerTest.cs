@@ -56,7 +56,7 @@ namespace Sombra.CharityActionService.UnitTests
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
                     var handler = new CharityUpdatedEventHandler(context);
-                    await handler.Consume(charityUpdatedEvent);
+                    await handler.ConsumeAsync(charityUpdatedEvent);
                 }
 
                 using (var context = CharityActionContext.GetInMemoryContext())

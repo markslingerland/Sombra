@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Sombra.Messaging.Shared;
 
 namespace Sombra.Messaging.Responses
 {
@@ -6,16 +7,5 @@ namespace Sombra.Messaging.Responses
     {
         public List<SearchResult> Results { get; set; }
         public int TotalResult { get; set; }
-    }
-
-    public class SearchResult
-    {
-        public System.Guid CharityKey { get; set; }
-        public System.Guid CharityActionKey { get; set; }
-        public string Name { get; set; }
-        public Core.Enums.SearchContentType Type { get; set; }
-        public string Description { get; set; }
-        public string Image { get; set; }
-        public Core.Enums.Category Category { get; set; }
     }
 }

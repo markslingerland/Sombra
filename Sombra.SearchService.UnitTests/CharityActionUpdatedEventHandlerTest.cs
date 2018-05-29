@@ -21,7 +21,8 @@ namespace Sombra.SearchService.UnitTests
                     Category = Core.Enums.Category.MilieuEnNatuurbehoud,
                     CharityKey = Guid.NewGuid(),
                     Image = "No image given",
-                    Name = "TestName",
+                    CharityName = "TestName",
+                    CharityActionName = "TestName",
                     Description = "This is a very good testing slogan",
                     Type = Core.Enums.SearchContentType.CharityAction
                 };   
@@ -29,7 +30,8 @@ namespace Sombra.SearchService.UnitTests
                 var updatedCharityActionEvent = new CharityActionUpdatedEvent(){
                     CharityActionKey = content.CharityActionKey,
                     CoverImage = "pretty image",
-                    Name = "Pretty Charity Name",
+                    CharityName = "Pretty Charity Name",
+                    Name = "Pretty CharityAction Name",
                     Category = content.Category,
                     Description = content.Description,
                 };     
@@ -43,7 +45,7 @@ namespace Sombra.SearchService.UnitTests
                 using (var context = SearchContext.GetInMemoryContext())
                 {
                     var handler = new CharityActionUpdatedEventHandler(context);
-                    await handler.Consume(updatedCharityActionEvent);      
+                    await handler.ConsumeAsync(updatedCharityActionEvent);      
                 }
 
                 using (var context = SearchContext.GetInMemoryContext())
@@ -54,7 +56,9 @@ namespace Sombra.SearchService.UnitTests
                     Assert.AreEqual(content.Category, context.Content.Single().Category);
                     Assert.AreEqual(content.Description, context.Content.Single().Description);
                     Assert.AreEqual(Core.Enums.SearchContentType.CharityAction, context.Content.Single().Type);
-                    Assert.AreEqual(updatedCharityActionEvent.Name, context.Content.Single().Name);  
+                    Assert.AreEqual(updatedCharityActionEvent.CharityName, context.Content.Single().CharityName);  
+                    Assert.AreEqual(updatedCharityActionEvent.Name, context.Content.Single().CharityActionName);  
+
                 }
             }
             finally

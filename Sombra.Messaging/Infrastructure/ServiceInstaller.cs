@@ -17,9 +17,7 @@ namespace Sombra.Messaging.Infrastructure
 
             addAdditionalServices = addAdditionalServices ?? (s => s);
 
-            var bus = RabbitHutch.CreateBus(busConnectionString, sr =>
-                sr.Register<ITypeNameSerializer>(sp => new CustomTypeNameSerializer()))
-                .WaitForConnection();
+            var bus = RabbitHutch.CreateBus(busConnectionString).WaitForConnection();
             ExtendedConsole.Log($"ServiceInstaller: Bus connected: {bus.IsConnected}.");
 
             var serviceProvider = addAdditionalServices(new ServiceCollection())

@@ -16,12 +16,13 @@ namespace Sombra.SearchService
             _context = context;
         }
 
-        public async Task Consume(CharityActionCreatedEvent message)
+        public async Task ConsumeAsync(CharityActionCreatedEvent message)
         {
             ExtendedConsole.Log($"CreatedCharityActionEvent received for charity with key {message.CharityActionKey}");
             var charityToCreate = new Content()
             {
-                Name = message.Name,
+                CharityName = message.CharityName,
+                CharityActionName = message.Name,
                 Type = Core.Enums.SearchContentType.CharityAction,
                 CharityActionKey = message.CharityActionKey,
                 CharityKey = message.CharityKey,

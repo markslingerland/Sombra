@@ -1,13 +1,12 @@
 ﻿using AutoMapper;
-using EasyNetQ;
 using Microsoft.EntityFrameworkCore;
 using Sombra.CharityActionService.DAL;
 using Sombra.Core;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
-using Sombra.Messaging.Events;
 using System.Threading.Tasks;
+using Sombra.Core.Enums;
 
 namespace Sombra.CharityActionService
 {
@@ -15,13 +14,11 @@ namespace Sombra.CharityActionService
     {
         private readonly CharityActionContext _context;
         private readonly IMapper _mapper;
-        private readonly IBus _bus;
 
-        public CreateCharityActionRequestHandler(CharityActionContext context, IMapper mapper, IBus bus)
+        public CreateCharityActionRequestHandler(CharityActionContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
-            _bus = bus;
         }
 
         public async Task<CreateCharityActionResponse> Handle(CreateCharityActionRequest message)
@@ -30,7 +27,10 @@ namespace Sombra.CharityActionService
             if (charityAction.CharityActionKey == default)
             {
                 ExtendedConsole.Log("CreateCharityActionRequestHandler: CharityActionKey is empty");
-                return new CreateCharityActionResponse();
+                return new CreateCharityActionResponse
+                {
+                    ErrorType = ErrorType.InvalidKey
+                };
             }
 
             _context.CharityActions.Add(charityAction);
@@ -45,10 +45,7 @@ namespace Sombra.CharityActionService
                 return new CreateCharityActionResponse();
             }
 
-            var charityActionCreatedEvent = _mapper.Map<CharityActionCreatedEvent>(charityAction);
-            await _bus.PublishAsync(charityActionCreatedEvent);
-
-            return new CreateCharityActionResponse() { Success = true };
+            return new CreateCharityActionResponse { Success = true };
         }
     }
 }

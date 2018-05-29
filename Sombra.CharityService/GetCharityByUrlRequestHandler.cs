@@ -24,7 +24,7 @@ namespace Sombra.CharityService
         public async Task<GetCharityByUrlResponse> Handle(GetCharityByUrlRequest message)
         {
             ExtendedConsole.Log("GetCharityByUrlRequest received");
-            var charity = await _context.Charities.FirstOrDefaultAsync(b => b.Url.Equals(message.Url, StringComparison.OrdinalIgnoreCase));
+            var charity = await _context.Charities.FirstOrDefaultAsync(b => b.Url.Equals(message.Url, StringComparison.OrdinalIgnoreCase) && b.IsApproved);
             return charity != null ? _mapper.Map<GetCharityByUrlResponse>(charity) : new GetCharityByUrlResponse();
         }
     }

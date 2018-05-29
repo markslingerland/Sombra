@@ -2,6 +2,7 @@
 using Sombra.Core.Enums;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
+using Sombra.Messaging.Shared;
 using Sombra.Web.Areas.Development.Models;
 using Sombra.Web.ViewModels;
 using Sombra.Web.ViewModels.Search;
@@ -45,7 +46,9 @@ namespace Sombra.Web.Infrastructure
             CreateMap<RequestActivationTokenViewModel, GetUserActivationTokenRequest>();
 
             CreateMap<TopCharitiesQuery, GetRandomCharitiesRequest>();
-            CreateMap<SearchResult, CharityItemViewModel>();
+            CreateMap<SearchResult, CharityItemViewModel>()
+                .ForMember(d => d.Key, opt => opt.MapFrom(s => s.CharityKey))
+                .ForMember(d => d.Name, opt => opt.MapFrom(s => s.CharityName));
         }
     }
 }

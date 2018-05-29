@@ -7,8 +7,10 @@ using Sombra.Messaging.Requests;
 using System.Linq;
 using System.Linq.Expressions;
 using System;
+using Sombra.Core.Enums;
 using Sombra.Core.Extensions;
 using Sombra.Infrastructure.DAL;
+using Sombra.Messaging.Shared;
 
 namespace Sombra.SearchService
 {
@@ -27,14 +29,30 @@ namespace Sombra.SearchService
         {
             Expression<Func<Content, bool>> filter = c => true;
 
-            if (!message.Categories.Equals(Core.Enums.Category.None)) filter = filter.And(l => l.Category.HasAnyFlag(message.Categories));
-            if (!string.IsNullOrEmpty(message.Keyword)) filter = filter.And(l => l.Name.Contains(message.Keyword));
-            if (!message.SearchContentType.Equals(Core.Enums.SearchContentType.Default)) filter = filter.And(l => message.SearchContentType.Equals(l.Type));
+            if (!message.Categories.Equals(Category.None)) filter = filter.And(l => l.Category.HasAnyFlag(message.Categories));
+            if (!string.IsNullOrEmpty(message.Keyword)){
+                switch (message.SearchContentType)
+                {
+                    case SearchContentType.Charity:
+                        filter = filter.And(l => l.CharityName.Contains(message.Keyword));
+                        break;
+                    case SearchContentType.CharityAction:
+                        filter = filter.And(l => l.CharityActionName.Contains(message.Keyword));
+                        break;
+                    default:
+                        filter = filter.And(l => l.CharityName.Contains(message.Keyword) || l.CharityActionName.Contains(message.Keyword));
+                        break;
+                }
+            }
+            else
+            {
+                if (!message.SearchContentType.Equals(SearchContentType.Default)) filter = filter.And(l => message.SearchContentType.Equals(l.Type));
+            }
 
             return new GetSearchResultResponse
             {
                 TotalResult = _context.Content.Count(filter),
-                Results = await _context.Content.Where(filter).OrderBy(c => c.Name, message.SortOrder)
+                Results = await _context.Content.Where(filter).OrderBy(c => c.CharityName, message.SortOrder)
                     .ProjectToPagedListAsync<SearchResult>(message.PageNumber, message.PageSize, _mapper)
             };
         }

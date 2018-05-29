@@ -24,6 +24,7 @@ namespace Sombra.SearchService
                 Assembly.GetExecutingAssembly(),
                 _rabbitMqConnectionString,
                 services => services
+                    .AddAutoMapper(Assembly.GetExecutingAssembly())
                     .AddDbContext<SearchContext>(_sqlConnectionString),
                 ConnectionValidator.ValidateAllDbConnections, DatabaseMigrationHelper.ForceMigrations);
 

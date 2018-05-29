@@ -1,9 +1,9 @@
-﻿@{ ViewData["Title"] = "Home Page"; } 
+﻿@{ ViewData["Title"] = "Home Page"; }
 @section Styles{
-<link rel="stylesheet" href="~/css/home/home.css" />
-<link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/home/desktop.css" />
-<link rel="stylesheet" media="screen and (min-width: 768px) and (max-width: 1200px)" href="~/css/home/tablet.css" />
-<link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/home/mobile.css" /> 
+    <link rel="stylesheet" href="~/css/home/home.css" />
+    <link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/home/desktop.css" />
+    <link rel="stylesheet" media="screen and (min-width: 768px) and (max-width: 1200px)" href="~/css/home/tablet.css" />
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/home/mobile.css" />
 }
 
 <img class="header-image" src="Assets/header-image-shape.svg" alt="#">
@@ -24,10 +24,8 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
-
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -100,7 +98,8 @@
             </div>
             <div class="col-md-6 col-sm-12 action-holder">
                 <div class="action-items">
-                    <div class="items-holder" id="top-charities">
+                    <div class="items-holder">
+                        <div id="top-charities"></div>
                         <img class="action-holder-frame" src="Assets/shape-frame.svg">
                     </div>
                 </div>
@@ -123,7 +122,7 @@
                     <div class="story-btn-holder">
                         <div class="secondary-button">
                             <a href="#"></a>
-                            <label>Lees haar verhaal</label>
+                            <label>Lees dit verhaal</label>
                         </div>
                     </div>
 
@@ -148,7 +147,7 @@
                     </div>
                     <div class="carousel-body">
                         <label class="carousel-date">27/04/2018</label>
-                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64; Mont Ventoux</h4>
                         <img class="carousel-poster-image" src="Assets/lianne.jpg">
                         <label class="carousel-poster-name">Fabiene ter Beek</label>
 
@@ -170,7 +169,7 @@
                     </div>
                     <div class="carousel-body">
                         <label class="carousel-date">27/04/2018</label>
-                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64; Mont Ventoux</h4>
                         <img class="carousel-poster-image" src="Assets/lianne.jpg">
                         <label class="carousel-poster-name">Fabiene ter Beek</label>
 
@@ -192,7 +191,7 @@
                     </div>
                     <div class="carousel-body">
                         <label class="carousel-date">27/04/2018</label>
-                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64; Mont Ventoux</h4>
                         <img class="carousel-poster-image" src="Assets/lianne.jpg">
                         <label class="carousel-poster-name">Fabiene ter Beek</label>
 
@@ -214,7 +213,7 @@
                     </div>
                     <div class="carousel-body">
                         <label class="carousel-date">27/04/2018</label>
-                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64; Mont Ventoux</h4>
                         <img class="carousel-poster-image" src="Assets/person.jpg">
                         <label class="carousel-poster-name">Fabiene ter Beek</label>
 
@@ -236,7 +235,7 @@
                     </div>
                     <div class="carousel-body">
                         <label class="carousel-date">27/04/2018</label>
-                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64; Mont Ventoux</h4>
                         <img class="carousel-poster-image" src="Assets/ArdHofman.png">
                         <label class="carousel-poster-name">Fabiene ter Beek</label>
 
@@ -258,7 +257,7 @@
                     </div>
                     <div class="carousel-body">
                         <label class="carousel-date">27/04/2018</label>
-                        <h4 class="carousel-title">Klimmen tegen MS &#64 Mont Ventoux</h4>
+                        <h4 class="carousel-title">Klimmen tegen MS &#64; Mont Ventoux</h4>
                         <img class="carousel-poster-image" src="Assets/ArdHofman.png">
                         <label class="carousel-poster-name">Fabiene ter Beek</label>
 
@@ -288,10 +287,4 @@
 
 
 </div>
-@section Scripts {
-<script>
-    $(document).ready(function() {
-        $('#top-charities').load('@Url.Action("GetTopCharities", "Search", new { Amount = 3})');
-    });
-</script>
-}
+<script language="JavaScript" src="/js/home.js"></script>

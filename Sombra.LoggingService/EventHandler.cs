@@ -18,7 +18,7 @@ namespace Sombra.LoggingService
             _logCollection = database.GetCollection<LogEntry>(_mongoCollection);
         }
 
-        public async Task Consume(TMessage message)
+        public async Task ConsumeAsync(TMessage message)
         {
             ExtendedConsole.Log($"Message received. Type: {message.MessageType}");
             await _logCollection.InsertOneAsync(new LogEntry(message, DateTime.UtcNow));

@@ -1,8 +1,100 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
+﻿@{ ViewData["Title"] = "Charity"; }
 @section Styles{
-<link rel="stylesheet" href="~/css/charity/charity.css" />
-
+    <link rel="stylesheet" href="~/css/charity/charity.css" />
+    <link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/charity/desktop.css" />
+    <link rel="stylesheet" media="screen and (min-width: 768px) and (max-width: 1200px)" href="~/css/charity/tablet.css" />
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/charity/mobile.css" />
 }
+<div id="charity-info">
+    @*Background picture*@
+    <svg class="header-image" viewBox="0 0 1440 611" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+            <pattern id="pattern-1" width="1467.46324" height="978.308824" x="-1467.46324" y="-977.308824" patternUnits="userSpaceOnUse">
+                <use xlink:href="#image-2" transform="scale(1.22288603,1.22288603)"></use>
+            </pattern>
+            <image id="image-2" width="1200" height="800" xlink:href=@ViewData["CharityImage"]></image>
+        </defs>
+        <g id="-----Web-1440" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="003-Doneer---Goede-doelen-detail" transform="translate(0.000000, -1.000000)" fill="url(#pattern-1)">
+                <path d="M-1.13686838e-13,1 L-1.13686838e-13,561.651541 C226.20941,594.984874 466.20941,611.651541 720,611.651541 C973.79059,611.651541 1213.79059,594.984874 1440,561.651541 L1440,1 L-1.13686838e-13,1 Z" id="Path-4"></path>
+            </g>
+        </g>
+    </svg>
+    <div class="main-storyboard">
+        @*top*@
+        <div class="category">@ViewData["CharityCategory"]</div>
+        <div class="kvk_ambi">KvK nummer: @ViewData["CharityKvk"]   ANBI nummer: @ViewData["CharityAmbi"]</div>
+        @*title & story*@
+        <div id="about" class="standard-text">
+            <div class="container">
+                <div class="row about-text">
+                    <h3>@ViewData["CharityName"]</h3>
+                    <p>@ViewData["CharityAbout"]</p>
+                    <div class="donate-btn">
+                        <a href="#" class="donateSVG"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*Story*@
+        <div id="the_story">
+            <div class="container">
+                <div class="story_image" style="background-image:url(@ViewData["CharityActionImage"])">
+                    <div class="story_gradient">
+                        <div class="text_container">
+
+                            <span>@ViewData["CharityActionOwner"], initiatiefnemer</span>
+                            <h3>
+                                @ViewData["CharityActionQuote"]
+                            </h3>
+
+                            <div class="story-btn-holder">
+                                <div class="secondary-button">
+                                    <a href="#"></a> @*/charityaction/id=ViewData["CharityActionId"]*@
+                                    <label>Lees dit verhaal</label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*Active acitons*@
+        <div id="acties">
+            <h3 class="title">Lopende acties</h3>
+            <div class="slider-container">
+                <div id="main-carousel" class="main-carousel"></div>
+                <div class="button button--previous"></div>
+                <div class="button button--next"></div>
+            </div>
+            <div class="action-buttons">
+                <div class="all-actions">
+                    <a href="#"></a>
+                    <span class="monster-700">Bekijk alle acties</span>
+                </div>
+                <div class="make-actions">
+                    <a href="#"></a>
+                    <span class="monster-700">Start een actie</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*logo*@
+    <div class="container">
+        @*If only a logo is used we can remove the Fill-7*@
+        <img class="Fill-1" src="../../Assets/shape-frame.svg">
+        <div class="Fill-7">@ViewData["CharityName"]</div>
+    </div>
+</div>     
+<div id="donations">
+    <div class="donations-relative">
+        <span class="main-text">DEZE WEEK DONEERDER</span>  <span class="ammount-people">@ViewData["DonatedToCharity"]</span>  <span class="main-text">MENSEN TOTAAL</span>  <span class="ammount-people">&euro;@ViewData["TotalDonations"]</span>
+        <div class="absolute1"><span class="main-text">DONEREN VANAF</span><p><span class="numbers">&euro; 1</span></p></div>
+        <div class="absolute2"><span class="main-text">GEMIDDELDE DONATIE</span><p><span class="numbers">&euro; @ViewData["AvarageDonation"]</span></p></div>
+        <div class="absolute3"><span class="main-text">LAATSTE DONATIE</span><p><span class="numbers">&euro; @ViewData["LatestDonation"]</span></p></div>
+    </div>
+</div>
+
+
+<script language="JavaScript" src="/js/charity.js"></script>

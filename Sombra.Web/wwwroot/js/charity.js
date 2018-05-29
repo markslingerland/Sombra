@@ -19,13 +19,13 @@ for (x = 0; x < 11; x++) {
     // Make Moneyholder
     var carousel_money_holder = document.createElement('div');
     carousel_money_holder.className = "carousel-money-holder";
-    var reache = document.createElement('label');
-    reache.className = "carousel-reached";
-    reache.innerHTML = "&euro;" + " 6.800";
+    var reached = document.createElement('label');
+    reached.className = "carousel-reached";
+    reached.innerHTML = "<span style=\"font-family: 'Source Sans Pro', sans-serif;\">&euro; 6.800</span>";
     var goal = document.createElement('label');
     goal.className = "carousel-goal";
-    goal.innerHTML = "behaald vam &euro; 15.000";
-    carousel_money_holder.appendChild(reache);
+    goal.innerHTML = "<span style=\"font-family: 'Source Sans Pro', sans-serif;\">behaald van &euro; 15.000</span>";
+    carousel_money_holder.appendChild(reached);
     carousel_money_holder.appendChild(goal);
     // Make Body
     var carousel_body = document.createElement('div');
@@ -42,7 +42,7 @@ for (x = 0; x < 11; x++) {
     img.src = "Assets/lianne.jpg";
     var labelimg = document.createElement('label');
     labelimg.className = "carousel-poster-name";
-    labelimg.innerHTML = "Fabiene ter Beek";
+    labelimg.innerHTML = "<span style=\"font-family: 'Source Sans Pro', sans-serif;\">Fabiene ter Beek</span>";
     carousel_body.appendChild(label);
     carousel_body.appendChild(title);
     carousel_body.appendChild(img);

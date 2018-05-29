@@ -3,9 +3,7 @@
 #header .fixed-header {
     background-color: white;
 }
-#foot .fixed-header {
-    background-color: white;
-}
+
 #about {
     float: left;
     width: 100%;
@@ -35,7 +33,6 @@
     width: 100%;
     text-align: left;
     padding-top: 75px;
-    /*padding-left: 50px;*/
 }
 
 #about .about-text h3 {
@@ -54,7 +51,6 @@
     color: #838383;
     margin-bottom: 37px;
 }
-
 
 #about .about-quotes {
     font-family: 'Source Sans Pro', sans-serif;
@@ -87,10 +83,6 @@
     height: 2600px;
     margin: 0 auto;
 }
-/*.back-site {
-    min-height: 100px;
-    background-color: #ffffff;
-}*/
 
 .header-image {
     top: 0;
@@ -111,10 +103,12 @@
     background-color: #ffffff;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
 }
+
 .container {
     position: relative;
     font-family: Arial;
 }
+
 .Fill-1 {
     position: absolute;
     display: block;
@@ -128,6 +122,7 @@
     transform: rotate(-18deg);
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.15));
 }
+
 .Fill-7 {
     position: absolute;
     display: block;
@@ -142,6 +137,7 @@
     color: #ffffff;
     font-size: 25px;
 }
+
 .category {
     margin-left: 2%;
     margin-top: 2%;
@@ -174,6 +170,150 @@
     color: #838383;
 }
 
+/*Story*/
+#the_story {
+    width: 100%;
+    float: left;
+    margin-top: 80px;
+}
+
+.container {
+    padding: 0;
+    margin: 0;
+}
+
+.story_image {
+    width: 100%;
+    height: 460px;
+    background-position: center;
+    position: relative;
+    background-size: cover;
+}
+
+.story_gradient {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
+}
+
+.story_gradient .text_container {
+    width: 100%;
+    padding-left: 165px;
+    padding-right: 165px;
+}
+
+.story_gradient .text_container span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    position: absolute;
+    bottom: 150px;
+}
+
+.story-btn-holder {
+    position: absolute;
+    right: 165px;
+    bottom: 58px;
+}
+
+.story_gradient .text_container h3 {
+    width: 556px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.28;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    position: absolute;
+    bottom: 48px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+/*Donation status*/
+#donations .donations-relative {
+    position: relative;
+    width: 602px;
+    height: 200px;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.absolute1 {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 200px;
+    height: 100px;
+}
+
+.absolute2 {
+    position: absolute;
+    top: 80px;
+    left: 200px;
+    width: 200px;
+    height: 100px;
+}
+
+.absolute3 {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 200px;
+    height: 100px;
+}
+
+.main-text {
+    height: 33px;
+    font-family: 'Montserrat', sans-serif;   
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2.36;
+    letter-spacing: normal;
+    color: #838383;
+    vertical-align: middle;
+}
+
+.ammount-people {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 40px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.83;
+    letter-spacing: normal;
+    text-align: center;
+    color: #838383;
+    vertical-align: middle;
+}
+
+.numbers {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 50px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.66;
+    letter-spacing: normal;
+    text-align: center;
+    color: #838383;
+}
 
 #acties {
     width: 100%;
@@ -245,143 +385,4 @@
     position: absolute;
     top: 6px;
     left: 26px;
-}
-#the_story {
-    width: 100%;
-    float: left;
-    margin-top: 80px;
-}
-
-#the_story .container {
-    padding: 0;
-    margin: 0;
-}
-
-#the_story .story_image {
-    width: 100%;
-    height: 460px;
-    background-position: center;
-    position: relative;
-    background-size: cover;
-}
-
-#the_story .story_gradient {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
-}
-
-#the_story .story_gradient .text_container {
-    width: 100%;
-    padding-left: 165px;
-    padding-right: 165px;
-}
-
-#the_story .story_gradient .text_container span {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #ffffff;
-    position: absolute;
-    bottom: 150px;
-}
-
-#the_story .story-btn-holder {
-    position: absolute;
-    right: 165px;
-    bottom: 58px;
-}
-
-#the_story .story_gradient .text_container h3 {
-    width: 556px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 25px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.28;
-    letter-spacing: normal;
-    text-align: left;
-    color: #ffffff;
-    position: absolute;
-    bottom: 48px;
-    margin-bottom: 0;
-    margin-top: 0;
-}
-#donations .donations-relative {
-    position: relative;
-    width: 602px;
-    height: 200px;
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.absolute1 {
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 200px;
-    height: 100px;
-}
-
-.absolute2 {
-    position: absolute;
-    top: 80px;
-    left: 200px;
-    width: 200px;
-    height: 100px;
-}
-
-.absolute3 {
-    position: absolute;
-    top: 80px;
-    right: 0;
-    width: 200px;
-    height: 100px;
-}
-.main-text {
-    height: 33px;
-    font-family: Montserrat;
-    font-size: 14px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 2.36;
-    letter-spacing: normal;
-    color: #838383;
-    vertical-align: middle;
-}
-.ammount-people {
-    font-family: SourceSansPro;
-    font-size: 40px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 0.83;
-    letter-spacing: normal;
-    text-align: center;
-    color: #838383;
-    vertical-align: middle;
-}
-.numbers {
-    font-family: SourceSansPro;
-    font-size: 50px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 0.66;
-    letter-spacing: normal;
-    text-align: center;
-    color: #838383;
 }

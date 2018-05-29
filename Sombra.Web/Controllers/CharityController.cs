@@ -26,6 +26,13 @@ namespace Sombra.Web.Controllers
             ViewData["CharityActionOwner"] = "Gert de Boer";
             ViewData["CharityActionQuote"] = "Helpen maakt de wereld een vrolijkere plek, of niet?";
             ViewData["CharityActionId"] = "1";
+
+            // Donations info
+            ViewData["DonatedToCharity"] = "45";
+            ViewData["TotalDonations"] = "1.456";
+            ViewData["AvarageDonation"] = "25";
+            ViewData["LatestDonation"] = "75";
+
             return View();
         }
         [HttpGet]

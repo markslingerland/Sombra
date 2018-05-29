@@ -10,9 +10,10 @@ using Sombra.CharityActionService.DAL;
 namespace Sombra.CharityActionService.Migrations
 {
     [DbContext(typeof(CharityActionContext))]
-    partial class CharityActionContextModelSnapshot : ModelSnapshot
+    [Migration("20180528184832_DeleteActionType")]
+    partial class DeleteActionType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,8 +25,6 @@ namespace Sombra.CharityActionService.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("ActionEndDateTime");
-
                     b.Property<int>("Category");
 
                     b.Property<Guid>("CharityActionKey");
@@ -33,8 +32,6 @@ namespace Sombra.CharityActionService.Migrations
                     b.Property<Guid>("CharityKey");
 
                     b.Property<string>("CharityName");
-
-                    b.Property<decimal>("CollectedAmount");
 
                     b.Property<string>("CoverImage");
 
@@ -45,14 +42,6 @@ namespace Sombra.CharityActionService.Migrations
                     b.Property<bool>("IsApproved");
 
                     b.Property<string>("Name");
-
-                    b.Property<string>("OrganiserImage");
-
-                    b.Property<Guid>("OrganiserUserKey");
-
-                    b.Property<string>("OrganiserUserName");
-
-                    b.Property<decimal>("TargetAmount");
 
                     b.HasKey("Id");
 

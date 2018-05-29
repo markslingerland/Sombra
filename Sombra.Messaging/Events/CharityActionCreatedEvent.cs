@@ -1,6 +1,7 @@
 ﻿using Sombra.Core.Enums;
 using System;
 using System.Collections.Generic;
+using Sombra.Messaging.Shared;
 
 namespace Sombra.Messaging.Events
 {
@@ -14,8 +15,15 @@ namespace Sombra.Messaging.Events
         public Category Category { get; set; }
         public string IBAN { get; set; }
         public string Name { get; set; }
-        public string ActionType { get; set; }
         public string Description { get; set; }
         public string CoverImage { get; set; }
+
+        public Guid OrganiserUserKey { get; set; }
+        public string OrganiserImage { get; set; }
+        public string OrganiserUserName { get; set; }
+
+        public decimal TargetAmount { get; set; }
+        public decimal CollectedAmount { get; set; }
+        public DateTime ActionEndDateTime { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using Moq;
 using Sombra.Messaging.Events;
 using Sombra.Messaging.Requests;
 using Sombra.Messaging.Responses;
+using Shared = Sombra.Messaging.Shared;
 using Sombra.CharityActionService.DAL;
 using System.Collections.Generic;
 using Sombra.Core.Enums;
@@ -34,17 +35,16 @@ namespace Sombra.CharityActionService.UnitTests
                 var keyCharity = Guid.NewGuid();
                 var key = Guid.NewGuid();
                 var user = new UserKey { Key = key };
-                var userMessenging = new Messaging.UserKey { Key = key };
+                var userMessenging = new Shared.UserKey { Key = key };
                 var request = new UpdateCharityActionRequest
                 {
                     CharityActionKey = keyAction,
                     CharityKey = keyCharity,
-                    UserKeys = new List<Messaging.UserKey>() { userMessenging },
+                    UserKeys = new List<Shared.UserKey>() { userMessenging },
                     CharityName = "",
                     Category = Category.None,
                     IBAN = "",
                     Name = "",
-                    ActionType = "",
                     Description = "",
                     CoverImage = ""
 
@@ -61,7 +61,6 @@ namespace Sombra.CharityActionService.UnitTests
                         Category = Category.Dierenbescherming,
                         IBAN = "",
                         Name = "",
-                        ActionType = "",
                         Description = "0-IBAN",
                         CoverImage = ""
 
@@ -84,7 +83,6 @@ namespace Sombra.CharityActionService.UnitTests
                     Assert.AreEqual(request.Category, context.CharityActions.Single().Category);
                     Assert.AreEqual(request.IBAN, context.CharityActions.Single().IBAN);
                     Assert.AreEqual(request.Name, context.CharityActions.Single().Name);
-                    Assert.AreEqual(request.ActionType, context.CharityActions.Single().ActionType);
                     Assert.AreEqual(request.Description, context.CharityActions.Single().Description);
                     Assert.AreEqual(request.CoverImage, context.CharityActions.Single().CoverImage);
                     Assert.IsTrue(response.Success);
@@ -115,17 +113,16 @@ namespace Sombra.CharityActionService.UnitTests
                 var wrongKey = Guid.NewGuid();
                 var key = Guid.NewGuid();
 
-                var userMessenging = new Messaging.UserKey { Key = key };
+                var userMessenging = new Shared.UserKey { Key = key };
                 var request = new UpdateCharityActionRequest
                 {
                     CharityActionKey = wrongKey,
                     CharityKey = keyCharity,
-                    UserKeys = new List<Messaging.UserKey>() { userMessenging },
+                    UserKeys = new List<Shared.UserKey>() { userMessenging },
                     CharityName = "",
                     Category = Category.None,
                     IBAN = "",
                     Name = "",
-                    ActionType = "",
                     Description = "",
                     CoverImage = ""
 
@@ -142,7 +139,6 @@ namespace Sombra.CharityActionService.UnitTests
                         Category = Category.Dierenbescherming,
                         IBAN = "",
                         Name = "",
-                        ActionType = "",
                         Description = "0-IBAN",
                         CoverImage = ""
 

@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using Sombra.DonateService.DAL;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.Donate;
+using Sombra.Messaging.Responses.Donate;
 
 namespace Sombra.DonateService
 {

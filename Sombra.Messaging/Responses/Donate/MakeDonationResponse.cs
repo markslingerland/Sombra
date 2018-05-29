@@ -1,4 +1,4 @@
-﻿namespace Sombra.Messaging.Responses
+﻿namespace Sombra.Messaging.Responses.Donate
 {
     public class MakeDonationResponse : Response
     {

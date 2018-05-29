@@ -1,0 +1,274 @@
+#header .fixed-header {
+    background-color: white!important;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+#background-frame {
+    background-image: url("../../Assets/frames/Background_frame_grey.svg");
+    width: 100%;
+    height: 611px;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.donate-title {
+    position: absolute;
+    top: 75px;
+    left: 283px;
+    margin: 0;
+
+    font-size: 40px;
+    font-weight: 200;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #838383;
+}
+
+#donating-choose {
+    width: 1109px;
+    height: 782px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+    margin-left: auto;
+    margin-right: auto;
+    top: 0;
+    margin-top: -394px;
+    margin-bottom: 230px;
+    position: relative;
+}
+
+.donate-step {
+    background-image: url("../../Assets/shape-frame.svg");
+    width: 65px;
+    height: 62px;
+    background-size: contain;
+    position: absolute;
+    top: 63px;
+    left: 189px;
+    background-repeat: no-repeat;
+}
+
+.donate-step p {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 900;
+    color: white;
+    margin-top: 12px;
+}
+
+.donate-close {
+    width: 2px;
+    height: 30px;
+    transform: rotate(45deg);
+    background-color: #838383;
+    position: absolute;
+    right: 34px;
+    top: 19px;
+}
+
+.closing {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 19px;
+    top: 19px;
+}
+
+.donate-close:nth-child(1) {
+    transform: rotate(-45deg);
+}
+
+.donate-progress {
+    position: absolute;
+    top: 63px;
+    left: 63px;
+}
+
+.orange-ball {
+    width: 13px;
+    height: 13px;
+    background-color: #ffffff;
+    border: solid 4px #f88356;
+    border-radius: 100%;
+    margin-bottom: 80px;
+    display: inherit;
+}
+
+.grey-ball {
+    height: 13px;
+    width: 13px;
+    background-color: #d8d8d8;
+    border-radius: 100%;
+    margin-bottom: 80px;
+    display: inherit;
+}
+
+/* NEw form */
+
+  
+  #regForm {
+    background-color: red;
+    margin: 100px auto;
+    min-width: 300px;
+
+    width: 1109px;
+    height: 782px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  }
+  
+  h1 {
+    text-align: center;  
+  }
+  
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+  }
+  
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  #prevBtn {
+    background-color: #bbbbbb;
+  }
+  
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  
+  .step.active {
+    opacity: 1;
+  }
+  
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #4CAF50;
+  }
+
+ #regForm .radio-holder {
+    display: inline-block;
+}
+
+#regForm h1 {
+  color: hsla(215, 5%, 10%, 1);
+  margin-bottom: 2rem;
+  font-size: 40px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: #838383;
+}
+
+#regform .radio-input-tag {
+  font-size: 22px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #838383;
+}
+
+#regForm section {
+  display: flex;
+  flex-flow: row wrap;
+}
+#regForm section > div {
+  /* flex: 1; */
+  padding: 0.5rem;
+}
+#regForm input[type="radio"] {
+  display: none;
+}
+#regForm input[type="radio"]:not(:disabled) ~ label {
+    cursor: pointer;
+  }
+#regForm input[type="radio"]:disabled ~ label {
+    color: hsla(150, 5%, 75%, 1);
+    border-color: hsla(150, 5%, 75%, 1);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+#regForm label {
+  display: block;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin: 1rem;
+  text-align: center;
+  box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
+  position: relative;
+  width: 190px;
+  height: 100px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: solid 1px #b1b1b1;
+}
+#regForm input[type="radio"]:checked + label {
+  border: solid 2px #b8e986;
+}
+
+#regForm input[type="radio"]:checked + label::after {
+  color: hsla(215, 5%, 25%, 1);
+  content: url(../../Assets/icons/Icon_checkbox.svg);
+  font-size: 24px;
+  position: absolute;
+  top: -15px;
+  right: -18px;
+  transform: translateX(-50%);
+}
+
+  #regForm input[type="radio"]#control_05:checked + label {
+  background: red;
+  border-color: red;
+}
+#regForm p {
+  font-weight: 900;
+}
+
+
+@media only screen and (max-width: 700px) {
+    #regForm section {
+    flex-direction: column;
+  }
+}
+
+
+  

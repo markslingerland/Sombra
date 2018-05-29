@@ -2,10 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Sombra.CharityActionService.DAL;
 using Sombra.Core;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
-using System.Linq;
 using System.Threading.Tasks;
+using Sombra.Messaging.Requests.CharityAction;
+using Sombra.Messaging.Responses.CharityAction;
 
 namespace Sombra.CharityActionService
 {

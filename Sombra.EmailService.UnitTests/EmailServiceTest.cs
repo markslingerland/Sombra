@@ -6,6 +6,7 @@ using MailKit.Net.Smtp;
 using MimeKit;
 using Moq;
 using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.Email;
 
 namespace Sombra.EmailService.UnitTests
 {

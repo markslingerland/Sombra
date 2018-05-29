@@ -1,5 +1,6 @@
 using AutoMapper;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Responses.Search;
+using Sombra.Messaging.Shared;
 using Sombra.SearchService.DAL;
 
 namespace Sombra.SearchService

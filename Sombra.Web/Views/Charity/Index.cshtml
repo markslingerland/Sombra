@@ -6,7 +6,7 @@
     <link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/charity/mobile.css" />
 }
 <div id="charity-info">
-    <div class="back-site">
+        @*Background picture*@
         <svg class="header-image" viewBox="0 0 1440 611" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <defs>
                 <pattern id="pattern-1" width="1467.46324" height="978.308824" x="-1467.46324" y="-977.308824" patternUnits="userSpaceOnUse">
@@ -21,8 +21,10 @@
             </g>
         </svg>
         <div class="main-storyboard">
+            @*top*@
             <div class="category">@ViewData["CharityCategory"]</div>
-            <div class="kvk_ambi">kvk nummer: @ViewData["CharityKvk"]   Ambi nummer: @ViewData["CharityAmbi"]</div>
+            <div class="kvk_ambi">KvK nummer: @ViewData["CharityKvk"]   ANBI nummer: @ViewData["CharityAmbi"]</div>
+            @*title & story*@
             <div id="about" class="standard-text">
                 <div class="container">
                     <div class="row about-text">
@@ -31,14 +33,34 @@
                         <div class="donate-btn">
                             <a href="#" class="donateSVG"></a>
                         </div>
-                        <div class="col-sm-6">
+                    </div>
+                </div>
+            </div>
+            @*Story*@
+            <div id="the_story">
+                <div class="container">
+                    <div class="story_image" style="background-image:url(@ViewData["CharityActionImage"])">
+                        <div class="story_gradient">
+                            <div class="text_container">
+
+                                <span>@ViewData["CharityActionOwner"], initiatiefnemer</span>
+                                <h3>
+                                    @ViewData["CharityActionQuote"]
+                                </h3>
+
+                                <div class="story-btn-holder">
+                                    <div class="secondary-button">
+                                        <a href="#"></a> @*/charityaction/id=ViewData["CharityActionId"]*@
+                                        <label>Lees dit verhaal</label>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
+            @*Active acitons*@
             <div id="acties">
                 <h3 class="title">Lopende acties</h3>
                 <div class="slider-container">
@@ -58,11 +80,19 @@
                 </div>
             </div>
         </div>
+        @*logo*@
         <div class="container">
             @*If only a logo is used we can remove the Fill-7*@
             <img class="Fill-1" src="../../Assets/shape-frame.svg">
             <div class="Fill-7">@ViewData["CharityName"]</div>
         </div>
+</div>
+<div id="donations">
+    <div class="donations-relative">
+        <span class="main-text">DEZE WEEK DONEERDER</span>  <span class="ammount-people">45</span>  <span class="main-text">MENSEN TOTAAL</span>  <span class="ammount-people">&euro;1340</span>
+        <div class="absolute1"><span class="main-text">DONEREN VANAF</span><p><span class="numbers">&euro; 1</span></p></div>
+        <div class="absolute2"><span class="main-text">GEMIDDELDE DONATIE</span><p><span class="numbers">&euro; 25</span></p></div>
+        <div class="absolute3"><span class="main-text">LAATSTE DONATIE</span><p><span class="numbers">&euro; 75</span></p></div>
     </div>
 </div>
 

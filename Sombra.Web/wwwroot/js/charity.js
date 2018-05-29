@@ -1,7 +1,7 @@
 ﻿
 //TODO
 //This complete loop needs to get filled with info from the backend
-for (x = 0; x < 4; x++) {
+for (x = 0; x < 11; x++) {
     // Make progress bar
     var carousel_progress = document.createElement('div');
     carousel_progress.className = "carousel-progress";

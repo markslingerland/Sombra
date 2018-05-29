@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -40,7 +41,7 @@ namespace Sombra.SearchService.UnitTests
 
                 var getSearchResultRequest = new GetSearchResultRequest(){
                     Categories = Core.Enums.Category.MilieuEnNatuurbehoud,
-                    Keyword = "TestName",
+                    Keywords = new List<string> { "TestName" },
                     SearchContentType = Core.Enums.SearchContentType.Charity,
                     PageNumber = 0,
                     PageSize = 1,
@@ -103,7 +104,7 @@ namespace Sombra.SearchService.UnitTests
 
                 var getSearchResultRequest = new GetSearchResultRequest(){
                     Categories = Core.Enums.Category.MilieuEnNatuurbehoud,
-                    Keyword = "Null",
+                    Keywords = new List<string> { "Null" },
                     SearchContentType = Core.Enums.SearchContentType.Charity,
                     PageNumber = 0,
                     PageSize = 1,

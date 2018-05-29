@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Sombra.Core;
 using Sombra.IdentityService.DAL;
-using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.User;
 using Sombra.Messaging.Infrastructure;
 using CredentialType = Sombra.Core.Enums.CredentialType;
 

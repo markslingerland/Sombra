@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Sombra.CharityActionService.DAL;
 using Sombra.Core;
-using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.Charity;
 using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.CharityActionService

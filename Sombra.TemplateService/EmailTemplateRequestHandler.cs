@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 using Sombra.TemplateService.DAL;
 using System.Threading.Tasks;
+using Sombra.Messaging.Requests.Template;
+using Sombra.Messaging.Responses.Template;
 
 namespace Sombra.TemplateService
 {

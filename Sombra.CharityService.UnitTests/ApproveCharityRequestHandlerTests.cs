@@ -7,9 +7,9 @@ using Moq;
 using Sombra.CharityService.DAL;
 using Sombra.Core.Enums;
 using Sombra.Infrastructure;
-using Sombra.Messaging.Events;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Events.Charity;
+using Sombra.Messaging.Requests.Charity;
+using Sombra.Messaging.Responses.Charity;
 
 namespace Sombra.CharityService.UnitTests
 {

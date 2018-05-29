@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.User;
+using Sombra.Messaging.Responses.User;
 using Sombra.UserService.DAL;
 
 namespace Sombra.UserService.UnitTests

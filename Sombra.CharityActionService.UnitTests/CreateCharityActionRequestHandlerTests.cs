@@ -1,14 +1,14 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
-using Shared = Sombra.Messaging.Shared;
 using Sombra.CharityActionService.DAL;
 using System.Collections.ObjectModel;
 using System;
 using Sombra.Core.Enums;
 using Sombra.Infrastructure;
+using Sombra.Messaging.Requests.CharityAction;
+using Sombra.Messaging.Responses.CharityAction;
+using UserKey = Sombra.Messaging.Shared.UserKey;
 
 namespace Sombra.CharityActionService.UnitTests
 {
@@ -24,12 +24,12 @@ namespace Sombra.CharityActionService.UnitTests
             {
                 var keyAction = Guid.NewGuid();
                 var keyCharity = Guid.NewGuid();
-                var userRequest = new Shared.UserKey { Key = Guid.NewGuid() };
+                var userRequest = new UserKey { Key = Guid.NewGuid() };
                 var request = new CreateCharityActionRequest
                 {
                     CharityActionKey = keyAction,
                     CharityKey = keyCharity,
-                    UserKeys = new Collection<Shared.UserKey> { userRequest },
+                    UserKeys = new Collection<UserKey> { userRequest },
                     CharityName = "testNAmeOwner",
                     Category = Category.None,
                     IBAN = "",
@@ -75,12 +75,12 @@ namespace Sombra.CharityActionService.UnitTests
             try
             {
                 var keyCharity = Guid.NewGuid();
-                var userRequest = new Shared.UserKey { Key = Guid.NewGuid() };
+                var userRequest = new UserKey { Key = Guid.NewGuid() };
                 var request = new CreateCharityActionRequest
                 {
                     CharityActionKey = Guid.Empty,
                     CharityKey = keyCharity,
-                    UserKeys = new Collection<Shared.UserKey> { userRequest },
+                    UserKeys = new Collection<UserKey> { userRequest },
                     CharityName = "testNAmeOwner",
                     Category = Category.None,
                     IBAN = "",

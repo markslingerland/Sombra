@@ -12,18 +12,19 @@
 
 }
 
-.form-partial-holder {
-
-}
-
 .donate-title {
-    color: #838383;
     position: absolute;
     top: 75px;
     left: 283px;
     margin: 0;
-    font-size: 50px;
-    font-weight: 100;
+
+    font-size: 40px;
+    font-weight: 200;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #838383;
 }
 
 #donating-choose {
@@ -105,66 +106,169 @@
     display: inherit;
 }
 
+/* NEw form */
 
-.container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
+  
+  #regForm {
+    background-color: red;
+    margin: 100px auto;
+    min-width: 300px;
 
-/* Hide the browser's default radio button */
-.container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
-
-/* Create a custom radio button */
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-    border-radius: 50%;
-}
-
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-    background-color: #ccc;
-}
-
-/* When the radio button is checked, add a blue background */
-.container input:checked ~ .checkmark {
-    background-color: #2196F3;
-}
-
-/* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark:after {
-    content: "";
-    position: absolute;
+    width: 1109px;
+    height: 782px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  }
+  
+  h1 {
+    text-align: center;  
+  }
+  
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+  }
+  
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  
+  /* Hide all steps by default: */
+  .tab {
     display: none;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  #prevBtn {
+    background-color: #bbbbbb;
+  }
+  
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  
+  .step.active {
+    opacity: 1;
+  }
+  
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #4CAF50;
+  }
+
+ #regForm .radio-holder {
+    display: inline-block;
 }
 
-/* Show the indicator (dot/circle) when checked */
-.container input:checked ~ .checkmark:after {
-    display: block;
+#regForm h1 {
+  color: hsla(215, 5%, 10%, 1);
+  margin-bottom: 2rem;
+  font-size: 40px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: #838383;
 }
 
-/* Style the indicator (dot/circle) */
-.container .checkmark:after {
- 	top: 9px;
-	left: 9px;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background: white;
+#regform .radio-input-tag {
+  font-size: 22px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #838383;
 }
+
+#regForm section {
+  display: flex;
+  flex-flow: row wrap;
+}
+#regForm section > div {
+  /* flex: 1; */
+  padding: 0.5rem;
+}
+#regForm input[type="radio"] {
+  display: none;
+}
+#regForm input[type="radio"]:not(:disabled) ~ label {
+    cursor: pointer;
+  }
+#regForm input[type="radio"]:disabled ~ label {
+    color: hsla(150, 5%, 75%, 1);
+    border-color: hsla(150, 5%, 75%, 1);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+#regForm label {
+  display: block;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin: 1rem;
+  text-align: center;
+  box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
+  position: relative;
+  width: 190px;
+  height: 100px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: solid 1px #b1b1b1;
+}
+#regForm input[type="radio"]:checked + label {
+  border: solid 2px #b8e986;
+}
+
+#regForm input[type="radio"]:checked + label::after {
+  color: hsla(215, 5%, 25%, 1);
+  content: url(../../Assets/icons/Icon_checkbox.svg);
+  font-size: 24px;
+  position: absolute;
+  top: -15px;
+  right: -18px;
+  transform: translateX(-50%);
+}
+
+  #regForm input[type="radio"]#control_05:checked + label {
+  background: red;
+  border-color: red;
+}
+#regForm p {
+  font-weight: 900;
+}
+
+
+@media only screen and (max-width: 700px) {
+    #regForm section {
+    flex-direction: column;
+  }
+}
+
+
+  

@@ -1,0 +1,388 @@
+/*dropdown*/
+
+#header .fixed-header {
+    background-color: white;
+}
+
+#about {
+    float: left;
+    width: 100%;
+}
+
+#about .container {
+    padding-left: 165px;
+    padding-right: 165px;
+}
+
+#about img {
+    width: 731.6px;
+    height: 888.4px;
+    position: absolute;
+    top: -92px;
+    right: -134px;
+    z-index: -1;
+}
+
+.header-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#about .about-text {
+    width: 100%;
+    text-align: left;
+    padding-top: 75px;
+}
+
+#about .about-text h3 {
+    font-family: 'Montserrat', sans-serif;
+    width: 550px;
+    font-weight: 800;
+    color: #838383;
+    margin-top: 50px;
+}
+
+#about .about-text p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    text-align: left;
+    color: #838383;
+    margin-bottom: 37px;
+}
+
+#about .about-quotes {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 200;
+}
+
+#about .quote-shift {
+    margin-left: -15px;
+}
+
+#about .donate-btn {
+    width: 156px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    position: relative;
+}
+
+#about .donateSVG {
+    background-image: url("../../Assets/Doneernubutton.svg");
+    width: 156px;
+    height: 40px;
+    position: absolute;
+}
+
+#charity-info {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 2600px;
+    margin: 0 auto;
+}
+
+.header-image {
+    top: 0;
+    position: absolute;
+    display: block;
+    width: 100%;
+    max-height: 610px;
+}
+
+.main-storyboard {
+    position: absolute;
+    display: block;
+    margin-left: 11%;
+    margin-right: 11%;
+    margin-top: 391px;
+    width: 76%;
+    min-height: 100px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+.container {
+    position: relative;
+    font-family: Arial;
+}
+
+.Fill-1 {
+    position: absolute;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-top: 305px;
+    max-width: 177px;
+    height: 200px;
+    transform: rotate(-18deg);
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.15));
+}
+
+.Fill-7 {
+    position: absolute;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-top: 360px;
+    max-width: 87px;
+    height: 70px;
+    transform: rotate(-18deg);
+    color: #ffffff;
+    font-size: 25px;
+}
+
+.category {
+    margin-left: 2%;
+    margin-top: 2%;
+    border-radius: 5px;
+    background-color: rgba(177, 177, 177, 0.25);
+    padding: 2px;
+    font-size: 15px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    width: auto;
+    display: inline-block;
+    color: #838383;
+}
+
+.kvk_ambi {
+    float: right;
+    margin-right: 2%;
+    margin-top: 2%;
+    font-size: 15px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    display: inline-block;
+    color: #838383;
+}
+
+/*Story*/
+#the_story {
+    width: 100%;
+    float: left;
+    margin-top: 80px;
+}
+
+.container {
+    padding: 0;
+    margin: 0;
+}
+
+.story_image {
+    width: 100%;
+    height: 460px;
+    background-position: center;
+    position: relative;
+    background-size: cover;
+}
+
+.story_gradient {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
+}
+
+.story_gradient .text_container {
+    width: 100%;
+    padding-left: 165px;
+    padding-right: 165px;
+}
+
+.story_gradient .text_container span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    position: absolute;
+    bottom: 150px;
+}
+
+.story-btn-holder {
+    position: absolute;
+    right: 165px;
+    bottom: 58px;
+}
+
+.story_gradient .text_container h3 {
+    width: 556px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.28;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    position: absolute;
+    bottom: 48px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+/*Donation status*/
+#donations .donations-relative {
+    position: relative;
+    width: 602px;
+    height: 200px;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.absolute1 {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 200px;
+    height: 100px;
+}
+
+.absolute2 {
+    position: absolute;
+    top: 80px;
+    left: 200px;
+    width: 200px;
+    height: 100px;
+}
+
+.absolute3 {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 200px;
+    height: 100px;
+}
+
+.main-text {
+    height: 33px;
+    font-family: 'Montserrat', sans-serif;   
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2.36;
+    letter-spacing: normal;
+    color: #838383;
+    vertical-align: middle;
+}
+
+.ammount-people {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 40px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.83;
+    letter-spacing: normal;
+    text-align: center;
+    color: #838383;
+    vertical-align: middle;
+}
+
+.numbers {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 50px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.66;
+    letter-spacing: normal;
+    text-align: center;
+    color: #838383;
+}
+
+#acties {
+    width: 100%;
+    float: left;
+    padding-left: 165px;
+    padding-right: 165px;
+    padding-bottom: 120px;
+}
+
+#acties .title {
+    width: 284px;
+    height: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 35px;
+    font-weight: 200;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    text-align: left;
+    color: #838383;
+    margin-top: 150px;
+}
+
+#acties .action-buttons {
+    width: 100%;
+    text-align: center;
+    float: left;
+    margin-top: 84px;
+}
+
+#acties .action-buttons .all-actions, #acties .action-buttons .make-actions {
+    width: 199px;
+    height: 40px;
+    border-radius: 8px;
+    display: inline-block;
+    position: relative;
+    font-size: 19px;
+}
+
+#acties .action-buttons .all-actions a, #acties .action-buttons .make-actions a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+#acties .action-buttons .all-actions {
+    margin-right: 16px;
+    background-image: linear-gradient(-140deg, #FDA23F 0%, #F3646F 100%);
+    color: white;
+}
+
+#acties .action-buttons .all-actions span {
+    position: absolute;
+    top: 7px;
+    left: 16px;
+}
+
+#acties .action-buttons .make-actions {
+    background-color: white;
+    border: 1px solid #F88356;
+    color: #F88356;
+}
+
+#acties .action-buttons .make-actions span {
+    position: absolute;
+    top: 6px;
+    left: 26px;
+}

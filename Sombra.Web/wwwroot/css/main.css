@@ -635,7 +635,7 @@ footer .footer-info-right .footer-youtube a {
     top: 0; bottom: 0; left: 0; right: 0;
  }
 footer .footer-info-right .footer-facebook {
-    background-image: url(../Assets/icons/Icon_fb+insta.svg);
+    background-image: url("../Assets/icons/Icon_fb_insta.svg");
     width: 65px;
     height: 26px;
     margin-top: 14px;

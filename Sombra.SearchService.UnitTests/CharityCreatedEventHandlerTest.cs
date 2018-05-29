@@ -33,7 +33,7 @@ namespace Sombra.SearchService.UnitTests
                 using (var context = SearchContext.GetInMemoryContext())
                 {
                     var handler = new CharityCreatedEventHandler(context);
-                    await handler.Consume(Event);
+                    await handler.ConsumeAsync(Event);
                 }
 
                 using (var context = SearchContext.GetInMemoryContext())
@@ -44,7 +44,7 @@ namespace Sombra.SearchService.UnitTests
                     Assert.AreEqual(Event.Category, context.Content.Single().Category);
                     Assert.AreEqual(Event.Slogan, context.Content.Single().Description);
                     Assert.AreEqual(Core.Enums.SearchContentType.Charity, context.Content.Single().Type);
-                    Assert.AreEqual(Event.Name, context.Content.Single().Name);  
+                    Assert.AreEqual(Event.Name, context.Content.Single().CharityName);  
                 }
             }
             finally

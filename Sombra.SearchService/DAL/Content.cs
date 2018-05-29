@@ -7,7 +7,8 @@ namespace Sombra.SearchService.DAL
     {
         public System.Guid CharityKey { get; set; }
         public System.Guid CharityActionKey { get; set; }
-        public string Name { get; set; }
+        public string CharityName { get; set; }
+        public string CharityActionName { get; set; }
         public Core.Enums.SearchContentType Type { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }

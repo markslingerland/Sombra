@@ -24,7 +24,7 @@ namespace Sombra.SearchService.UnitTests
                     Category = Core.Enums.Category.MilieuEnNatuurbehoud | Core.Enums.Category.Gezondheid,
                     CharityKey = Guid.NewGuid(),
                     Image = "No image given",
-                    Name = "TestName",
+                    CharityName = "TestName",
                     Description = "This is a very good testing slogan",
                     Type = Core.Enums.SearchContentType.Charity
                 };   
@@ -33,7 +33,7 @@ namespace Sombra.SearchService.UnitTests
                     Category = Core.Enums.Category.Gezondheid,
                     CharityKey = Guid.NewGuid(),
                     Image = "No image given",
-                    Name = "TestName1",
+                    CharityName = "TestName1",
                     Description = "This is a very good testing slogan",
                     Type = Core.Enums.SearchContentType.Charity
                 };  
@@ -65,7 +65,7 @@ namespace Sombra.SearchService.UnitTests
                     Assert.AreEqual(content.CharityKey, response.Results.Single().CharityKey);
                     Assert.AreEqual(content.Description, response.Results.Single().Description);
                     Assert.AreEqual(content.Image, response.Results.Single().Image);
-                    Assert.AreEqual(content.Name, response.Results.Single().Name);
+                    Assert.AreEqual(content.CharityName, response.Results.Single().CharityName);
                     Assert.AreEqual(content.Type, response.Results.Single().Type);
                 }
             }
@@ -87,7 +87,7 @@ namespace Sombra.SearchService.UnitTests
                     Category = Core.Enums.Category.MilieuEnNatuurbehoud,
                     CharityKey = Guid.NewGuid(),
                     Image = "No image given",
-                    Name = "TestName",
+                    CharityName = "TestName",
                     Description = "This is a very good testing slogan",
                     Type = Core.Enums.SearchContentType.Charity
                 };   
@@ -96,7 +96,7 @@ namespace Sombra.SearchService.UnitTests
                     Category = Core.Enums.Category.Gezondheid,
                     CharityKey = Guid.NewGuid(),
                     Image = "No image given",
-                    Name = "TestName1",
+                    CharityName = "TestName1",
                     Description = "This is a very good testing slogan",
                     Type = Core.Enums.SearchContentType.Charity
                 };  

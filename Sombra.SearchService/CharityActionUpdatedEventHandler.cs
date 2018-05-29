@@ -17,16 +17,16 @@ namespace Sombra.SearchService
             _context = context;
         }
 
-        public async Task Consume(CharityActionUpdatedEvent message)
+        public async Task ConsumeAsync(CharityActionUpdatedEvent message)
         {
             ExtendedConsole.Log($"UpdatedCharityActionEvent received for charity with key {message.CharityActionKey}");
             var charityToUpdate = await _context.Content
-                .Where(c => c.Type == Core.Enums.SearchContentType.CharityAction)
-                .FirstOrDefaultAsync(u => u.CharityActionKey == message.CharityActionKey);
+                .FirstOrDefaultAsync(u => u.Type == Core.Enums.SearchContentType.CharityAction && u.CharityActionKey == message.CharityActionKey);
 
             if (charityToUpdate != null)
             {
-                charityToUpdate.Name = message.Name;
+                charityToUpdate.CharityName = message.CharityName;
+                charityToUpdate.CharityActionName = message.Name;
                 charityToUpdate.Description = message.Description;
                 charityToUpdate.Image = message.CoverImage;
                 charityToUpdate.Category = message.Category;

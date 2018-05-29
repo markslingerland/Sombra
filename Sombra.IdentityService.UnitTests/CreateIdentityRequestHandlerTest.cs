@@ -77,7 +77,7 @@ namespace Sombra.IdentityService.UnitTests
                     Assert.IsFalse(context.Users.Any());
                     Assert.IsNull(response.ActivationToken);
                     Assert.IsFalse(response.Success);
-                    Assert.AreEqual(ErrorType.InvalidUserKey, response.ErrorType);
+                    Assert.AreEqual(ErrorType.InvalidKey, response.ErrorType);
                 }
             }
             finally

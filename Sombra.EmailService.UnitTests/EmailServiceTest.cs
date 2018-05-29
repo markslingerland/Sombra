@@ -28,7 +28,7 @@ namespace Sombra.EmailService.UnitTests
             var emailMessage = new EmailEvent(mailboxTestFrom, mailboxTestTo, subjectTest, contentTest, true);
             var emailService = new EmailEventHandler(smtpClientMock.Object);
             // Act
-            await emailService.Consume(emailMessage);
+            await emailService.ConsumeAsync(emailMessage);
 
             // Assert
             smtpClientMock.Verify(m => m.DisconnectAsync(It.Is<bool>(p => true), It.IsAny<CancellationToken>()), Times.Once);

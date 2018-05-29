@@ -21,7 +21,7 @@ namespace Sombra.SearchService.UnitTests
                     Category = Core.Enums.Category.MilieuEnNatuurbehoud,
                     CharityKey = Guid.NewGuid(),
                     Image = "No image given",
-                    Name = "TestName",
+                    CharityName = "TestName",
                     Description = "This is a very good testing slogan",
                     Type = Core.Enums.SearchContentType.Charity
                 };   
@@ -44,7 +44,7 @@ namespace Sombra.SearchService.UnitTests
                 using (var context = SearchContext.GetInMemoryContext())
                 {
                     var handler = new CharityUpdatedEventHandler(context);
-                    await handler.Consume(updatedCharityEvent);      
+                    await handler.ConsumeAsync(updatedCharityEvent);      
                 }
 
                 using (var context = SearchContext.GetInMemoryContext())
@@ -55,7 +55,7 @@ namespace Sombra.SearchService.UnitTests
                     Assert.AreEqual(content.Category, context.Content.Single().Category);
                     Assert.AreEqual(content.Description, context.Content.Single().Description);
                     Assert.AreEqual(Core.Enums.SearchContentType.Charity, context.Content.Single().Type);
-                    Assert.AreEqual(updatedCharityEvent.Name, context.Content.Single().Name);  
+                    Assert.AreEqual(updatedCharityEvent.Name, context.Content.Single().CharityName);  
                 }
             }
             finally

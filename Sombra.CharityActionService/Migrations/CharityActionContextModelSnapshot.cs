@@ -40,6 +40,8 @@ namespace Sombra.CharityActionService.Migrations
 
                     b.Property<string>("IBAN");
 
+                    b.Property<bool>("IsApproved");
+
                     b.Property<string>("Name");
 
                     b.HasKey("Id");

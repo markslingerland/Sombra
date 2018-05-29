@@ -29,7 +29,7 @@ namespace Sombra.Web.Controllers
             // Info Story Needs to be randomly picked from list of Actions supporting the Charity
             charityActionModel.Name = "Gert de Boer";
             charityActionModel.Description = "Helpen maakt de wereld een vrolijkere plek, of niet?";
-            charityActionModel .CharityActionKey = "1";
+            charityActionModel.CharityActionKey = "1";
 
             
             // Donations info

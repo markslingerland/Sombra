@@ -118,6 +118,43 @@ function closeAllSelect(elmnt) {
   }
 }
 
-  $("#control_01").click(function() {
-    $("#section-2").css("display", "flex");
-  });
+
+$('#control_01').click(function() {
+   if($('#control_01').is(':checked')) { 
+     $(".select-action").css("display", "none") }
+});
+
+$('#control_02').click(function() {
+  if($('#control_02').is(':checked')) { 
+    $(".select-action").css("display", "block") }
+});
+
+$('#select-your-charity').selectize({
+  sortField: 'text',
+  maxItems: 1,
+  create: false,
+    valueField: 'id',
+    labelField: 'title',
+    searchField: 'title',
+    placeholder     : "Naam van het goed doel...",
+    options: [
+        {id: 1, title: 'Spectrometer', url: 'http://en.wikipedia.org/wiki/Spectrometers'},
+        {id: 2, title: 'Star Chart', url: 'http://en.wikipedia.org/wiki/Star_chart'},
+        {id: 3, title: 'Electrical Tape', url: 'http://en.wikipedia.org/wiki/Electrical_tape'}
+    ]
+});
+
+$('#select-action').selectize({
+  sortField: 'text',
+  maxItems: 1,
+  create: false,
+    valueField: 'id',
+    labelField: 'title',
+    searchField: 'title',
+    placeholder     : "Naam van de actie...",
+    options: [
+        {id: 1, title: 'Spectrometer', url: 'http://en.wikipedia.org/wiki/Spectrometers'},
+        {id: 2, title: 'Star Chart', url: 'http://en.wikipedia.org/wiki/Star_chart'},
+        {id: 3, title: 'Electrical Tape', url: 'http://en.wikipedia.org/wiki/Electrical_tape'}
+    ]
+});

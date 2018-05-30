@@ -26,7 +26,6 @@ namespace Sombra.SearchService
 
         public async Task<GetRandomCharitiesResponse> Handle(GetRandomCharitiesRequest message)
         {
-            ExtendedConsole.Log("GetRandomCharitiesRequest received");
             return new GetRandomCharitiesResponse
             {
                 Results = await _context.Content.Where(c => c.Type == SearchContentType.Charity)

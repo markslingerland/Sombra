@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using Sombra.Core;
 
 namespace Sombra.Messaging.Infrastructure
 {
@@ -17,6 +18,7 @@ namespace Sombra.Messaging.Infrastructure
             where THandler : IAsyncRequestHandler<TRequest, TResponse>
             where TResponse : class, IResponse
         {
+            ExtendedConsole.Log($"{typeof(TRequest).Name} received");
             var handler = _serviceProvider.GetRequiredService<THandler>();
 
             return handler.Handle(message);

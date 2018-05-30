@@ -1,4 +1,8 @@
-/*dropdown*/
+.container {
+    width: 1440px!important;
+    padding: 0;
+    margin: 0;
+}
 
 #about {
     float: left;
@@ -27,7 +31,6 @@
 
 #about .about-text {
     padding-top: 150px;
-    /*padding-left: 50px;*/
 }
 
 #about .about-text h3 {
@@ -504,7 +507,7 @@ font-size: 19px;
 
 #acties .action-buttons .all-actions {
     margin-right: 16px;
-    background-image: linear-gradient(-140deg, #FDA23F 0%, #F3646F 100%);
+    background-image: linear-gradient(101deg, #fb9549, #f57264);
     color:white;
 }
 

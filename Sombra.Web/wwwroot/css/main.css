@@ -49,12 +49,6 @@ body {
     font-weight: 800;
 }
 
-.container {
-    width: 100% !important;
-    padding: 0;
-    margin: 0;
-}
-
 .clickable {
     position: absolute;
     top: 0;
@@ -67,7 +61,6 @@ body {
     background-color: white !important;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
-
 
 #header {
     float: left;
@@ -204,7 +197,7 @@ body {
     width: 250px;
     height: 40px;
     border-radius: 8px;
-    background-image: linear-gradient(101deg, #fda23f, #f3646f);
+    background-image: linear-gradient(101deg, #fb9549, #f57264);
     position: relative;
 }
 
@@ -293,7 +286,7 @@ right: 0;
 .carousel-cell .carousel-background {
   width: 284px;
   height: 141px;
-  background-image: linear-gradient(121deg, #fda23f, #f3646f);
+  background-image: linear-gradient(101deg, #fb9549, #f57264);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   position: relative;
   border-radius: 8px;
@@ -466,7 +459,7 @@ footer {
     width: 100%;
     float: left;
     height: 415px;
-    background-image: linear-gradient(114deg, #fda23f, #f3646f);
+    background-image: linear-gradient(101deg, #fb9549, #f57264);
     padding: 0;
     margin: 0;
 }

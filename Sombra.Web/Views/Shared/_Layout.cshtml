@@ -19,10 +19,9 @@
 </head>
 
 <body>
-
     <nav id="header">
         <div class="fixed-header">
-                <a href="/" class="header-logo">
+                <a href="www.ikdoneer.nu" class="header-logo">
             </a>
 
             <div class="header-big-menu">
@@ -51,8 +50,10 @@
     </nav>
 
 
-    <div class="container body-content">
+    <div class="body-content">
         @RenderBody()
+        </div>
+
         <footer>
             <div class="footer-holder">
                 <div class="container"></div>
@@ -125,11 +126,12 @@
                 </div>
             </div>
     </footer>
-    </div>
+    <!-- </div> -->
 
     <environment include="Development">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
         <script src="~/js/main.js"></script>

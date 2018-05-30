@@ -4,104 +4,143 @@
 
 <div id="background-frame"></div>
 
-<div class="container">
-<form id="regForm" action="#">
-    <h1 class="monster-200">Ik doneer aan...</h1>
-    <div class="tab">
-        <section>
-            <div class="radio-holder">
-                <input type="radio" id="control_01" name="select" value="1">
-                <label for="control_01">
-                <h2 class="source-600 radio-input-tag">Een goed doel</h2>
-                <!-- <p>Awww, poor baby. Too afraid of the scary game sprites? I laugh at you.</p> -->
-                </label>
-            </div>
-            <div class="radio-holder">
-                <input type="radio" id="control_02" name="select" value="2">
-                <label for="control_02">
-                <h2 class="source-600 radio-input-tag"> Een actie</h2>
-                <!-- <p>You're not a gaming God by any stretch of the imagination.</p> -->
-                </label>
-            </div>
-        </section>
+<form id="form-donate">
 
-        <section>
-            <div class="radio-holder">
-                <input type="radio" id="control_03" name="time" value="1">
-                <label for="control_03">
-                <h2 class="source-600 radio-input-tag">Een goed doel</h2>
-                <!-- <p>Awww, poor baby. Too afraid of the scary game sprites? I laugh at you.</p> -->
-                </label>
-            </div>
-            <div class="radio-holder">
-                <input type="radio" id="control_04" name="time" value="2">
-                <label for="control_04">
-                <h2 class="source-600 radio-input-tag">Een actie</h2>
-                <!-- <p>You're not a gaming God by any stretch of the imagination.</p> -->
-                </label>
-            </div>
-        </section>
-
-
-        <!-- <div class="inputGroup">
-    <input id="radio1" name="radio" type="radio"/>
-    <label for="radio1">Yes</label>
-  </div>
-  <div class="inputGroup">
-    <input id="radio2" name="radio" type="radio"/>
-    <label for="radio2">No</label> -->
-        <!-- </div> -->
-
-    </div>
-    <div class="tab">Contact Info:
-        <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-        <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
-    </div>
-    <div class="tab">Birthday:
-        <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-        <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
-        <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
-    </div>
-    <div class="tab">Login Info:
-        <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
-        <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
-    </div>
-    <div style="overflow:auto;">
-        <div style="float:right;">
-            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-        </div>
-    </div>
-    <!-- Circles which indicates the steps of the form: -->
-    <div style="text-align:center;margin-top:40px;">
-        <span class="step"></span>
-        <span class="step"></span>
-        <span class="step"></span>
-        <span class="step"></span>
-    </div>
-</form>
-</div>
-
-<!-- <div id="form-partial-holder">
-    <div id="donating-choose">
-
-        <div href="#" class="donate-close"></div>
-        <div href="#" class="donate-close"></div>
-        <a class="closing" href="#"></a>
-
-
+    <section class="section-1">
         <div class="donate-progress">
-            <a href="#" class="orange-ball"></a>
-            <a href="#" class="grey-ball"></a>
-            <a href="#" class="grey-ball"></a>
-            <a href="#" class="grey-ball"></a>
+            <div class="orange-ball"></div>
+            <div class="grey-ball"></div>
+            <div class="grey-ball"></div>
+            <div class="grey-ball"></div>
         </div>
+
         <div class="donate-step">
             <p>1</p>
         </div>
+        <h3 class="donate-title monster-400">Ik doneer aan...</h3>
 
-        <h2 class="monster-400 donate-title">Ik doneer aan...</h2>
+        <a class="closing"><span class="donate-close"></span><span class="donate-close"></span></a>
+
+        <div class="choose-cause">
+            <div class="radio-holder">
+                <input type="radio" id="control_01" name="select" value="2">
+                <label for="control_01">
+            <h2 class="source-600 radio-input-tag"> Een actie</h2>
+        </label>
+            </div>
+
+            <div class="radio-holder">
+                <input type="radio" id="control_02" name="select" value="2">
+                <label for="control_02">
+            <h2 class="source-600 radio-input-tag"> Een actie</h2>
+        </label>
+            </div>
+        </div>
+
+    <div class="select-charity">
+        <select name="charity" form="form-donate">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="opel">Opel</option>
+            <option value="audi">Audi</option>
+         </select>
     </div>
-</div> -->
 
+   <span class="section-1-choose-amount monster-800">Kies het bedrag</span>
 
+   <div class="choose-money-amount">
+       <div class="radio-holder">
+                <input type="radio" id="10" name="money" value="10">
+                <label for="10">
+            <h2 class="source-600 radio-input-tag"> 10</h2>
+                </label>
+        </div>
+
+        <div class="radio-holder">
+                <input type="radio" id="20" name="money" value="20">
+                <label for="20">
+            <h2 class="source-600 radio-input-tag"> 20</h2>
+                </label>
+        </div>
+
+        <div class="radio-holder">
+                <input type="radio" id="50" name="money" value="50">
+                <label for="50">
+            <h2 class="source-600 radio-input-tag"> 50</h2>
+                </label>
+        </div>
+
+        <div class="radio-holder">
+                <input type="radio" id="custom" name="money" value="custom">
+                <label for="custom">
+            <h2 class="source-600 radio-input-tag"> custom</h2>
+                </label>
+        </div>
+   </div>
+
+   <div class="payment-options">
+       
+       <div class="radio-holder">
+                <input type="radio" id="one-time" name="pay-time" value="one-time">
+                <label for="one-time">
+            <h2 class="source-600 radio-input-tag"> Eenmalig</h2>
+                </label>
+        </div>
+
+         <div class="radio-holder">
+                <input type="radio" id="monthly" name="pay-time" value="monthly">
+                <label for="monthly">
+            <h2 class="source-600 radio-input-tag"> Maandelijks</h2>
+                </label>
+        </div>
+
+         <div class="radio-holder">
+                <input type="radio" id="yearly" name="pay-time" value="yearly">
+                <label for="yearly">
+            <h2 class="source-600 radio-input-tag"> Jaarlijks</h2>
+                </label>
+        </div>      
+
+   </div>
+
+    <div class="next-step-holder">
+            <div class="next-step">
+            <a class="clickable" href="#"></a>
+            </div>
+        </div>
+        
+
+    </section>
+
+    <section class="section-2">
+        <div class="radio-holder">
+            <input type="radio" id="control_01" name="select" value="2">
+            <label for="control_01">
+            <h2 class="source-600 radio-input-tag"> Een actie</h2>
+        </label>
+        </div>
+
+        <div class="radio-holder">
+            <input type="radio" id="control_02" name="select" value="2">
+            <label for="control_02">
+            <h2 class="source-600 radio-input-tag"> Een actie</h2>
+        </label>
+        </div>
+    </section>
+
+    <section class="section-3">
+        <div class="radio-holder">
+            <input type="radio" id="control_01" name="select" value="2">
+            <label for="control_01">
+            <h2 class="source-600 radio-input-tag"> Een actie</h2>
+        </label>
+        </div>
+
+        <div class="radio-holder">
+            <input type="radio" id="control_02" name="select" value="2">
+            <label for="control_02">
+            <h2 class="source-600 radio-input-tag"> Een actie</h2>
+        </label>
+        </div>
+    </section>
+</form>

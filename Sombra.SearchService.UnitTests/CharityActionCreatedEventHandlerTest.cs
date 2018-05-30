@@ -21,7 +21,7 @@ namespace Sombra.SearchService.UnitTests
             {
                 var Event = new CharityActionCreatedEvent
                 {
-                    Category = Core.Enums.Category.MilieuEnNatuurbehoud,
+                    Category = Core.Enums.Category.EnvironmentAndNatureConservation,
                     CharityActionKey = Guid.NewGuid(),
                     CoverImage = "No image given",
                     IBAN = "NotReallyAnIBAN",

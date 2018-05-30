@@ -26,7 +26,7 @@ namespace Sombra.UserService
                 services => services
                     .AddAutoMapper(Assembly.GetExecutingAssembly())
                     .AddDbContext<UserContext>(_sqlConnectionString),
-                ConnectionValidator.ValidateAllDbConnections, DatabaseMigrationHelper.ForceMigrations);
+                DatabaseHelper.RunInstaller);
 
             Thread.Sleep(Timeout.Infinite);
         }

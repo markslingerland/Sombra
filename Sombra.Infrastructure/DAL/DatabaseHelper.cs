@@ -1,16 +1,46 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using MongoDB.Driver;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Threading;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Driver;
 using MongoDB.Driver.Core.Clusters;
 using Sombra.Core;
 using Sombra.Infrastructure.DAL.Mongo;
 
 namespace Sombra.Infrastructure.DAL
 {
-    public static class ConnectionValidator
+    public static class DatabaseHelper
     {
+        public static void RunInstaller(ServiceProvider serviceProvider)
+        {
+            ValidateAllDbConnections(serviceProvider);
+            ApplyMigrations(serviceProvider);
+        }
+
+        public static void ApplyMigrations(ServiceProvider serviceProvider)
+        {
+            var connectionStrings = serviceProvider.GetServices<SqlConnectionStringWrapper>();
+
+            foreach (var connectionString in connectionStrings)
+            {
+                ExtendedConsole.Log($"Applying migrations for {connectionString.ContextType.Name}");
+                using (var context = (DbContext)serviceProvider.GetRequiredService(connectionString.ContextType))
+                {
+                    if (context.Database.GetPendingMigrations().Any())
+                    {
+                        context.Database.Migrate();
+                        ExtendedConsole.Log($"Finished applying migrations for {connectionString.ContextType.Name}");
+                    }
+                    else
+                    {
+                        ExtendedConsole.Log($"No migrations found to apply for {connectionString.ContextType.Name}");
+                    }
+                }
+            }
+        }
+
         public static void ValidateAllDbConnections(ServiceProvider serviceProvider)
         {
             ValidateSqlConnections(serviceProvider);

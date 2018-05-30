@@ -6,26 +6,14 @@
     <link rel="stylesheet" href="~/css/search/search.css" />
 }
 
-@section Scripts
-{
-    <script>
-        $('#filter').on('change', function(event) {
-            var selectedOption = $(event.target).find(':selected');
-            if (!selectedOption.val()) return;
-            if ($('#selected-categories').find(`.selected-category[data-id="${selectedOption.val()}"]`).length) return;
-            $('#selected-categories').append($('#selected-category-display').html().replace('[categoryId]', selectedOption.val()).replace('[categoryName]', selectedOption.text()));
-        });
-    </script>
-}
-
 <div id="filter">
     <a href="#" class="signin-charity source-600">Een goed doel aanmelden</a>
     <h2 class="monster-200 filter-title">@ViewData["Title"]</h2>
 
     <div class="form-holders">
         <form id="Categorieën" class="filter-form" action="filter-charityActions">
-            <input class="filter-input" type="text" placeholder="Zoeken..." name="search-input" id="search-input">
-            <button class="submit-button monster-300" type="button"><i class="fa fa-search"></i></button>
+            <input class="filter-input" type="text" placeholder="Zoeken..." name="Zoeken...">
+            <button class="submit-button monster-300" type="submit"><i class="fa fa-search"></i></button>
 
             <div class="custom-select monster-300">
                 <select class="monster-300" form="Categorieën">
@@ -42,7 +30,24 @@
 </div>
 
 <div id="selected-category">
-    <div id="selected-categories" class="selected-categories">
+    <div class="selected-categories">
+        <a class="selected-category source-800" href="#">
+            GEZONDHEID
+            <span class="cross-holder">
+                <span class="icon-holder">
+                    <i class="fas fa-times"></i>
+                </span>
+            </span>
+        </a>
+
+        <a class="selected-category source-800" href="#">
+            maatschappelijke en sociale doelen
+            <span class="cross-holder">
+                <span class="icon-holder">
+                    <i class="fas fa-times"></i>
+                </span>
+            </span>
+        </a>
     </div>
 </div>
 
@@ -234,16 +239,4 @@
     <a class="source-300" href="#">...</a>
     <a class="source-300" href="#">12</a>
     <a href="#"><img src="Assets/icons/icon-arrow-to-right.svg" alt="#"></a>
-</div>
-
-<div id="selected-category-display" class="hidden">
-    <a class="selected-category source-800" href="#" data-id="[categoryId]">
-        [categoryName]
-        <span class="cross-holder">
-            <span class="icon-holder">
-                <i class="fas fa-times">
-                </i>
-            </span>
-        </span>
-    </a>
 </div>

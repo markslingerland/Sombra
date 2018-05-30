@@ -5,8 +5,8 @@ using Sombra.Core;
 using Sombra.Core.Enums;
 using Sombra.IdentityService.DAL;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.Identity;
+using Sombra.Messaging.Responses.Identity;
 
 namespace Sombra.IdentityService
 {

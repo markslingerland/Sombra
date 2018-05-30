@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Sombra.Messaging.Requests;
+using Sombra.Messaging.Requests.Search;
 using Sombra.Web.Infrastructure.Messaging;
 using Sombra.Web.ViewModels.Search;
 

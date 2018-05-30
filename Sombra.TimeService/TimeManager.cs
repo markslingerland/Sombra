@@ -7,7 +7,7 @@ using EasyNetQ;
 using Sombra.Core;
 using Sombra.Core.Enums;
 using Sombra.Infrastructure.DAL;
-using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.Time;
 using Sombra.TimeService.DAL;
 
 namespace Sombra.TimeService

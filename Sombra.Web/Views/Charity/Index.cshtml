@@ -1,4 +1,5 @@
 ﻿@model Sombra.Web.ViewModels.Charity.CharityViewModel
+
 @{ ViewData["Title"] = "Charity"; }
 
 @section Styles{
@@ -26,7 +27,7 @@
         @*top*@
         @foreach (string category in Model.charity.Categories)
         {
-        <div class="category">@category</div>
+            <div class="category">@category</div>
         }
         <div class="kvk_ambi">KvK nummer: @Model.charity.KVKNumber  ANBI nummer: @Model.charity.Anbi</div>
         @*title & story*@
@@ -69,7 +70,36 @@
         <div id="acties">
             <h3 class="title">Lopende acties</h3>
             <div class="slider-container">
-                <div id="main-carousel" class="main-carousel"></div>
+                <div id="main-carousel" class="main-carousel">
+                    @foreach (var action in @Model.charityActions)
+                    {
+                        // TODO Make correct Models
+                        // not sure what model has info for existing events
+                        <div class="carousel-cell">
+                            <div class="carousel-container">
+                                <div class="carousel-background">
+                                    <div class="carousel-logo"></div>
+                                    <div class="carousel-progress-bar">
+                                        <div class="carousel-progress"></div>
+                                    </div>
+                                </div>
+                                <div class="carousel-body">
+                                    <label class="carousel-date">27/04/2018</label>
+                                    <h4 class="carousel-title">@action.CharityName &#64; Mont Ventoux</h4>
+                                    <img class="carousel-poster-image" src="Assets/ArdHofman.png">
+                                    <label class="carousel-poster-name"><span style="font-family: 'Source Sans Pro' , sans-serif;">@action.Name</span></label>
+
+                                    <div class="carousel-money-holder">
+
+                                        <label class="carousel-reached"><span style="font-family: 'Source Sans Pro' , sans-serif;">&euro; @action.donations.TotalDonations</span></label>
+                                        <label class="carousel-goal"><span style="font-family: 'Source Sans Pro' , sans-serif;">behaald van &euro; 15.000</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
                 <div class="button button--previous"></div>
                 <div class="button button--next"></div>
             </div>

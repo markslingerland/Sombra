@@ -17,5 +17,6 @@ namespace Sombra.Web.ViewModels.Charity
     public string ActionType { get; set; }
     public string Description { get; set; }
     public string Image { get; set; }
+    public DonationsToCharityModel donations { get; set; }
 }
 }

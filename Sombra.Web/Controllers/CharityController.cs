@@ -13,8 +13,10 @@ namespace Sombra.Web.Controllers
         public const string SubdomainParameter = "Subdomain";
         public IActionResult Index()
         {
+            // TODO Fix Models to be correct with data needed in the view
+            // TEST DATA
             var charityModel = new CharityModel();
-            var charityActionModel = new CharityActionModel();
+            var charityActionModel = new CharityActionModel();           
             var donationsCharity = new DonationsToCharityModel();
             var charityView = new CharityViewModel();
             //Info Charity needs to be requested from the bus by id
@@ -30,36 +32,21 @@ namespace Sombra.Web.Controllers
             charityActionModel.Name = "Gert de Boer";
             charityActionModel.Description = "Helpen maakt de wereld een vrolijkere plek, of niet?";
             charityActionModel.CharityActionKey = "1";
-
+            charityActionModel.CharityName = "Klimmen tegen MS";
             
             // Donations info
             donationsCharity.DonatedToCharity = "45";
             donationsCharity.TotalDonations = "1.456";
             donationsCharity.AvarageDonation = "25";
             donationsCharity.LatestDonation = "75";
-
+            charityActionModel.donations = donationsCharity;
+            CharityActionModel[] charityActionModels = new CharityActionModel[] { charityActionModel, charityActionModel, charityActionModel, charityActionModel };
             charityView.charity = charityModel;
             charityView.charityAction = charityActionModel;
             charityView.donationsToCharity = donationsCharity;
+            charityView.charityActions = charityActionModels;
+            // TEST DATA
             return View(charityView);
-        }
-        [HttpGet]
-        public async Task<IActionResult> GetCharityActions(TopCharitiesQuery query)
-        {
-            //var request = _mapper.Map<GetRandomCharitiesRequest>(query);
-            //var response = await _bus.RequestAsync(request);
-
-            //if (response.IsRequestSuccessful)
-            //{
-            //    var model = new TopCharitiesViewModel
-            //    {
-            //        Charities = _mapper.Map<List<CharityItemViewModel>>(response.Results)
-            //    };
-
-            //    return PartialView("_ActionItemsWrapper", model);
-            //}
-
-            return PartialView("test","test2");
         }
     }
 }

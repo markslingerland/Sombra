@@ -1,8 +1,7 @@
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Sombra.Core;
-using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.CharityAction;
 using Sombra.Messaging.Infrastructure;
 using Sombra.SearchService.DAL;
 

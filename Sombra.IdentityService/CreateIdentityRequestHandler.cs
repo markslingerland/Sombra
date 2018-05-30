@@ -5,8 +5,8 @@ using Sombra.Core;
 using Sombra.Core.Enums;
 using Sombra.IdentityService.DAL;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.Identity;
+using Sombra.Messaging.Responses.Identity;
 using CredentialType = Sombra.Core.Enums.CredentialType;
 
 namespace Sombra.IdentityService
@@ -24,7 +24,7 @@ namespace Sombra.IdentityService
         {
             if (message.UserKey == default) return new CreateIdentityResponse
             {
-                ErrorType = ErrorType.InvalidUserKey
+                ErrorType = ErrorType.InvalidKey
             };
 
             if (message.CredentialType == CredentialType.Email)

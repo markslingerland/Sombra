@@ -7,8 +7,8 @@ using MongoDB.Driver;
 using Sombra.Core;
 using Sombra.Core.Extensions;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.Logging;
+using Sombra.Messaging.Responses.Logging;
 
 namespace Sombra.LoggingService
 {

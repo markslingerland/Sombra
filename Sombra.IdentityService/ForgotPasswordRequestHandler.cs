@@ -1,12 +1,12 @@
 using System.Threading.Tasks;
 using Sombra.Core;
 using Sombra.IdentityService.DAL;
-using Sombra.Messaging.Requests;
 using Sombra.Messaging.Infrastructure;
 using System;
 using Microsoft.EntityFrameworkCore;
 using Sombra.Core.Enums;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.Identity;
+using Sombra.Messaging.Responses.Identity;
 using CredentialType = Sombra.Core.Enums.CredentialType;
 
 namespace Sombra.IdentityService

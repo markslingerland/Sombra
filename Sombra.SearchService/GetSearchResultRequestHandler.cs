@@ -2,14 +2,15 @@ using Sombra.Messaging.Infrastructure;
 using Sombra.SearchService.DAL;
 using AutoMapper;
 using System.Threading.Tasks;
-using Sombra.Messaging.Responses;
-using Sombra.Messaging.Requests;
 using System.Linq;
 using System.Linq.Expressions;
 using System;
 using Sombra.Core.Enums;
 using Sombra.Core.Extensions;
 using Sombra.Infrastructure.DAL;
+using Sombra.Messaging.Requests.Search;
+using Sombra.Messaging.Responses.Search;
+using Sombra.Messaging.Shared;
 
 namespace Sombra.SearchService
 {

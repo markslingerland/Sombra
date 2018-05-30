@@ -3,11 +3,12 @@ using EasyNetQ;
 using Microsoft.EntityFrameworkCore;
 using Sombra.CharityService.DAL;
 using Sombra.Core;
-using Sombra.Messaging.Events;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 using System.Threading.Tasks;
+using Sombra.Core.Enums;
+using Sombra.Messaging.Events.Charity;
+using Sombra.Messaging.Requests.Charity;
+using Sombra.Messaging.Responses.Charity;
 
 namespace Sombra.CharityService
 {
@@ -26,14 +27,13 @@ namespace Sombra.CharityService
 
         public async Task<UpdateCharityResponse> Handle(UpdateCharityRequest message)
         {
-
             ExtendedConsole.Log("UpdateCharityRequest received");
             var charity = await _context.Charities.FirstOrDefaultAsync(u => u.CharityKey == message.CharityKey);
             if (charity == null)
             {
                 return new UpdateCharityResponse
                 {
-                    Success = false,
+                    ErrorType = ErrorType.NotFound
                 };
             }
 
@@ -45,10 +45,7 @@ namespace Sombra.CharityService
             catch (DbUpdateException ex)
             {
                 ExtendedConsole.Log(ex);
-                return new UpdateCharityResponse
-                {
-                    Success = false
-                };
+                return new UpdateCharityResponse();
             }
 
             var charityUpdatedEvent = _mapper.Map<CharityUpdatedEvent>(charity);

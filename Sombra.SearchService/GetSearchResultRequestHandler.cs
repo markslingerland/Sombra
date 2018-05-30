@@ -53,7 +53,7 @@ namespace Sombra.SearchService
             {
                 TotalResult = _context.Content.Count(filter),
                 Results = await _context.Content.Where(filter).OrderBy(c => c.CharityName, message.SortOrder)
-                    .ProjectToPagedListAsync<SearchResult>(message.PageNumber, message.PageSize, _mapper)
+                    .ProjectToPagedListAsync<SearchResult>(message, _mapper)
             };
         }
     }

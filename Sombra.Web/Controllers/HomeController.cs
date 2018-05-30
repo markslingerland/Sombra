@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Sombra.Messaging.Requests.CharityAction;
 using Sombra.Messaging.Requests.Search;
 using Sombra.Web.Infrastructure.Messaging;
 using Sombra.Web.Models;
@@ -44,6 +45,16 @@ namespace Sombra.Web.Controllers
             }
 
             return PartialView("_CharityItemsWrapper", model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetCharityActions(CharityActionsQuery query)
+        {
+            var request = _mapper.Map<GetCharityActionsRequest>(query);
+            var response = await _bus.RequestAsync(request);
+            var model = _mapper.Map<CharityActionsViewModel>(response);
+
+            return PartialView("_CharityActionItemsWrapper", model);
         }
 
         public IActionResult About()

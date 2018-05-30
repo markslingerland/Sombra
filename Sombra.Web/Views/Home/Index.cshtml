@@ -7,11 +7,7 @@
 }
 
 @section Scripts {
-    <script>
-        $(document).ready(function () {
-            $('#top-charities').load('@Url.Action("GetTopCharities", "Home", new { Amount = 3})');
-        });
-    </script>
+    <script src="~/js/home.js"></script>
 }
 
 <img class="header-image" src="Assets/header-image-shape.svg" alt="#">
@@ -143,140 +139,7 @@
 <div id="acties">
     <h3 class="title">Lopende acties</h3>
     <div class="slider-container">
-        <div class="main-carousel">
-
-            <div class="carousel-cell">
-                <div class="carousel-container">
-                    <div class="carousel-background">
-                        <div class="carousel-logo"></div>
-                        <div class="carousel-progress-bar">
-                            <div class="carousel-progress"></div>
-                        </div>
-                    </div>
-                    <div class="carousel-body">
-                        <label class="carousel-date">27/04/2018</label>
-                        <h4 class="carousel-title">Klimmen tegen MS &#64; Mont Ventoux</h4>
-                        <img class="carousel-poster-image" src="Assets/lianne.jpg">
-                        <label class="carousel-poster-name">Fabiene ter Beek</label>
-
-                        <div class="carousel-money-holder">
-
-                            <label class="carousel-reached">&euro; 6.800 </label>
-                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <div class="carousel-container">
-                    <div class="carousel-background">
-                        <div class="carousel-logo"></div>
-                        <div class="carousel-progress-bar">
-                            <div class="carousel-progress"></div>
-                        </div>
-                    </div>
-                    <div class="carousel-body">
-                        <label class="carousel-date">27/04/2018</label>
-                        <h4 class="carousel-title">Klimmen tegen MS &#64; Mont Ventoux</h4>
-                        <img class="carousel-poster-image" src="Assets/lianne.jpg">
-                        <label class="carousel-poster-name">Fabiene ter Beek</label>
-
-                        <div class="carousel-money-holder">
-
-                            <label class="carousel-reached">&euro; 6.800 </label>
-                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <div class="carousel-container">
-                    <div class="carousel-background">
-                        <div class="carousel-logo"></div>
-                        <div class="carousel-progress-bar">
-                            <div class="carousel-progress"></div>
-                        </div>
-                    </div>
-                    <div class="carousel-body">
-                        <label class="carousel-date">27/04/2018</label>
-                        <h4 class="carousel-title">Klimmen tegen MS &#64; Mont Ventoux</h4>
-                        <img class="carousel-poster-image" src="Assets/lianne.jpg">
-                        <label class="carousel-poster-name">Fabiene ter Beek</label>
-
-                        <div class="carousel-money-holder">
-
-                            <label class="carousel-reached">&euro; 6.800 </label>
-                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <div class="carousel-container">
-                    <div class="carousel-background">
-                        <div class="carousel-logo"></div>
-                        <div class="carousel-progress-bar">
-                            <div class="carousel-progress"></div>
-                        </div>
-                    </div>
-                    <div class="carousel-body">
-                        <label class="carousel-date">27/04/2018</label>
-                        <h4 class="carousel-title">Klimmen tegen MS &#64; Mont Ventoux</h4>
-                        <img class="carousel-poster-image" src="Assets/person.jpg">
-                        <label class="carousel-poster-name">Fabiene ter Beek</label>
-
-                        <div class="carousel-money-holder">
-
-                            <label class="carousel-reached">&euro; 6.800 </label>
-                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <div class="carousel-container">
-                    <div class="carousel-background">
-                        <div class="carousel-logo"></div>
-                        <div class="carousel-progress-bar">
-                            <div class="carousel-progress"></div>
-                        </div>
-                    </div>
-                    <div class="carousel-body">
-                        <label class="carousel-date">27/04/2018</label>
-                        <h4 class="carousel-title">Klimmen tegen MS &#64; Mont Ventoux</h4>
-                        <img class="carousel-poster-image" src="Assets/ArdHofman.png">
-                        <label class="carousel-poster-name">Fabiene ter Beek</label>
-
-                        <div class="carousel-money-holder">
-
-                            <label class="carousel-reached">&euro; 6.800 </label>
-                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <div class="carousel-container">
-                    <div class="carousel-background">
-                        <div class="carousel-logo"></div>
-                        <div class="carousel-progress-bar">
-                            <div class="carousel-progress"></div>
-                        </div>
-                    </div>
-                    <div class="carousel-body">
-                        <label class="carousel-date">27/04/2018</label>
-                        <h4 class="carousel-title">Klimmen tegen MS &#64; Mont Ventoux</h4>
-                        <img class="carousel-poster-image" src="Assets/ArdHofman.png">
-                        <label class="carousel-poster-name">Fabiene ter Beek</label>
-
-                        <div class="carousel-money-holder">
-                            <label class="carousel-reached">&euro; 6.800 </label>
-                            <label class="carousel-goal">behaald vam &euro; 15.000 </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <div id="charity-actions-carousel" class="main-carousel">
         </div>
         <div class="button button--previous"></div>
         <div class="button button--next"></div>
@@ -292,6 +155,4 @@
             <span class="monster-700">Start een actie</span>
         </div>
     </div>
-
-
 </div>

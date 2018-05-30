@@ -5,7 +5,7 @@ using Sombra.Messaging.Responses.Search;
 namespace Sombra.Messaging.Requests.Search
 {
     [Cachable(LifeTimeInHours = 1)]
-    public class GetSearchResultRequest : Request<GetSearchResultResponse>
+    public class GetSearchResultRequest : PagedRequest<GetSearchResultResponse>
     {
         [CacheKey]
         public List<string> Keywords { get; set; }
@@ -18,11 +18,5 @@ namespace Sombra.Messaging.Requests.Search
 
         [CacheKey]
         public Category Categories { get; set; }
-
-        [CacheKey]
-        public int PageSize{ get; set; }
-
-        [CacheKey]
-        public int PageNumber{ get; set; }
     }
 }

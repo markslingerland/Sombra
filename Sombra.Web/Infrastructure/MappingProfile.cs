@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Sombra.Core.Enums;
+using Sombra.Messaging.Requests.CharityAction;
 using Sombra.Messaging.Requests.Identity;
 using Sombra.Messaging.Requests.Logging;
 using Sombra.Messaging.Requests.Search;
 using Sombra.Messaging.Requests.User;
+using Sombra.Messaging.Responses.CharityAction;
 using Sombra.Messaging.Responses.Identity;
 using Sombra.Messaging.Responses.Logging;
 using Sombra.Messaging.Shared;
@@ -55,6 +57,11 @@ namespace Sombra.Web.Infrastructure
                 .ForMember(d => d.Name, opt => opt.MapFrom(s => s.CharityName));
 
             CreateMap<CharityActionItemViewModel, CharityAction>();
+            CreateMap<GetCharityActionsResponse, CharityActionsViewModel>()
+                .ForMember(d => d.CharityActions, opt => opt.MapFrom(s => s.Results));
+
+            CreateMap<CharityActionsQuery, GetCharityActionsRequest>()
+                .ForMember(d => d.CharityKey, opt => opt.Ignore());
         }
     }
 }

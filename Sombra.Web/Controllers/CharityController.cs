@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Sombra.Web.ViewModels.Search;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Sombra.Web.Controllers
 {
@@ -30,24 +28,6 @@ namespace Sombra.Web.Controllers
             ViewData["LatestDonation"] = "75";
 
             return View();
-        }
-        [HttpGet]
-        public async Task<IActionResult> GetCharityActions(TopCharitiesQuery query)
-        {
-            //var request = _mapper.Map<GetRandomCharitiesRequest>(query);
-            //var response = await _bus.RequestAsync(request);
-
-            //if (response.IsRequestSuccessful)
-            //{
-            //    var model = new TopCharitiesViewModel
-            //    {
-            //        Charities = _mapper.Map<List<CharityItemViewModel>>(response.Results)
-            //    };
-
-            //    return PartialView("_ActionItemsWrapper", model);
-            //}
-
-            return PartialView("test","test2");
         }
     }
 }

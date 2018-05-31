@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Sombra.DonateService.DAL;
 using Sombra.Messaging.Infrastructure;
@@ -16,9 +17,15 @@ namespace Sombra.DonateService
             _context = context;
         }
 
-        public Task<GetCharityTotalResponse> Handle(GetCharityTotalRequest message)
+        public async Task<GetCharityTotalResponse> HandleAsync(GetCharityTotalRequest message)
         {
-            throw new NotImplementedException();
+            var charityActionDonations = _context.ChartyActionDonations.Where(c => c.CharityAction.Charity.CharityKey == message.CharityKey);
+
+            return new GetCharityTotalResponse(){
+                TotalDonatedAmount = charityActionDonations.Sum(d => d.Amount),
+                LastDonation = charityActionDonations.OrderByDescending(c => c.DateTimeStamp).First().Amount,
+                NumberOfDonators = charityActionDonations.Count(),
+            };
         }
     }
 }

@@ -80,7 +80,7 @@
     position: relative;
     top: 0;
     width: 100%;
-    height: 2600px;
+    min-height: 2600px;
     margin: 0 auto;
 }
 
@@ -95,10 +95,12 @@
 .main-storyboard {
     position: absolute;
     display: block;
-    margin-left: 11%;
-    margin-right: 11%;
     margin-top: 391px;
-    width: 76%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    width: 75%;
     min-height: 100px;
     background-color: #ffffff;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);

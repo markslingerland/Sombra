@@ -33,10 +33,10 @@ namespace Sombra.TimeService
             _lastCheck.Add(TimeInterval.Day, day?.Created ?? now);
 
             var week = _context.TimeEvents.OrderBy(e => e.Created, SortOrder.Desc).FirstOrDefault(e => e.Type == TimeInterval.Week);
-            _lastCheck.Add(TimeInterval.Week, day?.Created ?? now);
+            _lastCheck.Add(TimeInterval.Week, week?.Created ?? now);
 
             var month = _context.TimeEvents.OrderBy(e => e.Created, SortOrder.Desc).FirstOrDefault(e => e.Type == TimeInterval.Month);
-            _lastCheck.Add(TimeInterval.Month, day?.Created ?? now);
+            _lastCheck.Add(TimeInterval.Month, month?.Created ?? now);
 
             _task = Task.Run(Worker, _cancellationTokenSource.Token);
         }

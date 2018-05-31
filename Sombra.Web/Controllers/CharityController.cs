@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Sombra.Web.ViewModels.Search;
 using Sombra.Web.ViewModels.Charity;
 namespace Sombra.Web.Controllers
 {

@@ -1,4 +1,7 @@
-﻿@{ ViewData["Title"] = "Charity"; }
+﻿@model Sombra.Web.ViewModels.Charity.CharityViewModel
+
+@{ ViewData["Title"] = "Charity"; }
+
 @section Styles{
     <link rel="stylesheet" href="~/css/charity/charity.css" />
     <link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/charity/desktop.css" />
@@ -12,7 +15,7 @@
             <pattern id="pattern-1" width="1467.46324" height="978.308824" x="-1467.46324" y="-977.308824" patternUnits="userSpaceOnUse">
                 <use xlink:href="#image-2" transform="scale(1.22288603,1.22288603)"></use>
             </pattern>
-            <image id="image-2" width="1200" height="800" xlink:href=@ViewData["CharityImage"]></image>
+            <image id="image-2" width="1200" height="800" xlink:href=@Model.charity.CoverImage</image>
         </defs>
         <g id="-----Web-1440" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <g id="003-Doneer---Goede-doelen-detail" transform="translate(0.000000, -1.000000)" fill="url(#pattern-1)">
@@ -22,14 +25,17 @@
     </svg>
     <div class="main-storyboard">
         @*top*@
-        <div class="category">@ViewData["CharityCategory"]</div>
-        <div class="kvk_ambi">KvK nummer: @ViewData["CharityKvk"]   ANBI nummer: @ViewData["CharityAmbi"]</div>
+        @foreach (string category in Model.charity.Categories)
+        {
+            <div class="category">@category</div>
+        }
+        <div class="kvk_ambi">KvK nummer: @Model.charity.KVKNumber  ANBI nummer: @Model.charity.Anbi</div>
         @*title & story*@
         <div id="about" class="standard-text">
             <div class="container">
                 <div class="row about-text">
-                    <h3>@ViewData["CharityName"]</h3>
-                    <p>@ViewData["CharityAbout"]</p>
+                    <h3>@Model.charity.Name</h3>
+                    <p>@Model.charity.About</p>
                     <div class="donate-btn">
                         <a href="#" class="donateSVG"></a>
                     </div>
@@ -39,13 +45,13 @@
         @*Story*@
         <div id="the_story">
             <div class="container">
-                <div class="story_image" style="background-image:url(@ViewData["CharityActionImage"])">
+                <div class="story_image" style="background-image:url(@Model.charityAction.Image)">
                     <div class="story_gradient">
                         <div class="text_container">
 
-                            <span>@ViewData["CharityActionOwner"], initiatiefnemer</span>
+                            <span>@Model.charityAction.Name, initiatiefnemer</span>
                             <h3>
-                                @ViewData["CharityActionQuote"]
+                                @Model.charityAction.Description
                             </h3>
 
                             <div class="story-btn-holder">
@@ -64,7 +70,36 @@
         <div id="acties">
             <h3 class="title">Lopende acties</h3>
             <div class="slider-container">
-                <div id="main-carousel" class="main-carousel"></div>
+                <div id="main-carousel" class="main-carousel">
+                    @foreach (var action in @Model.charityActions)
+                    {
+                        // TODO Make correct Models
+                        // not sure what model has info for existing events
+                        <div class="carousel-cell">
+                            <div class="carousel-container">
+                                <div class="carousel-background">
+                                    <div class="carousel-logo"></div>
+                                    <div class="carousel-progress-bar">
+                                        <div class="carousel-progress"></div>
+                                    </div>
+                                </div>
+                                <div class="carousel-body">
+                                    <label class="carousel-date">27/04/2018</label>
+                                    <h4 class="carousel-title">@action.CharityName &#64; Mont Ventoux</h4>
+                                    <img class="carousel-poster-image" src="Assets/ArdHofman.png">
+                                    <label class="carousel-poster-name"><span style="font-family: 'Source Sans Pro' , sans-serif;">@action.Name</span></label>
+
+                                    <div class="carousel-money-holder">
+
+                                        <label class="carousel-reached"><span style="font-family: 'Source Sans Pro' , sans-serif;">&euro; @action.donations.TotalDonations</span></label>
+                                        <label class="carousel-goal"><span style="font-family: 'Source Sans Pro' , sans-serif;">behaald van &euro; 15.000</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
                 <div class="button button--previous"></div>
                 <div class="button button--next"></div>
             </div>
@@ -84,17 +119,14 @@
     <div class="container">
         @*If only a logo is used we can remove the Fill-7*@
         <img class="Fill-1" src="../../Assets/shape-frame.svg">
-        <div class="Fill-7">@ViewData["CharityName"]</div>
-    </div>
-</div>     
-<div id="donations">
-    <div class="donations-relative">
-        <span class="main-text">DEZE WEEK DONEERDER</span>  <span class="ammount-people">@ViewData["DonatedToCharity"]</span>  <span class="main-text">MENSEN TOTAAL</span>  <span class="ammount-people">&euro;@ViewData["TotalDonations"]</span>
-        <div class="absolute1"><span class="main-text">DONEREN VANAF</span><p><span class="numbers">&euro; 1</span></p></div>
-        <div class="absolute2"><span class="main-text">GEMIDDELDE DONATIE</span><p><span class="numbers">&euro; @ViewData["AvarageDonation"]</span></p></div>
-        <div class="absolute3"><span class="main-text">LAATSTE DONATIE</span><p><span class="numbers">&euro; @ViewData["LatestDonation"]</span></p></div>
+        <div class="Fill-7">@Model.charity.Name</div>
     </div>
 </div>
-
-
-<script language="JavaScript" src="/js/charity.js"></script>
+<div id="donations">
+    <div class="donations-relative">
+        <span class="main-text">DEZE WEEK DONEERDER</span>  <span class="ammount-people">@Model.donationsToCharity.DonatedToCharity</span>  <span class="main-text">MENSEN TOTAAL</span>  <span class="ammount-people">&euro;@Model.donationsToCharity.TotalDonations</span>
+        <div class="absolute1"><span class="main-text">DONEREN VANAF</span><p><span class="numbers">&euro; 1</span></p></div>
+        <div class="absolute2"><span class="main-text">GEMIDDELDE DONATIE</span><p><span class="numbers">&euro; @Model.donationsToCharity.AvarageDonation</span></p></div>
+        <div class="absolute3"><span class="main-text">LAATSTE DONATIE</span><p><span class="numbers">&euro; @Model.donationsToCharity.LatestDonation</span></p></div>
+    </div>
+</div>

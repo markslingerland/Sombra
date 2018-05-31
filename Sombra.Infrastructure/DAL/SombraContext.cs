@@ -13,7 +13,6 @@ namespace Sombra.Infrastructure.DAL
         protected SombraContext(DbContextOptions options, SombraContextOptions sombraContextOptions) : base(options)
         {
             _seed = sombraContextOptions.Seed;
-            if (Database.IsSqlServer()) Database.Migrate();
         }
 
         protected SombraContext() : this(GetOptions(), new SombraContextOptions()) { }

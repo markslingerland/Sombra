@@ -17,7 +17,6 @@ namespace Sombra.SearchService
 
         public async Task ConsumeAsync(CharityCreatedEvent message)
         {
-            ExtendedConsole.Log($"CreatedCharityEvent received for charity with key {message.CharityKey}");
             var charityToCreate = new Content()
             {
                 CharityName = message.Name,

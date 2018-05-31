@@ -21,8 +21,6 @@ namespace Sombra.IdentityService
 
         public async Task<ChangePasswordResponse> Handle(ChangePasswordRequest message)
         {
-            ExtendedConsole.Log("ChangePasswordRequest received");
-
             var credential = await _context.Credentials.FirstOrDefaultAsync(c => c.SecurityToken == message.SecurityToken && c.User.IsActive);
 
             if (credential != null)

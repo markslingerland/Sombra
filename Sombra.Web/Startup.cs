@@ -7,10 +7,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Sombra.Messaging.Infrastructure;
+using Sombra.Web.Infrastructure;
 using Sombra.Web.Infrastructure.Filters;
 using Sombra.Web.Infrastructure.Authentication;
 using Sombra.Web.Services;
@@ -39,6 +38,7 @@ namespace Sombra.Web
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                 options.Filters.Add(new ValidatorActionFilter());
+                // options.Filters.Add(new SubdomainActionFilter());
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddMemoryCache();
 
@@ -71,20 +71,7 @@ namespace Sombra.Web
             app.UseStaticFiles();
             app.UseAuthentication();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "areas",
-                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                );
-            });
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseMvc(Routing.Setup);
         }
 
         private static void SetupConfiguration()

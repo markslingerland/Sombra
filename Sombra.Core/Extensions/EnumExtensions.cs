@@ -84,5 +84,19 @@ namespace Sombra.Core.Extensions
                     yield return value;
             }
         }
+
+        public static IEnumerable<TEnum> GetFlagValues<TEnum>(this Type enumType) where TEnum : Enum
+        {
+            ulong flag = 0x1;
+            foreach (var value in Enum.GetValues(enumType).Cast<Enum>())
+            {
+                var bits = Convert.ToUInt64(value);
+                if (bits == 0L)
+                    continue;
+                while (flag < bits) flag <<= 1;
+                if (flag == bits)
+                    yield return (TEnum) value;
+            }
+        }
     }
 }

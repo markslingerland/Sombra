@@ -29,7 +29,7 @@ namespace Sombra.TimeService
                     .AddAutoMapper(Assembly.GetExecutingAssembly())
                     .AddDbContext<TimeContext>(_sqlConnectionString)
                     .AddSingleton<TimeManager>(),
-                ConnectionValidator.ValidateAllDbConnections, DatabaseMigrationHelper.ForceMigrations);
+                DatabaseHelper.RunInstaller);
 
             var manager = serviceProvider.GetRequiredService<TimeManager>();
             manager.Start();

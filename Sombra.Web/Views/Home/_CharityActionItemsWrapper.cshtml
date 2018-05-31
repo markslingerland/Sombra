@@ -1,0 +1,9 @@
+﻿@model Sombra.Web.ViewModels.Home.CharityActionsViewModel
+
+@if (Model.CharityActions != null)
+{
+    foreach (var charityAction in Model.CharityActions)
+    {
+        @await Html.PartialAsync("_CharityActionItem", charityAction)
+    }
+}

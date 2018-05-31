@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Sombra.Web.ViewModels.Search
+namespace Sombra.Web.ViewModels.Home
 {
     public class TopCharitiesViewModel
     {

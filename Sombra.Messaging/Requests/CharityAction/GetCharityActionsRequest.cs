@@ -8,5 +8,8 @@ namespace Sombra.Messaging.Requests.CharityAction
     {
         [CacheKey]
         public Guid CharityKey { get; set; }
+        
+        [CacheKey]
+        public bool OnlyActive { get; set; }
     }
 }

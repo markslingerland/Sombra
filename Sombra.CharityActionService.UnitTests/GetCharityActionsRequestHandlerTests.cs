@@ -52,6 +52,57 @@ namespace Sombra.CharityActionService.UnitTests
         }
 
         [TestMethod]
+        public async Task GetCharityActionsRequestHandlerTests_Handle_Returns_Active_CharityActions()
+        {
+            CharityActionContext.OpenInMemoryConnection();
+            try
+            {
+                using (var context = CharityActionContext.GetInMemoryContext())
+                {
+                    for (var i = 0; i < 25; i++)
+                    {
+                        context.CharityActions.Add(new CharityAction
+                        {
+                            ActionEndDateTime = DateTime.UtcNow - TimeSpan.FromDays(10),
+                            CharityActionKey = Guid.NewGuid()
+                        });
+                    }
+
+                    for (var i = 0; i < 15; i++)
+                    {
+                        context.CharityActions.Add(new CharityAction
+                        {
+                            ActionEndDateTime = DateTime.UtcNow + TimeSpan.FromDays(10),
+                            CharityActionKey = Guid.NewGuid()
+                        });
+                    }
+
+                    context.SaveChanges();
+                }
+
+                GetCharityActionsResponse response;
+                using (var context = CharityActionContext.GetInMemoryContext())
+                {
+                    var handler = new GetCharityActionsRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
+                    response = await handler.Handle(new GetCharityActionsRequest
+                    {
+                        OnlyActive = true,
+                        PageNumber = 2,
+                        PageSize = 10
+                    });
+                }
+
+                Assert.AreEqual(15, response.TotalResult);
+                Assert.AreEqual(5, response.Results.Count);
+                Assert.IsTrue(response.Results.All(r => r.ActionEndDateTime > DateTime.UtcNow));
+            }
+            finally
+            {
+                CharityActionContext.CloseInMemoryConnection();
+            }
+        }
+
+        [TestMethod]
         public async Task GetCharityActionsRequestHandlerTests_Handle_Returns_Filtered_CharityActions()
         {
             CharityActionContext.OpenInMemoryConnection();

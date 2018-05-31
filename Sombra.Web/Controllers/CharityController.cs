@@ -1,11 +1,25 @@
 ﻿using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Sombra.Messaging.Requests.CharityAction;
+using Sombra.Web.Infrastructure.Messaging;
 using Sombra.Web.ViewModels.Charity;
+using Sombra.Web.ViewModels.Home;
+
 namespace Sombra.Web.Controllers
 {
     public class CharityController : Controller
     {
         public const string SubdomainParameter = "Subdomain";
+        private readonly ICachingBus _bus;
+        private readonly IMapper _mapper;
+
+        public CharityController(ICachingBus bus, IMapper mapper)
+        {
+            _bus = bus;
+            _mapper = mapper;
+        }
+
         public IActionResult Index()
         {
             // TODO Fix Models to be correct with data needed in the view
@@ -42,6 +56,16 @@ namespace Sombra.Web.Controllers
             charityView.charityActions = charityActionModels;
             // TEST DATA
             return View(charityView);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetCharityActions(CharityActionsByCharityQuery query)
+        {
+            var request = _mapper.Map<GetCharityActionsRequest>(query);
+            var response = await _bus.RequestAsync(request);
+            var model = _mapper.Map<CharityActionsViewModel>(response);
+
+            return PartialView("_CharityActionItemsWrapper", model);
         }
     }
 }

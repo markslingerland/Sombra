@@ -18,7 +18,7 @@ namespace Sombra.SearchService.UnitTests
             try
             {
                 var content = new Content(){
-                    Category = Core.Enums.Category.MilieuEnNatuurbehoud,
+                    Category = Core.Enums.Category.EnvironmentAndNatureConservation,
                     CharityKey = Guid.NewGuid(),
                     Image = "No image given",
                     CharityName = "TestName",

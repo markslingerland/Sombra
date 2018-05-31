@@ -1,4 +1,4 @@
-﻿namespace Sombra.Web.ViewModels.Search
+﻿namespace Sombra.Web.ViewModels.Home
 {
     public class TopCharitiesQuery
     {

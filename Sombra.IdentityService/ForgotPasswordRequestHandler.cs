@@ -22,7 +22,6 @@ namespace Sombra.IdentityService
 
         public async Task<ForgotPasswordResponse> Handle(ForgotPasswordRequest message)
         {
-            ExtendedConsole.Log("ForgotPasswordRequest received");
             var response = new ForgotPasswordResponse();
 
             var credential = await _context.Credentials.FirstOrDefaultAsync(c => c.Identifier == message.Email && c.CredentialType == CredentialType.Email && c.User.IsActive);

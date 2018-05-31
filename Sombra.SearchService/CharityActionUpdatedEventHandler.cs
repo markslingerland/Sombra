@@ -18,7 +18,6 @@ namespace Sombra.SearchService
 
         public async Task ConsumeAsync(CharityActionUpdatedEvent message)
         {
-            ExtendedConsole.Log($"UpdatedCharityActionEvent received for charity with key {message.CharityActionKey}");
             var charityToUpdate = await _context.Content
                 .FirstOrDefaultAsync(u => u.Type == Core.Enums.SearchContentType.CharityAction && u.CharityActionKey == message.CharityActionKey);
 

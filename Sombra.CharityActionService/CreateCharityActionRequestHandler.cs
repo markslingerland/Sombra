@@ -26,7 +26,6 @@ namespace Sombra.CharityActionService
             var charityAction = _mapper.Map<CharityAction>(message);
             if (charityAction.CharityActionKey == default)
             {
-                ExtendedConsole.Log("CreateCharityActionRequestHandler: CharityActionKey is empty");
                 return new CreateCharityActionResponse
                 {
                     ErrorType = ErrorType.InvalidKey

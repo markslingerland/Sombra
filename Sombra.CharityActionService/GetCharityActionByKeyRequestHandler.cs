@@ -22,7 +22,6 @@ namespace Sombra.CharityActionService
 
         public async Task<GetCharityActionByKeyResponse> Handle(GetCharityActionByKeyRequest message)
         {
-            ExtendedConsole.Log("GetCharityActionByKeyRequestHandler received");
             var charityAction = await _charityActionContext.CharityActions.Include(b => b.UserKeys).FirstOrDefaultAsync(b => b.CharityActionKey.Equals(message.CharityActionKey));
             if (charityAction != null)
             {

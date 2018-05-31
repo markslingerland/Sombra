@@ -30,7 +30,6 @@ namespace Sombra.UserService
             var user = _mapper.Map<User>(message);
             if (user.UserKey == default)
             {
-                ExtendedConsole.Log("CreateUserRequestHandler: UserKey is empty");
                 return new CreateUserResponse
                 {
                     ErrorType = ErrorType.InvalidKey

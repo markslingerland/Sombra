@@ -19,7 +19,6 @@ namespace Sombra.IdentityService
 
         public async Task ConsumeAsync(UserUpdatedEvent message)
         {
-            ExtendedConsole.Log($"UserUpdatedEvent received for user with key {message.UserKey}");
             var userToUpdate = await _context.Users.FirstOrDefaultAsync(u => u.UserKey == message.UserKey);
 
             if (userToUpdate != null)

@@ -1,13 +1,12 @@
 using System.Threading.Tasks;
 using Sombra.Core;
 using Sombra.IdentityService.DAL;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 using Sombra.Messaging.Infrastructure;
-using System.Linq;
 using System;
 using Microsoft.EntityFrameworkCore;
 using Sombra.Core.Enums;
+using Sombra.Messaging.Requests.Identity;
+using Sombra.Messaging.Responses.Identity;
 
 namespace Sombra.IdentityService
 {

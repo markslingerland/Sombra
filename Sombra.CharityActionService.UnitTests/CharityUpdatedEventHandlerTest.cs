@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.CharityActionService.DAL;
-using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.Charity;
 
 namespace Sombra.CharityActionService.UnitTests
 {

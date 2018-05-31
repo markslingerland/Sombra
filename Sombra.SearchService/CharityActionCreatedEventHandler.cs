@@ -1,9 +1,8 @@
-using System.Linq;
 using System.Threading.Tasks;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Events;
 using Sombra.SearchService.DAL;
 using Sombra.Core;
+using Sombra.Messaging.Events.CharityAction;
 
 namespace Sombra.SearchService
 {

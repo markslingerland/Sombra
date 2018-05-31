@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 using EasyNetQ;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Sombra.Messaging.Events;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 using Sombra.CharityService.DAL;
 using Sombra.Core.Enums;
 using Sombra.Infrastructure;
+using Sombra.Messaging.Events.Charity;
+using Sombra.Messaging.Requests.Charity;
+using Sombra.Messaging.Responses.Charity;
 
 namespace Sombra.CharityService.UnitTests
 {

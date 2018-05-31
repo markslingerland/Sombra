@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Sombra.Core.Extensions;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.Identity;
+using Sombra.Messaging.Responses.Identity;
 using Sombra.Web.ViewModels;
 
 namespace Sombra.Web.Infrastructure.Authentication

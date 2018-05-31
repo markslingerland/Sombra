@@ -1,9 +1,9 @@
 ﻿using System;
 using AutoMapper;
 using Sombra.Infrastructure.Extensions;
-using Sombra.Messaging.Events;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Events.User;
+using Sombra.Messaging.Requests.User;
+using Sombra.Messaging.Responses.User;
 using Sombra.UserService.DAL;
 
 namespace Sombra.UserService

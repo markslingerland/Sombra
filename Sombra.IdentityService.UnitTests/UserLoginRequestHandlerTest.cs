@@ -5,8 +5,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.Core.Enums;
 using Sombra.Core.Extensions;
 using Sombra.IdentityService.DAL;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.Identity;
+using Sombra.Messaging.Responses.Identity;
 
 namespace Sombra.IdentityService.UnitTests
 {

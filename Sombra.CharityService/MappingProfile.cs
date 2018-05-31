@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 using Sombra.CharityService.DAL;
 using Sombra.Infrastructure.Extensions;
-using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.Charity;
+using Sombra.Messaging.Requests.Charity;
+using Sombra.Messaging.Responses.Charity;
 
 namespace Sombra.CharityService
 {

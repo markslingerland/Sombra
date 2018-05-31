@@ -4,14 +4,14 @@ using System.Threading.Tasks;
 using EasyNetQ;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Sombra.Messaging.Events;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
-using Shared = Sombra.Messaging.Shared;
 using Sombra.CharityActionService.DAL;
 using System.Collections.Generic;
 using Sombra.Core.Enums;
 using Sombra.Infrastructure;
+using Sombra.Messaging.Events.CharityAction;
+using Sombra.Messaging.Requests.CharityAction;
+using Sombra.Messaging.Responses.CharityAction;
+using UserKey = Sombra.CharityActionService.DAL.UserKey;
 
 namespace Sombra.CharityActionService.UnitTests
 {
@@ -35,12 +35,12 @@ namespace Sombra.CharityActionService.UnitTests
                 var keyCharity = Guid.NewGuid();
                 var key = Guid.NewGuid();
                 var user = new UserKey { Key = key };
-                var userMessenging = new Shared.UserKey { Key = key };
+                var userMessenging = new Messaging.Shared.UserKey { Key = key };
                 var request = new UpdateCharityActionRequest
                 {
                     CharityActionKey = keyAction,
                     CharityKey = keyCharity,
-                    UserKeys = new List<Shared.UserKey>() { userMessenging },
+                    UserKeys = new List<Messaging.Shared.UserKey> { userMessenging },
                     CharityName = "",
                     Category = Category.None,
                     IBAN = "",
@@ -56,7 +56,7 @@ namespace Sombra.CharityActionService.UnitTests
                     {
                         CharityActionKey = keyAction,
                         CharityKey = keyCharity,
-                        UserKeys = new List<UserKey>() { new UserKey() { Key = Guid.NewGuid() } },
+                        UserKeys = new List<UserKey> { new UserKey() { Key = Guid.NewGuid() } },
                         CharityName = "testNAmeOwner",
                         Category = Category.Dierenbescherming,
                         IBAN = "",
@@ -113,12 +113,12 @@ namespace Sombra.CharityActionService.UnitTests
                 var wrongKey = Guid.NewGuid();
                 var key = Guid.NewGuid();
 
-                var userMessenging = new Shared.UserKey { Key = key };
+                var userMessenging = new Messaging.Shared.UserKey { Key = key };
                 var request = new UpdateCharityActionRequest
                 {
                     CharityActionKey = wrongKey,
                     CharityKey = keyCharity,
-                    UserKeys = new List<Shared.UserKey>() { userMessenging },
+                    UserKeys = new List<Messaging.Shared.UserKey>() { userMessenging },
                     CharityName = "",
                     Category = Category.None,
                     IBAN = "",

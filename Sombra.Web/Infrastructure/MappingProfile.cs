@@ -1,7 +1,12 @@
 ﻿using AutoMapper;
 using Sombra.Core.Enums;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.Identity;
+using Sombra.Messaging.Requests.Logging;
+using Sombra.Messaging.Requests.Search;
+using Sombra.Messaging.Requests.User;
+using Sombra.Messaging.Responses.Identity;
+using Sombra.Messaging.Responses.Logging;
+using Sombra.Messaging.Responses.Search;
 using Sombra.Messaging.Shared;
 using Sombra.Web.Areas.Development.Models;
 using Sombra.Web.ViewModels;

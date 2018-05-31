@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Net;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Sombra.Messaging.Requests;
 using Sombra.Web.ViewModels.Search;
 using Sombra.Web.ViewModels.Charity;
 namespace Sombra.Web.Controllers

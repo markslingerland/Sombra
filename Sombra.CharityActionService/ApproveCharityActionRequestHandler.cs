@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using Sombra.CharityActionService.DAL;
 using Sombra.Core;
 using Sombra.Core.Enums;
-using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.CharityAction;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.CharityAction;
+using Sombra.Messaging.Responses.CharityAction;
 
 namespace Sombra.CharityActionService
 {

@@ -8,10 +8,12 @@ namespace Sombra.Messaging.Infrastructure
     public class AutoResponderRequestDispatcher : IAutoResponderRequestDispatcher
     {
         private readonly ServiceProvider _serviceProvider;
+        private readonly IBus _bus;
 
         public AutoResponderRequestDispatcher(ServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
+            _bus = serviceProvider.GetRequiredService<IBus>();
         }
 
         public async Task<TResponse> DispatchAsync<TRequest, TResponse, THandler>(TRequest message)
@@ -24,7 +26,7 @@ namespace Sombra.Messaging.Infrastructure
 
             var response = await handler.Handle(message);
             ExtendedConsole.Log($"{typeof(TResponse).Name} returned");
-            _serviceProvider.GetRequiredService<IBus>().SendAsync(ServiceInstaller.LoggingQueue, response);
+            _bus.SendAsync(ServiceInstaller.LoggingQueue, response);
 
             return response;
         }

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using EasyNetQ;
 using Microsoft.Extensions.DependencyInjection;
 using Sombra.Core;
 
@@ -13,7 +14,7 @@ namespace Sombra.Messaging.Infrastructure
             _serviceProvider = serviceProvider;
         }
 
-        public Task<TResponse> DispatchAsync<TRequest, TResponse, THandler>(TRequest message)
+        public async Task<TResponse> DispatchAsync<TRequest, TResponse, THandler>(TRequest message)
             where TRequest : class, IRequest<TResponse>
             where THandler : IAsyncRequestHandler<TRequest, TResponse>
             where TResponse : class, IResponse
@@ -21,7 +22,11 @@ namespace Sombra.Messaging.Infrastructure
             ExtendedConsole.Log($"{typeof(TRequest).Name} received");
             var handler = _serviceProvider.GetRequiredService<THandler>();
 
-            return handler.Handle(message);
+            var response = await handler.Handle(message);
+            ExtendedConsole.Log($"{typeof(TResponse).Name} returned");
+            _serviceProvider.GetRequiredService<IBus>().SendAsync(ServiceInstaller.LoggingQueue, response);
+
+            return response;
         }
     }
 }

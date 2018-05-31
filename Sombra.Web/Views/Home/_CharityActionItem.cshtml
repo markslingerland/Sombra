@@ -1,0 +1,23 @@
+﻿@using Sombra.Web.Infrastructure
+@model Sombra.Web.ViewModels.Home.CharityActionItemViewModel
+<div class="carousel-cell">
+    <div class="carousel-container">
+        <div class="carousel-background">
+            <div class="carousel-logo"></div>
+            <div class="carousel-progress-bar">
+                <div class="carousel-progress"></div>
+            </div>
+        </div>
+        <div class="carousel-body">
+            <label class="carousel-date">@Model.ActionEndDateTime.ToFormattedString()</label>
+            <h4 class="carousel-title">@Model.Name</h4>
+            <img class="carousel-poster-image" src="Assets/lianne.jpg">
+            <label class="carousel-poster-name">@Model.OrganiserUserName</label>
+
+            <div class="carousel-money-holder">
+                <label class="carousel-reached">@Model.CollectedAmount.ToFormattedString()</label>
+                <label class="carousel-goal">behaald van &euro; @Model.TargetAmount.ToFormattedString()</label>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Sombra.DonateService.DAL;
 using Sombra.Messaging.Events.CharityAction;
 using Sombra.Messaging.Infrastructure;
@@ -14,9 +15,21 @@ namespace Sombra.DonateService
             _context = context;
         }
 
-        public Task ConsumeAsync(CharityActionCreatedEvent message)
+        public async Task ConsumeAsync(CharityActionCreatedEvent message)
         {
-            throw new System.NotImplementedException();
+            var charity = await _context.Charities.FirstOrDefaultAsync(c => c.CharityKey == message.CharityKey);
+            if (charity != null)
+            {
+                var charityActionToCreate = new CharityAction()
+                {
+                    CharityActionKey = message.CharityActionKey,
+                    ActionEndDateTime = message.ActionEndDateTime,
+                    Name = message.Name                           
+                };             
+
+                charity.ChartityActions.Add(charityActionToCreate);
+            }
+            await _context.SaveChangesAsync();
         }
     }
 }

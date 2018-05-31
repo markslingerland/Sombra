@@ -11,7 +11,6 @@ namespace Sombra.DonateService.DAL
         public Guid UserKey { get; set; }
         public DonationType DonationType { get; set; }
         public Guid CharityActionId { get; set; }
-
         public virtual CharityAction CharityAction { get; set; }
     }
 }

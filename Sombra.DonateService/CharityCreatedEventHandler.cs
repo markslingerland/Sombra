@@ -15,9 +15,16 @@ namespace Sombra.DonateService
             _context = context;
         }
 
-        public Task ConsumeAsync(CharityCreatedEvent message)
+        public async Task ConsumeAsync(CharityCreatedEvent message)
         {
-            throw new NotImplementedException();
+            var charityToCreate = new Charity()
+            {
+                CharityKey = message.CharityKey,
+                Name = message.Name                               
+            };
+    
+            _context.Add(charityToCreate);
+            await _context.SaveChangesAsync();
         }
     }
 }

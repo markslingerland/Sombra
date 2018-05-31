@@ -2,15 +2,9 @@
 
 namespace Sombra.Messaging.Events.Time
 {
-    public class WeekHasPassedEvent : Event
+    public class WeekHasPassedEvent : TimeHasPassedEvent
     {
         public WeekHasPassedEvent() { }
-
-        public WeekHasPassedEvent(DateTime dateTimeStamp)
-        {
-            DateTimeStamp = dateTimeStamp;
-        }
-
-        public DateTime DateTimeStamp { get; set; }
+        public WeekHasPassedEvent(DateTime dateTimeStamp) : base(dateTimeStamp) { }
     }
 }

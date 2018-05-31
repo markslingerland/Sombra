@@ -507,6 +507,9 @@ padding-left: 15px;
 }
 
 .not-valid {
-  border: solid red 1px!important;
+  border: solid red 1px !important;
 }
 
+.not-valid ~ label.validatable {
+  border: solid red 1px !important;
+}

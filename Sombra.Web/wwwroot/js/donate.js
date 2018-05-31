@@ -65,9 +65,9 @@ $('#next-to-section-2').click(function () {
     let choosePaymoment = $('input:radio[name="pay-time"]').is(':checked');
 
     if (chooseCause == false) {
-        $('.choose-cause label').addClass("not-valid");
+        $('.choose-cause input').addClass("not-valid");
     } else {
-        $('.choose-cause label').removeClass("not-valid");
+        $('.choose-cause input').removeClass("not-valid");
     }
 
     if (charitySelect == false) {
@@ -77,15 +77,15 @@ $('#next-to-section-2').click(function () {
     }
 
     if (chooseAmount == false) {
-        $('.choose-money-amount label').addClass("not-valid");
+        $('.choose-money-amount input').addClass("not-valid");
     } else {
-        $('.choose-money-amount label').removeClass("not-valid");
+        $('.choose-money-amount input').removeClass("not-valid");
     }
 
     if (choosePaymoment == false) {
-        $('.payment-options label').addClass("not-valid");
+        $('.payment-options input').addClass("not-valid");
     } else {
-        $('.payment-options label').removeClass("not-valid");
+        $('.payment-options input').removeClass("not-valid");
     }
 
     if (chooseAmount && charitySelect && chooseCause && choosePaymoment) {

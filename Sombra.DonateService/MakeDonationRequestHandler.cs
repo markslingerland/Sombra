@@ -16,7 +16,7 @@ namespace Sombra.DonateService
             _context = context;
         }
 
-        public Task<MakeDonationResponse> Handle(MakeDonationRequest message)
+        public Task<MakeDonationResponse> HandleAsync(MakeDonationRequest message)
         {
             throw new NotImplementedException();
         }

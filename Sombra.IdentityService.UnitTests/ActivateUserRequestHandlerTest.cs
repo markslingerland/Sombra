@@ -39,7 +39,7 @@ namespace Sombra.IdentityService.UnitTests
                 using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     var handler = new ActivateUserRequestHandler(context);
-                    response = await handler.Handle(request);
+                    response = await handler.HandleAsync(request);
                 }
 
                 using (var context = AuthenticationContext.GetInMemoryContext())
@@ -82,7 +82,7 @@ namespace Sombra.IdentityService.UnitTests
                 using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     var handler = new ActivateUserRequestHandler(context);
-                    response = await handler.Handle(request);
+                    response = await handler.HandleAsync(request);
                 }
 
                 using (var context = AuthenticationContext.GetInMemoryContext())
@@ -125,7 +125,7 @@ namespace Sombra.IdentityService.UnitTests
                 using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     var handler = new ActivateUserRequestHandler(context);
-                    response = await handler.Handle(request);
+                    response = await handler.HandleAsync(request);
                 }
 
                 using (var context = AuthenticationContext.GetInMemoryContext())

@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.Search;
+using Sombra.Messaging.Responses.Search;
 using Sombra.SearchService.DAL;
 
 namespace Sombra.SearchService.UnitTests
@@ -15,13 +16,13 @@ namespace Sombra.SearchService.UnitTests
         [TestMethod]
         public async Task GetSearchResultRequestHandler_Handle_Returns_Correct()
         {
-            SearchContext.OpenInMemoryConnection();           
+            SearchContext.OpenInMemoryConnection();
 
             try
             {
                 GetSearchResultResponse response;
                 var content = new Content(){
-                    Category = Core.Enums.Category.MilieuEnNatuurbehoud | Core.Enums.Category.Gezondheid,
+                    Category = Core.Enums.Category.EnvironmentAndNatureConservation | Core.Enums.Category.Health,
                     CharityKey = Guid.NewGuid(),
                     Image = "No image given",
                     CharityName = "TestName",
@@ -30,7 +31,7 @@ namespace Sombra.SearchService.UnitTests
                 };   
 
                 var content1 = new Content(){
-                    Category = Core.Enums.Category.Gezondheid,
+                    Category = Core.Enums.Category.Health,
                     CharityKey = Guid.NewGuid(),
                     Image = "No image given",
                     CharityName = "TestName1",
@@ -39,8 +40,8 @@ namespace Sombra.SearchService.UnitTests
                 };  
 
                 var getSearchResultRequest = new GetSearchResultRequest(){
-                    Categories = Core.Enums.Category.MilieuEnNatuurbehoud,
-                    Keyword = "TestName",
+                    Categories = Core.Enums.Category.EnvironmentAndNatureConservation,
+                    Keywords = new List<string> { "TestName" },
                     SearchContentType = Core.Enums.SearchContentType.Charity,
                     PageNumber = 0,
                     PageSize = 1,
@@ -84,7 +85,7 @@ namespace Sombra.SearchService.UnitTests
             {
                 GetSearchResultResponse response;
                 var content = new Content(){
-                    Category = Core.Enums.Category.MilieuEnNatuurbehoud,
+                    Category = Core.Enums.Category.EnvironmentAndNatureConservation,
                     CharityKey = Guid.NewGuid(),
                     Image = "No image given",
                     CharityName = "TestName",
@@ -93,7 +94,7 @@ namespace Sombra.SearchService.UnitTests
                 };   
 
                 var content1 = new Content(){
-                    Category = Core.Enums.Category.Gezondheid,
+                    Category = Core.Enums.Category.Health,
                     CharityKey = Guid.NewGuid(),
                     Image = "No image given",
                     CharityName = "TestName1",
@@ -102,8 +103,8 @@ namespace Sombra.SearchService.UnitTests
                 };  
 
                 var getSearchResultRequest = new GetSearchResultRequest(){
-                    Categories = Core.Enums.Category.MilieuEnNatuurbehoud,
-                    Keyword = "Null",
+                    Categories = Core.Enums.Category.EnvironmentAndNatureConservation,
+                    Keywords = new List<string> { "Null" },
                     SearchContentType = Core.Enums.SearchContentType.Charity,
                     PageNumber = 0,
                     PageSize = 1,

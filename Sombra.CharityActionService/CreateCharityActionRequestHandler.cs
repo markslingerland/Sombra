@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Sombra.CharityActionService.DAL;
 using Sombra.Core;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 using System.Threading.Tasks;
 using Sombra.Core.Enums;
+using Sombra.Messaging.Requests.CharityAction;
+using Sombra.Messaging.Responses.CharityAction;
 
 namespace Sombra.CharityActionService
 {
@@ -26,7 +26,6 @@ namespace Sombra.CharityActionService
             var charityAction = _mapper.Map<CharityAction>(message);
             if (charityAction.CharityActionKey == default)
             {
-                ExtendedConsole.Log("CreateCharityActionRequestHandler: CharityActionKey is empty");
                 return new CreateCharityActionResponse
                 {
                     ErrorType = ErrorType.InvalidKey

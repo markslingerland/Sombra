@@ -27,7 +27,7 @@ namespace Sombra.IdentityService
                 _rabbitMqConnectionString,
                 services => services
                     .AddDbContext<AuthenticationContext>(_sqlConnectionString),
-                ConnectionValidator.ValidateAllDbConnections, DatabaseMigrationHelper.ForceMigrations);
+                DatabaseHelper.RunInstaller);
 
             Thread.Sleep(Timeout.Infinite);
         }

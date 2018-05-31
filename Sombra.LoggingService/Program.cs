@@ -31,7 +31,7 @@ namespace Sombra.LoggingService
                 services => services
                     .AddAutoMapper(Assembly.GetExecutingAssembly())
                     .AddMongoDatabase(_mongoConnectionString, _mongoDatabase),
-                ConnectionValidator.ValidateAllDbConnections);
+                DatabaseHelper.ValidateMongoConnections);
 
             var logger = new EventLogger(serviceProvider.GetRequiredService<IBus>(), serviceProvider, _subscriptionIdPrefix);
             logger.Start();

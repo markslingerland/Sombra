@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using MimeKit;
-using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.Email;
 using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.EmailService

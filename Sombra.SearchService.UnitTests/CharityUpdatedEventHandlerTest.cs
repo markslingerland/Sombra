@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.Charity;
 using Sombra.SearchService.DAL;
 
 namespace Sombra.SearchService.UnitTests
@@ -18,7 +18,7 @@ namespace Sombra.SearchService.UnitTests
             try
             {
                 var content = new Content(){
-                    Category = Core.Enums.Category.MilieuEnNatuurbehoud,
+                    Category = Core.Enums.Category.EnvironmentAndNatureConservation,
                     CharityKey = Guid.NewGuid(),
                     Image = "No image given",
                     CharityName = "TestName",

@@ -7,9 +7,9 @@ using Moq;
 using Sombra.CharityActionService.DAL;
 using Sombra.Core.Enums;
 using Sombra.Infrastructure;
-using Sombra.Messaging.Events;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Events.CharityAction;
+using Sombra.Messaging.Requests.CharityAction;
+using Sombra.Messaging.Responses.CharityAction;
 
 namespace Sombra.CharityActionService.UnitTests
 {
@@ -35,7 +35,7 @@ namespace Sombra.CharityActionService.UnitTests
                 {
                     CharityActionKey = request.CharityActionKey,
                     Name = "0",
-                    Category = Category.Dierenbescherming,
+                    Category = Category.AnimalProtection,
                     IBAN = "1111-1111",
                     CoverImage = "x"
                 };
@@ -85,7 +85,7 @@ namespace Sombra.CharityActionService.UnitTests
                     CharityActionKey = request.CharityActionKey,
                     IsApproved = true,
                     Name = "0",
-                    Category = Category.Dierenbescherming,
+                    Category = Category.AnimalProtection,
                     IBAN = "1111-1111",
                     CoverImage = "x"
                 };
@@ -136,7 +136,7 @@ namespace Sombra.CharityActionService.UnitTests
                     CharityActionKey = Guid.NewGuid(),
                     CharityKey = Guid.NewGuid(),
                     Name = "0",
-                    Category = Category.Dierenbescherming,
+                    Category = Category.AnimalProtection,
                     IBAN = "1111-1111",
                     CoverImage = "x",
                 };

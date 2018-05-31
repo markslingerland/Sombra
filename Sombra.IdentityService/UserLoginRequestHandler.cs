@@ -1,13 +1,12 @@
 using System.Threading.Tasks;
 using Sombra.Core;
 using Sombra.IdentityService.DAL;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 using Sombra.Messaging.Infrastructure;
-using System.Linq;
 using System;
 using Microsoft.EntityFrameworkCore;
 using Sombra.Core.Enums;
+using Sombra.Messaging.Requests.Identity;
+using Sombra.Messaging.Responses.Identity;
 
 namespace Sombra.IdentityService
 {
@@ -21,7 +20,6 @@ namespace Sombra.IdentityService
 
         public async Task<UserLoginResponse> Handle(UserLoginRequest message)
         {
-            ExtendedConsole.Log("UserLoginRequest received");
             var response = new UserLoginResponse();
 
             var credential = await _context.Credentials.Include(c => c.User)

@@ -1,10 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.User;
+using Sombra.Messaging.Responses.User;
 using Sombra.UserService.DAL;
 
 namespace Sombra.UserService.UnitTests

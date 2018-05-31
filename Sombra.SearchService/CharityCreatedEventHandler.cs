@@ -1,9 +1,8 @@
-using System.Linq;
 using System.Threading.Tasks;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Events;
 using Sombra.SearchService.DAL;
 using Sombra.Core;
+using Sombra.Messaging.Events.Charity;
 
 namespace Sombra.SearchService
 {
@@ -18,7 +17,6 @@ namespace Sombra.SearchService
 
         public async Task ConsumeAsync(CharityCreatedEvent message)
         {
-            ExtendedConsole.Log($"CreatedCharityEvent received for charity with key {message.CharityKey}");
             var charityToCreate = new Content()
             {
                 CharityName = message.Name,

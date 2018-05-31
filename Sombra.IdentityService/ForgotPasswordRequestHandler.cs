@@ -1,12 +1,12 @@
 using System.Threading.Tasks;
 using Sombra.Core;
 using Sombra.IdentityService.DAL;
-using Sombra.Messaging.Requests;
 using Sombra.Messaging.Infrastructure;
 using System;
 using Microsoft.EntityFrameworkCore;
 using Sombra.Core.Enums;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.Identity;
+using Sombra.Messaging.Responses.Identity;
 using CredentialType = Sombra.Core.Enums.CredentialType;
 
 namespace Sombra.IdentityService
@@ -22,7 +22,6 @@ namespace Sombra.IdentityService
 
         public async Task<ForgotPasswordResponse> Handle(ForgotPasswordRequest message)
         {
-            ExtendedConsole.Log("ForgotPasswordRequest received");
             var response = new ForgotPasswordResponse();
 
             var credential = await _context.Credentials.FirstOrDefaultAsync(c => c.Identifier == message.Email && c.CredentialType == CredentialType.Email && c.User.IsActive);

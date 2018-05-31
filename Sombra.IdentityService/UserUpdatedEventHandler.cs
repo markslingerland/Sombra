@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Sombra.Core;
 using Sombra.IdentityService.DAL;
-using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.User;
 using Sombra.Messaging.Infrastructure;
 using CredentialType = Sombra.Core.Enums.CredentialType;
 
@@ -19,7 +19,6 @@ namespace Sombra.IdentityService
 
         public async Task ConsumeAsync(UserUpdatedEvent message)
         {
-            ExtendedConsole.Log($"UserUpdatedEvent received for user with key {message.UserKey}");
             var userToUpdate = await _context.Users.FirstOrDefaultAsync(u => u.UserKey == message.UserKey);
 
             if (userToUpdate != null)

@@ -6,8 +6,8 @@ using Sombra.Core;
 using Sombra.Core.Enums;
 using Sombra.Infrastructure.DAL;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.Search;
+using Sombra.Messaging.Responses.Search;
 using Sombra.Messaging.Shared;
 using Sombra.SearchService.DAL;
 
@@ -26,7 +26,6 @@ namespace Sombra.SearchService
 
         public async Task<GetRandomCharitiesResponse> Handle(GetRandomCharitiesRequest message)
         {
-            ExtendedConsole.Log("GetRandomCharitiesRequest received");
             return new GetRandomCharitiesResponse
             {
                 Results = await _context.Content.Where(c => c.Type == SearchContentType.Charity)

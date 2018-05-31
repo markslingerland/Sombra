@@ -6,8 +6,8 @@ using AutoMapper;
 using Sombra.CharityActionService.DAL;
 using Sombra.Infrastructure.DAL;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.CharityAction;
+using Sombra.Messaging.Responses.CharityAction;
 
 namespace Sombra.CharityActionService
 {
@@ -31,8 +31,7 @@ namespace Sombra.CharityActionService
                 {
                     TotalResult = _charityActionContext.CharityActions.Count(filter),
                     Results = await _charityActionContext.CharityActions.Where(filter)
-                        .ProjectToPagedListAsync<Messaging.Shared.CharityAction>(message.PageNumber, message.PageSize,
-                            _mapper)
+                        .ProjectToPagedListAsync<Messaging.Shared.CharityAction>(message, _mapper)
                 };
             }
 
@@ -40,8 +39,7 @@ namespace Sombra.CharityActionService
             {
                 TotalResult = _charityActionContext.CharityActions.Count(),
                 Results = await _charityActionContext.CharityActions
-                    .ProjectToPagedListAsync<Messaging.Shared.CharityAction>(message.PageNumber, message.PageSize,
-                        _mapper)
+                    .ProjectToPagedListAsync<Messaging.Shared.CharityAction>(message, _mapper)
             };
         }
     }

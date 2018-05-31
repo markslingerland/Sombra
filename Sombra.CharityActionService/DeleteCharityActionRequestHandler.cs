@@ -4,11 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using Sombra.CharityActionService.DAL;
 using Sombra.Core;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
-using Sombra.Messaging.Events;
 using System.Threading.Tasks;
-using System.Linq;
+using Sombra.Messaging.Events.CharityAction;
+using Sombra.Messaging.Requests.CharityAction;
+using Sombra.Messaging.Responses.CharityAction;
 
 namespace Sombra.CharityActionService
 {
@@ -27,13 +26,12 @@ namespace Sombra.CharityActionService
 
         public async Task<DeleteCharityActionResponse> Handle(DeleteCharityActionRequest message)
         {
-            ExtendedConsole.Log("DeletedCharityActionRequest received");
             var charityAction = await _context.CharityActions.Include(b => b.UserKeys).FirstOrDefaultAsync(b => b.CharityActionKey.Equals(message.CharityActionKey));
             if (charityAction == null)
             {
                 return new DeleteCharityActionResponse();
-                
             }
+
             _context.CharityActions.Remove(charityAction);
             _context.UserKeys.RemoveRange(charityAction.UserKeys);
             try

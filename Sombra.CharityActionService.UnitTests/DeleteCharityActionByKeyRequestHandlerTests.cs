@@ -3,13 +3,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
 using Sombra.CharityActionService.DAL;
 using System.Collections.ObjectModel;
-using Sombra.Messaging.Events;
 using EasyNetQ;
 using Sombra.Infrastructure;
+using Sombra.Messaging.Events.CharityAction;
+using Sombra.Messaging.Requests.CharityAction;
+using Sombra.Messaging.Responses.CharityAction;
+using UserKey = Sombra.CharityActionService.DAL.UserKey;
 
 namespace Sombra.CharityActionService.UnitTests
 {
@@ -43,7 +44,7 @@ namespace Sombra.CharityActionService.UnitTests
                         CharityKey = keyCharity,
                         UserKeys = new Collection<UserKey>() { new UserKey() { Key = Guid.NewGuid() } },
                         CharityName = "testNAmeOwner",
-                        Category = Core.Enums.Category.Dierenbescherming,
+                        Category = Core.Enums.Category.AnimalProtection,
                         IBAN = "",
                         Name = "",
                         Description = "0-IBAN",
@@ -102,7 +103,7 @@ namespace Sombra.CharityActionService.UnitTests
                         CharityKey = keyCharity,
                         UserKeys = new Collection<UserKey>() { new UserKey() { Key = Guid.NewGuid() } },
                         CharityName = "testNAmeOwner",
-                        Category = Core.Enums.Category.Dierenbescherming,
+                        Category = Core.Enums.Category.AnimalProtection,
                         IBAN = "",
                         Name = "",
                         Description = "0-IBAN",

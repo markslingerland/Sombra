@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Sombra.CharityActionService.DAL;
 using Sombra.Core;
-using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.User;
 using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.CharityActionService
@@ -18,7 +18,6 @@ namespace Sombra.CharityActionService
 
         public async Task ConsumeAsync(UserUpdatedEvent message)
         {
-            ExtendedConsole.Log($"UserUpdatedEvent received for user with key {message.UserKey}");
             var charitieActionsToUpdate = _context.CharityActions.Where(u => u.OrganiserUserKey == message.UserKey);
 
             foreach (var charityAction in charitieActionsToUpdate)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.CharityAction;
 using Sombra.Messaging.Shared;
 using Sombra.SearchService.DAL;
 
@@ -21,7 +21,7 @@ namespace Sombra.SearchService.UnitTests
             {
                 var Event = new CharityActionCreatedEvent
                 {
-                    Category = Core.Enums.Category.MilieuEnNatuurbehoud,
+                    Category = Core.Enums.Category.EnvironmentAndNatureConservation,
                     CharityActionKey = Guid.NewGuid(),
                     CoverImage = "No image given",
                     IBAN = "NotReallyAnIBAN",

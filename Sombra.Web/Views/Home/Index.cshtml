@@ -6,6 +6,14 @@
     <link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/home/mobile.css" />
 }
 
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#top-charities').load('@Url.Action("GetTopCharities", "Search", new { Amount = 3})');
+        });
+    </script>
+}
+
 <img class="header-image" src="Assets/header-image-shape.svg" alt="#">
 
 <div id="about">
@@ -284,7 +292,4 @@
             <span class="monster-700">Start een actie</span>
         </div>
     </div>
-
-
 </div>
-<script language="JavaScript" src="/js/home.js"></script>

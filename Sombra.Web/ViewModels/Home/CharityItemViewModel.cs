@@ -1,7 +1,7 @@
 ﻿using System;
 using Sombra.Core.Enums;
 
-namespace Sombra.Web.ViewModels.Search
+namespace Sombra.Web.ViewModels.Home
 {
     public class CharityItemViewModel
     {

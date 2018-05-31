@@ -18,7 +18,7 @@ namespace Sombra.SearchService.UnitTests
             try
             {
                 var Event = new CharityCreatedEvent(){
-                    Category = Core.Enums.Category.MilieuEnNatuurbehoud,
+                    Category = Core.Enums.Category.EnvironmentAndNatureConservation,
                     CharityKey = Guid.NewGuid(),
                     CoverImage = "No image given",
                     Email = "test@test.nl",

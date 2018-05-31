@@ -32,7 +32,7 @@
   margin-top: -403px;
   margin-bottom: 150px;
   width: 1109px;
-  height: 845px;
+  height: 942px;
   background-color: #ffffff;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   position: relative;
@@ -145,7 +145,6 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   left: 182px;
 }
 
-
 .radio-holder input[type="radio"] {
   display: none;
 }
@@ -203,7 +202,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 
 .select-action {
   top: 390px;
-  display: none;
+   display: none;
 }
 
 .select-charity .selectize-control {
@@ -223,6 +222,8 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 
 .select-charity .selectize-input input {
  width: 80%!important;
+ border: none;
+ outline: none;
 }
 
 .select-charity .selectize-control .selectize-dropdown {
@@ -233,6 +234,10 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   left: -16px!important;
   border: solid 1px #b1b1b1;
   background-color: white;
+}
+
+.select-charity .selectize-dropdown-content {
+  padding-left: 15px;
 }
 
 .section-1-choose-amount {
@@ -314,5 +319,194 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   width: 192px;
   height: 40px;
   position: relative;
+}
+
+/* Section 2 */
+
+.pay-option {
+  display: inline-block;
+  margin-top: 182px;
+  margin-left: 180px;
+}
+
+.select-bank .chevron {
+  background-image: url(../../Assets/icons/stroke-down.svg);
+  width: 18px;
+  height: 10px;
+  transform: rotate(-270deg);
+  position: absolute;
+  right: 18px;
+  top: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(0deg);
+}
+
+.select-bank {
+  /* position: absolute; */
+    margin-top: 20px;
+    margin-left: 187px;
+    width: 630px;
+    height: 50px;
+    border-radius: 8px;
+    border: solid 1px #b1b1b1;
+    position: relative;
+
+}
+
+.select-bank .selectize-control {
+position: absolute;
+top: 12px;
+left: 15px;
+width: 80%;
+font-size: 18px;
+font-weight: 300;
+font-style: normal;
+font-stretch: normal;
+line-height: normal;
+letter-spacing: normal;
+color: #838383;
+font-family: 'Source Sans Pro', sans-serif;
+}
+
+.select-bank .selectize-input input {
+  width: 80%!important;
+  border: none;
+  outline: none;
+}
+
+.select-bank .selectize-control .selectize-dropdown {
+  top: 55px!important;
+  border-radius: 8px;
+  z-index: 200;
+  position: absolute;
+  left: -1px!important;
+  border: solid 1px #b1b1b1;
+  background-color: white;
+}
+
+.select-bank .selectize-dropdown-content {
+padding-left: 15px;
+}
+
+.your-iban-holder {
+    margin-top: 20px;
+    margin-left: 187px;
+    width: 630px;
+    height: 50px;
+    border-radius: 8px;
+    border: solid 1px #b1b1b1;
+    position: relative;
+    display: none;
+
+}
+
+.email-input-holder {
+  margin-top: 10px;
+  margin-left: 187px;
+  width: 630px;
+  height: 50px;
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  position: relative;
+
+}
+
+.email-input-holder input, .your-iban-holder input {
+  padding-left: 15px;
+  font-size: 18px;
+  outline: none;
+  margin-top: 8px;
+  border: none;
+}
+
+.email-input-holder input::-moz-placeholder, .your-iban-holder input::-moz-placeholder {
+  font-size: 18px;
+  font-weight: 300;
+  opacity: 0.6;
+}
+
+.email-input-holder .filled-icon, .your-iban-holder .filled-icon {
+  width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    background-color: #f88356;
+    /* background-image: url(../../Assets/icons/stroke-down.svg); */
+    transform: rotate(-270deg);
+    position: absolute;
+    right: 26px;
+    top: 23px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(0deg);
+}
+
+.personal-information {
+  margin-left: 187px;
+  margin-top: 50px;
+}
+
+.personal-information .person-adress, .personal-information .person-birthday {
+ font-size: 14px;
+ color: #838383;
+ margin-bottom: 10px;
+}
+
+.personal-information input {
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  outline: none;
+  padding-left: 20px;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.personal-information .person-name {
+  margin-bottom: 10px;
+}
+
+#person-firstname {
+  width: 256px;
+  height: 50px;
+}
+
+#person-lastname {
+  width: 364px;
+  height: 50px;
+}
+
+#person-postcode {
+  width: 192px;
+  height: 50px;
+}
+
+#person-housenumber {
+  width: 85px;
+  height: 50px;
+}
+
+#person-addition {
+  width: 85px;
+  height: 50px;
+}
+
+#person-birth-day, #person-birth-month, #person-birth-year {
+  width: 85px;
+  height: 50px;
+}
+
+.personal-information .person-information-birthday {
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+
+/* invalid  */
+
+.choose-cause .not-valid {
+  border: solid red 1px;
+}
+
+.not-valid {
+  border: solid red 1px!important;
 }
 

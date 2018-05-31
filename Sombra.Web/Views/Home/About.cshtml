@@ -14,19 +14,22 @@
             <div class="grey-ball"></div>
         </div>
 
-        <div class="donate-step">
-            <p>1</p>
+        <div class="title-holder">
+            <div class="donate-step">
+                <p>1</p>
+            </div>
+            <h3 class="donate-title monster-400">Ik doneer aan...</h3>
         </div>
-        <h3 class="donate-title monster-400">Ik doneer aan...</h3>
+
 
         <a class="closing"><span class="donate-close"></span><span class="donate-close"></span></a>
 
         <div class="choose-cause">
             <div class="radio-holder">
-                <input type="radio" id="control_01" name="select" value="2">
+                <input type="radio" id="control_01" name="select" value="2" required>
                 <label for="control_01">
-            <h2 class="source-600 radio-input-tag"> Een actie</h2>
-        </label>
+            <h2 class="source-600 radio-input-tag"> Een goed doel</h2>
+                </label>
             </div>
 
             <div class="radio-holder">
@@ -37,99 +40,169 @@
             </div>
         </div>
 
-<div class="select-charity">
-    <div class="chevron"></div>
-       <select id="select-your-charity" name="new-charity" form="form-donate">
+        <div class="select-charity">
+            <div class="chevron"></div>
+            <select id="select-your-charity" name="new-charity" form="form-donate" required>
        </select>
-</div>
+        </div>
 
-<div class="select-charity select-action">
-    <div class="chevron"></div>
-       <select id="select-action" name="new-action" form="form-donate">
+        <div class="select-charity select-action">
+            <div class="chevron"></div>
+            <select id="select-action" name="new-action" form="form-donate" required>
            <span></span>
        </select>
-</div>
+        </div>
 
-   <span class="section-1-choose-amount monster-800">Kies het bedrag</span>
+        <span class="section-1-choose-amount monster-800">Kies het bedrag</span>
 
-   <div class="choose-money-amount">
-       <div class="radio-holder">
-                <input type="radio" id="10" name="money" value="10">
+        <div class="choose-money-amount">
+            <div class="radio-holder">
+                <input type="radio" id="10" name="money" value="10" required>
                 <label for="10">
             <h2 class="source-600 radio-input-tag"> 10</h2>
                 </label>
-        </div>
+            </div>
 
-        <div class="radio-holder">
+            <div class="radio-holder">
                 <input type="radio" id="20" name="money" value="20">
                 <label for="20">
             <h2 class="source-600 radio-input-tag"> 20</h2>
                 </label>
-        </div>
+            </div>
 
-        <div class="radio-holder">
+            <div class="radio-holder">
+                <input type="radio" id="30" name="money" value="30">
+                <label for="30">
+            <h2 class="source-600 radio-input-tag"> 30</h2>
+                </label>
+            </div>
+
+            <div class="radio-holder">
                 <input type="radio" id="50" name="money" value="50">
                 <label for="50">
             <h2 class="source-600 radio-input-tag"> 50</h2>
                 </label>
+            </div>
         </div>
 
-        <div class="radio-holder">
-                <input type="radio" id="custom" name="money" value="custom">
-                <label for="custom">
-            <h2 class="source-600 radio-input-tag"> custom</h2>
-                </label>
-        </div>
-   </div>
+        <div class="payment-options">
 
-   <div class="payment-options">
-       
-       <div class="radio-holder">
-                <input type="radio" id="one-time" name="pay-time" value="one-time">
+            <div class="radio-holder">
+                <input type="radio" id="one-time" name="pay-time" value="one-time" required>
                 <label for="one-time">
             <h2 class="source-600 radio-input-tag"> Eenmalig</h2>
                 </label>
-        </div>
+            </div>
 
-         <div class="radio-holder">
+            <div class="radio-holder">
                 <input type="radio" id="monthly" name="pay-time" value="monthly">
                 <label for="monthly">
             <h2 class="source-600 radio-input-tag"> Maandelijks</h2>
                 </label>
-        </div>
+            </div>
 
-         <div class="radio-holder">
+            <div class="radio-holder">
                 <input type="radio" id="yearly" name="pay-time" value="yearly">
                 <label for="yearly">
             <h2 class="source-600 radio-input-tag"> Jaarlijks</h2>
                 </label>
-        </div>      
+            </div>
 
-   </div>
+        </div>
 
-    <div class="next-step-holder">
+        <div class="next-step-holder">
             <div class="next-step">
-            <a class="clickable" href="#"></a>
+                <a id="next-to-section-2" class="clickable" href="#"></a>
             </div>
         </div>
-        
-
     </section>
 
     <section class="section-2">
-        <div class="radio-holder">
-            <input type="radio" id="control_01" name="select" value="2">
-            <label for="control_01">
-            <h2 class="source-600 radio-input-tag"> Een actie</h2>
-        </label>
+        <div class="donate-progress">
+            <div class="orange-ball"></div>
+            <div class="orange-ball"></div>
+            <div class="grey-ball"></div>
+            <div class="grey-ball"></div>
         </div>
 
+        <div class="title-holder">
+            <div class="donate-step">
+                <p>2</p>
+            </div>
+            <h3 class="donate-title monster-400">Ik doneer aan...</h3>
+        </div>
+
+
+        <a class="closing"><span class="donate-close"></span><span class="donate-close"></span></a>
+
+        <div class="pay-option">
+            <div class="radio-holder">
+                <input type="radio" id="ideal" name="choose-pay-options" value="1" required>
+                <label for="ideal">
+            <h2 class="source-600 radio-input-tag"> Ideal</h2>
+                </label>
+        </div>
+
+            <div class="radio-holder">
+                <input type="radio" id="permission" name="choose-pay-options" value="2">
+                <label for="permission">
+            <h2 class="source-600 radio-input-tag"> Machtiging</h2>
+        </label>
+            </div>
+        
+
         <div class="radio-holder">
-            <input type="radio" id="control_02" name="select" value="2">
-            <label for="control_02">
-            <h2 class="source-600 radio-input-tag"> Een actie</h2>
+            <input type="radio" id="paypall" name="choose-pay-options" value="3">
+            <label for="paypall">
+            <h2 class="source-600 radio-input-tag"> Paypall</h2>
         </label>
         </div>
+        </div>
+
+        <div class="select-bank">
+            <div class="chevron"></div>
+            <select id="select-your-bank" name="new-bank" form="form-donate" required>
+       </select>
+        </div>
+
+        <div class="your-iban-holder">
+            <div class="filled-icon"></div>
+            <input class="source-300" id="iban" type="text" placeholder="IBan">
+        </div>
+
+        <div class="email-input-holder">
+            <div class="filled-icon"></div>
+            <input class="source-300" id="email" type="email" placeholder="E-mailadres" required >
+        </div>
+
+        <div class="personal-information">
+            <p class="person-adress monster-800">Adresgegevens</p>
+            
+            <div class="person-name">
+                <input class="source-300" type="text" id="person-firstname" placeholder="Voornaam">
+                <input class="source-300" type="text" id="person-lastname" placeholder="Achternaam">
+            </div>
+
+            <div class="person-location">
+                <input class="source-300" type="text" id="person-postcode" placeholder="Postcode">
+                <input class="source-300" type="text" id="person-housenumber" placeholder="nr."> 
+                <input class="source-300" type="text" id="person-addition" placeholder="toev.">
+            </div>
+
+            <div class="person-information-birthday">
+                <p class="person-birthday monster-800">Geboortedatum</p>
+                <input class="source-300" type="text" id="person-birth-day" placeholder="dd">
+                <input class="source-300" type="text" id="person-birth-month" placeholder="mm">
+                <input class="source-300" type="text" id="person-birth-year" placeholder="jjjj">
+            </div>
+        </div>
+
+        <div class="next-step-holder">
+            <div class="next-step">
+                <a id="next-to-section-2" class="clickable" href="#"></a>
+            </div>
+        </div>
+
     </section>
 
     <section class="section-3">

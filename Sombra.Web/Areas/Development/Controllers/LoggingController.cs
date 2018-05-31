@@ -1,11 +1,11 @@
-//using System.Collections.Generic;
+﻿//using System.Collections.Generic;
 //using System.Threading.Tasks;
 //using AutoMapper;
 //using EasyNetQ;
 //using Microsoft.AspNetCore.Mvc;
-//using Sombra.Messaging.Requests.Logging;
 //using Sombra.Web.Areas.Development.Models;
 //using Sombra.Messaging.Infrastructure;
+//using Sombra.Messaging.Requests.Logging;
 
 //namespace Sombra.Web.Areas.Development.Controllers
 //{

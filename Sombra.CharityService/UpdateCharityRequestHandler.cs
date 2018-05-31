@@ -27,7 +27,6 @@ namespace Sombra.CharityService
 
         public async Task<UpdateCharityResponse> Handle(UpdateCharityRequest message)
         {
-            ExtendedConsole.Log("UpdateCharityRequest received");
             var charity = await _context.Charities.FirstOrDefaultAsync(u => u.CharityKey == message.CharityKey);
             if (charity == null)
             {

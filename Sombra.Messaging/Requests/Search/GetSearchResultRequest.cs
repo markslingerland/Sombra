@@ -1,26 +1,22 @@
+using System.Collections.Generic;
+using Sombra.Core.Enums;
 using Sombra.Messaging.Responses.Search;
 
 namespace Sombra.Messaging.Requests.Search
 {
     [Cachable(LifeTimeInHours = 1)]
-    public class GetSearchResultRequest : Request<GetSearchResultResponse>
+    public class GetSearchResultRequest : PagedRequest<GetSearchResultResponse>
     {
         [CacheKey]
-        public string Keyword { get; set; }
+        public List<string> Keywords { get; set; }
 
         [CacheKey]
-        public Core.Enums.SortOrder SortOrder { get; set; }
+        public SortOrder SortOrder { get; set; }
 
         [CacheKey]
-        public Core.Enums.SearchContentType SearchContentType { get; set; }
+        public SearchContentType SearchContentType { get; set; }
 
         [CacheKey]
-        public Core.Enums.Category Categories { get; set; }
-
-        [CacheKey]
-        public int PageSize{ get; set; }
-
-        [CacheKey]
-        public int PageNumber{ get; set; }
+        public Category Categories { get; set; }
     }
 }

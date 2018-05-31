@@ -26,7 +26,6 @@ namespace Sombra.LoggingService
 
         public async Task<LogResponse> Handle(LogRequest message)
         {
-            ExtendedConsole.Log("LogRequest received");
             Expression<Func<LogEntry, bool>> filter = l => true;
 
             if (message.From.HasValue) filter = filter.And(l => l.MessageCreated.CompareTo(message.From.Value) >= 0);

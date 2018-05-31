@@ -8,24 +8,16 @@
     <link rel="stylesheet" media="screen and (min-width: 768px) and (max-width: 1200px)" href="~/css/charity/tablet.css" />
     <link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/charity/mobile.css" />
 }
+@section Scripts {
+    <script src="~/js/charity.js"></script>
+}
+
 <div id="charity-info">
     @*Background picture*@
-    <svg class="header-image" viewBox="0 0 1440 611" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <defs>
-            <pattern id="pattern-1" width="1467.46324" height="978.308824" x="-1467.46324" y="-977.308824" patternUnits="userSpaceOnUse">
-                <use xlink:href="#image-2" transform="scale(1.22288603,1.22288603)"></use>
-            </pattern>
-            <image id="image-2" width="1200" height="800" xlink:href=@Model.charity.CoverImage</image>
-        </defs>
-        <g id="-----Web-1440" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g id="003-Doneer---Goede-doelen-detail" transform="translate(0.000000, -1.000000)" fill="url(#pattern-1)">
-                <path d="M-1.13686838e-13,1 L-1.13686838e-13,561.651541 C226.20941,594.984874 466.20941,611.651541 720,611.651541 C973.79059,611.651541 1213.79059,594.984874 1440,561.651541 L1440,1 L-1.13686838e-13,1 Z" id="Path-4"></path>
-            </g>
-        </g>
-    </svg>
+    <div class="header-image" style="background-image:url(@Model.charity.CoverImage)"></div>
     <div class="main-storyboard">
         @*top*@
-        @foreach (string category in Model.charity.Categories)
+        @foreach (string category in @Model.charity.Categories)
         {
             <div class="category">@category</div>
         }
@@ -44,24 +36,22 @@
         </div>
         @*Story*@
         <div id="the_story">
-            <div class="container">
-                <div class="story_image" style="background-image:url(@Model.charityAction.Image)">
-                    <div class="story_gradient">
-                        <div class="text_container">
+            <div class="story_image" style="background-image:url(@Model.charityAction.Image)">
+                <div class="story_gradient">
+                    <div class="text_container">
 
-                            <span>@Model.charityAction.Name, initiatiefnemer</span>
-                            <h3>
-                                @Model.charityAction.Description
-                            </h3>
+                        <span>@Model.charityAction.Name, initiatiefnemer</span>
+                        <h3>
+                            @Model.charityAction.Description
+                        </h3>
 
-                            <div class="story-btn-holder">
-                                <div class="secondary-button">
-                                    <a href="#"></a> @*/charityaction/id=ViewData["CharityActionId"]*@
-                                    <label>Lees dit verhaal</label>
-                                </div>
+                        <div class="story-btn-holder">
+                            <div class="secondary-button">
+                                <a href="#"></a> @*/charityaction/id=*@
+                                <label>Lees dit verhaal</label>
                             </div>
-
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -70,7 +60,7 @@
         <div id="acties">
             <h3 class="title">Lopende acties</h3>
             <div class="slider-container">
-                <div id="main-carousel" class="main-carousel">
+                <div id="charity-actions-carousel" class="main-carousel">
                     @foreach (var action in @Model.charityActions)
                     {
                         // TODO Make correct Models
@@ -88,9 +78,7 @@
                                     <h4 class="carousel-title">@action.CharityName &#64; Mont Ventoux</h4>
                                     <img class="carousel-poster-image" src="Assets/ArdHofman.png">
                                     <label class="carousel-poster-name"><span style="font-family: 'Source Sans Pro' , sans-serif;">@action.Name</span></label>
-
                                     <div class="carousel-money-holder">
-
                                         <label class="carousel-reached"><span style="font-family: 'Source Sans Pro' , sans-serif;">&euro; @action.donations.TotalDonations</span></label>
                                         <label class="carousel-goal"><span style="font-family: 'Source Sans Pro' , sans-serif;">behaald van &euro; 15.000</span></label>
                                     </div>
@@ -98,7 +86,6 @@
                             </div>
                         </div>
                     }
-
                 </div>
                 <div class="button button--previous"></div>
                 <div class="button button--next"></div>
@@ -122,6 +109,7 @@
         <div class="Fill-7">@Model.charity.Name</div>
     </div>
 </div>
+@*TODO Fix overflow main-storyboard and donations. main-storyboard has fixed height and absolute values*@
 <div id="donations">
     <div class="donations-relative">
         <span class="main-text">DEZE WEEK DONEERDER</span>  <span class="ammount-people">@Model.donationsToCharity.DonatedToCharity</span>  <span class="main-text">MENSEN TOTAAL</span>  <span class="ammount-people">&euro;@Model.donationsToCharity.TotalDonations</span>

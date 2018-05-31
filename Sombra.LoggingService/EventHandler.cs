@@ -20,7 +20,6 @@ namespace Sombra.LoggingService
 
         public async Task ConsumeAsync(TMessage message)
         {
-            ExtendedConsole.Log($"Message received. Type: {message.MessageType}");
             await _logCollection.InsertOneAsync(new LogEntry(message, DateTime.UtcNow));
         }
     }

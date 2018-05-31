@@ -1,7 +1,10 @@
-@{ ViewData["Title"] = "Goede doelen"; } 
-@section Styles{
-<link rel="stylesheet" href="~/css/search/search.css" /> }
-
+@using Sombra.Core.Enums
+@using Sombra.Core.Extensions
+@{ ViewData["Title"] = "Goede doelen"; }
+@section Styles
+    {
+    <link rel="stylesheet" href="~/css/search/search.css" />
+}
 
 <div id="filter">
     <a href="#" class="signin-charity source-600">Een goed doel aanmelden</a>
@@ -14,17 +17,12 @@
 
             <div class="custom-select monster-300">
                 <select class="monster-300" form="Categorieën">
-            <option class="monster-300 option" value="" hidden>Categorieën</option>
-            <option class="monster-300 option" value="1">Kerk en levensbeschouwing</option>
-            <option class="monster-300 option" value="2">sport en recreatie</option>
-            <option class="monster-300 option" value="3">internationale hulp</option>
-            <option class="monster-300 option" value="4">maatschappelijke en sociale doelen</option>
-            <option class="monster-300 option" value="5">gezondheid</option>
-            <option class="monster-300 option" value="6">milieu en natuurbehoud</option>
-            <option class="monster-300 option" value="7">dierenbescherming</option>
-            <option class="monster-300 option" value="8">cultuur</option>
-            <option class="monster-300 option" value="9">onderwijs en onderzoek</option>
-            </select>
+                    <option class="monster-300 option" value="" hidden>Categorieën</option>
+                    @foreach (var category in typeof(Category).GetFlagValues<Category>().Where(v => (int)v != 0))
+                    {
+                        <option class="monster-300 option" value="@((int) category)">@category.GetDisplayName()</option>
+                    }
+                </select>
                 <i class="fas fa-chevron-down"></i>
             </div>
         </form>
@@ -33,19 +31,20 @@
 
 <div id="selected-category">
     <div class="selected-categories">
-        <a class="selected-category source-800" href="#">GEZONDHEID
+        <a class="selected-category source-800" href="#">
+            GEZONDHEID
             <span class="cross-holder">
                 <span class="icon-holder">
-                    <i class="fas fa-times">
-                    </i>
+                    <i class="fas fa-times"></i>
                 </span>
             </span>
         </a>
-        <a class="selected-category source-800" href="#">maatschappelijke en sociale doelen
+
+        <a class="selected-category source-800" href="#">
+            maatschappelijke en sociale doelen
             <span class="cross-holder">
                 <span class="icon-holder">
-                    <i class="fas fa-times">
-                    </i>
+                    <i class="fas fa-times"></i>
                 </span>
             </span>
         </a>
@@ -56,7 +55,7 @@
     <p class="results source-400"><span class="source-700">34 </span>zoekresultaten</p>
 
     <div id="charity-results">
-        
+
         <div class="charity-holder">
             <div class="charity-background-image">
                 <div class="charity-logo"></div>
@@ -230,15 +229,14 @@
 
     </div>
 </div>
-</div>
 
 <div id="pagination">
-  <a href="#"><img src="Assets/icons/arrow-icon-to-left.svg" alt="#"></a>
-  <a class="source-700" href="#">1</a>
-  <a class="source-300"href="#">2</a>
-  <a class="source-300"href="#">3</a>
-  <a class="source-300"href="#">4</a>
-  <a class="source-300"href="#">...</a>
-  <a class="source-300"href="#">12</a>
-  <a href="#"><img src="Assets/icons/icon-arrow-to-right.svg" alt="#"></a>
+    <a href="#"><img src="Assets/icons/arrow-icon-to-left.svg" alt="#"></a>
+    <a class="source-700" href="#">1</a>
+    <a class="source-300" href="#">2</a>
+    <a class="source-300" href="#">3</a>
+    <a class="source-300" href="#">4</a>
+    <a class="source-300" href="#">...</a>
+    <a class="source-300" href="#">12</a>
+    <a href="#"><img src="Assets/icons/icon-arrow-to-right.svg" alt="#"></a>
 </div>

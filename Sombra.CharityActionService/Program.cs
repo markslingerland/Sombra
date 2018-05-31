@@ -27,7 +27,7 @@ namespace Sombra.CharityActionService
                 services => services
                     .AddAutoMapper(Assembly.GetExecutingAssembly())
                     .AddDbContext<CharityActionContext>(_sqlConnectionString),
-                ConnectionValidator.ValidateAllDbConnections, DatabaseMigrationHelper.ForceMigrations);
+                DatabaseHelper.RunInstaller);
 
             Thread.Sleep(Timeout.Infinite);
         }

@@ -6,9 +6,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Sombra.Core.Enums;
 using Sombra.Infrastructure;
-using Sombra.Messaging.Events;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Events.User;
+using Sombra.Messaging.Requests.User;
+using Sombra.Messaging.Responses.User;
 using Sombra.UserService.DAL;
 
 namespace Sombra.UserService.UnitTests

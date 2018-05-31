@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Responses.Logging;
 
 namespace Sombra.LoggingService
 {

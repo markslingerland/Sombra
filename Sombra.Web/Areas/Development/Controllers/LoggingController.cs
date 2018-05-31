@@ -3,9 +3,9 @@
 //using AutoMapper;
 //using EasyNetQ;
 //using Microsoft.AspNetCore.Mvc;
-//using Sombra.Messaging.Requests;
 //using Sombra.Web.Areas.Development.Models;
 //using Sombra.Messaging.Infrastructure;
+//using Sombra.Messaging.Requests.Logging;
 
 //namespace Sombra.Web.Areas.Development.Controllers
 //{

@@ -2,8 +2,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.SearchService.DAL;
-using Sombra.Messaging.Events;
 using System;
+using Sombra.Messaging.Events.Charity;
 
 namespace Sombra.SearchService.UnitTests
 {

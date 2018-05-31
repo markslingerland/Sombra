@@ -2,7 +2,7 @@
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Sombra.Infrastructure.DAL;
-using Sombra.Messaging.Requests;
+using Sombra.Messaging.Requests.Template;
 
 namespace Sombra.TemplateService.DAL
 {

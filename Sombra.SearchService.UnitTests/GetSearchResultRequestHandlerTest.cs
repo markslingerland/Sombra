@@ -3,8 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.Search;
+using Sombra.Messaging.Responses.Search;
 using Sombra.SearchService.DAL;
 
 namespace Sombra.SearchService.UnitTests
@@ -15,7 +15,7 @@ namespace Sombra.SearchService.UnitTests
         [TestMethod]
         public async Task GetSearchResultRequestHandler_Handle_Returns_Correct()
         {
-            SearchContext.OpenInMemoryConnection();           
+            SearchContext.OpenInMemoryConnection();
 
             try
             {

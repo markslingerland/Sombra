@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Sombra.Core.Extensions;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.User;
+using Sombra.Messaging.Responses.User;
 using Sombra.UserService.DAL;
 
 namespace Sombra.UserService

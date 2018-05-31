@@ -6,8 +6,8 @@ using AutoMapper;
 using Sombra.CharityActionService.DAL;
 using Sombra.Infrastructure.DAL;
 using Sombra.Messaging.Infrastructure;
-using Sombra.Messaging.Requests;
-using Sombra.Messaging.Responses;
+using Sombra.Messaging.Requests.CharityAction;
+using Sombra.Messaging.Responses.CharityAction;
 
 namespace Sombra.CharityActionService
 {

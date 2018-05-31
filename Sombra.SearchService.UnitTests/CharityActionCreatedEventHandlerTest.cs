@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sombra.Messaging.Events;
+using Sombra.Messaging.Events.CharityAction;
 using Sombra.Messaging.Shared;
 using Sombra.SearchService.DAL;
 

@@ -26,7 +26,7 @@ namespace Sombra.Web.Controllers
         {
             var request = _mapper.Map<GetCharityByUrlRequest>(query);
             var response = await _bus.RequestAsync(request);
-            if (!response.Success) return new StatusCodeResult((int) HttpStatusCode.NotFound);
+            if (!response.Success || !response.Charity.IsApproved) return new StatusCodeResult((int) HttpStatusCode.NotFound);
 
             var model = _mapper.Map<CharityViewModel>(response.Charity);
 

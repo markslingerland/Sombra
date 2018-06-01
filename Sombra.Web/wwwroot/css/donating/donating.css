@@ -125,6 +125,20 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
     display: inherit;
 }
 
+.required-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background-color: #f88356;
+  transform: rotate(-270deg);
+  position: absolute;
+  right: 26px;
+  top: 23px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(0deg);
+}
+
 .radio-holder .radio-input-tag {
   font-size: 22px;
   font-weight: bold;
@@ -140,9 +154,9 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 }
 
 .choose-cause {
-  position: absolute;
-  top: 188px;
-  left: 182px;
+  display: inline-block;
+  margin-top: 182px;
+  margin-left: 182px;
 }
 
 .radio-holder input[type="radio"] {
@@ -189,36 +203,42 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   transform: translateX(-50%);
 }
 
-.select-charity {
-    position: absolute;
-    top: 322px;
-    left: 191px;
+.choose-your-payment {
+  display: none;
+}
 
-    width: 630px;
-    height: 50px;
-    border-radius: 8px;
-    border: solid 1px #b1b1b1;
+/* Selection 1 */
+
+.select-charity {
+  width: 630px;
+  position: relative;
+  margin-top: 15px;
+  margin-left: 190px;
+  height: 50px;
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  display: none;
 }
 
 .select-action {
-  top: 390px;
    display: none;
 }
 
 .select-charity .selectize-control {
   position: absolute;
-  top: 12px;
-  left: 15px;
-  width: 80%;
-  font-size: 18px;
-  font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #838383;
-  font-family: 'Source Sans Pro', sans-serif;
+    top: 12px;
+    padding-left: 20px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #838383;
+    font-family: 'Source Sans Pro', sans-serif;
 }
+
 
 .select-charity .selectize-input input {
  width: 80%!important;
@@ -231,7 +251,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   border-radius: 8px;
   z-index: 200;
   position: absolute;
-  left: -16px!important;
+  left: -2px!important;
   border: solid 1px #b1b1b1;
   background-color: white;
 }
@@ -241,16 +261,30 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 }
 
 .section-1-choose-amount {
-    font-size: 14px;
+  font-size: 14px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
     line-height: 2.36;
     letter-spacing: normal;
     color: #838383;
-    position: absolute;
-    top: 482px;
-    left: 195px;
+    display: inline-block;
+    margin-top: 50px;
+    margin-left: 192px;
+}
+
+.charity-information {
+  font-size: 18px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.56;
+  letter-spacing: normal;
+  color: #838383;
+  margin-left: 191px;
+  margin-top: 15px;
+  margin-right: 191px;
+  display: none;
 }
 
 .select-charity .chevron {
@@ -267,15 +301,13 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 }
 
 .choose-money-amount {
-  position: absolute;
-  top: 525px;
-  left: 182px;
+  margin-left: 182px;
+  margin-top: 0px;
 }
 
 .payment-options {
-  position: absolute;
-  top: 661px;
-  left: 188px;
+  margin-left: 182px;
+  margin-top: 15px;
 }
 
 .payment-options  .radio-holder label {
@@ -312,6 +344,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   position: absolute;
   bottom: 62px;
   left: 189px;
+  display: none;
 }
 
 .next-step {
@@ -351,6 +384,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
     border-radius: 8px;
     border: solid 1px #b1b1b1;
     position: relative;
+    display: none;
 
 }
 
@@ -376,11 +410,11 @@ font-family: 'Source Sans Pro', sans-serif;
 }
 
 .select-bank .selectize-control .selectize-dropdown {
-  top: 55px!important;
+  top: 45px!important;
   border-radius: 8px;
   z-index: 200;
   position: absolute;
-  left: -1px!important;
+  left: -15px!important;
   border: solid 1px #b1b1b1;
   background-color: white;
 }
@@ -444,6 +478,7 @@ padding-left: 15px;
 .personal-information {
   margin-left: 187px;
   margin-top: 50px;
+  display: none;
 }
 
 .personal-information .person-adress, .personal-information .person-birthday {
@@ -470,17 +505,17 @@ padding-left: 15px;
   height: 50px;
 }
 
-#person-lastname {
+#person-lastname, .person-lastname {
   width: 364px;
   height: 50px;
 }
 
-#person-postcode {
+#person-postcode, .person-postcode {
   width: 192px;
   height: 50px;
 }
 
-#person-housenumber {
+#person-housenumber, .person-housenumber {
   width: 85px;
   height: 50px;
 }
@@ -488,6 +523,11 @@ padding-left: 15px;
 #person-addition {
   width: 85px;
   height: 50px;
+}
+
+.person-lastname, .person-housenumber, .person-postcode {
+  position: relative;
+  display: inline-block;
 }
 
 #person-birth-day, #person-birth-month, #person-birth-year {

@@ -1,9 +1,8 @@
-@{ ViewData["Title"] = "doneren"; }
+@{ ViewData["Title"] = "doneren"; } 
 @section Styles{
-    <link rel="stylesheet" href="~/css/donating/donating.css" /> }
-
+<link rel="stylesheet" href="~/css/donating/donating.css" /> } 
 @section Scripts {
-    <script src="~/js/donate.js"></script>
+<script src="~/js/donate.js"></script>
 }
 
 <div id="background-frame"></div>
@@ -56,61 +55,66 @@
             </select>
         </div>
 
-        <span class="section-1-choose-amount monster-800">Kies het bedrag</span>
+        <p class="charity-information">Er is nog maar weinig bekend om mensen met MS te helpen. Daarom is er onderzoek nodig, en dat kost geld. Door jouw donatie kunnen we ons samen sterk maken voor een MS-vrije wereld.</p>
 
-        <div class="choose-money-amount">
-            <div class="radio-holder">
-                <input type="radio" id="10" name="money" value="10" required>
-                <label for="10" class="validatable">
+        <div class="choose-your-payment">
+
+            <span class="section-1-choose-amount monster-800">Kies het bedrag</span>
+
+            <div class="choose-money-amount">
+                <div class="radio-holder">
+                    <input type="radio" id="10" name="money" value="10" required>
+                    <label for="10" class="validatable">
                     <h2 class="source-600 radio-input-tag"> 10</h2>
                 </label>
-            </div>
+                </div>
 
-            <div class="radio-holder">
-                <input type="radio" id="20" name="money" value="20">
-                <label for="20" class="validatable">
+                <div class="radio-holder">
+                    <input type="radio" id="20" name="money" value="20">
+                    <label for="20" class="validatable">
                     <h2 class="source-600 radio-input-tag"> 20</h2>
                 </label>
-            </div>
+                </div>
 
-            <div class="radio-holder">
-                <input type="radio" id="30" name="money" value="30">
-                <label for="30" class="validatable">
+                <div class="radio-holder">
+                    <input type="radio" id="30" name="money" value="30">
+                    <label for="30" class="validatable">
                     <h2 class="source-600 radio-input-tag"> 30</h2>
                 </label>
-            </div>
+                </div>
 
-            <div class="radio-holder">
-                <input type="radio" id="50" name="money" value="50">
-                <label for="50" class="validatable">
+                <div class="radio-holder">
+                    <input type="radio" id="50" name="money" value="50">
+                    <label for="50" class="validatable">
                     <h2 class="source-600 radio-input-tag"> 50</h2>
                 </label>
+                </div>
             </div>
-        </div>
 
-        <div class="payment-options">
+            <div class="payment-options">
 
-            <div class="radio-holder">
-                <input type="radio" id="one-time" name="pay-time" value="one-time" required>
-                <label for="one-time" class="validatable">
+                <div class="radio-holder">
+                    <input type="radio" id="one-time" name="pay-time" value="one-time" required>
+                    <label for="one-time" class="validatable">
                     <h2 class="source-600 radio-input-tag"> Eenmalig</h2>
                 </label>
-            </div>
+                </div>
 
-            <div class="radio-holder">
-                <input type="radio" id="monthly" name="pay-time" value="monthly">
-                <label for="monthly" class="validatable">
+                <div class="radio-holder">
+                    <input type="radio" id="monthly" name="pay-time" value="monthly">
+                    <label for="monthly" class="validatable">
                     <h2 class="source-600 radio-input-tag"> Maandelijks</h2>
                 </label>
-            </div>
+                </div>
 
-            <div class="radio-holder">
-                <input type="radio" id="yearly" name="pay-time" value="yearly">
-                <label for="yearly" class="validatable">
+                <div class="radio-holder">
+                    <input type="radio" id="yearly" name="pay-time" value="yearly">
+                    <label for="yearly" class="validatable">
                     <h2 class="source-600 radio-input-tag"> Jaarlijks</h2>
                 </label>
-            </div>
+                </div>
 
+            </div>
         </div>
 
         <div class="next-step-holder">
@@ -141,14 +145,14 @@
         <div class="pay-option">
             <div class="radio-holder">
                 <input type="radio" id="ideal" name="choose-pay-options" value="1" required>
-                <label for="ideal">
+                <label for="ideal" class="validatable">
                     <h2 class="source-600 radio-input-tag"> Ideal</h2>
                 </label>
             </div>
 
             <div class="radio-holder">
                 <input type="radio" id="permission" name="choose-pay-options" value="2">
-                <label for="permission">
+                <label for="permission" class="validatable">
                     <h2 class="source-600 radio-input-tag"> Machtiging</h2>
                 </label>
             </div>
@@ -156,7 +160,7 @@
 
             <div class="radio-holder">
                 <input type="radio" id="paypall" name="choose-pay-options" value="3">
-                <label for="paypall">
+                <label for="paypall" class="validatable">
                     <h2 class="source-600 radio-input-tag"> Paypall</h2>
                 </label>
             </div>
@@ -169,39 +173,46 @@
 
         <div class="your-iban-holder">
             <div class="filled-icon"></div>
-            <input class="source-300" id="iban" type="text" placeholder="IBan">
-        </div>
-
-        <div class="email-input-holder">
-            <div class="filled-icon"></div>
-            <input class="source-300" id="email" type="email" placeholder="E-mailadres" required>
+            <input class="source-300 validatable" id="iban" type="text" placeholder="IBan">
         </div>
 
         <div class="personal-information">
             <p class="person-adress monster-800">Adresgegevens</p>
 
             <div class="person-name">
-                <input class="source-300" type="text" id="person-firstname" placeholder="Voornaam">
-                <input class="source-300" type="text" id="person-lastname" placeholder="Achternaam">
+
+                    <input class="source-300" type="text" id="person-firstname" placeholder="Voornaam">
+
+                <div class="person-lastname">
+                    <div class="required-dot"></div>
+                    <input class="source-300" type="text" id="person-lastname" placeholder="Achternaam">
+                </div>
             </div>
 
             <div class="person-location">
-                <input class="source-300" type="text" id="person-postcode" placeholder="Postcode">
-                <input class="source-300" type="text" id="person-housenumber" placeholder="nr.">
+                <div class="person-postcode">
+                    <div class="required-dot"></div>
+                    <input class="source-300" type="text" id="person-postcode" placeholder="Postcode">
+                </div>
+
+                <div class="person-housenumber">
+                    <div class="required-dot"></div>
+                    <input class="source-300" type="text" id="person-housenumber" placeholder="nr.">
+                </div>
                 <input class="source-300" type="text" id="person-addition" placeholder="toev.">
             </div>
 
             <div class="person-information-birthday">
                 <p class="person-birthday monster-800">Geboortedatum</p>
-                <input class="source-300" type="text" id="person-birth-day" placeholder="dd">
-                <input class="source-300" type="text" id="person-birth-month" placeholder="mm">
-                <input class="source-300" type="text" id="person-birth-year" placeholder="jjjj">
+                <input class="source-300" type="number" id="person-birth-day" placeholder="dd">
+                <input class="source-300" type="number" id="person-birth-month" placeholder="mm">
+                <input class="source-300" type="number" id="person-birth-year" placeholder="jjjj">
             </div>
         </div>
 
         <div class="next-step-holder">
             <div class="next-step">
-                <a id="next-to-section-2" class="clickable" href="#"></a>
+                <a id="next-to-section-3" class="clickable" href="#"></a>
             </div>
         </div>
 

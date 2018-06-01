@@ -1,18 +1,26 @@
 ﻿
 // SECTION 1
-
-
 $('#control_01').click(function () {
     if ($('#control_01').is(':checked')) {
-        $(".select-action").css("display", "none")
+        $(".choose-your-payment ").css("display", "block");
+        $(".select-charity").show();
+        $(".select-action").css("display", "none");
+        $(".charity-information").show();
     }
 });
 
 $('#control_02').click(function () {
     if ($('#control_02').is(':checked')) {
-        $(".select-action").css("display", "block")
+        $(".select-action").css("display", "block");
+        $(".choose-your-payment ").css("display", "block");
+        $(".select-charity").show();
+        $(".charity-information").show();
     }
 });
+
+$('input:radio[name="pay-time"]').click(function (){
+    $(".section-1 .next-step-holder").show();
+})
 
 $('#select-your-charity').selectize({
     sortField: 'text',
@@ -48,7 +56,8 @@ $('#one-time').on('input', function () {
     var input = $(this);
     var is_name = input.val();
     if (is_name) { input.removeClass("invalid").addClass("valid"); }
-    else { input.removeClass("valid").addClass("invalid"); }
+    else { input.removeClass("valid").addClass("invalid");
+ }
 });
 
 $('#next-to-section-2').click(function () {
@@ -117,26 +126,96 @@ $('#select-your-bank').selectize({
 
 $('#ideal').click(function () {
     if ($('#ideal').is(':checked')) {
-        $(".your-iban-holder").css("display", "none")
-        $(".select-bank").css("display", "inline-block")
+        $(".your-iban-holder").css("display", "none");
+        $(".select-bank").css("display", "inline-block");
+        $(".personal-information").hide();
+        $(".section-2 .next-step-holder").show();
     }
 });
 
 $('#paypall').click(function () {
     if ($('#paypall').is(':checked')) {
-        $(".your-iban-holder").css("display", "none")
-        $(".select-bank").css("display", "inline-block")
+        $(".your-iban-holder").css("display", "none");
+        $(".select-bank").css("display", "inline-block");
+        $(".personal-information").hide();
+        $(".section-2 .next-step-holder").show();
     }
 });
 
 $('#permission').click(function () {
     if ($('#permission').is(':checked')) {
         $(".your-iban-holder").css("display", "block");
-        $(".select-bank").css("display", "none")
+        $(".select-bank").css("display", "none");
+        $(".personal-information").show();
+        $(".section-2 .next-step-holder").show();
+        
     }
 });
 
 
+$('#next-to-section-3').click(function () { 
+
+    let choosePaymentOption = $('input:radio[name="choose-pay-options"]').is(':checked');
+    let iban_bankChecker = Boolean;
+
+    let ibanFilled = $('iban').is(':filled');
+    let bankSelected = $('#select-your-bank').val();
+
+    if (bankSelected == "") {
+        bankSelected = false;
+    } else {
+        bankSelected = true;
+    }
+
+    let lastNameFilled = $('#person-lastname').is(':filled');
+    let postcodeFilled = $('#person-postcode').is(':filled');
+    let houseNumberFilled = $('#person-housenumber').is(':filled');
+
+
+    if (choosePaymentOption == false) {
+        $('.pay-option input').addClass("not-valid");
+    } else {
+        $('.pay-option input').removeClass("not-valid");
+    }
+
+   if (bankSelected == true) {
+    iban_bankChecker = true;
+    $('.your-iban-holder').removeClass("not-valid");
+    $('.select-bank').removeClass("not-valid");
+
+   } else if (ibanFilled == true ) {
+    iban_bankChecker = true;
+    $('.your-iban-holder').removeClass("not-valid");
+    $('.select-bank').removeClass("not-valid");
+
+   } else {
+    $('.your-iban-holder').addClass("not-valid");
+    $('.select-bank').addClass("not-valid");
+   }
+
+   if (lastNameFilled == false) {
+    $('#person-lastname').addClass("not-valid");
+   } else {
+    $('#person-lastname').removeClass("not-valid");
+   }
+
+   if (postcodeFilled == false) {
+    $('#person-postcode').addClass("not-valid");
+   } else {
+    $('#person-postcode').removeClass("not-valid");
+   }
+
+   if (houseNumberFilled == false) { 
+    $('#person-housenumber').addClass("not-valid");
+   } else {
+    $('#person-housenumber').removeClass("not-valid");
+   }
+
+   if (iban_bankChecker && choosePaymentOption && lastNameFilled && postcodeFilled && houseNumberFilled) {
+    $(".section-2").hide();
+    $(".section-3").show();
+}
+
+});
+
 // $('#next-to-section-2').is(':checked');
-
-

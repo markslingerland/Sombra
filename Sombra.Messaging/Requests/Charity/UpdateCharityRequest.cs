@@ -17,5 +17,8 @@ namespace Sombra.Messaging.Requests.Charity
         public string CoverImage { get; set; }
         public string Slogan { get; set; }
         public string Url { get; set; }
+        public string Anbi { get; set; }
+        public string Description { get; set; }
+        public string ThankYou { get; set; }
     }
 }

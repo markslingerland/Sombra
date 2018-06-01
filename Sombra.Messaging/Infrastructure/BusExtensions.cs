@@ -17,6 +17,7 @@ namespace Sombra.Messaging.Infrastructure
 
             try
             {
+                bus.SendAsync(ServiceInstaller.LoggingQueue, request);
                 return (Task<TResponse>) typedRequestMethod.Invoke(bus, new object[] {request});
             }
             catch (TimeoutException ex)

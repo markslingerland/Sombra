@@ -3,23 +3,22 @@ using System.Threading.Tasks;
 using MongoDB.Driver;
 using Sombra.Core;
 using Sombra.Messaging;
-using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.LoggingService
 {
-    public class EventHandler<TMessage> : IAsyncEventHandler<TMessage>
-        where TMessage: class, IEvent
+    public class MessageHandler
     {
         private readonly IMongoCollection<LogEntry> _logCollection;
         private static readonly string _mongoCollection = "rabbitmq";
 
-        public EventHandler(IMongoDatabase database)
+        public MessageHandler(IMongoDatabase database)
         {
             _logCollection = database.GetCollection<LogEntry>(_mongoCollection);
         }
 
-        public async Task ConsumeAsync(TMessage message)
+        public async Task HandleAsync(IMessage message)
         {
+            ExtendedConsole.Log($"{message.GetType().Name} received");
             await _logCollection.InsertOneAsync(new LogEntry(message, DateTime.UtcNow));
         }
     }

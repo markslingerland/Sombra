@@ -25,7 +25,7 @@ namespace Sombra.DonateService
                 _rabbitMqConnectionString,
                 services => services
                     .AddDbContext<DonationsContext>(_sqlConnectionString),
-                ConnectionValidator.ValidateAllDbConnections, DatabaseMigrationHelper.ForceMigrations);
+                DatabaseHelper.RunInstaller);
 
             Thread.Sleep(Timeout.Infinite);
         }

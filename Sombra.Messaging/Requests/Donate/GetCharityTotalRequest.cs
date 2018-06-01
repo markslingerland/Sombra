@@ -8,5 +8,6 @@ namespace Sombra.Messaging.Requests.Donate
         public Guid CharityKey { get; set; }
         public DateTime? From { get; set; }
         public DateTime? To { get; set; }
+        public bool IncludeCharityActions { get; set; }
     }
 }

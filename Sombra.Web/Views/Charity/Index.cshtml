@@ -1,4 +1,5 @@
-﻿@model Sombra.Web.ViewModels.Charity.CharityViewModel
+﻿@using Sombra.Core.Extensions
+@model Sombra.Web.ViewModels.Charity.CharityViewModel
 
 @{ ViewData["Title"] = "Charity"; }
 
@@ -39,20 +40,20 @@
 
 <div id="charity-info">
     @*Background picture*@
-    <div class="header-image" style="background-image:url(@Model.charity.CoverImage)"></div>
+    <div class="header-image" style="background-image:url(@Model.CoverImage)"></div>
     <div class="main-storyboard">
         @*top*@
-        @foreach (string category in @Model.charity.Categories)
+        @foreach (var category in Model.Category.GetIndividualFlags().Take(2))
         {
-            <div class="category">@category</div>
+            <div class="category">@category.GetDisplayName()</div>
         }
-        <div class="kvk_ambi">KvK nummer: @Model.charity.KVKNumber  ANBI nummer: @Model.charity.Anbi</div>
+        <div class="kvk_ambi">KvK nummer: @Model.KVKNumber  ANBI nummer: @Model.Anbi</div>
         @*title & story*@
         <div id="about" class="standard-text">
             <div class="container">
                 <div class="row about-text">
-                    <h3>@Model.charity.Name</h3>
-                    <p>@Model.charity.About</p>
+                    <h3>@Model.Name</h3>
+                    <p>@Model.About</p>
                     <div class="donate-btn">
                         <a href="#" class="donateSVG"></a>
                     </div>
@@ -105,7 +106,7 @@
     <div class="container">
         @*If only a logo is used we can remove the Fill-7*@
         <img class="Fill-1" src="../../Assets/shape-frame.svg">
-        <div class="Fill-7">@Model.charity.Name</div>
+        <div class="Fill-7">@Model.Name</div>
     </div>
 </div>
 @*TODO Fix overflow main-storyboard and donations. main-storyboard has fixed height and absolute values*@

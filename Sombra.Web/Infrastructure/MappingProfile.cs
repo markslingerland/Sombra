@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using Sombra.Core.Enums;
+using Sombra.Messaging.Requests.Charity;
 using Sombra.Messaging.Requests.CharityAction;
 using Sombra.Messaging.Requests.Identity;
 using Sombra.Messaging.Requests.Logging;
@@ -69,6 +70,11 @@ namespace Sombra.Web.Infrastructure
             CreateMap<CharityActionsByCharityQuery, GetCharityActionsRequest>()
                 .ForMember(d => d.CharityKey, opt => opt.MapFrom(s => Guid.Parse(s.CharityKey)))
                 .ForMember(d => d.OnlyActive, opt => opt.UseValue(true));
+
+            CreateMap<CharityQuery, GetCharityByUrlRequest>()
+                .ForMember(d => d.Url, opt => opt.MapFrom(s => s.Subdomain));
+
+            CreateMap<Charity, CharityViewModel>();
         }
     }
 }

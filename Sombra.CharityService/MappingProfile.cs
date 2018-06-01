@@ -14,10 +14,16 @@ namespace Sombra.CharityService
             CreateMap<CreateCharityRequest, Charity>()
                 .IgnoreEntityProperties()
                 .ForMember(d => d.IsApproved, opt => opt.UseValue(false));
+            CreateMap<Charity, Messaging.Shared.Charity>();
+
             CreateMap<Charity, GetCharityByKeyResponse>()
-                .ForMember(d => d.Success, opt => opt.UseValue(true));
+                .ForMember(d => d.Success, opt => opt.UseValue(true))
+                .ForMember(d => d.Charity, opt => opt.MapFrom(s => s));
+
             CreateMap<Charity, GetCharityByUrlResponse>()
-                .ForMember(d => d.Success, opt => opt.UseValue(true));
+                .ForMember(d => d.Success, opt => opt.UseValue(true))
+                .ForMember(d => d.Charity, opt => opt.MapFrom(s => s));
+
             CreateMap<Charity, CharityCreatedEvent>();
             CreateMap<Charity, CharityUpdatedEvent>();
         }

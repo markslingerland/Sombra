@@ -10,9 +10,10 @@ using Sombra.CharityService.DAL;
 namespace Sombra.CharityService.Migrations
 {
     [DbContext(typeof(CharityContext))]
-    partial class CharityContextModelSnapshot : ModelSnapshot
+    [Migration("20180601083228_AddAnbiAndDescription")]
+    partial class AddAnbiAndDescription
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,8 +50,6 @@ namespace Sombra.CharityService.Migrations
                     b.Property<string>("OwnerUserName");
 
                     b.Property<string>("Slogan");
-
-                    b.Property<string>("ThankYou");
 
                     b.Property<string>("Url");
 

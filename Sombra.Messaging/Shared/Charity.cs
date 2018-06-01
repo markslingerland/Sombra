@@ -16,5 +16,9 @@ namespace Sombra.Messaging.Shared
         public string CoverImage { get; set; }
         public string Slogan { get; set; }
         public string Url { get; set; }
+        public bool IsApproved { get; set; }
+        public string Description { get; set; }
+        public string Anbi { get; set; }
+        public string ThankYou { get; set; }
     }
 }

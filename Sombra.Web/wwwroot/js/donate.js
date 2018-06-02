@@ -152,6 +152,13 @@ $('#permission').click(function () {
     }
 });
 
+$(".section-2 #go-back").click(function() {
+    $(".section-2").hide();
+    $(".section-1").show();
+})
+
+
+
 
 $('#next-to-section-3').click(function () { 
 
@@ -211,11 +218,37 @@ $('#next-to-section-3').click(function () {
     $('#person-housenumber').removeClass("not-valid");
    }
 
-   if (iban_bankChecker && choosePaymentOption && lastNameFilled && postcodeFilled && houseNumberFilled) {
+   if (iban_bankChecker && choosePaymentOption && lastNameFilled && postcodeFilled && houseNumberFilled || $('#ideal').is(':checked') && iban_bankChecker || $('#paypall').is(':checked') && iban_bankChecker) {
     $(".section-2").hide();
     $(".section-3").show();
 }
 
 });
 
-// $('#next-to-section-2').is(':checked');
+// SEction 3
+
+
+$(".section-3 #go-back").click(function() {
+    $(".section-3").hide();
+    $(".section-2").show();
+})
+
+$(".section-3 .next-step-holder").show();
+
+$('#next-to-section-4').click(function () { 
+    $(".section-3").hide();
+    $(".section-4").show();
+    $("#form-donate").css("padding-bottom", "0");
+ });
+
+
+//  Section 4 
+
+$(".section-4 #go-back").click(function() {
+    $(".section-4").hide();
+    $(".section-3").show();
+    $("#form-donate").css("padding-bottom", "200px");
+});
+
+
+

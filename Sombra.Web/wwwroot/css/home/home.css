@@ -107,7 +107,7 @@
 
 #home-info {
     padding-top: 350px;
-    width: 100%;
+    float: left;
 }
 
 #home-info p {

@@ -55,3 +55,8 @@ services:
       context: .
       dockerfile: Sombra.SearchService.UnitTests/Dockerfile
 
+  sombra.storyservice.unittests:
+    image: sombra.storyservice.unittests
+    build:
+      context: .
+      dockerfile: Sombra.StoryService.UnitTests/Dockerfile

@@ -1,6 +1,3 @@
-using System.IO;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Sombra.Infrastructure.DAL;
 
 namespace Sombra.SearchService.DAL
@@ -9,5 +6,4 @@ namespace Sombra.SearchService.DAL
     {
         protected override string ConnectionStringName => "SEARCH_DB_CONNECTIONSTRING";
     }
-    
 }

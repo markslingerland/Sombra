@@ -89,6 +89,15 @@ services:
       - rabbitmq
       - sqlserver
 
+  sombra.storyservice:
+    image: sombra.storyservice
+    build:
+      context: .
+      dockerfile: Sombra.StoryService/Dockerfile
+    depends_on:
+      - rabbitmq
+      - sqlserver
+
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq

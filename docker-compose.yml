@@ -62,6 +62,15 @@ services:
       - rabbitmq
       - sqlserver
 
+  sombra.donateservice:
+    image: sombra.donateservice
+    build:
+      context: .
+      dockerfile: Sombra.DonateService/Dockerfile
+    depends_on:
+      - rabbitmq
+      - sqlserver
+
   sombra.loggingservice:
     image: sombra.loggingservice
     build:

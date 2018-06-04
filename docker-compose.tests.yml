@@ -55,3 +55,8 @@ services:
       context: .
       dockerfile: Sombra.SearchService.UnitTests/Dockerfile
 
+  sombra.donateservice.unittests:
+    image: sombra.donateservice.unittests
+    build:
+      context: .
+      dockerfile: Sombra.DonateService.UnitTests/Dockerfile

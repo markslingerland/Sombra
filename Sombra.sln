@@ -51,7 +51,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sombra.TimeService", "Sombr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sombra.StoryService", "Sombra.StoryService\Sombra.StoryService.csproj", "{33DD5CEA-99AB-4199-B752-85D609DFABFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sombra.StoryServiceUnitTests", "Sombra.StoryServiceUnitTests\Sombra.StoryServiceUnitTests.csproj", "{50C0904D-4206-4F68-AEFC-0F50F106FF35}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sombra.StoryService.UnitTests", "Sombra.StoryService.UnitTests\Sombra.StoryService.UnitTests.csproj", "{50C0904D-4206-4F68-AEFC-0F50F106FF35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

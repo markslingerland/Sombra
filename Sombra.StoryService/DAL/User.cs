@@ -7,5 +7,6 @@ namespace Sombra.StoryService.DAL
     {
         public Guid UserKey { get; set; }
         public string Name { get; set; }
+        public string ProfileImage { get; set; }
     }
 }

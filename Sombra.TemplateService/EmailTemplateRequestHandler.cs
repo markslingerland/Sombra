@@ -20,9 +20,9 @@ namespace Sombra.TemplateService
         {
             var response = new EmailTemplateResponse();
 
-            var template = await _emailTemplateContext.Template.FirstOrDefaultAsync(b => b.TemplateId.Equals(message.EmailType));
-            if (template?.Template == null) return new EmailTemplateResponse();
-            response.Template = template.Template;
+            var template = await _emailTemplateContext.Templates.FirstOrDefaultAsync(b => b.TemplateKey.Equals(message.EmailType));
+            if (template?.Body == null) return new EmailTemplateResponse();
+            response.Template = template.Body;
 
             return response;
         }

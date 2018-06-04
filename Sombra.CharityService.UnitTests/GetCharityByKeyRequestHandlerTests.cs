@@ -33,7 +33,6 @@ namespace Sombra.CharityService.UnitTests
                         IBAN = "0-IBAN",
                         CoverImage = "",
                         Slogan = "Test"
-
                     };
 
                     context.Add(charity);
@@ -57,7 +56,6 @@ namespace Sombra.CharityService.UnitTests
                 //Assert
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    // TODO Fix unit test problem
                     Assert.AreEqual(response.Charity.CharityKey, request.CharityKey);
                     Assert.AreEqual(response.Charity.Name, context.Charities.Single().Name);
                     Assert.AreEqual(response.Charity.OwnerUserName, context.Charities.Single().OwnerUserName);

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Sombra.Core.Enums;
 using Sombra.Messaging.Responses.CharityAction;
 
 namespace Sombra.Messaging.Requests.CharityAction
@@ -8,8 +10,17 @@ namespace Sombra.Messaging.Requests.CharityAction
     {
         [CacheKey]
         public Guid CharityKey { get; set; }
-        
+
         [CacheKey]
         public bool OnlyActive { get; set; }
+
+        [CacheKey]
+        public List<string> Keywords { get; set; }
+
+        [CacheKey]
+        public SortOrder SortOrder { get; set; }
+
+        [CacheKey]
+        public Category Category { get; set; }
     }
 }

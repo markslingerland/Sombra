@@ -10,9 +10,10 @@ using Sombra.CharityActionService.DAL;
 namespace Sombra.CharityActionService.Migrations
 {
     [DbContext(typeof(CharityActionContext))]
-    partial class CharityActionContextModelSnapshot : ModelSnapshot
+    [Migration("20180604101650_AddIndex")]
+    partial class AddIndex
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

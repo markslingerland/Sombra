@@ -57,16 +57,16 @@ namespace Sombra.CharityService.UnitTests
                 //Assert
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    Assert.AreEqual(response.Url.ToLower(), request.Url.ToLower());
-                    Assert.AreEqual(response.CharityKey, context.Charities.Single().CharityKey);
-                    Assert.AreEqual(response.Name, context.Charities.Single().Name);
-                    Assert.AreEqual(response.OwnerUserName, context.Charities.Single().OwnerUserName);
-                    Assert.AreEqual(response.Email, context.Charities.Single().Email);
-                    Assert.AreEqual(response.Category, context.Charities.Single().Category);
-                    Assert.AreEqual(response.KVKNumber, context.Charities.Single().KVKNumber);
-                    Assert.AreEqual(response.IBAN, context.Charities.Single().IBAN);
-                    Assert.AreEqual(response.CoverImage, context.Charities.Single().CoverImage);
-                    Assert.AreEqual(response.Slogan, context.Charities.Single().Slogan);
+                    Assert.AreEqual(response.Charity.Url.ToLower(), request.Url.ToLower());
+                    Assert.AreEqual(response.Charity.CharityKey, context.Charities.Single().CharityKey);
+                    Assert.AreEqual(response.Charity.Name, context.Charities.Single().Name);
+                    Assert.AreEqual(response.Charity.OwnerUserName, context.Charities.Single().OwnerUserName);
+                    Assert.AreEqual(response.Charity.Email, context.Charities.Single().Email);
+                    Assert.AreEqual(response.Charity.Category, context.Charities.Single().Category);
+                    Assert.AreEqual(response.Charity.KVKNumber, context.Charities.Single().KVKNumber);
+                    Assert.AreEqual(response.Charity.IBAN, context.Charities.Single().IBAN);
+                    Assert.AreEqual(response.Charity.CoverImage, context.Charities.Single().CoverImage);
+                    Assert.AreEqual(response.Charity.Slogan, context.Charities.Single().Slogan);
                     Assert.IsTrue(response.Success);
                 }
             }

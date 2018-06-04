@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.CharityActionService.DAL;
+using Sombra.Core.Enums;
 using Sombra.Infrastructure;
 using Sombra.Messaging.Requests.CharityAction;
 using Sombra.Messaging.Responses.CharityAction;
@@ -64,17 +66,48 @@ namespace Sombra.CharityActionService.UnitTests
                     {
                         context.CharityActions.Add(new CharityAction
                         {
-                            CharityActionKey = Guid.NewGuid()
+                            CharityActionKey = Guid.NewGuid(),
+                            Name = "this is a charity for john",
+                            Description = "doe",
+                            Category = Category.EducationAndResearch | Category.Culture
                         });
                     }
 
                     for (var i = 0; i < 15; i++)
                     {
-                        context.CharityActions.Add(new CharityAction
+                        if (i % 2 == 0)
                         {
-                            CharityKey = charityKey,
-                            CharityActionKey = Guid.NewGuid()
-                        });
+                            if (i % 4 == 0)
+                            {
+                                context.CharityActions.Add(new CharityAction
+                                {
+                                    CharityKey = charityKey,
+                                    CharityActionKey = Guid.NewGuid(),
+                                    Name = "this is a charity for john",
+                                    Description = "doe",
+                                    Category = Category.EducationAndResearch | Category.Culture
+                                });
+                            }
+                            else
+                            {
+                                context.CharityActions.Add(new CharityAction
+                                {
+                                    CharityKey = charityKey,
+                                    CharityActionKey = Guid.NewGuid(),
+                                    Name = "this is a charity for john",
+                                    Description = "doe",
+                                    Category = Category.EducationAndResearch | Category.Health
+                                });
+                            }
+                        }
+                        else
+                        {
+                            context.CharityActions.Add(new CharityAction
+                            {
+                                CharityKey = charityKey,
+                                CharityActionKey = Guid.NewGuid()
+                            });
+                        }
                     }
 
                     context.SaveChanges();
@@ -87,14 +120,16 @@ namespace Sombra.CharityActionService.UnitTests
                     response = await handler.Handle(new GetCharityActionsRequest
                     {
                         CharityKey = charityKey,
+                        Category = Category.EducationAndResearch | Category.Culture,
+                        Keywords = new List<string> { "john", "doe" },
                         PageNumber = 2,
-                        PageSize = 9
+                        PageSize = 1
                     });
                 }
 
-                Assert.AreEqual(15, response.TotalResult);
-                Assert.AreEqual(6, response.Results.Count);
-                Assert.IsTrue(response.Results.All(r => r.CharityKey == charityKey));
+                Assert.AreEqual(4, response.TotalResult);
+                Assert.AreEqual(1, response.Results.Count);
+                Assert.IsTrue(response.Results.All(r => r.CharityKey == charityKey && r.Category == (Category.EducationAndResearch | Category.Culture)));
             }
             finally
             {

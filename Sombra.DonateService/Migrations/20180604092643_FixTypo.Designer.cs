@@ -10,9 +10,10 @@ using Sombra.DonateService.DAL;
 namespace Sombra.DonateService.Migrations
 {
     [DbContext(typeof(DonationsContext))]
-    partial class DonationsContextModelSnapshot : ModelSnapshot
+    [Migration("20180604092643_FixTypo")]
+    partial class FixTypo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

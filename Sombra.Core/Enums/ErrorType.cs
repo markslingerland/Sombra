@@ -11,6 +11,9 @@
         AlreadyActive = 6,
         InvalidKey = 7,
         InactiveAccount = 8,
-        InvalidPassword = 9
+        InvalidPassword = 9,
+        CharityNotFound = 10,
+        CharityActionNotFound = 11,
+        UserNotFound = 12
     }
 }

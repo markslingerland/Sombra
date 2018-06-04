@@ -32,6 +32,8 @@ namespace Sombra.CharityActionService
             if (message.CharityKey != default) filter = filter.And(c => c.CharityKey == message.CharityKey);
             if (message.Category != Category.None) filter = filter.And(c => c.Category == message.Category);
             if (message.Keywords?.Any() != null) filter = filter.And(c => $"{c.CharityName} {c.Name} {c.Description}".ContainsAll(message.Keywords, StringComparison.OrdinalIgnoreCase));
+            if (message.OnlyApproved) filter = filter.And(c => c.IsApproved);
+            if (message.OnlyUnapproved) filter = filter.And(c => !c.IsApproved);
 
             return new GetCharityActionsResponse
             {

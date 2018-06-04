@@ -44,7 +44,7 @@ namespace Sombra.CharityActionService.UnitTests
                     });
                 }
 
-                Assert.AreEqual(25, response.TotalResult);
+                Assert.AreEqual(25, response.TotalNumberOfResults);
                 Assert.AreEqual(5, response.Results.Count);
             }
             finally
@@ -178,7 +178,7 @@ namespace Sombra.CharityActionService.UnitTests
                     });
                 }
 
-                Assert.AreEqual(4, response.TotalResult);
+                Assert.AreEqual(4, response.TotalNumberOfResults);
                 Assert.AreEqual(1, response.Results.Count);
                 Assert.IsTrue(response.Results.All(r => r.CharityKey == charityKey && r.Category == (Category.EducationAndResearch | Category.Culture)));
             }

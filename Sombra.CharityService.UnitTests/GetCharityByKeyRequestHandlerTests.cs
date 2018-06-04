@@ -33,7 +33,6 @@ namespace Sombra.CharityService.UnitTests
                         IBAN = "0-IBAN",
                         CoverImage = "",
                         Slogan = "Test"
-
                     };
 
                     context.Add(charity);
@@ -57,16 +56,15 @@ namespace Sombra.CharityService.UnitTests
                 //Assert
                 using (var context = CharityContext.GetInMemoryContext())
                 {
-                    // TODO Fix unit test problem
-                    Assert.AreEqual(response.CharityKey, request.CharityKey);
-                    Assert.AreEqual(response.Name, context.Charities.Single().Name);
-                    Assert.AreEqual(response.OwnerUserName, context.Charities.Single().OwnerUserName);
-                    Assert.AreEqual(response.Email, context.Charities.Single().Email);
-                    Assert.AreEqual(response.Category, context.Charities.Single().Category);
-                    Assert.AreEqual(response.KVKNumber, context.Charities.Single().KVKNumber);
-                    Assert.AreEqual(response.IBAN, context.Charities.Single().IBAN);
-                    Assert.AreEqual(response.CoverImage, context.Charities.Single().CoverImage);
-                    Assert.AreEqual(response.Slogan, context.Charities.Single().Slogan);
+                    Assert.AreEqual(response.Charity.CharityKey, request.CharityKey);
+                    Assert.AreEqual(response.Charity.Name, context.Charities.Single().Name);
+                    Assert.AreEqual(response.Charity.OwnerUserName, context.Charities.Single().OwnerUserName);
+                    Assert.AreEqual(response.Charity.Email, context.Charities.Single().Email);
+                    Assert.AreEqual(response.Charity.Category, context.Charities.Single().Category);
+                    Assert.AreEqual(response.Charity.KVKNumber, context.Charities.Single().KVKNumber);
+                    Assert.AreEqual(response.Charity.IBAN, context.Charities.Single().IBAN);
+                    Assert.AreEqual(response.Charity.CoverImage, context.Charities.Single().CoverImage);
+                    Assert.AreEqual(response.Charity.Slogan, context.Charities.Single().Slogan);
                     Assert.IsTrue(response.Success);
                 }
             }

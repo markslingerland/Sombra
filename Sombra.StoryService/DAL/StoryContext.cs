@@ -8,5 +8,8 @@ namespace Sombra.StoryService.DAL
         public StoryContext() { }
 
         public StoryContext(DbContextOptions<StoryContext> options, SombraContextOptions sombraContextOptions) : base(options, sombraContextOptions) { }
+
+        public DbSet<Story> Stories { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

@@ -16,14 +16,14 @@ namespace Sombra.DonateService
 
         public async Task ConsumeAsync(UserCreatedEvent message)
         {
-            var UserToCreate = new User
+            var userToCreate = new User
             {
                 UserKey = message.UserKey,
                 UserName = message.FirstName + " " + message.LastName,
                 ProfileImage = message.ProfileImage
             };
     
-            _context.Users.Add(UserToCreate);
+            _context.Users.Add(userToCreate);
             await _context.SaveChangesAsync();
         }
     }

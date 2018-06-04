@@ -13,5 +13,6 @@ namespace Sombra.DonateService.DAL
         public DbSet<CharityAction> CharityActions { get; set; }
         public DbSet<CharityDonation> CharityDonations { get; set; }
         public DbSet<CharityActionDonation> ChartyActionDonations { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

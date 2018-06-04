@@ -10,6 +10,7 @@ namespace Sombra.DonateService.DAL
         public decimal Amount { get; set; }
         public DonationType DonationType { get; set; }
         public Guid UserKey { get; set; }
+        public bool IsAnonymous { get; set; }
         public Guid CharityId { get; set; }
         public virtual Charity Charity { get; set; }
 

@@ -94,7 +94,7 @@ namespace Sombra.CharityActionService.UnitTests
                     });
                 }
 
-                Assert.AreEqual(15, response.TotalResult);
+                Assert.AreEqual(15, response.TotalNumberOfResults);
                 Assert.AreEqual(5, response.Results.Count);
                 Assert.IsTrue(response.Results.All(r => r.ActionEndDateTime > DateTime.UtcNow));
             }

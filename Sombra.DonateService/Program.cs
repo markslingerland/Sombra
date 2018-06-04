@@ -24,7 +24,8 @@ namespace Sombra.DonateService
                 Assembly.GetExecutingAssembly(),
                 _rabbitMqConnectionString,
                 services => services
-                    .AddDbContext<DonationsContext>(_sqlConnectionString),
+                    .AddDbContext<DonationsContext>(_sqlConnectionString)
+                    .AddAutoMapper(Assembly.GetExecutingAssembly()),
                 DatabaseHelper.RunInstaller);
 
             Thread.Sleep(Timeout.Infinite);

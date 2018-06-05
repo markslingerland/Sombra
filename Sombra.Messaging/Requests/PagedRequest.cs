@@ -1,6 +1,6 @@
 ﻿using Sombra.Core;
 
-namespace Sombra.Messaging
+namespace Sombra.Messaging.Requests
 {
     public abstract class PagedRequest<TResponse> : Request<TResponse>, IPagedModel where TResponse : class, IResponse
     {

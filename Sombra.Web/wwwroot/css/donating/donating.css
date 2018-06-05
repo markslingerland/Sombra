@@ -189,6 +189,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   line-height: normal;
   letter-spacing: normal;
   color: #838383;
+  margin-top: 23px;
 }
 
 .radio-holder {
@@ -219,7 +220,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 .radio-holder label {
   display: block;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
   margin: 1rem;
   text-align: center;
   box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
@@ -254,7 +255,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 .select-charity {
   width: 630px;
   position: relative;
-  margin-top: 15px;
+  margin-top: 30px;
   margin-left: 190px;
   height: 50px;
   border-radius: 8px;
@@ -288,6 +289,10 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
  outline: none;
 }
 
+.select-charity .selectize-input input::placeholder  {
+ font-style: italic;
+ }
+
 .select-charity .selectize-control .selectize-dropdown {
   top: 40px!important;
   border-radius: 8px;
@@ -318,7 +323,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 .charity-information {
   font-size: 18px;
   font-weight: 300;
-  font-style: normal;
+  font-style: italic;
   font-stretch: normal;
   line-height: 1.56;
   letter-spacing: normal;
@@ -349,7 +354,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 
 .payment-options {
   margin-left: 182px;
-  margin-top: 15px;
+  margin-top: 18px;
 }
 
 .payment-options  .radio-holder label {
@@ -360,7 +365,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 
 .payment-options  .radio-holder label h2 {
   position: absolute;
-  top: -24px;
+  top: -26px;
   left: 34px;
 }
 
@@ -379,7 +384,15 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 }
 
 .payment-options .radio-holder {
-  margin-right: 125px;
+  margin-right: 127px;
+}
+
+.payment-options .radio-holder:nth-child(1) {
+  margin-right: 124px;
+}
+
+.payment-options .radio-holder:nth-child(2) {
+  margin-right: 150px;
 }
 
 .next-step-holder {
@@ -771,7 +784,7 @@ font-size: 19px;
   height: 260px;
   background-color: rgba(177, 177, 177, 0.15);
   display: inline-block;
-  margin-top: 50px;
+  margin-top: 100px;
   padding-left: 190px;
   padding-right: 190px;
 }
@@ -848,7 +861,7 @@ font-size: 19px;
   width: 392px;
   display: inline-block;
   vertical-align: middle;
-  padding-right: 25px;
+  padding-right: 29px;
 }
 
 #ikdoneerGame .ikdoneer-text-holder h3{

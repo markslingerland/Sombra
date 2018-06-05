@@ -326,6 +326,7 @@
     color: #838383;
 }
 
+
 #acties {
     width: 100%;
     float: left;
@@ -357,27 +358,27 @@
 }
 
 #acties .action-buttons .all-actions, #acties .action-buttons .make-actions {
-    width: 199px;
-    height: 40px;
-    border-radius: 8px;
-    display: inline-block;
-    position: relative;
-    font-size: 19px;
+width: 199px;
+height: 40px;
+border-radius: 8px;
+display: inline-block;
+position: relative;
+font-size: 19px;
 }
 
-#acties .action-buttons .all-actions a, #acties .action-buttons .make-actions a {
+#acties .action-buttons .all-actions a , #acties .action-buttons .make-actions a {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 100;
-}
+    }
 
 #acties .action-buttons .all-actions {
     margin-right: 16px;
     background-image: linear-gradient(-140deg, #FDA23F 0%, #F3646F 100%);
-    color: white;
+    color:white;
 }
 
 #acties .action-buttons .all-actions span {
@@ -390,10 +391,10 @@
     background-color: white;
     border: 1px solid #F88356;
     color: #F88356;
-}
+    }
 
-#acties .action-buttons .make-actions span {
-    position: absolute;
-    top: 6px;
-    left: 26px;
-}
+    #acties .action-buttons .make-actions span {
+        position: absolute;
+        top: 6px;
+        left: 26px;
+ }

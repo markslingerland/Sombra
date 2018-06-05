@@ -14,7 +14,6 @@ namespace Sombra.LoggingService
 {
     class Program
     {
-        private static string _subscriptionIdPrefix = "Sombra.LoggingService";
         private static string _rabbitMqConnectionString;
         private static string _mongoConnectionString;
         private static string _mongoDatabase;
@@ -30,10 +29,11 @@ namespace Sombra.LoggingService
                 _rabbitMqConnectionString,
                 services => services
                     .AddAutoMapper(Assembly.GetExecutingAssembly())
-                    .AddMongoDatabase(_mongoConnectionString, _mongoDatabase),
+                    .AddMongoDatabase(_mongoConnectionString, _mongoDatabase)
+                    .AddTransient<MessageHandler>(),
                 DatabaseHelper.ValidateMongoConnections);
 
-            var logger = new EventLogger(serviceProvider.GetRequiredService<IBus>(), serviceProvider, _subscriptionIdPrefix);
+            var logger = new MessageLogger(serviceProvider.GetRequiredService<IBus>(), serviceProvider, "MessageLoggerSubscription");
             logger.Start();
 
             Thread.Sleep(Timeout.Infinite);

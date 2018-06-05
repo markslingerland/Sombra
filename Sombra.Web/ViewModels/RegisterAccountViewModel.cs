@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Sombra.Core;
 
 namespace Sombra.Web.ViewModels
 {
-    public class RegisterAccountViewModel
+    public class RegisterAccountViewModel : IHasUserName
     {
         [Required(ErrorMessage = "De voornaam is verplicht!")]
         public string FirstName { get; set; }

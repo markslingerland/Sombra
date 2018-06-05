@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Sombra.Core;
 using Sombra.Core.Enums;
 using Sombra.Messaging.Events.Email;
 using Sombra.Messaging.Requests.Identity;
@@ -185,7 +186,7 @@ namespace Sombra.Web.Services
 
             var clientInfo = UserAgentParser.Extract(_userAgent);
             var user = await _bus.RequestAsync(getUserByEmailRequest);
-            var name = $"{user.FirstName} {user.LastName}";
+            var name = Helpers.GetUserName(user);
             var forgotPasswordResponse = await _bus.RequestAsync(forgotPasswordRequest);
             var actionurl = $"{_baseUrl}/Account/ChangePassword/{forgotPasswordResponse.Secret}";
 

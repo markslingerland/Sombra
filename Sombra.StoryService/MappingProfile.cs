@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Sombra.Core;
 using Sombra.Infrastructure.Extensions;
 using Sombra.Messaging.Events.User;
 using Sombra.StoryService.DAL;
@@ -11,7 +12,7 @@ namespace Sombra.StoryService
         {
             CreateMap<UserCreatedEvent, User>()
                 .IgnoreEntityProperties()
-                .ForMember(d => d.Name, opt => opt.MapFrom(s => $"{s.FirstName} {s.LastName}"));
+                .ForMember(d => d.Name, opt => opt.MapFrom(s => Helpers.GetUserName(s)));
         }
     }
 }

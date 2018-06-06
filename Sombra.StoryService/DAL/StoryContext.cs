@@ -11,5 +11,6 @@ namespace Sombra.StoryService.DAL
 
         public DbSet<Story> Stories { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Image> Images { get; set; }
     }
 }

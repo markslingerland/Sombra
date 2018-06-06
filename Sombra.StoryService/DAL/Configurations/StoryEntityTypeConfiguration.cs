@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Sombra.Infrastructure.DAL;
 
 namespace Sombra.StoryService.DAL.Configurations
@@ -7,8 +8,8 @@ namespace Sombra.StoryService.DAL.Configurations
     {
         public override void Configure(EntityTypeBuilder<Story> entity)
         {
-            entity.HasIndex(c => c.StoryKey);
-            entity.HasIndex(c => c.CharityKey);
+            entity.HasIndex(e => e.StoryKey);
+            entity.HasIndex(e => e.CharityKey);
         }
     }
 }

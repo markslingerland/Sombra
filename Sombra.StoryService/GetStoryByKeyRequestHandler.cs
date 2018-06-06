@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests.Story;
 using Sombra.Messaging.Responses.Story;
@@ -18,9 +19,11 @@ namespace Sombra.StoryService
             _mapper = mapper;
         }
 
-        public Task<GetStoryByKeyResponse> Handle(GetStoryByKeyRequest message)
+        public async Task<GetStoryByKeyResponse> Handle(GetStoryByKeyRequest message)
         {
-            throw new System.NotImplementedException();
+            var story = await _context.Stories.IncludeImages().FirstOrDefaultAsync(b => b.StoryKey.Equals(message.StoryKey));
+
+            return story != null ? _mapper.Map<GetStoryByKeyResponse>(story) : new GetStoryByKeyResponse();
         }
     }
 }

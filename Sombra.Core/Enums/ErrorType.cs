@@ -11,6 +11,7 @@
         AlreadyActive = 6,
         InvalidKey = 7,
         InactiveAccount = 8,
-        InvalidPassword = 9
+        InvalidPassword = 9,
+        InvalidUserKey = 10
     }
 }

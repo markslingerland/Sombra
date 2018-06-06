@@ -1,5 +1,8 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Sombra.Core;
+using Sombra.Core.Enums;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests.Story;
 using Sombra.Messaging.Responses.Story;
@@ -18,9 +21,45 @@ namespace Sombra.StoryService
             _mapper = mapper;
         }
 
-        public Task<CreateStoryResponse> Handle(CreateStoryRequest message)
+        public async Task<CreateStoryResponse> Handle(CreateStoryRequest message)
         {
-            throw new System.NotImplementedException();
+            var story = _mapper.Map<Story>(message);
+            if (story.StoryKey == default)
+            {
+                return new CreateStoryResponse {
+                    ErrorType = ErrorType.InvalidKey
+                };
+            }
+
+            if (message.AuthorUserKey.HasValue)
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.UserKey == message.AuthorUserKey);
+                if (user != null)
+                {
+                    story.Author = user;
+                }
+                else
+                {
+                    return new CreateStoryResponse
+                    {
+                        ErrorType = ErrorType.InvalidUserKey
+                    };
+                }
+            }
+
+            _context.Stories.Add(story);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                ExtendedConsole.Log(ex);
+                return new CreateStoryResponse();
+            }
+
+            return new CreateStoryResponse { Success = true };
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Sombra.StoryService.DAL.Configurations
     {
         public override void Configure(EntityTypeBuilder<User> entity)
         {
-            entity.HasIndex(c => c.UserKey);
+            entity.HasIndex(e => e.UserKey);
         }
     }
 }

@@ -21,9 +21,9 @@
         {
             <div class="category">@category</div>
         }
-        <div class="kvk_ambi">KvK nummer: @Model.charity.KVKNumber  ANBI nummer: @Model.charity.Anbi</div>
+            <div class="kvk_ambi">KvK nummer: @Model.charity.KVKNumber</div><div class="kvk_ambi">ANBI nummer: @Model.charity.Anbi</div>
         @*title & story*@
-        <div id="about" class="standard-text">
+        <div id="about">
             <div class="container">
                 <div class="row about-text">
                     <h3>@Model.charity.Name</h3>
@@ -42,13 +42,13 @@
 
                         <span>@Model.charityAction.Name, initiatiefnemer</span>
                         <h3>
-                            @Model.charityAction.Description
+                            "@Model.charityAction.Description"
                         </h3>
-
+                        <a href="#">Lees meer</a>
                         <div class="story-btn-holder">
                             <div class="secondary-button">
                                 <a href="#"></a> @*/charityaction/id=*@
-                                <label>Lees dit verhaal</label>
+                                <label>Lees de verhalen</label>
                             </div>
                         </div>
 
@@ -59,6 +59,9 @@
         @*Active acitons*@
         <div id="acties">
             <h3 class="title">Lopende acties</h3>
+            <div class="acties-text">
+                Multiple Sclerose is de meest invaliderende aandoening onder jonge mensen, zelfs kinderen, in Nederland. MS is een slopende ziekte. Er is nog maar weinig bekend om mensen met MS te helpen. Daarom is er onderzoek nodig, en dat kost.
+            </div>
             <div class="slider-container">
                 <div id="charity-actions-carousel" class="main-carousel">
                     @foreach (var action in @Model.charityActions)

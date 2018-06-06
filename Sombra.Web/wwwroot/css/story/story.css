@@ -90,7 +90,7 @@
     height: 610px;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 50% 10%;
+    background-position: 50% 50%;
     border-bottom-left-radius: 80% 10%;
     border-bottom-right-radius: 80% 10%;
 }
@@ -114,7 +114,14 @@
     font-family: Arial;
 }
 
-.Fill-1 {
+.profile-picture {
+    width: 177px;
+    height: 169px;
+    border-top-left-radius: 50% 50%;
+    border-top-right-radius: 100% 110%;
+    border-bottom-left-radius: 22% 22%;
+    border-bottom-right-radius: 50% 50%;
+    background-size: cover;
     position: absolute;
     display: block;
     margin-left: auto;
@@ -122,25 +129,30 @@
     left: 0;
     right: 0;
     margin-top: 305px;
-    max-width: 177px;
-    height: 200px;
     transform: rotate(-18deg);
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.15));
 }
 
-.Fill-7 {
+
+.profile-name {
     position: absolute;
     display: block;
     margin-left: auto;
     margin-right: auto;
     left: 0;
     right: 0;
-    margin-top: 360px;
-    max-width: 87px;
-    height: 70px;
-    transform: rotate(-18deg);
-    color: #ffffff;
-    font-size: 25px;
+    margin-top: 500px;
+    width: 242px;
+    height: 33px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    text-align: center;
+    color: #838383;
 }
 
 .category {
@@ -165,7 +177,7 @@
     float: right;
     margin-right: 2%;
     margin-top: 2%;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
@@ -173,9 +185,6 @@
     letter-spacing: normal;
     display: inline-block;
     color: #838383;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 300;
-    line-height: 2;
 }
 
 /*Story*/

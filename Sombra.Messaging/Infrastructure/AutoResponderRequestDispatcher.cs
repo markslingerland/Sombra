@@ -23,13 +23,13 @@ namespace Sombra.Messaging.Infrastructure
             where THandler : IAsyncRequestHandler<TRequest, TResponse>
             where TResponse : class, IResponse
         {
-            ExtendedConsole.Log($"{typeof(TRequest).Name} received");
+            ExtendedConsole.Log($"{nameof(message)} received");
             var handler = _serviceProvider.GetRequiredService<THandler>();
 
             try
             {
                 var response = await handler.Handle(message);
-                ExtendedConsole.Log($"{typeof(TResponse).Name} returned");
+                ExtendedConsole.Log($"{nameof(response)} returned");
                 _bus.SendAsync(ServiceInstaller.LoggingQueue, response);
             }
             catch (Exception ex)

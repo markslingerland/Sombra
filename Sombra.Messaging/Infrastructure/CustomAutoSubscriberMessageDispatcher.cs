@@ -21,7 +21,7 @@ namespace Sombra.Messaging.Infrastructure
             where TMessage : class
             where TConsumer : class, IConsume<TMessage>
         {
-            ExtendedConsole.Log($"{typeof(TMessage).Name} received");
+            ExtendedConsole.Log($"{nameof(message)} received");
             var consumer = _serviceProvider.GetRequiredService<TConsumer>();
 
             try
@@ -44,7 +44,7 @@ namespace Sombra.Messaging.Infrastructure
             where TMessage : class
             where TConsumer : class, IConsumeAsync<TMessage>
         {
-            ExtendedConsole.Log($"{typeof(TMessage).Name} received");
+            ExtendedConsole.Log($"{nameof(message)} received");
             var consumer = _serviceProvider.GetRequiredService<TConsumer>();
 
             try

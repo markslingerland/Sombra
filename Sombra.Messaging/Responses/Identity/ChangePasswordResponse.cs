@@ -1,4 +1,4 @@
 namespace Sombra.Messaging.Responses.Identity
 {
-    public class ChangePasswordResponse : CrudResponse { }
+    public class ChangePasswordResponse : CrudResponse<ChangePasswordResponse> { }
 }

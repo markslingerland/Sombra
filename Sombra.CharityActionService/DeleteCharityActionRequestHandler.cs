@@ -46,7 +46,7 @@ namespace Sombra.CharityActionService
             var charityActionDeletedEvent = _mapper.Map<CharityActionDeletedEvent>(charityAction);
             await _bus.PublishAsync(charityActionDeletedEvent);
 
-            return new DeleteCharityActionResponse() { Success = true };
-            }
+            return DeleteCharityActionResponse.Success();
+        }
     }
 }

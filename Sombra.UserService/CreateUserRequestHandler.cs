@@ -67,10 +67,7 @@ namespace Sombra.UserService
             var userCreatedEvent = _mapper.Map<UserCreatedEvent>(user);
             await _bus.PublishAsync(userCreatedEvent);
 
-            return new CreateUserResponse
-            {
-                Success = true
-            };
+            return CreateUserResponse.Success();
         }
     }
 }

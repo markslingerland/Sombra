@@ -40,10 +40,7 @@ namespace Sombra.StoryService
                     return new ApproveStoryResponse();
                 }
 
-                return new ApproveStoryResponse
-                {
-                    Success = true
-                };
+                return ApproveStoryResponse.Success();
             }
 
             return new ApproveStoryResponse

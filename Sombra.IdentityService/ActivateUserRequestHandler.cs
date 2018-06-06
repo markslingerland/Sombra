@@ -51,10 +51,7 @@ namespace Sombra.IdentityService
                     return new ActivateUserResponse();
                 }
 
-                return new ActivateUserResponse
-                {
-                    Success = true
-                };
+                return ActivateUserResponse.Success();
             }
 
             return new ActivateUserResponse

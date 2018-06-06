@@ -44,7 +44,7 @@ namespace Sombra.CharityActionService
                 return new CreateCharityActionResponse();
             }
 
-            return new CreateCharityActionResponse { Success = true };
+            return CreateCharityActionResponse.Success();
         }
     }
 }

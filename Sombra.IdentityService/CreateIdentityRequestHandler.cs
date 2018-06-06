@@ -72,7 +72,7 @@ namespace Sombra.IdentityService
             return new CreateIdentityResponse
             {
                 ActivationToken = activationToken,
-                Success = true
+                IsSuccess = true
             };
         }
     }

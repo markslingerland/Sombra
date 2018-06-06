@@ -34,7 +34,7 @@ namespace Sombra.IdentityService
                 credential.ExpirationDate = DateTime.UtcNow.AddDays(1);
                 await _context.SaveChangesAsync();
 
-                response.Success = true;
+                response.IsSuccess = true;
                 response.Secret = securityToken;
             }
 

@@ -3,7 +3,7 @@ using Sombra.Core.Enums;
 
 namespace Sombra.Messaging.Responses.Identity
 {
-    public class UserLoginResponse : CrudResponse
+    public class UserLoginResponse : CrudResponse<UserLoginResponse>
     {
         public Guid UserKey { get; set; }
         public string UserName { get; set; }

@@ -59,7 +59,7 @@ namespace Sombra.StoryService
                 return new CreateStoryResponse();
             }
 
-            return new CreateStoryResponse { Success = true };
+            return CreateStoryResponse.Success();
         }
     }
 }

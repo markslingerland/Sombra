@@ -1,4 +1,4 @@
 ﻿namespace Sombra.Messaging.Responses.User
 {
-    public class CreateUserResponse : CrudResponse { }
+    public class CreateUserResponse : CrudResponse<CreateUserResponse> { }
 }

@@ -1,4 +1,4 @@
 ﻿namespace Sombra.Messaging.Responses.CharityAction
 {
-    public class CreateCharityActionResponse : CrudResponse { }
+    public class CreateCharityActionResponse : CrudResponse<CreateCharityActionResponse> { }
 }

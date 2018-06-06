@@ -1,4 +1,4 @@
 ﻿namespace Sombra.Messaging.Responses.Story
 {
-    public class UpdateStoryResponse : CrudResponse { }
+    public class UpdateStoryResponse : CrudResponse<UpdateStoryResponse> { }
 }

@@ -42,10 +42,7 @@ namespace Sombra.CharityService
                 var charityCreatedEvent = _mapper.Map<CharityCreatedEvent>(charity);
                 await _bus.PublishAsync(charityCreatedEvent);
 
-                return new ApproveCharityResponse
-                {
-                    Success = true
-                };
+                return ApproveCharityResponse.Success();
             }
 
             return new ApproveCharityResponse

@@ -30,7 +30,7 @@ namespace Sombra.IdentityService
                     await _context.SaveChangesAsync();
                     return new UpdateRolesResponse
                     {
-                        Success = true,
+                        IsSuccess = true,
                         Role = message.Role
                     };
                 }

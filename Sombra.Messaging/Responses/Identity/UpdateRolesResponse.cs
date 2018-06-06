@@ -2,7 +2,7 @@
 
 namespace Sombra.Messaging.Responses.Identity
 {
-    public class UpdateRolesResponse : CrudResponse
+    public class UpdateRolesResponse : CrudResponse<UpdateRolesResponse>
     {
         public Role Role { get; set; }
     }

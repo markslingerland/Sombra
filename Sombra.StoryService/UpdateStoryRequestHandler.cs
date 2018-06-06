@@ -51,7 +51,7 @@ namespace Sombra.StoryService
                 return new UpdateStoryResponse();
             }
 
-            return new UpdateStoryResponse { Success = true };
+            return UpdateStoryResponse.Success();
         }
     }
 }

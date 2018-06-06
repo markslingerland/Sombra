@@ -150,11 +150,12 @@
 }
 
 .category {
+    font-family: 'Source Sans Pro', sans-serif;
     margin-left: 2%;
     margin-top: 2%;
     border-radius: 5px;
     background-color: rgba(177, 177, 177, 0.25);
-    padding: 2px;
+    padding: 1px 6px 2px 6px;
     font-size: 15px;
     font-weight: normal;
     font-style: normal;
@@ -257,40 +258,67 @@
     position: relative;
     width: 602px;
     height: 200px;
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     text-align: center;
     vertical-align: middle;
+    display: table;
+    margin-bottom: 100px;
 }
 
-.absolute1 {
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 200px;
-    height: 100px;
+.donations-box {
+    margin-top: -1px;
+    height: 50px;
+    width: 700px;
+    border-radius: 8px;
+    border: solid 1px #b1b1b1;
+    vertical-align: middle;
+    text-align: left;
 }
 
-.absolute2 {
-    position: absolute;
-    top: 80px;
-    left: 200px;
-    width: 200px;
-    height: 100px;
+.donations-number {
+    width: 275px;
+    height: 23px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.28;
+    letter-spacing: normal;
+    color: #f88356;
 }
+.profile-icon {
 
-.absolute3 {
-    position: absolute;
-    top: 80px;
-    right: 0;
-    width: 200px;
-    height: 100px;
+    width: 28px;
+    height: 28px;
+    background-image: url("../../Assets/icons/Icon_profiel.svg");
+    border-radius: 50%;
+}
+.img-box{
+	float:left;
+    margin-left: 10px;
+    margin-top:10px;
+}
+.text-box{
+	float:left;
+    margin-left: 10px;
+    margin-top: 13px;
+    text-align: center;
+}
+.profile-text {
+    height: 33px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    color: #838383;
 }
 
 .main-text {
     height: 33px;
-    font-family: 'Montserrat', sans-serif;   
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: bold;
     font-style: normal;
@@ -299,6 +327,7 @@
     letter-spacing: normal;
     color: #838383;
     vertical-align: middle;
+    bottom: 10px;
 }
 
 .ammount-people {
@@ -326,6 +355,28 @@
     color: #838383;
 }
 
+.text-container {
+
+    height: 50px;
+}
+.donation-date {
+    float: right;
+    margin-right: 10px;
+    margin-top: 13px;
+    text-align: center;
+}
+.date-text {
+    width: 240px;
+    height: 23px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.28;
+    letter-spacing: normal;
+    color: #838383;
+}
 
 #acties {
     width: 100%;

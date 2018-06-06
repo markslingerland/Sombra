@@ -21,7 +21,7 @@ namespace Sombra.StoryService
 
         public async Task<GetStoryByKeyResponse> Handle(GetStoryByKeyRequest message)
         {
-            var story = await _context.Stories.IncludeImages().FirstOrDefaultAsync(b => b.StoryKey.Equals(message.StoryKey));
+            var story = await _context.Stories.IncludeAuthor().IncludeImages().FirstOrDefaultAsync(b => b.StoryKey.Equals(message.StoryKey));
 
             return story != null ? _mapper.Map<GetStoryByKeyResponse>(story) : new GetStoryByKeyResponse();
         }

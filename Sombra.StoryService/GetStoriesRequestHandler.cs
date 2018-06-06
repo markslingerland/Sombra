@@ -34,7 +34,7 @@ namespace Sombra.StoryService
             return new GetStoriesResponse
             {
                 TotalNumberOfResults = _context.Stories.Count(filter),
-                Results = await _context.Stories.IncludeImages().Where(filter).OrderBy(t => t.Title, message.SortOrder)
+                Results = await _context.Stories.IncludeAuthor().IncludeImages().Where(filter).OrderBy(t => t.Title, message.SortOrder)
                     .ProjectToPagedListAsync<Messaging.Shared.Story>(message, _mapper)
             };
         }

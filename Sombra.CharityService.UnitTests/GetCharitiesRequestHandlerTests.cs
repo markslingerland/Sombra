@@ -3,41 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sombra.CharityActionService.DAL;
+using Sombra.CharityService.DAL;
 using Sombra.Core.Enums;
 using Sombra.Infrastructure;
-using Sombra.Messaging.Requests.CharityAction;
-using Sombra.Messaging.Responses.CharityAction;
+using Sombra.Messaging.Requests.Charity;
+using Sombra.Messaging.Responses.Charity;
 
-namespace Sombra.CharityActionService.UnitTests
+namespace Sombra.CharityService.UnitTests
 {
     [TestClass]
-    public class GetCharityActionsRequestHandlerTests
+    public class GetCharitiesRequestHandlerTests
     {
         [TestMethod]
-        public async Task GetCharityActionsRequestHandlerTests_Handle_Returns_CharityActions()
+        public async Task GetCharitiesRequestHandlerTests_Handle_Returns_Charities()
         {
-            CharityActionContext.OpenInMemoryConnection();
+            CharityContext.OpenInMemoryConnection();
             try
             {
-                using (var context = CharityActionContext.GetInMemoryContext())
+                using (var context = CharityContext.GetInMemoryContext())
                 {
                     for (var i = 0; i < 25; i++)
                     {
-                        context.CharityActions.Add(new CharityAction
+                        context.Charities.Add(new Charity
                         {
-                            CharityActionKey = Guid.NewGuid()
+                            CharityKey = Guid.NewGuid()
                         });
                     }
 
                     context.SaveChanges();
                 }
 
-                GetCharityActionsResponse response;
-                using (var context = CharityActionContext.GetInMemoryContext())
+                GetCharitiesResponse response;
+                using (var context = CharityContext.GetInMemoryContext())
                 {
-                    var handler = new GetCharityActionsRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
-                    response = await handler.Handle(new GetCharityActionsRequest
+                    var handler = new GetCharitiesRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
+                    response = await handler.Handle(new GetCharitiesRequest
                     {
                         PageNumber = 2,
                         PageSize = 20
@@ -49,24 +49,24 @@ namespace Sombra.CharityActionService.UnitTests
             }
             finally
             {
-                CharityActionContext.CloseInMemoryConnection();
+                CharityContext.CloseInMemoryConnection();
             }
         }
 
         [TestMethod]
         public async Task GetCharityActionsRequestHandlerTests_Handle_Returns_Filtered_CharityActions()
         {
-            CharityActionContext.OpenInMemoryConnection();
+            CharityContext.OpenInMemoryConnection();
             try
             {
                 var charityKey = Guid.NewGuid();
-                using (var context = CharityActionContext.GetInMemoryContext())
+                using (var context = CharityContext.GetInMemoryContext())
                 {
                     for (var i = 0; i < 25; i++)
                     {
-                        context.CharityActions.Add(new CharityAction
+                        context.Charities.Add(new Charity
                         {
-                            CharityActionKey = Guid.NewGuid(),
+                            CharityKey = Guid.NewGuid(),
                             Name = "this is a charity for john",
                             Description = "doe",
                             Category = Category.EducationAndResearch | Category.Culture
@@ -79,10 +79,9 @@ namespace Sombra.CharityActionService.UnitTests
                         {
                             if (i % 4 == 0)
                             {
-                                context.CharityActions.Add(new CharityAction
+                                context.Charities.Add(new Charity
                                 {
                                     CharityKey = charityKey,
-                                    CharityActionKey = Guid.NewGuid(),
                                     Name = "this is a charity for john",
                                     Description = "doe",
                                     Category = Category.EducationAndResearch | Category.Culture
@@ -90,10 +89,9 @@ namespace Sombra.CharityActionService.UnitTests
                             }
                             else
                             {
-                                context.CharityActions.Add(new CharityAction
+                                context.Charities.Add(new Charity
                                 {
                                     CharityKey = charityKey,
-                                    CharityActionKey = Guid.NewGuid(),
                                     Name = "this is a charity for john",
                                     Description = "doe",
                                     Category = Category.EducationAndResearch | Category.Health
@@ -102,10 +100,9 @@ namespace Sombra.CharityActionService.UnitTests
                         }
                         else
                         {
-                            context.CharityActions.Add(new CharityAction
+                            context.Charities.Add(new Charity
                             {
-                                CharityKey = charityKey,
-                                CharityActionKey = Guid.NewGuid()
+                                CharityKey = charityKey
                             });
                         }
                     }
@@ -113,27 +110,26 @@ namespace Sombra.CharityActionService.UnitTests
                     context.SaveChanges();
                 }
 
-                GetCharityActionsResponse response;
-                using (var context = CharityActionContext.GetInMemoryContext())
+                GetCharitiesResponse response;
+                using (var context = CharityContext.GetInMemoryContext())
                 {
-                    var handler = new GetCharityActionsRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
-                    response = await handler.Handle(new GetCharityActionsRequest
+                    var handler = new GetCharitiesRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
+                    response = await handler.Handle(new GetCharitiesRequest
                     {
-                        CharityKey = charityKey,
                         Category = Category.EducationAndResearch | Category.Culture,
                         Keywords = new List<string> { "john", "doe" },
-                        PageNumber = 2,
-                        PageSize = 1
+                        PageNumber = 3,
+                        PageSize = 10
                     });
                 }
 
-                Assert.AreEqual(4, response.TotalNumberOfResults);
-                Assert.AreEqual(1, response.Results.Count);
-                Assert.IsTrue(response.Results.All(r => r.CharityKey == charityKey && r.Category == (Category.EducationAndResearch | Category.Culture)));
+                Assert.AreEqual(29, response.TotalNumberOfResults);
+                Assert.AreEqual(9, response.Results.Count);
+                Assert.IsTrue(response.Results.All(r => r.Category == (Category.EducationAndResearch | Category.Culture)));
             }
             finally
             {
-                CharityActionContext.CloseInMemoryConnection();
+                CharityContext.CloseInMemoryConnection();
             }
         }
     }

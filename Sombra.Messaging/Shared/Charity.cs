@@ -1,11 +1,12 @@
 ﻿using System;
 using Sombra.Core.Enums;
 
-namespace Sombra.Messaging.Events.Charity
+namespace Sombra.Messaging.Shared
 {
-    public class CharityCreatedEvent : Event
+    public class Charity
     {
         public Guid CharityKey { get; set; }
+        public Guid OwnerUserKey { get; set; }
         public string OwnerUserName { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }

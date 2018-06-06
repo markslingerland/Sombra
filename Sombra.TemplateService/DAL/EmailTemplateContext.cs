@@ -14,9 +14,9 @@ namespace Sombra.TemplateService.DAL
 
         protected override void Seed(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TemplateEntity>().HasData(
-                    new TemplateEntity { Id = Guid.NewGuid(), TemplateId = EmailType.ForgotPassword, Template = GetTemplateFromFile(EmailType.ForgotPassword) },
-                    new TemplateEntity { Id = Guid.NewGuid(), TemplateId = EmailType.ConfirmAccount, Template = GetTemplateFromFile(EmailType.ConfirmAccount) }
+            modelBuilder.Entity<Template>().HasData(
+                    new Template { Id = Guid.NewGuid(), TemplateKey = EmailType.ForgotPassword, Body = GetTemplateFromFile(EmailType.ForgotPassword) },
+                    new Template { Id = Guid.NewGuid(), TemplateKey = EmailType.ConfirmAccount, Body = GetTemplateFromFile(EmailType.ConfirmAccount) }
                 );
         }
 
@@ -25,6 +25,6 @@ namespace Sombra.TemplateService.DAL
             return File.ReadAllText($"{Directory.GetCurrentDirectory()}\\Seed\\{emailType.ToString()}.html");
         }
 
-        public DbSet<TemplateEntity> Template { get; set; }
+        public DbSet<Template> Templates { get; set; }
     }
 }

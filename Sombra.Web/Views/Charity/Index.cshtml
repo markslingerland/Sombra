@@ -112,9 +112,24 @@
 @*TODO Fix overflow main-storyboard and donations. main-storyboard has fixed height and absolute values*@
 <div id="donations">
     <div class="donations-relative">
-        <span class="main-text">DEZE WEEK DONEERDER</span>  <span class="ammount-people">@Model.donationsToCharity.DonatedToCharity</span>  <span class="main-text">MENSEN TOTAAL</span>  <span class="ammount-people">&euro;@Model.donationsToCharity.TotalDonations</span>
-        <div class="absolute1"><span class="main-text">DONEREN VANAF</span><p><span class="numbers">&euro; 1</span></p></div>
-        <div class="absolute2"><span class="main-text">GEMIDDELDE DONATIE</span><p><span class="numbers">&euro; @Model.donationsToCharity.AvarageDonation</span></p></div>
-        <div class="absolute3"><span class="main-text">LAATSTE DONATIE</span><p><span class="numbers">&euro; @Model.donationsToCharity.LatestDonation</span></p></div>
+        <div class="text-container">
+            <span class="main-text">DEZE WEEK DONEERDER</span>  <span class="ammount-people">@Model.donationsToCharity.DonatedToCharity</span>  <span class="main-text">MENSEN TOTAAL</span>  <span class="ammount-people">&euro;@Model.donationsToCharity.TotalDonations</span>
+        </div>
+        @foreach (var donator in @Model.donators)
+        {
+            <div class="donations-box">
+                <div class="donations-box-inside">
+                    <div class="img-box">
+                        <img class="profile-icon" src="@donator.ProfileImage" />
+                    </div>
+                    <div class="text-box">
+                        <span class="profile-text">@donator.FirstName @donator.LastName doneerde: </span><span class="donations-number">&euro; @donator.LastDonation</span>
+                    </div>
+                    <div class="donation-date">
+                        <span class="date-text">@donator.LastDonationDate</span>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </div>

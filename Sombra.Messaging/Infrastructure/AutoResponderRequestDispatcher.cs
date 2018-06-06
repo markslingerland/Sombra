@@ -1,7 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using EasyNetQ;
 using Microsoft.Extensions.DependencyInjection;
 using Sombra.Core;
+using Sombra.Messaging.Shared;
 
 namespace Sombra.Messaging.Infrastructure
 {
@@ -24,11 +26,23 @@ namespace Sombra.Messaging.Infrastructure
             ExtendedConsole.Log($"{typeof(TRequest).Name} received");
             var handler = _serviceProvider.GetRequiredService<THandler>();
 
-            var response = await handler.Handle(message);
-            ExtendedConsole.Log($"{typeof(TResponse).Name} returned");
-            _bus.SendAsync(ServiceInstaller.LoggingQueue, response);
+            try
+            {
+                var response = await handler.Handle(message);
+                ExtendedConsole.Log($"{typeof(TResponse).Name} returned");
+                _bus.SendAsync(ServiceInstaller.LoggingQueue, response);
+            }
+            catch (Exception ex)
+            {
+                ExtendedConsole.Log(ex);
+                _bus.SendAsync(ServiceInstaller.ExceptionQueue, new ExceptionMessage
+                {
+                    Exception = ex,
+                    HandlerName = nameof(handler)
+                });
+            }
 
-            return response;
+            return (TResponse) Activator.CreateInstance<TResponse>().RequestFailed();
         }
     }
 }

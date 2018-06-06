@@ -1,7 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using EasyNetQ;
 using EasyNetQ.AutoSubscribe;
 using Microsoft.Extensions.DependencyInjection;
 using Sombra.Core;
+using Sombra.Messaging.Shared;
 
 namespace Sombra.Messaging.Infrastructure
 {
@@ -21,17 +24,43 @@ namespace Sombra.Messaging.Infrastructure
             ExtendedConsole.Log($"{typeof(TMessage).Name} received");
             var consumer = _serviceProvider.GetRequiredService<TConsumer>();
 
-            consumer.Consume(message);
+            try
+            {
+                consumer.Consume(message);
+            }
+            catch (Exception ex)
+            {
+                ExtendedConsole.Log(ex);
+                var bus = _serviceProvider.GetRequiredService<IBus>();
+                bus.Send(ServiceInstaller.ExceptionQueue, new ExceptionMessage
+                {
+                    Exception = ex,
+                    HandlerName = nameof(consumer)
+                });
+            }
         }
 
-        public Task DispatchAsync<TMessage, TConsumer>(TMessage message)
+        public async Task DispatchAsync<TMessage, TConsumer>(TMessage message)
             where TMessage : class
             where TConsumer : class, IConsumeAsync<TMessage>
         {
             ExtendedConsole.Log($"{typeof(TMessage).Name} received");
             var consumer = _serviceProvider.GetRequiredService<TConsumer>();
 
-            return consumer.ConsumeAsync(message);
+            try
+            {
+                await consumer.ConsumeAsync(message);
+            }
+            catch (Exception ex)
+            {
+                ExtendedConsole.Log(ex);
+                var bus = _serviceProvider.GetRequiredService<IBus>();
+                bus.SendAsync(ServiceInstaller.ExceptionQueue, new ExceptionMessage
+                {
+                    Exception = ex,
+                    HandlerName = nameof(consumer)
+                });
+            }
         }
     }
 }

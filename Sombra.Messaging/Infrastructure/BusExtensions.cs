@@ -24,7 +24,7 @@ namespace Sombra.Messaging.Infrastructure
             {
                 ExtendedConsole.Log($"Request {request.GetType().Name} failed. Exception: {ex}");
 
-                return Task.FromResult((TResponse)((TResponse) Activator.CreateInstance(typeof(TResponse))).RequestFailed());
+                return Task.FromResult((TResponse)Activator.CreateInstance<TResponse>().RequestFailed());
             }
         }
 

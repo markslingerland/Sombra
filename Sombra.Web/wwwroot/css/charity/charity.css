@@ -8,8 +8,8 @@
 }
 
 #about .container {
-    padding-left: 165px;
-    padding-right: 165px;
+    padding-left: 65px;
+    padding-right: 256px;
 }
 
 #about img {
@@ -37,15 +37,20 @@
     font-family: 'Montserrat', sans-serif;
     width: 550px;
     font-weight: 800;
+    font-size: 50px;
     color: #838383;
     margin-top: 50px;
+    margin-bottom: 23px;
 }
 
 #about .about-text p {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 22px;
     font-weight: 300;
-    text-align: left;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
     color: #838383;
     margin-bottom: 37px;
 }
@@ -144,11 +149,12 @@
 }
 
 .category {
+    font-family: 'Source Sans Pro', sans-serif;
     margin-left: 2%;
     margin-top: 2%;
     border-radius: 5px;
     background-color: rgba(177, 177, 177, 0.25);
-    padding: 2px;
+    padding: 1px 6px 2px 6px;
     font-size: 15px;
     font-weight: normal;
     font-style: normal;
@@ -162,10 +168,11 @@
 }
 
 .kvk_ambi {
+    font-family: 'Source Sans Pro', sans-serif;
     float: right;
-    margin-right: 2%;
+    margin-right: 25px;
     margin-top: 2%;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
@@ -242,7 +249,23 @@
     text-align: left;
     color: #ffffff;
     position: absolute;
-    bottom: 48px;
+    bottom: 73px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.story_gradient .text_container a {
+    font-family: 'Source Sans Pro', sans-serif;
+    text-decoration: underline;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    position: absolute;
+    color: #ffffff;
+    bottom: 45px;
     margin-bottom: 0;
     margin-top: 0;
 }
@@ -251,40 +274,67 @@
     position: relative;
     width: 602px;
     height: 200px;
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     text-align: center;
     vertical-align: middle;
+    display: table;
+    margin-bottom: 100px;
 }
 
-.absolute1 {
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 200px;
-    height: 100px;
+.donations-box {
+    margin-top: -1px;
+    height: 50px;
+    width: 700px;
+    border-radius: 8px;
+    border: solid 1px #b1b1b1;
+    vertical-align: middle;
+    text-align: left;
 }
 
-.absolute2 {
-    position: absolute;
-    top: 80px;
-    left: 200px;
-    width: 200px;
-    height: 100px;
+.donations-number {
+    width: 275px;
+    height: 23px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.28;
+    letter-spacing: normal;
+    color: #f88356;
 }
+.profile-icon {
 
-.absolute3 {
-    position: absolute;
-    top: 80px;
-    right: 0;
-    width: 200px;
-    height: 100px;
+    width: 28px;
+    height: 28px;
+    background-image: url("../../Assets/icons/Icon_profiel.svg");
+    border-radius: 50%;
+}
+.img-box{
+	float:left;
+    margin-left: 10px;
+    margin-top:10px;
+}
+.text-box{
+	float:left;
+    margin-left: 10px;
+    margin-top: 13px;
+    text-align: center;
+}
+.profile-text {
+    height: 33px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    color: #838383;
 }
 
 .main-text {
     height: 33px;
-    font-family: 'Montserrat', sans-serif;   
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: bold;
     font-style: normal;
@@ -293,6 +343,7 @@
     letter-spacing: normal;
     color: #838383;
     vertical-align: middle;
+    bottom: 10px;
 }
 
 .ammount-people {
@@ -320,6 +371,28 @@
     color: #838383;
 }
 
+.text-container {
+
+    height: 50px;
+}
+.donation-date {
+    float: right;
+    margin-right: 10px;
+    margin-top: 13px;
+    text-align: center;
+}
+.date-text {
+    width: 240px;
+    height: 23px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.28;
+    letter-spacing: normal;
+    color: #838383;
+}
 
 #acties {
     width: 100%;
@@ -342,6 +415,19 @@
     text-align: left;
     color: #838383;
     margin-top: 150px;
+}
+#acties .acties-text {
+    max-width: 600px;
+    height: 115px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    color: #838383;
+    margin-bottom: 56px;
 }
 
 #acties .action-buttons {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace Sombra.Web.Infrastructure
+namespace Sombra.Web.Infrastructure.Extensions
 {
     public static class ControllerExtensions
     {

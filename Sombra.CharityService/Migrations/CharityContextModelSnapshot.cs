@@ -24,11 +24,15 @@ namespace Sombra.CharityService.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Anbi");
+
                     b.Property<int>("Category");
 
                     b.Property<Guid>("CharityKey");
 
                     b.Property<string>("CoverImage");
+
+                    b.Property<string>("Description");
 
                     b.Property<string>("Email");
 
@@ -46,9 +50,15 @@ namespace Sombra.CharityService.Migrations
 
                     b.Property<string>("Slogan");
 
+                    b.Property<string>("ThankYou");
+
                     b.Property<string>("Url");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CharityKey");
+
+                    b.HasIndex("Url");
 
                     b.ToTable("Charities");
                 });

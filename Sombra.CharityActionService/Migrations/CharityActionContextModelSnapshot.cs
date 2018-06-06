@@ -56,6 +56,8 @@ namespace Sombra.CharityActionService.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CharityActionKey");
+
                     b.ToTable("CharityActions");
                 });
 

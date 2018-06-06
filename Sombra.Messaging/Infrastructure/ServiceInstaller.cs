@@ -10,6 +10,8 @@ namespace Sombra.Messaging.Infrastructure
 {
     public static class ServiceInstaller
     {
+        public const string LoggingQueue = "IMessageLoggingQueue";
+
         public static ServiceProvider Run(Assembly assembly, string busConnectionString, Func<IServiceCollection, IServiceCollection> addAdditionalServices = null, params Action<ServiceProvider>[] additionalActions)
         {
             var installerStopwatch = new Stopwatch();

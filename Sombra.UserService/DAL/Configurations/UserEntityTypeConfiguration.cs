@@ -8,6 +8,7 @@ namespace Sombra.UserService.DAL.Configurations
         public override void Configure(EntityTypeBuilder<User> entity)
         {
             entity.Property(e => e.UserKey).IsRequired();
+            entity.HasIndex(e => e.UserKey);
         }
     }
 }

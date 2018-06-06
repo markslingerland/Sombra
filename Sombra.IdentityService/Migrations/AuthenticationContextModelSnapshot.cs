@@ -69,6 +69,8 @@ namespace Sombra.IdentityService.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserKey");
+
                     b.ToTable("Users");
                 });
 

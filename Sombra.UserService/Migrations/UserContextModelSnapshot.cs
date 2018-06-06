@@ -52,6 +52,8 @@ namespace Sombra.UserService.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserKey");
+
                     b.ToTable("Users");
                 });
 #pragma warning restore 612, 618

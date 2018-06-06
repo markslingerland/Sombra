@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 using EasyNetQ;
 using Microsoft.Extensions.DependencyInjection;
 using Sombra.Messaging;
+using Sombra.Messaging.Infrastructure;
 
 namespace Sombra.LoggingService
 {
-    public class EventLogger
+    public class MessageLogger
     {
         private readonly IBus _bus;
         private readonly ServiceProvider _serviceProvider;
         private readonly string _subscriptionIdPrefix;
 
-        public EventLogger(IBus bus, ServiceProvider serviceProvider, string subscriptionIdPrefix)
+        public MessageLogger(IBus bus, ServiceProvider serviceProvider, string subscriptionIdPrefix)
         {
             _bus = bus;
             _serviceProvider = serviceProvider;
@@ -30,9 +31,9 @@ namespace Sombra.LoggingService
 
             foreach (var messageType in types)
             {
-                var handlerType = typeof(EventHandler<>).MakeGenericType(messageType);
+                var handlerType = typeof(MessageHandler);
                 var handler = _serviceProvider.GetRequiredService(handlerType);
-                var handleMethod = handlerType.GetMethod(nameof(EventHandler<IEvent>.ConsumeAsync),
+                var handleMethod = handlerType.GetMethod(nameof(MessageHandler.HandleAsync),
                     BindingFlags.Instance | BindingFlags.Public);
 
                 var busSubscribeMethod = genericBusSubscribeMethod.MakeGenericMethod(messageType);
@@ -40,6 +41,13 @@ namespace Sombra.LoggingService
 
                 busSubscribeMethod.Invoke(_bus, new object[] { _subscriptionIdPrefix, handlerDelegate });
             }
+
+            var bus = _serviceProvider.GetRequiredService<IBus>();
+            bus.Receive<Messaging.IMessage>(ServiceInstaller.LoggingQueue, async message =>
+            {
+                var handler = _serviceProvider.GetRequiredService<MessageHandler>();
+                await handler.HandleAsync(message);
+            });
         }
 
         private static MethodInfo GetSubscribeMethodOfBus(string methodName, Type parmType)

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Sombra.Web.Infrastructure.Extensions;
 
 namespace Sombra.Web.Infrastructure.Filters
 {

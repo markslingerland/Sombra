@@ -19,21 +19,23 @@ namespace Sombra.TemplateService.Migrations
                 .HasAnnotation("ProductVersion", "2.1.0-preview2-30571")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Sombra.TemplateService.DAL.TemplateEntity", b =>
+            modelBuilder.Entity("Sombra.TemplateService.DAL.Template", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Template");
+                    b.Property<string>("Body");
 
-                    b.Property<int>("TemplateId");
+                    b.Property<int>("TemplateKey");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Template");
+                    b.HasIndex("TemplateKey");
+
+                    b.ToTable("Templates");
 
                     b.HasData(
-                        new { Id = new Guid("c1fec679-7172-4eb8-abac-791177c30033"), Template = @"<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
+                        new { Id = new Guid("c1878df6-724d-4134-a565-535e5c05e002"), Body = @"<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xmlns=""http://www.w3.org/1999/xhtml"">
 <head>
     <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"" />
@@ -470,7 +472,7 @@ namespace Sombra.TemplateService.Migrations
                                                 </td>
                                             </tr>
                                         </table>
-                                        <p>Voor jouw veiligheid: deze aanvraag is verstuurd vanaf een [[operating_system]] apparaat die [[browser_name]] gebruikt. Als je deze aanvraag niet zelf hebt verzonden, kunt je deze mail negeren. Als je naar aanleiding van deze e-mail vragen hebt, kun je <a href=""[[support_url]]"">contact met ons opnemen</a>.</p>
+                                        <p>Voor jouw veiligheid: deze aanvraag is verstuurd vanaf een [[operating_system]] apparaat die [[browser_name]] gebruikt. Als je deze aanvraag niet zelf hebt verzonden, kan je deze mail negeren. Als je naar aanleiding van deze e-mail vragen hebt, mag je <a href=""[[support_url]]"">contact met ons opnemen</a>.</p>
                                         <p>
                                             Bedankt,
                                             <br>Het ikdoneer.nu Team
@@ -505,8 +507,8 @@ namespace Sombra.TemplateService.Migrations
         </tr>
     </table>
 </body>
-</html>", TemplateId = 1 },
-                        new { Id = new Guid("72fa8df9-8d0f-40ed-9b6e-fa8f16afac22"), Template = @"<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
+</html>", TemplateKey = 1 },
+                        new { Id = new Guid("a03062a5-0630-470f-97c4-d2a458fa76da"), Body = @"<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xmlns=""http://www.w3.org/1999/xhtml"">
 <head>
     <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"" />
@@ -943,7 +945,7 @@ namespace Sombra.TemplateService.Migrations
                                                 </td>
                                             </tr>
                                         </table>
-                                        <p>Als je niet hebt geprobeerd om een account te registreren bij ikdoneer.nu, dan kun je deze mail negeren. Als je naar aanleiding van deze e-mail vragen hebt, kun je <a href=""[[support_url]]"">contact met ons opnemen</a>.</p>
+                                        <p>Als je niet hebt geprobeerd om een account te registreren bij ikdoneer.nu, dan mag je deze mail negeren. Als je naar aanleiding van deze e-mail vragen hebt, kan je <a href=""[[support_url]]"">contact met ons opnemen</a>.</p>
                                         <p>
                                             Bedankt,
                                             <br>Het ikdoneer.nu Team
@@ -978,7 +980,7 @@ namespace Sombra.TemplateService.Migrations
         </tr>
     </table>
 </body>
-</html>", TemplateId = 2 }
+</html>", TemplateKey = 2 }
                     );
                 });
 #pragma warning restore 612, 618

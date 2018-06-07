@@ -5,6 +5,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Sombra.Core;
 using Sombra.Messaging;
+using Sombra.Messaging.Responses;
 
 namespace Sombra.Infrastructure.DAL
 {
@@ -80,6 +81,14 @@ namespace Sombra.Infrastructure.DAL
             }
 
             return Task.FromResult(true);
+        }
+
+        public async Task<TResponse> TrySaveChangesAsync<TResponse>()
+            where TResponse : CrudResponse<TResponse>, new()
+        {
+            return (await TrySaveChangesAsync())
+                ? CrudResponse<TResponse>.Success()
+                : new TResponse();
         }
     }
 }

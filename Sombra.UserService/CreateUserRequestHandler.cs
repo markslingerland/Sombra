@@ -54,15 +54,7 @@ namespace Sombra.UserService
 
             _context.Users.Add(user);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                ExtendedConsole.Log(ex);
-                return new CreateUserResponse();
-            }
+            if (!await _context.TrySaveChangesAsync()) return new CreateUserResponse();
 
             var userCreatedEvent = _mapper.Map<UserCreatedEvent>(user);
             await _bus.PublishAsync(userCreatedEvent);

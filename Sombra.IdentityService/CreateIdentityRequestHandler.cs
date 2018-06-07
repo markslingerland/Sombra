@@ -57,23 +57,16 @@ namespace Sombra.IdentityService
                 User = user
             };
 
-            try
-            {
-                _context.Users.Add(user);
-                _context.Credentials.Add(credential);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                ExtendedConsole.Log(ex);
-                return new CreateIdentityResponse();
-            }
+            _context.Users.Add(user);
+            _context.Credentials.Add(credential);
 
-            return new CreateIdentityResponse
-            {
-                ActivationToken = activationToken,
-                IsSuccess = true
-            };
+            return await _context.TrySaveChangesAsync()
+                ? new CreateIdentityResponse
+                {
+                    ActivationToken = activationToken,
+                    IsSuccess = true
+                }
+                : new CreateIdentityResponse();
         }
     }
 }

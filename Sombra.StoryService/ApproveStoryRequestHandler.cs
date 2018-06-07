@@ -30,17 +30,8 @@ namespace Sombra.StoryService
                     };
 
                 story.IsApproved = true;
-                try
-                {
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateException ex)
-                {
-                    ExtendedConsole.Log(ex);
-                    return new ApproveStoryResponse();
-                }
 
-                return ApproveStoryResponse.Success();
+                return await _context.TrySaveChangesAsync<ApproveStoryResponse>();
             }
 
             return new ApproveStoryResponse

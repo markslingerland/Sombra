@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Sombra.Core;
 using Sombra.Core.Enums;
 using Sombra.IdentityService.DAL;
 using Sombra.Messaging.Infrastructure;
@@ -25,20 +24,13 @@ namespace Sombra.IdentityService
             {
                 user.Role = message.Role;
 
-                try
-                {
-                    await _context.SaveChangesAsync();
-                    return new UpdateRolesResponse
+                return await _context.TrySaveChangesAsync()
+                    ? new UpdateRolesResponse
                     {
                         IsSuccess = true,
                         Role = message.Role
-                    };
-                }
-                catch (DbUpdateException ex)
-                {
-                    ExtendedConsole.Log(ex);
-                    return new UpdateRolesResponse();
-                }
+                    }
+                    : new UpdateRolesResponse();
             }
 
             return new UpdateRolesResponse

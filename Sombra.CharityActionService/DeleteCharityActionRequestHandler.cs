@@ -34,15 +34,9 @@ namespace Sombra.CharityActionService
 
             _context.CharityActions.Remove(charityAction);
             _context.UserKeys.RemoveRange(charityAction.UserKeys);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                ExtendedConsole.Log(ex);
-                return new DeleteCharityActionResponse();
-            }
+
+            if (!await _context.TrySaveChangesAsync()) return new DeleteCharityActionResponse();
+
             var charityActionDeletedEvent = _mapper.Map<CharityActionDeletedEvent>(charityAction);
             await _bus.PublishAsync(charityActionDeletedEvent);
 

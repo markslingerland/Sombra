@@ -49,17 +49,7 @@ namespace Sombra.StoryService
 
             _context.Stories.Add(story);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                ExtendedConsole.Log(ex);
-                return new CreateStoryResponse();
-            }
-
-            return CreateStoryResponse.Success();
+            return await _context.TrySaveChangesAsync<CreateStoryResponse>();
         }
     }
 }

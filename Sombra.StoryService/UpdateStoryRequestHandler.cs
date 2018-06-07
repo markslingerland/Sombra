@@ -41,17 +41,7 @@ namespace Sombra.StoryService
                 story.Images = images;
             }
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                ExtendedConsole.Log(ex);
-                return new UpdateStoryResponse();
-            }
-
-            return UpdateStoryResponse.Success();
+            return await _context.TrySaveChangesAsync<UpdateStoryResponse>();
         }
     }
 }

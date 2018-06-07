@@ -1,3 +1,9 @@
+.container {
+    width: 100% !important;
+    padding: 0;
+    margin: 0;
+}
+
 #header .fixed-header {
     background-color: white;
 }

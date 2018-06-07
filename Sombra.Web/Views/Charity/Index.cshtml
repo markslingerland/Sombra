@@ -12,18 +12,18 @@
     <script src="~/js/charity.js"></script>
 }
 
-<div id="charity-info">
+<div id="charity-info" class="charity-info">
     @*Background picture*@
     <div class="header-image" style="background-image:url(@Model.charity.CoverImage)"></div>
-    <div class="main-storyboard">
+    <div id="main-storyboard" class="main-storyboard">
         @*top*@
         @foreach (string category in @Model.charity.Categories)
         {
             <div class="category">@category</div>
         }
-        <div class="kvk_ambi">KvK nummer: @Model.charity.KVKNumber  ANBI nummer: @Model.charity.Anbi</div>
+            <div class="kvk_ambi">KvK nummer: @Model.charity.KVKNumber</div><div class="kvk_ambi">ANBI nummer: @Model.charity.Anbi</div>
         @*title & story*@
-        <div id="about" class="standard-text">
+        <div id="about">
             <div class="container">
                 <div class="row about-text">
                     <h3>@Model.charity.Name</h3>
@@ -42,13 +42,13 @@
 
                         <span>@Model.charityAction.Name, initiatiefnemer</span>
                         <h3>
-                            @Model.charityAction.Description
+                            "@Model.charityAction.Description"
                         </h3>
-
+                        <a href="#">Lees meer</a>
                         <div class="story-btn-holder">
                             <div class="secondary-button">
                                 <a href="#"></a> @*/charityaction/id=*@
-                                <label>Lees dit verhaal</label>
+                                <label>Lees de verhalen</label>
                             </div>
                         </div>
 
@@ -59,6 +59,9 @@
         @*Active acitons*@
         <div id="acties">
             <h3 class="title">Lopende acties</h3>
+            <div class="acties-text">
+                Multiple Sclerose is de meest invaliderende aandoening onder jonge mensen, zelfs kinderen, in Nederland. MS is een slopende ziekte. Er is nog maar weinig bekend om mensen met MS te helpen. Daarom is er onderzoek nodig, en dat kost.
+            </div>
             <div class="slider-container">
                 <div id="charity-actions-carousel" class="main-carousel">
                     @foreach (var action in @Model.charityActions)
@@ -112,9 +115,24 @@
 @*TODO Fix overflow main-storyboard and donations. main-storyboard has fixed height and absolute values*@
 <div id="donations">
     <div class="donations-relative">
-        <span class="main-text">DEZE WEEK DONEERDER</span>  <span class="ammount-people">@Model.donationsToCharity.DonatedToCharity</span>  <span class="main-text">MENSEN TOTAAL</span>  <span class="ammount-people">&euro;@Model.donationsToCharity.TotalDonations</span>
-        <div class="absolute1"><span class="main-text">DONEREN VANAF</span><p><span class="numbers">&euro; 1</span></p></div>
-        <div class="absolute2"><span class="main-text">GEMIDDELDE DONATIE</span><p><span class="numbers">&euro; @Model.donationsToCharity.AvarageDonation</span></p></div>
-        <div class="absolute3"><span class="main-text">LAATSTE DONATIE</span><p><span class="numbers">&euro; @Model.donationsToCharity.LatestDonation</span></p></div>
+        <div class="text-container">
+            <span class="main-text">DEZE WEEK DONEERDE</span>  <span class="ammount-people">@Model.donationsToCharity.DonatedToCharity</span>  <span class="main-text">MENSEN TOTAAL</span>  <span class="ammount-people">&euro;@Model.donationsToCharity.TotalDonations</span>
+        </div>
+        @foreach (var donator in @Model.donators)
+        {
+            <div class="donations-box">
+                <div class="donations-box-inside">
+                    <div class="img-box">
+                        <img class="profile-icon" src="@donator.ProfileImage" />
+                    </div>
+                    <div class="text-box">
+                        <span class="profile-text">@donator.FirstName @donator.LastName doneerde: </span><span class="donations-number">&euro; @donator.LastDonation</span>
+                    </div>
+                    <div class="donation-date">
+                        <span class="date-text">@donator.LastDonationDate</span>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </div>

@@ -11,5 +11,6 @@ namespace Sombra.Web.ViewModels.Charity
         public CharityModel charity { get; set; }
         public DonationsToCharityModel donationsToCharity { get; set; }
         public CharityActionModel[] charityActions { get; set; }
+        public Donator[] donators { get; set; }
     }
 }

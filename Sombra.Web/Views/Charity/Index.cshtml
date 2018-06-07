@@ -12,10 +12,10 @@
     <script src="~/js/charity.js"></script>
 }
 
-<div id="charity-info">
+<div id="charity-info" class="charity-info">
     @*Background picture*@
     <div class="header-image" style="background-image:url(@Model.charity.CoverImage)"></div>
-    <div class="main-storyboard">
+    <div id="main-storyboard" class="main-storyboard">
         @*top*@
         @foreach (string category in @Model.charity.Categories)
         {
@@ -116,7 +116,7 @@
 <div id="donations">
     <div class="donations-relative">
         <div class="text-container">
-            <span class="main-text">DEZE WEEK DONEERDER</span>  <span class="ammount-people">@Model.donationsToCharity.DonatedToCharity</span>  <span class="main-text">MENSEN TOTAAL</span>  <span class="ammount-people">&euro;@Model.donationsToCharity.TotalDonations</span>
+            <span class="main-text">DEZE WEEK DONEERDE</span>  <span class="ammount-people">@Model.donationsToCharity.DonatedToCharity</span>  <span class="main-text">MENSEN TOTAAL</span>  <span class="ammount-people">&euro;@Model.donationsToCharity.TotalDonations</span>
         </div>
         @foreach (var donator in @Model.donators)
         {

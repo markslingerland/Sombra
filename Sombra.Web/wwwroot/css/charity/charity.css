@@ -82,7 +82,7 @@
 #charity-info {
     position: relative;
     width: 100%;
-    min-height: 2600px; /*fixed height because of absolute divs inside it.*/
+    height: 200px; /*fixed height because of absolute divs inside it.*/
     margin: 0 auto;
 }
 

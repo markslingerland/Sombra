@@ -1,58 +1,52 @@
-﻿@{ ViewData["Title"] = "Story"; }
+﻿@model Sombra.Web.ViewModels.Story.StoryViewModel
+
+@{ ViewData["Title"] = "Story"; }
 
 @section Styles{
     <link rel="stylesheet" href="~/css/story/story.css" />
     <link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/story/desktop.css" />
-    <link rel="stylesheet" media="screen and (min-width: 768px) and (max-width: 1200px)" href="~/css/story/tablet.css" />
-    <link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/story/mobile.css" />
+    <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
 }
 @section Scripts {
-    <script src="~/js/stroy.js"></script>
+    <script src="~/js/story.js"></script>
 }
 
-    <div id="charity-info">
-        @*Background picture*@
-        <div class="header-image" style="background-image:url(@ViewData["header_image"])"></div>
-        <div class="main-storyboard">
-            @*title & story*@
-            <div id="about" class="standard-text">
-                <div class="container">
-                    <div class="row about-text">
-                        <h3>Title</h3>
-                        <p>Een heeeeel lang verhaal Een heeeeel lang verhaal Een heeeeel lang verhaal Een heeeeel lang verhaal Een heeeeel lang verhaal Een heeeeel lang verhaal Een heeeeel lang verhaal Een heeeeel lang verhaal Een heeeeel lang verhaal </p>
-                    </div>
+<div id="story-info" class="story-info">
+    @*Background picture*@
+    <div class="header-image" style="background-image:url(@Model.MainImage)"></div>
+    <div id="main-storyboard" class="main-storyboard">
+        @*title & story*@
+        <div id="about">
+                <div class="row about-text">
+                    <div class="title">@Model.Title</div>
+                    <div class="story">@Model.Story</div>
+                    <div class="quote">“@Model.Quotes[0]”</div>
                 </div>
-            </div>
-            @*Active acitons*@
-            <div id="acties">
-                <div class="slider-container">
-                    <div id="charity-actions-carousel" class="main-carousel">
-                        @*@for (int i = 0; i < 5 ; i++)
-                        {
-                        <img class="Fill-1" src=@ViewData["profile_picture"]>
-                        }*@
-                    </div>
-                    <div class="button button--previous"></div>
-                    <div class="button button--next"></div>
+        </div>
+        @*Active acitons*@
+        <div id="acties">
+            <div class="slider-container">
+                <div id="charity-actions-carousel" class="main-carousel">
+                    @foreach (var image in @Model.Images)
+                    {
+                        <div class="carousel-cell">
+                            <div id="image-slider">
+                                <div class="images" style="background-image:url(@image);"></div>
+                            </div>
+                        </div>
+                    }
                 </div>
-                <div class="action-buttons">
-                    <div class="all-actions">
-                        <a href="#"></a>
-                        <span class="monster-700">Bekijk alle acties</span>
-                    </div>
-                    <div class="make-actions">
-                        <a href="#"></a>
-                        <span class="monster-700">Start een actie</span>
-                    </div>
-                </div>
+                <div class="button button--previous"></div>
+                <div class="button button--next"></div>
             </div>
         </div>
-        @*logo*@
-        <div class="container">
-            @*If only a logo is used we can remove the Fill-7*@
-            <div class="profile-picture" style="background-image:url(@ViewData["header_image"])"></div>
-            @*<img class="profile-picture" src=@ViewData["header_image"] ) />*@
-            <div class="profile-name">Erik de Zwart</div>
-        </div>
-        
     </div>
+    @*logo*@
+    <div class="container">
+        @*If only a logo is used we can remove the Fill-7*@
+        <div class="profile-picture" style="background-image:url(@Model.UserImage)"></div>
+        @*<img class="profile-picture" src=@ViewData["header_image"] ) />*@
+        <div class="profile-name">@Model.UserFirstName @Model.UserLastName</div>
+    </div>
+
+</div>

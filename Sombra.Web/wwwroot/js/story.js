@@ -17,4 +17,7 @@ $('.button--previous').on('click', function () {
 // next
 $('.button--next').on('click', function () {
     $carousel.flickity('next');
-    });
+});
+
+var heightStoryboard = $('.main-storyboard').innerHeight();
+document.getElementById('story-info').setAttribute("style", "height:" + (heightStoryboard + 690) + "px");

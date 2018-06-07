@@ -20,4 +20,4 @@ $('.button--next').on('click', function () {
 });
 // calculate height for charity-info
 var heightStoryboard = $('.main-storyboard').innerHeight();
-document.getElementById('charity-info').setAttribute("style", "height:" + (heightStoryboard + 690) + "px");
+document.getElementById('charity-info').setAttribute("style", "height:" + (heightStoryboard) + "px");

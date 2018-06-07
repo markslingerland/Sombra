@@ -4,7 +4,6 @@ using EasyNetQ;
 using EasyNetQ.AutoSubscribe;
 using Microsoft.Extensions.DependencyInjection;
 using Sombra.Core;
-using Sombra.Messaging.Shared;
 
 namespace Sombra.Messaging.Infrastructure
 {
@@ -21,7 +20,7 @@ namespace Sombra.Messaging.Infrastructure
             where TMessage : class
             where TConsumer : class, IConsume<TMessage>
         {
-            ExtendedConsole.Log($"{nameof(message)} received");
+            ExtendedConsole.Log($"{message.GetType().Name} received");
             var consumer = _serviceProvider.GetRequiredService<TConsumer>();
 
             try
@@ -31,8 +30,7 @@ namespace Sombra.Messaging.Infrastructure
             catch (Exception ex)
             {
                 ExtendedConsole.Log(ex);
-                var bus = _serviceProvider.GetRequiredService<IBus>();
-                bus.SendException(ex, nameof(consumer));
+                Logger.LogException(ex, consumer.GetType().Name);
             }
         }
 
@@ -40,7 +38,7 @@ namespace Sombra.Messaging.Infrastructure
             where TMessage : class
             where TConsumer : class, IConsumeAsync<TMessage>
         {
-            ExtendedConsole.Log($"{nameof(message)} received");
+            ExtendedConsole.Log($"{message.GetType().Name} received");
             var consumer = _serviceProvider.GetRequiredService<TConsumer>();
 
             try
@@ -50,8 +48,7 @@ namespace Sombra.Messaging.Infrastructure
             catch (Exception ex)
             {
                 ExtendedConsole.Log(ex);
-                var bus = _serviceProvider.GetRequiredService<IBus>();
-                bus.SendExceptionAsync(ex, nameof(consumer));
+                Logger.LogExceptionAsync(ex, consumer.GetType().Name);
             }
         }
     }

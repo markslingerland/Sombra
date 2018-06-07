@@ -32,6 +32,9 @@ namespace Sombra.Messaging.Infrastructure
 
             ExtendedConsole.Log("ServiceInstaller: Services are registered.");
 
+            Logger.SetServiceProvider(serviceProvider);
+            ExtendedConsole.Log("ServiceInstaller: Logger initialized");
+
             var responder = new AutoResponder(bus, new AutoResponderRequestDispatcher(serviceProvider));
             responder.RespondAsync(assembly);
             ExtendedConsole.Log("ServiceInstaller: AutoResponders initialized.");

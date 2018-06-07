@@ -30,16 +30,12 @@ namespace Sombra.Messaging.Infrastructure
             {
                 var response = await handler.Handle(message);
                 ExtendedConsole.Log($"{nameof(response)} returned");
-                _bus.SendAsync(ServiceInstaller.LoggingQueue, response);
+                _bus.SendMessageLogAsync(response);
             }
             catch (Exception ex)
             {
                 ExtendedConsole.Log(ex);
-                _bus.SendAsync(ServiceInstaller.ExceptionQueue, new ExceptionMessage
-                {
-                    Exception = ex,
-                    HandlerName = nameof(handler)
-                });
+                _bus.SendExceptionAsync(ex, nameof(handler));
             }
 
             return (TResponse) Activator.CreateInstance<TResponse>().RequestFailed();

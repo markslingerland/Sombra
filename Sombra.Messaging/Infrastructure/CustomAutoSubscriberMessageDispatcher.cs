@@ -32,11 +32,7 @@ namespace Sombra.Messaging.Infrastructure
             {
                 ExtendedConsole.Log(ex);
                 var bus = _serviceProvider.GetRequiredService<IBus>();
-                bus.Send(ServiceInstaller.ExceptionQueue, new ExceptionMessage
-                {
-                    Exception = ex,
-                    HandlerName = nameof(consumer)
-                });
+                bus.SendException(ex, nameof(consumer));
             }
         }
 
@@ -55,11 +51,7 @@ namespace Sombra.Messaging.Infrastructure
             {
                 ExtendedConsole.Log(ex);
                 var bus = _serviceProvider.GetRequiredService<IBus>();
-                bus.SendAsync(ServiceInstaller.ExceptionQueue, new ExceptionMessage
-                {
-                    Exception = ex,
-                    HandlerName = nameof(consumer)
-                });
+                bus.SendExceptionAsync(ex, nameof(consumer));
             }
         }
     }

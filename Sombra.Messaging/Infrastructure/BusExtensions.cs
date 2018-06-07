@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EasyNetQ;
 using Sombra.Core;
+using Sombra.Messaging.Shared;
 
 namespace Sombra.Messaging.Infrastructure
 {
@@ -17,7 +18,7 @@ namespace Sombra.Messaging.Infrastructure
 
             try
             {
-                bus.SendAsync(ServiceInstaller.LoggingQueue, request);
+                bus.SendMessageLogAsync(request);
                 return (Task<TResponse>) typedRequestMethod.Invoke(bus, new object[] {request});
             }
             catch (TimeoutException ex)
@@ -38,5 +39,20 @@ namespace Sombra.Messaging.Infrastructure
 
             return bus;
         }
+
+        public static Task SendMessageLogAsync(this IBus bus, IMessage message)
+            => bus.SendAsync(ServiceInstaller.LoggingQueue, message);
+
+        public static Task SendExceptionAsync(this IBus bus, Exception exception)
+            => bus.SendExceptionAsync(exception, null);
+
+        public static Task SendExceptionAsync(this IBus bus, Exception exception, string handlerName)
+            => bus.SendAsync(ServiceInstaller.ExceptionQueue, new ExceptionMessage(exception, handlerName));
+
+        public static void SendException(this IBus bus, Exception exception)
+            => bus.SendException(exception, null);
+
+        public static void SendException(this IBus bus, Exception exception, string handlerName)
+            => bus.Send(ServiceInstaller.ExceptionQueue, new ExceptionMessage(exception, handlerName));
     }
 }

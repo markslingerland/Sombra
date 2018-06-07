@@ -1,4 +1,10 @@
-﻿using Sombra.Web.Infrastructure.Messaging;
+﻿using System.Threading.Tasks;
+using EasyNetQ;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Sombra.Core;
+using Sombra.Messaging.Infrastructure;
+using Sombra.Messaging.Shared;
+using Sombra.Web.Infrastructure.Messaging;
 
 namespace Sombra.Web.Infrastructure.Filters
 {
@@ -13,11 +19,8 @@ namespace Sombra.Web.Infrastructure.Filters
 
         public override async Task OnExceptionAsync(ExceptionContext context)
         {
-            ExtendedConsole.Log(ex);
-            await _bus.SendAsync(ServiceInstaller.ExceptionQueue, new ExceptionMessage
-            {
-                Exception = ex
-            });
+            ExtendedConsole.Log(context.Exception);
+            await _bus.SendExceptionAsync(context.Exception);
 
             await base.OnExceptionAsync(context);
         }

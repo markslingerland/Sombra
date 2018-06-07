@@ -19,10 +19,9 @@
 </head>
 
 <body>
-
     <nav id="header">
-        <div class="fixed-header">
-                <a href="/" class="header-logo">
+        <div class="fixed-header container">
+                <a href="www.ikdoneer.nu" class="header-logo">
             </a>
 
             <div class="header-big-menu">
@@ -51,9 +50,10 @@
     </nav>
 
 
-    <div class="container body-content">
+    <div class="body-content container">
         @RenderBody()
-    </div>
+        </div>
+
         <footer>
             <div class="footer-holder">
                 <div class="container"></div>
@@ -131,15 +131,18 @@
     <environment include="Development">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+        <script src="~/js/selectize.min.js"></script>
         <script src="~/js/main.js"></script>
+        
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- Latest compiled JavaScript -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,300i,400,700,800|Source+Sans+Pro:300,300i,400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,300i,400,600,700,800|Source+Sans+Pro:300,300i,400,700" rel="stylesheet">
 
     </environment>
     <environment exclude="Development">

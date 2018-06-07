@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Data;
+using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Sombra.Core;
+using Sombra.Messaging;
 
 namespace Sombra.Infrastructure.DAL
 {
@@ -61,6 +64,22 @@ namespace Sombra.Infrastructure.DAL
 
         protected virtual void Seed(ModelBuilder modelBuilder)
         {
+        }
+
+        public Task<bool> TrySaveChangesAsync()
+        {
+            try
+            {
+                SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                ExtendedConsole.Log(ex);
+                Logger.LogExceptionAsync(ex);
+                return Task.FromResult(false);
+            }
+
+            return Task.FromResult(true);
         }
     }
 }

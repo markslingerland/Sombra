@@ -9,6 +9,7 @@ using Sombra.Core;
 using Sombra.Infrastructure.DAL;
 using Sombra.Infrastructure.Extensions;
 using Sombra.Messaging.Infrastructure;
+using Sombra.Messaging.Shared;
 
 namespace Sombra.LoggingService
 {
@@ -30,11 +31,19 @@ namespace Sombra.LoggingService
                 services => services
                     .AddAutoMapper(Assembly.GetExecutingAssembly())
                     .AddMongoDatabase(_mongoConnectionString, _mongoDatabase)
-                    .AddTransient<MessageHandler>(),
+                    .AddTransient<MessageHandler>()
+                    .AddTransient<ExceptionMessageHandler>(),
                 DatabaseHelper.ValidateMongoConnections);
 
-            var logger = new MessageLogger(serviceProvider.GetRequiredService<IBus>(), serviceProvider, "MessageLoggerSubscription");
+            var bus = serviceProvider.GetRequiredService<IBus>();
+            var logger = new MessageLogger(bus, serviceProvider, "MessageLoggerSubscription");
             logger.Start();
+
+            bus.Receive<ExceptionMessage>(ServiceInstaller.ExceptionQueue, async message =>
+            {
+                var handler = serviceProvider.GetRequiredService<ExceptionMessageHandler>();
+                await handler.HandleAsync(message);
+            });
 
             Thread.Sleep(Timeout.Infinite);
         }

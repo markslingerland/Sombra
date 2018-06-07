@@ -38,14 +38,14 @@ namespace Sombra.Web
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                 options.Filters.Add(new ValidatorActionFilter());
-                options.Filters.Add(typeof(ExceptionLogginFilterAttribute));
+                options.Filters.Add(typeof(ExceptionLoggingFilterAttribute));
                 // options.Filters.Add(new SubdomainActionFilter());
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddMemoryCache();
 
             services.AddScoped(c => RabbitHutch.CreateBus(_rabbitMqConnectionString));
             services.AddScoped<ICachingBus, CachingRabbitBus>();
-            services.AddScoped<ExceptionLogginFilterAttribute>();
+            services.AddScoped<ExceptionLoggingFilterAttribute>();
 
             services.AddAutoMapper();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

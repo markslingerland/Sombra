@@ -53,6 +53,21 @@ namespace Sombra.DonateService
                 }
 
                 _context.CharityActionDonations.Add(charityActionDonation);
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateException ex)
+                {
+                    ExtendedConsole.Log(ex);
+                    return new MakeDonationResponse();
+                }
+                return new MakeDonationResponse
+                {
+                    Success = true,
+                    Image = charityAction.Image,
+                    ThankYou = charityAction.ThankYou
+                };
             }
             else
             {
@@ -83,22 +98,22 @@ namespace Sombra.DonateService
                 }
 
                 _context.CharityDonations.Add(charityDonation);
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateException ex)
+                {
+                    ExtendedConsole.Log(ex);
+                    return new MakeDonationResponse();
+                }
+                return new MakeDonationResponse
+                {
+                    Success = true,
+                    Image = charity.Image,
+                    ThankYou = charity.ThankYou
+                };
             }
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                ExtendedConsole.Log(ex);
-                return new MakeDonationResponse();
-            }
-
-            return new MakeDonationResponse
-            {
-                Success = true
-            };
         }
     }
 }

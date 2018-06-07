@@ -20,7 +20,9 @@ namespace Sombra.DonateService
             var charityToCreate = new Charity()
             {
                 CharityKey = message.CharityKey,
-                Name = message.Name                               
+                Name = message.Name,
+                Image = message.CoverImage,
+                ThankYou = message.ThankYou                                  
             };
     
             _context.Add(charityToCreate);

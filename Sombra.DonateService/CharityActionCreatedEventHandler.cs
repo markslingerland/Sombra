@@ -24,7 +24,9 @@ namespace Sombra.DonateService
                 {
                     CharityActionKey = message.CharityActionKey,
                     ActionEndDateTime = message.ActionEndDateTime,
-                    Name = message.Name                           
+                    Name = message.Name,
+                    Image = message.CoverImage,
+                    ThankYou = message.ThankYou                    
                 };             
 
                 charity.ChartityActions.Add(charityActionToCreate);

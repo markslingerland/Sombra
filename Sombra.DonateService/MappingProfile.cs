@@ -14,6 +14,8 @@ namespace Sombra.DonateService
         {
             CreateMap<UserCreatedEvent, User>()
                 .IgnoreEntityProperties()
+                .ForMember(d => d.CharityActionDonations, opt => opt.Ignore())
+                .ForMember(d => d.CharityDonations, opt => opt.Ignore())
                 .ForMember(d => d.UserName, opt => opt.MapFrom(s => $"{s.FirstName} {s.LastName}"));
 
             CreateMap<MakeDonationRequest, CharityActionDonation>()
@@ -30,7 +32,7 @@ namespace Sombra.DonateService
                 .ForMember(d => d.UserId, opt => opt.Ignore())
                 .ForMember(d => d.Charity, opt => opt.Ignore())
                 .ForMember(d => d.CharityId, opt => opt.Ignore())
-                .ForMember(d => d.DateTimeStamp, opt => opt.UseValue(DateTime.UtcNow));
+                .ForMember(d => d.DateTimeStamp, opt => opt.UseValue(DateTime.UtcNow));       
 
             CreateMap<CharityDonation, Donation>()
                 .ForMember(d => d.UserName, opt => opt.MapFrom(s => s.UserId.HasValue ? s.User.UserName : null))

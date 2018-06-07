@@ -24,6 +24,8 @@ namespace Sombra.DonateService
             {
                 charityToUpdate.CharityKey = message.CharityKey;
                 charityToUpdate.Name = message.Name;
+                charityToUpdate.Image = message.CoverImage;
+                charityToUpdate.ThankYou = message.ThankYou; 
                 
                 await _context.SaveChangesAsync();
             }

@@ -4,7 +4,7 @@ $('#control_01').click(function () {
     if ($('#control_01').is(':checked')) {
         $(".choose-your-payment ").css("display", "block");
         $(".select-charity").show();
-        $(".select-action").css("display", "none");
+        $(".select-action").hide();
         $(".charity-information").show();
     }
 });
@@ -126,8 +126,8 @@ $('#select-your-bank').selectize({
 
 $('#ideal').click(function () {
     if ($('#ideal').is(':checked')) {
-        $(".your-iban-holder").css("display", "none");
-        $(".select-bank").css("display", "inline-block");
+        $(".your-iban-holder").hide();
+        $(".select-bank").show();
         $(".personal-information").hide();
         $(".section-2 .next-step-holder").show();
     }
@@ -145,7 +145,7 @@ $('#paypall').click(function () {
 $('#permission').click(function () {
     if ($('#permission').is(':checked')) {
         $(".your-iban-holder").css("display", "block");
-        $(".select-bank").css("display", "none");
+        $(".select-bank").hide()
         $(".personal-information").show();
         $(".section-2 .next-step-holder").show();
         
@@ -238,6 +238,7 @@ $(".section-3 .next-step-holder").show();
 $('#next-to-section-4').click(function () { 
     $(".section-3").hide();
     $(".section-4").show();
+    $("footer").show();
     $("#form-donate").css("padding-bottom", "0");
  });
 

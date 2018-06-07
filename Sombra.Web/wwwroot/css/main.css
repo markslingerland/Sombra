@@ -39,6 +39,11 @@ body {
     font-weight: 400;
 }
 
+.monster-600 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
 .monster-700 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;

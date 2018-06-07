@@ -123,6 +123,7 @@
                 <div class="next-step">
                     <a id="next-to-section-2" class="clickable" href="#"></a>
                 </div>
+                <p class="error-message monster-300">Oeps er is iets mis</p>
             </div>
         </section>
 
@@ -187,7 +188,7 @@
             </div>
 
             <div class="personal-information">
-                <p class="person-adress monster-800">ADRESGEGEVENS</p>
+                <p class="person-adress monster-700">ADRESGEGEVENS</p>
 
                 <div class="person-name">
 
@@ -210,13 +211,15 @@
                         <input class="source-300" type="text" id="person-housenumber" placeholder="nr.">
                     </div>
                     <input class="source-300" type="text" id="person-addition" placeholder="toev.">
+                    <p>Bijv. B</p>
                 </div>
 
                 <div class="person-information-birthday">
-                    <p class="person-birthday monster-800">GEBOORTEDATUM</p>
+                    <p class="person-birthday monster-700">GEBOORTEDATUM</p>
                     <input class="source-300" type="number" id="person-birth-day" placeholder="dd">
                     <input class="source-300" type="number" id="person-birth-month" placeholder="mm">
                     <input class="source-300" type="number" id="person-birth-year" placeholder="jjjj">
+                    <div class="birth-required"></div>
                 </div>
             </div>
 
@@ -224,6 +227,7 @@
                 <div class="next-step">
                     <a id="next-to-section-3" class="clickable" href="#"></a>
                 </div>
+                <p class="error-message monster-300">Oeps er is iets mis</p>
             </div>
 
         </section>
@@ -257,14 +261,18 @@
             </div>
 
             <div class="payment-holder">
-                <div class="pen-icon"></div>
+                <div class="pen-icon">
+                    <div class="pen-icon-image"></div>
+                </div>
                 <p class="monster-600">Doneren aan:<span class="monster-300">MS Moves</span></p>
                 <p class="monster-600">Bedrag:<span class="monster-300">MS Moves</span></p>
                 <p class="monster-600">Periode:<span class="monster-300">MS Moves</span></p>
             </div>
 
             <div class="payment-user-info-holder">
-                <div class="pen-icon"></div>
+                <div class="pen-icon">
+                     <div class="pen-icon-image"></div>
+                </div>
                 <p class="monster-600">Doneren via:<span class="monster-300">MS Moves</span></p>
                 <p class="monster-600">IBAN:<span class="monster-300">MS Moves</span></p>
                 </br>
@@ -318,14 +326,17 @@
         </div>
 
         <div class="thank-you-holder">
-            <h3 class="monster-800">Bedankt voor uw donatie!</h3>
+            <div class="dark-gradient">
+                <h3 class="monster-800">Bedankt voor uw donatie!</h3>
             <p class="source-400">Door jouw donatie kunnen we mensen helpen uit de armoede en onrecht te stappen</p>
-        </div>
+            </div>
+              </div>
 
         <div class="share-social-media">
-            <icon></icon>
-            <icon></icon>
-            <icon></icon>
+            <p>Deel op social media</p>
+            <div class="social-media-icon"></div>
+            <div class="social-media-icon"></div>
+            <div class="social-media-icon"></div>
         </div>
 
 
@@ -352,6 +363,7 @@
 
             <form id="sign-up-account">
                 <input required type="email" placeholder="E-mailadres">
+                <input required type="password" placeholder="Wachtwoord">
                 <input required type="password" placeholder="Wachtwoord">
                 <button type="submit"></button>
             </form>

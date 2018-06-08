@@ -15,6 +15,7 @@ namespace Sombra.Messaging.Shared
         public string Name { get; set; }
         public string Description { get; set; }
         public string CoverImage { get; set; }
+        public string ThankYou { get; set; }
 
         public Guid OrganiserUserKey { get; set; }
         public string OrganiserImage { get; set; }

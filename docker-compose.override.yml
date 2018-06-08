@@ -4,7 +4,7 @@ services:
   sombra.web:
     environment:
       - CONTAINER_TYPE=Docker
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
     ports:
       - "80:80"
@@ -12,20 +12,17 @@ services:
   sombra.charityservice:
     environment:
       - CONTAINER_TYPE=Docker
-      - ASPNETCORE_ENVIRONMENT=Development
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - CHARITY_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Charities;
 
   sombra.charityactionservice:
     environment:
       - CONTAINER_TYPE=Docker
-      - ASPNETCORE_ENVIRONMENT=Development
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - CHARITYACTION_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=CharityActions;
 
   sombra.emailservice:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
       - CONTAINER_TYPE=Docker
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - SMTP_SERVER=${DC_SMTPSERVER}
@@ -36,7 +33,6 @@ services:
   sombra.loggingservice:
     environment:
       - CONTAINER_TYPE=Docker
-      - ASPNETCORE_ENVIRONMENT=Development
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - MONGO_CONNECTIONSTRING=mongodb://${DC_MONGOUSER:-mongouser}:${DC_MONGOPASSWORD:-mongopassword}@${DC_MONGOHOST:-mongoserver}/
       - MONGO_DATABASE=logging
@@ -44,21 +40,18 @@ services:
   sombra.identityservice:
     environment:
       - CONTAINER_TYPE=Docker
-      - ASPNETCORE_ENVIRONMENT=Development
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - AUTHENTICATION_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Authentication;
 
   sombra.templateservice:
     environment:
       - CONTAINER_TYPE=Docker
-      - ASPNETCORE_ENVIRONMENT=Development
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - TEMPLATE_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Templates;
 
   sombra.userservice:
     environment:
       - CONTAINER_TYPE=Docker
-      - ASPNETCORE_ENVIRONMENT=Development
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - USER_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Users;
 
@@ -71,14 +64,12 @@ services:
   sombra.searchservice:
     environment:
       - CONTAINER_TYPE=Docker
-      - ASPNETCORE_ENVIRONMENT=Development
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - SEARCH_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Search;
 
   sombra.timeservice:
     environment:
       - CONTAINER_TYPE=Docker
-      - ASPNETCORE_ENVIRONMENT=Development
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - TIME_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Time;
 

@@ -13,7 +13,7 @@
 
         <section class="section-1">
             <div class="donate-progress">
-                <div class="orange-ball"></div>
+                <div class="orange-ball .first-section"></div>
                 <div class="grey-ball"></div>
                 <div class="grey-ball"></div>
                 <div class="grey-ball"></div>
@@ -129,10 +129,10 @@
 
         <section class="section-2">
             <div class="donate-progress">
-                <div class="orange-ball">
+                <div class="orange-ball first-section">
                     <div class="progress-stroke"></div>
                 </div>
-                <div class="orange-ball"></div>
+                <div class="orange-ball second-section"></div>
                 <div class="grey-ball"></div>
                 <div class="grey-ball"></div>
             </div>
@@ -187,8 +187,40 @@
                 <input class="source-300 validatable" id="iban" type="text" placeholder="IBAN">
             </div>
 
+            <div id="person-detail" class="personal-information ">
+                <p class="person-adress monster-700">PERSOONSGEGEVENS</p>
+                <p class="source-300 information-person-data">Voor een donatie zijn persoonsgegevens niet verplicht. Wil je toch een bedankje ontvangen of andere inspireren met jouw donatie, vul dan je gegevens in. </p>
+
+                <div class="person-name">
+
+                    <input class="source-300" type="text" id="person-firstname-2" placeholder="Voornaam">
+
+                    <div class="person-lastname-2">
+                        <input class="source-300" type="text" id="person-lastname-2" placeholder="Achternaam">
+                    </div>
+                </div>
+
+                <div class="person-location">
+                    <div class="person-postcode">
+                        <input class="source-300" type="text" id="person-postcode-2" placeholder="Postcode">
+                    </div>
+
+                    <div class="person-housenumber">
+                        <input class="source-300" type="text" id="person-housenumber-2" placeholder="nr.">
+                    </div>
+                    <input class="source-300" type="text" id="person-addition-2" placeholder="toev.">
+                    <p>Bijv. B</p>
+                </div>
+
+                <div class="person-email">
+                    <input type="email" class="source-300" placeholder="E-mailadres">
+                </div>
+
+                
+            </div>
+
             <div class="personal-information">
-                <p class="person-adress monster-700">ADRESGEGEVENS</p>
+                <p class="person-adress monster-700">PERSOONSGEGEVENS</p>
 
                 <div class="person-name">
 
@@ -214,6 +246,10 @@
                     <p>Bijv. B</p>
                 </div>
 
+                <div class="person-email">
+                    <input type="email" class="source-300" placeholder="E-mailadres">
+                </div>
+
                 <div class="person-information-birthday">
                     <p class="person-birthday monster-700">GEBOORTEDATUM</p>
                     <input class="source-300" type="number" id="person-birth-day" placeholder="dd">
@@ -221,6 +257,13 @@
                     <input class="source-300" type="number" id="person-birth-year" placeholder="jjjj">
                     <div class="birth-required"></div>
                 </div>
+
+                <div class="required-fields">
+                    <div class="birth-required"></div>
+                    <p class="source-300">verplichte velden</p>
+                </div>
+
+                
             </div>
 
             <div class="next-step-holder">
@@ -234,13 +277,13 @@
 
         <section class="section-3">
             <div class="donate-progress">
-                <div class="orange-ball">
+                <div class="orange-ball first-section">
                     <div class="progress-stroke"></div>
                 </div>
-                <div class="orange-ball">
+                <div class="orange-ball second-section">
                     <div class="progress-stroke"></div>
                 </div>
-                <div class="orange-ball"></div>
+                <div class="orange-ball third-section"></div>
                 <div class="grey-ball"></div>
             </div>
 
@@ -261,7 +304,7 @@
             </div>
 
             <div class="payment-holder">
-                <div class="pen-icon">
+                <div class="pen-icon first-section">
                     <div class="pen-icon-image"></div>
                 </div>
                 <p class="monster-600">Doneren aan:<span class="monster-300">MS Moves</span></p>
@@ -270,19 +313,20 @@
             </div>
 
             <div class="payment-user-info-holder">
-                <div class="pen-icon">
+                <div class="pen-icon second-section">
                      <div class="pen-icon-image"></div>
                 </div>
                 <p class="monster-600">Doneren via:<span class="monster-300">MS Moves</span></p>
                 <p class="monster-600">IBAN:<span class="monster-300">MS Moves</span></p>
                 </br>
                 <p class="monster-600">Voornaam:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Email:<span class="monster-300">MS Moves</span></p>
                 <p class="monster-600">Achternaam:<span class="monster-300">MS Moves</span></p>
                 <p class="monster-600">Postcode:<span class="monster-300">MS Moves</span></p>
                 <p class="monster-600">E-mailadres:<span class="monster-300">MS Moves</span></p>
                 <p class="monster-600">Huisnummer:<span class="monster-300">MS Moves</span></p>
                 <p class="monster-600">Toevoeging:<span class="monster-300">MS Moves</span></p>
-                <p class="monster-600">Geboortedatum<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Geboortedatum:<span class="monster-300">MS Moves</span></p>
             </div>
 
             <div class="next-step-holder">
@@ -297,16 +341,16 @@
     <section class="section-4">
         
         <div class="donate-progress">
-            <div class="orange-ball">
+            <div class="orange-ball first-section">
                 <div class="progress-stroke"></div>
             </div>
-            <div class="orange-ball">
+            <div class="orange-ball second-section">
                 <div class="progress-stroke"></div>
             </div>
-            <div class="orange-ball">
+            <div class="orange-ball third-section">
                 <div class="progress-stroke"></div>
             </div>
-            <div class="orange-ball"></div>
+            <div class="orange-ball fourth-section"></div>
         </div>
 
         <div class="goBack-holder">
@@ -322,21 +366,21 @@
             <div class="donate-step">
                 <p>4</p>
             </div>
-            <h3 class="donate-title monster-400">Gefelictieerd!</h3>
+            <h3 class="donate-title monster-400">Gefeliciteerd!</h3>
         </div>
 
         <div class="thank-you-holder">
             <div class="dark-gradient">
                 <h3 class="monster-800">Bedankt voor uw donatie!</h3>
-            <p class="source-400">Door jouw donatie kunnen we mensen helpen uit de armoede en onrecht te stappen</p>
+            <p class="source-300">Door jouw donatie kunnen we ons samen sterk maken voor een MS-vrije wereld.</p>
             </div>
               </div>
 
         <div class="share-social-media">
-            <p>Deel op social media</p>
-            <div class="social-media-icon"></div>
-            <div class="social-media-icon"></div>
-            <div class="social-media-icon"></div>
+            <p class="monster-700">DEEL OP SOCIAL MEDIA</p>
+            <div class="social-media-icon facebook"></div>
+            <div class="social-media-icon twitter"></div>
+            <div class="social-media-icon instagram"></div>
         </div>
 
 
@@ -358,13 +402,13 @@
         
 
         <div id="get-person-account">
-            <h4 class="source-700">Jouw persoonlijke pagina op Ikdoneer.nu!</h4>
+            <h4 class="source-700">Jouw persoonlijke pagina op ikdoneer.nu!</h4>
             <p class="source-300">Met een account op ikdoneer.nu krijg je toegang tot je persoonlijke pagina. Je kunt je gegevens beheren, je donaties terug zien en verhalen delen. </p>
 
             <form id="sign-up-account">
                 <input required type="email" placeholder="E-mailadres">
                 <input required type="password" placeholder="Wachtwoord">
-                <input required type="password" placeholder="Wachtwoord">
+                <input required type="password" placeholder="Wachtwoord herhalen">
                 <button type="submit"></button>
             </form>
         </div>
@@ -384,6 +428,7 @@ Je donatie blijft anoniem.</p>
                     <input required class="getGamePostcode" placeholder="Postcode">
                     <input required class="getGameNumber" placeholder="Nr.">
                     <input class="getGameToev" placeholder="Toev.">
+                    <p class="addition-getgameform">Bijv. B</p>
                     <button class="monster-800" type="submit" >Ontvang het spel</button>
                 </form>
 

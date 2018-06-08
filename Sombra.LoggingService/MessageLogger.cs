@@ -42,8 +42,7 @@ namespace Sombra.LoggingService
                 busSubscribeMethod.Invoke(_bus, new object[] { _subscriptionIdPrefix, handlerDelegate });
             }
 
-            var bus = _serviceProvider.GetRequiredService<IBus>();
-            bus.Receive<Messaging.IMessage>(ServiceInstaller.LoggingQueue, async message =>
+            _bus.Receive<Messaging.IMessage>(ServiceInstaller.LoggingQueue, async message =>
             {
                 var handler = _serviceProvider.GetRequiredService<MessageHandler>();
                 await handler.HandleAsync(message);

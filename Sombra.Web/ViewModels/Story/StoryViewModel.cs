@@ -11,8 +11,8 @@ namespace Sombra.Web.ViewModels.Story
         public string UserLastName { get; set; }
         public string UserImage { get; set; }
         public string Title { get; set; }
-        public string Story { get; set; }
-        public string[] Quotes { get; set; }
+        public string[] Story { get; set; }
+        public string Quote { get; set; }
         public string MainImage { get; set; }
         public string[] Images { get; set; }
 

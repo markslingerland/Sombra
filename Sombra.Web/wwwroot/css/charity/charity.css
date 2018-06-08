@@ -13,21 +13,21 @@
 }
 
 #header .container {
-    width: 1440px!important;
+    width: 1440px !important;
 }
 
 .charity-container {
-    width: 1109px!important;
+    width: 1109px !important;
     background-color: white;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
-    margin-top: -309px!important;
-    padding: 0!important;
+    margin-top: -309px !important;
+    padding: 0 !important;
 }
 
 .charity-logo {
     position: absolute;
     top: -80px;
-    width:  100%;
+    width: 100%;
 }
 
 .charity-logo-container {
@@ -45,6 +45,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    transform: rotate(-18deg);
 }
 
 .charity-logo-white {
@@ -61,7 +62,7 @@
 #about {
     float: left;
     width: 100%;
-    padding-left: 63px;
+    padding-left: 93px;
 }
 
 #about .container {
@@ -76,6 +77,7 @@
     right: -134px;
     z-index: -1;
 }
+
 #about .about-text {
     width: 100%;
     text-align: left;
@@ -90,6 +92,10 @@
     color: #838383;
     margin-top: 0;
     margin-bottom: 23px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
 }
 
 #about .about-text p {
@@ -129,7 +135,6 @@
 }
 
 #charity-info {
-
     width: 1109px;
     margin-left: auto;
     margin-right: auto;
@@ -159,38 +164,28 @@
     font-family: Arial;
 }
 
-.Fill-1 {
-    position: absolute;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    margin-top: 305px;
-    max-width: 177px;
-    height: 200px;
-    transform: rotate(-18deg);
-    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.15));
-}
-
-.Fill-7 {
-    position: absolute;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    margin-top: 360px;
-    max-width: 87px;
-    height: 70px;
-    transform: rotate(-18deg);
-    color: #ffffff;
-    font-size: 25px;
-}
-
 .category {
     font-family: 'Source Sans Pro', sans-serif;
-    margin-left: 2%;
+    margin-left: 10px;
+    margin-top: 2%;
+    border-radius: 5px;
+    background-color: rgba(177, 177, 177, 0.25);
+    padding: 1px 6px 2px 6px;
+    font-size: 15px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    width: auto;
+    display: inline-block;
+    color: #838383;
+}
+
+.category:first-child {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-left: 26px;
     margin-top: 2%;
     border-radius: 5px;
     background-color: rgba(177, 177, 177, 0.25);
@@ -210,19 +205,31 @@
 .kvk_ambi {
     font-family: 'Source Sans Pro', sans-serif;
     float: right;
-    margin-right: 25px;
+    margin-right: 18px;
     margin-top: 2%;
     font-size: 14px;
-    font-weight: normal;
+    font-weight: 300;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
     display: inline-block;
     color: #838383;
+}
+
+.kvk_ambi:last-child {
     font-family: 'Source Sans Pro', sans-serif;
+    float: right;
+    margin-right: 26px;
+    margin-top: 2%;
+    font-size: 14px;
     font-weight: 300;
-    line-height: 2;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    display: inline-block;
+    color: #838383;
 }
 
 /*Story*/
@@ -257,8 +264,8 @@
 
 #the_story .text_container {
     width: 100%;
-    padding-left: 165px;
-    padding-right: 165px;
+    padding-left: 93px;
+    padding-right: 460px;
 }
 
 #the_story .text_container span {
@@ -272,12 +279,12 @@
     text-align: left;
     color: #ffffff;
     position: absolute;
-    bottom: 150px;
+    bottom: 180px;
 }
 
 .story-btn-holder {
     position: absolute;
-    right: 165px;
+    right: 93px;
     bottom: 58px;
 }
 
@@ -293,10 +300,9 @@
     text-align: left;
     color: #ffffff;
     position: absolute;
-    bottom: 73px;
-    margin-bottom: 0;
-    margin-top: 0;
+    bottom: 70px;
 }
+
 #the_story .text_container a {
     font-family: 'Source Sans Pro', sans-serif;
     text-decoration: underline;
@@ -313,6 +319,7 @@
     margin-bottom: 0;
     margin-top: 0;
 }
+
 /*Donation status*/
 #donations .donations-relative {
     position: relative;
@@ -337,7 +344,7 @@
 .donations-box:first-child {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-} 
+}
 
 .donations-box:last-child {
     border-bottom-left-radius: 8px;
@@ -356,24 +363,27 @@
     letter-spacing: normal;
     color: #f88356;
 }
-.profile-icon {
 
+.profile-icon {
     width: 28px;
     height: 28px;
     background-image: url("../../Assets/icons/Icon_profiel.svg");
     border-radius: 50%;
 }
-.img-box{
-	float:left;
+
+.img-box {
+    float: left;
     margin-left: 10px;
-    margin-top:10px;
+    margin-top: 10px;
 }
-.text-box{
-	float:left;
+
+.text-box {
+    float: left;
     margin-left: 10px;
     margin-top: 13px;
     text-align: center;
 }
+
 .profile-text {
     height: 33px;
     font-family: 'Montserrat', sans-serif;
@@ -428,12 +438,14 @@
     margin-bottom: 50px;
     height: 50px;
 }
+
 .donation-date {
     float: right;
     margin-right: 10px;
     margin-top: 13px;
     text-align: center;
 }
+
 .date-text {
     width: 240px;
     height: 23px;
@@ -470,6 +482,7 @@
     margin-top: 110px;
     margin-left: 8px;
 }
+
 #acties .acties-text {
     max-width: 600px;
     height: 115px;
@@ -493,27 +506,27 @@
 }
 
 #acties .action-buttons .all-actions, #acties .action-buttons .make-actions {
-width: 199px;
-height: 40px;
-border-radius: 8px;
-display: inline-block;
-position: relative;
-font-size: 19px;
+    width: 199px;
+    height: 40px;
+    border-radius: 8px;
+    display: inline-block;
+    position: relative;
+    font-size: 19px;
 }
 
-#acties .action-buttons .all-actions a , #acties .action-buttons .make-actions a {
+#acties .action-buttons .all-actions a, #acties .action-buttons .make-actions a {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    }
+}
 
 #acties .action-buttons .all-actions {
     margin-right: 16px;
-    background-image: linear-gradient(-140deg, #fb9549 0%, #f57264 100%);
-    color:white;
+    background-image: linear-gradient(-140deg, #FDA23F 0%, #F3646F 100%);
+    color: white;
 }
 
 #acties .action-buttons .all-actions span {
@@ -526,14 +539,14 @@ font-size: 19px;
     background-color: white;
     border: 1px solid #F88356;
     color: #F88356;
-    }
+}
 
-    #acties .action-buttons .make-actions span {
-        position: absolute;
-        top: 6px;
-        left: 26px;
- }
+#acties .action-buttons .make-actions span {
+    position: absolute;
+    top: 6px;
+    left: 26px;
+}
 
- #donations {
-     margin-top: 89px;
- }
+#donations {
+    margin-top: 89px;
+}

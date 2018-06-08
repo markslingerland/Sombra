@@ -10,18 +10,28 @@
 @section Scripts {
     <script src="~/js/story.js"></script>
 }
+@*Background Picture*@
+<div class="header-image" style="background-image:url(@Model.MainImage)"></div>
 
-<div id="story-info" class="story-info">
-    @*Background picture*@
-    <div class="header-image" style="background-image:url(@Model.MainImage)"></div>
-    <div id="main-storyboard" class="main-storyboard">
+<div class="story-container container">
+    @*Profile picture*@
+    <div class="story-logo">
+        <div class="story-logo-container">
+            <div class="shape-frame " style="background-image:url(@Model.UserImage)">
+            </div>
+        </div>
+        <div class="profile-name">@Model.UserFirstName @Model.UserLastName</div>
+    </div>
         @*title & story*@
         <div id="about">
-                <div class="row about-text">
-                    <div class="title">@Model.Title</div>
-                    <div class="story">@Model.Story</div>
-                    <div class="quote">“@Model.Quotes[0]”</div>
-                </div>
+            <div class="row about-text">
+                <h2>@Model.Title</h2>
+                <p>@Model.Story[0]</p>
+                <div class="story-image" style="background-image:url(@Model.MainImage)"></div>
+                <p>@Model.Story[1]</p>
+                <h1>“@Model.Quote”</h1>
+                <p>@Model.Story[2]</p>
+            </div>
         </div>
         @*Active acitons*@
         <div id="acties">
@@ -29,24 +39,25 @@
                 <div id="charity-actions-carousel" class="main-carousel">
                     @foreach (var image in @Model.Images)
                     {
-                        <div class="carousel-cell">
+
                             <div id="image-slider">
                                 <div class="images" style="background-image:url(@image);"></div>
                             </div>
-                        </div>
+
                     }
                 </div>
                 <div class="button button--previous"></div>
                 <div class="button button--next"></div>
             </div>
         </div>
-    </div>
-    @*logo*@
-    <div class="container">
-        @*If only a logo is used we can remove the Fill-7*@
-        <div class="profile-picture" style="background-image:url(@Model.UserImage)"></div>
-        @*<img class="profile-picture" src=@ViewData["header_image"] ) />*@
-        <div class="profile-name">@Model.UserFirstName @Model.UserLastName</div>
-    </div>
-
+</div>
+<div id="share-story" class="share-story">
+    <div class="share-instagram"></div>
+    <div class="share-twitter"></div>
+    <div class="share-facebook"></div>
+    <p>DEEL DIT VERHAAL OOK OP SOCIAL MEDIA</p>
+</div>
+    <div class="share-text">
+    <h2>Deel je eigen verhaal</h2>
+    <p>Wat voor reden heeft deze donatie voor jou? Heb je een speciaal verhaal wat je met ons en mede-donateurs wilt delen? Deel jouw verhaal in en wie weet kom jij op onze verhalen pagina!</p>
 </div>

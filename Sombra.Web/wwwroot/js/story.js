@@ -1,7 +1,8 @@
 ﻿var $carousel = $('.main-carousel').flickity({
  cellAlign: 'left',
-        contain: true,
-       prevNextButtons: false,
+    contain: true,
+    prevNextButtons: false,
+    pageDots: false
       });
 
  // Flickity instance
@@ -18,6 +19,3 @@ $('.button--previous').on('click', function () {
 $('.button--next').on('click', function () {
     $carousel.flickity('next');
 });
-
-var heightStoryboard = $('.main-storyboard').innerHeight();
-document.getElementById('story-info').setAttribute("style", "height:" + (heightStoryboard + 690) + "px");

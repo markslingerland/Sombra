@@ -90,5 +90,13 @@ namespace Sombra.Infrastructure.DAL
                 ? CrudResponse<TResponse>.Success()
                 : new TResponse();
         }
+
+        public async Task<TResponse> TrySaveChangesAsync<TResponse>(Func<TResponse, TResponse> onSuccess)
+            where TResponse : CrudResponse<TResponse>, new()
+        {
+            return (await TrySaveChangesAsync())
+                ? onSuccess(CrudResponse<TResponse>.Success())
+                : new TResponse();
+        }
     }
 }

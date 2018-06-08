@@ -24,13 +24,11 @@ namespace Sombra.IdentityService
             {
                 user.Role = message.Role;
 
-                return await _context.TrySaveChangesAsync()
-                    ? new UpdateRolesResponse
-                    {
-                        IsSuccess = true,
-                        Role = message.Role
-                    }
-                    : new UpdateRolesResponse();
+                return await _context.TrySaveChangesAsync<UpdateRolesResponse>(response =>
+                {
+                    response.Role = message.Role;
+                    return response;
+                });
             }
 
             return new UpdateRolesResponse

@@ -60,13 +60,11 @@ namespace Sombra.IdentityService
             _context.Users.Add(user);
             _context.Credentials.Add(credential);
 
-            return await _context.TrySaveChangesAsync()
-                ? new CreateIdentityResponse
-                {
-                    ActivationToken = activationToken,
-                    IsSuccess = true
-                }
-                : new CreateIdentityResponse();
+            return await _context.TrySaveChangesAsync<CreateIdentityResponse>(response =>
+            {
+                response.ActivationToken = activationToken;
+                return response;
+            });
         }
     }
 }

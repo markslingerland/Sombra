@@ -55,7 +55,7 @@ namespace Sombra.DonateService.UnitTests
                 {
                     Assert.AreEqual(1, context.CharityActions.Count());
                     Assert.AreEqual(updatedCharityActionEvent.ActionEndDateTime, context.CharityActions.Single().ActionEndDateTime);
-                    Assert.AreEqual(updatedCharityActionEvent.CoverImage, context.CharityActions.Single().Image);
+                    Assert.AreEqual(updatedCharityActionEvent.CoverImage, context.CharityActions.Single().CoverImage);
                     Assert.AreEqual(updatedCharityActionEvent.ThankYou, context.CharityActions.Single().ThankYou);
                     Assert.AreEqual(updatedCharityActionEvent.Name, context.CharityActions.Single().Name);
                 }

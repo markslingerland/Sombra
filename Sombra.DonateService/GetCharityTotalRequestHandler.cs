@@ -40,6 +40,7 @@ namespace Sombra.DonateService
                     var charityActionDonations = _context.CharityActionDonations.Where(c => c.CharityAction.Charity.CharityKey == message.CharityKey);
                     return new GetCharityTotalResponse
                     {
+                        Success = true,
                         TotalDonatedAmount = charityDonations.Sum(d => d.Amount) + charityActionDonations.Sum(d => d.Amount),
                         NumberOfDonators = charityDonations.Count() + charityActionDonations.Count(),
                         Donations = await _context.CharityDonations.Include(c => c.User).Where(filter).OrderBy(d => d.DateTimeStamp, message.SortOrder).Take(message.NumberOfDonations).ProjectToListAsync<Donation>(_mapper)
@@ -48,6 +49,7 @@ namespace Sombra.DonateService
 
                 return new GetCharityTotalResponse
                 {
+                    Success = true,
                     TotalDonatedAmount = charityDonations.Sum(d => d.Amount),
                     NumberOfDonators = charityDonations.Count(),
                     Donations = await _context.CharityDonations.Include(c => c.User).Where(filter).OrderBy(d => d.DateTimeStamp, message.SortOrder).Take(message.NumberOfDonations).ProjectToListAsync<Donation>(_mapper)
@@ -57,6 +59,7 @@ namespace Sombra.DonateService
             else {
                 return new GetCharityTotalResponse
                 {
+                    Success = false,
                     ErrorType = ErrorType.NoDonationsFound
                 };
             }

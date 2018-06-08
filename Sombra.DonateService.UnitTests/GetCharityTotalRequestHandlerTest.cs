@@ -89,7 +89,7 @@ namespace Sombra.DonateService.UnitTests
             using (var context = DonationsContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(3, response.NumberOfDonators);
-                    Assert.IsTrue(response.IsRequestSuccessful);
+                    Assert.IsTrue(response.Success);
                     Assert.AreEqual(charityDonation.Amount, response.Donations.First().Amount);
                     Assert.AreEqual(charityDonation.DateTimeStamp, response.Donations.First().DateTimeStamp);
                     Assert.AreEqual(charityDonation.User.ProfileImage, response.Donations.First().ProfileImage);
@@ -181,7 +181,7 @@ namespace Sombra.DonateService.UnitTests
             using (var context = DonationsContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(2, response.NumberOfDonators);
-                    Assert.IsTrue(response.IsRequestSuccessful);
+                    Assert.IsTrue(response.Success);
                     Assert.AreEqual(charityDonation.Amount, response.Donations.First().Amount);
                     Assert.AreEqual(charityDonation.DateTimeStamp, response.Donations.First().DateTimeStamp);
                     Assert.AreEqual(charityDonation.User.ProfileImage, response.Donations.First().ProfileImage);
@@ -272,7 +272,7 @@ namespace Sombra.DonateService.UnitTests
             using (var context = DonationsContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(2, response.NumberOfDonators);
-                    Assert.IsTrue(response.IsRequestSuccessful);
+                    Assert.IsTrue(response.Success);
                     Assert.AreEqual(charityDonation.Amount, response.Donations.First().Amount);
                     Assert.AreEqual(charityDonation.DateTimeStamp, response.Donations.First().DateTimeStamp);
                     Assert.IsNull(response.Donations.First().ProfileImage);
@@ -363,7 +363,7 @@ namespace Sombra.DonateService.UnitTests
             using (var context = DonationsContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(2, response.NumberOfDonators);
-                    Assert.IsTrue(response.IsRequestSuccessful);
+                    Assert.IsTrue(response.Success);
                     Assert.AreEqual(charityDonation.Amount, response.Donations.Last().Amount);
                     Assert.AreEqual(charityDonation.DateTimeStamp, response.Donations.Last().DateTimeStamp);
                     Assert.IsNull(response.Donations.Last().ProfileImage);
@@ -465,7 +465,7 @@ namespace Sombra.DonateService.UnitTests
             using (var context = DonationsContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(2, response.NumberOfDonators);
-                    Assert.IsTrue(response.IsRequestSuccessful);
+                    Assert.IsTrue(response.Success);
                     Assert.AreEqual(charityDonation.Amount, response.Donations.First().Amount);
                     Assert.AreEqual(charityDonation.DateTimeStamp, response.Donations.First().DateTimeStamp);
                     Assert.AreEqual(charityDonation.User.ProfileImage, response.Donations.First().ProfileImage);
@@ -555,7 +555,7 @@ namespace Sombra.DonateService.UnitTests
             using (var context = DonationsContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(2, response.NumberOfDonators);
-                    Assert.IsTrue(response.IsRequestSuccessful);
+                    Assert.IsTrue(response.Success);
                     Assert.AreEqual(charityDonation.Amount, response.Donations.First().Amount);
                     Assert.AreEqual(charityDonation.DateTimeStamp, response.Donations.First().DateTimeStamp);
                     Assert.AreEqual(charityDonation.User.ProfileImage, response.Donations.First().ProfileImage);
@@ -641,7 +641,7 @@ namespace Sombra.DonateService.UnitTests
             using (var context = DonationsContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(ErrorType.NoDonationsFound, response.ErrorType);
-                    Assert.IsTrue(response.IsRequestSuccessful);
+                    Assert.IsFalse(response.Success);
 
                 } 
             } finally {

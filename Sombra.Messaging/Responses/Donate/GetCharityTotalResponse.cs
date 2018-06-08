@@ -6,6 +6,7 @@ namespace Sombra.Messaging.Responses.Donate
 {
     public class GetCharityTotalResponse : Response
     {
+        public Boolean Success { get; set; }
         public int NumberOfDonators { get; set; }
         public decimal TotalDonatedAmount { get; set; }
         public List<Donation> Donations { get; set; }

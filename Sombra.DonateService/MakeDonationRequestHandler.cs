@@ -45,6 +45,7 @@ namespace Sombra.DonateService
                     {
                         return new MakeDonationResponse
                         {
+                            Success = false,
                             ErrorType = ErrorType.UserNotFound
                         };
                     }
@@ -65,7 +66,7 @@ namespace Sombra.DonateService
                 return new MakeDonationResponse
                 {
                     Success = true,
-                    Image = charityAction.Image,
+                    CoverImage = charityAction.CoverImage,
                     ThankYou = charityAction.ThankYou
                 };
             }
@@ -90,6 +91,7 @@ namespace Sombra.DonateService
                     {
                         return new MakeDonationResponse
                         {
+                            Success = false,
                             ErrorType = ErrorType.UserNotFound
                         };
                     }
@@ -110,7 +112,7 @@ namespace Sombra.DonateService
                 return new MakeDonationResponse
                 {
                     Success = true,
-                    Image = charity.Image,
+                    CoverImage = charity.CoverImage,
                     ThankYou = charity.ThankYou
                 };
             }

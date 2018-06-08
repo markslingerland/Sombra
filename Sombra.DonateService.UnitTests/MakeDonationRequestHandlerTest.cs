@@ -28,7 +28,7 @@ namespace Sombra.DonateService.UnitTests
                 var charity = new Charity(){
                     CharityKey = Guid.NewGuid(),
                     Name = "TestName",
-                    Image = "TestImage",
+                    CoverImage = "TestImage",
                     ThankYou = "ThankYou"
                 };    
 
@@ -37,7 +37,7 @@ namespace Sombra.DonateService.UnitTests
                     Name = "TestName",
                     CharityActionKey = Guid.NewGuid(),
                     Charity = charity,
-                    Image = "TestImage",
+                    CoverImage = "TestImage",
                     ThankYou = "ThankYou"
                 };   
 
@@ -60,11 +60,11 @@ namespace Sombra.DonateService.UnitTests
             using (var context = DonationsContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(1, context.CharityDonations.Count());
-                    Assert.IsTrue(response.IsRequestSuccessful);
+                    Assert.IsTrue(response.Success);
                     Assert.AreEqual(makeDonationRequest.Amount, context.CharityDonations.First().Amount);
                     Assert.AreEqual(makeDonationRequest.IsAnonymous, context.CharityDonations.First().IsAnonymous);
                     Assert.AreEqual(charity.ThankYou, response.ThankYou);
-                    Assert.AreEqual(charity.Image, response.Image);
+                    Assert.AreEqual(charity.CoverImage, response.CoverImage);
                 } 
             } finally {
                 DonationsContext.CloseInMemoryConnection();
@@ -86,7 +86,7 @@ namespace Sombra.DonateService.UnitTests
                 var charity = new Charity(){
                     CharityKey = Guid.NewGuid(),
                     Name = "TestName",
-                    Image = "TestImage",
+                    CoverImage = "TestImage",
                     ThankYou = "ThankYou"
                 };    
 
@@ -95,7 +95,7 @@ namespace Sombra.DonateService.UnitTests
                     Name = "TestName",
                     CharityActionKey = Guid.NewGuid(),
                     Charity = charity,
-                    Image = "TestImage",
+                    CoverImage = "TestImage",
                     ThankYou = "ThankYou"
                 };   
 
@@ -120,11 +120,11 @@ namespace Sombra.DonateService.UnitTests
             using (var context = DonationsContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(1, context.CharityActionDonations.Count());
-                    Assert.IsTrue(response.IsRequestSuccessful);
+                    Assert.IsTrue(response.Success);
                     Assert.AreEqual(makeDonationRequest.Amount, context.CharityActionDonations.First().Amount);
                     Assert.AreEqual(makeDonationRequest.IsAnonymous, context.CharityActionDonations.First().IsAnonymous);
                     Assert.AreEqual(charityAction.ThankYou, response.ThankYou);
-                    Assert.AreEqual(charityAction.Image, response.Image);
+                    Assert.AreEqual(charityAction.CoverImage, response.CoverImage);
                 } 
             } finally {
                 DonationsContext.CloseInMemoryConnection();
@@ -139,7 +139,7 @@ namespace Sombra.DonateService.UnitTests
                 var charity = new Charity(){
                     CharityKey = Guid.NewGuid(),
                     Name = "TestName",
-                    Image = "TestImage",
+                    CoverImage = "TestImage",
                     ThankYou = "ThankYou"
                 };    
 
@@ -148,7 +148,7 @@ namespace Sombra.DonateService.UnitTests
                     Name = "TestName",
                     CharityActionKey = Guid.NewGuid(),
                     Charity = charity,
-                    Image = "TestImage",
+                    CoverImage = "TestImage",
                     ThankYou = "ThankYou"
                 };   
 
@@ -171,11 +171,11 @@ namespace Sombra.DonateService.UnitTests
             using (var context = DonationsContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(1, context.CharityActionDonations.Count());
-                    Assert.IsTrue(response.IsRequestSuccessful);
+                    Assert.IsTrue(response.Success);
                     Assert.AreEqual(makeDonationRequest.Amount, context.CharityActionDonations.First().Amount);
                     Assert.AreEqual(makeDonationRequest.IsAnonymous, context.CharityActionDonations.First().IsAnonymous);
                     Assert.AreEqual(charityAction.ThankYou, response.ThankYou);
-                    Assert.AreEqual(charityAction.Image, response.Image);
+                    Assert.AreEqual(charityAction.CoverImage, response.CoverImage);
                 } 
             } finally {
                 DonationsContext.CloseInMemoryConnection();
@@ -197,7 +197,7 @@ namespace Sombra.DonateService.UnitTests
                 var charity = new Charity(){
                     CharityKey = Guid.NewGuid(),
                     Name = "TestName",
-                    Image = "TestImage",
+                    CoverImage = "TestImage",
                     ThankYou = "ThankYou"
                 };    
 
@@ -206,7 +206,7 @@ namespace Sombra.DonateService.UnitTests
                     Name = "TestName",
                     CharityActionKey = Guid.NewGuid(),
                     Charity = charity,
-                    Image = "TestImage",
+                    CoverImage = "TestImage",
                     ThankYou = "ThankYou"
                 };   
 
@@ -230,7 +230,7 @@ namespace Sombra.DonateService.UnitTests
             using (var context = DonationsContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(ErrorType.UserNotFound, response.ErrorType);
-                    Assert.IsTrue(response.IsRequestSuccessful);
+                    Assert.IsFalse(response.Success);
                 } 
             } finally {
                 DonationsContext.CloseInMemoryConnection();
@@ -252,7 +252,7 @@ namespace Sombra.DonateService.UnitTests
                 var charity = new Charity(){
                     CharityKey = Guid.NewGuid(),
                     Name = "TestName",
-                    Image = "TestImage",
+                    CoverImage = "TestImage",
                     ThankYou = "ThankYou"
                 };    
 
@@ -261,7 +261,7 @@ namespace Sombra.DonateService.UnitTests
                     Name = "TestName",
                     CharityActionKey = Guid.NewGuid(),
                     Charity = charity,
-                    Image = "TestImage",
+                    CoverImage = "TestImage",
                     ThankYou = "ThankYou"
                 };   
 
@@ -283,7 +283,7 @@ namespace Sombra.DonateService.UnitTests
             using (var context = DonationsContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(ErrorType.CharityNotFound, response.ErrorType);
-                    Assert.IsTrue(response.IsRequestSuccessful);
+                    Assert.IsFalse(response.Success);
                 } 
             } finally {
                 DonationsContext.CloseInMemoryConnection();
@@ -305,7 +305,7 @@ namespace Sombra.DonateService.UnitTests
                 var charity = new Charity(){
                     CharityKey = Guid.NewGuid(),
                     Name = "TestName",
-                    Image = "TestImage",
+                    CoverImage = "TestImage",
                     ThankYou = "ThankYou"
                 };    
 
@@ -314,7 +314,7 @@ namespace Sombra.DonateService.UnitTests
                     Name = "TestName",
                     CharityActionKey = Guid.NewGuid(),
                     Charity = charity,
-                    Image = "TestImage",
+                    CoverImage = "TestImage",
                     ThankYou = "ThankYou"
                 };   
 
@@ -338,7 +338,7 @@ namespace Sombra.DonateService.UnitTests
             using (var context = DonationsContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(ErrorType.CharityActionNotFound, response.ErrorType);
-                    Assert.IsTrue(response.IsRequestSuccessful);
+                    Assert.IsFalse(response.Success);
                 } 
             } finally {
                 DonationsContext.CloseInMemoryConnection();

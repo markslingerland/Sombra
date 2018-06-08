@@ -8,7 +8,7 @@ namespace Sombra.DonateService.DAL
     {
         public Guid CharityKey { get; set; }
         public string Name { get; set; }
-        public string Image { get; set; }
+        public string CoverImage { get; set; }
         public string ThankYou { get; set; }
         public virtual ICollection<CharityAction> ChartityActions{ get; set; }
         public virtual ICollection<CharityDonation> ChartityDonations { get; set; }

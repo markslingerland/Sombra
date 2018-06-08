@@ -6,7 +6,7 @@ namespace Sombra.Messaging.Responses.Donate
     {
         public bool Success { get; set; }
         public string ThankYou { get; set; }
-        public string Image { get; set; }
+        public string CoverImage { get; set; }
         public ErrorType ErrorType { get; set; }
     }
 }

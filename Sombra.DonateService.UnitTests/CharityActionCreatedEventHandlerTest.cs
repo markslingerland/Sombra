@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.DonateService.DAL;
+using Sombra.Infrastructure;
 using Sombra.Messaging.Events.CharityAction;
 using Sombra.Messaging.Shared;
 
@@ -43,7 +44,7 @@ namespace Sombra.DonateService.UnitTests
                 {
                     context.Charities.Add(Charity);
                     await context.SaveChangesAsync();
-                    var handler = new CharityActionCreatedEventHandler(context);
+                    var handler = new CharityActionCreatedEventHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
                     await handler.ConsumeAsync(Event);
                 }
 
@@ -53,7 +54,7 @@ namespace Sombra.DonateService.UnitTests
                     Assert.AreEqual(Event.CharityActionKey, context.CharityActions.Single().CharityActionKey);
                     Assert.AreEqual(Event.ActionEndDateTime, context.CharityActions.Single().ActionEndDateTime);
                     Assert.AreEqual(Event.ThankYou, context.CharityActions.Single().ThankYou);
-                    Assert.AreEqual(Event.CoverImage, context.CharityActions.Single().Image);
+                    Assert.AreEqual(Event.CoverImage, context.CharityActions.Single().CoverImage);
                     Assert.AreEqual(Event.Name, context.CharityActions.Single().Name);  
                 }
             }

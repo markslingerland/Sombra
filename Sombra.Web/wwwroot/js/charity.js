@@ -18,6 +18,3 @@ $('.button--previous').on('click', function () {
 $('.button--next').on('click', function () {
     $carousel.flickity('next');
 });
-// calculate height for charity-info
-// var heightStoryboard = $('.main-storyboard').innerHeight();
-// document.getElementById('charity-info').setAttribute("style", "height:" + (heightStoryboard + 690) + "px");

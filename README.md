@@ -66,9 +66,9 @@ docker-compose up
 
 * **Mark Slingerland** - *Back-end development* - [markslingerland](https://github.com/markslingerland)
 * **Jelle Kerkstra** - *Back-end development* - [JelleKerkstra](https://github.com/JelleKerkstra)
-* **Ruben Everwijn** - *Back-end/Front-end development* - [rubenv](https://github.com/rubenv)
+* **Ruben Everwijn** - *Back-end/Front-end development* - [rubenev](https://github.com/rubenev)
 * **Stef de Kramer** - *Front-end development* - [SteffdeKramer](https://github.com/SteffdeKramer)
-* **Daisy Hofstede** - *Digital designer* - [daisyhostede](https://www.linkedin.com/in/daisyhofstede/)
+* **Daisy Hofstede** - *Digital designer* - [daisyhofstede](https://www.linkedin.com/in/daisyhofstede/)
 * **Tessa Hamel** - *Digital designer* - [tessahamel](https://www.linkedin.com/in/tessa-hamel-8931609a/)
 * **Emmelie de Jong** - *Project manager / Digital strategist* - [emmeliedejong](https://www.linkedin.com/in/emmelie-de-jong-3b8431135/)
 

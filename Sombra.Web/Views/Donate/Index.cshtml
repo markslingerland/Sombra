@@ -1,6 +1,444 @@
 @{ ViewData["Title"] = "doneren"; } 
 @section Styles{
-<link rel="stylesheet" href="~/css/donating/donating.css" />
+<link rel="stylesheet" href="~/css/donating/donating.css" /> } 
+@section Scripts {
+<script src="~/js/donate.js"></script>
 }
 
 <div id="background-frame"></div>
+
+<div id="form-donate">
+    <form id="donating-form">
+
+
+        <section class="section-1">
+            <div class="donate-progress">
+                <div class="orange-ball .first-section"></div>
+                <div class="grey-ball"></div>
+                <div class="grey-ball"></div>
+                <div class="grey-ball"></div>
+            </div>
+
+            <div class="title-holder">
+                <div class="donate-step">
+                    <p>1</p>
+                </div>
+                <h3 class="donate-title monster-400">Ik doneer aan...</h3>
+            </div>
+
+
+            <a class="closing"><span class="donate-close"></span><span class="donate-close"></span></a>
+
+            <div class="choose-cause">
+                <div class="radio-holder">
+                    <input type="radio" id="control_01" name="select" value="2" required>
+                    <label for="control_01" class="validatable">
+                    <h2 class="source-600 radio-input-tag"> een goed doel</h2>
+                </label>
+                </div>
+
+                <div class="radio-holder">
+                    <input type="radio" id="control_02" name="select" value="2">
+                    <label for="control_02" class="validatable">
+                    <h2 class="source-600 radio-input-tag"> een actie</h2>
+                </label>
+                </div>
+            </div>
+
+            <div class="select-charity">
+                <div class="chevron"></div>
+                <select id="select-your-charity" name="new-charity" form="form-donate" required></select>
+            </div>
+
+            <div class="select-charity select-action">
+                <div class="chevron"></div>
+                <select id="select-action" name="new-action" form="form-donate" required>
+                <span></span>
+            </select>
+            </div>
+
+            <p class="charity-information">Er is nog maar weinig bekend om mensen met MS te helpen. Daarom is er onderzoek nodig, en dat kost geld. Door jouw donatie kunnen we ons samen sterk maken voor een MS-vrije wereld.</p>
+
+            <div class="choose-your-payment">
+
+                <span class="section-1-choose-amount monster-800">KIES HET BEDRAG</span>
+
+                <div class="choose-money-amount">
+                    <div class="radio-holder">
+                        <input type="radio" id="10" name="money" value="10" required>
+                        <label for="10" class="validatable">
+                    <h2 class="source-600 radio-input-tag"> &euro;10</h2>
+                </label>
+                    </div>
+
+                    <div class="radio-holder">
+                        <input type="radio" id="20" name="money" value="20">
+                        <label for="20" class="validatable">
+                    <h2 class="source-600 radio-input-tag"> &euro;20</h2>
+                </label>
+                    </div>
+
+                    <div class="radio-holder">
+                        <input type="radio" id="30" name="money" value="30">
+                        <label for="30" class="validatable">
+                    <h2 class="source-600 radio-input-tag"> &euro;30</h2>
+                </label>
+                    </div>
+
+                    <div class="radio-holder">
+                        <input type="radio" id="50" name="money" value="50">
+                        <label for="50" class="validatable">
+                    <h2 class="source-600 radio-input-tag"> ander bedrag</h2>
+                </label>
+                    </div>
+                </div>
+
+                <div class="payment-options">
+
+                    <div class="radio-holder">
+                        <input type="radio" id="one-time" name="pay-time" value="one-time" required>
+                        <label for="one-time" class="validatable">
+                    <h2 class="source-600 radio-input-tag"> eenmalig</h2>
+                </label>
+                    </div>
+
+                    <div class="radio-holder">
+                        <input type="radio" id="monthly" name="pay-time" value="monthly">
+                        <label for="monthly" class="validatable">
+                    <h2 class="source-600 radio-input-tag"> maandelijks</h2>
+                </label>
+                    </div>
+
+                    <div class="radio-holder">
+                        <input type="radio" id="yearly" name="pay-time" value="yearly">
+                        <label for="yearly" class="validatable">
+                    <h2 class="source-600 radio-input-tag"> jaarlijks</h2>
+                </label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="next-step-holder">
+                <div class="next-step">
+                    <a id="next-to-section-2" class="clickable" href="#"></a>
+                </div>
+                <p class="error-message monster-300">Oeps er is iets mis</p>
+            </div>
+        </section>
+
+        <section class="section-2">
+            <div class="donate-progress">
+                <div class="orange-ball first-section">
+                    <div class="progress-stroke"></div>
+                </div>
+                <div class="orange-ball second-section"></div>
+                <div class="grey-ball"></div>
+                <div class="grey-ball"></div>
+            </div>
+
+            <div class="goBack-holder">
+                <div class="go-back-icon"></div>
+                <p class="source-500">vorige stap</p>
+                <a id="go-back" href="#"></a>
+            </div>
+
+            <div class="title-holder">
+                <div class="donate-step">
+                    <p>2</p>
+                </div>
+                <h3 class="donate-title monster-400">Ik doneer aan...</h3>
+            </div>
+
+
+            <a class="closing"><span class="donate-close"></span><span class="donate-close"></span></a>
+
+            <div class="pay-option">
+                <div class="radio-holder">
+                    <input type="radio" id="ideal" name="choose-pay-options" value="1" required>
+                    <label for="ideal" class="validatable">
+                    <h2 class="source-600 radio-input-tag"> iDeal</h2>
+                </label>
+                </div>
+
+                <div class="radio-holder">
+                    <input type="radio" id="permission" name="choose-pay-options" value="2">
+                    <label for="permission" class="validatable">
+                    <h2 class="source-600 radio-input-tag"> machtiging</h2>
+                </label>
+                </div>
+
+
+                <div class="radio-holder">
+                    <input type="radio" id="paypall" name="choose-pay-options" value="3">
+                    <label for="paypall" class="validatable">
+                    <h2 class="source-600 radio-input-tag"> PayPal</h2>
+                </label>
+                </div>
+            </div>
+
+            <div class="select-bank">
+                <div class="chevron"></div>
+                <select id="select-your-bank" name="new-bank" form="form-donate" required></select>
+            </div>
+
+            <div class="your-iban-holder">
+                <div class="filled-icon"></div>
+                <input class="source-300 validatable" id="iban" type="text" placeholder="IBAN">
+            </div>
+
+            <div id="person-detail" class="personal-information ">
+                <p class="person-adress monster-700">PERSOONSGEGEVENS</p>
+                <p class="source-300 information-person-data">Voor een donatie zijn persoonsgegevens niet verplicht. Wil je toch een bedankje ontvangen of andere inspireren met jouw donatie, vul dan je gegevens in. </p>
+
+                <div class="person-name">
+
+                    <input class="source-300" type="text" id="person-firstname-2" placeholder="Voornaam">
+
+                    <div class="person-lastname-2">
+                        <input class="source-300" type="text" id="person-lastname-2" placeholder="Achternaam">
+                    </div>
+                </div>
+
+                <div class="person-location">
+                    <div class="person-postcode">
+                        <input class="source-300" type="text" id="person-postcode-2" placeholder="Postcode">
+                    </div>
+
+                    <div class="person-housenumber">
+                        <input class="source-300" type="text" id="person-housenumber-2" placeholder="nr.">
+                    </div>
+                    <input class="source-300" type="text" id="person-addition-2" placeholder="toev.">
+                    <p>Bijv. B</p>
+                </div>
+
+                <div class="person-email">
+                    <input type="email" class="source-300" placeholder="E-mailadres">
+                </div>
+
+                
+            </div>
+
+            <div class="personal-information">
+                <p class="person-adress monster-700">PERSOONSGEGEVENS</p>
+
+                <div class="person-name">
+
+                    <input class="source-300" type="text" id="person-firstname" placeholder="Voornaam">
+
+                    <div class="person-lastname">
+                        <div class="required-dot"></div>
+                        <input class="source-300" type="text" id="person-lastname" placeholder="Achternaam">
+                    </div>
+                </div>
+
+                <div class="person-location">
+                    <div class="person-postcode">
+                        <div class="required-dot"></div>
+                        <input class="source-300" type="text" id="person-postcode" placeholder="Postcode">
+                    </div>
+
+                    <div class="person-housenumber">
+                        <div class="required-dot"></div>
+                        <input class="source-300" type="text" id="person-housenumber" placeholder="nr.">
+                    </div>
+                    <input class="source-300" type="text" id="person-addition" placeholder="toev.">
+                    <p>Bijv. B</p>
+                </div>
+
+                <div class="person-email">
+                    <input type="email" class="source-300" placeholder="E-mailadres">
+                </div>
+
+                <div class="person-information-birthday">
+                    <p class="person-birthday monster-700">GEBOORTEDATUM</p>
+                    <input class="source-300" type="number" id="person-birth-day" placeholder="dd">
+                    <input class="source-300" type="number" id="person-birth-month" placeholder="mm">
+                    <input class="source-300" type="number" id="person-birth-year" placeholder="jjjj">
+                    <div class="birth-required"></div>
+                </div>
+
+                <div class="required-fields">
+                    <div class="birth-required"></div>
+                    <p class="source-300">verplichte velden</p>
+                </div>
+
+                
+            </div>
+
+            <div class="next-step-holder">
+                <div class="next-step">
+                    <a id="next-to-section-3" class="clickable" href="#"></a>
+                </div>
+                <p class="error-message monster-300">Oeps er is iets mis</p>
+            </div>
+
+        </section>
+
+        <section class="section-3">
+            <div class="donate-progress">
+                <div class="orange-ball first-section">
+                    <div class="progress-stroke"></div>
+                </div>
+                <div class="orange-ball second-section">
+                    <div class="progress-stroke"></div>
+                </div>
+                <div class="orange-ball third-section"></div>
+                <div class="grey-ball"></div>
+            </div>
+
+            <div class="goBack-holder">
+                <div class="go-back-icon"></div>
+                <p class="source-500">vorige stap</p>
+                <a id="go-back" href="#"></a>
+            </div>
+
+            <a class="closing"><span class="donate-close"></span><span class="donate-close"></span></a>
+
+
+            <div class="title-holder">
+                <div class="donate-step">
+                    <p>3</p>
+                </div>
+                <h3 class="donate-title monster-400">Overzicht</h3>
+            </div>
+
+            <div class="payment-holder">
+                <div class="pen-icon first-section">
+                    <div class="pen-icon-image"></div>
+                </div>
+                <p class="monster-600">Doneren aan:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Bedrag:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Periode:<span class="monster-300">MS Moves</span></p>
+            </div>
+
+            <div class="payment-user-info-holder">
+                <div class="pen-icon second-section">
+                     <div class="pen-icon-image"></div>
+                </div>
+                <p class="monster-600">Doneren via:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">IBAN:<span class="monster-300">MS Moves</span></p>
+                </br>
+                <p class="monster-600">Voornaam:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Email:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Achternaam:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Postcode:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">E-mailadres:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Huisnummer:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Toevoeging:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Geboortedatum:<span class="monster-300">MS Moves</span></p>
+            </div>
+
+            <div class="next-step-holder">
+                <div class="next-step">
+                    <a id="next-to-section-4" class="clickable" href="#"></a>
+                </div>
+            </div>
+
+        </section>
+    </form>
+
+    <section class="section-4">
+        
+        <div class="donate-progress">
+            <div class="orange-ball first-section">
+                <div class="progress-stroke"></div>
+            </div>
+            <div class="orange-ball second-section">
+                <div class="progress-stroke"></div>
+            </div>
+            <div class="orange-ball third-section">
+                <div class="progress-stroke"></div>
+            </div>
+            <div class="orange-ball fourth-section"></div>
+        </div>
+
+        <div class="goBack-holder">
+            <div class="go-back-icon"></div>
+            <p class="source-500">vorige stap</p>
+            <a id="go-back" href="#"></a>
+        </div>
+
+        <a class="closing"><span class="donate-close"></span><span class="donate-close"></span></a>
+
+
+        <div class="title-holder">
+            <div class="donate-step">
+                <p>4</p>
+            </div>
+            <h3 class="donate-title monster-400">Gefeliciteerd!</h3>
+        </div>
+
+        <div class="thank-you-holder">
+            <div class="dark-gradient">
+                <h3 class="monster-800">Bedankt voor uw donatie!</h3>
+            <p class="source-300">Door jouw donatie kunnen we ons samen sterk maken voor een MS-vrije wereld.</p>
+            </div>
+              </div>
+
+        <div class="share-social-media">
+            <p class="monster-700">DEEL OP SOCIAL MEDIA</p>
+            <div class="social-media-icon facebook"></div>
+            <div class="social-media-icon twitter"></div>
+            <div class="social-media-icon instagram"></div>
+        </div>
+
+
+        <div class="share-story">
+            <h2 class="monster-200">Deel jouw verhaal</h2>
+            <p class="source-300">Wat voor reden heeft deze donatie voor jou? Heb je een speciaal verhaal wat je met ons en mede-donateurs wilt delen? Deel jouw verhaal in en wie weet kom jij op onze verhalen pagina!</p>
+
+            <div class="action-buttons">
+                <div class="all-actions">
+                    <a href="#"></a>
+                    <span class="monster-700">Deel mijn verhaal</span>
+                </div>
+                <div class="make-actions">
+                    <a href="#"></a>
+                    <span class="monster-700">Bekijk de verhalen</span>
+                </div>
+            </div>
+        </div>
+        
+
+        <div id="get-person-account">
+            <h4 class="source-700">Jouw persoonlijke pagina op ikdoneer.nu!</h4>
+            <p class="source-300">Met een account op ikdoneer.nu krijg je toegang tot je persoonlijke pagina. Je kunt je gegevens beheren, je donaties terug zien en verhalen delen. </p>
+
+            <form id="sign-up-account">
+                <input required type="email" placeholder="E-mailadres">
+                <input required type="password" placeholder="Wachtwoord">
+                <input required type="password" placeholder="Wachtwoord herhalen">
+                <button type="submit"></button>
+            </form>
+        </div>
+
+        <div id="ikdoneerGame">
+            <div class="ikdoneer-text-holder">
+                <h3 class="monster-200">Het ikdoneer.nu spel</h3>
+                <p class="source-300">Bedankt voor jouw donatie! Wij sturen standaard het ikdoneer.nu spel naar onze donateurs op, maar daarvoor hebben we wel een adres nodig. Wil je het spel ontvangen? Geef dan hier je gegevens op. 
+Je donatie blijft anoniem.</p>
+            </div>
+
+            <div class="getIkdoneerGame">
+                <label class="source-700">Ik wil het ikdoneer.nu spel ontvangen</label>
+
+                <form id="getGameForm">
+                    <input required class="getGameName" placeholder="Naam">
+                    <input required class="getGamePostcode" placeholder="Postcode">
+                    <input required class="getGameNumber" placeholder="Nr.">
+                    <input class="getGameToev" placeholder="Toev.">
+                    <p class="addition-getgameform">Bijv. B</p>
+                    <button class="monster-800" type="submit" >Ontvang het spel</button>
+                </form>
+
+            </div>
+        </div>
+
+       <button class="close-donating-page monster-800">Pagina sluiten</button>
+
+
+
+    </section>
+
+</div>

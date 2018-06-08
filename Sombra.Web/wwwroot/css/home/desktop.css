@@ -1,6 +1,7 @@
 
 #home-info {
     padding-top: 350px;
+    float: left;
 }
 #about .about-text h3 {
     font-size: 50px;

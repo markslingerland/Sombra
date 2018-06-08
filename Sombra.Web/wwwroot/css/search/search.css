@@ -1,8 +1,18 @@
+.container {
+    width: 1440px!important;
+    padding: 0;
+    margin: 0;
+}
+
 #filter {
     width: 100%;
-    float: left;
+    margin-top: 88px;
     padding-left: 165px;
     padding-right: 165px;
+}
+
+.header-big-menu ul li:nth-child(1) {
+    font-weight: 700;
 }
 
 #filter .signin-charity {
@@ -72,6 +82,167 @@ margin-bottom: 30px;
     font-size: 15px;
     color: #f88356;
 }
+
+.no-categories-selected {
+    font-style: italic;
+    display: none;
+    font-size: 14px;
+    color: #838383;
+}
+
+/* CHeckbox  */
+
+.category-checkbox-holder {
+     float: right;
+}
+.category-dropdown-holder {
+    width: 255px;
+    float: right;
+    position: relative;
+}
+
+.category-dropdown {
+    width: 255px;
+    height: 50px;
+    border-radius: 8px;
+    border: solid 1px #b1b1b1;
+    float: right;
+    position: relative;
+    cursor: pointer;
+}
+
+.category-dropdown p {
+    font-size: 18px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    text-align: left;
+    width: 100%;
+    padding-top: 14px;
+    padding-left: 19px;
+    letter-spacing: normal;
+    color: #838383;
+}
+
+.category-dropdown i {
+    position: absolute;
+    top: 20px;
+    right: 21px;
+    color: #f88356;
+}
+
+.category-dropdown-clicked {
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.checkbox-dropdown {
+    width: 255px;
+    position: absolute;
+    top: 45px;
+    border-left: solid 1px #b1b1b1;
+    border-radius: 8px;
+    border: solid 1px #b1b1b1;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    z-index: 201;
+    display: none;
+    background-color: white;
+}
+
+.checkbox-item p{
+    font-size: 14px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2.5;
+    letter-spacing: normal;
+    color: #838383;
+    text-align: left;
+    padding-left: 19px;
+}
+
+.checkbox-dropdown label {
+    text-align: left;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2.5;
+    letter-spacing: normal;
+    color: #838383;
+    font-size: 14px;
+    padding-top: 3px;
+}
+
+.checkbo-container {
+    position: relative;
+    width: 100%;
+    padding-left: 19px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition-duration: 0.25s;
+  }
+
+  .checkbo-container:hover {
+    background-color: #EAEAEA;
+  }
+
+  
+  /* Hide the browser's default checkbox */
+  .checkbo-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 8px;
+    right: 11px;
+    height: 25px;
+    width: 25px;
+    /* background-color: #eee; */
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .checkbo-container:hover input ~ .checkmark {
+    /* background-color: #ccc; */
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .checkbo-container input:checked ~ .checkmark {
+    /* background-color: #2196F3; */
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .checkbo-container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .checkbo-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 6px;
+    height: 13px;
+    border: solid #b8e986;
+    border-width: 0px 2px 2px 0px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
 
 /* CUSTOM SELECT */
 
@@ -229,7 +400,7 @@ margin-bottom: 30px;
 }
 
 #charity-results .charity-holder {
-    width: 349px;
+    width: 348px;
     height: 365px;
     border-radius: 10px;
     background-color: #ffffff;

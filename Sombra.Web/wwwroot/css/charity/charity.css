@@ -165,28 +165,6 @@
 }
 
 .category {
-<<<<<<< HEAD
-    font-family: 'Source Sans Pro', sans-serif;
-    margin-left: 10px;
-    margin-top: 2%;
-    border-radius: 5px;
-    background-color: rgba(177, 177, 177, 0.25);
-    padding: 1px 6px 2px 6px;
-    font-size: 15px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    width: auto;
-    display: inline-block;
-    color: #838383;
-}
-
-.category:first-child {
-    font-family: 'Source Sans Pro', sans-serif;
-=======
     font-family: 'Source Sans Pro', sans-serif;
     margin-left: 10px;
     margin-top: 2%;
@@ -206,7 +184,6 @@
 }
 .category:first-child {
     font-family: 'Source Sans Pro', sans-serif;
->>>>>>> master
     margin-left: 26px;
     margin-top: 2%;
     border-radius: 5px;
@@ -238,10 +215,6 @@
     display: inline-block;
     color: #838383;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 .kvk_ambi:last-child {
     font-family: 'Source Sans Pro', sans-serif;
     float: right;
@@ -388,11 +361,6 @@
     letter-spacing: normal;
     color: #f88356;
 }
-<<<<<<< HEAD
-=======
-
-.profile-icon {
->>>>>>> master
 
 .profile-icon {
     width: 28px;
@@ -401,24 +369,14 @@
     border-radius: 50%;
 }
 
-<<<<<<< HEAD
-.img-box {
-    float: left;
-=======
 .img-box{
 	float:left;
->>>>>>> master
     margin-left: 10px;
     margin-top: 10px;
 }
 
-<<<<<<< HEAD
 .text-box {
     float: left;
-=======
-.text-box{
-	float:left;
->>>>>>> master
     margin-left: 10px;
     margin-top: 13px;
     text-align: center;
@@ -585,11 +543,7 @@
     position: absolute;
     top: 6px;
     left: 26px;
-<<<<<<< HEAD
 }
-=======
- }
->>>>>>> master
 
 #donations {
     margin-top: 89px;

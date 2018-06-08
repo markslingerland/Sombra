@@ -4,7 +4,7 @@ services:
   sombra.web:
     environment:
       - CONTAINER_TYPE=Docker
-      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_ENVIRONMENT=${DC_ASPNETCORE_ENVIRONMENT:-Production}
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
     ports:
       - "80:80"

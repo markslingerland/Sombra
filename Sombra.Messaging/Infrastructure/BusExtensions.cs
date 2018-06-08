@@ -23,6 +23,7 @@ namespace Sombra.Messaging.Infrastructure
             catch (TimeoutException ex)
             {
                 ExtendedConsole.Log($"Request {request.GetType().Name} failed. Exception: {ex}");
+                Logger.LogExceptionAsync(ex, true);
 
                 return Task.FromResult((TResponse)Activator.CreateInstance<TResponse>().RequestFailed());
             }

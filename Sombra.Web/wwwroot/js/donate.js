@@ -19,7 +19,7 @@ $('#control_02').click(function () {
 });
 
 $('input:radio[name="pay-time"]').click(function (){
-    $(".section-1 .next-step-holder").show();
+    $(".section-1 .next-step-holder").css("display", "inline-block");
 })
 
 $('#select-your-charity').selectize({
@@ -129,16 +129,18 @@ $('#ideal').click(function () {
         $(".your-iban-holder").hide();
         $(".select-bank").show();
         $(".personal-information").hide();
-        $(".section-2 .next-step-holder").show();
+        $(".section-2 .next-step-holder").css("display", "inline-block");
+        $("#person-detail").show();
     }
 });
 
 $('#paypall').click(function () {
     if ($('#paypall').is(':checked')) {
         $(".your-iban-holder").hide();
-        $(".select-bank").show();
+        $(".select-bank").hide();
         $(".personal-information").hide();
         $(".section-2 .next-step-holder").show();
+        $("#person-detail").show();
     }
 });
 
@@ -148,6 +150,7 @@ $('#permission').click(function () {
         $(".select-bank").hide();
         $(".personal-information").show();
         $(".section-2 .next-step-holder").show();
+        $("#person-detail").hide();
         
     }
 });
@@ -218,7 +221,7 @@ $('#next-to-section-3').click(function () {
     $('#person-housenumber').removeClass("not-valid");
    }
 
-   if (iban_bankChecker && choosePaymentOption && lastNameFilled && postcodeFilled && houseNumberFilled || $('#ideal').is(':checked') && iban_bankChecker || $('#paypall').is(':checked') && iban_bankChecker) {
+   if (iban_bankChecker && choosePaymentOption && lastNameFilled && postcodeFilled && houseNumberFilled || $('#ideal').is(':checked') && iban_bankChecker || $('#paypall').is(':checked')) {
     $(".section-2").hide();
     $(".section-3").show();
 }
@@ -251,5 +254,32 @@ $(".section-4 #go-back").click(function() {
     $("#form-donate").css("padding-bottom", "200px");
 });
 
+// Navigation 
 
+$(".first-section").click(function(){
+    $(".section-1").show();
+    $(".section-2").hide();
+    $(".section-3").hide();
+    $(".section-4").hide();
+});
 
+$(".second-section").click(function(){
+    $(".section-2").show();
+    $(".section-1").hide();
+    $(".section-3").hide();
+    $(".section-4").hide();
+});
+
+$(".third-section").click(function(){
+    $(".section-3").show();
+    $(".section-1").hide();
+    $(".section-2").hide();
+    $(".section-4").hide();
+});
+
+$(".fourth-section").click(function(){
+    $(".section-4").show();
+    $(".section-1").hide();
+    $(".section-2").hide();
+    $(".section-3").hide();
+});

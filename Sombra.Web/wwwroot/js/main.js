@@ -12,7 +12,7 @@ $("#header-close-dropdown").click(function () {
   // set pixel for start change
   // if statement for remove and add
   $(function() {
-    var header = $("#header");
+    var header = $("#header .fixed-header");
   
     $(window).scroll(function() {    
         var scroll = $(window).scrollTop();

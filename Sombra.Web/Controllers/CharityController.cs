@@ -24,8 +24,8 @@ namespace Sombra.Web.Controllers
             charityModel.About = "Met MoveS willen we meer mensen inspireren om in beweging te komen tegen MS en iedereen de kans geven om dit te doen. We doen dit door het organiseren van evenementen zoals Klimmen tegen MS en  Met onze partners hebben wij het gezamenlijke doel om elkaars initiatieven te versterken met de overtuiging dat we samen sterker staan dan alleen. Deze evenementen versterken het MoveS merk, en met het versterken van het MoveS merk kunnen wij bijdragen aan het succes van deze partnerships evenementen en de waarde verhogen van het merk. In de toekomst zal er een MS-vrije wereld zijn. Maar tot die tijd willen we mensen met MS in beweging houden om hun mogelijkheden te verkennen met positieve vibes. MoveS ondersteunt alle bijdragen, klein of groot. Wij geloven sterk dat het niet de grootte is wat belangrijk is maar de beweging zelf. Samen kunnen we funding genereren om het verschil te maken.";
 
             // Info Story Needs to be randomly picked from list of Actions supporting the Charity
-            charityActionModel.Name = "Gert de Boer";
-            charityActionModel.Description = "Helpen maakt de wereld een vrolijkere plek, of niet?";
+            charityActionModel.Name = "Naomi Dirksland";
+            charityActionModel.Description = "Geld heb ik niet, maar ik zet mijn talenten graag in voor wie ze nodig heeft. Daarmee kun je dus óók wat bereiken!";
             charityActionModel.CharityActionKey = "1";
             charityActionModel.CharityName = "Klimmen tegen MS";
 

@@ -1,9 +1,9 @@
-@using Sombra.Core.Enums
-@using Sombra.Core.Extensions
-@{ ViewData["Title"] = "Goede doelen"; }
-@section Styles
-    {
-    <link rel="stylesheet" href="~/css/search/search.css" />
+@using Sombra.Core.Enums @using Sombra.Core.Extensions 
+@{ ViewData["Title"] = "Goede doelen"; } 
+@section Styles {
+<link rel="stylesheet" href="~/css/search/search.css" /> } 
+@section Scripts {
+<script src="~/js/search.js"></script>
 }
 
 <div id="filter">
@@ -15,39 +15,50 @@
             <input class="filter-input" type="text" placeholder="Zoeken..." name="Zoeken...">
             <button class="submit-button monster-300" type="submit"><i class="fa fa-search"></i></button>
 
-            <div class="custom-select monster-300">
-                <select class="monster-300" form="Categorieën">
-                    <option class="monster-300 option" value="" hidden>Categorieën</option>
-                    @foreach (var category in typeof(Category).GetFlagValues<Category>().Where(v => (int)v != 0))
-                    {
-                        <option class="monster-300 option" value="@((int) category)">@category.GetDisplayName()</option>
-                    }
-                </select>
-                <i class="fas fa-chevron-down"></i>
+            <div class="category-checkbox-holder">
+
+                <div class="category-dropdown-holder">
+                    <div class="category-dropdown">
+                        <p class="monster-300">Categorieën</p>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="checkbox-dropdown">
+                        @foreach (var category in typeof(Category).GetFlagValues
+                        <Category>().Where(v => (int)v !=0)){
+                            <div>
+                                <label class="checkbo-container monster-300">@category.GetDisplayName()
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            }
+                    </div>
+                </div>
             </div>
         </form>
     </div>
 </div>
 
 <div id="selected-category">
+    <p class="no-categories-selected source-300">Verfijn je zoekopdracht door steekwoorden in te voeren in de zoekbalk. Bijvoorbeeld ‘kinderen’ of ‘natuurgeweld’.</p>
     <div class="selected-categories">
-        <a class="selected-category source-800" href="#">
+        <label class="selected-category source-800" href="#">
             GEZONDHEID
             <span class="cross-holder">
-                <span class="icon-holder">
+                <a href="#" class="icon-holder">
                     <i class="fas fa-times"></i>
-                </span>
+                </a>
             </span>
-        </a>
+        </label>
 
-        <a class="selected-category source-800" href="#">
-            maatschappelijke en sociale doelen
-            <span class="cross-holder">
+        <label class="selected-category source-800" href="#">
+            MAATSCHAPPELIJKE EN SOCIALE DOELEN
+            <a href="#" class="cross-holder">
                 <span class="icon-holder">
                     <i class="fas fa-times"></i>
                 </span>
-            </span>
-        </a>
+            </a>
+        </label>
     </div>
 </div>
 
@@ -57,6 +68,7 @@
     <div id="charity-results">
 
         <div class="charity-holder">
+            <a class="clickable" href="#"></a>
             <div class="charity-background-image">
                 <div class="charity-logo"></div>
                 <div class="charity-background-gradient"></div>
@@ -69,8 +81,8 @@
                 <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
 
                 <div class="charity-item-category-holder">
-                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
-                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
                 </div>
             </div>
         </div>
@@ -88,8 +100,8 @@
                 <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
 
                 <div class="charity-item-category-holder">
-                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
-                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
                 </div>
             </div>
         </div>
@@ -107,8 +119,8 @@
                 <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
 
                 <div class="charity-item-category-holder">
-                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
-                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
                 </div>
             </div>
         </div>
@@ -126,8 +138,8 @@
                 <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
 
                 <div class="charity-item-category-holder">
-                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
-                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
                 </div>
             </div>
         </div>
@@ -145,8 +157,8 @@
                 <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
 
                 <div class="charity-item-category-holder">
-                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
-                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
                 </div>
             </div>
         </div>
@@ -164,8 +176,8 @@
                 <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
 
                 <div class="charity-item-category-holder">
-                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
-                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
                 </div>
             </div>
         </div>
@@ -183,8 +195,8 @@
                 <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
 
                 <div class="charity-item-category-holder">
-                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
-                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
                 </div>
             </div>
         </div>
@@ -202,8 +214,8 @@
                 <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
 
                 <div class="charity-item-category-holder">
-                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
-                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
                 </div>
             </div>
         </div>
@@ -221,8 +233,8 @@
                 <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
 
                 <div class="charity-item-category-holder">
-                    <a class="source-400 charity-item-category" href="#">GEZONDHEID</a>
-                    <a class="source-400 charity-item-category" href="#">CULTUUR</a>
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
                 </div>
             </div>
         </div>

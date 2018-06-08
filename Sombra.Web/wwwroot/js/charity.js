@@ -18,6 +18,9 @@ $('.button--previous').on('click', function () {
 $('.button--next').on('click', function () {
     $carousel.flickity('next');
 });
+<<<<<<< HEAD
 // calculate height for charity-info
 var heightStoryboard = $('.main-storyboard').innerHeight();
 document.getElementById('charity-info').setAttribute("style", "height:" + (heightStoryboard) + "px");
+=======
+>>>>>>> master

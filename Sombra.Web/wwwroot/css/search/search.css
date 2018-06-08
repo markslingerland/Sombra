@@ -11,6 +11,10 @@
     padding-right: 165px;
 }
 
+.header-big-menu ul li:nth-child(1) {
+    font-weight: 700;
+}
+
 #filter .signin-charity {
 font-size: 18px;
 font-style: normal;

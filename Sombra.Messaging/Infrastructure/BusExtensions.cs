@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using EasyNetQ;
@@ -9,23 +11,26 @@ namespace Sombra.Messaging.Infrastructure
 {
     public static class BusExtensions
     {
+        private static readonly MethodInfo _genericRequestMethod = typeof(IBus).GetMethods().Single(m => m.Name == nameof(IBus.RequestAsync) && m.GetParameters().Length == 1);
+        private static readonly ConcurrentDictionary<Type, MethodInfo> _typedRequestMethods = new ConcurrentDictionary<Type, MethodInfo>();
+
         public static Task<TResponse> RequestAsync<TResponse>(this IBus bus, IRequest<TResponse> request)
-            where TResponse : class, IResponse
+            where TResponse : class, IResponse, new()
         {
-            var requestMethod = typeof(IBus).GetMethods().Single(m => m.Name == nameof(IBus.RequestAsync) && m.GetParameters().Length == 1);
-            var typedRequestMethod = requestMethod.MakeGenericMethod(request.GetType(), typeof(TResponse));
+            var requestMethod = _typedRequestMethods.GetOrAdd(request.GetType(),
+                requestType => _genericRequestMethod.MakeGenericMethod(requestType, typeof(TResponse)));
 
             try
             {
                 Logger.LogMessageAsync(request);
-                return (Task<TResponse>) typedRequestMethod.Invoke(bus, new object[] {request});
+                return (Task<TResponse>)requestMethod.Invoke(bus, new object[] {request});
             }
             catch (TimeoutException ex)
             {
                 ExtendedConsole.Log($"Request {request.GetType().Name} failed. Exception: {ex}");
                 Logger.LogExceptionAsync(ex, true);
 
-                return Task.FromResult((TResponse)Activator.CreateInstance<TResponse>().RequestFailed());
+                return Task.FromResult((TResponse)new TResponse().RequestFailed());
             }
         }
 

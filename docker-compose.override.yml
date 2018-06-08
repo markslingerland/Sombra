@@ -55,6 +55,12 @@ services:
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - USER_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Users;
 
+  sombra.donateservice:
+      environment:
+      - CONTAINER_TYPE=Docker
+      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
+      - DONATIONS_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Donations;
+
   sombra.searchservice:
     environment:
       - CONTAINER_TYPE=Docker
@@ -89,7 +95,6 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=${DC_MONGOPASSWORD:-mongopassword}
     ports:
       - "27017:27017"
-
 
   portainer:
     ports:

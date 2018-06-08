@@ -10,7 +10,7 @@ namespace Sombra.Web.Infrastructure.Filters
         public override async Task OnExceptionAsync(ExceptionContext context)
         {
             ExtendedConsole.Log(context.Exception);
-            await Logger.LogExceptionAsync(context.Exception);
+            await Logger.LogExceptionAsync(context.Exception, false);
 
             await base.OnExceptionAsync(context);
         }

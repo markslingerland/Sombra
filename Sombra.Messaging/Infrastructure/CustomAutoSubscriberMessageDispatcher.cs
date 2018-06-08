@@ -30,7 +30,7 @@ namespace Sombra.Messaging.Infrastructure
             catch (Exception ex)
             {
                 ExtendedConsole.Log(ex);
-                Logger.LogException(ex, consumer.GetType().Name);
+                Logger.LogException(ex, false, consumer.GetType().Name);
             }
         }
 
@@ -48,7 +48,7 @@ namespace Sombra.Messaging.Infrastructure
             catch (Exception ex)
             {
                 ExtendedConsole.Log(ex);
-                Logger.LogExceptionAsync(ex, consumer.GetType().Name);
+                Logger.LogExceptionAsync(ex, false, consumer.GetType().Name);
             }
         }
     }

@@ -27,7 +27,6 @@ namespace Sombra.IdentityService
                 return await _context.TrySaveChangesAsync<UpdateRolesResponse>(response =>
                 {
                     response.Role = message.Role;
-                    return response;
                 });
             }
 

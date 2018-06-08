@@ -2,7 +2,7 @@
 {
     public class GetStoryByKeyResponse : Response
     {
-        public bool Success { get; set; }
+        public bool IsSuccess { get; set; }
         public Shared.Story Story { get; set; }
     }
 }

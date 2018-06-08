@@ -37,7 +37,7 @@ namespace Sombra.CharityService
                     };
 
                 charity.IsApproved = true;
-                await _context.SaveChangesAsync();
+                if (!await _context.TrySaveChangesAsync()) return new ApproveCharityResponse();
 
                 var charityCreatedEvent = _mapper.Map<CharityCreatedEvent>(charity);
                 await _bus.PublishAsync(charityCreatedEvent);

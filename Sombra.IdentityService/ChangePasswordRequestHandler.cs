@@ -29,8 +29,7 @@ namespace Sombra.IdentityService
                 {
                     credential.Secret = message.Password;
                     credential.SecurityToken = string.Empty;
-                    await _context.SaveChangesAsync();
-                    return ChangePasswordResponse.Success();
+                    return await _context.TrySaveChangesAsync<ChangePasswordResponse>();
                 }
 
                 return new ChangePasswordResponse

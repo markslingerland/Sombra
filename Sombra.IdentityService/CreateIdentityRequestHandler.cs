@@ -63,7 +63,6 @@ namespace Sombra.IdentityService
             return await _context.TrySaveChangesAsync<CreateIdentityResponse>(response =>
             {
                 response.ActivationToken = activationToken;
-                return response;
             });
         }
     }

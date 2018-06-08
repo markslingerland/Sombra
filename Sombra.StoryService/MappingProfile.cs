@@ -22,7 +22,7 @@ namespace Sombra.StoryService
                 .ForMember(d => d.Images, opt => opt.MapFrom(s => s.Images.Select(i => i.Base64)));
 
             CreateMap<Story, GetStoryByKeyResponse>()
-                .ForMember(d => d.Success, opt => opt.UseValue(true))
+                .ForMember(d => d.IsSuccess, opt => opt.UseValue(true))
                 .ForMember(d => d.Story, opt => opt.MapFrom(s => s));
 
             CreateMap<CreateStoryRequest, Story>()

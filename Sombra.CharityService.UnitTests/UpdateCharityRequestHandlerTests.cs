@@ -77,7 +77,7 @@ namespace Sombra.CharityService.UnitTests
                     Assert.AreEqual(request.IBAN, context.Charities.Single().IBAN);
                     Assert.AreEqual(request.CoverImage, context.Charities.Single().CoverImage);
                     Assert.AreEqual(request.Slogan, context.Charities.Single().Slogan);
-                    Assert.IsTrue(response.Success);
+                    Assert.IsTrue(response.IsSuccess);
                 }
                 busMock.Verify(m => m.PublishAsync(It.Is<CharityUpdatedEvent>(e => e.CharityKey == request.CharityKey && e.Name == request.Name)), Times.Once);
             }
@@ -147,7 +147,7 @@ namespace Sombra.CharityService.UnitTests
                     Assert.AreEqual(charity.IBAN, context.Charities.Single().IBAN);
                     Assert.AreEqual(charity.CoverImage, context.Charities.Single().CoverImage);
                     Assert.AreEqual(charity.Slogan, context.Charities.Single().Slogan);
-                    Assert.IsFalse(response.Success);
+                    Assert.IsFalse(response.IsSuccess);
                     Assert.AreEqual(ErrorType.NotFound, response.ErrorType);
                 }
                 busMock.Verify(m => m.PublishAsync(It.Is<CharityUpdatedEvent>(e => e.CharityKey == request.CharityKey)), Times.Never);

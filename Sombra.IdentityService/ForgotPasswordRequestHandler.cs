@@ -22,8 +22,6 @@ namespace Sombra.IdentityService
 
         public async Task<ForgotPasswordResponse> Handle(ForgotPasswordRequest message)
         {
-            var response = new ForgotPasswordResponse();
-
             var credential = await _context.Credentials.FirstOrDefaultAsync(c => c.Identifier == message.Email && c.CredentialType == CredentialType.Email && c.User.IsActive);
 
             if (credential != null)
@@ -32,14 +30,18 @@ namespace Sombra.IdentityService
                 var securityToken = Hash.SHA256(guid);
                 credential.SecurityToken = securityToken;
                 credential.ExpirationDate = DateTime.UtcNow.AddDays(1);
-                await _context.SaveChangesAsync();
 
-                response.Success = true;
-                response.Secret = securityToken;
+                return await _context.TrySaveChangesAsync<ForgotPasswordResponse>(response =>
+                {
+                    response.Secret = securityToken;
+                });
+                
             }
 
-            response.ErrorType = ErrorType.InvalidEmail;
-            return response;
+            return new ForgotPasswordResponse
+            {
+                ErrorType = ErrorType.InvalidEmail
+            };
         }
     }
 }

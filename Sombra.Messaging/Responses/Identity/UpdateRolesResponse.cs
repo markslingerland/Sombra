@@ -2,10 +2,8 @@
 
 namespace Sombra.Messaging.Responses.Identity
 {
-    public class UpdateRolesResponse : Response
+    public class UpdateRolesResponse : CrudResponse<UpdateRolesResponse>
     {
-        public bool Success { get; set; }
-        public ErrorType ErrorType { get; set; }
         public Role Role { get; set; }
     }
 }

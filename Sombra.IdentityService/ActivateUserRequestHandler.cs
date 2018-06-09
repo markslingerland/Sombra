@@ -41,20 +41,7 @@ namespace Sombra.IdentityService
                 user.IsActive = true;
                 user.ActivationToken = null;
 
-                try
-                {
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateException ex)
-                {
-                    ExtendedConsole.Log(ex);
-                    return new ActivateUserResponse();
-                }
-
-                return new ActivateUserResponse
-                {
-                    Success = true
-                };
+                return await _context.TrySaveChangesAsync<ActivateUserResponse>();
             }
 
             return new ActivateUserResponse

@@ -39,7 +39,7 @@ namespace Sombra.IdentityService.UnitTests
                 using (var context = AuthenticationContext.GetInMemoryContext())
                 {
                     Assert.IsNotNull(response.ActivationToken);
-                    Assert.IsTrue(response.Success);
+                    Assert.IsTrue(response.IsSuccess);
                     Assert.IsTrue(context.Users.Count() == 1);
                     Assert.AreEqual(request.UserName, context.Users.Single().Name);
                     Assert.AreEqual(request.UserKey, context.Users.Single().UserKey);
@@ -76,7 +76,7 @@ namespace Sombra.IdentityService.UnitTests
                 {
                     Assert.IsFalse(context.Users.Any());
                     Assert.IsNull(response.ActivationToken);
-                    Assert.IsFalse(response.Success);
+                    Assert.IsFalse(response.IsSuccess);
                     Assert.AreEqual(ErrorType.InvalidKey, response.ErrorType);
                 }
             }
@@ -129,7 +129,7 @@ namespace Sombra.IdentityService.UnitTests
                 {
                     Assert.IsTrue(context.Users.Count() == 1);
                     Assert.IsNull(response.ActivationToken);
-                    Assert.IsFalse(response.Success);
+                    Assert.IsFalse(response.IsSuccess);
                     Assert.AreEqual(ErrorType.EmailExists, response.ErrorType);
                 }
             }

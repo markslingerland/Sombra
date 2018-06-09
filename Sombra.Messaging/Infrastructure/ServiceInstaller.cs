@@ -11,6 +11,7 @@ namespace Sombra.Messaging.Infrastructure
     public static class ServiceInstaller
     {
         public const string LoggingQueue = "IMessageLoggingQueue";
+        public const string ExceptionQueue = "ExceptionQueue";
 
         public static ServiceProvider Run(Assembly assembly, string busConnectionString, Func<IServiceCollection, IServiceCollection> addAdditionalServices = null, params Action<ServiceProvider>[] additionalActions)
         {
@@ -30,6 +31,9 @@ namespace Sombra.Messaging.Infrastructure
                 .BuildServiceProvider(true);
 
             ExtendedConsole.Log("ServiceInstaller: Services are registered.");
+
+            Logger.SetServiceProvider(serviceProvider);
+            ExtendedConsole.Log("ServiceInstaller: Logger initialized");
 
             var responder = new AutoResponder(bus, new AutoResponderRequestDispatcher(serviceProvider));
             responder.RespondAsync(assembly);

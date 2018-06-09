@@ -58,7 +58,7 @@ namespace Sombra.CharityActionService.UnitTests
                     Assert.AreEqual(request.Description, context.CharityActions.Single().Description);
                     Assert.AreEqual(request.CoverImage, context.CharityActions.Single().CoverImage);
                     Assert.IsFalse(context.CharityActions.Single().IsApproved);
-                    Assert.IsTrue(response.Success);
+                    Assert.IsTrue(response.IsSuccess);
                 }
             }
             finally
@@ -100,7 +100,7 @@ namespace Sombra.CharityActionService.UnitTests
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(ErrorType.InvalidKey, response.ErrorType);
-                    Assert.IsFalse(response.Success);
+                    Assert.IsFalse(response.IsSuccess);
                     Assert.IsFalse(context.CharityActions.Any());
                 }
             }

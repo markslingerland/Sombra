@@ -1,6 +1,16 @@
 var ctx = document.getElementById("myChart").getContext('2d');
 
-var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+var img = new Image;
+img.onload = function() {
+  image.shadowInset = true;
+  image.shadowBlur = 25;
+  image.shadowColor = "#000";
+  ctx.drawImage(this, 0, 0);
+}
+
+img.src = "http://i.imgur.com/Qrfga2b.png";
+
+var gradientStroke = ctx.createLinearGradient(100, 0, 500, -100);
 gradientStroke.addColorStop(0, "#fda23f");
 gradientStroke.addColorStop(1, "#f3646f");
 
@@ -14,27 +24,59 @@ var myChart = new Chart(ctx, {
             pointBackgroundColor:      gradientStroke,
             pointHoverBackgroundColor: gradientStroke,
             pointHoverBorderColor:     gradientStroke,
-            label: 'Opgehaald bedrag',
-            data: [500,750,1000,1250,1500,2000,1500,1800,1300,1000,750,1500],
+            data: [500,750,1000,1250,1600,750],
             borderWidth: 9,
             fill: false, 
-            pointBackgroundColor: '#ffffff',
-            pointBorderColor: '#ffffff',
+            pointBackgroundColor: gradientStroke,
+            pointBorderColor: gradientStroke,
             pointHoverBackgroundColor: '#ffffff',
-            pointHoverBorderColor: '#ffffff',
-            pointRadius: [0,0,0,0,0,0,0,0,0,0,0,16],
-            pointHoverRadius: [0,0,0,0,0,0,0,0,0,0,0,16]
+            pointHoverBorderColor: gradientStroke,
+            pointRadius: [0,0,0,0,0,6],
+            pointHoverRadius: 14,
+            hitRadius: 50,
+            pointBorderWidth: 7,
         }]
     },
     options: {
+        tooltips: {
+            backgroundColor: 'rgba(248,131,86,1)',
+            borderColor: 'rgba(248,131,86,1)',
+            caretPadding: 28,
+            yAlign: 'bottom',
+            xAlign: 'center',
+
+            caretSize: 10,
+            titleFontSize: 0,
+            titleSpacing: 0,
+            titleMarginBottom: 0,
+            displayColors: false,
+            bodyFontSize: 16,
+            xPadding: 20,
+            yPadding: 15,
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    return '€' + tooltipItem.yLabel + ',00';
+                }
+            }
+
+        },
         title: {
             display: true,
             position: 'top',
             fontSize: 18,
             fontColor: '#838383',
+            fontFamily: 'Source Sans Pro',
             padding: 25,
             text: 'Opgehaalde bedragen in het jaar 2018                                                                                                                                                                      '
         },
+        layout: {
+            padding: {
+                left: 70,
+                top: 34,
+                bottom: 45,
+                right: 95
+            }
+        },  
         legend: {
             display: false
         },
@@ -49,6 +91,7 @@ var myChart = new Chart(ctx, {
                 ticks: { 
                     maxTicksLimit: 5,
                     fontSize: 18,
+                    fontFamily: 'Source Sans Pro',
                     fontColor: '#838383',
                     beginAtZero:true,
                     padding: 8
@@ -56,6 +99,7 @@ var myChart = new Chart(ctx, {
             }],
             xAxes: [{
                 gridLines: {
+                    offset: true,
                     display: true,
                     drawOnChartArea: false,
                     color: '#979797',
@@ -63,6 +107,7 @@ var myChart = new Chart(ctx, {
                 },
                 ticks: {
                     fontSize: 18,
+                    fontFamily: 'Source Sans Pro',
                     fontColor: '#838383',
                     padding: 3
 

@@ -76,7 +76,7 @@ namespace Sombra.Infrastructure.DAL
             catch (DbUpdateException ex)
             {
                 ExtendedConsole.Log(ex);
-                Logger.LogExceptionAsync(ex);
+                Logger.LogExceptionAsync(ex, true);
                 return Task.FromResult(false);
             }
 

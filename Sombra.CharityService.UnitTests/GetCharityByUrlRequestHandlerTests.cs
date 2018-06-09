@@ -67,7 +67,7 @@ namespace Sombra.CharityService.UnitTests
                     Assert.AreEqual(response.Charity.IBAN, context.Charities.Single().IBAN);
                     Assert.AreEqual(response.Charity.CoverImage, context.Charities.Single().CoverImage);
                     Assert.AreEqual(response.Charity.Slogan, context.Charities.Single().Slogan);
-                    Assert.IsTrue(response.Success);
+                    Assert.IsTrue(response.IsSuccess);
                 }
             }
             finally
@@ -121,7 +121,7 @@ namespace Sombra.CharityService.UnitTests
                 }
 
                 //Assert
-                Assert.IsFalse(response.Success);
+                Assert.IsFalse(response.IsSuccess);
             }
             finally
             {
@@ -173,7 +173,7 @@ namespace Sombra.CharityService.UnitTests
                 }
 
                 //Assert
-                Assert.IsFalse(response.Success);
+                Assert.IsFalse(response.IsSuccess);
             }
             finally
             {

@@ -46,7 +46,7 @@ namespace Sombra.IdentityService.UnitTests
                 {
                     Assert.IsFalse(context.Users.Single().IsActive);
                     Assert.AreEqual(ErrorType.TokenInvalid, response.ErrorType);
-                    Assert.IsFalse(response.Success);
+                    Assert.IsFalse(response.IsSuccess);
                 }
             }
             finally
@@ -89,7 +89,7 @@ namespace Sombra.IdentityService.UnitTests
                 {
                     Assert.IsFalse(context.Users.Single().IsActive);
                     Assert.AreEqual(ErrorType.TokenExpired, response.ErrorType);
-                    Assert.IsFalse(response.Success);
+                    Assert.IsFalse(response.IsSuccess);
                 }
             }
             finally
@@ -132,7 +132,7 @@ namespace Sombra.IdentityService.UnitTests
                 {
                     Assert.IsTrue(context.Users.Single().IsActive);
                     Assert.IsNull(context.Users.Single().ActivationToken);
-                    Assert.IsTrue(response.Success);
+                    Assert.IsTrue(response.IsSuccess);
                 }
             }
             finally

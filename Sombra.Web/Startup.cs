@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Sombra.Messaging;
 using Sombra.Web.Infrastructure;
 using Sombra.Web.Infrastructure.Filters;
 using Sombra.Web.Infrastructure.Authentication;
@@ -38,6 +39,7 @@ namespace Sombra.Web
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                 options.Filters.Add(new ValidatorActionFilter());
+                options.Filters.Add(new ExceptionLoggingFilterAttribute());
                 // options.Filters.Add(new SubdomainActionFilter());
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddMemoryCache();
@@ -52,6 +54,8 @@ namespace Sombra.Web
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie();
+
+            Logger.SetServiceProvider(services.BuildServiceProvider());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

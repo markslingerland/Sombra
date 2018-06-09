@@ -54,7 +54,7 @@ namespace Sombra.CharityService.UnitTests
         }
 
         [TestMethod]
-        public async Task GetCharityActionsRequestHandlerTests_Handle_Returns_Filtered_CharityActions()
+        public async Task GetCharityActionsRequestHandlerTests_Handle_Returns_Filtered_Charities()
         {
             CharityContext.OpenInMemoryConnection();
             try

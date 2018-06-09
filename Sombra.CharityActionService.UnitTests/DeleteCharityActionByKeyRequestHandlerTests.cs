@@ -121,7 +121,7 @@ namespace Sombra.CharityActionService.UnitTests
                 }
 
                 //Assert
-                Assert.IsFalse(response.Success);               
+                Assert.IsFalse(response.IsSuccess);
             }
             finally
             {

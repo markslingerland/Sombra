@@ -53,7 +53,7 @@ namespace Sombra.CharityService.UnitTests
                     Assert.AreEqual(request.CoverImage, context.Charities.Single().CoverImage);
                     Assert.AreEqual(request.Slogan, context.Charities.Single().Slogan);
                     Assert.IsFalse(context.Charities.Single().IsApproved);
-                    Assert.IsTrue(response.Success);
+                    Assert.IsTrue(response.IsSuccess);
                 }
             }
             finally
@@ -94,7 +94,7 @@ namespace Sombra.CharityService.UnitTests
                 {
                     Assert.IsFalse(context.Charities.Any());
                     Assert.AreEqual(ErrorType.InvalidKey, response.ErrorType);
-                    Assert.IsFalse(response.Success);
+                    Assert.IsFalse(response.IsSuccess);
                 }
             }
             finally

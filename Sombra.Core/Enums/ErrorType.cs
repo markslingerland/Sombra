@@ -15,6 +15,7 @@
         CharityNotFound = 10,
         CharityActionNotFound = 11,
         UserNotFound = 12,
-        NoDonationsFound = 13
+        NoDonationsFound = 13,
+        InvalidUserKey = 14
     }
 }

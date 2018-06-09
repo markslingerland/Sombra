@@ -22,7 +22,7 @@ namespace Sombra.CharityActionService
 
             foreach (var charityAction in charitieActionsToUpdate)
             {
-                charityAction.OrganiserUserName = $"{message.FirstName} {message.LastName}";
+                charityAction.OrganiserUserName = Helpers.GetUserName(message);
                 charityAction.OrganiserImage = message.ProfileImage;
             }
 

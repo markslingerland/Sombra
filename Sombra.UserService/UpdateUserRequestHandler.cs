@@ -53,23 +53,12 @@ namespace Sombra.UserService
             }
 
             _context.Entry(existingUser).CurrentValues.SetValues(message);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                ExtendedConsole.Log(ex);
-                return new UpdateUserResponse();
-            }
+            if (!await _context.TrySaveChangesAsync()) return new UpdateUserResponse();
 
             var userUpdatedEvent = _mapper.Map<UserUpdatedEvent>(existingUser);
             await _bus.PublishAsync(userUpdatedEvent);
 
-            return new UpdateUserResponse
-            {
-                Success = true
-            };
+            return UpdateUserResponse.Success();
         }
     }
 }

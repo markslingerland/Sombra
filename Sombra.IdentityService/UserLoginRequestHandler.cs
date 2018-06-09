@@ -33,7 +33,7 @@ namespace Sombra.IdentityService
                 }
                 else
                 {
-                    response.Success = true;
+                    response.IsSuccess = true;
                     response.UserKey = credential.User.UserKey;
                     response.UserName = credential.User.Name;
                     response.Role = credential.User.Role;

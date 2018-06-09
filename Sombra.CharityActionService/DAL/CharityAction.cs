@@ -17,6 +17,7 @@ namespace Sombra.CharityActionService.DAL
         public string Description { get; set; }
         public string CoverImage { get; set; }
         public bool IsApproved { get; set; }
+        public string ThankYou { get; set; }
 
         public Guid OrganiserUserKey { get; set; }
         public string OrganiserImage { get; set; }

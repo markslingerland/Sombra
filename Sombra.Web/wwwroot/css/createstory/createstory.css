@@ -165,7 +165,7 @@ input[type=text] {
 
 }
 
-#about .title-container {
+.title-container {
     width: 790px;
     height: 50px;
     margin-top: 137px;
@@ -175,7 +175,7 @@ input[type=text] {
     margin-right: auto;
 }
 
-#about .title {
+.title {
     font-family: 'Source Sans Pro', sans-serif;
     width: 100%;
     height: 100%;
@@ -185,7 +185,7 @@ input[type=text] {
     margin-right: auto;
 }
 
-#about .storypart-1-container {
+.storypart-1-container {
     width: 790px;
     height: 153px;
     border-radius: 8px;
@@ -195,7 +195,7 @@ input[type=text] {
     margin-top: 10px;
 }
 
-#about .storypart-2-container {
+.storypart-2-container {
     width: 790px;
     height: 325px;
     border-radius: 8px;
@@ -205,7 +205,7 @@ input[type=text] {
     margin-top: 10px;
 }
 
-#about .storypart-3-container {
+.storypart-3-container {
     width: 790px;
     height: 325px;
     border-radius: 8px;
@@ -215,16 +215,23 @@ input[type=text] {
     margin-top: 10px;
 }
 
-#about .story {
+.story {
     font-family: 'Source Sans Pro', sans-serif;
     width: 100%;
     height: 100%;
     border: hidden;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #838383;
     border-radius: 8px;
     margin-left: auto;
     margin-right: auto;
 }
-#about .quote-container {
+.quote-container {
     width: 790px;
     height: 190px;
     border-radius: 8px;
@@ -235,7 +242,7 @@ input[type=text] {
     border-style: dashed;
 }
 
-#about .quote {
+.quote {
     width: 100%;
     height: 100%;
     border: hidden;
@@ -253,7 +260,7 @@ input[type=text] {
     margin-right: auto;
 }
 
-#about .quote::-webkit-input-placeholder {
+.quote::-webkit-input-placeholder {
     opacity: 0.5;
     font-family: 'Kalam', sans-serif;
     font-size: 30px;
@@ -265,7 +272,7 @@ input[type=text] {
     color: #838383;
 }
 
-#about .title::-webkit-input-placeholder .story::-webkit-input-placeholder {
+.title::-webkit-input-placeholder {
     opacity: 0.5;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
@@ -277,6 +284,17 @@ input[type=text] {
     color: #838383;
 }
 
+.story::-webkit-input-placeholder {
+    opacity: 0.5;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #838383;
+}
 input[type=text] {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
@@ -289,69 +307,14 @@ input[type=text] {
     text-align: center;
 }
 
-
-#about .about-quotes {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 200;
-}
-
-
-
-#about .about-text {
+.about-text {
     display: block;
     width: 100%;
     text-align: left;
     padding-top: 75px;
 }
 
-#about .about-text h2 {
-    font-family: 'Montserrat', sans-serif;
-    width: 71%;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 40px;
-    font-weight: 200;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.25;
-    letter-spacing: normal;
-    color: #838383;
-    margin-top: 112px;
-}
-
-#about .about-text p {
-    font-family: 'Source Sans Pro', sans-serif;
-    width: 71%;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 18px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.56;
-    letter-spacing: normal;
-    color: #838383;
-    margin-top: 50px;
-}
-
-#about .about-text h1 {
-    font-family: 'Kalam', sans-serif;
-    width: 54%;
-    font-size: 30px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    color: #f88356;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-}
-#about .about-text:after {
-    content: none;
-}
-#about .story-image {
+.story-image {
     width: 790px;
     height: 356px;
     border-radius: 8px;

@@ -21,10 +21,7 @@ namespace Sombra.DonateService
         public async Task ConsumeAsync(CharityActionCreatedEvent message)
         {
             var charity = await _context.Charities.FirstOrDefaultAsync(c => c.CharityKey == message.CharityKey);
-            if (charity != null)
-            {
-                charity.ChartityActions.Add(_mapper.Map<CharityAction>(message));
-            }
+            charity?.ChartityActions.Add(_mapper.Map<CharityAction>(message));
             await _context.SaveChangesAsync();
         }
     }

@@ -22,7 +22,7 @@ namespace Sombra.Web.Infrastructure.Messaging
         public IBus Bus { get; }
 
         public async Task<TResponse> RequestAsync<TResponse>(IRequest<TResponse> request, CachingOptions options = CachingOptions.None)
-            where TResponse : class, IResponse
+            where TResponse : class, IResponse, new()
         {
             if (options == CachingOptions.SkipCache) return await Bus.RequestAsync(request);
 

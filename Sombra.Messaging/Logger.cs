@@ -21,16 +21,16 @@ namespace Sombra.Messaging
         public static Task LogMessageAsync(IMessage message)
             => Bus.SendAsync(ServiceInstaller.LoggingQueue, message);
 
-        public static Task LogExceptionAsync(Exception exception)
-            => LogExceptionAsync(exception, null);
+        public static Task LogExceptionAsync(Exception exception, bool isHandled)
+            => LogExceptionAsync(exception, isHandled, null);
 
-        public static Task LogExceptionAsync(Exception exception, string handlerName)
-            => Bus.SendAsync(ServiceInstaller.ExceptionQueue, new ExceptionMessage(exception, handlerName));
+        public static Task LogExceptionAsync(Exception exception, bool isHandled, string handlerName)
+            => Bus.SendAsync(ServiceInstaller.ExceptionQueue, new ExceptionMessage(exception, isHandled, handlerName));
 
-        public static void LogException(Exception exception)
-            => LogException(exception, null);
+        public static void LogException(Exception exception, bool isHandled)
+            => LogException(exception, isHandled, null);
 
-        public static void LogException(Exception exception, string handlerName)
-            => Bus.Send(ServiceInstaller.ExceptionQueue, new ExceptionMessage(exception, handlerName));
+        public static void LogException(Exception exception, bool isHandled, string handlerName)
+            => Bus.Send(ServiceInstaller.ExceptionQueue, new ExceptionMessage(exception, isHandled, handlerName));
     }
 }

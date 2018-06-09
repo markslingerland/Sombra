@@ -13,21 +13,21 @@
 }
 
 #header .container {
-    width: 1440px!important;
+    width: 1440px !important;
 }
 
 .charity-container {
-    width: 1109px!important;
+    width: 1109px !important;
     background-color: white;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
-    margin-top: -309px!important;
-    padding: 0!important;
+    margin-top: -309px !important;
+    padding: 0 !important;
 }
 
 .charity-logo {
     position: absolute;
     top: -80px;
-    width:  100%;
+    width: 100%;
 }
 
 .charity-logo-container {
@@ -342,7 +342,7 @@
 .donations-box:first-child {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-} 
+}
 
 .donations-box:last-child {
     border-bottom-left-radius: 8px;
@@ -363,7 +363,6 @@
 }
 
 .profile-icon {
-
     width: 28px;
     height: 28px;
     background-image: url("../../Assets/icons/Icon_profiel.svg");
@@ -373,11 +372,11 @@
 .img-box{
 	float:left;
     margin-left: 10px;
-    margin-top:10px;
+    margin-top: 10px;
 }
 
-.text-box{
-	float:left;
+.text-box {
+    float: left;
     margin-left: 10px;
     margin-top: 13px;
     text-align: center;
@@ -481,6 +480,7 @@
     margin-top: 110px;
     margin-left: 8px;
 }
+
 #acties .acties-text {
     max-width: 600px;
     height: 115px;
@@ -512,14 +512,14 @@
     font-size: 19px;
 }
 
-#acties .action-buttons .all-actions a , #acties .action-buttons .make-actions a {
+#acties .action-buttons .all-actions a, #acties .action-buttons .make-actions a {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    }
+}
 
 #acties .action-buttons .all-actions {
     margin-right: 16px;
@@ -543,8 +543,8 @@
     position: absolute;
     top: 6px;
     left: 26px;
- }
+}
 
- #donations {
-     margin-top: 89px;
- }
+#donations {
+    margin-top: 89px;
+}

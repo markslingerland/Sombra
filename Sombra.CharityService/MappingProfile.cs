@@ -18,11 +18,11 @@ namespace Sombra.CharityService
             CreateMap<Charity, Messaging.Shared.Charity>();
             CreateMap<Charity, GetCharityByKeyResponse>()
                 .ForMember(d => d.Charity, opt => opt.MapFrom(s => s))
-                .ForMember(d => d.Success, opt => opt.UseValue(true));
+                .ForMember(d => d.IsSuccess, opt => opt.UseValue(true));
 
             CreateMap<Charity, GetCharityByUrlResponse>()
                 .ForMember(d => d.Charity, opt => opt.MapFrom(s => s))
-                .ForMember(d => d.Success, opt => opt.UseValue(true));
+                .ForMember(d => d.IsSuccess, opt => opt.UseValue(true));
 
             CreateMap<Charity, CharityCreatedEvent>();
             CreateMap<Charity, CharityUpdatedEvent>();

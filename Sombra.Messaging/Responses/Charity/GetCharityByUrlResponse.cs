@@ -1,11 +1,8 @@
-using System;
-using Sombra.Core.Enums;
-
 namespace Sombra.Messaging.Responses.Charity
 {
     public class GetCharityByUrlResponse : Response
     {
-        public bool Success { get; set; }
+        public bool IsSuccess { get; set; }
 
         public Shared.Charity Charity { get; set; }
     }

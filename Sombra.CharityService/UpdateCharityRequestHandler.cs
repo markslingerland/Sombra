@@ -37,23 +37,12 @@ namespace Sombra.CharityService
             }
 
             _context.Entry(charity).CurrentValues.SetValues(message);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                ExtendedConsole.Log(ex);
-                return new UpdateCharityResponse();
-            }
+            if (!await _context.TrySaveChangesAsync()) return new UpdateCharityResponse();
 
             var charityUpdatedEvent = _mapper.Map<CharityUpdatedEvent>(charity);
             await _bus.PublishAsync(charityUpdatedEvent);
 
-            return new UpdateCharityResponse
-            {
-                Success = true
-            };
+            return UpdateCharityResponse.Success();
         }
     }
 }

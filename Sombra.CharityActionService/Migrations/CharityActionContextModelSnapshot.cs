@@ -54,6 +54,8 @@ namespace Sombra.CharityActionService.Migrations
 
                     b.Property<decimal>("TargetAmount");
 
+                    b.Property<string>("ThankYou");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CharityActionKey");

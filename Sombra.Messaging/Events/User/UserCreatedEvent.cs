@@ -1,8 +1,9 @@
 ﻿using System;
+using Sombra.Core;
 
 namespace Sombra.Messaging.Events.User
 {
-    public class UserCreatedEvent : Event
+    public class UserCreatedEvent : Event, IHasUserName
     {
         public Guid UserKey { get; set; }
         public string FirstName { get; set; }

@@ -22,7 +22,7 @@ namespace Sombra.CharityService
 
             foreach (var charity in charitiesToUpdate)
             {
-                charity.OwnerUserName = $"{message.FirstName} {message.LastName}";
+                charity.OwnerUserName = Helpers.GetUserName(message);
             }
 
             await _context.SaveChangesAsync();

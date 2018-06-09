@@ -63,7 +63,7 @@ namespace Sombra.IdentityService.UnitTests
                 //Assert
                 using (var context = AuthenticationContext.GetInMemoryContext())
                 {
-                    Assert.IsTrue(response.Success);
+                    Assert.IsTrue(response.IsSuccess);
                     Assert.AreEqual(response.UserName, context.Users.Single().Name);
                     Assert.AreEqual(response.UserKey, context.Users.Single().UserKey);
                     Assert.IsTrue(response.Role.OnlyHasFlag(Role.Donator));
@@ -124,7 +124,7 @@ namespace Sombra.IdentityService.UnitTests
 
                 //Assert
                 Assert.AreEqual(ErrorType.InvalidPassword, response.ErrorType);
-                Assert.IsFalse(response.Success);
+                Assert.IsFalse(response.IsSuccess);
                 Assert.IsNull(response.UserName);
                 Assert.AreEqual(response.UserKey, Guid.Empty);
                 Assert.AreEqual(Role.Default, response.Role);
@@ -184,7 +184,7 @@ namespace Sombra.IdentityService.UnitTests
 
                 //Assert
                 Assert.AreEqual(ErrorType.InactiveAccount, response.ErrorType);
-                Assert.IsFalse(response.Success);
+                Assert.IsFalse(response.IsSuccess);
                 Assert.IsNull(response.UserName);
                 Assert.AreEqual(response.UserKey, Guid.Empty);
                 Assert.AreEqual(Role.Default, response.Role);

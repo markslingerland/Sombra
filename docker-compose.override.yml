@@ -4,7 +4,7 @@ services:
   sombra.web:
     environment:
       - CONTAINER_TYPE=Docker
-      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_ENVIRONMENT=${DC_ASPNETCORE_ENVIRONMENT:-Production}
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
     ports:
       - "80:80"
@@ -55,6 +55,12 @@ services:
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - USER_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Users;
 
+  sombra.donateservice:
+      environment:
+      - CONTAINER_TYPE=Docker
+      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
+      - DONATIONS_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Donations;
+
   sombra.searchservice:
     environment:
       - CONTAINER_TYPE=Docker
@@ -67,6 +73,11 @@ services:
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - TIME_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Time;
 
+  sombra.storyservice:
+    environment:
+      - CONTAINER_TYPE=Docker
+      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
+      - STORY_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Stories;
 
   rabbitmq:
     environment:
@@ -89,7 +100,6 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=${DC_MONGOPASSWORD:-mongopassword}
     ports:
       - "27017:27017"
-
 
   portainer:
     ports:

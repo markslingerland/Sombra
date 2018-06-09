@@ -22,34 +22,32 @@
         </div>
         <div class="profile-name">@Model.UserFirstName @Model.UserLastName</div>
     </div>
-        @*title & story*@
-        <div id="about">
-            <div class="row about-text">
-                <h2>@Model.Title</h2>
-                <p>@Model.Story[0]</p>
-                <div class="story-image" style="background-image:url(@Model.MainImage)"></div>
-                <p>@Model.Story[1]</p>
-                <h1>“@Model.Quote”</h1>
-                <p>@Model.Story[2]</p>
-            </div>
+    @*title & story*@
+    <div id="about">
+        <div class="row about-text">
+            <h2>@Model.Title</h2>
+            <p>@Model.Story[0]</p>
+            <div class="story-image" style="background-image:url(@Model.MainImage)"></div>
+            <p>@Model.Story[1]</p>
+            <h1>“@Model.Quote”</h1>
+            <p>@Model.Story[2]</p>
         </div>
-        @*Active acitons*@
-        <div id="acties">
-            <div class="slider-container">
-                <div id="charity-actions-carousel" class="main-carousel">
-                    @foreach (var image in @Model.Images)
-                    {
-
-                            <div id="image-slider">
-                                <div class="images" style="background-image:url(@image);"></div>
-                            </div>
-
-                    }
-                </div>
-                <div class="button button--previous"></div>
-                <div class="button button--next"></div>
+    </div>
+    @*Active acitons*@
+    <div id="acties">
+        <div class="slider-container">
+            <div id="charity-actions-carousel" class="main-carousel">
+                @foreach (var image in @Model.Images)
+                {
+                    <div id="image-slider">
+                        <div class="images" style="background-image:url(@image);"></div>
+                    </div>
+                }
             </div>
+            <div class="button button--previous"></div>
+            <div class="button button--next"></div>
         </div>
+    </div>
 </div>
 <div id="share-story" class="share-story">
     <div class="share-instagram"></div>
@@ -57,7 +55,48 @@
     <div class="share-facebook"></div>
     <p>DEEL DIT VERHAAL OOK OP SOCIAL MEDIA</p>
 </div>
-    <div class="share-text">
-    <h2>Deel je eigen verhaal</h2>
-    <p>Wat voor reden heeft deze donatie voor jou? Heb je een speciaal verhaal wat je met ons en mede-donateurs wilt delen? Deel jouw verhaal in en wie weet kom jij op onze verhalen pagina!</p>
+<div class="share-text">
+    <div class="shared-container">
+        <h2>Deel je eigen verhaal</h2>
+        <p>Wat voor reden heeft deze donatie voor jou? Heb je een speciaal verhaal wat je met ons en mede-donateurs wilt delen? Deel jouw verhaal in en wie weet kom jij op onze verhalen pagina!</p>
+        <a href="#">
+            <button class="big-button">
+                <span>Deel mijn verhaal</span>
+            </button>
+        </a>
+    </div>
+</div>
+
+<div id="other-story">
+    <div class="story-board">
+        <div class="other-story-logo">
+            <div class="other-story-logo-container">
+                <div class="other-profile-image " style="background-image:url(@Model.RandomStory.UserImage)">
+                </div>
+            </div>
+            <div class="profile-name">@Model.RandomStory.UserFirstName @Model.RandomStory.UserLastName</div>
+        </div>
+        <p>“@Model.RandomStory.Quote”</p>
+        <a href="#">Lees dit verhaal</a>
+    </div>
+</div>
+
+<div id="more-stories">
+    <div class="more-stories-field">
+        <h3 class="title">Vergelijkbare verhalen</h3>
+        <div class="row">
+
+            @foreach (var story in @Model.EqualStories)
+            {
+            
+            <div class="column">
+                <a href="#">
+                    <div class="images" style="background-image:url(@story.MainImage);"></div>
+                    <p>@story.Title</p>
+                </a>
+            </div>
+            
+            }
+        </div>
+    </div>
 </div>

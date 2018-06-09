@@ -15,6 +15,7 @@ namespace Sombra.Web.ViewModels.Story
         public string Quote { get; set; }
         public string MainImage { get; set; }
         public string[] Images { get; set; }
-
+        public StoryViewModel RandomStory{ get; set; }
+        public StoryViewModel[] EqualStories { get; set; }
     }
 }

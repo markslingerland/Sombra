@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Sombra.Core;
 using Sombra.DonateService.DAL;
 using Sombra.Messaging.Events.User;
 using Sombra.Messaging.Infrastructure;
@@ -20,7 +21,7 @@ namespace Sombra.DonateService
             var userToUpdate = await _context.Users.SingleOrDefaultAsync(u => u.UserKey == message.UserKey);
             if (userToUpdate != null)
             {
-                userToUpdate.UserName = message.FirstName + " " + message.LastName;
+                userToUpdate.UserName = Helpers.GetUserName(message);
                 userToUpdate.ProfileImage = message.ProfileImage;
                 await _context.SaveChangesAsync();
             }

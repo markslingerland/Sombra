@@ -73,6 +73,11 @@ services:
       - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
       - TIME_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Time;
 
+  sombra.storyservice:
+    environment:
+      - CONTAINER_TYPE=Docker
+      - RABBITMQ_CONNECTIONSTRING=host=${DC_RABBITMQHOST:-rabbitmq};username=${DC_RABBITMQUSER:-rabbitmquser};password=${DC_RABBITMQPASSWORD:-rabbitmqpassword}
+      - STORY_DB_CONNECTIONSTRING=server=${DC_SQLHOST:-sqlserver};user id=${DC_SQLUSER:-sa};password=${DC_SQLPASSWORD:-HPlab1718};database=Stories;
 
   rabbitmq:
     environment:

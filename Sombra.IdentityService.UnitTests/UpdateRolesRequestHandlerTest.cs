@@ -50,7 +50,7 @@ namespace Sombra.IdentityService.UnitTests
                 {
                     Assert.AreEqual(request.Role, response.Role);
                     Assert.IsTrue(context.Users.Single().Role.OnlyHasFlag(Role.CharityOwner));
-                    Assert.IsTrue(response.Success);
+                    Assert.IsTrue(response.IsSuccess);
                 }
             }
             finally
@@ -96,7 +96,7 @@ namespace Sombra.IdentityService.UnitTests
                 {
                     Assert.IsTrue(context.Users.Single().Role.OnlyHasFlag(Role.Donator));
                     Assert.AreEqual(response.ErrorType, ErrorType.InvalidKey);
-                    Assert.IsFalse(response.Success);
+                    Assert.IsFalse(response.IsSuccess);
                 }
             }
             finally

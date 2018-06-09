@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Sombra.Core;
 using Sombra.Core.Enums;
 using Sombra.Messaging.Events.Email;
 using Sombra.Messaging.Requests.Identity;
@@ -47,12 +48,12 @@ namespace Sombra.Web.Services
             createIdentityRequest.UserKey = userKey;
 
             var createIdentityResponse = await _bus.RequestAsync(createIdentityRequest);
-            if (createIdentityResponse.Success)
+            if (createIdentityResponse.IsSuccess)
             {
                 var createUserRequest = _mapper.Map<CreateUserRequest>(model);
                 createUserRequest.UserKey = userKey;
                 var createUserResponse = await _bus.RequestAsync(createUserRequest);
-                if (createUserResponse.Success)
+                if (createUserResponse.IsSuccess)
                 {
                     await SendActivationTokenEmail(createIdentityRequest.UserName, model.EmailAddress, createIdentityResponse.ActivationToken);
 
@@ -88,7 +89,7 @@ namespace Sombra.Web.Services
             var request = _mapper.Map<ActivateUserRequest>(model);
             var response = await _bus.RequestAsync(request);
 
-            if (response.Success)
+            if (response.IsSuccess)
             {
                 return new ActivateAccountResultViewModel
                 {
@@ -172,7 +173,7 @@ namespace Sombra.Web.Services
                 {
                     var changePasswordRequest = new ChangePasswordRequest(Core.Encryption.CreateHash(changePasswordViewModel.Password), securityToken);
                     var response = await _bus.RequestAsync(changePasswordRequest);
-                    return response.Success;
+                    return response.IsSuccess;
                 }
             }
             return false;
@@ -185,7 +186,7 @@ namespace Sombra.Web.Services
 
             var clientInfo = UserAgentParser.Extract(_userAgent);
             var user = await _bus.RequestAsync(getUserByEmailRequest);
-            var name = $"{user.FirstName} {user.LastName}";
+            var name = Helpers.GetUserName(user);
             var forgotPasswordResponse = await _bus.RequestAsync(forgotPasswordRequest);
             var actionurl = $"{_baseUrl}/Account/ChangePassword/{forgotPasswordResponse.Secret}";
 

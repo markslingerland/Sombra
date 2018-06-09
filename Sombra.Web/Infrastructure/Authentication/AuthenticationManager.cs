@@ -39,14 +39,14 @@ namespace Sombra.Web.Infrastructure.Authentication
             var userLoginRequest = _mapper.Map<UserLoginRequest>(authenticationQuery);
             var userLoginResponse = await ValidateAsync(userLoginRequest);
 
-            if (userLoginResponse.Success)
+            if (userLoginResponse.IsSuccess)
             {
                 await _httpContext.SignInAsync(
                     _authenticationScheme, CreatePrincipal(userLoginResponse), new AuthenticationProperties { IsPersistent = isPersistent }
                 );
             }
 
-            return new LoginResultViewModel { Success = userLoginResponse.Success };
+            return new LoginResultViewModel { Success = userLoginResponse.IsSuccess };
         }
 
         private SombraPrincipal CreatePrincipal(UserLoginResponse userLoginResponse)

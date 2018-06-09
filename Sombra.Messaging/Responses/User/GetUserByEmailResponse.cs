@@ -1,8 +1,9 @@
 ﻿using System;
+using Sombra.Core;
 
 namespace Sombra.Messaging.Responses.User
 {
-    public class GetUserByEmailResponse : Response
+    public class GetUserByEmailResponse : Response, IHasUserName
     {
         public bool UserExists { get; set; }
         public Guid UserKey { get; set; }

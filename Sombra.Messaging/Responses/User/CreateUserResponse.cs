@@ -1,10 +1,4 @@
-﻿using Sombra.Core.Enums;
-
-namespace Sombra.Messaging.Responses.User
+﻿namespace Sombra.Messaging.Responses.User
 {
-    public class CreateUserResponse : Response
-    {
-        public bool Success { get; set; }
-        public ErrorType ErrorType { get; set; }
-    }
+    public class CreateUserResponse : CrudResponse<CreateUserResponse> { }
 }

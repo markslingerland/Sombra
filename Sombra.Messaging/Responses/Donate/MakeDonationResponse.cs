@@ -2,11 +2,9 @@
 
 namespace Sombra.Messaging.Responses.Donate
 {
-    public class MakeDonationResponse : Response
+    public class MakeDonationResponse : CrudResponse<MakeDonationResponse>
     {
-        public bool Success { get; set; }
         public string ThankYou { get; set; }
         public string CoverImage { get; set; }
-        public ErrorType ErrorType { get; set; }
     }
 }

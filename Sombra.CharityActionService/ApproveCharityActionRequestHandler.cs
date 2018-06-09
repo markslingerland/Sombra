@@ -3,7 +3,6 @@ using AutoMapper;
 using EasyNetQ;
 using Microsoft.EntityFrameworkCore;
 using Sombra.CharityActionService.DAL;
-using Sombra.Core;
 using Sombra.Core.Enums;
 using Sombra.Messaging.Events.CharityAction;
 using Sombra.Messaging.Infrastructure;
@@ -37,15 +36,12 @@ namespace Sombra.CharityActionService
                     };
 
                 charityAction.IsApproved = true;
-                await _context.SaveChangesAsync();
+                if (!await _context.TrySaveChangesAsync()) return new ApproveCharityActionResponse();
 
                 var charityActionCreatedEvent = _mapper.Map<CharityActionCreatedEvent>(charityAction);
                 await _bus.PublishAsync(charityActionCreatedEvent);
 
-                return new ApproveCharityActionResponse
-                {
-                    Success = true
-                };
+                return ApproveCharityActionResponse.Success();
             }
 
             return new ApproveCharityActionResponse

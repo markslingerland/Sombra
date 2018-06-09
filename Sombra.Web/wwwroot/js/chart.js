@@ -58,7 +58,6 @@ var myChart = new Chart(ctx, {
                     return '€' + tooltipItem.yLabel + ',00';
                 }
             }
-
         },
         title: {
             display: true,

@@ -32,4 +32,9 @@
     <ProjectReference Include="..\Sombra.Messaging\Sombra.Messaging.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\CreateStory\" />
+    <Folder Include="wwwroot\css\createstory\" />
+  </ItemGroup>
+
 </Project>

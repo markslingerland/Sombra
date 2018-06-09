@@ -1,0 +1,39 @@
+﻿@{ ViewData["Title"] = "CreateStory"; }
+
+@section Styles{
+    <link rel="stylesheet" href="~/css/createstory/createstory.css" />
+    <link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/createstory/desktop.css" />
+    <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
+}
+@section Scripts {
+    <script src="~/js/create-story.js"></script>
+}
+@*Background Picture*@
+<div class="header-image" style="background-color: #d8d8d8"></div>
+<div id="add-header-image">
+    <div class="mytext-container"><h2>Voeg hier een omslagfoto toe</h2></div>
+    <div class="add-button"></div>
+    <div class="view-text"><span>Voorvertoning</span></div><div class="icon-show"></div>
+</div>
+
+<div class="story-container container">
+    @*Profile picture*@
+    <div class="story-logo">
+        <div class="story-logo-container">
+            <div class="shape-frame " style="background-image:url(../Assets/icons/Icon_profiel_make.svg)">
+            </div>
+        </div>
+        <div class="profile-name-container"><input class="profile-name" type="text" id="fname" name="firstname" placeholder="  Vul hier je naam in"></input></div>
+    </div>
+    @*title & story*@
+    <div id="about">
+        <div class="row about-text">
+            <div class="title-container"><input class="title" type="text" id="fname" name="firstname" placeholder="  Titel van jouw verhaal"></input></div>
+            <div class="storypart-1-container"><input class="story" type="text" id="fname" name="firstname" placeholder="  Typ hier de inleiding van jouw verhaal"></input></div>
+            <div class="story-image"></div>
+            <div class="storypart-2-container"><input class="story" type="text" id="fname" name="firstname" placeholder="  Typ hier de kern van jouw verhaal"></input></div>
+            <div class="quote-container"><input class="quote" type="text" id="fname" name="firstname" placeholder="  Heb je een leuke quote? Schrijf deze dan hier."></input></div>
+            <div class="storypart-3-container"><input class="story" type="text" id="fname" name="firstname" placeholder="  Typ hier het slot van jouw verhaal"></input></div>
+        </div>
+    </div>
+ </div>

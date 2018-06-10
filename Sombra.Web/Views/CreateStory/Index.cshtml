@@ -9,9 +9,10 @@
     <script src="~/js/create-story.js"></script>
 }
 @*Background Picture*@
-<div class="header-image" style="background-color: #d8d8d8"></div>
+<div class="header-image" id="header-image" style="background-color: #d8d8d8"></div>
 <div id="add-header-image">
-    <div class="mytext-container"><h2>Voeg hier een omslagfoto toe</h2></div>
+    <input class="image-import" type="file" id="file-header" accept="image/*" />
+    <div class="mytext-container"><label for="file-header">Voeg hier een omslagfoto toe</label></div>
     <div class="add-button"></div>
     <div class="view-text"><span>Voorvertoning</span></div><div class="icon-show"></div>
 </div>
@@ -20,20 +21,24 @@
     @*Profile picture*@
     <div class="story-logo">
         <div class="story-logo-container">
-            <div class="shape-frame " style="background-image:url(../Assets/icons/Icon_profiel_make.svg)">
+            <div for="file" class="shape-frame " style="background-image:url(../Assets/icons/Icon_profiel_make.svg)">
             </div>
         </div>
-        <div class="profile-name-container"><input class="profile-name" type="text" id="fname" name="firstname" placeholder="  Vul hier je naam in"></input></div>
+        <div class="profile-name-container"><input class="profile-name" type="text" id="fname" name="firstname" placeholder="  Vul hier je naam in"></div>
     </div>
     @*title & story*@
     <div id="about">
         <div class="row about-text">
-            <div class="title-container"><input class="title" type="text" id="fname" name="firstname" placeholder="  Titel van jouw verhaal"></input></div>
-            <div class="storypart-1-container"><input class="story" type="text" id="fname" name="firstname" placeholder="  Typ hier de inleiding van jouw verhaal"></input></div>
-            <div class="story-image"></div>
-            <div class="storypart-2-container"><input class="story" type="text" id="fname" name="firstname" placeholder="  Typ hier de kern van jouw verhaal"></input></div>
-            <div class="quote-container"><input class="quote" type="text" id="fname" name="firstname" placeholder="  Heb je een leuke quote? Schrijf deze dan hier."></input></div>
-            <div class="storypart-3-container"><input class="story" type="text" id="fname" name="firstname" placeholder="  Typ hier het slot van jouw verhaal"></input></div>
+            <div class="title-container"><input class="title" type="text" id="fname" name="firstname" placeholder="  Titel van jouw verhaal"></div>
+            <div class="storypart-1-container"><input class="story" type="text" id="fname" name="firstname" placeholder="  Typ hier de inleiding van jouw verhaal"></div>
+            <div class="story-image" id="story-image">
+                <input class="image-import" type="file" id="file" accept="image/*"/>
+                <label for="file">Klik hier om een foto of video te uploaden</label>
+                <div class="image-icon-box"></div>
+            </div>
+            <div class="storypart-2-container"><input class="story" type="text" id="fname" name="firstname" placeholder="  Typ hier de kern van jouw verhaal"></div>
+            <div class="quote-container"><input class="quote" type="text" id="fname" name="firstname" placeholder="  Heb je een leuke quote? Schrijf deze dan hier."></div>
+            <div class="storypart-3-container"><input class="story" type="text" id="fname" name="firstname" placeholder="  Typ hier het slot van jouw verhaal"></div>
         </div>
     </div>
  </div>

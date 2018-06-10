@@ -34,7 +34,6 @@ namespace Sombra.DonateService.UnitTests
                 var updatedCharityActionEvent = new CharityActionUpdatedEvent(){
                     CharityActionKey = charityAction.CharityActionKey,
                     CoverImage = "pretty image",
-                    CharityName = "Pretty Charity Name",
                     Name = "Pretty CharityAction Name",
                     ThankYou = "ThankYouVeryMuch"                    
                 };     

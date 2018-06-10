@@ -7,7 +7,11 @@ using Sombra.Messaging.Events.Charity;
 using Sombra.Messaging.Events.User;
 using Sombra.Messaging.Requests.Story;
 using Sombra.Messaging.Responses.Story;
+using Sombra.Messaging.Shared;
 using Sombra.StoryService.DAL;
+using Charity = Sombra.StoryService.DAL.Charity;
+using Story = Sombra.StoryService.DAL.Story;
+using User = Sombra.StoryService.DAL.User;
 
 namespace Sombra.StoryService
 {
@@ -43,6 +47,10 @@ namespace Sombra.StoryService
 
             CreateMap<CharityCreatedEvent, Charity>()
                 .IgnoreEntityProperties();
+
+            CreateMap<Charity, KeyNamePair>()
+                .ForMember(d => d.Key, opt => opt.MapFrom(s => s.CharityKey))
+                .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Name));
         }
     }
 }

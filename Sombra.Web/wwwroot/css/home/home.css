@@ -435,7 +435,7 @@ padding-right: 165px;
     text-align: left;
     color: #ffffff;
     position: absolute;
-    bottom: 150px;
+    bottom: 188px;
 }
 
 #the_story .story-btn-holder {
@@ -456,9 +456,21 @@ padding-right: 165px;
     text-align: left;
     color: #ffffff;
     position: absolute;
-    bottom: 48px;
+    bottom: 85px;
     margin-bottom: 0;
     margin-top: 0;
+}
+
+#the_story .read-more-this-story {
+font-size: 18px;
+font-style: normal;
+font-stretch: normal;
+line-height: normal;
+letter-spacing: normal;
+color: #ffffff;
+text-decoration: underline;
+bottom: 55px;
+position: absolute;
 }
 
 #acties {

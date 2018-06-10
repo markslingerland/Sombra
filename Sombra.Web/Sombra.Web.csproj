@@ -33,9 +33,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\Story\Index.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
+    <Folder Include="Views\CreateStory\" />
+    <Folder Include="wwwroot\css\createstory\" />
   </ItemGroup>
 
 </Project>

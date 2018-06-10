@@ -19,5 +19,6 @@ namespace Sombra.Messaging.Events.Charity
         public string Anbi { get; set; }
         public string Description { get; set; }
         public string ThankYou { get; set; }
+        public bool IsApproved { get; set; }
     }
 }

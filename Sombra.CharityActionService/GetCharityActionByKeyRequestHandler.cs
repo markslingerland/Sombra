@@ -22,14 +22,9 @@ namespace Sombra.CharityActionService
 
         public async Task<GetCharityActionByKeyResponse> Handle(GetCharityActionByKeyRequest message)
         {
-            var charityAction = await _charityActionContext.CharityActions.Include(b => b.UserKeys).FirstOrDefaultAsync(b => b.CharityActionKey.Equals(message.CharityActionKey));
-            if (charityAction != null)
-            {
-                var response = _mapper.Map<GetCharityActionByKeyResponse>(charityAction);
-                
-                return response;
-            }
-            return new GetCharityActionByKeyResponse();
+            var charityAction = await _charityActionContext.CharityActions.Include(b => b.UserKeys).Include(b => b.Charity).FirstOrDefaultAsync(b => b.CharityActionKey.Equals(message.CharityActionKey));
+
+            return charityAction != null ? _mapper.Map<GetCharityActionByKeyResponse>(charityAction) : new GetCharityActionByKeyResponse();
         }
     }
 }

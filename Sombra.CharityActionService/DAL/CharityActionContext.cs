@@ -8,6 +8,7 @@ namespace Sombra.CharityActionService.DAL
         public CharityActionContext() { }
         public CharityActionContext(DbContextOptions<CharityActionContext> options, SombraContextOptions sombraContextOptions) : base(options, sombraContextOptions) { }
         public DbSet<CharityAction> CharityActions { get; set; }
+        public DbSet<Charity> Charities { get; set; }
         public DbSet<UserKey> UserKeys { get; set; }
     }
 }

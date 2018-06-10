@@ -28,6 +28,10 @@ namespace Sombra.CharityActionService
                 .ForMember(d => d.CharityAction, opt => opt.MapFrom(s => s))
                 .ForMember(d => d.IsSuccess, opt => opt.UseValue(true));
 
+            CreateMap<CharityAction, GetCharityActionByUrlResponse>()
+                .ForMember(d => d.CharityAction, opt => opt.MapFrom(s => s))
+                .ForMember(d => d.IsSuccess, opt => opt.UseValue(true));
+
             CreateMap<CharityAction, CharityActionUpdatedEvent>()
                 .ForMember(d => d.CharityKey, opt => opt.MapFrom(s => s.Charity.CharityKey));
 

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Sombra.CharityActionService.DAL;
-using Sombra.Core;
 using System.Threading.Tasks;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests.CharityAction;

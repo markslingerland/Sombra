@@ -27,6 +27,10 @@ namespace Sombra.StoryService
                 .ForMember(d => d.IsSuccess, opt => opt.UseValue(true))
                 .ForMember(d => d.Story, opt => opt.MapFrom(s => s));
 
+            CreateMap<Story, GetStoryByUrlResponse>()
+                .ForMember(d => d.IsSuccess, opt => opt.UseValue(true))
+                .ForMember(d => d.Story, opt => opt.MapFrom(s => s));
+
             CreateMap<CreateStoryRequest, Story>()
                 .IgnoreEntityProperties()
                 .ForMember(d => d.Author, opt => opt.Ignore())

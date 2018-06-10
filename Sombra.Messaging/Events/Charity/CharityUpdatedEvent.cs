@@ -6,6 +6,7 @@ namespace Sombra.Messaging.Events.Charity
     public class CharityUpdatedEvent : Event
     {
         public Guid CharityKey { get; set; }
+        public Guid OwnerUserKey { get; set; }
         public string OwnerUserName { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }

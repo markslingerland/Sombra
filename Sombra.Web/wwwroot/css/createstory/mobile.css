@@ -1,0 +1,58 @@
+#header .logo {
+    margin-left: 50px;
+}
+
+#header .logo img{
+    width: 60px;
+    height: 60px;
+}
+
+.header-image {
+    width: 380px;
+    opacity: 0.2;
+}
+
+#header .big-menu {
+    display: none;
+}
+
+#about img {
+    display: none;
+}
+
+#about .about-text {
+   margin-top: 50px;
+    float: right;
+    padding-top: 0;
+    text-align: center;
+    margin-right: 50px;
+}
+
+#about .about-text h3 {
+    font-size: 25px;
+}
+
+#about .about-text p {
+    font-size: 15px;
+}
+
+#about .about-btn {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#home-info {
+    padding-top: 60px;
+}
+
+#home-info p {
+    width: 100%;
+}
+
+/* OPTIONS */
+
+#option-container .outerBox {
+    padding-bottom: 40px;
+}

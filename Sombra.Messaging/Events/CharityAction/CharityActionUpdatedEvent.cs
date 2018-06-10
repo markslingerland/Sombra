@@ -25,5 +25,6 @@ namespace Sombra.Messaging.Events.CharityAction
         public decimal TargetAmount { get; set; }
         public decimal CollectedAmount { get; set; }
         public DateTime ActionEndDateTime { get; set; }
+        public bool IsApproved { get; set; }
     }
 }

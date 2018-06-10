@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sombra.DonateService.DAL;
-using Sombra.Infrastructure;
 using Sombra.Messaging.Events.User;
-using Sombra.Messaging.Shared;
+using User = Sombra.DonateService.DAL.User;
 
 namespace Sombra.DonateService.UnitTests
 {

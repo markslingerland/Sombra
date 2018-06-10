@@ -1,19 +1,20 @@
-﻿@model Sombra.Web.ViewModels.Charity.CharityViewModel 
-@{ ViewData["Title"] = "Charity"; } 
+﻿@model Sombra.Web.ViewModels.Charity.CharityViewModel
+@{ ViewData["Title"] = "Charity"; }
 @section Styles{
-<link rel="stylesheet" href="~/css/charity/charity.css" />
-<link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/charity/desktop.css" />
-<link rel="stylesheet" media="screen and (min-width: 768px) and (max-width: 1200px)" href="~/css/charity/tablet.css" />
-<link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/charity/mobile.css" /> } 
+    <link rel="stylesheet" href="~/css/charity/charity.css" />
+    <link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/charity/desktop.css" />
+    <link rel="stylesheet" media="screen and (min-width: 768px) and (max-width: 1200px)" href="~/css/charity/tablet.css" />
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/charity/mobile.css" /> }
 @section Scripts {
-<script src="~/js/charity.js"></script>
+    <script src="~/js/charity.js"></script>
 }
 
 <div class="header-image" style="background-image:url(@Model.charity.CoverImage)"></div>
 
 <div class="charity-container container">
-    @foreach (string category in @Model.charity.Categories) {
-    <div class="category">@category</div>
+    @foreach (string category in @Model.charity.Categories)
+    {
+        <div class="category">@category</div>
     }
     <div class="kvk_ambi">KvK nummer: @Model.charity.KVKNumber</div>
     <div class="kvk_ambi">ANBI nummer: @Model.charity.Anbi</div>
@@ -62,27 +63,28 @@
         <h3 class="title">Lopende acties</h3>
         <div class="slider-container">
             <div id="charity-actions-carousel" class="main-carousel">
-                @foreach (var action in @Model.charityActions) { // TODO Make correct Models // not sure what model has info for existing events
-                <div class="carousel-cell">
-                    <div class="carousel-container">
-                        <div class="carousel-background">
-                            <div class="carousel-logo"></div>
-                            <div class="carousel-progress-bar">
-                                <div class="carousel-progress"></div>
+                @foreach (var action in @Model.charityActions)
+                { // TODO Make correct Models // not sure what model has info for existing events
+                    <div class="carousel-cell">
+                        <div class="carousel-container">
+                            <div class="carousel-background">
+                                <div class="carousel-logo"></div>
+                                <div class="carousel-progress-bar">
+                                    <div class="carousel-progress"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="carousel-body">
-                            <label class="carousel-date">27/04/2018</label>
-                            <h4 class="carousel-title">@action.CharityName &#64; Mont Ventoux</h4>
-                            <img class="carousel-poster-image" src="Assets/ArdHofman.png">
-                            <label class="carousel-poster-name"><span style="font-family: 'Source Sans Pro' , sans-serif;">@action.Name</span></label>
-                            <div class="carousel-money-holder">
-                                <label class="carousel-reached"><span style="font-family: 'Source Sans Pro' , sans-serif;">&euro; @action.donations.TotalDonations</span></label>
-                                <label class="carousel-goal"><span style="font-family: 'Source Sans Pro' , sans-serif;">behaald van &euro; 15.000</span></label>
+                            <div class="carousel-body">
+                                <label class="carousel-date">27/04/2018</label>
+                                <h4 class="carousel-title">@action.CharityName &#64; Mont Ventoux</h4>
+                                <img class="carousel-poster-image" src="Assets/ArdHofman.png">
+                                <label class="carousel-poster-name"><span style="font-family: 'Source Sans Pro' , sans-serif;">@action.Name</span></label>
+                                <div class="carousel-money-holder">
+                                    <label class="carousel-reached"><span style="font-family: 'Source Sans Pro' , sans-serif;">&euro; @action.donations.TotalDonations</span></label>
+                                    <label class="carousel-goal"><span style="font-family: 'Source Sans Pro' , sans-serif;">behaald van &euro; 15.000</span></label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 }
             </div>
         </div>
@@ -106,6 +108,7 @@
             <span class="main-text">DEZE WEEK DONEERDE</span> <span class="ammount-people">@Model.donationsToCharity.DonatedToCharity</span> <span class="main-text">MENSEN TOTAAL</span> <span class="ammount-people">&euro;@Model.donationsToCharity.TotalDonations</span>
         </div>
         <div class="latest-donations-holder">
+
             @foreach (var donator in @Model.donators) {
                 <div class="donations-box">
                     <div class="donations-box-inside">
@@ -121,6 +124,6 @@
                     </div>
                 </div>
             }
-        </div>       
+        </div>
     </div>
 </div>

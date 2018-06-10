@@ -18,7 +18,7 @@ namespace Sombra.CharityActionService
             CreateMap<CharityAction, Messaging.Shared.CharityAction>();
             CreateMap<CharityAction, GetCharityActionByKeyResponse>()
                 .ForMember(d => d.Content, opt => opt.MapFrom(s => s))
-                .ForMember(d => d.Success, opt => opt.UseValue(true));
+                .ForMember(d => d.IsSuccess, opt => opt.UseValue(true));
 
             CreateMap<CharityAction, CharityActionUpdatedEvent>();
             CreateMap<CharityAction, CharityActionCreatedEvent>();

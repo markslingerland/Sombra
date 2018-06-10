@@ -1,17 +1,17 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
-using Sombra.CharityActionService.DAL;
 using Sombra.Messaging.Events.Charity;
 using Sombra.Messaging.Infrastructure;
+using Sombra.StoryService.DAL;
 
-namespace Sombra.CharityActionService
+namespace Sombra.StoryService
 {
     public class CharityCreatedEventHandler : IAsyncEventHandler<CharityCreatedEvent>
     {
-        private readonly CharityActionContext _context;
+        private readonly StoryContext _context;
         private readonly IMapper _mapper;
 
-        public CharityCreatedEventHandler(CharityActionContext context, IMapper mapper)
+        public CharityCreatedEventHandler(StoryContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

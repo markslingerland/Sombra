@@ -19,9 +19,14 @@ namespace Sombra.StoryService.UnitTests
 
             try
             {
+                var charity = new Charity
+                {
+                    CharityKey = Guid.NewGuid()
+                };
                 var story = new Story
                 {
-                    StoryKey = Guid.NewGuid()
+                    StoryKey = Guid.NewGuid(),
+                    Charity = charity
                 };
 
                 using (var context = StoryContext.GetInMemoryContext())
@@ -59,10 +64,15 @@ namespace Sombra.StoryService.UnitTests
 
             try
             {
+                var charity = new Charity
+                {
+                    CharityKey = Guid.NewGuid()
+                };
                 var story = new Story
                 {
                     StoryKey = Guid.NewGuid(),
-                    IsApproved = true
+                    IsApproved = true,
+                    Charity = charity
                 };
 
                 using (var context = StoryContext.GetInMemoryContext())
@@ -101,9 +111,14 @@ namespace Sombra.StoryService.UnitTests
 
             try
             {
+                var charity = new Charity
+                {
+                    CharityKey = Guid.NewGuid()
+                };
                 var story = new Story
                 {
-                    StoryKey = Guid.NewGuid()
+                    StoryKey = Guid.NewGuid(),
+                    Charity = charity
                 };
 
                 using (var context = StoryContext.GetInMemoryContext())

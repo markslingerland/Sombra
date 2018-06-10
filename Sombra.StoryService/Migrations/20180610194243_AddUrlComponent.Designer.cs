@@ -10,9 +10,10 @@ using Sombra.StoryService.DAL;
 namespace Sombra.StoryService.Migrations
 {
     [DbContext(typeof(StoryContext))]
-    partial class StoryContextModelSnapshot : ModelSnapshot
+    [Migration("20180610194243_AddUrlComponent")]
+    partial class AddUrlComponent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -26,7 +26,8 @@ namespace Sombra.StoryService
         public async Task<GetStoriesResponse> Handle(GetStoriesRequest message)
         {
             Expression<Func<Story, bool>> filter = _ => true;
-            if (message.CharityKey != default) filter = filter.And(s => s.CharityKey == message.CharityKey);
+            if (message.CharityKey != default) filter = filter.And(s => s.Charity.CharityKey == message.CharityKey);
+            if (!string.IsNullOrEmpty(message.CharityUrl)) filter = filter.And(c => c.Charity.Url.Equals(message.CharityUrl, StringComparison.OrdinalIgnoreCase));
             if (message.OnlyApproved) filter = filter.And(s => s.IsApproved);
             if (message.OnlyUnapproved) filter = filter.And(s => !s.IsApproved);
             if (message.AuthorUserKey != default) filter = filter.And(s => s.Author.UserKey == message.AuthorUserKey);
@@ -34,7 +35,7 @@ namespace Sombra.StoryService
             return new GetStoriesResponse
             {
                 TotalNumberOfResults = _context.Stories.Count(filter),
-                Results = await _context.Stories.IncludeAuthor().IncludeImages().Where(filter).OrderBy(t => t.Title, message.SortOrder)
+                Results = await _context.Stories.IncludeAll().Where(filter).OrderBy(t => t.Title, message.SortOrder)
                     .ProjectToPagedListAsync<Messaging.Shared.Story>(message, _mapper)
             };
         }

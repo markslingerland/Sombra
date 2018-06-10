@@ -18,13 +18,18 @@ namespace Sombra.StoryService.UnitTests
             StoryContext.OpenInMemoryConnection();
             try
             {
+                var charity = new Charity
+                {
+                    CharityKey = Guid.NewGuid()
+                };
                 using (var context = StoryContext.GetInMemoryContext())
                 {
                     for (var i = 0; i < 25; i++)
                     {
                         context.Stories.Add(new Story
                         {
-                            StoryKey = Guid.NewGuid()
+                            StoryKey = Guid.NewGuid(),
+                            Charity = charity
                         });
                     }
 
@@ -57,8 +62,18 @@ namespace Sombra.StoryService.UnitTests
             StoryContext.OpenInMemoryConnection();
             try
             {
-                var charityKey1 = Guid.NewGuid();
-                var charityKey2 = Guid.NewGuid();
+                var charity1 = new Charity
+                {
+                    CharityKey = Guid.NewGuid()
+                };
+                var charity2 = new Charity
+                {
+                    CharityKey = Guid.NewGuid()
+                };
+                var charity3 = new Charity
+                {
+                    CharityKey = Guid.NewGuid()
+                };
                 var authorUserKey = Guid.NewGuid();
 
                 using (var context = StoryContext.GetInMemoryContext())
@@ -67,7 +82,8 @@ namespace Sombra.StoryService.UnitTests
                     {
                         context.Stories.Add(new Story
                         {
-                            StoryKey = Guid.NewGuid()
+                            StoryKey = Guid.NewGuid(),
+                            Charity = charity3
                         });
                     }
 
@@ -79,7 +95,7 @@ namespace Sombra.StoryService.UnitTests
                             {
                                 context.Stories.Add(new Story
                                 {
-                                    CharityKey = charityKey1,
+                                    Charity = charity1,
                                     StoryKey = Guid.NewGuid(),
                                     IsApproved = true,
                                     Author = new User
@@ -93,7 +109,7 @@ namespace Sombra.StoryService.UnitTests
                             {
                                 context.Stories.Add(new Story
                                 {
-                                    CharityKey = charityKey2,
+                                    Charity = charity2,
                                     StoryKey = Guid.NewGuid(),
                                     IsApproved = true
                                 });
@@ -103,7 +119,7 @@ namespace Sombra.StoryService.UnitTests
                         {
                             context.Stories.Add(new Story
                             {
-                                CharityKey = charityKey2,
+                                Charity = charity2,
                                 StoryKey = Guid.NewGuid(),
                                 IsApproved = true
                             });
@@ -128,7 +144,7 @@ namespace Sombra.StoryService.UnitTests
 
                 Assert.AreEqual(3, response.TotalNumberOfResults);
                 Assert.AreEqual(1, response.Results.Count);
-                Assert.IsTrue(response.Results.All(r => r.AuthorUserKey == authorUserKey && r.AuthorName == "John Doe" && r.IsApproved && r.CharityKey == charityKey1));
+                Assert.IsTrue(response.Results.All(r => r.AuthorUserKey == authorUserKey && r.AuthorName == "John Doe" && r.IsApproved && r.CharityKey == charity1.CharityKey));
             }
             finally
             {

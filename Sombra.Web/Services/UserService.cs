@@ -185,8 +185,8 @@ namespace Sombra.Web.Services
             var getUserByEmailRequest = new GetUserByEmailRequest { EmailAddress = forgotPasswordViewModel.EmailAddress };
 
             var clientInfo = UserAgentParser.Extract(_userAgent);
-            var user = await _bus.RequestAsync(getUserByEmailRequest);
-            var name = Helpers.GetUserName(user);
+            var userResponse = await _bus.RequestAsync(getUserByEmailRequest);
+            var name = Helpers.GetUserName(userResponse.User);
             var forgotPasswordResponse = await _bus.RequestAsync(forgotPasswordRequest);
             var actionurl = $"{_baseUrl}/Account/ChangePassword/{forgotPasswordResponse.Secret}";
 

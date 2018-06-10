@@ -8,6 +8,9 @@ using Sombra.Messaging.Events.CharityAction;
 using Sombra.Messaging.Events.User;
 using Sombra.Messaging.Requests.Donate;
 using Sombra.Messaging.Responses.Donate;
+using Sombra.Messaging.Shared;
+using Charity = Sombra.DonateService.DAL.Charity;
+using CharityAction = Sombra.DonateService.DAL.CharityAction;
 
 namespace Sombra.DonateService
 {
@@ -51,6 +54,14 @@ namespace Sombra.DonateService
             CreateMap<CharityDonation, Donation>()
                 .ForMember(d => d.UserName, opt => opt.MapFrom(s => s.UserId.HasValue ? s.User.UserName : null))
                 .ForMember(d => d.ProfileImage, opt => opt.MapFrom(s => s.UserId.HasValue ? s.User.ProfileImage : null));
+
+            CreateMap<Charity, KeyNamePair>()
+                .ForMember(d => d.Key, opt => opt.MapFrom(s => s.CharityKey))
+                .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Name));
+
+            CreateMap<CharityAction, KeyNamePair>()
+                .ForMember(d => d.Key, opt => opt.MapFrom(s => s.CharityActionKey))
+                .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Name));
         }
     }
 }

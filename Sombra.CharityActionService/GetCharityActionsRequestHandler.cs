@@ -29,6 +29,7 @@ namespace Sombra.CharityActionService
         {
             Expression<Func<CharityAction, bool>> filter = c => true;
             if (message.CharityKey != default) filter = filter.And(c => c.Charity.CharityKey == message.CharityKey);
+            if (!string.IsNullOrEmpty(message.CharityUrl)) filter = filter.And(c => c.Charity.Url.Equals(message.CharityUrl, StringComparison.OrdinalIgnoreCase));
             if (message.Category != Category.None) filter = filter.And(c => c.Category == message.Category);
             if (message.Keywords?.Any() != null) filter = filter.And(c => $"{c.Charity.Name} {c.Name} {c.Description}".ContainsAll(message.Keywords, StringComparison.OrdinalIgnoreCase));
 

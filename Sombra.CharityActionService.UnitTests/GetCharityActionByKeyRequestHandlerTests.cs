@@ -75,7 +75,7 @@ namespace Sombra.CharityActionService.UnitTests
                     Assert.AreEqual(response.Content.Name, context.CharityActions.Single().Name);
                     Assert.AreEqual(response.Content.Description, context.CharityActions.Single().Description);
                     Assert.AreEqual(response.Content.CoverImage, context.CharityActions.Single().CoverImage);
-                    Assert.IsTrue(response.Success);
+                    Assert.IsTrue(response.IsSuccess);
                 }
             }
             finally
@@ -127,9 +127,8 @@ namespace Sombra.CharityActionService.UnitTests
                     response = await handler.Handle(request);
                 }
 
-                //Assert               
-                Assert.IsFalse(response.Success);
-                
+                //Assert
+                Assert.IsFalse(response.IsSuccess);
             }
             finally
             {

@@ -31,7 +31,7 @@ namespace Sombra.Messaging.Infrastructure
             catch (Exception ex)
             {
                 ExtendedConsole.Log(ex);
-                Logger.LogExceptionAsync(ex, handler.GetType().Name);
+                Logger.LogExceptionAsync(ex, false, handler.GetType().Name);
             }
 
             return (TResponse) Activator.CreateInstance<TResponse>().RequestFailed();

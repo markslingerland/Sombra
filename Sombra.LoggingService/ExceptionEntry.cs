@@ -9,14 +9,16 @@ namespace Sombra.LoggingService
     {
         public ExceptionEntry(ExceptionMessage message, DateTime received)
         {
-            MessageType = message.MessageType;
             MessageCreated = message.MessageCreated;
             MessageReceived = received;
-            Message = message.ToJson();
+            IsHandled = message.IsHandled;
+            ExceptionType = message.Exception.GetType().Name;
+            Exception = message.Exception.ToString();
         }
 
-        public string Message { get; set; }
-        public string MessageType { get; set; }
+        public string ExceptionType { get; set; }
+        public bool IsHandled { get; set; }
+        public string Exception { get; set; }
         public DateTime MessageReceived { get; set; }
         public DateTime MessageCreated { get; set; }
     }

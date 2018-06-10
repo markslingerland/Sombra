@@ -205,7 +205,7 @@ body {
     width: 250px;
     height: 40px;
     border-radius: 8px;
-    background-image: linear-gradient(101deg, #fb9549, #f57264);
+    background-image: linear-gradient(515deg, #fb9549, #f57264);
     position: relative;
 }
 
@@ -467,7 +467,7 @@ footer {
     width: 100%;
     float: left;
     height: 415px;
-    background-image: linear-gradient(101deg, #fb9549, #f57264);
+    background-image: linear-gradient(515deg, #fb9549, #f57264);
     padding: 0;
     margin: 0;
 }
@@ -620,40 +620,30 @@ footer .footer-info-right {
     float: right;
 }
 
-footer .footer-info-right .footer-youtube {
-   background-image: url("../Assets/icons/Icon_youtube.svg");
-   width: 30px;
-    height: 26px;
-    margin-right: 14px;
+footer .footer-info-right .footer-youtube, .footer-twitter, .footer-instagram, .footer-facebook {
+   width: 24px;
+    height: 24px;
+    margin-right: 17px;
    background-size: contain;
    background-repeat: no-repeat;
    display: inline-block;
+   margin-top: 14px;
    position: relative;
 }
 
-footer .footer-info-right .footer-youtube a {
-    position: absolute;
-    top: 0; bottom: 0; left: 0; right: 0;
- }
-footer .footer-info-right .footer-facebook {
-    background-image: url("../Assets/icons/Icon_fb_insta.svg");
-    width: 65px;
-    height: 26px;
-    margin-top: 14px;
-    background-size: contain;
-    display: inline-block;
-    background-repeat: no-repeat;
-    display: inline-block;
-    position: relative; 
+.footer-youtube {
+    background-image: url("../Assets/footer/Icon_footer_YouTube.svg");
+    margin-right: 0px!important;
 }
 
-footer .footer-info-right .footer-facebook .footer-facebook-link {
-    position: absolute;
-    top: 0; bottom: 0; left: 0; right: 40px;
+.footer-twitter {
+    background-image: url("../Assets/footer/Icon_footer_Twitter.svg");
 }
 
-footer .footer-info-right .footer-facebook .footer-instagram-link {
-    position: absolute;
-    top: 0; bottom: 0; left: 40px; right: 0;
+.footer-instagram {
+    background-image: url("../Assets/footer/Icon_footer_Instagram.svg");
 }
 
+.footer-facebook {
+    background-image: url("../Assets/footer/Icon_footer_Facebook.svg");
+}

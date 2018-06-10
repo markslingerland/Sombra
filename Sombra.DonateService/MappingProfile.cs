@@ -11,6 +11,7 @@ using Sombra.Messaging.Responses.Donate;
 using Sombra.Messaging.Shared;
 using Charity = Sombra.DonateService.DAL.Charity;
 using CharityAction = Sombra.DonateService.DAL.CharityAction;
+using User = Sombra.DonateService.DAL.User;
 
 namespace Sombra.DonateService
 {

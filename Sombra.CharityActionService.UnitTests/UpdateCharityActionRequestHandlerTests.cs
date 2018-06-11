@@ -32,16 +32,12 @@ namespace Sombra.CharityActionService.UnitTests
 
                 UpdateCharityActionResponse response;
                 var keyAction = Guid.NewGuid();
-                var keyCharity = Guid.NewGuid();
                 var key = Guid.NewGuid();
-                var user = new UserKey { Key = key };
                 var userMessenging = new Messaging.Shared.UserKey { Key = key };
                 var request = new UpdateCharityActionRequest
                 {
                     CharityActionKey = keyAction,
-                    CharityKey = keyCharity,
                     UserKeys = new List<Messaging.Shared.UserKey> { userMessenging },
-                    CharityName = "",
                     Category = Category.None,
                     IBAN = "",
                     Name = "",
@@ -52,18 +48,21 @@ namespace Sombra.CharityActionService.UnitTests
 
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
+                    var charity = new Charity
+                    {
+                        CharityKey = Guid.NewGuid()
+                    };
+
                     context.CharityActions.Add(new CharityAction
                     {
                         CharityActionKey = keyAction,
-                        CharityKey = keyCharity,
-                        UserKeys = new List<UserKey> { new UserKey() { Key = Guid.NewGuid() } },
-                        CharityName = "testNAmeOwner",
+                        UserKeys = new List<UserKey> { new UserKey { Key = Guid.NewGuid() } },
                         Category = Category.AnimalProtection,
                         IBAN = "",
                         Name = "",
                         Description = "0-IBAN",
-                        CoverImage = ""
-
+                        CoverImage = "",
+                        Charity = charity
                     });
                     context.SaveChanges();
                 }
@@ -77,9 +76,7 @@ namespace Sombra.CharityActionService.UnitTests
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(request.CharityActionKey, context.CharityActions.Single().CharityActionKey);
-                    Assert.AreEqual(request.CharityKey, context.CharityActions.Single().CharityKey);
                     CollectionAssert.AreEquivalent(request.UserKeys.Select(k => k.Key).ToList(), context.UserKeys.Select(u => u.Key).ToList());
-                    Assert.AreEqual(request.CharityName, context.CharityActions.Single().CharityName);
                     Assert.AreEqual(request.Category, context.CharityActions.Single().Category);
                     Assert.AreEqual(request.IBAN, context.CharityActions.Single().IBAN);
                     Assert.AreEqual(request.Name, context.CharityActions.Single().Name);
@@ -88,7 +85,7 @@ namespace Sombra.CharityActionService.UnitTests
                     Assert.IsTrue(response.IsSuccess);
                 }
 
-                busMock.Verify(m => m.PublishAsync(It.Is<CharityActionUpdatedEvent>(e => e.CharityActionKey == request.CharityActionKey && e.CharityName == request.CharityName)), Times.Once);
+                busMock.Verify(m => m.PublishAsync(It.Is<CharityActionUpdatedEvent>(e => e.CharityActionKey == request.CharityActionKey)), Times.Once);
             }
             finally
             {
@@ -109,7 +106,6 @@ namespace Sombra.CharityActionService.UnitTests
 
                 UpdateCharityActionResponse response;
                 var keyAction = Guid.NewGuid();
-                var keyCharity = Guid.NewGuid();
                 var wrongKey = Guid.NewGuid();
                 var key = Guid.NewGuid();
 
@@ -117,9 +113,7 @@ namespace Sombra.CharityActionService.UnitTests
                 var request = new UpdateCharityActionRequest
                 {
                     CharityActionKey = wrongKey,
-                    CharityKey = keyCharity,
                     UserKeys = new List<Messaging.Shared.UserKey>() { userMessenging },
-                    CharityName = "",
                     Category = Category.None,
                     IBAN = "",
                     Name = "",
@@ -130,18 +124,21 @@ namespace Sombra.CharityActionService.UnitTests
 
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
+                    var charity = new Charity
+                    {
+                        CharityKey = Guid.NewGuid()
+                    };
+
                     context.CharityActions.Add(new CharityAction
                     {
                         CharityActionKey = keyAction,
-                        CharityKey = keyCharity,
-                        UserKeys = new List<UserKey>() { new UserKey() { Key = Guid.NewGuid() } },
-                        CharityName = "testNAmeOwner",
+                        UserKeys = new List<UserKey> { new UserKey { Key = Guid.NewGuid() } },
                         Category = Category.AnimalProtection,
                         IBAN = "",
                         Name = "",
                         Description = "0-IBAN",
-                        CoverImage = ""
-
+                        CoverImage = "",
+                        Charity = charity
                     });
                     context.SaveChanges();
                 }
@@ -156,7 +153,6 @@ namespace Sombra.CharityActionService.UnitTests
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
                     Assert.AreEqual(ErrorType.NotFound, response.ErrorType);
-                    Assert.AreEqual("testNAmeOwner", context.CharityActions.Single().CharityName);
                     Assert.IsFalse(response.IsSuccess);
                 }
             }

@@ -20,6 +20,10 @@ namespace Sombra.StoryService.UnitTests
 
             try
             {
+                var charity = new Charity
+                {
+                    CharityKey = Guid.NewGuid()
+                };
                 var image1 = new Image
                 {
                     Base64 = "image1"
@@ -34,6 +38,7 @@ namespace Sombra.StoryService.UnitTests
                     StoryKey = Guid.NewGuid(),
                     Title = "title",
                     CoverImage = "cover",
+                    Charity = charity,
                     Images = new List<Image>
                     {
                         image1,
@@ -87,6 +92,10 @@ namespace Sombra.StoryService.UnitTests
 
             try
             {
+                var charity = new Charity
+                {
+                    CharityKey = Guid.NewGuid()
+                };
                 var image1 = new Image
                 {
                     Base64 = "image1"
@@ -101,6 +110,7 @@ namespace Sombra.StoryService.UnitTests
                     StoryKey = Guid.NewGuid(),
                     Title = "title",
                     CoverImage = "cover",
+                    Charity = charity,
                     Images = new List<Image>
                     {
                         image1,

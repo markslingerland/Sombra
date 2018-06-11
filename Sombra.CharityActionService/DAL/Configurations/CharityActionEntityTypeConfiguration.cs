@@ -8,6 +8,7 @@ namespace Sombra.CharityActionService.DAL.Configurations
         public override void Configure(EntityTypeBuilder<CharityAction> entity)
         {
             entity.HasIndex(c => c.CharityActionKey);
+            entity.HasIndex(c => c.UrlComponent);
         }
     }
 }

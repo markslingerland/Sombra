@@ -30,7 +30,6 @@ namespace Sombra.SearchService.UnitTests
                 var updatedCharityActionEvent = new CharityActionUpdatedEvent(){
                     CharityActionKey = content.CharityActionKey,
                     CoverImage = "pretty image",
-                    CharityName = "Pretty Charity Name",
                     Name = "Pretty CharityAction Name",
                     Category = content.Category,
                     Description = content.Description,
@@ -55,8 +54,7 @@ namespace Sombra.SearchService.UnitTests
                     Assert.AreEqual(updatedCharityActionEvent.CoverImage, context.Content.Single().Image);
                     Assert.AreEqual(content.Category, context.Content.Single().Category);
                     Assert.AreEqual(content.Description, context.Content.Single().Description);
-                    Assert.AreEqual(Core.Enums.SearchContentType.CharityAction, context.Content.Single().Type);
-                    Assert.AreEqual(updatedCharityActionEvent.CharityName, context.Content.Single().CharityName);  
+                    Assert.AreEqual(Core.Enums.SearchContentType.CharityAction, context.Content.Single().Type); 
                     Assert.AreEqual(updatedCharityActionEvent.Name, context.Content.Single().CharityActionName);  
 
                 }

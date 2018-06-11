@@ -19,6 +19,26 @@ namespace Sombra.StoryService.Migrations
                 .HasAnnotation("ProductVersion", "2.1.0-preview2-30571")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Sombra.StoryService.DAL.Charity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("CharityKey");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Url");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CharityKey");
+
+                    b.HasIndex("Url");
+
+                    b.ToTable("Charities");
+                });
+
             modelBuilder.Entity("Sombra.StoryService.DAL.Image", b =>
                 {
                     b.Property<Guid>("Id")
@@ -42,9 +62,7 @@ namespace Sombra.StoryService.Migrations
 
                     b.Property<Guid?>("AuthorId");
 
-                    b.Property<Guid>("CharityKey");
-
-                    b.Property<string>("CharityName");
+                    b.Property<Guid>("CharityId");
 
                     b.Property<string>("ConclusionText");
 
@@ -66,13 +84,17 @@ namespace Sombra.StoryService.Migrations
 
                     b.Property<string>("Title");
 
+                    b.Property<string>("UrlComponent");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
 
-                    b.HasIndex("CharityKey");
+                    b.HasIndex("CharityId");
 
                     b.HasIndex("StoryKey");
+
+                    b.HasIndex("UrlComponent");
 
                     b.ToTable("Stories");
                 });
@@ -107,6 +129,11 @@ namespace Sombra.StoryService.Migrations
                     b.HasOne("Sombra.StoryService.DAL.User", "Author")
                         .WithMany()
                         .HasForeignKey("AuthorId");
+
+                    b.HasOne("Sombra.StoryService.DAL.Charity", "Charity")
+                        .WithMany()
+                        .HasForeignKey("CharityId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

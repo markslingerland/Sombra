@@ -26,11 +26,17 @@ namespace Sombra.CharityActionService.UnitTests
                     ProfileImage = "new image"
                 };
 
+                var charity = new Charity
+                {
+                    CharityKey = Guid.NewGuid()
+                };
+
                 var charityAction = new CharityAction
                 {
                     OrganiserUserKey = userUpdatedEvent.UserKey,
                     OrganiserUserName = "John Doe",
-                    OrganiserImage = "old image"
+                    OrganiserImage = "old image",
+                    Charity = charity
                 };
 
                 using (var context = CharityActionContext.GetInMemoryContext())
@@ -72,11 +78,17 @@ namespace Sombra.CharityActionService.UnitTests
                     ProfileImage = "new image"
                 };
 
+                var charity = new Charity
+                {
+                    CharityKey = Guid.NewGuid()
+                };
+
                 var charityAction = new CharityAction
                 {
                     OrganiserUserKey = Guid.NewGuid(),
                     OrganiserUserName = "John Doe",
-                    OrganiserImage = "old image"
+                    OrganiserImage = "old image",
+                    Charity = charity
                 };
 
                 using (var context = CharityActionContext.GetInMemoryContext())

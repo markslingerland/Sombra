@@ -25,31 +25,19 @@ namespace Sombra.CharityActionService.UnitTests
 
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    var action1 = new CharityAction
+                    var charity1 = new Charity
                     {
                         CharityKey = charityUpdatedEvent.CharityKey,
-                        CharityName = "oldName"
+                        Name = "oldName"
                     };
-                    var action2 = new CharityAction
-                    {
-                        CharityKey = charityUpdatedEvent.CharityKey,
-                        CharityName = "oldName"
-                    };
-                    var action3 = new CharityAction
-                    {
-                        CharityKey = charityUpdatedEvent.CharityKey,
-                        CharityName = "oldName"
-                    };
-                    var action4 = new CharityAction
+                    var charity2 = new Charity
                     {
                         CharityKey = otherKey,
-                        CharityName = "otherOldName"
+                        Name = "otherOldName"
                     };
 
-                    context.CharityActions.Add(action1);
-                    context.CharityActions.Add(action2);
-                    context.CharityActions.Add(action3);
-                    context.CharityActions.Add(action4);
+                    context.Charities.Add(charity1);
+                    context.Charities.Add(charity2);
                     context.SaveChanges();
                 }
 
@@ -61,8 +49,8 @@ namespace Sombra.CharityActionService.UnitTests
 
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    Assert.IsTrue(context.CharityActions.Count(a => a.CharityKey == charityUpdatedEvent.CharityKey && a.CharityName == charityUpdatedEvent.Name) == 3);
-                    Assert.IsTrue(context.CharityActions.Count(a => a.CharityKey == otherKey && a.CharityName == "otherOldName") == 1);
+                    Assert.AreEqual(1, context.Charities.Count(a => a.CharityKey == charityUpdatedEvent.CharityKey && a.Name == charityUpdatedEvent.Name));
+                    Assert.AreEqual(1, context.Charities.Count(a => a.CharityKey == otherKey && a.Name == "otherOldName"));
                 }
             }
             finally

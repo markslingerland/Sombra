@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using EasyNetQ;
 using EasyNetQ.AutoSubscribe;
 using Microsoft.Extensions.DependencyInjection;
 using Sombra.Core;
@@ -18,20 +20,36 @@ namespace Sombra.Messaging.Infrastructure
             where TMessage : class
             where TConsumer : class, IConsume<TMessage>
         {
-            ExtendedConsole.Log($"{typeof(TMessage).Name} received");
+            ExtendedConsole.Log($"{message.GetType().Name} received");
             var consumer = _serviceProvider.GetRequiredService<TConsumer>();
 
-            consumer.Consume(message);
+            try
+            {
+                consumer.Consume(message);
+            }
+            catch (Exception ex)
+            {
+                ExtendedConsole.Log(ex);
+                Logger.LogException(ex, false, consumer.GetType().Name);
+            }
         }
 
-        public Task DispatchAsync<TMessage, TConsumer>(TMessage message)
+        public async Task DispatchAsync<TMessage, TConsumer>(TMessage message)
             where TMessage : class
             where TConsumer : class, IConsumeAsync<TMessage>
         {
-            ExtendedConsole.Log($"{typeof(TMessage).Name} received");
+            ExtendedConsole.Log($"{message.GetType().Name} received");
             var consumer = _serviceProvider.GetRequiredService<TConsumer>();
 
-            return consumer.ConsumeAsync(message);
+            try
+            {
+                await consumer.ConsumeAsync(message);
+            }
+            catch (Exception ex)
+            {
+                ExtendedConsole.Log(ex);
+                Logger.LogExceptionAsync(ex, false, consumer.GetType().Name);
+            }
         }
     }
 }

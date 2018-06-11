@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Sombra.Core.Enums;
 using Sombra.Core.Extensions;
 using Sombra.DonateService.DAL;
 using Sombra.Infrastructure.DAL;
@@ -33,22 +34,33 @@ namespace Sombra.DonateService
             if (message.From.HasValue) filter = filter.And(l => l.DateTimeStamp >= message.From);
 
             var charityDonations = _context.CharityDonations.Where(filter);
-            if (message.IncludeCharityActions)
+            if (charityDonations.Any())
             {
-                var charityActionDonations = _context.CharityActionDonations.Where(c => c.CharityAction.Charity.CharityKey == message.CharityKey);
+                if (message.IncludeCharityActions)
+                {
+                    var charityActionDonations = _context.CharityActionDonations.Where(c => c.CharityAction.Charity.CharityKey == message.CharityKey);
+                    return new GetCharityTotalResponse
+                    {
+                        IsSuccess = true,
+                        TotalDonatedAmount = charityDonations.Sum(d => d.Amount) + charityActionDonations.Sum(d => d.Amount),
+                        NumberOfDonators = charityDonations.Count() + charityActionDonations.Count(),
+                        Donations = await _context.CharityDonations.Include(c => c.User).Where(filter).OrderBy(d => d.DateTimeStamp, message.SortOrder).Take(message.NumberOfDonations).ProjectToListAsync<Donation>(_mapper)
+                    };
+                }
+
                 return new GetCharityTotalResponse
                 {
-                    TotalDonatedAmount = charityDonations.Sum(d => d.Amount) + charityActionDonations.Sum(d => d.Amount),
-                    NumberOfDonators = charityDonations.Count() + charityActionDonations.Count(),
+                    IsSuccess = true,
+                    TotalDonatedAmount = charityDonations.Sum(d => d.Amount),
+                    NumberOfDonators = charityDonations.Count(),
                     Donations = await _context.CharityDonations.Include(c => c.User).Where(filter).OrderBy(d => d.DateTimeStamp, message.SortOrder).Take(message.NumberOfDonations).ProjectToListAsync<Donation>(_mapper)
                 };
+
             }
 
             return new GetCharityTotalResponse
             {
-                TotalDonatedAmount = charityDonations.Sum(d => d.Amount),
-                NumberOfDonators = charityDonations.Count(),
-                Donations = await _context.CharityDonations.Include(c => c.User).Where(filter).OrderBy(d => d.DateTimeStamp, message.SortOrder).Take(message.NumberOfDonations).ProjectToListAsync<Donation>(_mapper)
+                ErrorType = ErrorType.NoDonationsFound
             };
         }
     }

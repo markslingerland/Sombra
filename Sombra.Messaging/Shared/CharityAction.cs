@@ -9,13 +9,14 @@ namespace Sombra.Messaging.Shared
         public Guid CharityActionKey { get; set; }
         public Guid CharityKey { get; set; }
         public List<UserKey> UserKeys { get; set; }
-        public string CharityName { get; set; }
         public Category Category { get; set; }
         public string IBAN { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string CoverImage { get; set; }
+        public string ThankYou { get; set; }
         public bool IsApproved { get; set; }
+        public string UrlComponent { get; set; }
 
         public Guid OrganiserUserKey { get; set; }
         public string OrganiserImage { get; set; }

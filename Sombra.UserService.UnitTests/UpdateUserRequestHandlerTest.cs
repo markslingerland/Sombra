@@ -59,7 +59,7 @@ namespace Sombra.UserService.UnitTests
                     Assert.AreEqual(request.FirstName, context.Users.Single().FirstName);
                     Assert.AreEqual(request.LastName, context.Users.Single().LastName);
                     Assert.AreEqual(request.AddressLine1, context.Users.Single().AddressLine1);
-                    Assert.IsTrue(response.Success);
+                    Assert.IsTrue(response.IsSuccess);
                 }
 
                 busMock.Verify(m => m.PublishAsync(It.Is<UserUpdatedEvent>(e => e.UserKey == request.UserKey && e.FirstName == request.FirstName)), Times.Once);
@@ -109,7 +109,7 @@ namespace Sombra.UserService.UnitTests
                 {
                     Assert.AreEqual(1, context.Users.Count());
                     Assert.AreNotEqual(request.FirstName, context.Users.Single().FirstName);
-                    Assert.IsFalse(response.Success);
+                    Assert.IsFalse(response.IsSuccess);
                     Assert.AreEqual(ErrorType.NotFound, response.ErrorType);
                 }
 
@@ -170,7 +170,7 @@ namespace Sombra.UserService.UnitTests
                     Assert.AreEqual(2, context.Users.Count());
                     Assert.AreNotEqual(request.EmailAddress, context.Users.Single(u => u.UserKey == request.UserKey).EmailAddress);
                     Assert.AreEqual(ErrorType.EmailExists, response.ErrorType);
-                    Assert.IsFalse(response.Success);
+                    Assert.IsFalse(response.IsSuccess);
                 }
 
                 busMock.Verify(m => m.PublishAsync(It.IsAny<UserUpdatedEvent>()), Times.Never());

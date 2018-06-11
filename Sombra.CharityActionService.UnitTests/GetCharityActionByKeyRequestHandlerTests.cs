@@ -23,26 +23,29 @@ namespace Sombra.CharityActionService.UnitTests
             {
                 //Arrange
                 var keyAction = Guid.NewGuid();
-                var keyCharity = Guid.NewGuid();
+                var charityKey = Guid.NewGuid();
                 var key = Guid.NewGuid();
                 var user = new UserKey { Key = key };
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    var charity = new CharityAction
+                    var charity = new Charity
+                    {
+                        CharityKey = charityKey,
+                    };
+
+                    var charityAction = new CharityAction
                     {
                         CharityActionKey = keyAction,
-                        CharityKey = keyCharity,
                         UserKeys = new List<UserKey> { user },
-                        CharityName = "testNAmeOwner",
                         Category = Core.Enums.Category.None,
                         IBAN = "",
                         Name = "",
                         Description = "0-IBAN",
-                        CoverImage = ""
-
+                        CoverImage = "",
+                        Charity = charity
                     };
                     context.UserKeys.Add(user);
-                    context.CharityActions.Add(charity);
+                    context.CharityActions.Add(charityAction);
                     context.SaveChanges();
 
                 }
@@ -66,16 +69,15 @@ namespace Sombra.CharityActionService.UnitTests
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
                     
-                    Assert.AreEqual(response.Content.CharityActionKey, context.CharityActions.Single().CharityActionKey);
-                    Assert.AreEqual(response.Content.CharityKey, context.CharityActions.Single().CharityKey);
-                    CollectionAssert.AreEquivalent(response.Content.UserKeys.Select(k => k.Key).ToList(), context.UserKeys.Select(u => u.Key).ToList());
-                    Assert.AreEqual(response.Content.CharityName, context.CharityActions.Single().CharityName);
-                    Assert.AreEqual(response.Content.Category, context.CharityActions.Single().Category);
-                    Assert.AreEqual(response.Content.IBAN, context.CharityActions.Single().IBAN);
-                    Assert.AreEqual(response.Content.Name, context.CharityActions.Single().Name);
-                    Assert.AreEqual(response.Content.Description, context.CharityActions.Single().Description);
-                    Assert.AreEqual(response.Content.CoverImage, context.CharityActions.Single().CoverImage);
-                    Assert.IsTrue(response.Success);
+                    Assert.AreEqual(response.CharityAction.CharityActionKey, context.CharityActions.Single().CharityActionKey);
+                    Assert.AreEqual(response.CharityAction.CharityKey, charityKey);
+                    CollectionAssert.AreEquivalent(response.CharityAction.UserKeys.Select(k => k.Key).ToList(), context.UserKeys.Select(u => u.Key).ToList());
+                    Assert.AreEqual(response.CharityAction.Category, context.CharityActions.Single().Category);
+                    Assert.AreEqual(response.CharityAction.IBAN, context.CharityActions.Single().IBAN);
+                    Assert.AreEqual(response.CharityAction.Name, context.CharityActions.Single().Name);
+                    Assert.AreEqual(response.CharityAction.Description, context.CharityActions.Single().Description);
+                    Assert.AreEqual(response.CharityAction.CoverImage, context.CharityActions.Single().CoverImage);
+                    Assert.IsTrue(response.IsSuccess);
                 }
             }
             finally
@@ -95,24 +97,27 @@ namespace Sombra.CharityActionService.UnitTests
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
                     var keyAction = Guid.NewGuid();
-                    var keyCharity = Guid.NewGuid();
-                    var user = new UserKey() { Key = Guid.NewGuid() };
-                    var users = new Collection<UserKey>() { user };
-                    var charity = new CharityAction
+                    var user = new UserKey { Key = Guid.NewGuid() };
+                    var users = new Collection<UserKey> { user };
+
+                    var charity = new Charity
+                    {
+                        CharityKey = Guid.NewGuid()
+                    };
+
+                    var charityAction = new CharityAction
                     {
                         CharityActionKey = keyAction,
-                        CharityKey = keyCharity,
                         UserKeys = users,
-                        CharityName = "testNAmeOwner",
                         Category = Core.Enums.Category.None,
                         IBAN = "",
                         Name = "",
                         Description = "0-IBAN",
-                        CoverImage = ""
-
+                        CoverImage = "",
+                        Charity = charity
                     };
 
-                    context.Add(charity);
+                    context.Add(charityAction);
                     context.SaveChanges();
 
                 }
@@ -127,9 +132,8 @@ namespace Sombra.CharityActionService.UnitTests
                     response = await handler.Handle(request);
                 }
 
-                //Assert               
-                Assert.IsFalse(response.Success);
-                
+                //Assert
+                Assert.IsFalse(response.IsSuccess);
             }
             finally
             {

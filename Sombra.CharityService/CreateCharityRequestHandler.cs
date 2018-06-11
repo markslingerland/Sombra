@@ -34,17 +34,7 @@ namespace Sombra.CharityService
 
             _context.Charities.Add(charity);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                ExtendedConsole.Log(ex);
-                return new CreateCharityResponse();
-            }
-
-            return new CreateCharityResponse { Success = true };
+            return await _context.TrySaveChangesAsync<CreateCharityResponse>();
         }
     }
 }

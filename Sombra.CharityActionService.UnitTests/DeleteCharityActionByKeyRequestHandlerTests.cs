@@ -30,7 +30,6 @@ namespace Sombra.CharityActionService.UnitTests
 
                 DeleteCharityActionResponse response;
                 var keyAction = Guid.NewGuid();
-                var keyCharity = Guid.NewGuid();
                 var request = new DeleteCharityActionRequest
                 {
                     CharityActionKey = keyAction,
@@ -38,18 +37,21 @@ namespace Sombra.CharityActionService.UnitTests
 
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
+                    var charity = new Charity
+                    {
+                        CharityKey = Guid.NewGuid()
+                    };
+
                     context.CharityActions.Add(new CharityAction
                     {
                         CharityActionKey = keyAction,
-                        CharityKey = keyCharity,
                         UserKeys = new Collection<UserKey>() { new UserKey() { Key = Guid.NewGuid() } },
-                        CharityName = "testNAmeOwner",
                         Category = Core.Enums.Category.AnimalProtection,
                         IBAN = "",
                         Name = "",
                         Description = "0-IBAN",
-                        CoverImage = ""
-
+                        CoverImage = "",
+                        Charity = charity
                     });
 
                     context.SaveChanges();
@@ -88,7 +90,6 @@ namespace Sombra.CharityActionService.UnitTests
 
                 DeleteCharityActionResponse response;
                 var keyAction = Guid.NewGuid();
-                var keyCharity = Guid.NewGuid();
                 var wrongKey = Guid.NewGuid();
                 var request = new DeleteCharityActionRequest
                 {
@@ -97,18 +98,21 @@ namespace Sombra.CharityActionService.UnitTests
 
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
+                    var charity = new Charity
+                    {
+                        CharityKey = Guid.NewGuid()
+                    };
+
                     context.CharityActions.Add(new CharityAction
                     {
                         CharityActionKey = keyAction,
-                        CharityKey = keyCharity,
                         UserKeys = new Collection<UserKey>() { new UserKey() { Key = Guid.NewGuid() } },
-                        CharityName = "testNAmeOwner",
                         Category = Core.Enums.Category.AnimalProtection,
                         IBAN = "",
                         Name = "",
                         Description = "0-IBAN",
-                        CoverImage = ""
-
+                        CoverImage = "",
+                        Charity = charity
                     });
 
                     context.SaveChanges();
@@ -121,7 +125,7 @@ namespace Sombra.CharityActionService.UnitTests
                 }
 
                 //Assert
-                Assert.IsFalse(response.Success);               
+                Assert.IsFalse(response.IsSuccess);
             }
             finally
             {

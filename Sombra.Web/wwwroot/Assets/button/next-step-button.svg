@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="192px" height="40px" viewBox="0 0 192 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 8</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="-78.2883053%" y1="-92.8060282%" x2="185.974107%" y2="230.071478%" id="linearGradient-1">
+            <stop stop-color="#FDA23F" offset="0%"></stop>
+            <stop stop-color="#F3646F" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="-----Web-1440" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="004a-Doneer---Doneerformulier" transform="translate(-356.000000, -886.000000)">
+            <g id="Group-8" transform="translate(356.000000, 886.000000)">
+                <path d="M8,0 L184,0 C188.418278,-8.11624501e-16 192,3.581722 192,8 L192,32 C192,36.418278 188.418278,40 184,40 L8,40 C3.581722,40 5.41083001e-16,36.418278 0,32 L0,8 C-5.41083001e-16,3.581722 3.581722,8.11624501e-16 8,0 Z" id="Rectangle" fill="url(#linearGradient-1)"></path>
+                <text id="Volgende-stap" font-family="Montserrat-Bold, Montserrat" font-size="19" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="36.737" y="26">Volgende stap</tspan>
+                </text>
+                <g id="Page-1" transform="translate(16.000000, 15.000000)" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M11,5 L0,5" id="Stroke-1"></path>
+                    <polyline id="Stroke-3" points="6 0 12 5 6.3345166 10"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

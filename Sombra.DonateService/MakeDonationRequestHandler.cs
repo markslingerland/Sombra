@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Sombra.Core;
@@ -53,52 +52,46 @@ namespace Sombra.DonateService
                 }
 
                 _context.CharityActionDonations.Add(charityActionDonation);
+                return await _context.TrySaveChangesAsync<MakeDonationResponse>(response =>
+                {
+                    response.CoverImage = charityAction.CoverImage;
+                    response.ThankYou = charityAction.ThankYou;
+                });
             }
-            else
+
+
+            var charity = await _context.Charities.SingleOrDefaultAsync(c => c.CharityKey == message.CharityKey);
+            if (charity == null)
             {
-                var charity = await _context.Charities.SingleOrDefaultAsync(c => c.CharityKey == message.CharityKey);
-                if (charity == null)
+                return new MakeDonationResponse
+                {
+                    ErrorType = ErrorType.CharityNotFound
+                };
+            }
+
+            var charityDonation = _mapper.Map<CharityDonation>(message);
+            charityDonation.Charity = charity;
+
+            if (message.UserKey.HasValue && !message.IsAnonymous)
+            {
+                var user = await _context.Users.SingleOrDefaultAsync(u => u.UserKey == message.UserKey.Value);
+                if (user == null)
                 {
                     return new MakeDonationResponse
                     {
-                        ErrorType = ErrorType.CharityNotFound
+                        ErrorType = ErrorType.UserNotFound
                     };
                 }
 
-                var charityDonation = _mapper.Map<CharityDonation>(message);
-                charityDonation.Charity = charity;
-
-                if (message.UserKey.HasValue && !message.IsAnonymous)
-                {
-                    var user = await _context.Users.SingleOrDefaultAsync(u => u.UserKey == message.UserKey.Value);
-                    if (user == null)
-                    {
-                        return new MakeDonationResponse
-                        {
-                            ErrorType = ErrorType.UserNotFound
-                        };
-                    }
-
-                    charityDonation.User = user;
-                }
-
-                _context.CharityDonations.Add(charityDonation);
+                charityDonation.User = user;
             }
 
-            try
+            _context.CharityDonations.Add(charityDonation);
+            return await _context.TrySaveChangesAsync<MakeDonationResponse>(response =>
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                ExtendedConsole.Log(ex);
-                return new MakeDonationResponse();
-            }
-
-            return new MakeDonationResponse
-            {
-                Success = true
-            };
+                response.CoverImage = charity.CoverImage;
+                response.ThankYou = charity.ThankYou;
+            });
         }
     }
 }

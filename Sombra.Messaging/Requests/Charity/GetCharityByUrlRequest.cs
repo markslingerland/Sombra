@@ -2,7 +2,7 @@
 
 namespace Sombra.Messaging.Requests.Charity
 {
-    [Cachable(LifeTimeInHours = 1)]
+    [Cachable]
     public class GetCharityByUrlRequest : Request<GetCharityByUrlResponse>
     {
         [CacheKey]

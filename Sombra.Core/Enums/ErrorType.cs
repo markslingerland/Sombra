@@ -14,6 +14,8 @@
         InvalidPassword = 9,
         CharityNotFound = 10,
         CharityActionNotFound = 11,
-        UserNotFound = 12
+        UserNotFound = 12,
+        NoDonationsFound = 13,
+        InvalidUserKey = 14
     }
 }

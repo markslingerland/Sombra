@@ -22,8 +22,7 @@ namespace Sombra.DonateService
 
             if (charityToUpdate != null)
             {
-                charityToUpdate.CharityKey = message.CharityKey;
-                charityToUpdate.Name = message.Name;
+                _context.Entry(charityToUpdate).CurrentValues.SetValues(message);
                 
                 await _context.SaveChangesAsync();
             }

@@ -26,7 +26,11 @@ namespace Sombra.DonateService.Migrations
 
                     b.Property<Guid>("CharityKey");
 
+                    b.Property<string>("CoverImage");
+
                     b.Property<string>("Name");
+
+                    b.Property<string>("ThankYou");
 
                     b.HasKey("Id");
 
@@ -44,7 +48,11 @@ namespace Sombra.DonateService.Migrations
 
                     b.Property<Guid>("CharityId");
 
+                    b.Property<string>("CoverImage");
+
                     b.Property<string>("Name");
+
+                    b.Property<string>("ThankYou");
 
                     b.HasKey("Id");
 

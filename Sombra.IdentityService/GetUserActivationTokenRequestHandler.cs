@@ -42,21 +42,13 @@ namespace Sombra.IdentityService
                 user.ActivationToken = Hash.SHA256(Guid.NewGuid().ToString());
                 user.ActivationTokenExpirationDate = DateTime.UtcNow.AddDays(1);
 
-                try
-                {
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateException ex)
-                {
-                    ExtendedConsole.Log(ex);
-                    return new GetUserActivationTokenResponse();
-                }
-
-                return new GetUserActivationTokenResponse
-                {
-                    ActivationToken = user.ActivationToken,
-                    UserName = user.Name
-                };
+                return await _context.TrySaveChangesAsync()
+                    ? new GetUserActivationTokenResponse
+                    {
+                        ActivationToken = user.ActivationToken,
+                        UserName = user.Name
+                    }
+                    : new GetUserActivationTokenResponse();
             }
 
             return new GetUserActivationTokenResponse

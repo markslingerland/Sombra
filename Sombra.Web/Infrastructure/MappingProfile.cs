@@ -1,5 +1,6 @@
 ﻿using System;
 using AutoMapper;
+using Sombra.Core;
 using Sombra.Core.Enums;
 using Sombra.Messaging.Requests.Charity;
 using Sombra.Messaging.Requests.CharityAction;
@@ -33,7 +34,7 @@ namespace Sombra.Web.Infrastructure
                 .ForMember(d => d.UserKey, opt => opt.Ignore())
                 .ForMember(d => d.Identifier, opt => opt.MapFrom(s => s.EmailAddress))
                 .ForMember(d => d.Secret, opt => opt.MapFrom(s => s.Password))
-                .ForMember(d => d.UserName, opt => opt.MapFrom(s => $"{s.FirstName} {s.LastName}"))
+                .ForMember(d => d.UserName, opt => opt.MapFrom(s => Helpers.GetUserName(s)))
                 .ForMember(d => d.CredentialType, opt => opt.UseValue(CredentialType.Email));
 
             CreateMap<RegisterAccountViewModel, CreateUserRequest>()

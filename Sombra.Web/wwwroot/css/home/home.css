@@ -1,4 +1,11 @@
-/*dropdown*/
+#header .container {
+    width: 1440px!important;
+}
+.container {
+    width: 100%!important;
+    padding: 0;
+    margin: 0;
+}
 
 #about {
     float: left;
@@ -27,7 +34,6 @@
 
 #about .about-text {
     padding-top: 150px;
-    /*padding-left: 50px;*/
 }
 
 #about .about-text h3 {
@@ -104,7 +110,7 @@
 
 #home-info {
     padding-top: 350px;
-    width: 100%;
+    float: left;
 }
 
 #home-info p {
@@ -243,6 +249,7 @@ width: 75px;
 #home-contribute .container {
  padding: 0 !important;
  margin: 0 !important;
+ width: 100%!important;
 }
 
 #home-contribute .contribute-textArea {
@@ -428,7 +435,7 @@ padding-right: 165px;
     text-align: left;
     color: #ffffff;
     position: absolute;
-    bottom: 150px;
+    bottom: 188px;
 }
 
 #the_story .story-btn-holder {
@@ -449,9 +456,21 @@ padding-right: 165px;
     text-align: left;
     color: #ffffff;
     position: absolute;
-    bottom: 48px;
+    bottom: 85px;
     margin-bottom: 0;
     margin-top: 0;
+}
+
+#the_story .read-more-this-story {
+font-size: 18px;
+font-style: normal;
+font-stretch: normal;
+line-height: normal;
+letter-spacing: normal;
+color: #ffffff;
+text-decoration: underline;
+bottom: 55px;
+position: absolute;
 }
 
 #acties {
@@ -504,7 +523,7 @@ font-size: 19px;
 
 #acties .action-buttons .all-actions {
     margin-right: 16px;
-    background-image: linear-gradient(-140deg, #FDA23F 0%, #F3646F 100%);
+    background-image: linear-gradient(515deg, #fb9549, #f57264);
     color:white;
 }
 

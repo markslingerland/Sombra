@@ -22,11 +22,17 @@ namespace Sombra.CharityActionService.UnitTests
             {
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
+                    var charity = new Charity
+                    {
+                        CharityKey = Guid.NewGuid()
+                    };
+
                     for (var i = 0; i < 25; i++)
                     {
                         context.CharityActions.Add(new CharityAction
                         {
-                            CharityActionKey = Guid.NewGuid()
+                            CharityActionKey = Guid.NewGuid(),
+                            Charity = charity
                         });
                     }
 
@@ -113,6 +119,16 @@ namespace Sombra.CharityActionService.UnitTests
                 var charityKey = Guid.NewGuid();
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
+                    var charity1 = new Charity
+                    {
+                        CharityKey = charityKey
+                    };
+
+                    var charity2 = new Charity
+                    {
+                        CharityKey = Guid.NewGuid()
+                    };
+
                     for (var i = 0; i < 25; i++)
                     {
                         context.CharityActions.Add(new CharityAction
@@ -120,7 +136,8 @@ namespace Sombra.CharityActionService.UnitTests
                             CharityActionKey = Guid.NewGuid(),
                             Name = "this is a charity for john",
                             Description = "doe",
-                            Category = Category.EducationAndResearch | Category.Culture
+                            Category = Category.EducationAndResearch | Category.Culture,
+                            Charity = charity2
                         });
                     }
 
@@ -132,7 +149,7 @@ namespace Sombra.CharityActionService.UnitTests
                             {
                                 context.CharityActions.Add(new CharityAction
                                 {
-                                    CharityKey = charityKey,
+                                    Charity = charity1,
                                     CharityActionKey = Guid.NewGuid(),
                                     Name = "this is a charity for john",
                                     Description = "doe",
@@ -143,7 +160,7 @@ namespace Sombra.CharityActionService.UnitTests
                             {
                                 context.CharityActions.Add(new CharityAction
                                 {
-                                    CharityKey = charityKey,
+                                    Charity = charity1,
                                     CharityActionKey = Guid.NewGuid(),
                                     Name = "this is a charity for john",
                                     Description = "doe",
@@ -155,7 +172,7 @@ namespace Sombra.CharityActionService.UnitTests
                         {
                             context.CharityActions.Add(new CharityAction
                             {
-                                CharityKey = charityKey,
+                                Charity = charity1,
                                 CharityActionKey = Guid.NewGuid()
                             });
                         }

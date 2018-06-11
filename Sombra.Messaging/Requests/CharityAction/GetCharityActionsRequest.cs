@@ -18,6 +18,9 @@ namespace Sombra.Messaging.Requests.CharityAction
         public bool OnlyActive { get; set; }
 
         [CacheKey]
+        public string CharityUrl { get; set; }
+
+        [CacheKey]
         public List<string> Keywords { get; set; }
 
         [CacheKey]

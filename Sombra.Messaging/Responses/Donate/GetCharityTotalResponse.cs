@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sombra.Core.Enums;
 
 namespace Sombra.Messaging.Responses.Donate
 {
     public class GetCharityTotalResponse : Response
     {
+        public bool IsSuccess { get; set; }
         public int NumberOfDonators { get; set; }
         public decimal TotalDonatedAmount { get; set; }
         public List<Donation> Donations { get; set; }
+        public ErrorType ErrorType { get; set; }
     }
 
     public class Donation

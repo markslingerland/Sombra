@@ -1,135 +1,129 @@
-﻿@using Sombra.Core.Extensions
-@model Sombra.Web.ViewModels.Charity.CharityViewModel
-
+﻿@model Sombra.Web.ViewModels.Charity.CharityViewModel
 @{ ViewData["Title"] = "Charity"; }
-
 @section Styles{
     <link rel="stylesheet" href="~/css/charity/charity.css" />
     <link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/charity/desktop.css" />
     <link rel="stylesheet" media="screen and (min-width: 768px) and (max-width: 1200px)" href="~/css/charity/tablet.css" />
-    <link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/charity/mobile.css" />
-}
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/charity/mobile.css" /> }
 @section Scripts {
-    <script>
-        $(document).ready(function () {
-            $('#charity-actions-carousel').load('@Url.Action("GetCharityActions", new {PageSize = 50, CharityKey = Model.CharityKey.ToString()})', function () {
-                var $carousel = $('.main-carousel').flickity({
-                    cellAlign: 'left',
-                    contain: true,
-                    prevNextButtons: false,
-                });
-
-                // Flickity instance
-                var flkty = $carousel.data('flickity');
-                // elements
-                var $cellButtonGroup = $('.button-group--cells');
-                var $cellButtons = $cellButtonGroup.find('.button');
-
-                // previous
-                $('.button--previous').on('click', function () {
-                    $carousel.flickity('previous');
-                });
-                // next
-                $('.button--next').on('click', function () {
-                    $carousel.flickity('next');
-                });
-            });
-        });
-    </script>
+    <script src="~/js/charity.js"></script>
 }
 
-<div id="charity-info">
-    @*Background picture*@
-    <div class="header-image" style="background-image:url(@Model.CoverImage)"></div>
-    <div class="main-storyboard">
-        @*top*@
-        @foreach (var category in Model.Category.GetIndividualFlags().Take(2))
-        {
-            <div class="category">@category.GetDisplayName()</div>
-        }
-        <div class="kvk_ambi">KvK nummer: @Model.KVKNumber  ANBI nummer: @Model.Anbi</div>
-        @*title & story*@
-        <div id="about" class="standard-text">
-            <div class="container">
-                <div class="row about-text">
-                    <h3>@Model.Name</h3>
-                    <p>@Model.About</p>
-                    <div class="donate-btn">
-                        <a href="#" class="donateSVG"></a>
+<div class="header-image" style="background-image:url(@Model.charity.CoverImage)"></div>
+
+<div class="charity-container container">
+    @foreach (string category in @Model.charity.Categories)
+    {
+        <div class="category">@category</div>
+    }
+    <div class="kvk_ambi">KvK nummer: @Model.charity.KVKNumber</div>
+    <div class="kvk_ambi">ANBI nummer: @Model.charity.Anbi</div>
+
+    <div class="charity-logo">
+        <div class="charity-logo-container">
+            <div class="shape-frame " src="../../Assets/shape-frame.svg">
+                <div class="charity-logo-white">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="about">
+        <div class="container">
+            <div class="row about-text">
+                <h3>@Model.charity.Name</h3>
+                <p>@Model.charity.About</p>
+                <div class="donate-btn">
+                    <a href="#" class="donateSVG"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="the_story">
+        <div class="story_image" style="background-image:url(@Model.charityAction.Image)">
+            <div class="story_gradient"></div>
+            <div class="text_container">
+
+                <span>@Model.charityAction.Name, initiatiefnemer</span>
+                <h3>
+                    “@Model.charityAction.Description”
+                </h3>
+                <a href="#">Lees meer</a>
+                <div class="story-btn-holder">
+                    <div class="secondary-button">
+                        <a href="#"></a> @*/charityaction/id=*@
+                        <label>Lees de verhalen</label>
                     </div>
                 </div>
             </div>
         </div>
-        @*Story*@
-        <div id="the_story">
-            <div class="story_image" style="background-image:url(@Model.charityAction.Image)">
-                <div class="story_gradient">
-                    <div class="text_container">
+    </div>
 
-                        <span>@Model.charityAction.Name, initiatiefnemer</span>
-                        <h3>
-                            @Model.charityAction.Description
-                        </h3>
-
-                        <div class="story-btn-holder">
-                            <div class="secondary-button">
-                                <a href="#"></a> @*/charityaction/id=*@
-                                <label>Lees dit verhaal</label>
+    <div id="acties">
+        <h3 class="title">Lopende acties</h3>
+        <div class="slider-container">
+            <div id="charity-actions-carousel" class="main-carousel">
+                @foreach (var action in @Model.charityActions)
+                { // TODO Make correct Models // not sure what model has info for existing events
+                    <div class="carousel-cell">
+                        <div class="carousel-container">
+                            <div class="carousel-background">
+                                <div class="carousel-logo"></div>
+                                <div class="carousel-progress-bar">
+                                    <div class="carousel-progress"></div>
+                                </div>
+                            </div>
+                            <div class="carousel-body">
+                                <label class="carousel-date">27/04/2018</label>
+                                <h4 class="carousel-title">@action.CharityName &#64; Mont Ventoux</h4>
+                                <img class="carousel-poster-image" src="Assets/ArdHofman.png">
+                                <label class="carousel-poster-name"><span style="font-family: 'Source Sans Pro' , sans-serif;">@action.Name</span></label>
+                                <div class="carousel-money-holder">
+                                    <label class="carousel-reached"><span style="font-family: 'Source Sans Pro' , sans-serif;">&euro; @action.donations.TotalDonations</span></label>
+                                    <label class="carousel-goal"><span style="font-family: 'Source Sans Pro' , sans-serif;">behaald van &euro; 15.000</span></label>
+                                </div>
                             </div>
                         </div>
-
                     </div>
-                </div>
+                }
             </div>
         </div>
-        @*Active acitons*@
-        <div id="acties">
-            <h3 class="title">Lopende acties</h3>
-            <div class="slider-container">
-                <div id="charity-actions-carousel" class="main-carousel"></div>
-                <div class="button button--previous"></div>
-                <div class="button button--next"></div>
+        <div class="action-buttons">
+            <div class="all-actions">
+                <a href="#"></a>
+                <span class="monster-700">Bekijk alle acties</span>
             </div>
-            <div class="action-buttons">
-                <div class="all-actions">
-                    <a href="#"></a>
-                    <span class="monster-700">Bekijk alle acties</span>
-                </div>
-                <div class="make-actions">
-                    <a href="#"></a>
-                    <span class="monster-700">Start een actie</span>
-                </div>
+            <div class="make-actions">
+                <a href="#"></a>
+                <span class="monster-700">Start een actie</span>
             </div>
         </div>
-    </div>
-    @*logo*@
-    <div class="container">
-        @*If only a logo is used we can remove the Fill-7*@
-        <img class="Fill-1" src="../../Assets/shape-frame.svg">
-        <div class="Fill-7">@Model.Name</div>
     </div>
 </div>
+
 @*TODO Fix overflow main-storyboard and donations. main-storyboard has fixed height and absolute values*@
 <div id="donations">
     <div class="donations-relative">
         <div class="text-container">
-            <span class="main-text">DEZE WEEK DONEERDER</span>  <span class="ammount-people">@Model.donationsToCharity.DonatedToCharity</span>  <span class="main-text">MENSEN TOTAAL</span>  <span class="ammount-people">&euro;@Model.donationsToCharity.TotalDonations</span>
+            <span class="main-text">DEZE WEEK DONEERDE</span> <span class="ammount-people">@Model.donationsToCharity.DonatedToCharity</span> <span class="main-text">MENSEN TOTAAL</span> <span class="ammount-people">&euro;@Model.donationsToCharity.TotalDonations</span>
         </div>
-        @foreach (var donator in @Model.donators)
-        {
-            <div class="donations-box">
-                <div class="donations-box-inside">
-                    <div class="img-box">
-                        <img class="profile-icon" src="@donator.ProfileImage" />
-                    </div>
-                    <div class="text-box">
-                        <span class="profile-text">@donator.FirstName @donator.LastName doneerde: </span><span class="donations-number">&euro; @donator.LastDonation</span>
-                    </div>
-                    <div class="donation-date">
-                        <span class="date-text">@donator.LastDonationDate</span>
+        <div class="latest-donations-holder">
+
+            @foreach (var donator in @Model.donators) {
+                <div class="donations-box">
+                    <div class="donations-box-inside">
+                        <div class="img-box">
+                            <img class="profile-icon" src="@donator.ProfileImage" />
+                        </div>
+                        <div class="text-box">
+                            <span class="profile-text">@donator.FirstName @donator.LastName doneerde: </span><span class="donations-number">&euro; @donator.LastDonation</span>
+                        </div>
+                        <div class="donation-date">
+                            <span class="date-text">@donator.LastDonationDate</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
     </div>
 </div>

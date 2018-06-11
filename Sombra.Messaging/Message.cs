@@ -11,7 +11,11 @@ namespace Sombra.Messaging
         {
             MessageCreated = DateTime.UtcNow;
             MessageType = GetType().FullName;
+            MessageId = Guid.NewGuid();
         }
+
+        [IgnoreMap]
+        public Guid MessageId { get; }
 
         [IgnoreMap]
         public DateTime MessageCreated { get; }

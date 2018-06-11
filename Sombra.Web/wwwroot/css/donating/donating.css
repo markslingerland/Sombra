@@ -1,6 +1,25 @@
 #header .fixed-header {
     background-color: white!important;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+#header {
+  background-color: white;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+#header .container {
+  width: 100%!important;
+}
+footer {
+  display: none!important;
+}
+
+input::placeholder {
+  font-style: italic;
+  opacity: 0.5;
+}
+
+.container {
+  width: 100%!important;
 }
 
 #background-frame {
@@ -9,7 +28,6 @@
     height: 611px;
     background-size: cover;
     background-repeat: no-repeat;
-
 }
 
 .donate-title {
@@ -25,6 +43,28 @@
     line-height: 1.25;
     letter-spacing: normal;
     color: #838383;
+}
+
+#form-donate {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -403px;
+  margin-bottom: 150px;
+  width: 1109px;
+  min-height: 940px;
+  transition: all .2s ease-in-out;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+
+#section-2, #section-3, #section-4 {
+  display: none;
+}
+
+section:nth-child(2), section:nth-child(3), section:nth-child(4){
+  display: none;
 }
 
 #donating-choose {
@@ -65,8 +105,8 @@
     transform: rotate(45deg);
     background-color: #838383;
     position: absolute;
-    right: 34px;
-    top: 19px;
+    right: 15px;
+    top: 0px;
 }
 
 .closing {
@@ -79,6 +119,36 @@
 
 .donate-close:nth-child(1) {
     transform: rotate(-45deg);
+}
+
+.goBack-holder {
+  position: absolute;
+  top: -45px;
+}
+
+.goBack-holder p {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  color: white;
+  text-decoration: underline;
+  padding-left: 15px;
+}
+.goBack-holder .go-back-icon {
+  background-image: url(../../Assets/icons/white-arrow.svg);
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  transform: rotate(180deg);
+  display: inline-block;
+}
+
+.goBack-holder a {
+  width: 100%;
+  height: 40px;
+  display: block;
+  position: absolute;
+  top: -1px;
 }
 
 .donate-progress {
@@ -95,6 +165,18 @@
     border-radius: 100%;
     margin-bottom: 80px;
     display: inherit;
+    position: relative;
+}
+
+.orange-ball-closed {
+  width: 13px;
+  height: 13px;
+  background-color: #f88356;
+  border: solid 4px #f88356;
+  border-radius: 100%;
+  margin-bottom: 80px;
+  display: inherit;
+  position: relative;
 }
 
 .grey-ball {
@@ -106,97 +188,34 @@
     display: inherit;
 }
 
-/* NEw form */
-
-  
-  #regForm {
-    background-color: red;
-    margin: 100px auto;
-    min-width: 300px;
-
-    width: 1109px;
-    height: 782px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
-  }
-  
-  h1 {
-    text-align: center;  
-  }
-  
-  input {
-    padding: 10px;
-    width: 100%;
-    font-size: 17px;
-    font-family: Raleway;
-    border: 1px solid #aaaaaa;
-  }
-  
-  /* Mark input boxes that gets an error on validation: */
-  input.invalid {
-    background-color: #ffdddd;
-  }
-  
-  /* Hide all steps by default: */
-  .tab {
-    display: none;
-  }
-  
-  button {
-    background-color: #4CAF50;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 17px;
-    font-family: Raleway;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    opacity: 0.8;
-  }
-  
-  #prevBtn {
-    background-color: #bbbbbb;
-  }
-  
-  /* Make circles that indicate the steps of the form: */
-  .step {
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbbbbb;
-    border: none;  
-    border-radius: 50%;
-    display: inline-block;
-    opacity: 0.5;
-  }
-  
-  .step.active {
-    opacity: 1;
-  }
-  
-  /* Mark the steps that are finished and valid: */
-  .step.finish {
-    background-color: #4CAF50;
-  }
-
- #regForm .radio-holder {
-    display: inline-block;
+.first-section, .second-section, .third-section, .fourth-section {
+  cursor: pointer;
 }
 
-#regForm h1 {
-  color: hsla(215, 5%, 10%, 1);
-  margin-bottom: 2rem;
-  font-size: 40px;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
-  color: #838383;
+.required-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background-color: #f88356;
+  transform: rotate(-270deg);
+  position: absolute;
+  right: 26px;
+  top: 23px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(0deg);
 }
 
-#regform .radio-input-tag {
+.progress-stroke {
+  position: absolute;
+  top: 8px;
+  left: 0px;
+  width: 5px;
+  height: 82px;
+  background-color: #f88356;
+}
+
+.radio-holder .radio-input-tag {
   font-size: 22px;
   font-weight: bold;
   font-style: normal;
@@ -204,33 +223,38 @@
   line-height: normal;
   letter-spacing: normal;
   color: #838383;
+  margin-top: 23px;
 }
 
-#regForm section {
-  display: flex;
-  flex-flow: row wrap;
+.radio-holder {
+  display: inline-block;
 }
-#regForm section > div {
-  /* flex: 1; */
-  padding: 0.5rem;
+
+.choose-cause {
+  display: inline-block;
+  margin-top: 182px;
+  margin-left: 182px;
 }
-#regForm input[type="radio"] {
+
+.radio-holder input[type="radio"] {
   display: none;
 }
-#regForm input[type="radio"]:not(:disabled) ~ label {
+
+.radio-holder input[type="radio"]:not(:disabled) ~ label {
     cursor: pointer;
   }
-#regForm input[type="radio"]:disabled ~ label {
+
+.radio-holder input[type="radio"]:disabled ~ label {
     color: hsla(150, 5%, 75%, 1);
     border-color: hsla(150, 5%, 75%, 1);
     box-shadow: none;
     cursor: not-allowed;
   }
 
-#regForm label {
+.radio-holder label {
   display: block;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
   margin: 1rem;
   text-align: center;
   box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
@@ -241,11 +265,12 @@
   background-color: #ffffff;
   border: solid 1px #b1b1b1;
 }
-#regForm input[type="radio"]:checked + label {
+
+.radio-holder input[type="radio"]:checked + label {
   border: solid 2px #b8e986;
 }
 
-#regForm input[type="radio"]:checked + label::after {
+.radio-holder input[type="radio"]:checked + label::after {
   color: hsla(215, 5%, 25%, 1);
   content: url(../../Assets/icons/Icon_checkbox.svg);
   font-size: 24px;
@@ -255,20 +280,1011 @@
   transform: translateX(-50%);
 }
 
-  #regForm input[type="radio"]#control_05:checked + label {
-  background: red;
-  border-color: red;
+.choose-your-payment {
+  display: none;
 }
-#regForm p {
-  font-weight: 900;
+
+/* Selection 1 */
+
+.select-charity {
+  width: 630px;
+  position: relative;
+  margin-left: 190px;
+  height: 50px;
+  margin-top: 35px;
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  display: none;
+}
+
+.select-action {
+   display: none;
+   margin-top: 10px;
+}
+
+.select-charity .selectize-control {
+  position: absolute;
+    top: 12px;
+    padding-left: 20px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #838383;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 
-@media only screen and (max-width: 700px) {
-    #regForm section {
-    flex-direction: column;
+.select-charity .selectize-input input {
+ width: 80%!important;
+ border: none;
+ outline: none;
+}
+
+.select-charity .selectize-input input::placeholder  {
+ font-style: italic;
+ }
+
+.select-charity .selectize-control .selectize-dropdown {
+  top: 36px!important;
+  border-radius: 8px;
+  width: 630px!important;
+  z-index: 200;
+  position: absolute;
+  left: -2px!important;
+  border: solid 1px #b1b1b1;
+  background-color: white;
+}
+
+.select-charity .option {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+
+.select-charity .option:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.select-charity .option:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.select-charity .option:hover {
+  background-color: #EAEAEA;
+}
+
+.select-charity .selectize-dropdown-content {
+  /* padding-left: 15px; */
+}
+
+.section-1-choose-amount {
+  font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2.36;
+    letter-spacing: normal;
+    color: #838383;
+    display: inline-block;
+    margin-top: 50px;
+    margin-left: 192px;
+}
+
+.charity-information {
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  font-stretch: normal;
+  line-height: 1.56;
+  letter-spacing: normal;
+  color: #838383;
+  margin-left: 191px;
+  margin-top: 15px;
+  margin-right: 191px;
+  display: none;
+}
+
+.select-charity .chevron {
+  background-image: url(../../Assets/icons/stroke-down.svg);
+  width: 18px;
+  height: 10px;
+  transform: rotate(-270deg);
+  position: absolute;
+  right: 18px;
+  top: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(0deg);
+}
+
+.choose-money-amount {
+  margin-left: 182px;
+  margin-top: 0px;
+}
+
+.payment-options {
+  margin-left: 182px;
+  margin-top: 18px;
+}
+
+.payment-options  .radio-holder label {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+}
+
+.payment-options  .radio-holder label h2 {
+  position: absolute;
+  top: -28px;
+  left: 34px;
+}
+
+.payment-options .radio-holder input[type="radio"]:checked + label::after {
+  color: hsla(215, 5%, 25%, 1);
+  content: url(../../Assets/icons/Icon_checkbox.svg);
+  font-size: 24px;
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  transform: translateX(-50%);
+}
+
+.payment-options .radio-holder input[type="radio"]:checked + label {
+  border: none;
+}
+
+.payment-options .radio-holder {
+  margin-right: 127px;
+}
+
+.payment-options .radio-holder:nth-child(1) {
+  margin-right: 124px;
+}
+
+.payment-options .radio-holder:nth-child(2) {
+  margin-right: 150px;
+}
+
+.next-step-holder {
+  margin-top: 60px;
+  margin-bottom: 120px;
+  margin-left: 189px;
+  display: none;
+}
+
+.next-step {
+  background-image: url("../../Assets/button/next-step-button.svg");
+  width: 192px;
+  height: 40px;
+  position: relative;
+  display: inline-block;
+}
+
+.error-message {
+  display: inline-block;
+  padding-bottom: 21px;
+  vertical-align: middle;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #d00202;
+  margin-left: 25px;
+}
+
+/* Section 2 */
+
+.pay-option {
+  display: inline-block;
+  margin-top: 182px;
+  margin-left: 180px;
+}
+
+.select-bank .chevron {
+  background-image: url(../../Assets/icons/stroke-down.svg);
+  width: 18px;
+  height: 10px;
+  transform: rotate(-270deg);
+  position: absolute;
+  right: 18px;
+  top: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(0deg);
+}
+
+.select-bank .option:hover {
+  background-color: #EAEAEA;
+}
+
+.select-bank .selectize-input input::placeholder  {
+  font-style: italic;
   }
+
+  .select-bank .selectize-control .selectize-dropdown {
+    top: 40px!important;
+    border-radius: 8px;
+    width: 630px!important;
+    z-index: 200;
+    position: absolute;
+    left: -2px!important;
+    border: solid 1px #b1b1b1;
+    background-color: white;
+  }
+  
+  .select-bank .option {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+  }
+  
+  .select-bank .option:first-child {
+    margin-top: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .select-bank .option:last-child {
+    margin-bottom: 10px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+.select-bank {
+  /* position: absolute; */
+    margin-top: 35px;
+    margin-left: 187px;
+    width: 630px;
+    height: 50px;
+    border-radius: 8px;
+    border: solid 1px #b1b1b1;
+    position: relative;
+    display: none;
+
+}
+
+.select-bank .selectize-control {
+position: absolute;
+top: 12px;
+left: 15px;
+width: 80%;
+font-size: 18px;
+font-weight: 300;
+font-style: normal;
+font-stretch: normal;
+line-height: normal;
+letter-spacing: normal;
+color: #838383;
+font-family: 'Source Sans Pro', sans-serif;
+}
+
+.select-bank .selectize-input input {
+  width: 80%!important;
+  border: none;
+  outline: none;
+}
+
+.select-bank .selectize-control .selectize-dropdown {
+  top: 36px!important;
+  border-radius: 8px;
+  z-index: 200;
+  position: absolute;
+  left: -15px!important;
+  border: solid 1px #b1b1b1;
+  background-color: white;
+}
+
+.select-bank .selectize-dropdown-content {
+padding-left: 15px;
+}
+
+.your-iban-holder {
+    margin-top: 35px;
+    margin-left: 187px;
+    width: 630px;
+    height: 50px;
+    border-radius: 8px;
+    border: solid 1px #b1b1b1;
+    position: relative;
+    display: none;
+
+}
+
+.email-input-holder {
+  margin-top: 10px;
+  margin-left: 187px;
+  width: 630px;
+  height: 50px;
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  position: relative;
+
+}
+
+.email-input-holder input, .your-iban-holder input {
+  padding-left: 15px;
+  font-size: 18px;
+  outline: none;
+  margin-top: 10px;
+  border: none;
+}
+
+.email-input-holder input::-moz-placeholder, .your-iban-holder input::-moz-placeholder {
+  font-size: 18px;
+  font-weight: 300;
+  opacity: 0.6;
+}
+
+.email-input-holder .filled-icon, .your-iban-holder .filled-icon {
+  width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    background-color: #f88356;
+    /* background-image: url(../../Assets/icons/stroke-down.svg); */
+    transform: rotate(-270deg);
+    position: absolute;
+    right: 26px;
+    top: 23px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(0deg);
+}
+
+.personal-information {
+  margin-left: 187px;
+  margin-top: 50px;
+  display: none;
+}
+
+.person-location p {
+  display: inline;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #2a2a2a;
+  opacity: 0.5;
+}
+
+.personal-information .person-adress, .personal-information .person-birthday {
+ font-size: 14px;
+ color: #838383;
+ margin-bottom: 10px;
+}
+
+.personal-information input {
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  outline: none;
+  padding-left: 20px;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.personal-information .person-name {
+  margin-bottom: 10px;
+}
+
+#person-firstname {
+  width: 256px;
+  height: 50px;
+}
+
+#person-lastname, .person-lastname {
+  width: 364px;
+  height: 50px;
+}
+
+#person-postcode, .person-postcode {
+  width: 192px;
+  height: 50px;
+  margin-right: 25px;
+}
+
+#person-housenumber, .person-housenumber {
+  width: 85px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.person-email input {
+    margin-top: 10px;
+    height: 50px;
+    width: 630px;
+}
+
+.birth-required {
+    width: 5px;
+    height: 5px;
+    display: inline-block;
+    border-radius: 100%;
+    vertical-align: middle;
+    margin-bottom: 5px;
+    background-color: #f88356;
+
+}
+
+#person-addition {
+  width: 85px;
+  height: 50px;
+}
+
+.person-lastname, .person-housenumber, .person-postcode {
+  position: relative;
+  display: inline-block;
+}
+
+#person-birth-day, #person-birth-month, #person-birth-year {
+  width: 85px;
+  height: 50px;
+}
+
+.personal-information .person-information-birthday {
+  margin-top: 30px;
+
+}
+
+/* Section 3 */
+
+.section-3 .payment-holder {
+  width: 855px;
+  height: 140px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  margin-top: 175px;
+  margin-left: 190px;
+  display: inline-block;
+  position: relative;
+}
+
+.section-3 .payment-user-info-holder {
+  width: 855px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    border-radius: 8px;
+    border: solid 1px #b1b1b1;
+    margin-top: 16px;
+    margin-left: 190px;
+    display: inline-block;
+    position: relative;
+}
+
+.section-3 .payment-holder p, .section-3 .payment-user-info-holder p {
+font-size: 18px;
+font-style: normal;
+font-stretch: normal;
+line-height: normal;
+letter-spacing: normal;
+color: #838383;
+padding-left: 35px;
+}
+
+.section-3 .payment-holder p span , .section-3 .payment-user-info-holder p span {
+  font-size: 18px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #838383;
+  padding-left: 5px;
+  }
+
+
+.section-3 .pen-icon {
+  width: 30px;
+    height: 30px;
+    background-color: #f88356;
+    border-radius: 100%;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+}
+.pen-icon .pen-icon-image {
+ background-image: url("../../Assets/icons/Icon_edit.svg");
+ width: 30px;
+ height: 30px;
+}
+
+/* Section 4  */
+
+.thank-you-holder {
+  width: 855px;
+  height: 298px;
+  border-radius: 8px;
+  background-image: url(../../Assets/charities/WRoosenboomKlimmentegenMS_01720-compressed-1200x800.jpg);
+  margin-left: 189px;
+  margin-top: 183px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: inline-block;
+  background-position: inherit;
+  position: relative;
+}
+
+.thank-you-holder .dark-gradient {
+  position: absolute;
+  border-radius: 8px;
+  top: 0;bottom: 0; left: 0;right: 0;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #00000094);
+}
+
+.thank-you-holder h3, .thank-you-holder p {
+  z-index: 200;
+}
+
+.thank-you-holder h3 {
+  font-size: 45px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 90px;
+  padding-left: 50px;
+  padding-right: 50px;
+  z-index: 200;
+}
+
+.thank-you-holder p {
+  font-size: 18px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.39;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  width: 429px;
+  z-index: 200;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.share-social-media {
+  float: right;
+  text-align: right;
+  width: 100%;
+  padding-right: 63px;
+  margin-top: 24px;
+  vertical-align: middle;
+}
+
+.share-social-media p {
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+  margin-right: 17px;
+  color: #838383;
+}
+
+.share-social-media .social-media-icon {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+
+.share-social-media .facebook {
+  background-image: url("../../Assets/social-media/Facebook_oranje.svg");
+  margin-right: 10px;
+}
+
+.share-social-media .instagram{
+  background-image: url("../../Assets/social-media/Instagram_oranje.svg");
+}
+
+.share-social-media .twitter{
+  background-image: url("../../Assets/social-media/Twitter_oranje.svg");
+  margin-right: 10px;
+}
+
+.share-story {
+  margin-top: 37px;
+  width: 100%;
+  float: left;
+
+}
+
+.share-story h2 {
+  font-size: 35px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  margin-left: 189px;
+  color: #838383;
+}
+
+.share-story p {
+  font-size: 18px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.56;
+  letter-spacing: normal;
+  color: #838383;
+  margin-left: 189px;
+  width: 569px;
+}
+.action-buttons {
+  width: 100%;
+  text-align: left;
+  float: left;
+  margin-top: 15px;
+  margin-left: 189px;
+}
+
+.action-buttons .all-actions, .action-buttons .make-actions {
+width: 212px;
+height: 40px;
+border-radius: 8px;
+display: inline-block;
+position: relative;
+font-size: 19px;
+}
+
+.action-buttons .all-actions a , .action-buttons .make-actions a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  }
+
+.action-buttons .all-actions {
+  margin-right: 16px;
+  background-image: linear-gradient(515deg, #fb9549, #f57264);
+  color:white;
+}
+
+.action-buttons .all-actions span {
+  position: absolute;
+  top: 8px;
+  left: 23px;
+  font-size: 18px;
+}
+
+.action-buttons .make-actions {
+  background-color: white;
+  border: 1px solid #F88356;
+  color: #F88356;
+  }
+
+.action-buttons .make-actions span {
+  position: absolute;
+  top: 6px;
+  left: 17px;
+  font-size: 18px;
+}
+
+#get-person-account {
+  width: 100%;
+  /* height: 260px; */
+  background-color: rgba(177, 177, 177, 0.15);
+  display: inline-block;
+  margin-top: 100px;
+  padding-left: 190px;
+  padding-right: 190px;
+}
+
+#get-person-account h4 {
+  font-size: 18px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #838383;
+  margin-top: 50px;
+
+}
+
+#get-person-account p {
+  font-size: 18px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.39;
+  letter-spacing: normal;
+  color: #838383;
+}
+
+#sign-up-account {
+  margin-top: 30px;
+  position: relative;
+  padding-bottom: 49px;
+}
+
+#sign-up-account input:first-child {
+  /* margin-right: 10px; */
+}
+
+#sign-up-account input {
+  display: inline-block;
+  height: 50px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: solid 1px #b1b1b1;
+  padding-left: 20px;
+  position: relative;
+}
+#sign-up-account input:nth-child(1) {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+#sign-up-account input:nth-child(2) {
+  width: 49%;
+  margin-right: 11px;
+}
+
+#sign-up-account input:nth-child(3) {
+  width: 49%;
+}
+
+#sign-up-account input::placeholder  {
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #838383;
+}
+
+.addition-getgameform {
+  text-align: right;
+  padding-right: 34px;
+  font-size: 14px;
+  margin-top: 7px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #2a2a2a;
+  opacity: 0.5;
+  float: right;
+  display: inline-block;
+}
+
+#sign-up-account button  {
+  background-image: url(../../Assets/icons/icon-arrow-to-right.svg);
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 77px;
+  right: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: -35px;
+  padding-top: -6px;
+  background-color: transparent;
+  border: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#ikdoneerGame {
+  margin-top: 83px;
+  padding-left: 190px;
+  padding-right: 63px;
+}
+
+#ikdoneerGame .ikdoneer-text-holder {
+  width: 392px;
+  display: inline-block;
+  vertical-align: middle;
+  padding-right: 29px;
+}
+
+#ikdoneerGame .ikdoneer-text-holder h3{
+  font-size: 35px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  color: #838383;
+  margin-top: -35px;
 }
 
 
-  
+#ikdoneerGame .ikdoneer-text-holder p{
+  font-size: 18px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.56;
+  letter-spacing: normal;
+  color: #838383;
+}
+
+.getIkdoneerGame {
+  display: inline-block;
+  width: 430px;
+  vertical-align: middle;
+  height: 266px;
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  padding-left: 31px;
+  padding-right: 31px;
+}
+
+.getIkdoneerGame label {
+  font-size: 18px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #838383;
+  margin-top: 30px;
+}
+
+.getIkdoneerGame .getGameName {
+  width: 100%;
+  height: 50px;
+}
+
+.getIkdoneerGame .getGamePostcode {
+  width: 176px;
+  height: 50px;
+  margin-right: 7px;
+}
+
+.getIkdoneerGame .getGameNumber {
+  width: 85px;
+  height: 50px;
+  margin-right: 7px;
+}
+
+.getIkdoneerGame .getGameToev {
+  width: 85px;
+  height: 50px;
+
+}
+
+.getIkdoneerGame input {
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  margin-top: 10px;
+
+  padding-left: 20px;
+  font-size: 18px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #838383;
+}
+
+.getIkdoneerGame button {
+  width: 190px;
+  height: 40px;
+  border-radius: 8px;
+  background-image: linear-gradient(515deg, #fb9549, #f57264);
+  margin-top: 10px;
+  border: none;
+  display: block;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.close-donating-page {
+  width: 182px;
+  height: 40px;
+  border-radius: 8px;
+  border: solid 1px #f88356;
+  font-size: 18px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #f88356;
+  background-color: white;
+  margin-left: 189px;
+  margin-top: 74px;
+  margin-bottom: 84px;
+}
+
+
+.required-fields {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.required-fields .birth-required {
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.required-fields p {
+  display: inline-block;
+  font-size: 15px;
+  color: #838383;
+  font-style: italic;
+}
+
+#person-detail {
+display: none;
+}
+
+#person-detail input {
+  height: 50px;
+}
+
+#person-detail .person-adress {
+  margin-bottom: 5px;
+}
+
+#person-detail .person-name {
+  display: inline-flex;
+}
+
+#person-detail .person-name input:first-child {
+  width: 256px;
+  height: 50px;
+}
+
+#person-detail .person-name input:last-child {
+  width: 364px;
+  height: 50px;
+}
+
+#person-detail .information-person-data {
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  font-stretch: normal;
+  line-height: 1.56;
+  letter-spacing: normal;
+  color: #838383;
+  width: 630px;
+  margin-top: 0px;
+  margin-bottom: 15px;
+  margin-right: 191px;
+}
+
+#person-detail .person-location .person-postcode input {
+  width: 192px;
+  height: 50px;
+}
+
+#person-detail .person-location .person-housenumber input {
+  width: 85px;
+  height: 50px;
+}
+
+#person-detail .person-location input:nth-child(3) {
+  width: 85px;
+  height: 50px;
+}
+
+/* invalid  */
+
+.choose-cause .not-valid {
+  border: solid red 1px;
+}
+
+.not-valid {
+  border: solid red 1px !important;
+}
+
+.not-valid ~ label.validatable {
+  border: solid red 1px !important;
+}

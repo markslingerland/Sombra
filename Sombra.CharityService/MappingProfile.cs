@@ -12,7 +12,6 @@ namespace Sombra.CharityService
         public MappingProfile()
         {
             CreateMap<CreateCharityRequest, Charity>()
-                .IgnoreEntityProperties()
                 .ForMember(d => d.IsApproved, opt => opt.UseValue(false));
 
             CreateMap<Charity, Messaging.Shared.Charity>();

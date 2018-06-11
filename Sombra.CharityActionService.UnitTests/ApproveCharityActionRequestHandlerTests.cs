@@ -31,18 +31,24 @@ namespace Sombra.CharityActionService.UnitTests
                 {
                     CharityActionKey = Guid.NewGuid()
                 };
-                var charity = new CharityAction
+                var charity = new Charity
+                {
+                    CharityKey = Guid.NewGuid()
+                };
+
+                var charityAction = new CharityAction
                 {
                     CharityActionKey = request.CharityActionKey,
                     Name = "0",
                     Category = Category.AnimalProtection,
                     IBAN = "1111-1111",
-                    CoverImage = "x"
+                    CoverImage = "x",
+                    Charity = charity
                 };
 
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    context.CharityActions.Add(charity);
+                    context.CharityActions.Add(charityAction);
                     context.SaveChanges();
                 }
 
@@ -80,19 +86,25 @@ namespace Sombra.CharityActionService.UnitTests
                 {
                     CharityActionKey = Guid.NewGuid()
                 };
-                var charity = new CharityAction
+                var charity = new Charity
+                {
+                    CharityKey = Guid.NewGuid()
+                };
+
+                var charityAction = new CharityAction
                 {
                     CharityActionKey = request.CharityActionKey,
                     IsApproved = true,
                     Name = "0",
                     Category = Category.AnimalProtection,
                     IBAN = "1111-1111",
-                    CoverImage = "x"
+                    CoverImage = "x",
+                    Charity = charity
                 };
 
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    context.CharityActions.Add(charity);
+                    context.CharityActions.Add(charityAction);
                     context.SaveChanges();
                 }
 
@@ -131,19 +143,24 @@ namespace Sombra.CharityActionService.UnitTests
                 {
                     CharityActionKey = Guid.NewGuid()
                 };
-                var charity = new CharityAction
+                var charity = new Charity
+                {
+                    CharityKey = Guid.NewGuid()
+                };
+
+                var charityAction = new CharityAction
                 {
                     CharityActionKey = Guid.NewGuid(),
-                    CharityKey = Guid.NewGuid(),
                     Name = "0",
                     Category = Category.AnimalProtection,
                     IBAN = "1111-1111",
                     CoverImage = "x",
+                    Charity = charity
                 };
 
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
-                    context.CharityActions.Add(charity);
+                    context.CharityActions.Add(charityAction);
                     context.SaveChanges();
                 }
 

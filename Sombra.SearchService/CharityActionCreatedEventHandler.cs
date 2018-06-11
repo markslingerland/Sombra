@@ -17,16 +17,15 @@ namespace Sombra.SearchService
 
         public async Task ConsumeAsync(CharityActionCreatedEvent message)
         {
-            var charityToCreate = new Content()
+            var charityToCreate = new Content
             {
-                CharityName = message.CharityName,
                 CharityActionName = message.Name,
                 Type = Core.Enums.SearchContentType.CharityAction,
                 CharityActionKey = message.CharityActionKey,
                 CharityKey = message.CharityKey,
                 Image = message.CoverImage,
                 Description = message.Description,
-                Category = message.Category                              
+                Category = message.Category
             };
     
             _context.Add(charityToCreate);

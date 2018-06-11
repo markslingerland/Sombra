@@ -28,7 +28,6 @@ namespace Sombra.SearchService.UnitTests
                     Description = "This is a very good testing description",
                     CharityKey = Guid.NewGuid(),
                     Name = "TestNameAction",
-                    CharityName = "TestName",
                     UserKeys = new List<UserKey>{ new UserKey { Key = Guid.NewGuid() } }
                 };
 
@@ -47,7 +46,6 @@ namespace Sombra.SearchService.UnitTests
                     Assert.AreEqual(Event.Category, context.Content.Single().Category);
                     Assert.AreEqual(Event.Description, context.Content.Single().Description);
                     Assert.AreEqual(Core.Enums.SearchContentType.CharityAction, context.Content.Single().Type);
-                    Assert.AreEqual(Event.CharityName, context.Content.Single().CharityName);  
                 }
             }
             finally

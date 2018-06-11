@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Sombra.Core;
 using Sombra.Core.Enums;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests.Story;
@@ -47,6 +46,16 @@ namespace Sombra.StoryService
                 }
             }
 
+            var charity = await _context.Charities.FirstOrDefaultAsync(c => c.CharityKey == message.CharityKey);
+            if (charity == null)
+            {
+                return new CreateStoryResponse
+                {
+                    ErrorType = ErrorType.CharityNotFound
+                };
+            }
+
+            story.Charity = charity;
             _context.Stories.Add(story);
 
             return await _context.TrySaveChangesAsync<CreateStoryResponse>();

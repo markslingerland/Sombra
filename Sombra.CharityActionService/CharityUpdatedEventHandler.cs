@@ -1,7 +1,6 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Sombra.CharityActionService.DAL;
-using Sombra.Core;
 using Sombra.Messaging.Events.Charity;
 using Sombra.Messaging.Infrastructure;
 
@@ -18,10 +17,10 @@ namespace Sombra.CharityActionService
 
         public async Task ConsumeAsync(CharityUpdatedEvent message)
         {
-            var actionsToUpdate = _context.CharityActions.Where(a => a.CharityKey == message.CharityKey);
-            foreach (var action in actionsToUpdate)
+            var charityToUpdate = await _context.Charities.FirstOrDefaultAsync(a => a.CharityKey == message.CharityKey);
+            if (charityToUpdate != null)
             {
-                action.CharityName = message.Name;
+                _context.Entry(charityToUpdate).CurrentValues.SetValues(message);
             }
 
             await _context.SaveChangesAsync();

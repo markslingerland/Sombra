@@ -15,5 +15,6 @@ namespace Sombra.Messaging.Requests.Story
         public string QuoteText { get; set; }
         public string ConclusionText { get; set; }
         public List<string> Images { get; set; }
+        public string UrlComponent { get; set; }
     }
 }

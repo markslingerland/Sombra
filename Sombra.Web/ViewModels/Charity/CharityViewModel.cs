@@ -12,5 +12,6 @@ namespace Sombra.Web.ViewModels.Charity
         public string KVKNumber { get; set; }
         public string Description { get; set; }
         public string Anbi { get; set; }
+        public string Logo { get; set; }
     }
 }

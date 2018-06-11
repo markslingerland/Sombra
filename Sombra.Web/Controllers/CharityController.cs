@@ -1,12 +1,15 @@
-﻿using System.Net;
+﻿using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Sombra.Messaging.Requests.Charity;
-using Sombra.Messaging.Requests.CharityAction;
+using Sombra.Messaging.Requests.Donate;
+using Sombra.Messaging.Requests.Story;
 using Sombra.Web.Infrastructure.Messaging;
 using Sombra.Web.ViewModels.Charity;
-using Sombra.Web.ViewModels.Home;
+using Sombra.Web.ViewModels.Shared;
+using GetCharityActionsRequest = Sombra.Messaging.Requests.CharityAction.GetCharityActionsRequest;
 
 namespace Sombra.Web.Controllers
 {
@@ -38,9 +41,32 @@ namespace Sombra.Web.Controllers
         {
             var request = _mapper.Map<GetCharityActionsRequest>(query);
             var response = await _bus.RequestAsync(request);
-            var model = _mapper.Map<CharityActionsViewModel>(response);
+            if (!response.IsRequestSuccessful) return new StatusCodeResult((int)HttpStatusCode.ServiceUnavailable);
 
-            return PartialView("~/Views/Home/_CharityActionItemsWrapper.cshtml", model);
+            var model = _mapper.Map<CharityActionsViewModel>(response);
+            return PartialView("_CharityActionItemsWrapper", model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetCharityDonations(DonationsInWeekByCharityQuery query)
+        {
+            var request = _mapper.Map<GetCharityTotalRequest>(query);
+            var response = await _bus.RequestAsync(request);
+            if (!response.IsRequestSuccessful) return new StatusCodeResult((int)HttpStatusCode.ServiceUnavailable);
+
+            var model = _mapper.Map<DonationsViewModel>(response);
+            return PartialView("~/Views/Charity/_DonationItemsWrapper.cshtml", model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetCharityStory(CharityStoryQuery query)
+        {
+            var request = _mapper.Map<GetStoriesRequest>(query);
+            var response = await _bus.RequestAsync(request);
+            if (!response.IsRequestSuccessful) return new StatusCodeResult((int)HttpStatusCode.ServiceUnavailable);
+
+            var model = _mapper.Map<StoryViewModel>(response.Results.First());
+            return PartialView("_Story", model);
         }
     }
 }

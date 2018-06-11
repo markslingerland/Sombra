@@ -28,10 +28,14 @@ namespace Sombra.CharityActionService
         public async Task<GetCharityActionsResponse> Handle(GetCharityActionsRequest message)
         {
             Expression<Func<CharityAction, bool>> filter = c => true;
+
+            if (message.OnlyActive) filter = filter.And(c => c.ActionEndDateTime > DateTime.UtcNow);
             if (message.CharityKey != default) filter = filter.And(c => c.Charity.CharityKey == message.CharityKey);
             if (!string.IsNullOrEmpty(message.CharityUrl)) filter = filter.And(c => c.Charity.Url.Equals(message.CharityUrl, StringComparison.OrdinalIgnoreCase));
             if (message.Category != Category.None) filter = filter.And(c => c.Category == message.Category);
             if (message.Keywords?.Any() != null) filter = filter.And(c => $"{c.Charity.Name} {c.Name} {c.Description}".ContainsAll(message.Keywords, StringComparison.OrdinalIgnoreCase));
+            if (message.OnlyApproved) filter = filter.And(c => c.IsApproved);
+            if (message.OnlyUnapproved) filter = filter.And(c => !c.IsApproved);
 
             return new GetCharityActionsResponse
             {

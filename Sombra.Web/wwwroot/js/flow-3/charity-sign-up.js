@@ -22,14 +22,14 @@ $('input:radio[name="pay-time"]').click(function (){
     $(".section-1 .next-step-holder").css("display", "inline-block");
 })
 
-$('#select-your-charity').selectize({
+$('#select-your-category').selectize({
     sortField: 'text',
-    maxItems: 1,
+    maxItems: 3,
     create: false,
     valueField: 'id',
     labelField: 'title',
     searchField: 'title',
-    placeholder: "Naam van het goed doel...",
+    placeholder: "Selecteer categorieën voor het goede doel...",
     options: [
         { id: 1, title: 'Spectrometer', url: 'http://en.wikipedia.org/wiki/Spectrometers' },
         { id: 2, title: 'Star Chart', url: 'http://en.wikipedia.org/wiki/Star_chart' },
@@ -37,18 +37,20 @@ $('#select-your-charity').selectize({
     ]
 });
 
-$('#select-action').selectize({
+$('#select-your-bank').selectize({
     sortField: 'text',
     maxItems: 1,
     create: false,
     valueField: 'id',
     labelField: 'title',
     searchField: 'title',
-    placeholder: "Naam van de actie...",
+    placeholder: "BANK",
     options: [
-        { id: 1, title: 'Spectrometer', url: 'http://en.wikipedia.org/wiki/Spectrometers' },
-        { id: 2, title: 'Star Chart', url: 'http://en.wikipedia.org/wiki/Star_chart' },
-        { id: 3, title: 'Electrical Tape', url: 'http://en.wikipedia.org/wiki/Electrical_tape' }
+        { id: 1, title: 'INGB', url: 'http://en.wikipedia.org/wiki/Spectrometers' },
+        { id: 2, title: 'RAB', url: 'http://en.wikipedia.org/wiki/Star_chart' },
+        { id: 3, title: 'BUNQ', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
+        { id: 4, title: 'SNS', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
+        { id: 5, title: 'ABN', url: 'http://en.wikipedia.org/wiki/Electrical_tape' }
     ]
 });
 

@@ -30,12 +30,11 @@ input::placeholder {
     background-repeat: no-repeat;
 }
 
-.donate-title {
+.signUp-title {
     position: absolute;
-    top: 75px;
-    left: 283px;
+    top: 98px;
+    left: 314px;
     margin: 0;
-
     font-size: 40px;
     font-weight: 200;
     font-style: normal;
@@ -45,7 +44,7 @@ input::placeholder {
     color: #838383;
 }
 
-#form-donate {
+#sign-up-charity {
   margin-left: auto;
   margin-right: auto;
   margin-top: -403px;
@@ -59,7 +58,7 @@ input::placeholder {
 }
 
 
-#section-2, #section-3, #section-4 {
+#section-2 {
   display: none;
 }
 
@@ -80,18 +79,18 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
     position: relative;
 }
 
-.donate-step {
+.signUp-step {
     background-image: url("../../Assets/shape-frame.svg");
     width: 65px;
     height: 62px;
     background-size: contain;
     position: absolute;
-    top: 63px;
-    left: 189px;
+    top: 94px;
+    left: 220px;
     background-repeat: no-repeat;
 }
 
-.donate-step p {
+.signUp-step p {
     text-align: center;
     font-size: 28px;
     font-weight: 900;
@@ -99,7 +98,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
     margin-top: 12px;
 }
 
-.donate-close {
+.signUp-close {
     width: 2px;
     height: 30px;
     transform: rotate(45deg);
@@ -117,7 +116,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
     top: 19px;
 }
 
-.donate-close:nth-child(1) {
+.signUp-close:nth-child(1) {
     transform: rotate(-45deg);
 }
 
@@ -150,10 +149,10 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   top: -1px;
 }
 
-.donate-progress {
+.signUp-progress {
     position: absolute;
-    top: 63px;
-    left: 63px;
+    top: 94px;
+    left: 99px;
 }
 
 .orange-ball {
@@ -214,14 +213,121 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   margin-top: 23px;
 }
 
+.standard-input:first-child {
+  margin-top: 37px;
+  margin-left: 219px;
+  width: 630px;
+  height: 50px;
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  position: relative;
+}
+
+.big-distance {
+  margin-top: 38px!important;
+}
+
+.standard-input {
+  margin-top: 10px;
+  margin-left: 219px;
+  width: 630px;
+  height: 50px;
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  position: relative;
+}
+
+.standard-input input {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  border: none;
+  color: #838383;
+  font-size: 18px;
+  padding-left: 20px;
+}
+
+.standard-input input::placeholder {
+  font-size: 18px;
+  color: #838383;
+  font-style: italic;
+}
+
+.jquery-select {
+  width: 630px;
+  min-height: 50px;
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  margin-left: 219px;
+  position: relative;
+}
+
+.jquery-select select {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.jquery-select input {
+  width: 100%!important;
+  min-height: 50px;
+  border-radius: 8px;
+  border: none;
+  padding-left: 20px;
+}
+
+.jquery-select input::placeholder {
+  font-size: 18px;
+  color: #838383;
+  font-style: italic;
+}
+
+.jquery-select .item {
+  font-size: 18px;
+  height: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  color: #838383;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.chevron {
+  background-image: url(../../Assets/icons/stroke-down.svg);
+  width: 18px;
+  height: 10px;
+  transform: rotate(-270deg);
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  z-index: 20;
+  background-repeat: no-repeat;
+  transform: rotate(0deg);
+}
+
+.head-partje {
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.36;
+  letter-spacing: normal;
+  color: #838383;
+  margin-bottom: 0;
+}
+
+.select-category {
+  margin-top: 10px;
+}
+
 .radio-holder {
   display: inline-block;
 }
 
-.choose-cause {
+.big-radio-button {
   display: inline-block;
-  margin-top: 182px;
-  margin-left: 182px;
+  margin-top: 210px;
+  margin-left: 219px;
 }
 
 .radio-holder input[type="radio"] {
@@ -242,8 +348,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 .radio-holder label {
   display: block;
   padding: 1rem;
-  margin-bottom: 10px;
-  margin: 1rem;
+  margin-right: 30px;
   text-align: center;
   box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
   position: relative;
@@ -268,211 +373,79 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   transform: translateX(-50%);
 }
 
-.choose-your-payment {
-  display: none;
-}
-
 /* Selection 1 */
 
-.select-charity {
-  width: 630px;
-  position: relative;
-  margin-left: 190px;
-  height: 50px;
-  margin-top: 35px;
-  border-radius: 8px;
-  border: solid 1px #b1b1b1;
-  display: none;
-}
-
-.select-action {
-   display: none;
-   margin-top: 10px;
-}
-
-.select-charity .selectize-control {
-  position: absolute;
-    top: 12px;
-    padding-left: 20px;
-    width: 100%;
-    font-size: 18px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: #838383;
-    font-family: 'Source Sans Pro', sans-serif;
-}
-
-
-.select-charity .selectize-input input {
- width: 80%!important;
- border: none;
- outline: none;
-}
-
-.select-charity .selectize-input input::placeholder  {
- font-style: italic;
- }
-
-.select-charity .selectize-control .selectize-dropdown {
-  top: 36px!important;
-  border-radius: 8px;
-  width: 630px!important;
-  z-index: 200;
-  position: absolute;
-  left: -2px!important;
-  border: solid 1px #b1b1b1;
-  background-color: white;
-}
-
-.select-charity .option {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-}
-
-.select-charity .option:first-child {
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-
-.select-charity .option:last-child {
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-.select-charity .option:hover {
-  background-color: #EAEAEA;
-}
-
-.select-charity .selectize-dropdown-content {
-  /* padding-left: 15px; */
-}
-
-.section-1-choose-amount {
-  font-size: 14px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 2.36;
-    letter-spacing: normal;
-    color: #838383;
-    display: inline-block;
-    margin-top: 50px;
-    margin-left: 192px;
-}
-
-.charity-information {
-  font-size: 18px;
-  font-weight: 300;
+.Anbi-explain {
+  width: 635px;
+  height: 86px;
   font-style: italic;
   font-stretch: normal;
   line-height: 1.56;
   letter-spacing: normal;
   color: #838383;
-  margin-left: 191px;
-  margin-top: 15px;
-  margin-right: 191px;
-  display: none;
+  margin-top: 10px;
+  margin-left: 219px;
+  font-size: 18px;
 }
 
-.select-charity .chevron {
-  background-image: url(../../Assets/icons/stroke-down.svg);
-  width: 18px;
-  height: 10px;
-  transform: rotate(-270deg);
-  position: absolute;
-  right: 18px;
-  top: 20px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  transform: rotate(0deg);
+#payment-details {
+  margin-top: 50px;
+  margin-left: 218px;
 }
 
-.choose-money-amount {
-  margin-left: 182px;
-  margin-top: 0px;
-}
-
-.payment-options {
-  margin-left: 182px;
-  margin-top: 18px;
-}
-
-.payment-options  .radio-holder label {
-  width: 20px;
-  height: 20px;
-  border-radius: 100%;
-}
-
-.payment-options  .radio-holder label h2 {
-  position: absolute;
-  top: -28px;
-  left: 34px;
-}
-
-.payment-options .radio-holder input[type="radio"]:checked + label::after {
-  color: hsla(215, 5%, 25%, 1);
-  content: url(../../Assets/icons/Icon_checkbox.svg);
-  font-size: 24px;
-  position: absolute;
-  top: -5px;
-  right: -10px;
-  transform: translateX(-50%);
-}
-
-.payment-options .radio-holder input[type="radio"]:checked + label {
-  border: none;
-}
-
-.payment-options .radio-holder {
-  margin-right: 127px;
-}
-
-.payment-options .radio-holder:nth-child(1) {
-  margin-right: 124px;
-}
-
-.payment-options .radio-holder:nth-child(2) {
-  margin-right: 150px;
-}
-
-.next-step-holder {
-  margin-top: 60px;
-  margin-bottom: 120px;
-  margin-left: 189px;
-  display: none;
-}
-
-.next-step {
-  background-image: url("../../Assets/button/next-step-button.svg");
-  width: 192px;
-  height: 40px;
-  position: relative;
-  display: inline-block;
-}
-
-.error-message {
-  display: inline-block;
-  padding-bottom: 21px;
-  vertical-align: middle;
-  font-size: 14px;
+.card-data .country {
+  font-size: 18px;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: #d00202;
-  margin-left: 25px;
+  color: #838383;
+  margin-top: 23px;
 }
 
-/* Section 2 */
+.card-data #first-numbers {
+  width: 57px;
+  height: 50px;
+  margin-left: 15px;
+  margin-right: 10px;
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  padding-left: 20px;
+  color: #838383;
+  font-size: 18px;
+}
 
-.pay-option {
+.card-data #last-numbers {
+  width: 396px;
+  height: 50px;
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  margin-left: 15px;
+  margin-right: 10px;
+  padding-left: 20px;
+  color: #838383;
+  font-size: 18px;
+}
+
+
+.select-bank {
+  margin-top: -3px;
+  width: 110px;
+  height: auto;
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  position: relative;
   display: inline-block;
-  margin-top: 182px;
-  margin-left: 180px;
+  margin-left: 0;
+  vertical-align: middle;
+}
+
+.select-bank input {
+  width: 100%!important;
+  min-height: 0;
+  border-radius: 8px;
+  border: none;
+  padding-left: 0;
 }
 
 .select-bank .chevron {
@@ -492,6 +465,10 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   background-color: #EAEAEA;
 }
 
+.select-bank .item {
+  padding: 0;
+}
+
 .select-bank .selectize-input input::placeholder  {
   font-style: italic;
   }
@@ -499,7 +476,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   .select-bank .selectize-control .selectize-dropdown {
     top: 40px!important;
     border-radius: 8px;
-    width: 630px!important;
+    width: 110px!important;
     z-index: 200;
     position: absolute;
     left: -2px!important;
@@ -510,7 +487,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   .select-bank .option {
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 20px;
+    padding-left: 5px;
   }
   
   .select-bank .option:first-child {
@@ -524,19 +501,6 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
   }
-
-.select-bank {
-  /* position: absolute; */
-    margin-top: 35px;
-    margin-left: 187px;
-    width: 630px;
-    height: 50px;
-    border-radius: 8px;
-    border: solid 1px #b1b1b1;
-    position: relative;
-    display: none;
-
-}
 
 .select-bank .selectize-control {
 position: absolute;
@@ -573,16 +537,45 @@ font-family: 'Source Sans Pro', sans-serif;
 padding-left: 15px;
 }
 
-.your-iban-holder {
-    margin-top: 35px;
-    margin-left: 187px;
-    width: 630px;
-    height: 50px;
-    border-radius: 8px;
-    border: solid 1px #b1b1b1;
-    position: relative;
-    display: none;
+#contact-data {
+  margin-top: 50px;
+  margin-left: 218px;
+}
 
+.next-step-holder {
+  margin-top: 60px;
+  margin-bottom: 120px;
+  margin-left: 219px;
+  display: inline-block;
+}
+
+.next-step {
+  background-image: url("../../Assets/button/next-step-button.svg");
+  width: 192px;
+  height: 40px;
+  position: relative;
+  display: inline-block;
+}
+
+.error-message {
+  display: inline-block;
+  padding-bottom: 21px;
+  vertical-align: middle;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #d00202;
+  margin-left: 25px;
+}
+
+/* Section 2 */
+
+.pay-option {
+  display: inline-block;
+  margin-top: 182px;
+  margin-left: 180px;
 }
 
 .email-input-holder {
@@ -1265,7 +1258,7 @@ display: none;
 
 /* invalid  */
 
-.choose-cause .not-valid {
+.big-radio-button .not-valid {
   border: solid red 1px;
 }
 

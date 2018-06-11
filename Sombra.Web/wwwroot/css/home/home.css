@@ -169,7 +169,7 @@ position: relative;
 #choose-flow .flow-box:nth-child(1) {}
 
 #choose-flow .flow-box:nth-child(2) .flow-shape {
-    transform: rotate(-43deg);
+
 }
 
 #choose-flow .flow-box:nth-child(3) .flow-shape {

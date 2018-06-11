@@ -15,8 +15,6 @@ namespace Sombra.Web.Controllers
 {
     public class CharityController : Controller
     {
-
-        
         public const string SubdomainParameter = "Subdomain";
         private readonly ICachingBus _bus;
         private readonly IMapper _mapper;

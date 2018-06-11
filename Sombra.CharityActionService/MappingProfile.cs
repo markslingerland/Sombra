@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
-using Sombra.CharityActionService.DAL;
 using Sombra.Infrastructure.Extensions;
 using Sombra.Messaging.Events.Charity;
 using Sombra.Messaging.Events.CharityAction;
 using Sombra.Messaging.Requests.CharityAction;
 using Sombra.Messaging.Responses.CharityAction;
+using Sombra.Messaging.Shared;
+using Charity = Sombra.CharityActionService.DAL.Charity;
+using CharityAction = Sombra.CharityActionService.DAL.CharityAction;
 
 namespace Sombra.CharityActionService
 {
@@ -37,6 +39,10 @@ namespace Sombra.CharityActionService
 
             CreateMap<CharityAction, CharityActionCreatedEvent>()
                 .ForMember(d => d.CharityKey, opt => opt.MapFrom(s => s.Charity.CharityKey));
+
+            CreateMap<Charity, KeyNamePair>()
+                .ForMember(d => d.Key, opt => opt.MapFrom(s => s.CharityKey))
+                .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Name));
         }
     }
 }

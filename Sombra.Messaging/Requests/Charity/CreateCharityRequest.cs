@@ -20,5 +20,6 @@ namespace Sombra.Messaging.Requests.Charity
         public string Anbi { get; set; }
         public string Description { get; set; }
         public string ThankYou { get; set; }
+        public string Logo { get; set; }
     }
 }

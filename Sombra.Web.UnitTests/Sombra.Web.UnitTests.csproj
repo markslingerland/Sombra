@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Sombra.Infrastructure\Sombra.Infrastructure.csproj" />
     <ProjectReference Include="..\Sombra.Web\Sombra.Web.csproj" />
   </ItemGroup>
 

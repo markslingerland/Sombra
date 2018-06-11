@@ -1,4 +1,4 @@
-﻿namespace Sombra.Web.ViewModels.Home
+﻿namespace Sombra.Web.ViewModels.Shared
 {
     public class CharityActionsQuery
     {

@@ -37,4 +37,10 @@
     <Folder Include="wwwroot\css\createstory\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Charity\_DonationItemsWrapper.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>

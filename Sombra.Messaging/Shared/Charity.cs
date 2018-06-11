@@ -20,5 +20,6 @@ namespace Sombra.Messaging.Shared
         public string Description { get; set; }
         public string ThankYou { get; set; }
         public bool IsApproved { get; set; }
+        public string Logo { get; set; }
     }
 }

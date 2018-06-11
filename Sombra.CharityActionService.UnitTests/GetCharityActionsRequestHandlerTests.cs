@@ -67,10 +67,16 @@ namespace Sombra.CharityActionService.UnitTests
             {
                 using (var context = CharityActionContext.GetInMemoryContext())
                 {
+                    var charity = new Charity
+                    {
+                        CharityKey = Guid.NewGuid()
+                    };
+
                     for (var i = 0; i < 25; i++)
                     {
                         context.CharityActions.Add(new CharityAction
                         {
+                            Charity = charity,
                             ActionEndDateTime = DateTime.UtcNow - TimeSpan.FromDays(10),
                             CharityActionKey = Guid.NewGuid()
                         });
@@ -80,6 +86,7 @@ namespace Sombra.CharityActionService.UnitTests
                     {
                         context.CharityActions.Add(new CharityAction
                         {
+                            Charity = charity,
                             ActionEndDateTime = DateTime.UtcNow + TimeSpan.FromDays(10),
                             CharityActionKey = Guid.NewGuid()
                         });

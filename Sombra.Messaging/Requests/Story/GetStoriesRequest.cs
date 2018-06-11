@@ -17,6 +17,9 @@ namespace Sombra.Messaging.Requests.Story
         public Guid CharityKey { get; set; }
 
         [CacheKey]
+        public string CharityUrl { get; set; }
+
+        [CacheKey]
         public SortOrder SortOrder { get; set; }
 
         [CacheKey]

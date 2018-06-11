@@ -35,7 +35,6 @@ namespace Sombra.DonateService.UnitTests
                     Description = "This is a very good testing description",
                     CharityKey = Charity.CharityKey,
                     Name = "TestNameAction",
-                    CharityName = Charity.Name,
                     UserKeys = new List<UserKey>{ new UserKey { Key = Guid.NewGuid() } },
                     ThankYou = "ThankYou"
                 };

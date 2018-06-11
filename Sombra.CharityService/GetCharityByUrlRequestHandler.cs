@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Sombra.CharityService.DAL;
-using Sombra.Core;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests.Charity;
 using Sombra.Messaging.Responses.Charity;

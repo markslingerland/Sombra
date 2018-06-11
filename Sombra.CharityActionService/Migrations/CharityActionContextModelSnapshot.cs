@@ -19,6 +19,26 @@ namespace Sombra.CharityActionService.Migrations
                 .HasAnnotation("ProductVersion", "2.1.0-preview2-30571")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Sombra.CharityActionService.DAL.Charity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("CharityKey");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Url");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CharityKey");
+
+                    b.HasIndex("Url");
+
+                    b.ToTable("Charities");
+                });
+
             modelBuilder.Entity("Sombra.CharityActionService.DAL.CharityAction", b =>
                 {
                     b.Property<Guid>("Id")
@@ -30,9 +50,7 @@ namespace Sombra.CharityActionService.Migrations
 
                     b.Property<Guid>("CharityActionKey");
 
-                    b.Property<Guid>("CharityKey");
-
-                    b.Property<string>("CharityName");
+                    b.Property<Guid>("CharityId");
 
                     b.Property<decimal>("CollectedAmount");
 
@@ -56,9 +74,15 @@ namespace Sombra.CharityActionService.Migrations
 
                     b.Property<string>("ThankYou");
 
+                    b.Property<string>("UrlComponent");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CharityActionKey");
+
+                    b.HasIndex("CharityId");
+
+                    b.HasIndex("UrlComponent");
 
                     b.ToTable("CharityActions");
                 });
@@ -77,6 +101,14 @@ namespace Sombra.CharityActionService.Migrations
                     b.HasIndex("CharityActionId");
 
                     b.ToTable("UserKeys");
+                });
+
+            modelBuilder.Entity("Sombra.CharityActionService.DAL.CharityAction", b =>
+                {
+                    b.HasOne("Sombra.CharityActionService.DAL.Charity", "Charity")
+                        .WithMany()
+                        .HasForeignKey("CharityId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Sombra.CharityActionService.DAL.UserKey", b =>

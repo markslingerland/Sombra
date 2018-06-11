@@ -45,8 +45,8 @@ namespace Sombra.UserService.UnitTests
                 using (var context = UserContext.GetInMemoryContext())
                 {
                     Assert.IsTrue(response.UserExists);
-                    Assert.AreEqual(context.Users.Single().FirstName, response.FirstName);
-                    Assert.AreEqual(context.Users.Single().LastName, response.LastName);
+                    Assert.AreEqual(context.Users.Single().FirstName, response.User.FirstName);
+                    Assert.AreEqual(context.Users.Single().LastName, response.User.LastName);
                 }
             }
             finally
@@ -87,6 +87,7 @@ namespace Sombra.UserService.UnitTests
                 }
 
                 Assert.IsFalse(response.UserExists);
+                Assert.IsNull(response.User);
             }
             finally
             {

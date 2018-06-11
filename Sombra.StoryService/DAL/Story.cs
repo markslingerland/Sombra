@@ -7,11 +7,12 @@ namespace Sombra.StoryService.DAL
     public class Story : Entity
     {
         public Guid StoryKey { get; set; }
-        public Guid CharityKey { get; set; }
-        public string CharityName { get; set; }
+        public virtual Charity Charity { get; set; }
+        public Guid CharityId { get; set; }
         public virtual User Author { get; set; }
         public Guid? AuthorId { get; set; }
         public bool IsApproved { get; set; }
+        public string UrlComponent { get; set; }
 
         public string CoverImage { get; set; }
         public string Title { get; set; }

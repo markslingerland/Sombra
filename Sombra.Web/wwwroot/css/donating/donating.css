@@ -131,6 +131,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   vertical-align: middle;
   font-size: 18px;
   color: white;
+  text-decoration: underline;
   padding-left: 15px;
 }
 .goBack-holder .go-back-icon {
@@ -167,6 +168,17 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
     position: relative;
 }
 
+.orange-ball-closed {
+  width: 13px;
+  height: 13px;
+  background-color: #f88356;
+  border: solid 4px #f88356;
+  border-radius: 100%;
+  margin-bottom: 80px;
+  display: inherit;
+  position: relative;
+}
+
 .grey-ball {
     height: 13px;
     width: 13px;
@@ -196,10 +208,10 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 
 .progress-stroke {
   position: absolute;
-  top: 0px;
+  top: 8px;
   left: 0px;
   width: 5px;
-  height: 91px;
+  height: 82px;
   background-color: #f88356;
 }
 

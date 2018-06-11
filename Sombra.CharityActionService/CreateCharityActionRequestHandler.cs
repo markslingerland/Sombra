@@ -32,6 +32,16 @@ namespace Sombra.CharityActionService
                 };
             }
 
+            var charity = await _context.Charities.FirstOrDefaultAsync(c => c.CharityKey == message.CharityKey);
+            if (charity == null)
+            {
+                return new CreateCharityActionResponse
+                {
+                    ErrorType = ErrorType.CharityNotFound
+                };
+            }
+
+            charityAction.Charity = charity;
             _context.CharityActions.Add(charityAction);
 
             return await _context.TrySaveChangesAsync<CreateCharityActionResponse>();

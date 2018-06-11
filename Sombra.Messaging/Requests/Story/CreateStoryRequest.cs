@@ -8,9 +8,8 @@ namespace Sombra.Messaging.Requests.Story
     {
         public Guid StoryKey { get; set; }
         public Guid CharityKey { get; set; }
-        public string CharityName { get; set; }
-
         public Guid? AuthorUserKey { get; set; }
+        public string UrlComponent { get; set; }
 
         public string CoverImage { get; set; }
         public string Title { get; set; }

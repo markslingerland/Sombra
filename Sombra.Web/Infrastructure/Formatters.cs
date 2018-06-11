@@ -7,7 +7,7 @@ namespace Sombra.Web.Infrastructure
     public static class Formatters
     {
         public static IFormatProvider DefaultFormatProvider = CultureInfo.GetCultureInfo("nl-NL");
-        private static readonly Regex UrlRegex = new Regex("[\\~#%&*{}/:<>?|\"\']");
+        private static readonly Regex UrlRegex = new Regex(@"[^A-z|0-9|\-|\s]");
         
         public static string ToFormattedString(this DateTime dateTime)
         {
@@ -21,7 +21,7 @@ namespace Sombra.Web.Infrastructure
 
         public static string CreateUrlComponent(string value)
         {
-            return Regex.Replace(UrlRegex.Replace(value, " "), @"\s+", "-");
+            return Regex.Replace(UrlRegex.Replace(value, ""), @"\s+", "-");
         }
     }
 }

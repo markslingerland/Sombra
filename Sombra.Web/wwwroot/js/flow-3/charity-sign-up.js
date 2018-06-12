@@ -62,6 +62,8 @@ $('#one-time').on('input', function () {
  }
 });
 
+// Navigation
+
 $('#button-toSection-2').click(function(){
     $('.section-01').hide();
     $('.section-02').show();

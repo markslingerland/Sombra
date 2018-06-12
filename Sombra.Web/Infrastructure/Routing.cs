@@ -12,10 +12,10 @@ namespace Sombra.Web.Infrastructure
 
             routeBuilder.MapSubdomainRoute(
                 hostnames,
-                "SubdomainRoute",
-                $"{{{CharityController.SubdomainParameter}}}",
-                "{action}",
-                new { controller = "Charity", action = "Index" });
+                name: "SubdomainRoute",
+                subdomain: $"{{{CharityController.SubdomainParameter}}}",
+                template: "{action}",
+                defaults: new { controller = "Charity", action = "Index" });
 
             routeBuilder.MapRoute(
                 hostnames,

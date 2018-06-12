@@ -22,7 +22,6 @@ namespace Sombra.UserService
                 .ForMember(d => d.User, opt => opt.MapFrom(s => s));
 
             CreateMap<CreateUserRequest, User>()
-                .IgnoreEntityProperties()
                 .ForMember(d => d.Created, opt => opt.MapFrom(s => DateTime.UtcNow));
 
             CreateMap<User, UserCreatedEvent>()

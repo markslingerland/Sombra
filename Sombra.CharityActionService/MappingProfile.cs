@@ -15,13 +15,11 @@ namespace Sombra.CharityActionService
         public MappingProfile()
         {
             CreateMap<CreateCharityActionRequest, CharityAction>()
-                .IgnoreEntityProperties()
                 .ForMember(d => d.IsApproved, opt => opt.UseValue(false))
                 .ForMember(d => d.Charity, opt => opt.Ignore())
                 .ForMember(d => d.CharityId, opt => opt.Ignore());
 
-            CreateMap<CharityCreatedEvent, Charity>()
-                .IgnoreEntityProperties();
+            CreateMap<CharityCreatedEvent, Charity>();
 
             CreateMap<CharityAction, Messaging.Shared.CharityAction>()
                 .ForMember(d => d.CharityKey, opt => opt.MapFrom(s => s.Charity.CharityKey));

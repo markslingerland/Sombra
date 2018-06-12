@@ -20,7 +20,6 @@ namespace Sombra.StoryService
         public MappingProfile()
         {
             CreateMap<UserCreatedEvent, User>()
-                .IgnoreEntityProperties()
                 .ForMember(d => d.Name, opt => opt.MapFrom(s => Helpers.GetUserName(s)));
 
             CreateMap<Story, Messaging.Shared.Story>()
@@ -36,7 +35,6 @@ namespace Sombra.StoryService
                 .ForMember(d => d.Story, opt => opt.MapFrom(s => s));
 
             CreateMap<CreateStoryRequest, Story>()
-                .IgnoreEntityProperties()
                 .ForMember(d => d.Author, opt => opt.Ignore())
                 .ForMember(d => d.AuthorId, opt => opt.Ignore())
                 .ForMember(d => d.Charity, opt => opt.Ignore())
@@ -45,8 +43,7 @@ namespace Sombra.StoryService
                 .ForMember(d => d.Created, opt => opt.UseValue(DateTime.UtcNow))
                 .ForMember(d => d.Images, opt => opt.MapFrom(s => s.Images.Select(i => new Image {Base64 = i})));
 
-            CreateMap<CharityCreatedEvent, Charity>()
-                .IgnoreEntityProperties();
+            CreateMap<CharityCreatedEvent, Charity>();
 
             CreateMap<Charity, KeyNamePair>()
                 .ForMember(d => d.Key, opt => opt.MapFrom(s => s.CharityKey))

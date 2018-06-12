@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Sombra.Messaging.Requests.Charity;
 using Sombra.Messaging.Requests.Donate;
 using Sombra.Messaging.Requests.Story;
+using Sombra.Web.Infrastructure;
 using Sombra.Web.Infrastructure.Messaging;
 using Sombra.Web.ViewModels.Charity;
 using Sombra.Web.ViewModels.Shared;
@@ -15,7 +16,6 @@ namespace Sombra.Web.Controllers
 {
     public class CharityController : Controller
     {
-        public const string SubdomainParameter = "Subdomain";
         private readonly ICachingBus _bus;
         private readonly IMapper _mapper;
 
@@ -25,6 +25,14 @@ namespace Sombra.Web.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
+        public IActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [Subdomain]
         public async Task<IActionResult> Index(CharityQuery query)
         {
             var request = _mapper.Map<GetCharityByUrlRequest>(query);

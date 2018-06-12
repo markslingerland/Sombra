@@ -8,6 +8,8 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <LangVersion>7.1</LangVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -33,7 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\CreateStory\" />
     <Folder Include="wwwroot\css\createstory\" />
   </ItemGroup>
 
@@ -41,7 +42,7 @@
     <Content Update="Views\Charity\_DonationItemsWrapper.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Stories\Index.cshtml">
+    <Content Update="Views\Story\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
   </ItemGroup>

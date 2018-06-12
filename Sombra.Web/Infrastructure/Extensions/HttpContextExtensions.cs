@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Sombra.Web.Infrastructure.Authentication;
 
 namespace Sombra.Web.Infrastructure.Extensions
@@ -10,14 +9,7 @@ namespace Sombra.Web.Infrastructure.Extensions
         public static string GetHomeUrl(this HttpContext context)
         {
             if (string.IsNullOrEmpty(_homeUrl))
-            {
-                var builder = new UriBuilder
-                {
-                    Scheme = context.Request.Scheme,
-                    Host = context.Request.Host.Value
-                };
-                _homeUrl = builder.Uri.ToString();
-            }
+                _homeUrl = $"{context.Request.Scheme}//{context.Request.Host.Value}";
 
             return _homeUrl;
         }

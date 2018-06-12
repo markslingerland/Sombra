@@ -9,10 +9,13 @@
 <div id="background-frame"></div>
 
 <div class="form-signUpCharity">
-    <form id="sign-up-charity">
-        <section class="section-01">
+      <form id="sign-up-charity">
+     <section class="section-01">
+  
+   
             <div class="signUp-progress">
                 <div class="orange-ball .first-section"></div>
+                <div class="grey-ball"></div>
                 <div class="grey-ball"></div>
             </div>
             <div class="title-holder">
@@ -26,14 +29,14 @@
 
              <div class="big-radio-button">
                 <div class="radio-holder">
-                    <input type="radio" id="charity" name="select" value="2" required>
+                    <input type="radio" id="charity" name="your-cause" value="2">
                     <label for="charity" class="validatable">
                     <h2 class="source-600 radio-input-tag"> een goed doel</h2>
                 </label>
                 </div>
 
                 <div class="radio-holder">
-                    <input type="radio" id="stichting" name="select" value="2">
+                    <input type="radio" id="stichting" name="your-cause" value="2">
                     <label for="stichting" class="validatable">
                     <h2 class="source-600 radio-input-tag"> een stichting</h2>
                 </label>
@@ -42,17 +45,17 @@
 
             <div class="big-distance standard-input ">
                 <div class="filled-icon"></div>
-                <input class="source-400 validatable" id="name-charity" type="text" placeholder="Naam van het goed doel">
+                <input class="source-400 validatable" id="name-charity" type="text" placeholder="Naam van het goed doel" required>
             </div>
 
             <div class="jquery-select select-category">
                 <div class="chevron"></div>
-                <select id="select-your-category" name="select-category" form="sign-up-charity"></select>
+                <select id="select-your-category" required name="select-category" form="sign-up-charity"></select>
             </div>
 
             <div class="standard-input">
                 <div class="filled-icon"></div>
-                <input class="source-400 validatable" id="kvk-number" type="text" placeholder="KvK nummer">
+                <input class="source-400 validatable" id="kvk-number" type="text" placeholder="KvK nummer" required>
             </div>
 
             <p class="source-300 Anbi-explain">Bij ikdoneer.nu is het verplicht om ANBI geregistreerd te zijn, daarom vragen wij het KvK nummer ter controle. Het KvK- en ANBI nummer zullen zichtbaar zijn op de pagina van het goede doel.</p>
@@ -64,7 +67,7 @@
                     <input id="first-numbers" type="number" placeholder="00" required>
                       <div class="jquery-select select-bank">
                         <div class="chevron"></div>
-                        <select id="select-your-bank" name="select-bank" form="sign-up-charity"></select>
+                        <select id="select-your-bank" name="select-bank" form="sign-up-charity" required></select>
                     </div>
                     <input id="last-numbers" type="number" placeholder="0000000" required>
                 </div>
@@ -96,14 +99,92 @@
 
              <div class="next-step-holder">
                 <div class="next-step">
-                    <a id="next-to-section-3" class="clickable" href="#"></a>
+                    <span class="clickable" id="button-toSection-2"></span>
                 </div>
                 <p class="error-message monster-300">Oeps er is iets mis</p>
             </div>
-
-
-
         </section>
-        <section class="section-02"></section>
-    </form>
+
+        <section class="section-02">
+            <div class="signUp-progress">
+                 <div class="orange-ball-closed first-section">
+                    <div class="progress-stroke"></div>
+                </div>
+                <div class="orange-ball"></div>
+                <div class="grey-ball"></div>
+            </div>
+            <div class="title-holder">
+                <div class="signUp-step">
+                    <p>2</p>
+                </div>
+                <h3 class="signUp-title monster-400">Overzicht</h3>
+            </div>
+
+            <a class="closing"><span class="signUp-close"></span><span class="signUp-close"></span></a>
+
+            <div class="payment-user-info-holder">
+                <div class="pen-icon second-section">
+                     <div class="pen-icon-image"></div>
+                </div>
+                <p class="monster-600">Aanmelden van:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Naam:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Voornaam:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Categoriëen:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">KvK nummer<span class="monster-300">MS Moves</span></p>
+                            </br>
+                <p class="monster-600">Iban:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Naam rekeninghouder:<span class="monster-300">MS Moves</span></p>
+                            </br>
+                <p class="monster-600">Naam contactpersoon<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">E-mailadres<span class="monster-300">MS Moves</span></p>
+            </div>
+
+            <div class="next-step-holder">
+                <button class="next-step" id="button-toSection-3">
+                </button>
+                <p class="error-message monster-300">Oeps er is iets mis</p>
+            </div>
+
+            </section>
+
+             <section class="section-03">
+            <div class="signUp-progress">
+                 <div class="orange-ball-closed first-section">
+                    <div class="progress-stroke"></div>
+                </div>
+                 <div class="orange-ball-closed second-section">
+                    <div class="progress-stroke"></div>
+                </div>
+                <div class="orange-ball"></div>
+            </div>
+            <div class="title-holder">
+                <div class="signUp-step">
+                    <p>3</p>
+                </div>
+                <h3 class="signUp-title monster-400">Bevestiging</h3>
+            </div>
+
+            <a class="closing"><span class="signUp-close"></span><span class="signUp-close"></span></a>
+
+            <div class="request-holder">
+                <span class="check-icon"></span>
+                <p class="request-in-admission">De aanvraag is in behandeling</p>
+            </div>
+
+            <p class="request-joining">
+                Bedankt voor jouw aanmelding! Leuk dat je je bij ons platform wilt aansluiten.
+De aanmelding is momenteel in behandeling. Wij zullen eerst de gegevens controleren en ophalen voordat je toegang krijgt tot het profiel. In het profiel krijg je de mogelijkheid om de pagina in te delen, statistieken te bekijken en nog veel meer!
+            </p>
+
+            <button class="close-donating-page monster-800">Pagina sluiten</button>
+
+            
+        </section>
+
+            </form>
+
+    
+
+       
+    
 </div>

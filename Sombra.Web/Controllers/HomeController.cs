@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Sombra.Messaging.Requests.CharityAction;
 using Sombra.Messaging.Requests.Search;
+using Sombra.Messaging.Requests.Story;
 using Sombra.Web.Infrastructure.Messaging;
 using Sombra.Web.Models;
 using Sombra.Web.ViewModels.Home;
+using Sombra.Web.ViewModels.Shared;
 
 namespace Sombra.Web.Controllers
 {
@@ -52,9 +56,26 @@ namespace Sombra.Web.Controllers
         {
             var request = _mapper.Map<GetCharityActionsRequest>(query);
             var response = await _bus.RequestAsync(request);
-            var model = _mapper.Map<CharityActionsViewModel>(response);
+            if (!response.IsRequestSuccessful) return new StatusCodeResult((int)HttpStatusCode.ServiceUnavailable);
 
+            var model = _mapper.Map<CharityActionsViewModel>(response);
             return PartialView("_CharityActionItemsWrapper", model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetStory()
+        {
+            var request = new GetStoriesRequest
+            {
+                OnlyApproved = true,
+                PageNumber = 1,
+                PageSize = 1
+            };
+            var response = await _bus.RequestAsync(request);
+            if (!response.IsRequestSuccessful) return new StatusCodeResult((int)HttpStatusCode.ServiceUnavailable);
+
+            var model = _mapper.Map<StoryViewModel>(response.Results.First());
+            return PartialView("_Story", model);
         }
 
         public IActionResult Error()

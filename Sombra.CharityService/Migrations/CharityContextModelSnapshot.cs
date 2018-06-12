@@ -42,6 +42,8 @@ namespace Sombra.CharityService.Migrations
 
                     b.Property<string>("KVKNumber");
 
+                    b.Property<string>("Logo");
+
                     b.Property<string>("Name");
 
                     b.Property<Guid>("OwnerUserKey");

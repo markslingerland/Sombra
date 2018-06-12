@@ -1,7 +1,6 @@
 .container {
     width: 100% !important;
     padding: 0;
-    margin: 0;
 }
 
 #header {
@@ -49,7 +48,6 @@
 }
 
 .charity-logo-white {
-    background-image: url("../../Assets/charities/Logo_tear.png");
     width: 140px;
     height: 50px;
     top: 64px;
@@ -239,7 +237,6 @@
 
 .container {
     padding: 0;
-    margin: 0;
 }
 
 .story_image {

@@ -1,7 +1,8 @@
 $(document).ready(function () {
     $('#top-charities').load('Home/GetTopCharities?Amount=3');
+    $('#the_story').load('Home/GetStory');
 
-    $('#charity-actions-carousel').load('Home/GetCharityActions?PageSize=50', function() {
+    $('#acties').load('Home/GetCharityActions?PageSize=50', function() {
         var $carousel = $('.main-carousel').flickity({
             cellAlign: 'left',
             contain: true,

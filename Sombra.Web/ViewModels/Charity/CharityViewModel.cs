@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Sombra.Core.Enums;
 
 namespace Sombra.Web.ViewModels.Charity
 {
     public class CharityViewModel
     {
-        public CharityActionModel charityAction { get; set; }
-        public CharityModel charity { get; set; }
-        public DonationsToCharityModel donationsToCharity { get; set; }
-        public CharityActionModel[] charityActions { get; set; }
-        public Donator[] donators { get; set; }
+        public Guid CharityKey { get; set; }
+        public string CoverImage { get; set; }
+        public string Name { get; set; }
+        public Category Category { get; set; }
+        public string KVKNumber { get; set; }
+        public string Description { get; set; }
+        public string Anbi { get; set; }
+        public string Logo { get; set; }
     }
 }

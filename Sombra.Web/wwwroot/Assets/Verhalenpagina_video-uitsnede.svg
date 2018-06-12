@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="745px" height="893px" viewBox="0 0 745 893" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>Path 5</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M1007.33794,0 C760.814077,109.999689 665.050356,237.499328 720.046783,382.498917 C775.043209,527.498507 802.541422,641.831516 802.541422,725.497946 C797.541747,892.830805 1010.02794,926.830709 1440,827.497657 L1440,0 L1007.33794,0 Z" id="path-1"></path>
+        <filter x="-2.0%" y="-1.7%" width="104.1%" height="103.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="-----Flow-2---1440px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="006-Doneer---Verhalen" transform="translate(-695.000000, 0.000000)">
+            <g id="Path-5">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

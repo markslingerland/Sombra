@@ -166,6 +166,17 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
     position: relative;
 }
 
+.orange-ball-closed {
+  width: 13px;
+  height: 13px;
+  background-color: #f88356;
+  border: solid 4px #f88356;
+  border-radius: 100%;
+  margin-bottom: 80px;
+  display: inherit;
+  position: relative;
+}
+
 .grey-ball {
     height: 13px;
     width: 13px;
@@ -237,6 +248,23 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   position: relative;
 }
 
+.section-02 {
+  margin-left: auto;
+    margin-right: auto;
+    margin-top: -403px;
+    margin-bottom: 150px;
+    width: 1109px;
+    min-height: 940px;
+    transition: all .2s ease-in-out;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.standard-input:required {
+  border: solid 1px red;
+}
+
 .standard-input input {
   width: 100%;
   height: 100%;
@@ -262,6 +290,20 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   position: relative;
 }
 
+.jquery-select .option {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  font-size: 18px;
+font-weight: 300;
+font-style: normal;
+font-stretch: normal;
+line-height: normal;
+letter-spacing: normal;
+color: #838383;
+font-family: 'Source Sans Pro', sans-serif;
+
+}
 .jquery-select select {
   width: 100%;
   height: 100%;
@@ -404,7 +446,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 }
 
 .card-data #first-numbers {
-  width: 57px;
+  width: 77px;
   height: 50px;
   margin-left: 15px;
   margin-right: 10px;
@@ -416,7 +458,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 }
 
 .card-data #last-numbers {
-  width: 396px;
+  width: 376px;
   height: 50px;
   border-radius: 8px;
   border: solid 1px #b1b1b1;
@@ -426,7 +468,6 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   color: #838383;
   font-size: 18px;
 }
-
 
 .select-bank {
   margin-top: -3px;
@@ -484,11 +525,6 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
     background-color: white;
   }
   
-  .select-bank .option {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 5px;
-  }
   
   .select-bank .option:first-child {
     margin-top: 10px;
@@ -534,7 +570,7 @@ font-family: 'Source Sans Pro', sans-serif;
 }
 
 .select-bank .selectize-dropdown-content {
-padding-left: 15px;
+/* padding-left: 15px; */
 }
 
 #contact-data {
@@ -550,10 +586,12 @@ padding-left: 15px;
 }
 
 .next-step {
-  background-image: url("../../Assets/button/next-step-button.svg");
+  background-image: url(../../Assets/button/next-step-button.svg);
   width: 192px;
   height: 40px;
   position: relative;
+  border: none;
+  background-color: transparent;
   display: inline-block;
 }
 
@@ -716,7 +754,7 @@ padding-left: 15px;
 
 /* Section 3 */
 
-.section-3 .payment-holder {
+.section-02 .payment-holder {
   width: 855px;
   height: 140px;
   padding-bottom: 30px;
@@ -729,19 +767,19 @@ padding-left: 15px;
   position: relative;
 }
 
-.section-3 .payment-user-info-holder {
+.section-02 .payment-user-info-holder {
   width: 855px;
-    padding-bottom: 30px;
-    padding-top: 30px;
-    border-radius: 8px;
-    border: solid 1px #b1b1b1;
-    margin-top: 16px;
-    margin-left: 190px;
-    display: inline-block;
-    position: relative;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  margin-top: 206px;
+  margin-left: 220px;
+  display: inline-block;
+  position: relative;
 }
 
-.section-3 .payment-holder p, .section-3 .payment-user-info-holder p {
+.section-02 .payment-holder p, .section-02 .payment-user-info-holder p {
 font-size: 18px;
 font-style: normal;
 font-stretch: normal;
@@ -751,7 +789,7 @@ color: #838383;
 padding-left: 35px;
 }
 
-.section-3 .payment-holder p span , .section-3 .payment-user-info-holder p span {
+.section-02 .payment-holder p span , .section-02 .payment-user-info-holder p span {
   font-size: 18px;
   font-style: normal;
   font-stretch: normal;
@@ -762,7 +800,7 @@ padding-left: 35px;
   }
 
 
-.section-3 .pen-icon {
+.section-02 .pen-icon {
   width: 30px;
     height: 30px;
     background-color: #f88356;

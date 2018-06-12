@@ -24,7 +24,7 @@
     </div>
     @*title & story*@
     <div id="about">
-        <div class="row about-text">
+        <div class="about-text">
             <h2>@Model.Title</h2>
             <p>@Model.Story[0]</p>
             <div class="story-image" style="background-image:url(@Model.MainImage)"></div>
@@ -32,11 +32,9 @@
             <h1>“@Model.Quote”</h1>
             <p>@Model.Story[2]</p>
         </div>
-    </div>
-    @*Active acitons*@
-    <div id="acties">
-        <div class="slider-container">
-            <div id="charity-actions-carousel" class="main-carousel">
+        @*Active acitons*@
+        <div class="slide-container">
+            <div class="main-carousel">
                 @foreach (var image in @Model.Images)
                 {
                     <div id="image-slider">
@@ -48,6 +46,7 @@
             <div class="button button--next"></div>
         </div>
     </div>
+
 </div>
 <div id="share-story" class="share-story">
     <div class="share-instagram"></div>
@@ -84,18 +83,21 @@
 <div id="more-stories">
     <div class="more-stories-field">
         <h3 class="title">Vergelijkbare verhalen</h3>
-        <div class="row">
-
+        <div>
             @foreach (var story in @Model.EqualStories)
             {
             
-            <div class="column">
-                <a href="#">
-                    <div class="images" style="background-image:url(@story.MainImage);"></div>
-                    <p>@story.Title</p>
+            <div class="column" style="background-image:url(@story.MainImage);">
+                <a href="#" style="text-decoration:none;">
+                    <div class="text-column">
+                        <p>@story.Title</p>
+                        <span class="fading-text">Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris. Pellentesque habitat Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris….</span>
+                        <a class="fading-link">
+                            <br>Lees meer
+                        </a>
+                    </div>
                 </a>
-            </div>
-            
+            </div>           
             }
         </div>
     </div>

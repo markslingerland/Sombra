@@ -1,5 +1,4 @@
 ﻿using System.Collections.Concurrent;
-using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
@@ -11,16 +10,16 @@ namespace Sombra.Web.Infrastructure.Filters
 {
     public class SubdomainActionFilter : IActionFilter
     {
-        private static readonly ConcurrentDictionary<MethodInfo, bool> HasSubdomainAttribute = new ConcurrentDictionary<MethodInfo, bool>();
+        private static readonly ConcurrentDictionary<MethodInfo, SubdomainAttribute> SubdomainAttributes = new ConcurrentDictionary<MethodInfo, SubdomainAttribute>();
         
         public void OnActionExecuting(ActionExecutingContext context)
         {
             if (context.ActionDescriptor is ControllerActionDescriptor controllerActionDescriptor)
             {
-                var requiresSubdomain = HasSubdomainAttribute.GetOrAdd(controllerActionDescriptor.MethodInfo,
-                    methodInfo => methodInfo.GetCustomAttributes(typeof(SubdomainAttribute)).Any());
-                if (requiresSubdomain && !context.RouteData.Values.ContainsKey(SubdomainViewModel.SUBDOMAIN_PARAMETER))
-                    context.Result = new RedirectResult(context.HttpContext.GetHomeUrl(), false, false);
+                var attribute = SubdomainAttributes.GetOrAdd(controllerActionDescriptor.MethodInfo,
+                    methodInfo => methodInfo.GetCustomAttribute<SubdomainAttribute>());
+                if (attribute != null && !context.RouteData.Values.ContainsKey(SubdomainViewModel.SUBDOMAIN_PARAMETER))
+                    context.Result = new RedirectResult($"{context.HttpContext.GetHomeUrl()}/{attribute.Redirect}", false, false);
             }
         }
 

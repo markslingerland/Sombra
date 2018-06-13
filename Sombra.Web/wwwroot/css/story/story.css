@@ -601,5 +601,22 @@
     margin-right:31px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
-
+.column:nth-child(5) {
+    float: left;
+    width: 349px;
+    height: 285px;
+    border-radius: 5px;
+    margin-left: 31px;
+    margin-right: 31px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+.column:nth-child(8) {
+    float: left;
+    width: 349px;
+    height: 285px;
+    border-radius: 5px;
+    margin-left: 31px;
+    margin-right: 31px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
 

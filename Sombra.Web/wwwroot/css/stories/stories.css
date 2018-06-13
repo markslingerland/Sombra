@@ -97,8 +97,9 @@
 
 
 #stories-info {
+    width:100%;
     padding-top: 485px;
-    float: left;
+    margin-bottom: 20px;
 }
 
 #stories-info p {
@@ -116,45 +117,22 @@
 #stories-info bold {
  font-weight: bold;
 }
-
-.about-btn a {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 500;
-}
-.about-btn2 a {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 500;
-}
-
-#stories-info .about-btn i {
-    position: absolute;
-    color: #fda23f;
-    top: 12px;
-    left: 11px;
-}
-#stories-info .about-btn2 i {
-    position: absolute;
-    color: #fda23f;
-    top: 12px;
-    left: 11px;
+#stories-info .button-box {
+    text-align: center;
+    margin-top: 20px;
 }
 #stories-info .about-btn span {
-    position: absolute;
-    font-size: 18px;
     font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
     font-weight: bold;
-    color: #f88356;
-    top: 8px;
-    left: 35px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
 }
 #stories-info .about-btn2 span {
-    position: absolute;
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
@@ -163,52 +141,22 @@
     left: 35px;
 }
 #stories-info .about-btn {
-    margin-top: 80px;
-    width: 210px;
+    width: 196px;
     height: 40px;
     border-radius: 8px;
-    background-color: #ffffff;
-    border: solid 1px #f88356;
-    position: relative;
-    margin-left: 40%;
-    margin-right: 13px;
-    float:left;
+    background-image: linear-gradient(104deg, #fda23f, #f3646f);
+    border: none;
+    margin-right:17px;
 }
 #stories-info .about-btn2 {
-    margin-top: 80px;
-    width: 210px;
+    width: 171px;
     height: 40px;
     border-radius: 8px;
-    background-color: #ffffff;
     border: solid 1px #f88356;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    float:left;
-    margin-bottom:130px;
-
+    background: white;
 }
 
-#stories-info .about-btn .small-arrow {
-    background-image: url("../../Assets/icons/small-arrow-icon.svg");
-    width: 12px;
-    height: 10px;
-    background-size: contain;
-    position: absolute;
-    top: 15px;
-    left: 16px;
-    background-repeat: no-repeat;
-}
-#stories-info .about-btn2 .small-arrow {
-    background-image: url("../../Assets/icons/small-arrow-icon.svg");
-    width: 12px;
-    height: 10px;
-    background-size: contain;
-    position: absolute;
-    top: 15px;
-    left: 16px;
-    background-repeat: no-repeat;
-}
+
 #more-stories {
     width: 1109px !important;
     padding: 0;
@@ -466,13 +414,15 @@
 .share-text {
     width: 1109px !important;
     padding: 0;
-    margin: 0;
+    margin: 0;  
     margin-left: auto;
     margin-right: auto;
 }
 
 .shared-container {
     float: left;
+    height: 266px;
+    margin-bottom: 86px;
 }
 
 .share-text h2 {
@@ -531,7 +481,9 @@
     margin: 0;
     margin-left: auto;
     margin-right: auto;
-    text-align: center
+    text-align: center;
+    
+        
 }
 
 .story-board {
@@ -541,7 +493,7 @@
     border-radius: 5px;
     background-color: #ffffff;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-    margin-bottom: 150px;
+    margin-bottom: 86px;
 }
 
 .story-board p {
@@ -604,6 +556,7 @@
     background-size: cover;
     position: relative;
 }
+
 .profile-name {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 24px;
@@ -616,4 +569,151 @@
     color: #838383;
     margin-left: auto;
     margin-right: auto;
+}
+
+#social-container {
+    width: 1109px !important;    
+}
+
+.social-container {  
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.instagram {
+    width: 540px;
+    height: auto;
+    margin-bottom:150px;
+}
+
+.instagram h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 35px;
+    font-weight: 200;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: #838383;
+}
+
+.insta-column:nth-child(odd) {
+    float: left;
+    width: 255px;
+    height: 383px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 31px;
+    margin-right: 20px;
+    background-size: 255px 255px;
+    background-position: top;
+    background-repeat: no-repeat;
+    overflow:hidden;
+}
+
+.insta-column {
+    float: left;
+    width: 255px;
+    height: 383px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 31px;
+    background-size: 255px 255px;
+    background-position: top;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.insta-text {
+    width: 100%;
+    text-align: left;
+    margin-top: 255px;
+    padding: 15px 23px 18px 24px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.64;
+    letter-spacing: normal;
+    color: #838383;
+}
+
+.insta-text p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.64;
+    letter-spacing: normal;
+    color: #838383;
+
+}
+
+.insta-link {
+    height: 23px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #f88356;
+    text-decoration: underline;  
+}
+
+.insta-hashtag {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.64;
+    letter-spacing: normal;
+    color: #f88356;
+}
+
+.insta-button {
+    width: 349px;
+    height: 40px;
+    border-radius: 8px;
+    border: solid 1px #f88356;
+    background: white;
+}
+
+.insta-button span {
+    width: 322px;
+    height: 22px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #f88356;
+}
+
+ .twitter {
+    width: 100%;
+    height: 940px;
+    border-radius: 5px;
+    border: solid 1px #979797;
+}
+
+.twitter h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 35px;
+    font-weight: 200;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: #838383;
 }

@@ -19,7 +19,7 @@ namespace Sombra.Core
         protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
         {
             var list = type.GetProperties()
-                .Where(x => Attribute.IsDefined(x, _attributeToSerialize))
+                .Where(x => Attribute.IsDefined(x, _attributeToSerialize, true))
                 .Select(p => new JsonProperty()
                 {
                     PropertyName = p.Name,

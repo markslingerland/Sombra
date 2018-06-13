@@ -16,12 +16,10 @@
         @*Add image*@
         <input class="image-import" type="file" id="file-header" name="header-image" accept="image/*" />
         <div class="mytext-container">
-            <label for="file-header">Voeg hier een omslagfoto toe  <img class="add-button" src="../Assets/icons/Icon_plus.svg"></label>
+            <label for="file-header">Voeg hier een omslagfoto toe<img class="add-button" src="../Assets/icons/Icon_plus.svg"></label>
         </div>
-        
-        @*Show live page*@
-        <div class="view-text"><label>Voorvertoning   <img class="icon-show" src="../Assets/icons/Icon_voorvertoning.svg"></label>
-        </div>
+
+
     </div>
 
     @*Main container*@
@@ -29,9 +27,15 @@
         @*Profile picture*@
         <div class="story-logo">
             <div class="story-logo-container">
-                <div class="shape-frame" id="shape-frame" style="background-image:url(../Assets/icons/Icon_profiel_make.svg)">
+                <div class="shape-frame" id="shape-frame" style="background-image:url(../Assets/icons/Icon_add-person.svg)">
                     <input class="image-import" type="file" id="file-profile-picute" name="profile-picture" accept="image/*" />
                     <label for="file-profile-picute"></label>
+                </div>
+                @*Show live page*@
+                <div class="view-text">
+                    <a href="#">
+                        <label>Voorvertoning<img class="icon-show" src="../Assets/icons/Icon_voorvertoning.svg"></label>
+                    </a>
                 </div>
             </div>
             @*Name*@
@@ -44,29 +48,44 @@
                 <div class="storypart-1-container"><textarea class="story" type="text" id="fname" name="story-part-1" placeholder="Typ hier de inleiding van jouw verhaal"></textarea></div>
                 <div class="story-image" id="story-image">
                     <input class="image-import" type="file" id="file" name="main-image" accept="image/*" />
-                    <label for="file">Klik hier om een foto te uploaden  <img class="image-icon-box"></label>
+                    <label for="file">
+                        Klik hier om een foto of video te uploaden
+                        <div class="button-box col-lg-12">
+                            <img class="image-icon-box"><img class="video-icon-box">
+                        </div>
+                    </label>
                 </div>
                 <div class="storypart-2-container"><textarea class="story" type="text" id="fname" name="story-part-2" placeholder="Typ hier de kern van jouw verhaal"></textarea></div>
-                <div class="quote-container"><input class="quote" type="text" id="quote" name="quote" placeholder="Schrijf je quote"></div>
+                <div class="quote-container"><input class="quote" type="text" id="quote" name="quote" placeholder="Schrijf hier je quote"></div>
                 <div class="storypart-3-container"><textarea class="story" type="text" id="fname" name="story-part-3" placeholder="Typ hier het slot van jouw verhaal"></textarea></div>
                 <div class="images-container">
                     <div class="story-image-2" id="story-image-2">
                         <input class="image-import" type="file" id="file-2" name="second-image" accept="image/*" />
-                        <label for="file-2">Klik hier om een foto te uploaden <img class="image-icon-box"></label>
+                        <label for="file-2">
+                            Klik hier om een foto of video te uploaden
+                            <div class="button-box col-lg-12">
+                                <img class="image-icon-box"><img class="video-icon-box">
+                            </div>
+                        </label>
                     </div>
                     <div class="story-image-3" id="story-image-3">
                         <input class="image-import" type="file" id="file-3" name="third-image" accept="image/*" />
-                        <label for="file-3">Klik hier om een foto te uploaden <img class="image-icon-box"></label>
+                        <label for="file-3">
+                            Klik hier om een foto of video te uploaden
+                            <div class="button-box col-lg-12">
+                                <img class="image-icon-box"><img class="video-icon-box">
+                            </div>
+                        </label>
                     </div>
                 </div>
             </div>
         </div>
-
-        <label class="add-more-label">Voeg meer foto’s toe  <img class="add-more-button" src="../Assets/icons/Icon_plus.svg"></label>
-
+        <a href="#">
+            <label class="add-more-label">Voeg meer foto’s toe<img class="add-more-button" src="../Assets/icons/Icon_plus.svg"></label>
+        </a>
         @*TODO link all input to model*@
         <div class="images-container">
-            <button href="#" class="send-button"><p>Verstuur</p></button>
-        </div>
+            <button href="#" class="send-button"><span>&#10141;Verstuur</span></button>
+        </div></div>
 </form>
         

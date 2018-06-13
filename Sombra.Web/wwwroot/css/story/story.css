@@ -585,6 +585,8 @@
 
 .column:hover .fading-link {
     opacity: 1;
+    color: #F3646F;
+    cursor: pointer;
 }
 
 .images {

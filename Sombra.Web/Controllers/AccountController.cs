@@ -21,11 +21,6 @@ namespace Sombra.Web.Controllers
         {
             return View();
         }
-        
-        public IActionResult SignUpCharity()
-        {
-            return View();
-        }
 
         [HttpGet]
         public IActionResult ForgotPassword()

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Sombra.Web.ViewModels.Charity
+﻿namespace Sombra.Web.ViewModels.Charity
 {
     public class DonationsInWeekByCharityQuery
     {

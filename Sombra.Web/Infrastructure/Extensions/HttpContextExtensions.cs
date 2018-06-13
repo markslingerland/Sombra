@@ -9,14 +9,18 @@ namespace Sombra.Web.Infrastructure.Extensions
         public static string GetHomeUrl(this HttpContext context)
         {
             if (string.IsNullOrEmpty(_homeUrl))
-                _homeUrl = $"{context.Request.Scheme}//{context.Request.Host.Value}";
+            {
+                var urlParts = context.Request.Host.Value.Split('.');
+                var host = urlParts.Length > 1 ? $"{urlParts[urlParts.Length - 2]}.{urlParts[urlParts.Length - 1]}" : urlParts[0];
+                _homeUrl = $"{context.Request.Scheme}//{host}";
+            }
 
             return _homeUrl;
         }
 
         public static SombraPrincipal GetUser(this HttpContext context)
         {
-            return context.User != null ? (SombraPrincipal) context.User : default;
+            return (SombraPrincipal) context.User;
         }
     }
 }

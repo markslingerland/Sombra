@@ -25,7 +25,7 @@ namespace Sombra.Web.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet("goede-doelen")]
         public IActionResult Search()
         {
             return View();

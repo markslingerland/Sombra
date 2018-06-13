@@ -1,0 +1,266 @@
+@using Sombra.Core.Enums @using Sombra.Core.Extensions 
+@{ ViewData["Title"] = "Goede doelen"; } 
+@section Styles {
+<link rel="stylesheet" href="~/css/search/search.css" /> } 
+@section Scripts {
+<script src="~/js/search.js"></script>
+}
+
+<div id="filter">
+    <a href="#" class="signin-charity source-600">Een goed doel aanmelden</a>
+    <h2 class="monster-200 filter-title">@ViewData["Title"]</h2>
+
+    <div class="form-holders">
+        <form id="Categorieën" class="filter-form" action="filter-charityActions">
+            <input class="filter-input" type="text" placeholder="Zoeken..." name="Zoeken...">
+            <button class="submit-button monster-300" type="submit"><i class="fa fa-search"></i></button>
+
+            <div class="category-checkbox-holder">
+
+                <div class="category-dropdown-holder">
+                    <div class="category-dropdown">
+                        <p class="monster-300">Categorieën</p>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="checkbox-dropdown">
+                        @foreach (var category in typeof(Category).GetFlagValues
+                        <Category>().Where(v => (int)v !=0)){
+                            <div>
+                                <label class="checkbo-container monster-300">@category.GetDisplayName()
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            }
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="selected-category">
+    <p class="no-categories-selected source-300">Verfijn je zoekopdracht door steekwoorden in te voeren in de zoekbalk. Bijvoorbeeld ‘kinderen’ of ‘natuurgeweld’.</p>
+    <div class="selected-categories">
+        <label class="selected-category source-800" href="#">
+            GEZONDHEID
+            <span class="cross-holder">
+                <div class="tag-kruisje"> 
+                    <a href="#" class="icon-holder">
+                    <i class="fas fa-times"></i>
+                </a></div>
+               
+            </span>
+        </label>
+
+       <label class="selected-category source-800" href="#">
+            CULTUUR
+            <span class="cross-holder">
+                <div class="tag-kruisje"> 
+                    <a href="#" class="icon-holder">
+                    <i class="fas fa-times"></i>
+                </a></div>
+               
+            </span>
+        </label>
+    </div>
+</div>
+
+<div id="charity-results-holder">
+    <p class="results source-400"><span class="source-700">34 </span>zoekresultaten</p>
+
+    <div id="charity-results">
+
+        <div class="charity-holder">
+            <a class="clickable" href="#"></a>
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <a class="clickable" href="#"></a>
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <a class="clickable" href="#"></a>
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <a class="clickable" href="#"></a>
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <a class="clickable" href="#"></a>
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <a class="clickable" href="#"></a>
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <a class="clickable" href="#"></a>
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <a class="clickable" href="#"></a>
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-holder">
+            <a class="clickable" href="#"></a>
+            <div class="charity-background-image">
+                <div class="charity-logo"></div>
+                <div class="charity-background-gradient"></div>
+            </div>
+
+            <a href="#" class="charity-btn"></a>
+
+            <div class="charity-text-holder">
+                <h3 class="source-700 charity-title">Werken aan een toekomst zonder hart- en vaatziekten</h3>
+                <a class="source-400 go-to-charity" href="#">Bekijk goed doel</a>
+
+                <div class="charity-item-category-holder">
+                    <label class="source-400 charity-item-category" href="#">GEZONDHEID</label>
+                    <label class="source-400 charity-item-category" href="#">CULTUUR</label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="pagination">
+    <a href="#"><img src="Assets/icons/arrow-icon-to-left.svg" alt="#"></a>
+    <a class="source-700" href="#">1</a>
+    <a class="source-300" href="#">2</a>
+    <a class="source-300" href="#">3</a>
+    <a class="source-300" href="#">4</a>
+    <a class="source-300" href="#">...</a>
+    <a class="source-300" href="#">12</a>
+    <a href="#"><img src="Assets/icons/icon-arrow-to-right.svg" alt="#"></a>
+</div>

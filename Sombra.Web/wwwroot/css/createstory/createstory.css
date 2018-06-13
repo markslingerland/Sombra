@@ -7,13 +7,6 @@
     padding: 0;
 }
 
-#header {
-    background-color: white;
-}
-
-#header .fixed-header {
-    background-color: white;
-}
 #add-header-image {
     width: 1109px;
     margin-left: auto;
@@ -21,16 +14,16 @@
 }
 
 .mytext-container {
-    float: right;
-    width: 293px;
+    width: 100%;
+    float: left;
     height: 50px;
     margin-top: -414px;
-    margin-right: 40%;
-}
+    text-align: center;
 
+}
 .mytext-container label {
     font-family: 'Source Sans Pro', sans-serif;
-    width: 100%;
+    width: 393px;
     height: 100%;
     font-size: 24px;
     font-weight: 300;
@@ -39,27 +32,27 @@
     line-height: 1.38;
     letter-spacing: normal;
     color: #838383;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .add-button {
-    float: right;
-    background-image: url("../../Assets/icons/Icon_plus.svg");
     background-size: 100%;
     width: 24.6px;
     height: 24.6px;
-    margin-top: -410px;
-    margin-right: 38%;
+    cursor: pointer;
 }
 .view-text {
-    float: right;
+    float: left;
+    width: 100%;
+    height: 100%;
     margin-top: -270px;
-    margin-right: 55px;
-    width: 119px;
-    height: 33px;
 }
-.view-text span {
-    width: 119px;
-    height: 33px;
+.view-text label {
+    float: right;
+    width: auto%;
+    height: 100%;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
     font-weight: 600;
@@ -67,15 +60,16 @@
     font-stretch: normal;
     line-height: 1.83;
     letter-spacing: normal;
-    text-align: right;
     color: #ffffff;
+    cursor: pointer;
 }
+
 .icon-show {
-    float: right;
-    margin-top: -275px;
-    background-image: url("../../Assets/icons/Icon_voorvertoning.svg");
     width: 36px;
     height: 36px;
+    margin-left:10px;
+    background-size: 100%;
+    cursor: pointer;
 }
 
 #header .container {
@@ -115,11 +109,14 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+
 }
-.shape-frame label{
+.shape-frame label {
     width: 100%;
     height: 100%;
+    cursor: pointer;
 }
+
 .profile-name-container {
     width: 349px;
     height: 50px;
@@ -135,6 +132,7 @@
     border: solid 1px #b1b1b1;
     margin-left: auto;
     margin-right: auto;
+    outline: none;
 }
 
 input[type=text] {
@@ -182,10 +180,11 @@ input[type=text] {
     font-family: 'Source Sans Pro', sans-serif;
     width: 100%;
     height: 100%;
-    border:hidden;
+    border: hidden;
     border-radius: 8px;
     margin-left: auto;
     margin-right: auto;
+    outline: none;
 }
 
 .storypart-1-container {
@@ -220,6 +219,7 @@ input[type=text] {
 
 .story {
     font-family: 'Source Sans Pro', sans-serif;
+    padding: 15px 15px 15px 15px;
     width: 100%;
     height: 100%;
     border: hidden;
@@ -235,6 +235,7 @@ input[type=text] {
     margin-right: auto;
     resize: none;
     text-align: center;
+    outline: none;
 }
 .quote-container {
     width: 790px;
@@ -263,6 +264,7 @@ input[type=text] {
     border-radius: 8px;
     margin-left: auto;
     margin-right: auto;
+    outline: none;
 }
 
 .quote::-webkit-input-placeholder {
@@ -299,7 +301,9 @@ input[type=text] {
     letter-spacing: normal;
     color: #838383;
     text-align: center;
-    line-height: 120px;
+    line-height: normal;
+    margin-left: auto;
+    margin-right: auto;
 }
 input[type=text] {
     font-family: 'Source Sans Pro', sans-serif;
@@ -322,7 +326,6 @@ input[type=text] {
 
 .story-image {
     position: relative;
-    opacity: 0.5;
     width: 790px;
     height: 356px;
     border-radius: 8px;
@@ -336,10 +339,13 @@ input[type=text] {
     background-repeat: no-repeat;
     background-position: 50% 50%;
 }
-
+.images-container {
+    width: 790px;
+    margin-left: auto;
+    margin-right: auto;
+}
 .story-image-2 {
     float: left;
-    opacity: 0.5;
     width: 390px;
     height: 260px;
     border-radius: 8px;
@@ -349,7 +355,6 @@ input[type=text] {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    margin-left: 145px;
     margin-top: 10px;
     margin-bottom: 20px;
 }
@@ -367,11 +372,11 @@ input[type=text] {
         vertical-align: middle;
         margin-top: 68px;
         width: 100%;
+        cursor: pointer;
     }
 
 .story-image-3 {
     float: left;
-    opacity: 0.5;
     width: 390px;
     height: 260px;
     border-radius: 8px;
@@ -398,7 +403,8 @@ input[type=text] {
     color: #838383;
     vertical-align: middle;
     margin-top: 68px;
-    width:100%;
+    width: 100%;
+    cursor: pointer;
 }
 
 .image-import {
@@ -423,6 +429,7 @@ input[type=text] {
     vertical-align: middle;
     margin-top: 133px;
     width: 100%;
+    cursor: pointer;
 }
 
 .image-icon-box {
@@ -489,7 +496,6 @@ input[type=text] {
 }
 
 .send-button {
-    margin-left: 145px;
     border: hidden;
     width: 142px;
     height: 40px;

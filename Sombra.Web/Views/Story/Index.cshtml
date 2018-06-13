@@ -1,104 +1,150 @@
-﻿@model Sombra.Web.ViewModels.Story.StoryViewModel
-
-@{ ViewData["Title"] = "Story"; }
-
+﻿@{ ViewData["Title"] = "Home Page"; }
 @section Styles{
-    <link rel="stylesheet" href="~/css/story/story.css" />
-    <link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/story/desktop.css" />
+    <link rel="stylesheet" href="~/css/stories/stories.css" />
     <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
+
 }
+
 @section Scripts {
-    <script src="~/js/story.js"></script>
+    <script src="~/js/stories.js"></script>
 }
-@*Background Picture*@
-<div class="header-image" style="background-image:url(@Model.MainImage)"></div>
 
-<div class="story-container container">
-    @*Profile picture*@
-    <div class="story-logo">
-        <div class="story-logo-container">
-            <div class="shape-frame " style="background-image:url(@Model.UserImage)">
-            </div>
-        </div>
-        <div class="profile-name">@Model.UserFirstName @Model.UserLastName</div>
-    </div>
-    @*title & story*@
-    <div id="about">
-        <div class="about-text">
-            <h2>@Model.Title</h2>
-            <p>@Model.Story[0]</p>
-            <div class="story-image" style="background-image:url(@Model.MainImage)"></div>
-            <p>@Model.Story[1]</p>
-            <h1>“@Model.Quote”</h1>
-            <p>@Model.Story[2]</p>
-        </div>
-        @*Active acitons*@
-        <div class="slide-container">
-            <div class="main-carousel">
-                @foreach (var image in @Model.Images)
-                {
-                    <div id="image-slider">
-                        <div class="images" style="background-image:url(@image);"></div>
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 about-text">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>
+                            Verhalen vertellen
+                            is iets bijzonders
+                        </h3>
+                        <p>Zie wat delen met mensen doet! Bekijk de video.</p>
                     </div>
-                }
-            </div>
-            <div class="button button--previous"></div>
-            <div class="button button--next"></div>
-        </div>
-    </div>
-
-</div>
-<div id="share-story" class="share-story">
-    <div class="share-instagram"></div>
-    <div class="share-twitter"></div>
-    <div class="share-facebook"></div>
-    <p>DEEL DIT VERHAAL OOK OP SOCIAL MEDIA</p>
-</div>
-<div class="share-text">
-    <div class="shared-container">
-        <h2>Deel je eigen verhaal</h2>
-        <p>Wat voor reden heeft deze donatie voor jou? Heb je een speciaal verhaal wat je met ons en mede-donateurs wilt delen? Deel jouw verhaal in en wie weet kom jij op onze verhalen pagina!</p>
-        <a href="#">
-            <button class="big-button">
-                <span>Deel mijn verhaal</span>
-            </button>
-        </a>
-    </div>
-</div>
-
-<div id="other-story">
-    <div class="story-board">
-        <div class="other-story-logo">
-            <div class="other-story-logo-container">
-                <div class="other-profile-image " style="background-image:url(@Model.RandomStory.UserImage)">
+                    <div class="col-sm-6">
+                    </div>
                 </div>
             </div>
-            <div class="profile-name">@Model.RandomStory.UserFirstName @Model.RandomStory.UserLastName</div>
         </div>
-        <p>“@Model.RandomStory.Quote”</p>
-        <a href="#">Lees dit verhaal</a>
     </div>
 </div>
 
-<div id="more-stories">
-    <div class="more-stories-field">
-        <h3 class="title">Vergelijkbare verhalen</h3>
-        <div>
-            @foreach (var story in @Model.EqualStories)
-            {
-            
-            <div class="column" style="background-image:url(@story.MainImage);">
-                <a href="#" style="text-decoration:none;">
-                    <div class="text-column">
-                        <p>@story.Title</p>
-                        <span class="fading-text">Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris. Pellentesque habitat Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris….</span>
-                        <a class="fading-link">
-                            <br>Lees meer
-                        </a>
-                    </div>
-                </a>
-            </div>           
-            }
+<div id="stories-info" class="col-md-12">
+        <p>
+            <bold>Ikdoneer.nu</bold> draait om de verhalen van donateurs. De verhalen laten ons zien hoe mooi het is om te delen. Laat je inspireren door de verhalen van donateurs die jou voorgingen. Heb jij ook een bijzonder verhaal over doneren en wil je dat met ons delen? Dat kan hier!
+        </p>
+        <div class="button-box col-lg-12">
+            <button href="#" class="about-btn" role="button"><span>Deel mijn verhaal</span></button>
+            <button href="#" class="about-btn2" role="button"><span>Bekijk verhalen</span></button>
         </div>
-    </div>
 </div>
+
+
+
+
+            <div id="more-stories">
+                <div class="more-stories-field">
+                    <h3 class="title">De verhalen</h3>
+                    <div>
+                        @{
+                            int indexer = 0; //can be used to get a difrent part of the array
+                            for (int i = 0 + indexer; i < indexer + 9; i++)
+                            {
+                                if (i < @Model.EqualStories.Length)
+                                {
+                                    <div class="column" style="background-image:url(@Model.EqualStories[i].MainImage);">
+                                        <a href="#" style="text-decoration:none;">
+                                            <div class="text-column">
+                                                <p>@Model.EqualStories[i].Title</p>
+                                                <span class="fading-text">Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris. Pellentesque habitat Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris….</span>
+                                                <a class="fading-link">
+                                                    <br>Lees meer
+                                                </a>
+                                            </div>
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+                <div id="pagination">
+                    <a href="#"><img src="Assets/icons/arrow-icon-to-left.svg" alt="#"></a>
+                    <a class="source-700" href="#">1</a>
+                    <a class="source-300" href="#">2</a>
+                    <a class="source-300" href="#">3</a>
+                    <a class="source-300" href="#">4</a>
+                    <a class="source-300" href="#">...</a>
+                    <a class="source-300" href="#">12</a>
+                    <a href="#"><img src="Assets/icons/icon-arrow-to-right.svg" alt="#"></a>
+                </div>
+            </div>
+
+            <div class="share-text">
+                <div class="shared-container">
+                    <h2>Deel je eigen verhaal</h2>
+                    <p>Wat voor reden heeft deze donatie voor jou? Heb je een speciaal verhaal wat je met ons en mede-donateurs wilt delen? Deel jouw verhaal in en wie weet kom jij op onze verhalen pagina!</p>
+                    <a href="#">
+                        <button class="big-button">
+                            <span>Deel mijn verhaal</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <div id="other-story">
+                <div class="story-board">
+                    <div class="other-story-logo">
+                        <div class="other-story-logo-container">
+                            <div class="other-profile-image " style="background-image:url(@Model.RandomStory.UserImage)">
+                            </div>
+                        </div>
+                        <div class="profile-name">@Model.RandomStory.UserFirstName @Model.RandomStory.UserLastName</div>
+                    </div>
+                    <p>“@Model.RandomStory.Quote”</p>
+                    <a href="#">Lees dit verhaal</a>
+                </div>
+            </div>
+
+            <div id="social-container" class="social-container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="instagram">
+                            <h2>Verhalen op Instagram</h2>
+                            <div class="insta-container">
+                                @for (int i = 0; i < 4; i++)
+                                {
+                                    <div class="insta-column" style="background-image:url(@Model.EqualStories[i].MainImage);">
+                                        <a href="#" style="text-decoration:none;">
+                                            <div class="insta-text">
+                                                <p>&#64;charlottevanderveen</p>
+                                                Nog 3 uur te gaan. Het wordt rustiger in de stad, maar het is goed te doen.
+                                                <span class="insta-hashtag">#freeagirl #ikdoneernu</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                            <button class="insta-button"><span>Bekijk alle verhalen op Instagram</span></button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="twitter">
+                            <h2>Verhalen op Instagram</h2>
+                            <div class="twitter-container">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="header-images">
+                <div class="header-images">
+                    <iframe width="1280" height="750" src="https://www.youtube.com/embed/ZXRA5ostcK0?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>

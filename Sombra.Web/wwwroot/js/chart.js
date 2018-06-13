@@ -1,15 +1,5 @@
 var ctx = document.getElementById("myChart").getContext('2d');
 
-var img = new Image;
-img.onload = function() {
-  image.shadowInset = true;
-  image.shadowBlur = 25;
-  image.shadowColor = "#000";
-  ctx.drawImage(this, 0, 0);
-}
-
-img.src = "http://i.imgur.com/Qrfga2b.png";
-
 var gradientStroke = ctx.createLinearGradient(100, 0, 500, -100);
 gradientStroke.addColorStop(0, "#fda23f");
 gradientStroke.addColorStop(1, "#f3646f");

@@ -16,7 +16,6 @@
 .mytext-container {
     width: 100%;
     float: left;
-    height: 50px;
     margin-top: -414px;
     text-align: center;
 
@@ -24,7 +23,6 @@
 .mytext-container label {
     font-family: 'Source Sans Pro', sans-serif;
     width: 393px;
-    height: 100%;
     font-size: 24px;
     font-weight: 300;
     font-style: normal;
@@ -37,39 +35,15 @@
     margin-right: auto;
 }
 
-.add-button {
-    background-size: 100%;
-    width: 24.6px;
-    height: 24.6px;
-    cursor: pointer;
-}
-.view-text {
-    float: left;
-    width: 100%;
-    height: 100%;
-    margin-top: -270px;
-}
-.view-text label {
-    float: right;
-    width: auto%;
-    height: 100%;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.83;
-    letter-spacing: normal;
-    color: #ffffff;
-    cursor: pointer;
-}
+
+
 
 .icon-show {
-    width: 36px;
-    height: 36px;
-    margin-left:10px;
-    background-size: 100%;
-    cursor: pointer;
+width: 36px;
+height: 36px;
+margin-left:10px;
+background-size: 100%;
+cursor: pointer;
 }
 
 #header .container {
@@ -95,9 +69,42 @@
     position: relative;
     width: 100%;
 }
+.add-button {
+    background-size: 100%;
+    width: 24.6px;
+    height: 24.6px;
+    margin-left: 10px;
+    margin-top: -4px;
+    cursor: pointer;
+}
+
+.view-text {
+    float: left;
+    width: 100%;
+    margin-top: -140px;
+}
+
+.view-text label {
+    float: right;
+    width: auto;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.83;
+    letter-spacing: normal;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.view-text a {
+    text-decoration: none;
+    cursor: pointer;
+}
 
 .shape-frame {
-    -webkit-mask-image: url(../../Assets/icons/Icon_profiel_make.svg);
+    -webkit-mask-image: url(../../Assets/icons/Icon_add-person.svg);
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: 100%;
     background-position: 60% 50%;
@@ -109,7 +116,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-
 }
 .shape-frame label {
     width: 100%;
@@ -123,6 +129,7 @@
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
+
 }
 .profile-name {
     font-family: 'Source Sans Pro', sans-serif;
@@ -144,10 +151,10 @@ input[type=text] {
     line-height: normal;
     letter-spacing: normal;
     color: #838383;
-    text-align:center;
+    text-align:left;
 }
 
-.profile-name::-webkit-input-placeholder{
+.profile-name::-webkit-input-placeholder {
     opacity: 0.5;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
@@ -157,12 +164,16 @@ input[type=text] {
     line-height: normal;
     letter-spacing: normal;
     color: #838383;
+    font-style: italic;
+}
+
+.profile-name {
+    padding: 15px 15px 15px 15px;
 }
 
 #about {
     float: left;
     width: 100%;
-
 }
 
 
@@ -178,6 +189,7 @@ input[type=text] {
 
 .title {
     font-family: 'Source Sans Pro', sans-serif;
+    padding: 15px 15px 15px 15px;
     width: 100%;
     height: 100%;
     border: hidden;
@@ -219,7 +231,7 @@ input[type=text] {
 
 .story {
     font-family: 'Source Sans Pro', sans-serif;
-    padding: 15px 15px 15px 15px;
+    padding: 13px 15px 15px 15px;
     width: 100%;
     height: 100%;
     border: hidden;
@@ -234,7 +246,7 @@ input[type=text] {
     margin-left: auto;
     margin-right: auto;
     resize: none;
-    text-align: center;
+    text-align: left;
     outline: none;
 }
 .quote-container {
@@ -265,6 +277,9 @@ input[type=text] {
     margin-left: auto;
     margin-right: auto;
     outline: none;
+    padding: 20px 20px 15px 20px;
+    resize: none;
+    overflow: hidden;
 }
 
 .quote::-webkit-input-placeholder {
@@ -277,6 +292,7 @@ input[type=text] {
     line-height: normal;
     letter-spacing: normal;
     color: #838383;
+    font-style: italic;
 }
 
 .title::-webkit-input-placeholder {
@@ -289,6 +305,7 @@ input[type=text] {
     line-height: normal;
     letter-spacing: normal;
     color: #838383;
+    font-style: italic;
 }
 
 .story::-webkit-input-placeholder {
@@ -300,10 +317,11 @@ input[type=text] {
     font-stretch: normal;
     letter-spacing: normal;
     color: #838383;
-    text-align: center;
+    text-align: left;
     line-height: normal;
     margin-left: auto;
     margin-right: auto;
+    font-style: italic;
 }
 input[type=text] {
     font-family: 'Source Sans Pro', sans-serif;
@@ -314,7 +332,7 @@ input[type=text] {
     line-height: normal;
     letter-spacing: normal;
     color: #838383;
-    text-align: center;
+    text-align: left;
 }
 
 .about-text {
@@ -431,13 +449,26 @@ input[type=text] {
     width: 100%;
     cursor: pointer;
 }
+.button-box {
+    text-align: center;
+    margin-top: 20px;
+}
 
 .image-icon-box {
-    display: table;
+    text-align: center;
     margin: 0 auto;
     background-image: url("../../Assets/icons/Icon_picture.svg");
     width: 38px;
     height: 38px;
+    border-radius: 8px;
+}
+.video-icon-box {
+    text-align: center;
+    margin: 0 auto;
+    background-image: url("../../Assets/icons/Icon_video.svg");
+    width: 38px;
+    height: 38px;
+    margin-left: 13px;
     border-radius: 8px;
 }
 
@@ -487,12 +518,16 @@ input[type=text] {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    cursor:pointer;
 }
 
 .add-more-button {
     background-size: 100%;
     width: 24.6px;
-    height: 24.6px;  
+    height: 24.6px;
+    margin-left:10px;
+    margin-top: -5px;
+    cursor: pointer;
 }
 
 .send-button {
@@ -505,9 +540,8 @@ input[type=text] {
     background-image: linear-gradient(109deg, #fda23f, #f3646f);
 }
 
-.send-button p {
-    width: 94px;
-    height: 23px;
+.send-button span {
+    width: 100%;
     font-family: 'Montserrat', sans-serif;
     font-size: 19px;
     font-weight: bold;
@@ -517,6 +551,6 @@ input[type=text] {
     letter-spacing: normal;
     text-align: center;
     color: #ffffff;
-    padding: 8px 13px 9px 25px;
+    padding: 8px 13px 9px 13px;
 }
 

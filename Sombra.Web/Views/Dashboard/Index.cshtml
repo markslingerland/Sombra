@@ -2,21 +2,52 @@
 <script src="~/lib/moment/moment.js"></script>
 <script src="~/lib/chart.js/dist/Chart.min.js"></script>
 <script src="~/js/chart.js"></script>
-}
-
+} 
 @section Styles {
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-}
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+<link href="~/css/dashboard/dashboard.css" rel="stylesheet"> }
 
-<style media="screen" type="text/css">
-.chart {
-  width: 1110px;
-  height: 491px;
-  border-radius: 5px;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-}
 
-</style>
+<div id="dashboard-header">
+    <img src="~/Assets/dashboard/Logo_moves.svg" class="dashboard-charity-logo">
+    
+    <div class="charity-account">
+        <img src="~/Assets/dashboard/Icon_profiel.svg" class="user-icon">
+        <label class="user-name source-200">Stef de Kramer</label>
+    </div>
+</div>
 
-<canvas id="myChart" class="chart"></canvas>
+<div id="side-navigation">
+  <div class="navigation-block">
+    <div class="full-width-holder">
+      <img src="~/Assets/dashboard/Icon_1dashboard.svg">
+    </div>
+  </div>
+  <div class="navigation-block">
+    <div class="full-width-holder">
+      <img src="~/Assets/dashboard/Icon_1dashboard.svg">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <a class="go-back-link" href="#">
+            <span>
+              <img class="go-back-icon" src="~/Assets/dashboard/Icon_arrow-back.svg">
+            </span>
+   Terug naar ikdoneer.nu
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="title monster-200">Dashboard</h2>
+        </div>
+    </div>
+
+
+    <canvas id="myChart" class="chart"></canvas>
+</div>

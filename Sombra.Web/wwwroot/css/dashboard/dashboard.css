@@ -1,0 +1,138 @@
+nav {
+    display: none;
+}
+
+footer {
+    display: none;
+}
+
+.body-content {
+    width: 100%;
+}
+
+/* TOP HEADER */
+
+#dashboard-header {
+    width: 100%;
+    height: 90px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: white;
+}
+
+#dashboard-header .dashboard-charity-logo {
+    width: 100px;
+    height: 50px;
+    background-size: contain;
+    margin-left: 49px;
+    margin-top: 21px;
+}
+
+#dashboard-header .charity-account {
+    float: right;
+    margin-top: 27px;
+    margin-right: 70px;
+}
+
+#dashboard-header .user-icon {
+    width: 28px;
+    height: 28px;
+    background-size: contain;
+}
+
+#dashboard-header .user-icon {
+    width: 28px;
+    height: 28px;
+    background-size: contain;
+    margin-right: 14px;
+    margin-bottom: 7px;
+}
+
+#dashboard-header .user-name {
+    font-size: 20px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.65;
+    letter-spacing: normal;
+    color: #f88356;
+}
+
+/* SIDE NAVIGATION */
+
+#side-navigation {
+  width: 100px;
+  height: 100%;
+  background-image: linear-gradient(175deg, #fda23f, #f3646f);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  padding-top: 140px;
+}
+
+#side-navigation .navigation-block {
+    width: 101px;
+    height: 102px;
+    z-index: 10;
+}
+
+#side-navigation .navigation-block:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#side-navigation .full-width-holder {
+    width: 100%;
+    height: 100%;
+    display: flex;  
+}
+
+#side-navigation .full-width-holder img {
+  margin: auto;
+}
+
+.chart {
+    width: 1110px;
+    height: 491px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  }
+
+/* CONTENT */
+
+.go-back-icon {
+    width: 15px;
+    height: 15px;
+    margin-bottom: 3px;
+    margin-right: 15px;
+    background-size: contain;
+}
+
+.go-back-link {
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #f88356;
+  margin-top: 114px;
+  display: inherit;
+  text-decoration: underline;
+}
+
+.title {
+  margin-top: 45px;
+  font-size: 50px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  color: #838383;
+}

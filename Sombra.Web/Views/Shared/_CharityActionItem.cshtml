@@ -15,7 +15,7 @@
             <label class="carousel-poster-name">@Model.OrganiserUserName</label>
 
             <div class="carousel-money-holder">
-                <label class="carousel-reached">@Model.CollectedAmount.ToFormattedString()</label>
+                <label class="carousel-reached">&euro; @Model.CollectedAmount.ToFormattedString()</label>
                 <label class="carousel-goal">behaald van &euro; @Model.TargetAmount.ToFormattedString()</label>
             </div>
         </div>

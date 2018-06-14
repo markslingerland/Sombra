@@ -14,7 +14,7 @@ var myChart = new Chart(ctx, {
             pointBackgroundColor:      gradientStroke,
             pointHoverBackgroundColor: gradientStroke,
             pointHoverBorderColor:     gradientStroke,
-            data: [500,750,1000,1250,1600,750],
+            data: [500,750,860,1114,1600,1156],
             borderWidth: 9,
             fill: false, 
             pointBackgroundColor: gradientStroke,

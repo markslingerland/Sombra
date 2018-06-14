@@ -25,7 +25,8 @@ namespace Sombra.SearchService
                 Image = message.CoverImage,
                 Description = message.Slogan,
                 Category = message.Category,
-                Url = message.Url
+                Url = message.Url,
+                Logo = message.Logo
             };
     
             _context.Add(charityToCreate);

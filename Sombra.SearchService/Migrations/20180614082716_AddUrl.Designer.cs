@@ -10,9 +10,10 @@ using Sombra.SearchService.DAL;
 namespace Sombra.SearchService.Migrations
 {
     [DbContext(typeof(SearchContext))]
-    partial class SearchContextModelSnapshot : ModelSnapshot
+    [Migration("20180614082716_AddUrl")]
+    partial class AddUrl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

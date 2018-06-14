@@ -13,5 +13,6 @@ namespace Sombra.SearchService.DAL
         public string Description { get; set; }
         public string Image { get; set; }
         public Core.Enums.Category Category { get; set; }
+        public string Url { get; set; }
     }
 }

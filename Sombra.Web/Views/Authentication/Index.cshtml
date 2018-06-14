@@ -1,0 +1,14 @@
+@model Sombra.Web.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.TextBoxFor(m => m.Identifier, new { @placeholder = "Email"})
+    @Html.PasswordFor(m => m.Secret, new { @placeholder = "Password"})
+    <input type="submit" value="Login" />
+}

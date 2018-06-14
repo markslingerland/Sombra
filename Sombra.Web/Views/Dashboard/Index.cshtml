@@ -7,57 +7,57 @@
 <link href="~/css/dashboard/dashboard.css" rel="stylesheet"> }
 
 <div id="side-navigation">
-  
-  <div class="navigation-block">
-    <div class="full-width-holder">
-       <div class="content-container">
-      <img src="~/Assets/dashboard/Icon_1dashboard.svg">
-      <label class="navigation-text monster-300">Dashboard</label>
-      </div>
-    </div>
-  </div>
 
-  <div class="navigation-block">
-    <div class="full-width-holder">
-      <div class="content-container">
-        <img src="~/Assets/dashboard/Icon_2beheren.svg">
-        <label class="navigation-text monster-300">Dashboard</label>
-      </div>
+    <div class="navigation-block">
+        <div class="full-width-holder">
+            <div class="content-container">
+                <img src="~/Assets/dashboard/Icon_1dashboard.svg">
+                <label class="navigation-text monster-300">Dashboard</label>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="navigation-block">
-    <div class="full-width-holder">
-      <div class="content-container">
-        <img src="~/Assets/dashboard/Icon_3inbox.svg">
-        <label class="navigation-text monster-300">Dashboard</label>
-      </div>
+    <div class="navigation-block">
+        <div class="full-width-holder">
+            <div class="content-container">
+                <img src="~/Assets/dashboard/Icon_2beheren.svg">
+                <label class="navigation-text monster-300">Dashboard</label>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="navigation-block">
-   <div class="full-width-holder">
-      <div class="content-container">
-        <img src="~/Assets/dashboard/Icon_4profiel.svg">
-        <label class="navigation-text monster-300">Dashboard</label>
-      </div>
+    <div class="navigation-block">
+        <div class="full-width-holder">
+            <div class="content-container">
+                <img src="~/Assets/dashboard/Icon_3inbox.svg">
+                <label class="navigation-text monster-300">Dashboard</label>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="navigation-block">
-    <div class="full-width-holder">
-      <div class="content-container">
-        <img src="~/Assets/dashboard/Icon_2beheren.svg">
-        <label class="navigation-text monster-300">Dashboard</label>
-      </div>
+    <div class="navigation-block">
+        <div class="full-width-holder">
+            <div class="content-container">
+                <img src="~/Assets/dashboard/Icon_4profiel.svg">
+                <label class="navigation-text monster-300">Dashboard</label>
+            </div>
+        </div>
     </div>
-  </div> 
+
+    <div class="navigation-block">
+        <div class="full-width-holder">
+            <div class="content-container">
+                <img src="~/Assets/dashboard/Icon_2beheren.svg">
+                <label class="navigation-text monster-300">Dashboard</label>
+            </div>
+        </div>
+    </div>
 
 </div>
 
 <div id="dashboard-header">
     <img src="~/Assets/dashboard/Logo_moves.svg" class="dashboard-charity-logo">
-    
+
     <div class="charity-account">
         <img src="~/Assets/dashboard/Icon_profiel.svg" class="user-icon">
         <label class="user-name source-200">Stef de Kramer</label>
@@ -66,7 +66,7 @@
 
 
 
-<div class="container">
+<div id="all-elements-container" class="container">
     <div class="row">
         <div class="col-md-12">
             <a class="go-back-link" href="#">
@@ -85,31 +85,121 @@
     </div>
 
     <div id="first-section-information">
-      <div class="row">
-      <div class="col-md-4">
-        <div class="amount-container"></div>
-      </div>
-      <div class="col-md-4">
-        <div class="amount-container"></div>
-      </div>
-      <div class="col-md-4">
-        <img class="donaties-holder" src="~/Assets/dashboard/Icon_donaties.svg">
-      </div>
-    </div>
-    </div>
-    
-    <canvas id="myChart" class="chart"></canvas>
-  
-<div id="last-section-information">
-  <div class="row">
-    <div class="col-md-4">
-       <div class="amount-container"></div>
-    </div>
-    <div class="col-md-8">
-      <div class="action-stats"></div>
-    </div>
-  </div>
-</div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="amount-container">
+                    <img class="dashboard-01" src="~/Assets/dashboard/Icon_dashboard_1.svg">
+                    <div class="text-container">
+                        <h4 class="monster-200">283</h4>
+                        <p class="source-300">bezoekers in de maand <span class="source-600">juni</span></p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 switch-block">
+                            <p class="switch-maand source-400">per <span id="monthly-visitors" class="monthly-visitors slider-selected">maand</span></p>
+                            <label class="switch">
+                <input id="visitor-switch" type="checkbox">
+                <span class="slider round"></span>
+              </label>
+                            <p class="switch-jaar source-400"> <span id="yearly-visitors" class="yearly-visitors">jaar</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  
+            <div class="col-md-4">
+                <div class="amount-container">
+                    <img class="dashboard-01" src="~/Assets/dashboard/Icon_dashboard_2.svg">
+                    <div class="text-container">
+                        <h4 class="monster-200">745</h4>
+                        <p class="source-300">donateurs in het jaar <span class="source-600">2018</span> </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 switch-block">
+                            <p class="switch-maand source-400">per <span id="monthly-visitors" class="monthly-visitors ">maand</span></p>
+                            <label class="switch">
+                <input id="visitor-switch" type="checkbox" checked>
+                <span class="slider round"></span>
+              </label>
+                            <p class="switch-jaar source-400"> <span id="yearly-visitors" class="yearly-visitors slider-selected">jaar</span></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4 icon-donaties-holder">
+                <div class="icon-relative">
+                    <img class="donaties-holder" src="~/Assets/dashboard/Icon_donaties.svg">
+                    <p class="source-300 text-1">Deze maand is er</p>
+                    <p class="monster-200 text-2">€1456,50</p>
+                    <p class="source-300 text-3">gedoneerd</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="myChart" class="chart"></canvas>
+
+    <div id="last-section-information">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="amount-container">
+                    <img class="dashboard-01" src="~/Assets/dashboard/Icon_dashboard_3.svg">
+                    <div class="text-container">
+                        <h4 class="monster-200">12</h4>
+                        <p class="source-300">lopende acties</p>
+                    </div>
+                     <div class="row">
+                        <div class="col-md-12 action-link">
+
+                          <a href="#" class="current-actions">Bekijk de lopende acties</a>
+                          <span> <img class="go-back-icon shifted" src="~/Assets/dashboard/Icon_arrow-back.svg"></span>
+                          
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div id="action-stats" class="col-md-8">
+                <div class="action-stats">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="action-goals">
+                      <p>Actie met meeste donaties:</p>
+                      <p>Meest gedeelde actie:</p>
+                      <p>Recent bijgekomen actie:</p>
+                      <p>Bijna verlopen actie:</p>
+                    </div>
+                     <div class="action-results">
+                      <a href="#">Klimmen tegen MS &commat; Mont Vetoux</a>
+                      <a href="#">Grunn moves &commat; Mont Ventoux</a>
+                      <a href="#">Team Scholen VO Zeeuws Vlaanderen &commat; Mont Vetoux</a>
+                      <a href="#">Team Oldenzaal tegen MS &commat; Mont Vetoux</a>
+                     </div>
+                  </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-action-stats">
+      <div class="stats-holder">
+        <h4>Actie met meeste donaties:</h4>
+       <a href="#">Klimmen tegen MS &commat; Mont Vetoux</a>
+      </div>
+      <div class="stats-holder">
+        <h4>Actie met meeste donaties:</h4>
+       <a href="#">Klimmen tegen MS &commat; Mont Vetoux</a>
+      </div>
+      <div class="stats-holder">
+        <h4>Actie met meeste donaties:</h4>
+       <a href="#">Klimmen tegen MS &commat; Mont Vetoux</a>
+      </div>
+      <div class="stats-holder">
+        <h4>Actie met meeste donaties:</h4>
+       <a href="#">Klimmen tegen MS &commat; Mont Vetoux</a>
+      </div>
+     
+    </div>
+
 </div>

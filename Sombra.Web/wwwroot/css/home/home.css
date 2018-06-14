@@ -335,14 +335,11 @@ width: 75px;
     margin-left: 10px;
     margin-top: 10px;
     display: inline-block;
-}
-
-#home-contribute .action-holder .action-item .colored-label a {
-    padding-left: 6px;
-    padding-right: 6px;
-    background-color: lightblue;
-    border-radius: 4px;
+    background-color: rgba(177, 177, 177, 0.25);
+    border-radius: 5px;
+    padding: 2px 6px;
     font-size: 13px;
+    color: #838383;
 }
 
 #home-contribute .action-holder .action-item .action-information {

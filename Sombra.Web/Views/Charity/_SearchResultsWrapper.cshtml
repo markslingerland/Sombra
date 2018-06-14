@@ -1,6 +1,6 @@
 ﻿@model Sombra.Web.ViewModels.Charity.SearchResultsViewModel
 <div id="charity-results-holder">
-    <p class="results source-400"><span class="source-700">@Model.TotalNumberOfResults </span>zoekresultaten</p>
+    <p class="results source-400"><span class="source-700">@Model.TotalNumberOfResults</span> zoekresultaten</p>
 
     <div id="charity-results">
         @foreach (var result in Model.Results)
@@ -50,6 +50,13 @@
         <label class="previous-page" data-target-pagenumber="@(Model.PageNumber-1)"><img src="Assets/icons/arrow-icon-to-left.svg"></label>
     }
 
+    @if (firstPageToDisplay != 1)
+    {
+        <label class="source-300" data-target-pagenumber="1">1</label>
+        <label class="source-300 no-click">...</label>
+        firstPageToDisplay++;
+    }
+
     @for (var i = firstPageToDisplay; i <= lastPageToDisplay; i++)
     {
         if (i != Model.PageNumber)
@@ -58,7 +65,7 @@
         }
         else
         {
-            <label class="source-700" data-target-pagenumber="@i">@i</label>
+            <label class="source-700" id="current-page-number" data-target-pagenumber="@i">@i</label>
         }
 
     }

@@ -403,7 +403,6 @@ width: 75px;
 #the_story .story_image {
  width: 100%;
  height: 460px;
- background-image: url("../../Assets/mont-ventoux.jpg");
  background-position: center;
  position: relative;
  background-size: cover;
@@ -418,13 +417,13 @@ width: 75px;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
 }
 
-#the_story .story_gradient .text_container {
-width: 100%;
-padding-left: 165px;
-padding-right: 165px;
+#the_story .story_image .text_container {
+    width: 100%;
+    padding-left: 165px;
+    padding-right: 165px;
 }
 
-#the_story .story_gradient .text_container span {
+#the_story .story_image .text_container span {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -444,7 +443,7 @@ padding-right: 165px;
     bottom: 58px;
 }
 
-#the_story .story_gradient .text_container h3{
+#the_story .story_image .text_container h3 {
     width: 556px;
     font-family: 'Montserrat', sans-serif;
     font-size: 25px;

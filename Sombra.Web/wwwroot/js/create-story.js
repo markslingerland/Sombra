@@ -20,6 +20,10 @@
         var reader = new FileReader();
         reader.onloadend = function () {
             document.getElementById('header-image').style.backgroundImage = "url(" + reader.result + ")";
+            document.getElementById('label-box').style.opacity = 0;
+            document.getElementById('label-box').style.color = "#fff";
+            document.getElementById('label-box').innerText = "Kies een andere video";
+            document.getElementById('image-box').style.opacity = 0;
         };
         if (file) {
             reader.readAsDataURL(file);
@@ -30,10 +34,15 @@
         var file = document.getElementById("file").files[0];
         var reader = new FileReader();
         reader.onloadend = function () {
-            document.getElementById('story-image').style.backgroundImage = "url(" + reader.result + ")";
+            document.getElementById('story-image').style.backgroundImage = "url(" + reader.result + ")";           
+            document.getElementById('label1-box').style.opacity = 0;
+            document.getElementById('label1-box').style.color = "#fff";
+            document.getElementById('label1-box').innerText = "Kies een andere foto of video";
+            document.getElementById('image1-box').style.opacity = 0;
+            document.getElementById('video1-box').style.opacity = 0;
         };
         if (file) {
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(file);           
         } 
     }
 
@@ -42,6 +51,11 @@
         var reader = new FileReader();
         reader.onloadend = function () {
             document.getElementById('story-image-2').style.backgroundImage = "url(" + reader.result + ")";
+            document.getElementById('label2-box').style.opacity = 0;
+            document.getElementById('label2-box').style.color = "#fff";
+            document.getElementById('label2-box').innerText = "Kies een andere foto of video";
+            document.getElementById('image2-box').style.opacity = 0;
+            document.getElementById('video2-box').style.opacity = 0;
         };
         if (file) {
             reader.readAsDataURL(file);
@@ -53,6 +67,11 @@
         var reader = new FileReader();
         reader.onloadend = function () {
             document.getElementById('story-image-3').style.backgroundImage = "url(" + reader.result + ")";
+            document.getElementById('label3-box').style.opacity = 0;
+            document.getElementById('label3-box').style.color = "#fff";
+            document.getElementById('label3-box').innerText = "Kies een andere foto of video";
+            document.getElementById('image3-box').style.opacity = 0;
+            document.getElementById('video3-box').style.opacity = 0;
         };
         if (file) {
             reader.readAsDataURL(file);

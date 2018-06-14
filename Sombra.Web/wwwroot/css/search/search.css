@@ -428,14 +428,12 @@ margin-bottom: 30px;
     height: 183.5px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    background-image: url("../../Assets/charities/Tear.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
 }
 
 #charity-results .charity-holder .charity-background-image .charity-logo {
-    background-image: url("../../Assets/charities/Logo_tear.png");
     width: 70%;
     height: 100%;
     background-size: contain;
@@ -519,7 +517,7 @@ margin-bottom: 30px;
     margin-bottom: 187px;
 }
 
-#pagination a {
+#pagination label {
     display: inline-block;
     width: 10px;
     height: 23px;
@@ -533,13 +531,17 @@ margin-bottom: 30px;
     margin-bottom: -13px;
 }
 
-#pagination a img {
+#pagination label:not(.no-click) {
+    cursor: pointer;
+}
+
+#pagination label img {
     position: absolute;
     top: 13px;
     left: 11px;
 }
 
-#pagination a:first-child {
+#pagination label.previous-page {
     display: inline-block;
     width: 38px;
     height: 38px;
@@ -550,7 +552,7 @@ margin-bottom: 30px;
     margin-right: 27px;
 }
 
-#pagination a:last-child {
+#pagination label.next-page {
     display: inline-block;
     width: 38px;
     height: 38px;

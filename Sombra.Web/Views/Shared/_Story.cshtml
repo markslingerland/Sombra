@@ -8,10 +8,10 @@
         <h3>
             “@Model.Title”
         </h3>
-        <a href="#">Lees meer</a>
+        <a href="@($"{Html.SubdomainUrl(Model.CharityUrl)}/{Model.UrlComponent}")" class="read-more-this-story">Lees meer</a>
         <div class="story-btn-holder">
             <div class="secondary-button">
-                <a href="@($"{Html.SubdomainUrl(Model.CharityUrl)}/{Model.UrlComponent}")"></a>
+                <a href="/verhalen"></a>
                 <label>Lees de verhalen</label>
             </div>
         </div>

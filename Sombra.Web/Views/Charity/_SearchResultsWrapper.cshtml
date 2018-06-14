@@ -1,17 +1,30 @@
 ﻿@model Sombra.Web.ViewModels.Charity.SearchResultsViewModel
+
+@{ var hasResults = Model.TotalNumberOfResults > 0 && Model.Results?.Any() != null;}
+
 <div id="charity-results-holder">
     <p class="results source-400"><span class="source-700">@Model.TotalNumberOfResults</span> zoekresultaten</p>
 
     <div id="charity-results">
-        @foreach (var result in Model.Results)
+        @if (hasResults)
         {
-            @await Html.PartialAsync("_SearchResult", result)
+            foreach (var result in Model.Results)
+            {
+                @await Html.PartialAsync("_SearchResult", result)
+            }
         }
+        else
+        {
+            @:Geen resultaten!
+        }
+
     </div>
 </div>
 
-@{
-    var totalPages = (int)(Math.Ceiling((double) Model.TotalNumberOfResults / Model.PageSize) + 0.5);
+
+@if (hasResults)
+{
+    var totalPages = (int)(Math.Ceiling((double)Model.TotalNumberOfResults / Model.PageSize) + 0.5);
     var pagesToDisplay = 5;
 
     var firstPageToDisplay = 1;
@@ -42,42 +55,42 @@
             lastPageToDisplay--;
         }
     }
+
+    <div id="pagination">
+        @if (Model.PageNumber != 1)
+        {
+            <label class="previous-page" data-target-pagenumber="@(Model.PageNumber-1)"><img src="Assets/icons/arrow-icon-to-left.svg"></label>
+        }
+
+        @if (firstPageToDisplay != 1)
+        {
+            <label class="source-300" data-target-pagenumber="1">1</label>
+            <label class="source-300 no-click">...</label>
+            firstPageToDisplay++;
+        }
+
+        @for (var i = firstPageToDisplay; i <= lastPageToDisplay; i++)
+        {
+            if (i != Model.PageNumber)
+            {
+                <label class="source-300" data-target-pagenumber="@i">@i</label>
+            }
+            else
+            {
+                <label class="source-700 no-click" data-current-pagenumber="@i" id="current-page-number">@i</label>
+            }
+
+        }
+
+        @if (tooMany)
+        {
+            <label class="source-300 no-click">...</label>
+            <label class="source-300" data-target-pagenumber="@totalPages">@totalPages</label>
+        }
+
+        @if (Model.PageNumber != totalPages)
+        {
+            <label class="next-page" data-target-pagenumber="@(Model.PageNumber+1)"><img src="Assets/icons/icon-arrow-to-right.svg"></label>
+        }
+    </div>
 }
-
-<div id="pagination">
-    @if (Model.PageNumber != 1)
-    {
-        <label class="previous-page" data-target-pagenumber="@(Model.PageNumber-1)"><img src="Assets/icons/arrow-icon-to-left.svg"></label>
-    }
-
-    @if (firstPageToDisplay != 1)
-    {
-        <label class="source-300" data-target-pagenumber="1">1</label>
-        <label class="source-300 no-click">...</label>
-        firstPageToDisplay++;
-    }
-
-    @for (var i = firstPageToDisplay; i <= lastPageToDisplay; i++)
-    {
-        if (i != Model.PageNumber)
-        {
-            <label class="source-300" data-target-pagenumber="@i">@i</label>
-        }
-        else
-        {
-            <label class="source-700" id="current-page-number" data-target-pagenumber="@i">@i</label>
-        }
-
-    }
-
-    @if (tooMany)
-    {
-        <label class="source-300 no-click">...</label>
-        <label class="source-300" data-target-pagenumber="@totalPages">@totalPages</label>
-    }
-
-    @if (Model.PageNumber != totalPages)
-    {
-        <label class="next-page" data-target-pagenumber="@(Model.PageNumber+1)"><img src="Assets/icons/icon-arrow-to-right.svg"></label>
-    }
-</div>

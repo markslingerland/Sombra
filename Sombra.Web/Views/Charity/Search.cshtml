@@ -1,4 +1,3 @@
-@model Sombra.Web.ViewModels.Charity.SearchResultsViewModel
 @using Sombra.Core.Enums
 @using Sombra.Core.Extensions
 @using Sombra.Web.Infrastructure.Extensions
@@ -11,66 +10,54 @@
 
 <div id="filter">
     <a href="#" class="signin-charity source-600">Een goed doel aanmelden</a>
-    <h2 class="monster-200 filter-title">@ViewData["Title"]</h2>
+    <h2 class="monster-200 filter-title">Goede doelen</h2>
 
     <div class="form-holders">
-        <form id="Categorieën" class="filter-form" action="filter-charityActions">
-            <input class="filter-input" type="text" placeholder="Zoeken..." name="Zoeken...">
-            <button class="submit-button monster-300" type="submit"><i class="fa fa-search"></i></button>
+        <input class="filter-input" type="text" placeholder="Zoeken..." name="Zoeken...">
+        <button class="submit-button monster-300" type="button"><i class="fa fa-search"></i></button>
 
-            <div class="category-checkbox-holder">
+        <div class="category-checkbox-holder">
 
-                <div class="category-dropdown-holder">
-                    <div class="category-dropdown">
-                        <p class="monster-300">Categorieën</p>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="checkbox-dropdown">
-                        @foreach (var category in typeof(Category).GetFlagValues
-                       <Category>().Where(v => (int)v != 0))
-                        {
-                            <div>
-                                <label class="checkbo-container monster-300">
-                                    @category.GetDisplayName()
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
+            <div class="category-dropdown-holder">
+                <div class="category-dropdown">
+                    <p class="monster-300">Categorieën</p>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="checkbox-dropdown">
+                    @foreach (var category in typeof(Category).GetFlagValues<Category>().Where(v => (int)v != 0))
+                    {
+                        <div>
+                            <label class="checkbo-container monster-300" data-category-id="@((int)category)">
+                                @category.GetDisplayName()
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
                         </div>
                     }
-                    </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div id="selected-category">
-    <p class="no-categories-selected source-300">Verfijn je zoekopdracht door steekwoorden in te voeren in de zoekbalk. Bijvoorbeeld ‘kinderen’ of ‘natuurgeweld’.</p>
-    <div class="selected-categories">
-        <label class="selected-category source-800" href="#">
-            GEZONDHEID
-            <span class="cross-holder">
-                <div class="tag-kruisje">
-                    <a href="#" class="icon-holder">
-                        <i class="fas fa-times"></i>
-                    </a>
-                </div>
-
-            </span>
-        </label>
-
-        <label class="selected-category source-800" href="#">
-            CULTUUR
-            <span class="cross-holder">
-                <div class="tag-kruisje">
-                    <a href="#" class="icon-holder">
-                        <i class="fas fa-times"></i>
-                    </a>
-                </div>
-
-            </span>
-        </label>
+<div id="selected-keywords">
+    <p id="keywords-placeholder" class="source-300">Verfijn je zoekopdracht door steekwoorden in te voeren in de zoekbalk. Bijvoorbeeld ‘kinderen’ of ‘natuurgeweld’.</p>
+    <div class="selected-keywords">
     </div>
 </div>
 
-@await Html.PartialAsync("_SearchResultsWrapper", Model)
+<div id="search-results"></div>
+
+<div id="keyword-template" class="hidden">
+    <label class="selected-keyword source-800">
+        {keyword}
+        <span class="cross-holder">
+            <div class="tag-kruisje">
+                <span class="icon-holder">
+                    <i class="fas fa-times"></i>
+                </span>
+            </div>
+
+        </span>
+    </label>
+</div>

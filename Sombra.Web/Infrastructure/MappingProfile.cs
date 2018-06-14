@@ -18,6 +18,7 @@ using Sombra.Web.ViewModels;
 using Sombra.Web.ViewModels.Charity;
 using Sombra.Web.ViewModels.Home;
 using Sombra.Web.ViewModels.Shared;
+using GetCharitiesRequest = Sombra.Messaging.Requests.Charity.GetCharitiesRequest;
 using GetCharityActionsRequest = Sombra.Messaging.Requests.CharityAction.GetCharityActionsRequest;
 using GetCharityActionsResponse = Sombra.Messaging.Responses.CharityAction.GetCharityActionsResponse;
 
@@ -124,6 +125,17 @@ namespace Sombra.Web.Infrastructure
                 .ForMember(d => d.PageNumber, opt => opt.Ignore());
 
             CreateMap<Story, StoryViewModel>();
+
+            CreateMap<SearchQuery, GetCharitiesRequest>()
+                .ForMember(d => d.OnlyApproved, opt => opt.UseValue(true))
+                .ForMember(d => d.OnlyUnapproved, opt => opt.Ignore())
+                .ForMember(d => d.SortOrder, opt => opt.UseValue(SortOrder.Asc));
+
+            CreateMap<Sombra.Messaging.Responses.Charity.GetCharitiesResponse, SearchResultsViewModel>()
+                .ForMember(d => d.PageNumber, opt => opt.Ignore())
+                .ForMember(d => d.PageSize, opt => opt.Ignore());
+
+            CreateMap<Charity, SearchResultViewModel>();
         }
     }
 }

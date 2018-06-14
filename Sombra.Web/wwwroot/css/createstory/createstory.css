@@ -18,8 +18,8 @@
     float: left;
     margin-top: -414px;
     text-align: center;
-
 }
+
 .mytext-container label {
     font-family: 'Source Sans Pro', sans-serif;
     width: 393px;
@@ -34,14 +34,12 @@
     margin-left: auto;
     margin-right: auto;
 }
-    .mytext-container:hover label {
-        opacity: 1 !important;
-        text-shadow: 0px 0px 30px white,0px 0px 30px white,0px 0px 30px white,0px 0px 10px #553300,0px 0px 10px #553300;
-        cursor: pointer;
-    }
 
-
-
+.mytext-container:hover label {
+    opacity: 1 !important;
+    text-shadow: 0px 0px 30px white,0px 0px 30px white,0px 0px 30px white,0px 0px 10px #553300,0px 0px 10px #553300;
+    cursor: pointer;
+}
 
 .icon-show {
 width: 36px;
@@ -74,6 +72,7 @@ cursor: pointer;
     position: relative;
     width: 100%;
 }
+
 .add-button {
     background-size: 100%;
     width: 24.6px;
@@ -254,6 +253,7 @@ input[type=text] {
     text-align: left;
     outline: none;
 }
+
 .quote-container {
     width: 790px;
     height: 190px;
@@ -328,6 +328,7 @@ input[type=text] {
     margin-right: auto;
     font-style: italic;
 }
+
 input[type=text] {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
@@ -362,6 +363,7 @@ input[type=text] {
     background-repeat: no-repeat;
     background-position: 50% 50%;
 }
+
 .story-image label {
     font-family: 'Source Sans Pro', sans-serif;
     opacity: 0.5;
@@ -377,16 +379,19 @@ input[type=text] {
     width: 100%;
     cursor: pointer;
 }
-    .story-image:hover label {
-        opacity: 1 !important;       
-        text-shadow: 0px 0px 30px white,0px 0px 30px white,0px 0px 30px white,0px 0px 10px #553300,0px 0px 10px #553300;
-        cursor: pointer;
-    }
+
+.story-image:hover label {
+    opacity: 1 !important;       
+    text-shadow: 0px 0px 30px white,0px 0px 30px white,0px 0px 30px white,0px 0px 10px #553300,0px 0px 10px #553300;
+    cursor: pointer;
+}
+
 .images-container {
     width: 790px;
     margin-left: auto;
     margin-right: auto;
 }
+
 .story-image-2 {
     float: left;
     width: 390px;
@@ -417,6 +422,7 @@ input[type=text] {
     width: 100%;
     cursor: pointer;
 }
+
 .story-image-2:hover label {
     opacity: 1 !important;
     text-shadow: 0px 0px 30px white,0px 0px 30px white,0px 0px 30px white,0px 0px 10px #553300,0px 0px 10px #553300;
@@ -454,6 +460,7 @@ input[type=text] {
     width: 100%;
     cursor: pointer;
 }
+
 .story-image-3:hover label {
     opacity: 1 !important;
     text-shadow: 0px 0px 30px white,0px 0px 30px white,0px 0px 30px white,0px 0px 10px #553300,0px 0px 10px #553300;
@@ -482,6 +489,7 @@ input[type=text] {
     height: 38px;
     border-radius: 8px;
 }
+
 .video-icon-box {
     text-align: center;
     margin: 0 auto;

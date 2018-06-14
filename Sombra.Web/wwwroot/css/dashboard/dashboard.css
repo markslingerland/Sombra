@@ -63,6 +63,7 @@ footer {
     right: 0;
     background-color: white;
     z-index: 2;
+    display: block;
 }
 
 #dashboard-header .dashboard-charity-logo {

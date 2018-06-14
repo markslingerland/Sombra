@@ -653,3 +653,7 @@ height: 24px;
 .footer-facebook {
     background-image: url("../Assets/footer/Icon_footer_Facebook.svg");
 }
+
+#dashboard-header {
+    display: none;
+}

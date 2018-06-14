@@ -324,11 +324,23 @@ width: 75px;
     right: 25px;
 }
 
-#home-contribute .action-holder .action-item img {
+#home-contribute .action-holder .action-item .background img {
+    width: 50%;
+    height: 50%;
+    max-width: inherit;
+    max-height: inherit;
+    margin: 0 auto;
+    vertical-align: middle;
+}
+
+#home-contribute .action-holder .action-item .background {
     width: 100%;
     height: 50%;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 #home-contribute .action-holder .action-item .colored-label {

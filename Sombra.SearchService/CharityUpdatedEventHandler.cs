@@ -25,8 +25,9 @@ namespace Sombra.SearchService
                 charityToUpdate.CharityName = message.Name;
                 charityToUpdate.Description = message.Slogan;
                 charityToUpdate.Image = message.CoverImage;
-                charityToUpdate.Category = message.Category; 
-                                
+                charityToUpdate.Category = message.Category;
+                charityToUpdate.Url = message.Url;
+
                 await _context.SaveChangesAsync();
             }
         }

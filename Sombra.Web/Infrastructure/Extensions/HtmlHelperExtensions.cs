@@ -9,5 +9,10 @@ namespace Sombra.Web.Infrastructure.Extensions
         {
             return helper.ViewContext.HttpContext.GetUser();
         }
+
+        public static string SubdomainUrl(this IHtmlHelper helper, string subdomain)
+        {
+            return $"{helper.ViewContext.HttpContext.GetScheme()}{subdomain}.{helper.ViewContext.HttpContext.GetHost()}";
+        }
     }
 }

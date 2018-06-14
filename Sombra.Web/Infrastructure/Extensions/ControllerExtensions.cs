@@ -5,6 +5,11 @@ namespace Sombra.Web.Infrastructure.Extensions
 {
     public static class ControllerExtensions
     {
+        public static IActionResult ReturnToHome(this Controller controller)
+        {
+            return controller.Redirect(controller.HttpContext.GetHomeUrl());
+        }
+
         public static ContentResult CreateErrorResult(this ActionContext context)
         {
             var result = context.JsonNet(context.ModelState);

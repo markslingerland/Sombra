@@ -27,6 +27,7 @@ namespace Sombra.Messaging.Infrastructure
                 var response = await handler.Handle(message);
                 ExtendedConsole.Log($"{response.GetType().Name} returned");
                 Logger.LogMessageAsync(response);
+                return response;
             }
             catch (Exception ex)
             {

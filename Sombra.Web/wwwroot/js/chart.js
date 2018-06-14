@@ -14,7 +14,7 @@ var myChart = new Chart(ctx, {
             pointBackgroundColor:      gradientStroke,
             pointHoverBackgroundColor: gradientStroke,
             pointHoverBorderColor:     gradientStroke,
-            data: [500,750,1000,1250,1600,750],
+            data: [500,750,1000,1250,1600,1156],
             borderWidth: 9,
             fill: false, 
             pointBackgroundColor: gradientStroke,
@@ -34,13 +34,13 @@ var myChart = new Chart(ctx, {
             caretPadding: 28,
             yAlign: 'bottom',
             xAlign: 'center',
-
             caretSize: 10,
             titleFontSize: 0,
             titleSpacing: 0,
             titleMarginBottom: 0,
             displayColors: false,
             bodyFontSize: 16,
+            bodyFontFamily: 'Montserrat',
             xPadding: 20,
             yPadding: 15,
             callbacks: {
@@ -56,7 +56,7 @@ var myChart = new Chart(ctx, {
             fontColor: '#838383',
             fontFamily: 'Source Sans Pro',
             padding: 25,
-            text: 'Opgehaalde bedragen in het jaar 2018                                                                                                                                                                      '
+            text: 'Donaties in euro\'s in 2018                                                                                                                                                                                                                                                                                             '
         },
         layout: {
             padding: {

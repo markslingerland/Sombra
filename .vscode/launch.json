@@ -15,7 +15,7 @@
            "type": "coreclr",
            "request": "launch",
            "preLaunchTask": "build",
-           "program": "${workspaceFolder}/Sombra.IdentityService/bin/Debug/netcoreapp2.0/Sombra.IdentityService.dll",
+           "program": "${workspaceFolder}/Sombra.IdentityService/bin/Debug/netcoreapp2.1/Sombra.IdentityService.dll",
            "args": [],
            "cwd": "${workspaceFolder}/Sombra.IdentityService",
            "stopAtEntry": false,

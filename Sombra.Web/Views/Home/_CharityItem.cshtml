@@ -3,13 +3,15 @@
 @model Sombra.Web.ViewModels.Home.CharityItemViewModel
 
 <div class="action-item">
-    <img style="background-image:url(@Model.Image)" src="@Model.Logo" alt="">
+    <div class="background" style="background-image: url(@Model.Image)">
+        <img src="@Model.Logo" alt="">
+    </div>
     @foreach (var category in Model.Category.GetIndividualFlags().Take(1))
     {
         <div class="colored-label">@category.GetDisplayName().ToUpper()</div>
     }
     <div class="action-information">
-        @(Model.Description.Length > 35 ? $"{Model.Description.Substring(0, 34)}..." : Model.Description)
+        @(Model.Description.Length > 42 ? $"{Model.Description.Substring(0, 40)}..." : Model.Description)
     </div>
     <div class="action-btn-holder">
         <a href="@Html.SubdomainUrl(Model.Url)"><i class="fas fa-arrow-right"></i>

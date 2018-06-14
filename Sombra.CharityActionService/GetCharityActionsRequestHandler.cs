@@ -40,7 +40,8 @@ namespace Sombra.CharityActionService
             return new GetCharityActionsResponse
             {
                 TotalNumberOfResults = _charityActionContext.CharityActions.Count(filter),
-                Results = await _charityActionContext.CharityActions.Include(b => b.UserKeys).Include(b => b.Charity).Where(filter).OrderBy(t => t.Name, message.SortOrder)
+                Results = await _charityActionContext.CharityActions.Include(b => b.UserKeys).Include(b => b.Charity)
+                    .Where(filter).OrderBy(t => t.Name, message.SortOrder)
                     .ProjectToPagedListAsync<Messaging.Shared.CharityAction>(message, _mapper)
             };
         }

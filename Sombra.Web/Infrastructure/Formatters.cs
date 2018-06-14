@@ -11,12 +11,12 @@ namespace Sombra.Web.Infrastructure
         
         public static string ToFormattedString(this DateTime dateTime)
         {
-            return dateTime.ToString(DefaultFormatProvider);
+            return dateTime.ToString("dd-MM-yyyy");
         }
 
         public static string ToFormattedString(this decimal value)
         {
-            return value.ToString(DefaultFormatProvider);
+            return value.ToString("N0", DefaultFormatProvider);
         }
 
         public static string CreateUrlComponent(string value)

@@ -422,17 +422,34 @@ color: #f88356;
     letter-spacing: normal;
     display: block;
     color: #f88356;
+    text-decoration: underline;
  }
  #last-section-information .action-goals {
      margin-left: 54px;
      margin-top: 52px;
      margin-right: 11px;
  }
+ @media only screen and (min-width: 1200px) and (max-width: 1499px) {
+
+    #first-section-information .icon-donaties-holder .text-1 {
+        top: 75px;
+        right: 35px;
+    }    
+
+    #first-section-information .icon-donaties-holder .text-2 {
+        top: 125px;
+        right: 32px;
+        position: absolute;
+    }
+
+    #first-section-information .icon-donaties-holder .text-3 {
+        top: 195px;
+        right: 39px;
+    }
+
+ }
 
  @media only screen and (min-width: 993px) and (max-width: 1199px) {
-    body {
-        background-color: lightblue;
-    }
 
     #first-section-information .text-container {
         margin-right: 15px;
@@ -440,18 +457,18 @@ color: #f88356;
 
     #first-section-information .icon-donaties-holder .text-1 {
         top: 75px;
-        right: 0;
+        right: -40px;
     }
 
     #first-section-information .icon-donaties-holder .text-2 {
         top: 125px;
-        right: 0;
+        right: -40px;
         position: absolute;
     }
 
     #first-section-information .icon-donaties-holder .text-3 {
         top: 195px;
-        right: 0;
+        right: -40px;
     }
 
     #last-section-information .text-container {
@@ -555,6 +572,7 @@ color: #f88356;
         letter-spacing: normal;
         display: block;
         color: #f88356;
+        text-decoration: underline;
        }
 }
 

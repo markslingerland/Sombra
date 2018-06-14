@@ -12,6 +12,7 @@ namespace Sombra.Messaging.Infrastructure
     {
         public const string LoggingQueue = "IMessageLoggingQueue";
         public const string ExceptionQueue = "ExceptionQueue";
+        public const string WebRequestsQueue = "WebRequestsQueue";
 
         public static ServiceProvider Run(Assembly assembly, string busConnectionString, Func<IServiceCollection, IServiceCollection> addAdditionalServices = null, params Action<ServiceProvider>[] additionalActions)
         {

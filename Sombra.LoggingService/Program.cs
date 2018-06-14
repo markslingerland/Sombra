@@ -32,7 +32,8 @@ namespace Sombra.LoggingService
                     .AddAutoMapper(Assembly.GetExecutingAssembly())
                     .AddMongoDatabase(_mongoConnectionString, _mongoDatabase)
                     .AddTransient<MessageHandler>()
-                    .AddTransient<ExceptionMessageHandler>(),
+                    .AddTransient<ExceptionMessageHandler>()
+                    .AddTransient<WebRequestMessageHandler>(),
                 DatabaseHelper.ValidateMongoConnections);
 
             var bus = serviceProvider.GetRequiredService<IBus>();
@@ -42,6 +43,12 @@ namespace Sombra.LoggingService
             bus.Receive<ExceptionMessage>(ServiceInstaller.ExceptionQueue, async message =>
             {
                 var handler = serviceProvider.GetRequiredService<ExceptionMessageHandler>();
+                await handler.HandleAsync(message);
+            });
+
+            bus.Receive<WebRequest>(ServiceInstaller.WebRequestsQueue, async message =>
+            {
+                var handler = serviceProvider.GetRequiredService<WebRequestMessageHandler>();
                 await handler.HandleAsync(message);
             });
 

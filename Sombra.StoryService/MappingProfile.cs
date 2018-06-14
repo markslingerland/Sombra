@@ -23,6 +23,7 @@ namespace Sombra.StoryService
                 .ForMember(d => d.Name, opt => opt.MapFrom(s => Helpers.GetUserName(s)));
 
             CreateMap<Story, Messaging.Shared.Story>()
+                .ForMember(d => d.CharityUrl, opt => opt.MapFrom(s =>s.Charity.Url))
                 .ForMember(d => d.Images, opt => opt.MapFrom(s => s.Images.Select(i => i.Base64)))
                 .ForMember(d => d.CharityKey, opt => opt.MapFrom(s => s.Charity.CharityKey));
 

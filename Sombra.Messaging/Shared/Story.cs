@@ -7,6 +7,7 @@ namespace Sombra.Messaging.Shared
     {
         public Guid StoryKey { get; set; }
         public Guid CharityKey { get; set; }
+        public string CharityUrl { get; set; }
 
         public Guid? AuthorUserKey { get; set; }
         public string AuthorName { get; set; }

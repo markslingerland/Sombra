@@ -1,17 +1,21 @@
 ﻿@using Sombra.Web.Infrastructure
 @model Sombra.Web.ViewModels.Shared.CharityActionItemViewModel
+@{
+    var progress = Model.CollectedAmount / Model.TargetAmount * 100;
+    var progressPercentage = progress > 100 ? 100 : progress;
+}
 <div class="carousel-cell">
     <div class="carousel-container">
         <div class="carousel-background">
             <div class="carousel-logo"></div>
             <div class="carousel-progress-bar">
-                <div class="carousel-progress"></div>
+                <div class="carousel-progress" style="width: @progressPercentage%;"></div>
             </div>
         </div>
         <div class="carousel-body">
             <label class="carousel-date">@Model.ActionEndDateTime.ToFormattedString()</label>
             <h4 class="carousel-title">@Model.Name</h4>
-            <img class="carousel-poster-image" src="Assets/lianne.jpg">
+            <img class="carousel-poster-image" src="@Model.OrganiserImage">
             <label class="carousel-poster-name">@Model.OrganiserUserName</label>
 
             <div class="carousel-money-holder">

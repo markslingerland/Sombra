@@ -621,7 +621,7 @@ footer .footer-info-right {
     float: right;
 }
 
-footer .footer-info-right .footer-youtube, .footer-twitter, .footer-instagram, .footer-facebook {
+.footer-twitter, .footer-instagram, .footer-facebook, .footer-youtube {
    width: 24px;
     height: 24px;
     margin-right: 17px;
@@ -630,6 +630,11 @@ footer .footer-info-right .footer-youtube, .footer-twitter, .footer-instagram, .
    display: inline-block;
    margin-top: 14px;
    position: relative;
+}
+
+footer .footer-youtube{
+width: 27px;
+height: 24px;
 }
 
 .footer-youtube {

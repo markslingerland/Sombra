@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Sombra.Web.Infrastructure.Authentication;
 using Sombra.Web.ViewModels;
 
-namespace Sombra.Web.Areas.Development.Controllers
+namespace Sombra.Web.Controllers
 {
-    [Area("Development")]
+
     public class AuthenticationController : Controller
     {
         private readonly AuthenticationManager _authenticationManager;
@@ -32,7 +32,6 @@ namespace Sombra.Web.Areas.Development.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public IActionResult Test()
         {
             return View("Test");

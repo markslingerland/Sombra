@@ -32,5 +32,8 @@ namespace Sombra.Messaging
 
         public static void LogException(Exception exception, bool isHandled, string handlerName)
             => Bus.Send(ServiceInstaller.ExceptionQueue, new ExceptionMessage(exception, isHandled, handlerName));
+
+        public static void LogWebrequest(WebRequest request)
+            => Bus.Send(ServiceInstaller.WebRequestsQueue, request);
     }
 }

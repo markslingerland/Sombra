@@ -1,4 +1,5 @@
-﻿@model Sombra.Web.ViewModels.Shared.StoryViewModel
+﻿@using Sombra.Web.Infrastructure.Extensions
+@model Sombra.Web.ViewModels.Shared.StoryViewModel
 <div class="story_image" style="background-image:url(@Model.CoverImage)">
     <div class="story_gradient"></div>
     <div class="text_container">
@@ -10,7 +11,7 @@
         <a href="#">Lees meer</a>
         <div class="story-btn-holder">
             <div class="secondary-button">
-                <a href="#"></a> @*/charityaction/id=*@
+                <a href="@($"{Html.SubdomainUrl(Model.CharityUrl)}/{Model.UrlComponent}")"></a>
                 <label>Lees de verhalen</label>
             </div>
         </div>

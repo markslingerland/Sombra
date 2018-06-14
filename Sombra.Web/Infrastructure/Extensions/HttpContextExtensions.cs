@@ -12,7 +12,7 @@ namespace Sombra.Web.Infrastructure.Extensions
         public static string GetHomeUrl(this HttpContext context)
         {
             if (string.IsNullOrEmpty(_homeUrl))
-                _homeUrl = $"{context.GetScheme()}//{context.GetHost()}";
+                _homeUrl = $"{context.GetScheme()}{context.GetHost()}";
 
             return _homeUrl;
         }
@@ -31,7 +31,7 @@ namespace Sombra.Web.Infrastructure.Extensions
         public static string GetScheme(this HttpContext context)
         {
             if (string.IsNullOrEmpty(_scheme))
-                _scheme = context.Request.Scheme;
+                _scheme = $"{context.Request.Scheme}://";
 
             return _scheme;
         }

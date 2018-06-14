@@ -38,7 +38,7 @@ namespace Sombra.Web.Infrastructure.Extensions
 
         public static SombraPrincipal GetUser(this HttpContext context)
         {
-            return (SombraPrincipal) context.User;
+            return (SombraPrincipal)context.User;
         }
     }
 }

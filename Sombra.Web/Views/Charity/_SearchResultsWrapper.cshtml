@@ -1,5 +1,7 @@
 ﻿@model Sombra.Web.ViewModels.Charity.SearchResultsViewModel
-
+@{
+    Layout = null;
+}
 @{ var hasResults = Model.TotalNumberOfResults > 0 && Model.Results?.Any() != null;}
 
 <div id="charity-results-holder">
@@ -13,11 +15,6 @@
                 @await Html.PartialAsync("_SearchResult", result)
             }
         }
-        else
-        {
-            @:Geen resultaten!
-        }
-
     </div>
 </div>
 

@@ -27,7 +27,7 @@ namespace Sombra.CharityService
         public async Task<GetCharitiesResponse> Handle(GetCharitiesRequest message)
         {
             Expression<Func<Charity, bool>> filter = c => true;
-            if (message.Category != Category.None) filter = filter.And(c => c.Category == message.Category);
+            if (message.Category != Category.None) filter = filter.And(c => c.Category.HasFlag(message.Category));
             if (message.Keywords != null && message.Keywords.Any()) filter = filter.And(c => $"{c.Slogan} {c.Name} {c.Description}".ContainsAll(message.Keywords, StringComparison.OrdinalIgnoreCase));
             if (message.OnlyApproved) filter = filter.And(c => c.IsApproved);
             if (message.OnlyUnapproved) filter = filter.And(c => !c.IsApproved);

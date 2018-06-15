@@ -17,8 +17,8 @@ namespace Sombra.Core.Enums
         [Display(Name = "Internationale hulp")]
         InternationalAid = 4,
 
-        [Display(Name = "Maatschappelijke en sociale doelen")]
-        SocialCharities = 8,
+        [Display(Name = "Maatschappelijk")]
+        Social = 8,
 
         [Display(Name = "Gezondheid")]
         Health = 16,

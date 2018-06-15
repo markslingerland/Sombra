@@ -1,4 +1,44 @@
-﻿
+﻿var slogans = {};
+
+$(document).ready(function() {
+    $.get('donate/getcharities', function( data ) {
+        var dropdownContent = $('#select-your-charity');
+        $.each(data, function (index, value){
+            slogans[value.charityKey] = value.slogan;
+            dropdownContent.append(`<option value="${value.charityKey}">${value.name}</option>`);
+        });
+
+        $('#select-your-charity').selectize({
+            onChange: CharitySelected,
+            sortField: 'text',
+            maxItems: 1,
+            create: false,
+            valueField: 'id',
+            labelField: 'title',
+            searchField: 'title',
+            placeholder: "Naam van het goede doel..."
+        });        
+      });
+});
+
+function CharitySelected(charityKey)
+{
+    if (!charityKey.length) return;
+    $('.charity-information').text(slogans[charityKey]);
+    if ($('input:radio[name="select"]:checked').val() == "charity-action")
+    {
+        $.get(`donate/getcharityactions?charityKey=${charityKey}`, function( data ) {
+            var dropdownActionContent = $('#select-action');
+            dropdownActionContent[0].selectize.destroy();
+            $.each(data, function (index, value){
+                dropdownActionContent.append(`<option value="${value.key}">${value.name}</option>`);
+            });
+            InitSelectAction();
+             
+          });
+    }
+}
+
 // SECTION 1
 $('#control_01').click(function () {
     if ($('#control_01').is(':checked')) {
@@ -18,39 +58,24 @@ $('#control_02').click(function () {
     }
 });
 
+function InitSelectAction()
+{
+    $('#select-action').selectize({
+        sortField: 'text',
+        maxItems: 1,
+        create: false,
+        valueField: 'id',
+        labelField: 'title',
+        searchField: 'title',
+        placeholder: "Naam van de actie..."
+    });  
+}
+InitSelectAction();
+
+
 $('input:radio[name="pay-time"]').click(function (){
     $(".section-1 .next-step-holder").css("display", "inline-block");
 })
-
-$('#select-your-charity').selectize({
-    sortField: 'text',
-    maxItems: 1,
-    create: false,
-    valueField: 'id',
-    labelField: 'title',
-    searchField: 'title',
-    placeholder: "Naam van het goed doel...",
-    options: [
-        { id: 1, title: 'Spectrometer', url: 'http://en.wikipedia.org/wiki/Spectrometers' },
-        { id: 2, title: 'Star Chart', url: 'http://en.wikipedia.org/wiki/Star_chart' },
-        { id: 3, title: 'Electrical Tape', url: 'http://en.wikipedia.org/wiki/Electrical_tape' }
-    ]
-});
-
-$('#select-action').selectize({
-    sortField: 'text',
-    maxItems: 1,
-    create: false,
-    valueField: 'id',
-    labelField: 'title',
-    searchField: 'title',
-    placeholder: "Naam van de actie...",
-    options: [
-        { id: 1, title: 'Spectrometer', url: 'http://en.wikipedia.org/wiki/Spectrometers' },
-        { id: 2, title: 'Star Chart', url: 'http://en.wikipedia.org/wiki/Star_chart' },
-        { id: 3, title: 'Electrical Tape', url: 'http://en.wikipedia.org/wiki/Electrical_tape' }
-    ]
-});
 
 $('#one-time').on('input', function () {
     var input = $(this);

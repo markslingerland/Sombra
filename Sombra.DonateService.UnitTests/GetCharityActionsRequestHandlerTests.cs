@@ -6,6 +6,7 @@ using Sombra.DonateService.DAL;
 using Sombra.Infrastructure;
 using Sombra.Messaging.Requests.Donate;
 using Sombra.Messaging.Responses.Donate;
+using Charity = Sombra.DonateService.DAL.Charity;
 
 namespace Sombra.DonateService.UnitTests
 {

@@ -101,7 +101,7 @@ namespace Sombra.Web.Infrastructure
             CreateMap<CharityQuery, GetCharityByUrlRequest>()
                 .ForMember(d => d.Url, opt => opt.MapFrom(s => s.Subdomain));
 
-            CreateMap<Charity, CharityViewModel>();
+            CreateMap<Sombra.Messaging.Shared.Charity, CharityViewModel>();
 
             CreateMap<DonationsInWeekByCharityQuery, GetCharityTotalRequest>()
                 .ForMember(d => d.NumberOfDonations, opt => opt.UseValue(3))
@@ -135,7 +135,9 @@ namespace Sombra.Web.Infrastructure
                 .ForMember(d => d.PageNumber, opt => opt.Ignore())
                 .ForMember(d => d.PageSize, opt => opt.Ignore());
 
-            CreateMap<Charity, SearchResultViewModel>();
+            CreateMap<Sombra.Messaging.Shared.Charity, SearchResultViewModel>();
+            CreateMap<Sombra.Messaging.Responses.Donate.Charity, Sombra.Web.ViewModels.Donate.Charity>();
+            CreateMap<KeyNamePair, Sombra.Web.ViewModels.Donate.CharityAction>();
         }
     }
 }

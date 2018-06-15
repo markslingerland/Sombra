@@ -17,7 +17,7 @@
         <a class="source-400 go-to-charity" href="@Html.SubdomainUrl(Model.Url)">Bekijk goed doel</a>
 
         <div class="charity-item-category-holder">
-            @foreach (var category in Model.Category.GetIndividualFlags())
+            @foreach (var category in Model.Category.GetIndividualFlags().Take(1))
             {
                 <label class="source-400 charity-item-category">@category.GetDisplayName().ToUpper()</label>
             }

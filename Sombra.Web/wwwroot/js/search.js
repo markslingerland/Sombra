@@ -12,7 +12,7 @@ function Search(pageNumber = -1) {
 
     $('.selected-keywords .selected-keyword:not([data-category])').each(function(index, value) {
         var keyword = $(value).text().trim();
-        url += `&Keywords[${index}]=${keyword}`;
+        url += `&Keywords[${index}]=${encodeURIComponent(keyword)}`;
     });
 
     var category = 0;
@@ -26,7 +26,7 @@ function Search(pageNumber = -1) {
 
 $('#filter').on('click', '.submit-button', KeywordEntered);
 $('.filter-input').on('keyup', function(event) {
-    if (event.keycode == 13) KeywordEntered();
+    if (event.keyCode == 13) KeywordEntered();
 });
 
 function KeywordEntered() {
@@ -42,14 +42,13 @@ function KeywordEntered() {
 
 $('.selected-keywords').on('click', '.tag-kruisje', function (event) {
     var keyword = $(event.target).closest('.selected-keyword');
-    var isCategory = keyword.hasAttr('data-category');
-    if (isCategory) {
+    if (keyword.attr('data-category')) {
         var category = keyword.attr('data-category');
         $('.checkbox-dropdown').find(`label[data-category-id="${category}"] input[type="checkbox"]`).prop('checked', false);
     }
     keyword.remove();
     ToggleNoKeywordsSelected();
-    if (!isCategory) Search();
+    Search();
 });
 
 $('.checkbox-dropdown').on('change', 'input[type="checkbox"]', function (event) {
@@ -58,8 +57,9 @@ $('.checkbox-dropdown').on('change', 'input[type="checkbox"]', function (event) 
     var categoryId = label.data('category-id');
     var category = label.text();
     if (target.is(':checked')) {
-        var template = $('#keyword-template').clone().attr('data-category', categoryId).html().replace('{keyword}', category);
-        $('.selected-keywords').append(template);
+        var template = $('#keyword-template').clone().html().replace('{keyword}', category);
+        var templateElement = $(template).attr('data-category', categoryId);
+        $('.selected-keywords').append(templateElement);
     } else {
         $(`.selected-keywords .selected-keyword[data-category="${categoryId}"]`).remove();
     }

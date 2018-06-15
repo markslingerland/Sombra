@@ -259,7 +259,6 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   width: 630px;
   height: 50px;
   border-radius: 8px;
-  border: solid 1px #b1b1b1;
   position: relative;
 }
 
@@ -276,6 +275,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   font-size: 18px;
   padding-left: 20px;
   outline: none;
+  border: solid 1px #b1b1b1;
 }
 
 .standard-input input::placeholder {
@@ -816,6 +816,10 @@ padding-left: 35px;
 
 .not-valid ~ label.validatable {
   border: solid red 1px !important;
+}
+
+.error-message {
+  display: none;
 }
 
 /* CHeckbox  */

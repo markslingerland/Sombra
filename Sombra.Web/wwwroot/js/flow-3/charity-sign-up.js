@@ -21,14 +21,14 @@ $('#control_02').click(function () {
 
 $('#charity').click(function () {
     if ($('#charity').is(':checked')) {
-        $("#name-charity").attr("placeholder", "Naam van het goede doel");
+        $("#name-charity").attr("placeholder", "Naam goed doel");
         $(".category-dropdown p").text("Selecteer categorieën voor het goede doel…");
     }
 });
 
 $('#stichting').click(function () {
     if ($('#stichting').is(':checked')) {
-        $("#name-charity").attr("placeholder", "Naam van de stichting");
+        $("#name-charity").attr("placeholder", "Naam stichting");
         $(".category-dropdown p").text("Selecteer categorieën voor de stichting…");
     }
 });
@@ -151,16 +151,15 @@ $('#button-toSection-2').click(function(){
         $('#password-repeat').removeClass("not-valid");
        }
 
-       if (iban_bankChecker && choosePaymentOption && lastNameFilled && postcodeFilled && houseNumberFilled || $('#ideal').is(':checked') && iban_bankChecker || $('#paypall').is(':checked')) {
-        $(".section-2").hide();
-        $(".section-3").show();
+       if (namecharity && kvknumber && firstNumbers && lastNumbers && cardholder && nameContact && email && password && passwordrepeat) {
+        $('.section-01').hide();
+        $('.section-02').show();
+        $('.section-03').hide();
+        $(".error-message").css("display", "none");
+    } else {
+        $(".error-message").css("display", "inline-block");
     }
     
-
-
-    $('.section-01').hide();
-    $('.section-02').show();
-    $('.section-03').hide();
 });
 
 $('#button-toSection-3').click(function(){
@@ -206,9 +205,9 @@ $('.category-dropdown').click(function(){
     }
  });
 
- var limit = 3;
-$('input.single-checkbox').on('change', function(evt) {
-   if($(this).siblings(':checked').length >= limit) {
+ let limitChecks = 2;
+$('checkbox-container input').on('change', function(evt) {
+   if($(this).siblings(':checked').length >= limitChecks) {
        this.checked = false;
    }
 });

@@ -206,8 +206,8 @@ $('.category-dropdown').click(function(){
  });
 
  let limitChecks = 2;
-$('checkbox-container input').on('change', function(evt) {
-   if($(this).siblings(':checked').length >= limitChecks) {
-       this.checked = false;
+$('.checkbox-dropdown').on('change', 'input[type="checkbox"]', function(evt) {
+   if($(this).closest('.checkbox-dropdown').find(':checked').length > limitChecks) {
+    $(this).prop('checked', false);
    }
 });

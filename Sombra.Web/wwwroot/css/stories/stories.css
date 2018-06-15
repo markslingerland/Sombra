@@ -725,6 +725,18 @@
     background-repeat: no-repeat;
     overflow: hidden;
 }
+.insta-column img{
+    float: left;
+    width: 255px;
+    height: 255px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
 
 .insta-text {
     width: 100%;
@@ -802,8 +814,6 @@
  .twitter {
     width: 100%;
     height: 940px;
-    border-radius: 5px;
-    border: solid 1px #979797;
 }
 
 .twitter h2 {

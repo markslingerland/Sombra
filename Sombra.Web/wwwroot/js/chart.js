@@ -106,4 +106,12 @@ var myChart = new Chart(ctx, {
     }
 });
 
+// $("#side-navigation .navigation-text").hide();
 
+// $("#side-navigation").hover(function(){
+//     $(".navigation-text").delay(5000).show();
+// })
+
+// $("#side-navigation").mouseout(function(){
+//     $(".navigation-text").hide();
+// });

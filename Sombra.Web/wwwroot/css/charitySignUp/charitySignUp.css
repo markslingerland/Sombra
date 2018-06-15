@@ -204,12 +204,27 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   transform: rotate(0deg);
 }
 
+
+.filled-icon {
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background-color: #f88356;
+  transform: rotate(-270deg);
+  position: absolute;
+  right: 26px;
+  top: 23px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(0deg);
+}
+
 .progress-stroke {
   position: absolute;
-  top: 0px;
+  top: 8px;
   left: 0px;
   width: 5px;
-  height: 91px;
+  height: 82px;
   background-color: #f88356;
 }
 
@@ -248,19 +263,6 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   position: relative;
 }
 
-.section-02, .section-03 {
-  margin-left: auto;
-    margin-right: auto;
-    margin-top: -403px;
-    margin-bottom: 150px;
-    width: 1109px;
-    min-height: 10px;
-    transition: all .2s ease-in-out;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
-    position: relative;
-}
-
 .standard-input:required {
   border: solid 1px red;
 }
@@ -273,6 +275,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   color: #838383;
   font-size: 18px;
   padding-left: 20px;
+  outline: none;
 }
 
 .standard-input input::placeholder {
@@ -680,7 +683,7 @@ font-family: 'Source Sans Pro', sans-serif;
 /* Section 3 */
 
 .section-02 .payment-holder {
-  width: 855px;
+  width: 825px;
   height: 140px;
   padding-bottom: 30px;
   padding-top: 30px;
@@ -693,7 +696,7 @@ font-family: 'Source Sans Pro', sans-serif;
 }
 
 .section-02 .payment-user-info-holder {
-  width: 855px;
+  width: 825px;
   padding-bottom: 30px;
   padding-top: 30px;
   border-radius: 8px;
@@ -813,4 +816,166 @@ padding-left: 35px;
 
 .not-valid ~ label.validatable {
   border: solid red 1px !important;
+}
+
+/* CHeckbox  */
+
+.category-checkbox-holder {
+  /* float: right; */
+}
+.category-dropdown-holder {
+ /* width: 255px; */
+ /* float: right; */
+ position: relative;
+}
+
+.category-dropdown {
+  width: 630px;
+  height: 50px;
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  position: relative;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 218px;
+}
+
+.category-dropdown p {
+ font-style: italic;
+ font-stretch: normal;
+ line-height: normal;
+ text-align: left;
+ width: 100%;
+ padding-top: 14px;
+ letter-spacing: normal;
+ opacity: 0.5;
+ color: #838383;
+ font-size: 18px;
+ padding-left: 20px;
+}
+
+.category-dropdown i {
+ position: absolute;
+ top: 20px;
+ right: 21px;
+ color: #f88356;
+}
+
+.category-dropdown-clicked {
+ border-bottom: none;
+ border-bottom-left-radius: 0;
+ border-bottom-right-radius: 0;
+}
+
+.checkbox-dropdown {
+  width: 630px;
+  position: absolute;
+  left: 218px;
+  top: 50px;
+  border-left: solid 1px #b1b1b1;
+  border-radius: 8px;
+  border: solid 1px #b1b1b1;
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: 201;
+  display: none;
+  background-color: white;
+}
+
+.checkbox-item p{
+ font-size: 14px;
+ font-style: normal;
+ font-stretch: normal;
+ line-height: 2.5;
+ letter-spacing: normal;
+ color: #838383;
+ text-align: left;
+ padding-left: 19px;
+}
+
+.checkbox-dropdown label {
+ text-align: left;
+ font-style: normal;
+ font-stretch: normal;
+ line-height: 2.5;
+ letter-spacing: normal;
+ color: #838383;
+ font-size: 14px;
+ padding-top: 3px;
+}
+
+.checkbo-container {
+ position: relative;
+ width: 100%;
+ padding-left: 19px;
+ cursor: pointer;
+ font-size: 22px;
+ -webkit-user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ user-select: none;
+ transition-duration: 0.25s;
+}
+
+.checkbo-container:hover {
+ background-color: #EAEAEA;
+}
+
+
+/* Hide the browser's default checkbox */
+.checkbo-container input {
+ position: absolute;
+ opacity: 0;
+ cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+ position: absolute;
+ top: 8px;
+ right: 11px;
+ height: 25px;
+ width: 25px;
+ /* background-color: #eee; */
+}
+
+/* On mouse-over, add a grey background color */
+.checkbo-container:hover input ~ .checkmark {
+ /* background-color: #ccc; */
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbo-container input:checked ~ .checkmark {
+ /* background-color: #2196F3; */
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+ content: "";
+ position: absolute;
+ display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbo-container input:checked ~ .checkmark:after {
+ display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbo-container .checkmark:after {
+ left: 9px;
+ top: 5px;
+ width: 6px;
+ height: 13px;
+ border: solid #b8e986;
+ border-width: 0px 2px 2px 0px;
+ -webkit-transform: rotate(45deg);
+ -ms-transform: rotate(45deg);
+ transform: rotate(45deg);
+}
+
+#question-icon {
+  margin-bottom: 4px;
+  margin-left: 9px;
 }

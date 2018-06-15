@@ -70,6 +70,14 @@
     border: solid 1px #f88356;
     position: relative;
 }
+    #about .about-btn:hover {
+        margin-top: 80px;
+        width: 210px;
+        height: 40px;
+        border-radius: 8px;
+        background-image: linear-gradient(515deg, #FB9549, #F57264);
+        position: relative;
+    }
 
 #about .about-btn .small-arrow {
     background-image: url("../../Assets/icons/small-arrow-icon.svg");
@@ -80,6 +88,10 @@
     top: 15px;
     left: 16px;
     background-repeat: no-repeat;
+}
+
+#about .about-btn:hover .small-arrow {
+    background-image: url("../../Assets/icons/white-arrow.svg");
 }
 
 #about .about-btn a {
@@ -107,6 +119,15 @@
     top: 8px;
     left: 35px;
 }
+    #about .about-btn:hover span{
+        position: absolute;
+        font-size: 18px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        color: #fff;
+        top: 8px;
+        left: 35px;
+    }
 
 #home-info {
     padding-top: 350px;

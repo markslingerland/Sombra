@@ -814,6 +814,18 @@
 .twitter {
     width: 100%;
     height: 895px;
+    overflow:hidden;
+}
+.twitter-container {
+    width: 100%;
+    height: 796px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border: solid 1px rgba(0, 0, 0, 0.2);
+    overflow: scroll;
+}
+::-webkit-scrollbar {
+    width: 10px;
 }
 
 .twitter h2 {
@@ -832,6 +844,8 @@
     border-radius: 8px;
     border: solid 1px #f88356;
     background: white;
+    margin-top: 21px;
+    margin-left: 20px;
 }
 .twitter-button span {
     width: 322px;

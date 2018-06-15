@@ -11,6 +11,7 @@ using Sombra.Web.Infrastructure;
 using Sombra.Web.Infrastructure.Messaging;
 using Sombra.Web.ViewModels.Charity;
 using Sombra.Web.ViewModels.Shared;
+using GetCharitiesRequest = Sombra.Messaging.Requests.Charity.GetCharitiesRequest;
 using GetCharityActionsRequest = Sombra.Messaging.Requests.CharityAction.GetCharityActionsRequest;
 
 namespace Sombra.Web.Controllers
@@ -35,7 +36,7 @@ namespace Sombra.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> SearchCharities(SearchQuery query)
         {
-            var request = _mapper.Map<GetStoriesRequest>(query);
+            var request = _mapper.Map<GetCharitiesRequest>(query);
             var response = await _bus.RequestAsync(request);
 
             if (response.IsRequestSuccessful)

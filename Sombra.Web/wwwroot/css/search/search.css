@@ -48,6 +48,7 @@ margin-bottom: 30px;
     height: 50px;
     border-radius: 8px;
     border: solid 1px #b1b1b1;
+    outline: none;
 }
 
 #filter .filter-input::placeholder {
@@ -75,6 +76,7 @@ margin-bottom: 30px;
     margin-left: -45px;
     border: none;
     background-color: transparent;
+    outline: none;
 }
 
 #filter .submit-button i {
@@ -338,7 +340,7 @@ margin-bottom: 30px;
     text-align: left;
     color: #838383;
     position: relative;
-    margin-right: 16px;
+    margin-right: 10px;
 }
 
 #selected-keywords .selected-keyword .cross-holder {

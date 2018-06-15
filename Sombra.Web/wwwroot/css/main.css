@@ -653,3 +653,11 @@ height: 24px;
 .footer-facebook {
     background-image: url("../Assets/footer/Icon_footer_Facebook.svg");
 }
+
+
+/* Story style */
+
+.story-text-container {
+    position: absolute;
+    bottom: 55px;
+}

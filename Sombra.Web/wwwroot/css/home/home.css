@@ -443,8 +443,6 @@ width: 75px;
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
-    position: absolute;
-    bottom: 188px;
 }
 
 #the_story .story-btn-holder {
@@ -453,22 +451,20 @@ width: 75px;
     bottom: 58px;
 }
 
-#the_story .story_image .text_container h3 {
-    width: 556px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 25px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.28;
-    letter-spacing: normal;
-    text-align: left;
-    color: #ffffff;
-    position: absolute;
-    bottom: 85px;
-    margin-bottom: 0;
-    margin-top: 0;
-}
+    #the_story .story_image .text_container h3 {
+        width: 556px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 25px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.28;
+        letter-spacing: normal;
+        text-align: left;
+        color: #ffffff;
+        margin-bottom: 7px;
+        margin-top: 5px;
+    }
 
 #the_story .read-more-this-story {
 font-size: 18px;
@@ -478,8 +474,6 @@ line-height: normal;
 letter-spacing: normal;
 color: #ffffff;
 text-decoration: underline;
-bottom: 55px;
-position: absolute;
 }
 
 #acties {

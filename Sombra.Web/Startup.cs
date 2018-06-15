@@ -37,7 +37,7 @@ namespace Sombra.Web
             services.AddMvc(options =>
 
             {
-                // options.Filters.Add(new RequestLoggingFilter());
+                options.Filters.Add(new RequestLoggingFilter());
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                 options.Filters.Add(new ValidatorActionFilter());
                 options.Filters.Add(new ExceptionLoggingFilterAttribute());

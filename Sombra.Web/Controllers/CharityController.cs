@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -28,7 +29,25 @@ namespace Sombra.Web.Controllers
         [HttpGet("goede-doelen")]
         public IActionResult Search()
         {
-            return View();
+            return View("Search");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SearchCharities(SearchQuery query)
+        {
+            var request = _mapper.Map<GetStoriesRequest>(query);
+            var response = await _bus.RequestAsync(request);
+
+            if (response.IsRequestSuccessful)
+            {
+                var model = _mapper.Map<SearchResultsViewModel>(response);
+                model.PageNumber = query.PageNumber;
+                model.PageSize = query.PageSize;
+
+                return View("_SearchResultsWrapper", model);
+            }
+
+            return View("_SearchResultsWrapper", new SearchResultsViewModel());
         }
 
         [HttpGet]

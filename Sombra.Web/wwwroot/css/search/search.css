@@ -82,7 +82,7 @@ margin-bottom: 30px;
     color: #f88356;
 }
 
-.no-categories-selected {
+.no-keywords-selected {
     font-style: italic;
     display: none;
     font-size: 14px;
@@ -317,7 +317,7 @@ margin-bottom: 30px;
       display: none;
   }
 
-  #selected-category {
+  #selected-keywords {
       width: 100%;
       padding-left: 165px;
       padding-right: 165px;
@@ -325,7 +325,7 @@ margin-bottom: 30px;
       margin-top: 11px;
   }
 
-  #selected-category .selected-category {
+#selected-keywords .selected-keyword {
     border-radius: 5px;
     background-color: rgba(177, 177, 177, 0.25);
     padding: 1px 23px 2px 6px;
@@ -339,9 +339,9 @@ margin-bottom: 30px;
     color: #838383;
     position: relative;
     margin-right: 16px;
-  }
+}
 
-  #selected-category .selected-category .cross-holder {
+#selected-keywords .selected-keyword .cross-holder {
     width: 12px;
     height: 12px;
     background-color: white;
@@ -349,9 +349,9 @@ margin-bottom: 30px;
     border-radius: 100%;
     top: 5px;
     right: 5px;
-  }
+}
 
-  #selected-category .selected-category .cross-holder {
+#selected-keywords .selected-keyword .cross-holder {
     width: 12px;
     height: 12px;
     background-color: white;
@@ -359,28 +359,29 @@ margin-bottom: 30px;
     border-radius: 100%;
     top: 5px;
     right: 5px;
-  }
+}
 
-  #selected-category .tag-kruisje {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-  }
+#selected-keywords .tag-kruisje {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+}
 
-  #selected-category .selected-category .cross-holder .icon-holder{
+#selected-keywords .selected-keyword .cross-holder .icon-holder {
     width: 100%;
     height: 100%;
     position: relative;
-  }
+}
 
-  #selected-category .selected-category .cross-holder .icon-holder i {
+#selected-keywords .selected-keyword .cross-holder .icon-holder i {
     font-size: 7px;
     vertical-align: middle;
     margin-left: 1px;
     margin-top: -10px;
     color: #838383;
-  }
+}
  
 #charity-results-holder {
     width: 100%;

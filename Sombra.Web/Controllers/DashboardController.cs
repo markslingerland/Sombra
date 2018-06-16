@@ -25,6 +25,7 @@ namespace Sombra.Web.Controllers
             return View();
         }
 
+        [HttpGet("deel-jouw-verhaal")]
         public IActionResult CreateStory()
         {
             return View();

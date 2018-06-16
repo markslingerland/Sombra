@@ -2,7 +2,9 @@
 @using Sombra.Core.Extensions
 @using Sombra.Web.Infrastructure.Extensions;
 @model Sombra.Web.ViewModels.Charity.CharityViewModel
-@{ ViewData["Title"] = "Charity"; }
+@section Title{
+    @Model.Name
+}
 @section Styles{
     <link rel="stylesheet" href="~/css/charity/charity.css" />
     <link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/charity/desktop.css" />

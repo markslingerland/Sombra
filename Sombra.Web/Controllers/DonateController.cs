@@ -28,6 +28,12 @@ namespace Sombra.Web.Controllers
             return View(new DonateViewModel());
         }
 
+        [HttpPost("doneren")]
+        public IActionResult Index(DonateViewModel model)
+        {
+            return View(new DonateViewModel());
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetCharities()
         {
@@ -44,7 +50,7 @@ namespace Sombra.Web.Controllers
         {
             var charityKeyIsValidGuid = Guid.TryParse(charityKey, out var charityKeyGuid);
             if (!charityKeyIsValidGuid) return new StatusCodeResult((int) HttpStatusCode.BadRequest);
-            
+
             var request = new GetCharityActionsRequest
             {
                 CharityKey = charityKeyGuid

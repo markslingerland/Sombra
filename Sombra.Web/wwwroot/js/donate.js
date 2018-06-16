@@ -1,5 +1,7 @@
 ﻿var slogans = {};
 
+$('#form-donate').on('click', '#next-to-section-4', PostForm);
+
 $(document).ready(function() {
     $.get('donate/getcharities', function( data ) {
         var dropdownContent = $('#select-your-charity');
@@ -20,6 +22,30 @@ $(document).ready(function() {
         });        
       });
 });
+
+function PostForm()
+{
+    var formData = new FormData();
+    formData.append("DonationType", $('input[name="pay-time"]').val());
+    formData.append("Amount", $('input[name="money"]').val());
+    formData.append("CharityKey", $('#select-your-charity').val());
+    formData.append("CharityActionKey", $('#select-action').val());
+
+    $.ajax({
+        type: 'post',
+        url: '/doneren',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: null,
+        complete: function (data) {
+            if (!data.responseJSON.redirect) submitBtn.prop('disabled', false);
+        },
+        error: function (data) {
+            highlightErrors(data, $this);
+        }
+    });
+}
 
 function CharitySelected(charityKey)
 {

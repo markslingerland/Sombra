@@ -18,3 +18,18 @@ function Search(pageNumber) {
 $('#more-stories').on('click', 'label[data-target-pagenumber]', function (event) {
     Search($(event.target).data('target-pagenumber'));
 });
+
+$(document).on('click', '#scroll-to-verhalen', function () {
+    ScrollTo('#more-stories');
+});
+
+$(document).on('click', '#scroll-to-deel-mijn-verhaal', function () {
+    ScrollTo('.share-text');
+});
+
+function ScrollTo(selector, adjustment = 100) {
+    $('html, body').animate({
+            scrollTop: $(selector).offset().top - adjustment
+        },
+        1000);
+}

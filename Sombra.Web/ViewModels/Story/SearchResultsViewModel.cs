@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Sombra.Web.ViewModels.Shared;
 
-namespace Sombra.Web.ViewModels.Charity
+namespace Sombra.Web.ViewModels.Story
 {
     public class SearchResultsViewModel : PagedViewModel
     {

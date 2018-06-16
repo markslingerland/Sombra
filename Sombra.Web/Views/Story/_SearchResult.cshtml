@@ -1,0 +1,16 @@
+﻿@using Sombra.Web.Infrastructure.Extensions
+@model Sombra.Web.ViewModels.Story.SearchResultViewModel
+@{
+    Layout = null;
+}
+<div class="column" style="background-image:url(@Model.CoverImage">
+    <a href="#" style="text-decoration:none;">
+        <div class="text-column">
+            <p>@Model.Title</p>
+            <span class="fading-text">@(Model.OpeningText.Length > 150 ? $"{Model.OpeningText.Substring(0, 148)}..." : Model.OpeningText)</span>
+            <a href="@($"{Html.SubdomainUrl(Model.CharityUrl)}/verhalen/{Model.UrlComponent}")" class="fading-link">
+                <br>Lees meer
+            </a>
+        </div>
+    </a>
+</div>

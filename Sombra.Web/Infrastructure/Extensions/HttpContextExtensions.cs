@@ -5,16 +5,16 @@ namespace Sombra.Web.Infrastructure.Extensions
 {
     public static class HttpContextExtensions
     {
-        private static string _homeUrl;
+        private static string _baseUrl;
         private static string _scheme;
         private static string _host;
 
-        public static string GetHomeUrl(this HttpContext context)
+        public static string GetBaseUrl(this HttpContext context)
         {
-            if (string.IsNullOrEmpty(_homeUrl))
-                _homeUrl = $"{context.GetScheme()}{context.GetHost()}";
+            if (string.IsNullOrEmpty(_baseUrl))
+                _baseUrl = $"{context.GetScheme()}{context.GetHost()}";
 
-            return _homeUrl;
+            return _baseUrl;
         }
 
         public static string GetHost(this HttpContext context)

@@ -676,3 +676,7 @@ height: 24px;
     position: absolute;
     bottom: 55px;
 }
+
+input, button, a {
+    outline: none;
+}

@@ -53,31 +53,37 @@
 }
 
 #about .about-quotes {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-weight: 100;
 }
 
-#about .quote-shift {
+#about .quote-shift-left {
     margin-left: -15px;
+}
+
+#about .quote-shift-right {
+    margin-left: 5px;
 }
 
 #about .about-btn {
     margin-top: 80px;
-    width: 210px;
+    width: 202px;
     height: 40px;
     border-radius: 8px;
     background-color: #ffffff;
     border: solid 1px #f88356;
     position: relative;
 }
-    #about .about-btn:hover {
-        margin-top: 80px;
-        width: 210px;
-        height: 40px;
-        border-radius: 8px;
-        background-image: linear-gradient(515deg, #FB9549, #F57264);
-        position: relative;
-    }
+
+#about .about-btn:hover {
+    margin-top: 80px;
+    width: 202px;
+    height: 40px;
+    border-radius: 8px;
+    background-image: linear-gradient(515deg, #FB9549, #F57264);
+    position: relative;
+}
 
 #about .about-btn .small-arrow {
     background-image: url("../../Assets/icons/small-arrow-icon.svg");
@@ -233,13 +239,14 @@ width: 75px;
 }
 
 #choose-flow .flow-box p {
-    margin-top: 7px;
-    width: 225px;
+    margin-top: 10px;
+    width: 233px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
     font-size: 18px;
     color: #838383;
+    line-height: 25px;
   }
 
   #choose-flow .flow-box .flow-start {
@@ -250,10 +257,15 @@ width: 75px;
     position: absolute;
     bottom: 32px;
     left: 0;
+      z-index: 21;
   }
 
   #choose-flow .flow-box:hover .flow-start {
     display: inline;
+}
+
+#choose-flow .flow-box .flow-start:hover {
+    text-decoration: underline;
 }
 
 /*/ Contribute /*/

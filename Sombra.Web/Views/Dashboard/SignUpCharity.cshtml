@@ -1,18 +1,17 @@
+@using Sombra.Core.Enums
+@using Sombra.Core.Extensions
 @{ ViewData["Title"] = "Aanmelden stichting of goed doel"; } 
 @section Styles{
-<link rel="stylesheet" href="~/css/charitySignUp/charitySignUp.css" /> 
-} 
+<link rel="stylesheet" href="~/css/charitySignUp/charitySignUp.css" /> } 
 @section Scripts {
 <script src="~/js/flow-3/charity-sign-up.js"></script>
 }
 
 <div id="background-frame"></div>
 
-<div class="form-signUpCharity">
-      <form id="sign-up-charity">
+<form id="sign-up-charity">
      <section class="section-01">
-  
-   
+
             <div class="signUp-progress">
                 <div class="orange-ball .first-section"></div>
                 <div class="grey-ball"></div>
@@ -27,9 +26,9 @@
 
             <a class="closing"><span class="signUp-close"></span><span class="signUp-close"></span></a>
 
-             <div class="big-radio-button">
+            <div class="big-radio-button">
                 <div class="radio-holder">
-                    <input type="radio" id="charity" name="your-cause" value="2">
+                    <input type="radio" id="charity" name="your-cause" value="1" checked>
                     <label for="charity" class="validatable">
                     <h2 class="source-600 radio-input-tag"> een goed doel</h2>
                 </label>
@@ -45,27 +44,46 @@
 
             <div class="big-distance standard-input ">
                 <div class="filled-icon"></div>
-                <input class="source-400 validatable" id="name-charity" type="text" placeholder="Naam van het goed doel" required>
+                <input class="source-400 validatable" id="name-charity" type="text" placeholder="Naam goed doel" required>
             </div>
 
-            <div class="jquery-select select-category">
-                <div class="chevron"></div>
-                <select id="select-your-category" required name="select-category" form="sign-up-charity"></select>
+           <div class="category-checkbox-holder">
+
+            <div class="category-dropdown-holder">
+                <div class="category-dropdown">
+                    <p class="source-400">Selecteer categorieën voor het goede doel…</p>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="checkbox-dropdown">
+                    @foreach (var category in typeof(Category).GetFlagValues<Category>().Where(v => (int)v != 0))
+                    {
+                        <div>
+                            <label class="checkbo-container monster-300" data-category-id="@((int)category)">
+                                @category.GetDisplayName()
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        </div>
+                    }
+                </div>
             </div>
+        </div>
+
+
 
             <div class="standard-input">
                 <div class="filled-icon"></div>
-                <input class="source-400 validatable" id="kvk-number" type="text" placeholder="KvK nummer" required>
+                <input class="source-400 validatable" id="kvk-number" type="text" placeholder="KvK-nummer" required>
             </div>
 
-            <p class="source-300 Anbi-explain">Bij ikdoneer.nu is het verplicht om ANBI geregistreerd te zijn, daarom vragen wij het KvK nummer ter controle. Het KvK- en ANBI nummer zullen zichtbaar zijn op de pagina van het goede doel.</p>
+            <p class="source-300 Anbi-explain">Bij ikdoneer.nu is het voor een stichting of goed doel verplicht om een ANBI-status te hebben. Daarom vragen wij het KvK-nummer ter controle. Het KvK- en ANBI-nummer zullen zichtbaar zijn op de pagina van het goede doel of de stichting.</p>
 
             <div id="payment-details">
-                <p class="monster-700 head-partje">BETAALGEGEVENS</p>
+                <p class="monster-700 head-partje">BETAALGEGEVENS <img id="question-icon" src="~/Assets/icons/Icon_vraagteken.svg"></p>
                 <div class="card-data">
                     <label class="country source-400">NL</label>
                     <input id="first-numbers" type="number" placeholder="00" required>
-                      <div class="jquery-select select-bank">
+                    <div class="jquery-select select-bank">
                         <div class="chevron"></div>
                         <select id="select-your-bank" name="select-bank" form="sign-up-charity" required></select>
                     </div>
@@ -74,11 +92,11 @@
             </div>
             <div class="standard-input">
                 <div class="filled-icon"></div>
-                <input class="source-400 validatable" id="card-holder" type="text" placeholder="Naam van kaarthouder" required>
+                <input class="source-400 validatable" id="card-holder" type="text" placeholder="Naam rekeninghouder" required>
             </div>
 
             <div id="contact-data">
-                <lable class="monster-700 head-partje">CONTACTGEGEVENS</lable>
+                <lable class="monster-700 head-partje">CONTACTGEGEVENS<img id="question-icon" src="~/Assets/icons/Icon_vraagteken.svg"></lable>
             </div>
             <div class="standard-input">
                 <div class="filled-icon"></div>
@@ -97,20 +115,22 @@
                 <input class="source-400 validatable" id="password-repeat" type="password" placeholder="Wachtwoord herhalen" required>
             </div>
 
-             <div class="next-step-holder">
+            <div class="next-step-holder">
                 <div class="next-step">
                     <span class="clickable" id="button-toSection-2"></span>
                 </div>
-                <p class="error-message monster-300">Oeps er is iets mis</p>
+                <p class="error-message monster-300">Oeps, er is iets mis</p>
             </div>
         </section>
+        
 
-        <section class="section-02">
+
+   <section class="section-02">
             <div class="signUp-progress">
-                 <div class="orange-ball-closed first-section">
+                <div class="orange-ball-closed first-section">
                     <div class="progress-stroke"></div>
                 </div>
-                <div class="orange-ball"></div>
+                <div class="orange-ball second-section"></div>
                 <div class="grey-ball"></div>
             </div>
             <div class="title-holder">
@@ -120,39 +140,43 @@
                 <h3 class="signUp-title monster-400">Overzicht</h3>
             </div>
 
+            <div class="goBack-holder">
+                <div class="go-back-icon"></div>
+                <p class="source-500">Vorige stap</p>
+                <a id="go-back" href="#"></a>
+            </div>
+
             <a class="closing"><span class="signUp-close"></span><span class="signUp-close"></span></a>
 
             <div class="payment-user-info-holder">
                 <div class="pen-icon second-section">
-                     <div class="pen-icon-image"></div>
+                    <div class="pen-icon-image"></div>
                 </div>
                 <p class="monster-600">Aanmelden van:<span class="monster-300">MS Moves</span></p>
                 <p class="monster-600">Naam:<span class="monster-300">MS Moves</span></p>
-                <p class="monster-600">Voornaam:<span class="monster-300">MS Moves</span></p>
-                <p class="monster-600">Categoriëen:<span class="monster-300">MS Moves</span></p>
-                <p class="monster-600">KvK nummer<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Categorie(ën):<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">KvK-nummer:<span class="monster-300">MS Moves</span></p>
                             </br>
-                <p class="monster-600">Iban:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">IBAN:<span class="monster-300">MS Moves</span></p>
                 <p class="monster-600">Naam rekeninghouder:<span class="monster-300">MS Moves</span></p>
                             </br>
-                <p class="monster-600">Naam contactpersoon<span class="monster-300">MS Moves</span></p>
-                <p class="monster-600">E-mailadres<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">Naam contactpersoon:<span class="monster-300">MS Moves</span></p>
+                <p class="monster-600">E-mailadres:<span class="monster-300">MS Moves</span></p>
             </div>
 
             <div class="next-step-holder">
                 <button class="next-step" id="button-toSection-3">
                 </button>
-                <p class="error-message monster-300">Oeps er is iets mis</p>
             </div>
 
-            </section>
+        </section>
 
-             <section class="section-03">
+  <section class="section-03">
             <div class="signUp-progress">
-                 <div class="orange-ball-closed first-section">
+                <div class="orange-ball-closed first-section">
                     <div class="progress-stroke"></div>
                 </div>
-                 <div class="orange-ball-closed second-section">
+                <div class="orange-ball-closed second-section">
                     <div class="progress-stroke"></div>
                 </div>
                 <div class="orange-ball"></div>
@@ -172,19 +196,16 @@
             </div>
 
             <p class="request-joining">
-                Bedankt voor jouw aanmelding! Leuk dat je je bij ons platform wilt aansluiten.
-De aanmelding is momenteel in behandeling. Wij zullen eerst de gegevens controleren en ophalen voordat je toegang krijgt tot het profiel. In het profiel krijg je de mogelijkheid om de pagina in te delen, statistieken te bekijken en nog veel meer!
+                Bedankt voor jouw aanmelding! Leuk dat je je bij ons platform wilt aansluiten. 
+            <br>
+                De aanmelding is momenteel in behandeling. Wij zullen eerst de gegevens controleren en ophalen voordat je toegang krijgt tot het profiel. In het profiel krijg je de mogelijkheid
+                om de pagina in te delen, statistieken te bekijken en nog veel meer!
             </p>
 
             <button class="close-donating-page monster-800">Pagina sluiten</button>
 
-            
+
         </section>
+</form>
 
-            </form>
-
-    
-
-       
-    
 </div>

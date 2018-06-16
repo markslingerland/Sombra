@@ -4,18 +4,20 @@
 <div class="charity-holder">
     <a class="clickable" href="@Html.SubdomainUrl(Model.Url)"></a>
     <div class="charity-background-image" style="background-image: url(@Model.CoverImage)">
-        <div class="charity-logo" style="background-image: url(@Model.Logo)"></div>
+        <img src="@Model.Logo" class="charity-logo">
         <div class="charity-background-gradient"></div>
     </div>
 
     <a href="@($"{Html.SubdomainUrl(Model.Url)}/doneer")" class="charity-btn"></a>
 
     <div class="charity-text-holder">
-        <h3 class="source-700 charity-title">@Model.Slogan</h3>
+        <h3 class="source-700 charity-title">
+            @(Model.Slogan.Length > 55 ? $"{Model.Slogan.Substring(0, 53)}..." : Model.Slogan)
+        </h3>
         <a class="source-400 go-to-charity" href="@Html.SubdomainUrl(Model.Url)">Bekijk goed doel</a>
 
         <div class="charity-item-category-holder">
-            @foreach (var category in Model.Category.GetIndividualFlags())
+            @foreach (var category in Model.Category.GetIndividualFlags().Take(1))
             {
                 <label class="source-400 charity-item-category">@category.GetDisplayName().ToUpper()</label>
             }

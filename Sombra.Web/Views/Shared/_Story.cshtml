@@ -3,12 +3,12 @@
 <div class="story_image" style="background-image:url(@Model.CoverImage)">
     <div class="story_gradient"></div>
     <div class="text_container">
-
-        <span>@Model.AuthorName, initiatiefnemer</span>
-        <h3>
-            “@Model.Title”
-        </h3>
-        <a href="@($"{Html.SubdomainUrl(Model.CharityUrl)}/verhalen/{Model.UrlComponent}")" class="read-more-this-story">Lees meer</a>
+        <div class="story-text-container">
+            <span>@Model.AuthorName, initiatiefnemer</span>
+            <h3>“@Model.Title”</h3>
+            <a href="@($"{Html.SubdomainUrl(Model.CharityUrl)}/verhalen/{Model.UrlComponent}")" class="read-more-this-story">Lees meer</a>
+        </div>
+        
         <div class="story-btn-holder">
             <div class="secondary-button">
                 <a href="@Url.Action("Index", "Story")"></a>

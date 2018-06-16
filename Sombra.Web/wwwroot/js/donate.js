@@ -169,9 +169,17 @@ $('#select-your-bank').selectize({
     searchField: 'title',
     placeholder: "Naam van uw bank...",
     options: [
-        { id: 1, title: 'Rabobank', url: 'http://en.wikipedia.org/wiki/Spectrometers' },
-        { id: 2, title: 'ING', url: 'http://en.wikipedia.org/wiki/Star_chart' },
-        { id: 3, title: 'Andere Bank', url: 'http://en.wikipedia.org/wiki/Electrical_tape' }
+        { id: 1, title: 'ABN AMRO', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
+        { id: 2, title: 'ASN Bank', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
+        { id: 3, title: 'Bunq', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
+        { id: 4, title: 'Fortis', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
+        { id: 5, title: 'ING', url: 'http://en.wikipedia.org/wiki/Star_chart' },
+        { id: 6, title: 'Knab', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
+        { id: 7, title: 'Rabobank', url: 'http://en.wikipedia.org/wiki/Spectrometers' },
+        { id: 8, title: 'SNS Bank', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
+        { id: 9, title: 'Triobos', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
+        { id: 10, title: 'Van Lanschot Bankiers', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
+        { id: 11, title: 'Andere Bank', url: 'http://en.wikipedia.org/wiki/Electrical_tape' }
     ]
 });
 

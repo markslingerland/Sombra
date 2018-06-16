@@ -48,6 +48,7 @@ margin-bottom: 30px;
     height: 50px;
     border-radius: 8px;
     border: solid 1px #b1b1b1;
+    outline: none;
 }
 
 #filter .filter-input::placeholder {
@@ -75,6 +76,7 @@ margin-bottom: 30px;
     margin-left: -45px;
     border: none;
     background-color: transparent;
+    outline: none;
 }
 
 #filter .submit-button i {
@@ -338,7 +340,7 @@ margin-bottom: 30px;
     text-align: left;
     color: #838383;
     position: relative;
-    margin-right: 16px;
+    margin-right: 10px;
 }
 
 #selected-keywords .selected-keyword .cross-holder {
@@ -404,7 +406,7 @@ margin-bottom: 30px;
 
 #charity-results {
  margin-top: 14px;
- text-align: center;
+ text-align: left;
  width: 100%;
 }
 
@@ -418,6 +420,7 @@ margin-bottom: 30px;
     display: inline-block;
     margin-right: 28px;
     margin-bottom: 50px;
+    text-align: center;
 }
 
 #charity-results .charity-holder:nth-child(3n) {
@@ -432,17 +435,16 @@ margin-bottom: 30px;
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
+    display: flex;
 }
 
 #charity-results .charity-holder .charity-background-image .charity-logo {
-    width: 70%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
     background-size: contain;
     background-repeat: no-repeat;
-    position: absolute;
-    top: 50px;
-    left: 60px;
-    z-index: 1;
+    margin: auto;
+    z-index: 10;
 }
 
 #charity-results .charity-holder .charity-background-gradient {

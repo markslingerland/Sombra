@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="111px" height="113px" viewBox="0 0 111 113" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <ellipse id="path-1" cx="44.5" cy="45.5" rx="45.5" ry="44.5"></ellipse>
+        <filter x="-17.6%" y="-18.0%" width="135.2%" height="136.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="-----Flow-2---1440px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="006-Doneer---Verhalen" transform="translate(-1090.000000, -351.000000)">
+            <g id="Group-4" transform="translate(1101.000000, 362.000000)">
+                <g id="Oval" transform="translate(44.500000, 45.500000) rotate(-270.000000) translate(-44.500000, -45.500000) ">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use stroke="#FFFFFF" stroke-width="2" fill-opacity="0.6" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <polygon id="Triangle" fill="#FFFFFF" points="62 46.5 36 66 36 27"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

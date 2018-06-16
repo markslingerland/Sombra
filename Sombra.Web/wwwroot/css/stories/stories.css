@@ -112,11 +112,11 @@
         font-weight: 300;
         font-style: normal;
         font-stretch: normal;
-        line-height: 1.14;
+        line-height: 45px;
         letter-spacing: normal;
         color: #838383;
         font-style: italic;
-        margin-top: 25px;
+        margin-top: 23px;
         margin-bottom: auto;
     }
 
@@ -127,12 +127,12 @@
 }
 
     #stories-info p {
-        width: 729px;
+        width: 730px;
         text-align: center;
         margin-left: auto;
         margin-right: auto;
         color: #838383;
-        line-height: 1.5;
+        line-height: 33px;
         font-family: 'Source Sans Pro', sans-serif;
         font-size: 22px;
         font-weight: 300;
@@ -164,14 +164,24 @@
     top: 8px;
     left: 35px;
 }
+
+#stories-info .about-btn2:hover span {
+    color: #fff;
+}
+
 #stories-info .about-btn {
     width: 196px;
     height: 40px;
     border-radius: 8px;
     background-image: linear-gradient(515deg, #fb9549, #f57264);
     border: none;
-    margin-right:17px;
+    margin-right: 17px;
 }
+
+#stories-info .about-btn:hover {
+    background-image: linear-gradient(515deg, #f57264, #f57264);
+}
+
 #stories-info .about-btn2 {
     width: 171px;
     height: 40px;
@@ -180,11 +190,15 @@
     background: white;
 }
 
+#stories-info .about-btn2:hover {
+    background-image: linear-gradient(515deg, #FB9549, #F57264);
+}
 
 #more-stories {
     width: 1109px !important;
     padding: 0;
     margin: 0;
+    margin-top: 200px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom:100px;
@@ -485,19 +499,23 @@
     position: relative;
 }
 
-    .big-button span {
-        height: 22px;
-        padding: 9px 13px 9px 14px;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 18px;
-        font-weight: bold;
-        font-style: normal;
-        font-stretch: normal;
-        line-height: normal;
-        letter-spacing: normal;
-        text-align: center;
-        color: #ffffff;
-    }
+.big-button:hover {
+    background-image: linear-gradient(515deg, #f57264, #f57264);
+}
+
+.big-button span {
+    height: 22px;
+    padding: 9px 13px 9px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
 
 #other-story {
     width: 1109px !important;
@@ -788,6 +806,10 @@
     background: white;
 }
 
+.insta-button:hover {
+    background-image: linear-gradient(515deg, #FB9549, #F57264);
+}
+
 .insta-button span {
     width: 322px;
     height: 22px;
@@ -800,6 +822,10 @@
     letter-spacing: normal;
     text-align: center;
     color: #f88356;
+}
+
+.insta-button:hover span {
+    color: #fff;
 }
 
 .twitter {
@@ -838,6 +864,15 @@
     margin-top: 21px;
     margin-left: 20px;
 }
+
+.twitter-button:hover {
+    background-image: linear-gradient(515deg, #FB9549, #F57264);
+}
+
+.twitter-button:hover span {
+    color: #fff;
+}
+
 .twitter-button span {
     width: 322px;
     height: 22px;

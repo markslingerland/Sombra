@@ -1,3 +1,4 @@
+@using Sombra.Web.Infrastructure.Extensions
 @section Title{
     Doneren
 }
@@ -389,11 +390,11 @@
 
             <div class="action-buttons">
                 <div class="all-actions">
-                    <a href="#"></a>
+                    <a href="@Html.BaseUrl(Url.Action("CreateStory", "Dashboard"))"></a>
                     <span class="monster-700">Deel mijn verhaal</span>
                 </div>
                 <div class="make-actions">
-                    <a href="#"></a>
+                    <a href="@Html.BaseUrl(Url.Action("Index", "Story"))"></a>
                     <span class="monster-700">Bekijk de verhalen</span>
                 </div>
             </div>
@@ -433,7 +434,7 @@
             </div>
         </div>
 
-        <button class="close-donating-page monster-800">Pagina sluiten</button>
+        <button class="close-donating-page monster-800" onclick="location.href='@Html.HomeUrl()'">Pagina sluiten</button>
 
 
 

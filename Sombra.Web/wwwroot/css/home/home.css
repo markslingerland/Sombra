@@ -71,8 +71,6 @@
     width: 202px;
     height: 40px;
     border-radius: 8px;
-    background-color: #ffffff;
-    border: solid 1px #f88356;
     position: relative;
 }
 
@@ -81,7 +79,6 @@
     width: 202px;
     height: 40px;
     border-radius: 8px;
-    background-image: linear-gradient(515deg, #FB9549, #F57264);
     position: relative;
 }
 
@@ -121,7 +118,6 @@
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    color: #f88356;
     top: 8px;
     left: 35px;
 }
@@ -130,7 +126,6 @@
         font-size: 18px;
         font-family: 'Montserrat', sans-serif;
         font-weight: bold;
-        color: #fff;
         top: 8px;
         left: 35px;
     }
@@ -559,32 +554,12 @@ font-size: 19px;
 
 #acties .action-buttons .all-actions {
     margin-right: 16px;
-    background-image: linear-gradient(515deg, #fb9549, #f57264);
-    color:white;
-}
-
-#acties .action-buttons .all-actions:hover {
-    background-image: linear-gradient(515deg, #f57264, #f57264);
 }
 
 #acties .action-buttons .all-actions span {
     position: absolute;
     top: 7px;
     left: 16px;
-}
-
-#acties .action-buttons .make-actions {
-    background-color: white;
-    border: 1px solid #F88356;
-    color: #F88356;
-    }
-
-#acties .action-buttons .make-actions:hover {
-    background-image: linear-gradient(515deg, #FB9549, #F57264);
-}
-
-#acties .action-buttons .make-actions:hover span {
-    color: #fff;
 }
 
 #acties .action-buttons .make-actions span {

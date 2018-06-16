@@ -154,44 +154,27 @@
     line-height: normal;
     letter-spacing: normal;
     text-align: center;
-    color: #ffffff;
 }
 #stories-info .about-btn2 span {
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    color: #f88356;
     top: 8px;
     left: 35px;
-}
-
-#stories-info .about-btn2:hover span {
-    color: #fff;
 }
 
 #stories-info .about-btn {
     width: 196px;
     height: 40px;
     border-radius: 8px;
-    background-image: linear-gradient(515deg, #fb9549, #f57264);
     border: none;
     margin-right: 17px;
-}
-
-#stories-info .about-btn:hover {
-    background-image: linear-gradient(515deg, #f57264, #f57264);
 }
 
 #stories-info .about-btn2 {
     width: 171px;
     height: 40px;
     border-radius: 8px;
-    border: solid 1px #f88356;
-    background: white;
-}
-
-#stories-info .about-btn2:hover {
-    background-image: linear-gradient(515deg, #FB9549, #F57264);
 }
 
 #more-stories {
@@ -494,13 +477,8 @@
     height: 40px;
     border-radius: 8px;
     margin-top: 18px;
-    background-image: linear-gradient(515deg, #fb9549, #f57264);
     border: none;
     position: relative;
-}
-
-.big-button:hover {
-    background-image: linear-gradient(515deg, #f57264, #f57264);
 }
 
 .big-button span {
@@ -514,7 +492,6 @@
     line-height: normal;
     letter-spacing: normal;
     text-align: center;
-    color: #ffffff;
 }
 
 #other-story {
@@ -802,12 +779,6 @@
     width: 349px;
     height: 40px;
     border-radius: 8px;
-    border: solid 1px #f88356;
-    background: white;
-}
-
-.insta-button:hover {
-    background-image: linear-gradient(515deg, #FB9549, #F57264);
 }
 
 .insta-button span {
@@ -821,11 +792,6 @@
     line-height: normal;
     letter-spacing: normal;
     text-align: center;
-    color: #f88356;
-}
-
-.insta-button:hover span {
-    color: #fff;
 }
 
 .twitter {
@@ -859,18 +825,8 @@
     width: 349px;
     height: 40px;
     border-radius: 8px;
-    border: solid 1px #f88356;
-    background: white;
     margin-top: 21px;
     margin-left: 20px;
-}
-
-.twitter-button:hover {
-    background-image: linear-gradient(515deg, #FB9549, #F57264);
-}
-
-.twitter-button:hover span {
-    color: #fff;
 }
 
 .twitter-button span {
@@ -884,5 +840,4 @@
     line-height: normal;
     letter-spacing: normal;
     text-align: center;
-    color: #f88356;
 }

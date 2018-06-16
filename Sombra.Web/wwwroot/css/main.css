@@ -210,12 +210,7 @@ body {
     width: 250px;
     height: 40px;
     border-radius: 8px;
-    background-image: linear-gradient(515deg, #fb9549, #f57264);
     position: relative;
-}
-
-.standard-text .big-button:hover {
-    background-image: linear-gradient(515deg, #f57264, #f57264);
 }
 
 .standard-text .big-button span{
@@ -227,7 +222,6 @@ body {
     line-height: normal;
     letter-spacing: normal;
     text-align: left;
-    color: #ffffff;
     position: absolute;
     top: 10px;
     left: 20px;
@@ -677,6 +671,36 @@ height: 24px;
     bottom: 55px;
 }
 
+/* Button styling */
 input, button, a {
     outline: none;
+}
+
+.colored-button {
+    background-image: linear-gradient(515deg, #fb9549, #f57264);
+    color:white;
+}
+
+.colored-button:hover {
+    background-image: linear-gradient(515deg, #f57264, #f57264);
+}
+
+.colored-button label, .colored-button span {
+    color: white;
+}
+
+.blank-button {
+    background-color: white;
+    border: 1px solid #F88356;
+    color: #F88356;
+}
+
+.blank-button:hover {
+    color: white;
+    background-image: linear-gradient(515deg, #FB9549, #F57264);
+}
+
+
+.blank-button:hover label, .blank-button:hover span {
+    color: white;
 }

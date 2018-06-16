@@ -945,12 +945,6 @@ font-size: 19px;
 
 .action-buttons .all-actions {
   margin-right: 16px;
-  background-image: linear-gradient(515deg, #fb9549, #f57264);
-  color:white;
-}
-
-.action-buttons .all-actions:hover {
-    background-image: linear-gradient(515deg, #f57264, #f57264);
 }
 
 .action-buttons .all-actions span {
@@ -959,26 +953,11 @@ font-size: 19px;
   left: 23px;
   font-size: 18px;
 }
-
-.action-buttons .make-actions {
-  background-color: white;
-  border: 1px solid #F88356;
-  color: #F88356;
-}
-
-.action-buttons .make-actions:hover {
-    background-image: linear-gradient(515deg, #FB9549, #F57264);
-}
-
 .action-buttons .make-actions span {
   position: absolute;
   top: 6px;
   left: 17px;
   font-size: 18px;
-}
-
-.action-buttons .make-actions:hover span {
-    color: #fff;  
 }
 
 #get-person-account {
@@ -1182,7 +1161,6 @@ font-size: 19px;
   width: 190px;
   height: 40px;
   border-radius: 8px;
-  background-image: linear-gradient(515deg, #fb9549, #f57264);
   margin-top: 10px;
   border: none;
   display: block;
@@ -1193,34 +1171,21 @@ font-size: 19px;
   line-height: normal;
   letter-spacing: normal;
   text-align: center;
-  color: #ffffff;
-}
-
-.getIkdoneerGame button:hover {
-    background-image: linear-gradient(515deg, #f57264, #f57264);
 }
 
 .close-donating-page {
     width: 182px;
     height: 40px;
     border-radius: 8px;
-    border: solid 1px #f88356;
     font-size: 18px;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
     text-align: center;
-    color: #f88356;
-    background-color: white;
     margin-left: 189px;
     margin-top: 74px;
     margin-bottom: 84px;
-}
-
-.close-donating-page:hover {
-    color: #fff;
-    background-image: linear-gradient(515deg, #FB9549, #F57264);
 }
 
 .required-fields {

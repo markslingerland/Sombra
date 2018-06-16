@@ -31,13 +31,19 @@ function PostForm()
     formData.append("CharityKey", $('#select-your-charity').val());
     formData.append("CharityActionKey", $('#select-action').val());
 
+    for(var pair of formData.entries()) {
+        console.log(pair[0]+ ', '+ pair[1]); 
+     }
+     
     $.ajax({
-        type: 'post',
+        type: 'POST',
         url: '/doneren',
         data: formData,
-        contentType: false,
         processData: false,
-        success: null,
+        contentType: false,
+        success: function (data) {
+            alert(data);
+        },
         complete: function (data) {
             if (!data.responseJSON.redirect) submitBtn.prop('disabled', false);
         },

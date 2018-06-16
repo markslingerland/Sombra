@@ -10,7 +10,9 @@ $(document).ready(function () {
 });
 
 function Search(pageNumber) {
-    $('#more-stories').load(`Story/GetStories?PageNumber=${pageNumber}`);
+    var url = `Story/GetStories?PageNumber=${pageNumber}`;
+    if (subdomain != '') url += `&Subdomain=${subdomain}`;
+    $('#more-stories').load(url);
 }
 
 $('#more-stories').on('click', 'label[data-target-pagenumber]', function (event) {

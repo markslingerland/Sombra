@@ -1,4 +1,5 @@
-﻿@section Title{
+﻿@model Sombra.Web.ViewModels.SubdomainViewModel
+@section Title{
     Verhalen
 }
 @section Styles{
@@ -9,6 +10,9 @@
 }
 
 @section Scripts {
+    <script>
+        var subdomain = '@Model.Subdomain';
+    </script>
     <script src="~/js/stories.js"></script>
 }
 

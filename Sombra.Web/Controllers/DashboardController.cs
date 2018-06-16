@@ -20,6 +20,7 @@ namespace Sombra.Web.Controllers
             return View();
         }
 
+        [HttpGet("goed-doel-aanmelden")]
         public IActionResult SignUpCharity()
         {
             return View();

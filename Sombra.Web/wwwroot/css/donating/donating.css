@@ -949,6 +949,10 @@ font-size: 19px;
   color:white;
 }
 
+.action-buttons .all-actions:hover {
+    background-image: linear-gradient(515deg, #f57264, #f57264);
+}
+
 .action-buttons .all-actions span {
   position: absolute;
   top: 8px;
@@ -960,7 +964,11 @@ font-size: 19px;
   background-color: white;
   border: 1px solid #F88356;
   color: #F88356;
-  }
+}
+
+.action-buttons .make-actions:hover {
+    background-image: linear-gradient(515deg, #FB9549, #F57264);
+}
 
 .action-buttons .make-actions span {
   position: absolute;
@@ -969,14 +977,18 @@ font-size: 19px;
   font-size: 18px;
 }
 
+.action-buttons .make-actions:hover span {
+    color: #fff;  
+}
+
 #get-person-account {
-  width: 100%;
-  /* height: 260px; */
-  background-color: rgba(177, 177, 177, 0.15);
-  display: inline-block;
-  margin-top: 100px;
-  padding-left: 190px;
-  padding-right: 190px;
+    width: 100%;
+    /* height: 260px; */
+    background-color: rgba(177, 177, 177, 0.15);
+    display: inline-block;
+    margin-top: 100px;
+    padding-left: 190px;
+    padding-right: 190px;
 }
 
 #get-person-account h4 {
@@ -1184,28 +1196,36 @@ font-size: 19px;
   color: #ffffff;
 }
 
-.close-donating-page {
-  width: 182px;
-  height: 40px;
-  border-radius: 8px;
-  border: solid 1px #f88356;
-  font-size: 18px;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #f88356;
-  background-color: white;
-  margin-left: 189px;
-  margin-top: 74px;
-  margin-bottom: 84px;
+.getIkdoneerGame button:hover {
+    background-image: linear-gradient(515deg, #f57264, #f57264);
 }
 
+.close-donating-page {
+    width: 182px;
+    height: 40px;
+    border-radius: 8px;
+    border: solid 1px #f88356;
+    font-size: 18px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #f88356;
+    background-color: white;
+    margin-left: 189px;
+    margin-top: 74px;
+    margin-bottom: 84px;
+}
+
+.close-donating-page:hover {
+    color: #fff;
+    background-image: linear-gradient(515deg, #FB9549, #F57264);
+}
 
 .required-fields {
-  display: inline-block;
-  margin-top: 10px;
+    display: inline-block;
+    margin-top: 10px;
 }
 
 .required-fields .birth-required {

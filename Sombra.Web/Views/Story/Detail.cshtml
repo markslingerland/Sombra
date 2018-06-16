@@ -1,6 +1,8 @@
 ﻿@model Sombra.Web.ViewModels.Story.StoryViewModel
 
-@{ ViewData["Title"] = "Story"; }
+@section Title{
+    Verhalen over @*TODO*@
+}
 
 @section Styles{
     <link rel="stylesheet" href="~/css/story/story.css" />
@@ -86,18 +88,18 @@
         <div>
             @foreach (var story in @Model.EqualStories)
             {
-            
-            <div class="column" style="background-image:url(@story.MainImage);">
-                <a href="#" style="text-decoration:none;">
-                    <div class="text-column">
-                        <p>@story.Title</p>
-                        <span class="fading-text">Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris. Pellentesque habitat Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris….</span>
-                        <a class="fading-link">
-                            <br>Lees meer
-                        </a>
-                    </div>
-                </a>
-            </div>           
+
+                <div class="column" style="background-image:url(@story.MainImage);">
+                    <a href="#" style="text-decoration:none;">
+                        <div class="text-column">
+                            <p>@story.Title</p>
+                            <span class="fading-text">Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris. Pellentesque habitat Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris….</span>
+                            <a class="fading-link">
+                                <br>Lees meer
+                            </a>
+                        </div>
+                    </a>
+                </div>
             }
         </div>
     </div>

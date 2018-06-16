@@ -1,8 +1,10 @@
-@{ ViewData["Title"] = "doneren"; } 
+@section Title{
+    Doneren
+}
 @section Styles{
-<link rel="stylesheet" href="~/css/donating/donating.css" /> } 
+    <link rel="stylesheet" href="~/css/donating/donating.css" /> }
 @section Scripts {
-<script src="~/js/donate.js"></script>
+    <script src="~/js/donate.js"></script>
 }
 
 <div id="background-frame"></div>
@@ -31,15 +33,15 @@
                 <div class="radio-holder">
                     <input type="radio" id="control_01" name="select" value="2" required>
                     <label for="control_01" class="validatable">
-                    <h2 class="source-600 radio-input-tag"> een goed doel</h2>
-                </label>
+                        <h2 class="source-600 radio-input-tag"> een goed doel</h2>
+                    </label>
                 </div>
 
                 <div class="radio-holder">
                     <input type="radio" id="control_02" name="select" value="2">
                     <label for="control_02" class="validatable">
-                    <h2 class="source-600 radio-input-tag"> een actie</h2>
-                </label>
+                        <h2 class="source-600 radio-input-tag"> een actie</h2>
+                    </label>
                 </div>
             </div>
 
@@ -51,8 +53,8 @@
             <div class="select-charity select-action">
                 <div class="chevron"></div>
                 <select id="select-action" name="new-action" form="form-donate" required>
-                <span></span>
-            </select>
+                    <span></span>
+                </select>
             </div>
 
             <p class="charity-information">[[slogan]]</p>
@@ -65,29 +67,29 @@
                     <div class="radio-holder">
                         <input type="radio" id="10" name="money" value="10" required>
                         <label for="10" class="validatable">
-                    <h2 class="source-600 radio-input-tag"> &euro;10</h2>
-                </label>
+                            <h2 class="source-600 radio-input-tag"> &euro;10</h2>
+                        </label>
                     </div>
 
                     <div class="radio-holder">
                         <input type="radio" id="20" name="money" value="20">
                         <label for="20" class="validatable">
-                    <h2 class="source-600 radio-input-tag"> &euro;20</h2>
-                </label>
+                            <h2 class="source-600 radio-input-tag"> &euro;20</h2>
+                        </label>
                     </div>
 
                     <div class="radio-holder">
                         <input type="radio" id="30" name="money" value="30">
                         <label for="30" class="validatable">
-                    <h2 class="source-600 radio-input-tag"> &euro;30</h2>
-                </label>
+                            <h2 class="source-600 radio-input-tag"> &euro;30</h2>
+                        </label>
                     </div>
 
                     <div class="radio-holder">
                         <input type="radio" id="50" name="money" value="50">
                         <label for="50" class="validatable">
-                    <h2 class="source-600 radio-input-tag"> ander bedrag</h2>
-                </label>
+                            <h2 class="source-600 radio-input-tag"> ander bedrag</h2>
+                        </label>
                     </div>
                 </div>
 
@@ -96,22 +98,22 @@
                     <div class="radio-holder">
                         <input type="radio" id="one-time" name="pay-time" value="one-time" required>
                         <label for="one-time" class="validatable">
-                    <h2 class="source-600 radio-input-tag"> eenmalig</h2>
-                </label>
+                            <h2 class="source-600 radio-input-tag"> eenmalig</h2>
+                        </label>
                     </div>
 
                     <div class="radio-holder">
                         <input type="radio" id="monthly" name="pay-time" value="monthly">
                         <label for="monthly" class="validatable">
-                    <h2 class="source-600 radio-input-tag"> maandelijks</h2>
-                </label>
+                            <h2 class="source-600 radio-input-tag"> maandelijks</h2>
+                        </label>
                     </div>
 
                     <div class="radio-holder">
                         <input type="radio" id="yearly" name="pay-time" value="yearly">
                         <label for="yearly" class="validatable">
-                    <h2 class="source-600 radio-input-tag"> jaarlijks</h2>
-                </label>
+                            <h2 class="source-600 radio-input-tag"> jaarlijks</h2>
+                        </label>
                     </div>
 
                 </div>
@@ -155,23 +157,23 @@
                 <div class="radio-holder">
                     <input type="radio" id="ideal" name="choose-pay-options" value="1" required>
                     <label for="ideal" class="validatable">
-                    <h2 class="source-600 radio-input-tag"> iDeal</h2>
-                </label>
+                        <h2 class="source-600 radio-input-tag"> iDeal</h2>
+                    </label>
                 </div>
 
                 <div class="radio-holder">
                     <input type="radio" id="permission" name="choose-pay-options" value="2">
                     <label for="permission" class="validatable">
-                    <h2 class="source-600 radio-input-tag"> machtiging</h2>
-                </label>
+                        <h2 class="source-600 radio-input-tag"> machtiging</h2>
+                    </label>
                 </div>
 
 
                 <div class="radio-holder">
                     <input type="radio" id="paypall" name="choose-pay-options" value="3">
                     <label for="paypall" class="validatable">
-                    <h2 class="source-600 radio-input-tag"> PayPal</h2>
-                </label>
+                        <h2 class="source-600 radio-input-tag"> PayPal</h2>
+                    </label>
                 </div>
             </div>
 
@@ -214,7 +216,7 @@
                     <input type="email" class="source-300" placeholder="E-mailadres">
                 </div>
 
-                
+
             </div>
 
             <div class="personal-information">
@@ -261,7 +263,7 @@
                     <p class="source-300">verplichte velden</p>
                 </div>
 
-                
+
             </div>
 
             <div class="next-step-holder">
@@ -312,7 +314,7 @@
 
             <div class="payment-user-info-holder">
                 <div class="pen-icon second-section">
-                     <div class="pen-icon-image"></div>
+                    <div class="pen-icon-image"></div>
                 </div>
                 <p class="monster-600">Doneren via:<span class="monster-300">MS Moves</span></p>
                 <p class="monster-600">IBAN:<span class="monster-300">MS Moves</span></p>
@@ -336,7 +338,7 @@
     </form>
 
     <section class="section-4">
-        
+
         <div class="donate-progress">
             <div class="orange-ball-closed first-section">
                 <div class="progress-stroke"></div>
@@ -369,9 +371,9 @@
         <div class="thank-you-holder">
             <div class="dark-gradient">
                 <h3 class="monster-800">Bedankt voor je donatie!</h3>
-            <p class="source-300">Door jouw donatie kunnen we ons samen sterk maken voor een MS-vrije wereld.</p>
+                <p class="source-300">Door jouw donatie kunnen we ons samen sterk maken voor een MS-vrije wereld.</p>
             </div>
-              </div>
+        </div>
 
         <div class="share-social-media">
             <p class="monster-700">DEEL OP SOCIAL MEDIA</p>
@@ -396,7 +398,7 @@
                 </div>
             </div>
         </div>
-        
+
 
         <div id="get-person-account">
             <h4 class="source-700">Jouw persoonlijke pagina op ikdoneer.nu!</h4>
@@ -425,13 +427,13 @@
                     <input required class="getGameNumber" placeholder="Nr.">
                     <input class="getGameToev" placeholder="Toev.">
                     <p class="addition-getgameform">Bijv. B</p>
-                    <button class="monster-800" type="submit" >Ontvang het spel</button>
+                    <button class="monster-800" type="submit">Ontvang het spel</button>
                 </form>
 
             </div>
         </div>
 
-       <button class="close-donating-page monster-800">Pagina sluiten</button>
+        <button class="close-donating-page monster-800">Pagina sluiten</button>
 
 
 

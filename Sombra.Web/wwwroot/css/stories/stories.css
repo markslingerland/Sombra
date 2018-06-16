@@ -112,11 +112,11 @@
         font-weight: 300;
         font-style: normal;
         font-stretch: normal;
-        line-height: 1.14;
+        line-height: 45px;
         letter-spacing: normal;
         color: #838383;
         font-style: italic;
-        margin-top: 25px;
+        margin-top: 23px;
         margin-bottom: auto;
     }
 
@@ -127,12 +127,12 @@
 }
 
     #stories-info p {
-        width: 729px;
+        width: 730px;
         text-align: center;
         margin-left: auto;
         margin-right: auto;
         color: #838383;
-        line-height: 1.5;
+        line-height: 33px;
         font-family: 'Source Sans Pro', sans-serif;
         font-size: 22px;
         font-weight: 300;
@@ -185,6 +185,7 @@
     width: 1109px !important;
     padding: 0;
     margin: 0;
+    margin-top: 200px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom:100px;

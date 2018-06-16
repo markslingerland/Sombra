@@ -533,6 +533,13 @@ footer .footer-holder label a {
     color: #ffffff;
 }
 
+footer .footer-holder label span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
 footer .footer-holder .updateArea {
  width: 320px;
  float: right;

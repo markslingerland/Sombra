@@ -19,7 +19,7 @@ namespace Sombra.Web.Infrastructure.Filters
                 var attribute = SubdomainAttributes.GetOrAdd(controllerActionDescriptor.MethodInfo,
                     methodInfo => methodInfo.GetCustomAttribute<SubdomainAttribute>());
                 if (attribute != null && !context.RouteData.Values.ContainsKey(SubdomainViewModel.SUBDOMAIN_PARAMETER))
-                    context.Result = new RedirectResult($"{context.HttpContext.GetHomeUrl()}/{attribute.Redirect}", false, false);
+                    context.Result = new RedirectResult($"{context.HttpContext.GetBaseUrl()}/{attribute.Redirect}", false, false);
             }
         }
 

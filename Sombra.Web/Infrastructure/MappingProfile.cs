@@ -146,7 +146,7 @@ namespace Sombra.Web.Infrastructure
                 .ForMember(d => d.UserKey, opt => opt.Ignore());
             CreateMap<MakeDonationResponse, DonateResultViewModel>();
 
-            CreateMap<Charity, SearchResultViewModel>();
+            CreateMap<Sombra.Messaging.Shared.Charity, SearchResultViewModel>();
 
             CreateMap<ViewModels.Story.SearchQuery, GetStoriesRequest>()
                 .ForMember(d => d.AuthorUserKey, opt => opt.Ignore())

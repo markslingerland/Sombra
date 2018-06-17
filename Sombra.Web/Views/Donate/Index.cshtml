@@ -1,4 +1,3 @@
-
 @model Sombra.Web.ViewModels.Donate.DonateViewModel;
 @using Sombra.Core.Enums;
 @using Sombra.Web.Infrastructure.Extensions
@@ -10,6 +9,10 @@
 @section Styles{
     <link rel="stylesheet" href="~/css/donating/donating.css" /> }
 @section Scripts {
+    <script>
+        var charitiesUrl = '@Html.BaseUrl(Url.Action("GetCharities", "Donate"))';
+        var charityActionsUrl = '@Html.BaseUrl(Url.Action("GetCharityActions", "Donate"))';
+    </script>
     <script src="~/js/donate.js"></script>
 }
 
@@ -61,7 +64,7 @@
             <div class="select-charity select-action">
                 <div class="chevron"></div>
                 <select id="select-action" name="new-action" form="form-donate" required>
-                <option></option>   
+                    <option></option>
                 </select>
             </div>
 
@@ -75,16 +78,16 @@
                     <div class="radio-holder">
                         <input type="radio" id="10" name="money" value="10" required>
                         <label for="10" class="validatable">
-                    <h2 class="source-600 radio-input-tag">&euro;10</h2>
-                </label>
+                            <h2 class="source-600 radio-input-tag">&euro;10</h2>
+                        </label>
                     </div>
 
                     <div class="radio-holder">
                         <input type="radio" id="20" name="money" value="20">
                         <label for="20" class="validatable">
 
-                    <h2 class="source-600 radio-input-tag">&euro;20</h2>
-                </label>
+                            <h2 class="source-600 radio-input-tag">&euro;20</h2>
+                        </label>
 
                     </div>
 
@@ -92,8 +95,8 @@
                         <input type="radio" id="30" name="money" value="30">
                         <label for="30" class="validatable">
 
-                    <h2 class="source-600 radio-input-tag">&euro;30</h2>
-                </label>
+                            <h2 class="source-600 radio-input-tag">&euro;30</h2>
+                        </label>
 
                     </div>
 
@@ -101,8 +104,8 @@
                         <input type="radio" id="50" name="money" value="50">
                         <label for="50" class="validatable">
 
-                    <h2 class="source-600 radio-input-tag">ander bedrag</h2>
-                </label>
+                            <h2 class="source-600 radio-input-tag">ander bedrag</h2>
+                        </label>
 
                     </div>
                 </div>
@@ -113,8 +116,8 @@
                         <input type="radio" id="one-time" name="pay-time" value="1" required>
                         <label for="one-time" class="validatable">
 
-                    <h2 class="source-600 radio-input-tag">eenmalig</h2>
-                </label>
+                            <h2 class="source-600 radio-input-tag">eenmalig</h2>
+                        </label>
 
                     </div>
 
@@ -122,16 +125,16 @@
                         <input type="radio" id="monthly" name="pay-time" value="2">
                         <label for="monthly" class="validatable">
 
-                    <h2 class="source-600 radio-input-tag">maandelijks</h2>
-                </label>
+                            <h2 class="source-600 radio-input-tag">maandelijks</h2>
+                        </label>
 
                     </div>
 
                     <div class="radio-holder">
                         <input type="radio" id="yearly" name="pay-time" value="3">
                         <label for="yearly" class="validatable">
-                    <h2 class="source-600 radio-input-tag">jaarlijks</h2>
-                </label>
+                            <h2 class="source-600 radio-input-tag">jaarlijks</h2>
+                        </label>
 
                     </div>
 
@@ -141,7 +144,7 @@
             <div class="next-step-holder">
                 <div class="next-step">
                     <a id="next-to-section-2" class="clickable" href="#"></a>
-                </div> 
+                </div>
             </div>
         </section>
 
@@ -322,7 +325,7 @@
                 <div class="pen-icon first-section">
                     <div class="pen-icon-image"></div>
                 </div>
-                <p class="monster-600">Doneren aan:<span id="summary-donate-to"class="monster-300"></span></p>
+                <p class="monster-600">Doneren aan:<span id="summary-donate-to" class="monster-300"></span></p>
                 <p class="monster-600">Bedrag:<span id="summary-amount" class="monster-300"></span></p>
                 <p class="monster-600">Periode:<span id="summary-period" class="monster-300">MS Moves</span></p>
             </div>

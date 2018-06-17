@@ -44,6 +44,7 @@ namespace Sombra.Web
                 options.Filters.Add(new SubdomainActionFilter());
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddMemoryCache();
+            services.AddCors();
 
             services.AddScoped(c => RabbitHutch.CreateBus(_rabbitMqConnectionString));
             services.AddScoped<ICachingBus, CachingRabbitBus>();

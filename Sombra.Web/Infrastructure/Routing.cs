@@ -19,17 +19,6 @@ namespace Sombra.Web.Infrastructure
 
             routeBuilder.MapRoute(
                 hostnames,
-                name: "goede-doelen",
-                template: "goede-doelen",
-                defaults: new { controller = "Charity", action = "Search" });
-
-            //routeBuilder.MapRoute(
-            //    hostnames,
-            //    name: "areas",
-            //    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
-            routeBuilder.MapRoute(
-                hostnames,
                 name: "default",
                 template: "{controller=Home}/{action=Index}/{id?}");
         }

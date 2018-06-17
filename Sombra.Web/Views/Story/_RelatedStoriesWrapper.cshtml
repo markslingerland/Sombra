@@ -1,0 +1,14 @@
+﻿@model Sombra.Web.ViewModels.Story.RelatedStoriesViewModel
+@{
+    Layout = null;
+}
+
+<div class="more-stories-field">
+    <h3 class="title">Vergelijkbare verhalen</h3>
+    <div>
+        @foreach (var story in Model.Stories)
+        {
+            @await Html.PartialAsync("_RelatedStory", story)
+        }
+    </div>
+</div>

@@ -65,14 +65,13 @@ namespace Sombra.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetStory()
         {
-            var request = new GetStoriesRequest
+            var request = new GetRandomStoriesRequest
             {
-                OnlyApproved = true,
-                PageNumber = 1,
-                PageSize = 1
+                Amount = 1
             };
             var response = await _bus.RequestAsync(request);
             if (!response.IsRequestSuccessful) return new StatusCodeResult((int)HttpStatusCode.ServiceUnavailable);
+            if (!response.IsSuccess || !response.Results.Any()) return new StatusCodeResult((int)HttpStatusCode.NotFound);
 
             var model = _mapper.Map<StoryViewModel>(response.Results.First());
             return PartialView("_Story", model);

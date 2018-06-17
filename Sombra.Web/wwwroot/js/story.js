@@ -1,5 +1,5 @@
 ﻿var $carousel = $('.main-carousel').flickity({
- cellAlign: 'left',
+ cellAlign: 'center',
     contain: true,
     prevNextButtons: false,
     pageDots: false
@@ -18,4 +18,9 @@ $('.button--previous').on('click', function () {
 // next
 $('.button--next').on('click', function () {
     $carousel.flickity('next');
+});
+
+$(document).ready(function () {
+    $('#other-story').load('/Story/GetStory');
+    $('#more-stories').load('/Story/GetRelatedStories');
 });

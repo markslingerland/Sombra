@@ -77,6 +77,9 @@ namespace Sombra.Web
             app.UseStaticFiles();
             app.UseAuthentication();
 
+            app.UseCors(
+                options => options.WithOrigins("http://*.ikdoneer.nu").AllowAnyMethod()
+            );
             app.UseMvc(Routing.Setup);
         }
 

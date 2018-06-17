@@ -1,0 +1,18 @@
+﻿@model Sombra.Web.ViewModels.Story.SearchResultsViewModel
+@{
+    Layout = null;
+    var hasResults = Model.TotalNumberOfResults > 0 && Model.Results?.Any() != null;
+}
+@if (hasResults)
+{
+    <div class="more-stories-field">
+        <h3 class="title">De verhalen</h3>
+        <div>
+            @foreach (var result in Model.Results)
+            {
+                @await Html.PartialAsync("_SearchResult", result)
+            }
+        </div>
+    </div>
+    @await Html.PartialAsync("_Pagination", Model)
+}

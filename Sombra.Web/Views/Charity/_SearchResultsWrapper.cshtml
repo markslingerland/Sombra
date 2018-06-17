@@ -1,8 +1,8 @@
 ﻿@model Sombra.Web.ViewModels.Charity.SearchResultsViewModel
 @{
     Layout = null;
+    var hasResults = Model.TotalNumberOfResults > 0 && Model.Results?.Any() != null;
 }
-@{ var hasResults = Model.TotalNumberOfResults > 0 && Model.Results?.Any() != null;}
 
 <div id="charity-results-holder">
     <p class="results source-400"><span class="source-700">@Model.TotalNumberOfResults</span> zoekresultaten</p>
@@ -21,73 +21,5 @@
 
 @if (hasResults)
 {
-    var totalPages = (int)(Math.Ceiling((double)Model.TotalNumberOfResults / Model.PageSize) + 0.5);
-    var pagesToDisplay = 5;
-
-    var firstPageToDisplay = 1;
-    var lastPageToDisplay = totalPages;
-    var pageNumbersToDisplay = lastPageToDisplay;
-    var tooMany = false;
-
-    if (totalPages > pagesToDisplay)
-    {
-        var maxPageNumbersToDisplay = pagesToDisplay;
-        firstPageToDisplay = Model.PageNumber - maxPageNumbersToDisplay / 2;
-        if (firstPageToDisplay < 1)
-        {
-            firstPageToDisplay = 1;
-        }
-
-        pageNumbersToDisplay = maxPageNumbersToDisplay;
-        lastPageToDisplay = firstPageToDisplay + pageNumbersToDisplay - 1;
-        if (lastPageToDisplay > totalPages)
-        {
-            firstPageToDisplay = totalPages - maxPageNumbersToDisplay + 1;
-            lastPageToDisplay = totalPages;
-        }
-
-        if (totalPages != lastPageToDisplay)
-        {
-            tooMany = true;
-            lastPageToDisplay--;
-        }
-    }
-
-    <div id="pagination">
-        @if (Model.PageNumber != 1)
-        {
-            <label class="previous-page" data-target-pagenumber="@(Model.PageNumber-1)"><img src="Assets/icons/arrow-icon-to-left.svg"></label>
-        }
-
-        @if (firstPageToDisplay != 1)
-        {
-            <label class="source-300" data-target-pagenumber="1">1</label>
-            <label class="source-300 no-click">...</label>
-            firstPageToDisplay++;
-        }
-
-        @for (var i = firstPageToDisplay; i <= lastPageToDisplay; i++)
-        {
-            if (i != Model.PageNumber)
-            {
-                <label class="source-300" data-target-pagenumber="@i">@i</label>
-            }
-            else
-            {
-                <label class="source-700 no-click" data-current-pagenumber="@i" id="current-page-number">@i</label>
-            }
-
-        }
-
-        @if (tooMany)
-        {
-            <label class="source-300 no-click">...</label>
-            <label class="source-300" data-target-pagenumber="@totalPages">@totalPages</label>
-        }
-
-        @if (Model.PageNumber != totalPages)
-        {
-            <label class="next-page" data-target-pagenumber="@(Model.PageNumber+1)"><img src="Assets/icons/icon-arrow-to-right.svg"></label>
-        }
-    </div>
+    @await Html.PartialAsync("_Pagination", Model)
 }

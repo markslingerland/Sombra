@@ -1,13 +1,18 @@
-﻿@section Title{
+﻿@model Sombra.Web.ViewModels.SubdomainViewModel
+@section Title{
     Verhalen
 }
 @section Styles{
     <link rel="stylesheet" href="~/css/stories/stories.css" />
+    <link rel="stylesheet" href="~/css/pagination.css" />
     <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
 
 }
 
 @section Scripts {
+    <script>
+        var subdomain = '@Model.Subdomain';
+    </script>
     <script src="~/js/stories.js"></script>
 }
 
@@ -24,152 +29,97 @@
 </div>
 
 <div id="stories-info">
-        <p>
-            <bold>Ikdoneer.nu</bold> draait om de verhalen van donateurs. De verhalen laten ons zien hoe mooi het is om te delen. Laat je inspireren door de verhalen van donateurs die jou voorgingen. Heb jij ook een bijzonder verhaal over doneren en wil je dat met ons delen? Dat kan hier!
-        </p>
-        <div class="button-box col-lg-12">
-            <button href="#" class="about-btn" role="button"><span>Deel mijn verhaal</span></button>
-            <button href="#" class="about-btn2" role="button"><span>Bekijk verhalen</span></button>
-        </div>
+    <p>
+        <bold>Ikdoneer.nu</bold> draait om de verhalen van donateurs. De verhalen laten ons zien hoe mooi het is om te delen. Laat je inspireren door de verhalen van donateurs die jou voorgingen. Heb jij ook een bijzonder verhaal over doneren en wil je dat met ons delen? Dat kan hier!
+    </p>
+    <div class="button-box col-lg-12">
+        <button class="about-btn colored-button" role="button" id="scroll-to-deel-mijn-verhaal"><span>Deel mijn verhaal</span></button>
+        <button class="about-btn2 blank-button" role="button" id="scroll-to-verhalen"><span>Bekijk verhalen</span></button>
+    </div>
 </div>
 
+<div id="more-stories"></div>
 
+<div class="share-text">
+    <div class="shared-container">
+        <h2>Deel je eigen verhaal</h2>
+        <p>Heb jij ook een bijzonder verhaal over doneren en wil je dat met ons delen? Dat kun je hier doen. Wie weet staat jouw verhaal straks op de homepage!</p>
+        <a href="@Url.Action("CreateStory", "Dashboard")">
+            <button class="big-button colored-button">
+                <span>Deel mijn verhaal</span>
+            </button>
+        </a>
+    </div>
+</div>
 
+<div id="other-story"></div>
 
-            <div id="more-stories">
-                <div class="more-stories-field">
-                    <h3 class="title">De verhalen</h3>
-                    <div>
-                        @{
-                            int indexer = 0; //can be used to get a difrent part of the array
-                            for (int i = 0 + indexer; i < indexer + 9; i++)
-                            {
-                                if (i < @Model.EqualStories.Length)
-                                {
-                                    <div class="column" style="background-image:url(@Model.EqualStories[i].MainImage);">
-                                        <a href="#" style="text-decoration:none;">
-                                            <div class="text-column">
-                                                <p>@Model.EqualStories[i].Title</p>
-                                                <span class="fading-text">Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris. Pellentesque habitat Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris….</span>
-                                                <a class="fading-link">
-                                                    <br>Lees meer
-                                                </a>
-                                            </div>
-                                        </a>
-                                    </div>
-                                }
-                                else
-                                {
-                                    break;
-                                }
-                            }
-                        }
-                    </div>
-                </div>
-                <div id="pagination">
-                    <a href="#"><img src="Assets/icons/arrow-icon-to-left.svg" alt="#"></a>
-                    <a class="source-700" href="#">1</a>
-                    <a class="source-300" href="#">2</a>
-                    <a class="source-300" href="#">3</a>
-                    <a class="source-300" href="#">4</a>
-                    <a class="source-300" href="#">...</a>
-                    <a class="source-300" href="#">12</a>
-                    <a href="#"><img src="Assets/icons/icon-arrow-to-right.svg" alt="#"></a>
-                </div>
-            </div>
-
-            <div class="share-text">
-                <div class="shared-container">
-                    <h2>Deel je eigen verhaal</h2>
-                    <p>Heb jij ook een bijzonder verhaal over doneren en wil je dat met ons delen? Dat kun je hier doen. Wie weet staat jouw verhaal straks op de homepage!</p>
-                    <a href="@Url.Action("CreateStory", "Dashboard")">
-                        <button class="big-button">
-                            <span>Deel mijn verhaal</span>
-                        </button>
-                    </a>
-                </div>
-            </div>
-
-            <div id="other-story">
-                <div class="story-board">
-                    <div class="other-story-logo">
-                        <div class="other-story-logo-container">
-                            <div class="other-profile-image " style="background-image:url(@Model.RandomStory.UserImage)">
+<div id="social-container" class="social-container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="instagram">
+                <h2>Verhalen op Instagram</h2>
+                @*Fake content for preview*@
+                <div class="insta-container">
+                    <div class="insta-column">
+                        <a href="#" style="text-decoration:none;">
+                            <img src="https://static-bzv.scdn4.secure.raxcdn.com/media/filer_public_thumbnails/filer_public/88/57/885733a2-c1b3-4c86-86f5-0fc1cb17be12/david_laura_234.jpg__200x200_q85_crop_subsampling-2_upscale.jpg">
+                            <div class="insta-text">
+                                <p>&#64;charlottevanderveen</p>
+                                Nog 3 uur te gaan. Het wordt rustiger in de stad, maar het is goed te doen.
+                                <span class="insta-hashtag">#freeagirl #ikdoneernu</span>
                             </div>
-                        </div>
-                        <div class="profile-name">@Model.RandomStory.UserFirstName @Model.RandomStory.UserLastName</div>
+                        </a>
                     </div>
-                    <p>“@Model.RandomStory.Quote”</p>
-                    <a href="#">Lees dit verhaal</a>
-                </div>
-            </div>
-
-            <div id="social-container" class="social-container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="instagram">
-                            <h2>Verhalen op Instagram</h2>
-                                @*Fake content for preview*@
-                            <div class="insta-container">
-                                <div class="insta-column">
-                                    <a href="#" style="text-decoration:none;">
-                                        <img src="https://static-bzv.scdn4.secure.raxcdn.com/media/filer_public_thumbnails/filer_public/88/57/885733a2-c1b3-4c86-86f5-0fc1cb17be12/david_laura_234.jpg__200x200_q85_crop_subsampling-2_upscale.jpg">
-                                        <div class="insta-text">
-                                            <p>&#64;charlottevanderveen</p>
-                                            Nog 3 uur te gaan. Het wordt rustiger in de stad, maar het is goed te doen.
-                                            <span class="insta-hashtag">#freeagirl #ikdoneernu</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="insta-column">
-                                    <a href="#" style="text-decoration:none;">
-                                        <img src="https://imgg.rgcdn.nl/d02fc926d9b345c4b463deec5d1f5140/opener/Foto-Omroep-Gelderland.jpg" />
-                                        <div class="insta-text">
-                                            <p>&#64;roparumteam170_mnl</p>
-                                            Rotterdam!!! We komen eraan!!!
-                                            <span class="insta-hashtag">#politiemiddennederland #waakzaam #ikdoneernu</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="insta-column">
-                                    <a href="#" style="text-decoration:none;">
-                                        <img src="https://pubblestorage.blob.core.windows.net/16c0059b/content/2014/6/40a6d21c-8881-4787-ab64-c4c54df6776c.jpg" />
-                                        <div class="insta-text">
-                                            <p>&#64;wendyvandijk</p>
-                                            Yes de run voor Semmy was een succes gister.
-                                            <span class="insta-hashtag">#ikdoneernu #help</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="insta-column">
-                                    <a href="#" style="text-decoration:none;">
-                                        <img src="https://scontent-lht6-1.cdninstagram.com/vp/8d062e44df6456000cd7734f1524a051/5B6A44A5/t51.2885-15/e35/28763138_233464807223523_8443711360960823296_n.jpg?ig_cache_key=MTczNTY2MTkwNzY5ODY1MzU3NQ%3D%3D.2" />
-                                        <div class="insta-text">
-                                            <p>&#64;stichtingdon</p>
-                                            Ik ben Meten-King, eigenaar van fotomarketingbureau ditisfris. Sinds 2012 leveren wij..<span class="insta-hashtag"> meer</span>
-                                        </div>
-                                    </a>
-                                </div>
+                    <div class="insta-column">
+                        <a href="#" style="text-decoration:none;">
+                            <img src="https://imgg.rgcdn.nl/d02fc926d9b345c4b463deec5d1f5140/opener/Foto-Omroep-Gelderland.jpg" />
+                            <div class="insta-text">
+                                <p>&#64;roparumteam170_mnl</p>
+                                Rotterdam!!! We komen eraan!!!
+                                <span class="insta-hashtag">#politiemiddennederland #waakzaam #ikdoneernu</span>
                             </div>
-                            <button class="insta-button"><span>Bekijk alle verhalen op Instagram</span></button>
-                        </div>
+                        </a>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="twitter">
-                            <h2>Verhalen op Twitter</h2>
-                            <div class="twitter-container">
-                                <a class="twitter-timeline" href="https://twitter.com/ikdoneernu?ref_src=twsrc%5Etfw"></a>
-                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <div class="insta-column">
+                        <a href="#" style="text-decoration:none;">
+                            <img src="https://pubblestorage.blob.core.windows.net/16c0059b/content/2014/6/40a6d21c-8881-4787-ab64-c4c54df6776c.jpg" />
+                            <div class="insta-text">
+                                <p>&#64;wendyvandijk</p>
+                                Yes de run voor Semmy was een succes gister.
+                                <span class="insta-hashtag">#ikdoneernu #help</span>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                    <a href="https://twitter.com/hashtag/ikdoneernu" style="text-decoration:none;"><button class="twitter-button"><span>Bekijk alle verhalen op Twitter</span></button></a>
+                    <div class="insta-column">
+                        <a href="#" style="text-decoration:none;">
+                            <img src="https://scontent-lht6-1.cdninstagram.com/vp/8d062e44df6456000cd7734f1524a051/5B6A44A5/t51.2885-15/e35/28763138_233464807223523_8443711360960823296_n.jpg?ig_cache_key=MTczNTY2MTkwNzY5ODY1MzU3NQ%3D%3D.2" />
+                            <div class="insta-text">
+                                <p>&#64;stichtingdon</p>
+                                Ik ben Meten-King, eigenaar van fotomarketingbureau ditisfris. Sinds 2012 leveren wij..<span class="insta-hashtag"> meer</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <button class="insta-button blank-button"><span>Bekijk alle verhalen op Instagram</span></button>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="twitter">
+                <h2>Verhalen op Twitter</h2>
+                <div class="twitter-container">
+                    <a class="twitter-timeline" href="https://twitter.com/ikdoneernu?ref_src=twsrc%5Etfw"></a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
             </div>
+        </div>
+        <a href="https://twitter.com/hashtag/ikdoneernu" style="text-decoration:none;"><button class="twitter-button blank-button"><span>Bekijk alle verhalen op Twitter</span></button></a>
+    </div>
+</div>
 
-            <div id="header-images" >
-                <div class="header-images">
-                    <img id="video-iframe" data-video="https://www.youtube.com/embed/ZXRA5ostcK0?rel=0&amp;controls=0&amp;showinfo=0">
-                    <label id="video-label" name="video-label" class="playbutton" for="video-iframe"></label>
-                </div>
-            </div>
+<div id="header-images">
+    <div class="header-images">
+        <img id="video-iframe" data-video="https://www.youtube.com/embed/ZXRA5ostcK0?rel=0&amp;controls=0&amp;showinfo=0">
+        <label id="video-label" name="video-label" class="playbutton" for="video-iframe"></label>
+    </div>
+</div>

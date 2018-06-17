@@ -1,0 +1,16 @@
+﻿@using Sombra.Web.Infrastructure.Extensions
+@model Sombra.Web.ViewModels.Story.RandomStoryViewModel
+@{
+    Layout = null;
+}
+<div class="story-board">
+    <div class="other-story-logo">
+        <div class="other-story-logo-container">
+            <div class="other-profile-image " style="background-image:url(@Model.AuthorProfileImage)">
+            </div>
+        </div>
+        <div class="profile-name">@Model.AuthorName</div>
+    </div>
+    <p>“@Model.QuoteText”</p>
+    <a href="@($"{Html.SubdomainUrl(Model.CharityUrl)}/verhalen/{Model.UrlComponent}")">Lees dit verhaal</a>
+</div>

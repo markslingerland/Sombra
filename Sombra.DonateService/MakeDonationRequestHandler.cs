@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Sombra.Core;
@@ -51,6 +52,14 @@ namespace Sombra.DonateService
                     charityActionDonation.User = user;
                 }
 
+                if (!message.UserKey.HasValue && !message.IsAnonymous)
+                {
+                    var user = _mapper.Map<User>(message);
+                    user.UserKey = Guid.NewGuid();
+                    _context.Users.Add(user);
+                    charityActionDonation.User = user;
+                }
+
                 _context.CharityActionDonations.Add(charityActionDonation);
                 return await _context.TrySaveChangesAsync<MakeDonationResponse>(response =>
                 {
@@ -83,6 +92,14 @@ namespace Sombra.DonateService
                     };
                 }
 
+                charityDonation.User = user;
+            }
+
+            if (!message.UserKey.HasValue && !message.IsAnonymous)
+            {
+                var user = _mapper.Map<User>(message);
+                user.UserKey = Guid.NewGuid();
+                _context.Users.Add(user);
                 charityDonation.User = user;
             }
 

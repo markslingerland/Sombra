@@ -32,14 +32,17 @@ namespace Sombra.Web.Controllers
         [HttpPost("doneren")]
         public async Task<IActionResult> Index(DonateViewModel model)
         {
-            if(model.Name == null) 
+            if(model.UserName == null) 
             { 
                 model.IsAnonymous = true;
             }
             var request = _mapper.Map<MakeDonationRequest>(model);
             if(!request.IsAnonymous){
-                var userKey = HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Sid).Value;
-                request.UserKey = Guid.Parse(userKey);
+                if(HttpContext.User.Claims.Any(c => c.Type == ClaimTypes.Sid)){
+                    request.UserKey = Guid.Parse(HttpContext.User.Claims.Single(c => c.Type == ClaimTypes.Sid).Value);
+                } else {
+                    request.UserKey = null;
+                }                
             }
             var response = await _bus.RequestAsync(request);
             if(response.IsRequestSuccessful){
@@ -49,8 +52,7 @@ namespace Sombra.Web.Controllers
             }
 
             HttpContext.Response.StatusCode = 400;
-            return Content("Something has gone wrong");
-            
+            return Content("Something has gone wrong"); 
         }
 
         [HttpGet]

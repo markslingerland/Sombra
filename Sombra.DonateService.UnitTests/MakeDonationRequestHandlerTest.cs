@@ -406,5 +406,132 @@ namespace Sombra.DonateService.UnitTests
                 DonationsContext.CloseInMemoryConnection();
             }
         }
+
+        [TestMethod]
+        public async Task MakeDonationHandler_Handle_Not_Existing_User_Return_Correct()
+        {
+            DonationsContext.OpenInMemoryConnection();
+
+            try
+            {
+                MakeDonationResponse response;
+                
+                var charity = new Charity()
+                {
+                    CharityKey = Guid.NewGuid(),
+                    Name = "TestName",
+                    CoverImage = "TestImage",
+                    ThankYou = "ThankYou"
+                };
+
+                var charityAction = new CharityAction()
+                {
+                    ActionEndDateTime = DateTime.UtcNow,
+                    Name = "TestName",
+                    CharityActionKey = Guid.NewGuid(),
+                    Charity = charity,
+                    CoverImage = "TestImage",
+                    ThankYou = "ThankYou"
+                };
+
+                var makeDonationRequest = new MakeDonationRequest
+                {
+                    CharityKey = charity.CharityKey,
+                    Amount = 10m,
+                    UserKey = null,
+                    UserName = "Mark Slingerland",
+                    IsAnonymous = false
+                };
+
+                using (var context = DonationsContext.GetInMemoryContext())
+                {
+                    context.Charities.Add(charity);
+                    await context.SaveChangesAsync();
+                    var handler =
+                        new MakeDonationRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
+                    response = await handler.Handle(makeDonationRequest);
+                }
+
+                using (var context = DonationsContext.GetInMemoryContext())
+                {
+                    Assert.AreEqual(1, context.CharityDonations.Count());
+                    Assert.IsTrue(response.IsSuccess);
+                    Assert.AreEqual(makeDonationRequest.Amount, context.CharityDonations.First().Amount);
+                    Assert.AreEqual(makeDonationRequest.IsAnonymous, context.CharityDonations.First().IsAnonymous);
+                    Assert.AreEqual(makeDonationRequest.UserName, context.Users.First().UserName);
+                    Assert.AreEqual(charity.ThankYou, response.ThankYou);
+                    Assert.AreEqual(charity.CoverImage, response.CoverImage);
+                }
+            }
+            finally
+            {
+                DonationsContext.CloseInMemoryConnection();
+            }
+        }
+
+        [TestMethod]
+        public async Task MakeDonationHandler_Handle_CharityActionDonation_Not_Existing_User_Return_Correct()
+        {
+            DonationsContext.OpenInMemoryConnection();
+
+            try
+            {
+                MakeDonationResponse response;
+                
+                var charity = new Charity()
+                {
+                    CharityKey = Guid.NewGuid(),
+                    Name = "TestName",
+                    CoverImage = "TestImage",
+                    ThankYou = "ThankYou"
+                };
+
+                var charityAction = new CharityAction()
+                {
+                    ActionEndDateTime = DateTime.UtcNow,
+                    Name = "TestName",
+                    CharityActionKey = Guid.NewGuid(),
+                    Charity = charity,
+                    CoverImage = "TestImage",
+                    ThankYou = "ThankYou"
+                };
+
+                var makeDonationRequest = new MakeDonationRequest
+                {
+                    CharityKey = charity.CharityKey,
+                    CharityActionKey = charityAction.CharityActionKey,
+                    Amount = 10m,
+                    UserKey = null,
+                    UserName = "Mark Slingerland",
+                    IsAnonymous = false
+                };
+
+                using (var context = DonationsContext.GetInMemoryContext())
+                {
+                    context.Charities.Add(charity);
+                    context.CharityActions.Add(charityAction);
+                    await context.SaveChangesAsync();
+                    var handler =
+                        new MakeDonationRequestHandler(context, AutoMapperHelper.BuildMapper(new MappingProfile()));
+                    response = await handler.Handle(makeDonationRequest);
+                }
+
+                using (var context = DonationsContext.GetInMemoryContext())
+                {
+                    Assert.AreEqual(1, context.CharityActionDonations.Count());
+                    Assert.IsTrue(response.IsSuccess);
+                    Assert.AreEqual(makeDonationRequest.Amount, context.CharityActionDonations.First().Amount);
+                    Assert.AreEqual(makeDonationRequest.UserName, context.Users.First().UserName);
+                    Assert.AreEqual(makeDonationRequest.IsAnonymous,
+                        context.CharityActionDonations.First().IsAnonymous);
+                    Assert.AreEqual(charityAction.ThankYou, response.ThankYou);
+                    Assert.AreEqual(charityAction.CoverImage, response.CoverImage);
+                }
+            }
+            finally
+            {
+                DonationsContext.CloseInMemoryConnection();
+            }
+        }
     }
 }

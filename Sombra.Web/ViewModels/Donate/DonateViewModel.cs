@@ -10,6 +10,6 @@ namespace Sombra.Web.ViewModels.Donate
         public decimal Amount { get; set; }
         public string CharityKey { get; set; }
         public string CharityActionKey { get; set; }
-        public string Name { get; set; }
+        public string UserName { get; set; }
     }
 }

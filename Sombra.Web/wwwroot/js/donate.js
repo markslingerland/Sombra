@@ -50,7 +50,7 @@ function PostForm()
     formData.append("CharityKey", $('#select-your-charity').val());
     formData.append("CharityActionKey", $('#select-action').val());
     formData.append("__RequestVerificationToken", $('input[name="__RequestVerificationToken"]').val());
-    formData.append("Name", $('#person-firstname-2').val());
+    formData.append("UserName", $('#person-firstname-2').val() + $('#person-lastname-2').val());
 
     for(var pair of formData.entries()) {
         console.log(pair[0]+ ', '+ pair[1]); 

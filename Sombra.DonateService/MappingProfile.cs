@@ -56,6 +56,12 @@ namespace Sombra.DonateService
             CreateMap<CharityAction, KeyNamePair>()
                 .ForMember(d => d.Key, opt => opt.MapFrom(s => s.CharityActionKey))
                 .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Name));
+
+            CreateMap<MakeDonationRequest, User>()
+                .ForMember(d => d.UserKey, opt => opt.Ignore())
+                .ForMember(d => d.ProfileImage, opt => opt.Ignore())
+                .ForMember(d => d.CharityDonations, opt => opt.Ignore())
+                .ForMember(d => d.CharityActionDonations, opt => opt.Ignore());
         }
     }
 }

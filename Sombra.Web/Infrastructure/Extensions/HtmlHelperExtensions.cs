@@ -14,5 +14,15 @@ namespace Sombra.Web.Infrastructure.Extensions
         {
             return $"{helper.ViewContext.HttpContext.GetScheme()}{subdomain}.{helper.ViewContext.HttpContext.GetHost()}";
         }
+
+        public static string HomeUrl(this IHtmlHelper helper)
+        {
+            return helper.ViewContext.HttpContext.GetBaseUrl();
+        }
+
+        public static string BaseUrl(this IHtmlHelper helper, string url)
+        {
+            return $"{helper.ViewContext.HttpContext.GetBaseUrl()}{url}";
+        }
     }
 }

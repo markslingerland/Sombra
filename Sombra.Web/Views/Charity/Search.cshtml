@@ -1,9 +1,13 @@
 @using Sombra.Core.Enums
 @using Sombra.Core.Extensions
 @using Sombra.Web.Infrastructure.Extensions
-@{ ViewData["Title"] = "Goede doelen"; }
+@section Title{
+    Goede doelen
+}
 @section Styles {
-    <link rel="stylesheet" href="~/css/search/search.css" /> }
+    <link rel="stylesheet" href="~/css/search/search.css" />
+    <link rel="stylesheet" href="~/css/pagination.css" />
+}
 @section Scripts {
     <script src="~/js/search.js"></script>
 }
@@ -29,9 +33,9 @@
                         <div>
                             <label class="checkbo-container monster-300" data-category-id="@((int)category)">
                                 @category.GetDisplayName()
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
                         </div>
                     }
                 </div>

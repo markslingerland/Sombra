@@ -944,8 +944,6 @@ font-size: 19px;
 
 .action-buttons .all-actions {
   margin-right: 16px;
-  background-image: linear-gradient(515deg, #fb9549, #f57264);
-  color:white;
 }
 
 .action-buttons .all-actions span {
@@ -954,13 +952,6 @@ font-size: 19px;
   left: 23px;
   font-size: 18px;
 }
-
-.action-buttons .make-actions {
-  background-color: white;
-  border: 1px solid #F88356;
-  color: #F88356;
-  }
-
 .action-buttons .make-actions span {
   position: absolute;
   top: 6px;
@@ -969,13 +960,13 @@ font-size: 19px;
 }
 
 #get-person-account {
-  width: 100%;
-  /* height: 260px; */
-  background-color: rgba(177, 177, 177, 0.15);
-  display: inline-block;
-  margin-top: 100px;
-  padding-left: 190px;
-  padding-right: 190px;
+    width: 100%;
+    /* height: 260px; */
+    background-color: rgba(177, 177, 177, 0.15);
+    display: inline-block;
+    margin-top: 100px;
+    padding-left: 190px;
+    padding-right: 190px;
 }
 
 #get-person-account h4 {
@@ -1169,7 +1160,6 @@ font-size: 19px;
   width: 190px;
   height: 40px;
   border-radius: 8px;
-  background-image: linear-gradient(515deg, #fb9549, #f57264);
   margin-top: 10px;
   border: none;
   display: block;
@@ -1180,31 +1170,26 @@ font-size: 19px;
   line-height: normal;
   letter-spacing: normal;
   text-align: center;
-  color: #ffffff;
 }
 
 .close-donating-page {
-  width: 182px;
-  height: 40px;
-  border-radius: 8px;
-  border: solid 1px #f88356;
-  font-size: 18px;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #f88356;
-  background-color: white;
-  margin-left: 189px;
-  margin-top: 74px;
-  margin-bottom: 84px;
+    width: 182px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    margin-left: 189px;
+    margin-top: 74px;
+    margin-bottom: 84px;
 }
 
-
 .required-fields {
-  display: inline-block;
-  margin-top: 10px;
+    display: inline-block;
+    margin-top: 10px;
 }
 
 .required-fields .birth-required {

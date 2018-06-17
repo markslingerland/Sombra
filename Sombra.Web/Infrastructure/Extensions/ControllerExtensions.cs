@@ -7,7 +7,7 @@ namespace Sombra.Web.Infrastructure.Extensions
     {
         public static IActionResult ReturnToHome(this Controller controller)
         {
-            return controller.Redirect(controller.HttpContext.GetHomeUrl());
+            return controller.Redirect(controller.HttpContext.GetBaseUrl());
         }
 
         public static ContentResult CreateErrorResult(this ActionContext context)

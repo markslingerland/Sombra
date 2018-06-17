@@ -99,11 +99,6 @@
     margin-bottom: 50px;
 }
 
-#about .about-quotes {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 200;
-}
-
 #about .about-text {
     display: block;
     width: 100%;
@@ -375,7 +370,6 @@
     height: 40px;
     border-radius: 8px;
     margin-top: 18px;
-    background-image: linear-gradient(103deg, #fda23f, #f3646f);
     border: none;
     position: relative;
 }
@@ -391,7 +385,6 @@
     line-height: normal;
     letter-spacing: normal;
     text-align: center;
-    color: #ffffff;
 }
 
 #other-story {

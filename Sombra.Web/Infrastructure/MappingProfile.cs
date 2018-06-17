@@ -12,6 +12,7 @@ using Sombra.Messaging.Requests.User;
 using Sombra.Messaging.Responses.Donate;
 using Sombra.Messaging.Responses.Identity;
 using Sombra.Messaging.Responses.Logging;
+using Sombra.Messaging.Responses.Story;
 using Sombra.Messaging.Shared;
 using Sombra.Web.Areas.Development.Models;
 using Sombra.Web.ViewModels;
@@ -136,6 +137,7 @@ namespace Sombra.Web.Infrastructure
                 .ForMember(d => d.PageNumber, opt => opt.Ignore())
                 .ForMember(d => d.PageSize, opt => opt.Ignore());
 
+
             CreateMap<Sombra.Messaging.Shared.Charity, SearchResultViewModel>();
             CreateMap<Sombra.Messaging.Responses.Donate.Charity, Sombra.Web.ViewModels.Donate.Charity>();
             CreateMap<KeyNamePair, Sombra.Web.ViewModels.Donate.CharityAction>();
@@ -143,6 +145,24 @@ namespace Sombra.Web.Infrastructure
             CreateMap<DonateViewModel, MakeDonationRequest>()
                 .ForMember(d => d.UserKey, opt => opt.Ignore());
             CreateMap<MakeDonationResponse, DonateResultViewModel>();
+
+            CreateMap<Charity, SearchResultViewModel>();
+
+            CreateMap<ViewModels.Story.SearchQuery, GetStoriesRequest>()
+                .ForMember(d => d.AuthorUserKey, opt => opt.Ignore())
+                .ForMember(d => d.CharityKey, opt => opt.Ignore())
+                .ForMember(d => d.CharityUrl, opt => opt.MapFrom(s => s.Subdomain))
+                .ForMember(d => d.SortOrder, opt => opt.UseValue(SortOrder.Asc))
+                .ForMember(d => d.OnlyApproved, opt => opt.UseValue(true))
+                .ForMember(d => d.OnlyUnapproved, opt => opt.Ignore());
+
+            CreateMap<Story, ViewModels.Story.SearchResultViewModel>();
+            CreateMap<Story, ViewModels.Story.RandomStoryViewModel>();
+
+            CreateMap<GetStoriesResponse, ViewModels.Story.SearchResultsViewModel>()
+                .ForMember(d => d.PageNumber, opt => opt.Ignore())
+                .ForMember(d => d.PageSize, opt => opt.Ignore());
+
         }
     }
 }

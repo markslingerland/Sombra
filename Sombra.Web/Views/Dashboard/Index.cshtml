@@ -1,11 +1,14 @@
+@section Title{
+    Dashboard
+}
 @section Scripts {
-<script src="~/lib/chart.js/dist/Chart.min.js"></script>
-<script src="~/js/chart.js"></script>
-} 
+    <script src="~/lib/chart.js/dist/Chart.min.js"></script>
+    <script src="~/js/chart.js"></script>
+}
 @section Styles {
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-<link href="~/css/dashboard/dashboard.css" rel="stylesheet"> }
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="~/css/dashboard/dashboard.css" rel="stylesheet"> }
 
 <div id="side-navigation">
     <div class="navigation-block">
@@ -70,10 +73,10 @@
     <div class="row">
         <div class="col-md-12">
             <a class="go-back-link" href="#">
-            <span>
-              <img class="go-back-icon" src="~/Assets/dashboard/Icon_arrow-back.svg">
-            </span>
-   Terug naar ikdoneer.nu
+                <span>
+                    <img class="go-back-icon" src="~/Assets/dashboard/Icon_arrow-back.svg">
+                </span>
+                Terug naar ikdoneer.nu
             </a>
         </div>
     </div>
@@ -97,9 +100,9 @@
                         <div class="col-md-12 switch-block">
                             <p class="switch-maand source-400">per <span id="monthly-visitors" class="monthly-visitors slider-selected">maand</span></p>
                             <label class="switch">
-                <input id="visitor-switch" type="checkbox">
-                <span class="slider round"></span>
-              </label>
+                                <input id="visitor-switch" type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
                             <p class="switch-jaar source-400"> <span id="yearly-visitors" class="yearly-visitors">jaar</span></p>
                         </div>
                     </div>
@@ -117,9 +120,9 @@
                         <div class="col-md-12 switch-block">
                             <p class="switch-maand source-400">per <span id="monthly-visitors" class="monthly-visitors ">maand</span></p>
                             <label class="switch">
-                <input id="visitor-switch" type="checkbox" checked>
-                <span class="slider round"></span>
-              </label>
+                                <input id="visitor-switch" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
                             <p class="switch-jaar source-400"> <span id="yearly-visitors" class="yearly-visitors slider-selected">jaar</span></p>
                         </div>
                     </div>
@@ -148,58 +151,58 @@
                         <h4 class="monster-200">12</h4>
                         <p class="source-300">lopende acties</p>
                     </div>
-                     <div class="row">
+                    <div class="row">
                         <div class="col-md-12 action-link">
 
-                          <a href="#" class="current-actions">Bekijk de lopende acties</a>
-                          <span> <img class="go-back-icon shifted" src="~/Assets/dashboard/Icon_arrow-back.svg"></span>
-                          
+                            <a href="#" class="current-actions">Bekijk de lopende acties</a>
+                            <span> <img class="go-back-icon shifted" src="~/Assets/dashboard/Icon_arrow-back.svg"></span>
+
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <div id="action-stats" class="col-md-8">
                 <div class="action-stats">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="action-goals">
-                      <p>Actie met meeste donaties:</p>
-                      <p>Meest gedeelde actie:</p>
-                      <p>Recent bijgekomen actie:</p>
-                      <p>Bijna verlopen actie:</p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="action-goals">
+                                <p>Actie met meeste donaties:</p>
+                                <p>Meest gedeelde actie:</p>
+                                <p>Recent bijgekomen actie:</p>
+                                <p>Bijna verlopen actie:</p>
+                            </div>
+                            <div class="action-results">
+                                <a href="#">Klimmen tegen MS &commat; Mont Vetoux</a>
+                                <a href="#">Grunn moves &commat; Mont Ventoux</a>
+                                <a href="#">Team Scholen VO Zeeuws Vlaanderen &commat; Mont Vetoux</a>
+                                <a href="#">Team Oldenzaal tegen MS &commat; Mont Vetoux</a>
+                            </div>
+                        </div>
+
                     </div>
-                     <div class="action-results">
-                      <a href="#">Klimmen tegen MS &commat; Mont Vetoux</a>
-                      <a href="#">Grunn moves &commat; Mont Ventoux</a>
-                      <a href="#">Team Scholen VO Zeeuws Vlaanderen &commat; Mont Vetoux</a>
-                      <a href="#">Team Oldenzaal tegen MS &commat; Mont Vetoux</a>
-                     </div>
-                  </div>
-                    
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="mobile-action-stats">
-      <div class="stats-holder">
-        <h4>Actie met meeste donaties:</h4>
-       <a href="#">Klimmen tegen MS &commat; Mont Vetoux</a>
-      </div>
-      <div class="stats-holder">
-        <h4>Actie met meeste donaties:</h4>
-       <a href="#">Klimmen tegen MS &commat; Mont Vetoux</a>
-      </div>
-      <div class="stats-holder">
-        <h4>Actie met meeste donaties:</h4>
-       <a href="#">Klimmen tegen MS &commat; Mont Vetoux</a>
-      </div>
-      <div class="stats-holder">
-        <h4>Actie met meeste donaties:</h4>
-       <a href="#">Klimmen tegen MS &commat; Mont Vetoux</a>
-      </div>
-     
-    </div>
+        <div class="mobile-action-stats">
+            <div class="stats-holder">
+                <h4>Actie met meeste donaties:</h4>
+                <a href="#">Klimmen tegen MS &commat; Mont Vetoux</a>
+            </div>
+            <div class="stats-holder">
+                <h4>Actie met meeste donaties:</h4>
+                <a href="#">Klimmen tegen MS &commat; Mont Vetoux</a>
+            </div>
+            <div class="stats-holder">
+                <h4>Actie met meeste donaties:</h4>
+                <a href="#">Klimmen tegen MS &commat; Mont Vetoux</a>
+            </div>
+            <div class="stats-holder">
+                <h4>Actie met meeste donaties:</h4>
+                <a href="#">Klimmen tegen MS &commat; Mont Vetoux</a>
+            </div>
 
-</div>
+        </div>
+
+    </div>

@@ -1,4 +1,6 @@
-﻿@{ ViewData["Title"] = "Home Page"; }
+﻿@section Title{
+    Home
+}
 @section Styles{
     <link rel="stylesheet" href="~/css/home/home.css" />
     <link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/home/desktop.css" />
@@ -19,10 +21,10 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <p>Erik doneerde aan Unicef</p>
-                        <h3><span class="about-quotes quote-shift">"</span>Anderen hebben mij laten zien hoe mooi de wereld kan zijn als je deelt<span class="about-quotes">"</span></h3>
+                        <h3><span class="about-quotes quote-shift-left">“</span>Anderen hebben mij laten zien hoe mooi de wereld kan zijn als je deelt<span class="about-quotes quote-shift-right">”</span></h3>
 
-                        <div class="about-btn">
-                            <a href="#"></a>
+                        <div class="about-btn blank-button">
+                            <a href="@Url.Action("Index", "Story")"></a>
                             <div class="small-arrow"></div>
                             <span>Lees dit verhaal</span>
                         </div>
@@ -48,38 +50,38 @@
 <div id="choose-flow">
     <div class="flow-container">
         <div class="flow-box">
-            <a class="clickable" href="#"></a>
+            <a class="clickable" href="@Url.Action("Search", "Charity")"></a>
             <div class="flow-icon-holder">
                 <img class="flow-shape" src="Assets/shape-frame.svg" alt="#">
                 <img class="flow-icon" src="Assets/search.svg" alt="#">
             </div>
 
             <h3 class="monster-700">Kies een goed doel</h3>
-            <p class="source-200">Door gebruik te maken van het categorieënfilter, vind je gemakkelijk een goed doel dat bij jouw waarden en interesses past. </p>
-            <a class="source-700 flow-start" href="#">Start nu</a>
+            <p class="source-300">Door gebruik te maken van het categorieënfilter, vind je gemakkelijk een goed doel dat bij jouw waarden en interesses past. </p>
+            <a class="source-700 flow-start" href="@Url.Action("Search", "Charity")">Start nu</a>
         </div>
 
         <div class="flow-box">
-            <a class="clickable" href="#"></a>
+            <a class="clickable" href="@Url.Action("Index", "Donate")"></a>
             <div class="flow-icon-holder">
                 <img class="flow-shape" src="Assets/home/doneer_invlak.svg" alt="#">
             </div>
 
             <h3 class="monster-700">Doneer nu</h3>
-            <p class="source-200">Kies het bedrag dat je wilt doneren en kies een betaalmogelijkheid. Vanaf €1,00 kun je al iets bijdragen! </p>
-            <a class="source-700 flow-start" href="#">Start nu</a>
+            <p class="source-300">Kies het bedrag dat je wilt doneren en kies een betaalmogelijkheid. Vanaf €1,00 kun je al iets bijdragen! </p>
+            <a class="source-700 flow-start" href="@Url.Action("Index", "Donate")">Start nu</a>
         </div>
 
         <div class="flow-box">
-            <a class="clickable" href="#"></a>
+            <a class="clickable" href="@Url.Action("CreateStory", "Dashboard")"></a>
             <div class="flow-icon-holder">
                 <img class="flow-shape" src="Assets/shape-frame.svg" alt="#">
                 <img class="flow-icon" src="Assets/share.svg" alt="#">
             </div>
 
             <h3 class="monster-700">Deel jouw verhaal</h3>
-            <p class="source-200">Vertel ons de reden voor jouw donatie. Dat inspireert en motiveert anderen én jouzelf om je in te zetten voor degenen die hulp kunnen gebruiken.</p>
-            <a class="source-700 flow-start" href="#">Start nu</a>
+            <p class="source-300">Vertel ons de reden voor jouw donatie. Dat inspireert en motiveert anderen én jouzelf om je in te zetten voor degenen die hulp kunnen gebruiken.</p>
+            <a class="source-700 flow-start" href="@Url.Action("CreateStory", "Dashboard")">Start nu</a>
         </div>
     </div>
 </div>
@@ -92,9 +94,9 @@
                 <h3>Draag jouw steentje bij via deze goede doelen</h3>
                 <p>Op de eigen pagina van een stichting of goed doel vind je meer informatie over de organisatie, de lopende projecten en ervaringen van de donateurs die je voorgingen!</p>
 
-                <div class="big-button">
+                <div class="big-button colored-button">
                     <span>Bekijk de goede doelen</span>
-                    <a href="#"></a>
+                    <a href="@Url.Action("Search", "Charity")"></a>
                 </div>
 
 

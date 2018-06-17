@@ -1,7 +1,10 @@
 ﻿@using Sombra.Core.Enums
 @using Sombra.Core.Extensions
+@using Sombra.Web.Infrastructure.Extensions;
 @model Sombra.Web.ViewModels.Charity.CharityViewModel
-@{ ViewData["Title"] = "Charity"; }
+@section Title{
+    @Model.Name
+}
 @section Styles{
     <link rel="stylesheet" href="~/css/charity/charity.css" />
     <link rel="stylesheet" media="screen and (min-width: 1200px)" href="~/css/charity/desktop.css" />
@@ -10,9 +13,9 @@
 @section Scripts {
     <script>
         $(document).ready(function() {
-            $('#the_story').load('@Url.Action("GetCharityStory", "Charity", new {CharityKey = Model.CharityKey.ToString()})');
-            $('#donations').load('@Url.Action("GetCharityDonations", "Charity", new {CharityKey = Model.CharityKey.ToString()})');
-            $('#acties').load('@Url.Action("GetCharityActions", "Charity", new {CharityKey = Model.CharityKey.ToString(), PageSize = 50})',
+            $('#the_story').load('@Html.BaseUrl(Url.Action("GetCharityStory", "Charity", new { CharityKey = Model.CharityKey.ToString() }))');
+            $('#donations').load('@Html.BaseUrl(Url.Action("GetCharityDonations", "Charity", new {CharityKey = Model.CharityKey.ToString()}))');
+            $('#acties').load('@Html.BaseUrl(Url.Action("GetCharityActions", "Charity", new {CharityKey = Model.CharityKey.ToString(), PageSize = 50}))',
                 function() {
                     var $carousel = $('.main-carousel').flickity({
                         cellAlign: 'left',
@@ -25,7 +28,7 @@
                     var $cellButtonGroup = $('.button-group--cells');
                     var $cellButtons = $cellButtonGroup.find('.button');
                 });
-        });
+            });
     </script>
 }
 
@@ -37,7 +40,6 @@
         <div class="category">@category.GetDisplayName().ToUpper()</div>
     }
     <div class="kvk_ambi">KvK nummer: @Model.KVKNumber</div>
-    <div class="kvk_ambi">ANBI nummer: @Model.Anbi</div>
 
     <div class="charity-logo">
         <div class="charity-logo-container">

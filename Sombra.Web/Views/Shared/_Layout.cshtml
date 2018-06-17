@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using Sombra.Web.Infrastructure.Extensions
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ikdoneer.nu</title>
+    <title>@RenderSection("Title", true) - ikdoneer.nu</title>
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/main.css" />
@@ -20,14 +21,15 @@
 <body>
     <nav id="header">
         <div class="fixed-header">
-                <a href="/" class="header-logo">
+                <a href="@Html.HomeUrl()" class="header-logo">
             </a>
 
             <div class="header-big-menu">
                 <ul class="monster-200">
-                    <li><a href="@Url.Action("Search", "Charity")">Goede doelen</a></li>
+
+                    <li><a href="@Html.BaseUrl(Url.Action("Search", "Charity"))">Goede doelen</a></li>
                     <li><a href="#">Acties</a></li>
-                    <li><a href="@Url.Action("Index", "Story")">Verhalen</a></li>
+                    <li><a href="@Html.BaseUrl(Url.Action("Index", "Story"))">Verhalen</a></li>
                     <li><a href="#">Onze missie</a></li>
                 </ul>
             </div>
@@ -41,7 +43,7 @@
                         <a class="icon-user-circle" href="#"></a>
                     </li>
                     <li>
-                        <a href="#" class="donateSVG"></a>
+                        <a href="@Url.Action("Index", "Donate")" class="donateSVG"></a>
                     </li> 
                 </ul>
             </div>
@@ -60,20 +62,20 @@
                     <div class="col-md-2">
                         <div>
                             <ul>
-                                <li><label><a href="#">Ik Doneer Nu</a></label></li>
-                                <li><a href="@Url.Action("Search", "Charity")">Goede doelen</a></li>
+                                <li><label><span>Ik Doneer Nu</span></label></li>
+                                <li><a href="@Html.BaseUrl(Url.Action("Search", "Charity"))">Goede doelen</a></li>
                                 <li><a href="#">Acties</a></li>
-                                <li><a href="@Url.Action("Index", "Story")">Verhalen</a></li>
-                                <li><a href="#">Ik Doneer Nu</a></li>
+                                <li><a href="@Html.BaseUrl(Url.Action("Index", "Story"))">Verhalen</a></li>
+                                <li><a href="#">Onze missie</a></li>
                                 <li><a href="#">Contact</a></li>
-                                <li><a href="#">Log in</a></li>
+                                <li><a href="@Html.BaseUrl(Url.Action("Index", "Dashboard"))">Log in</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div>
                             <ul>
-                                <li><label><a href="#">Diensten voor</a></label></li>
+                                <li><label><span>Diensten voor</span></label></li>
                                 <li><a href="#">Donateurs</a></li>
                                 <li><a href="@Url.Action("Search", "Charity")">Goede doelen</a></li>
                                 <li><a href="#">Acties</a></li>
@@ -83,11 +85,11 @@
                     <div class="col-md-2">
                         <div>
                             <ul>
-                                <li><label><a href="#">Over doneren</a></label></li>
+                                <li><label><span>Over doneren</span></label></li>
                                 <li><a href="#">ANBI-certificaat</a></li>
                                 <li><a href="#">Belasting</a></li>
                                 <li><a href="#">Betalingen</a></li>
-                                <li><label><a href="#">Doneer nu</a></label></li>
+                                <li><label><a href="@Html.BaseUrl(Url.Action("Index", "Donate"))">Doneer nu</a></label></li>
                             </ul>
                         </div>
                     </div>

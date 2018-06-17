@@ -1,6 +1,9 @@
-﻿@model Sombra.Web.ViewModels.Story.StoryViewModel
+﻿@using Sombra.Web.Infrastructure.Extensions
+@model Sombra.Web.ViewModels.Story.StoryViewModel
 
-@{ ViewData["Title"] = "Story"; }
+@section Title{
+    Verhalen over @*TODO*@
+}
 
 @section Styles{
     <link rel="stylesheet" href="~/css/story/story.css" />
@@ -58,8 +61,8 @@
     <div class="shared-container">
         <h2>Deel je eigen verhaal</h2>
         <p>Heb jij ook een bijzonder verhaal over doneren en wil je dat met ons delen? Dat kun je hier doen. Wie weet staat jouw verhaal straks op de homepage!</p>
-        <a href="#">
-            <button class="big-button">
+        <a href="@Html.BaseUrl(Url.Action("CreateStory","Dashboard"))">
+            <button class="big-button colored-button">
                 <span>Deel mijn verhaal</span>
             </button>
         </a>
@@ -86,18 +89,18 @@
         <div>
             @foreach (var story in @Model.EqualStories)
             {
-            
-            <div class="column" style="background-image:url(@story.MainImage);">
-                <a href="#" style="text-decoration:none;">
-                    <div class="text-column">
-                        <p>@story.Title</p>
-                        <span class="fading-text">Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris. Pellentesque habitat Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris….</span>
-                        <a class="fading-link">
-                            <br>Lees meer
-                        </a>
-                    </div>
-                </a>
-            </div>           
+
+                <div class="column" style="background-image:url(@story.MainImage);">
+                    <a href="#" style="text-decoration:none;">
+                        <div class="text-column">
+                            <p>@story.Title</p>
+                            <span class="fading-text">Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris. Pellentesque habitat Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris….</span>
+                            <a class="fading-link">
+                                <br>Lees meer
+                            </a>
+                        </div>
+                    </a>
+                </div>
             }
         </div>
     </div>

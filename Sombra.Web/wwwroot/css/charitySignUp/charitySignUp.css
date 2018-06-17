@@ -589,13 +589,14 @@ font-family: 'Source Sans Pro', sans-serif;
 }
 
 .next-step {
-  background-image: url(../../Assets/button/next-step-button.svg);
-  width: 192px;
-  height: 40px;
-  position: relative;
-  border: none;
-  background-color: transparent;
-  display: inline-block;
+    border-radius: 8px;
+    width: 192px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
 }
 
 .error-message {
@@ -609,6 +610,31 @@ font-family: 'Source Sans Pro', sans-serif;
   letter-spacing: normal;
   color: #d00202;
   margin-left: 25px;
+}
+
+.next-step span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    position: absolute;
+    top: 9px;
+    left: 35px;
+}
+
+.next-step .arrow {
+    background-image: url("../../Assets/icons/icon_arrow_white.svg");
+    width: 11px;
+    height: 10px;
+    background-size: contain;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-repeat: no-repeat;
 }
 
 /* Section 2 */
@@ -790,19 +816,15 @@ padding-left: 35px;
   width: 182px;
   height: 40px;
   border-radius: 8px;
-  border: solid 1px #f88356;
   font-size: 18px;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
   text-align: center;
-  color: #f88356;
-  background-color: white;
   margin-left: 221px;
   margin-top: 35px;
   margin-bottom: 120px;
-  outline: none;
 }
 
 /* invalid  */

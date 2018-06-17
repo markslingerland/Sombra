@@ -1,3 +1,4 @@
+@using Sombra.Web.Infrastructure.Extensions
 @model Sombra.Web.ViewModels.Donate.DonateResultViewModel
 
 @{
@@ -53,12 +54,12 @@
     <p class="source-300">Heb jij ook een bijzonder verhaal over doneren en wil je dat met ons delen? Dat kun je hier doen. Wie weet staat jouw verhaal straks op de homepage!</p>
 
     <div class="action-buttons">
-        <div class="all-actions">
-            <a href="#"></a>
+        <div class="all-actions colored-button">
+            <a href="@Html.BaseUrl(Url.Action("CreateStory", "Dashboard"))"></a>
             <span class="monster-700">Deel mijn verhaal</span>
         </div>
-        <div class="make-actions">
-            <a href="#"></a>
+        <div class="make-actions blank-button">
+            <a href="@Html.BaseUrl(Url.Action("Index", "Story"))"></a>
             <span class="monster-700">Bekijk de verhalen</span>
         </div>
     </div>
@@ -92,9 +93,9 @@
             <input required class="getGameNumber" placeholder="Nr.">
             <input class="getGameToev" placeholder="Toev.">
             <p class="addition-getgameform">Bijv. B</p>
-            <button class="monster-800" type="submit" >Ontvang het spel</button>
+            <button class="monster-800 colored-button" type="submit" >Ontvang het spel</button>
         </form>
 
     </div>
 </div>
-<button class="close-donating-page monster-800">Pagina sluiten</button>
+<button class="close-donating-page monster-800 blank-button" onclick="location.href='@Html.HomeUrl()'">Pagina sluiten</button>

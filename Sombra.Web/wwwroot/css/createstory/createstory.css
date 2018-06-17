@@ -559,12 +559,38 @@ input[type=text] {
 }
 
 .send-button {
-    border: hidden;
     width: 142px;
     height: 40px;
     border-radius: 8px;
     margin-top: 80px;
     margin-bottom: 60px;
-    background-image: url("../../Assets/Button_verstuur.svg");
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
+.send-button span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    position: relative;
+    top: 9px;
+    left: 35px;
+}
+
+.send-button .arrow {
+    background-image: url("../../Assets/icons/icon_arrow_white.svg");
+    width: 11px;
+    height: 10px;
+    background-size: contain;
+    position: relative;
+    top: 16px;
+    left: 16px;
+    background-repeat: no-repeat;
+}

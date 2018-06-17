@@ -52,7 +52,7 @@ namespace Sombra.Web.Controllers
         }
 
         [HttpGet]
-        [Subdomain]
+        //[Subdomain]
         public async Task<IActionResult> Index(CharityQuery query)
         {
             var request = _mapper.Map<GetCharityByUrlRequest>(query);

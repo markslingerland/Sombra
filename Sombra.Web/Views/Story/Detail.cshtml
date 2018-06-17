@@ -2,7 +2,7 @@
 @model Sombra.Web.ViewModels.Story.StoryViewModel
 
 @section Title{
-    Verhalen over @*TODO*@
+    @Model.Title
 }
 
 @section Styles{
@@ -12,6 +12,12 @@
 }
 @section Scripts {
     <script src="~/js/story.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#other-story').load('@Html.BaseUrl(Url.Action("GetStory", "Story"))');
+            $('#more-stories').load('@Html.BaseUrl(Url.Action("GetRelatedStories", "Story"))');
+        });
+    </script>
 }
 @*Background Picture*@
 <div class="header-image" style="background-image:url(@Model.CoverImage)"></div>

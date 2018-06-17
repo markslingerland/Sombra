@@ -1,6 +1,7 @@
 ﻿var slogans = {};
 
 $('#form-donate').on('click', '#next-to-section-4', PostForm);
+$('#form-donate').on('click', '#next-to-section-3', SetSummary);
 
 $(document).ready(function() {
     $.get('donate/getcharities', function( data ) {
@@ -23,6 +24,24 @@ $(document).ready(function() {
       });
 });
 
+function SetSummary(){
+    var donateTo = $('#select-action').val() ? $('#select-action option:selected').text() : $('#select-your-charity option:selected').text();
+    $('#summary-donate-to').text(donateTo);
+    $('#summary-amount').text('€' + $('input[name="money"]').val());
+    $('#summary-period').text($('.payment-options input:checked').closest('.radio-holder').find('.radio-input-tag').text());
+
+    $('#summary-iban').text($('#select-your-bank option:selected').text());
+    $('#summary-donate-type').text($('.pay-option input:checked').closest('.radio-holder').find('.radio-input-tag').text());
+    $('#summary-first-name').text($('#person-firstname-2').val() || "-");
+    $('#summary-last-name').text($('#person-lastname-2').val() || "-");
+    $('#summary-postcode').text($('#person-postcode-2').val() || "-");
+    $('#summary-email').text($('input[type="email"]').val() || "-");
+    $('#summary-house-number').text($('#person-housenumber-2').val() || "-");
+    $('#summary-house-addition').text($('#person-addition-2').val() || "-");
+    $('#summary-birth-date').text($('#person-birth-day').val() != "" ? $('#person-birth-day').val() + "-" + $('#person-birth-month').val() + "-" + $('#person-birth-year').val() : "-")
+
+}
+
 function PostForm()
 {
     var formData = new FormData();
@@ -30,25 +49,26 @@ function PostForm()
     formData.append("Amount", $('input[name="money"]').val());
     formData.append("CharityKey", $('#select-your-charity').val());
     formData.append("CharityActionKey", $('#select-action').val());
+    formData.append("__RequestVerificationToken", $('input[name="__RequestVerificationToken"]').val());
+    formData.append("Name", $('#person-firstname-2').val());
 
     for(var pair of formData.entries()) {
         console.log(pair[0]+ ', '+ pair[1]); 
      }
-     
+
     $.ajax({
         type: 'POST',
         url: '/doneren',
         data: formData,
         processData: false,
         contentType: false,
-        success: function (data) {
-            alert(data);
-        },
-        complete: function (data) {
-            if (!data.responseJSON.redirect) submitBtn.prop('disabled', false);
+        success: function (data)
+        {
+            $('.section-4').html(data);
         },
         error: function (data) {
-            highlightErrors(data, $this);
+            // In data zit je error. Ergens plakken
+            $('.error-message').text(data);
         }
     });
 }

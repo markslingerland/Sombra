@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -29,9 +30,27 @@ namespace Sombra.Web.Controllers
         }
 
         [HttpPost("doneren")]
-        public IActionResult Index(DonateViewModel model)
+        public async Task<IActionResult> Index(DonateViewModel model)
         {
-            return View(new DonateViewModel());
+            if(model.Name == null) 
+            { 
+                model.IsAnonymous = true;
+            }
+            var request = _mapper.Map<MakeDonationRequest>(model);
+            if(!request.IsAnonymous){
+                var userKey = HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Sid).Value;
+                request.UserKey = Guid.Parse(userKey);
+            }
+            var response = await _bus.RequestAsync(request);
+            if(response.IsRequestSuccessful){
+                var viewModel = _mapper.Map<DonateResultViewModel>(response);
+
+                return View("_ThankYou", viewModel);
+            }
+
+            HttpContext.Response.StatusCode = 400;
+            return Content("Something has gone wrong");
+            
         }
 
         [HttpGet]

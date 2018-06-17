@@ -94,7 +94,7 @@ namespace Sombra.Web.Controllers
             if (!response.IsRequestSuccessful) return new StatusCodeResult((int)HttpStatusCode.ServiceUnavailable);
 
             var model = _mapper.Map<StoryViewModel>(response.Results.First());
-            return PartialView("_Story", model);
+            return PartialView("_CharityStory", model);
         }
     }
 }

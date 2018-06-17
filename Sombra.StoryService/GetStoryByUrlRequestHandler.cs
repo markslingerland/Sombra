@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Sombra.Core.Extensions;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests.Story;
 using Sombra.Messaging.Responses.Story;
@@ -22,7 +24,9 @@ namespace Sombra.StoryService
 
         public async Task<GetStoryByUrlResponse> Handle(GetStoryByUrlRequest message)
         {
-            var story = await _context.Stories.IncludeAll().FirstOrDefaultAsync(b => b.UrlComponent.Equals(message.StoryUrlComponent, StringComparison.OrdinalIgnoreCase) && b.Charity.Url.Equals(message.CharityUrl, StringComparison.OrdinalIgnoreCase));
+            Expression<Func<Story, bool>> filter = b => b.UrlComponent.Equals(message.StoryUrlComponent, StringComparison.OrdinalIgnoreCase);
+            if (!string.IsNullOrEmpty(message.CharityUrl)) filter = filter.And(b => b.Charity.Url.Equals(message.CharityUrl, StringComparison.OrdinalIgnoreCase));
+            var story = await _context.Stories.IncludeAll().FirstOrDefaultAsync(filter);
 
             return story != null ? _mapper.Map<GetStoryByUrlResponse>(story) : new GetStoryByUrlResponse();
         }

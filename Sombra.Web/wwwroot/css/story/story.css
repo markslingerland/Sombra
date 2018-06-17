@@ -582,6 +582,10 @@
     cursor: pointer;
 }
 
+.column .fading-link:hover {
+    color: #F3646F;
+}
+
 .images {
     width: 349px;
     height: 285px;

@@ -19,9 +19,13 @@ using Sombra.Web.ViewModels;
 using Sombra.Web.ViewModels.Charity;
 using Sombra.Web.ViewModels.Home;
 using Sombra.Web.ViewModels.Shared;
+using Sombra.Web.ViewModels.Story;
 using GetCharitiesRequest = Sombra.Messaging.Requests.Charity.GetCharitiesRequest;
 using GetCharityActionsRequest = Sombra.Messaging.Requests.CharityAction.GetCharityActionsRequest;
 using GetCharityActionsResponse = Sombra.Messaging.Responses.CharityAction.GetCharityActionsResponse;
+using SearchQuery = Sombra.Web.ViewModels.Charity.SearchQuery;
+using SearchResultsViewModel = Sombra.Web.ViewModels.Charity.SearchResultsViewModel;
+using SearchResultViewModel = Sombra.Web.ViewModels.Charity.SearchResultViewModel;
 
 namespace Sombra.Web.Infrastructure
 {
@@ -125,7 +129,7 @@ namespace Sombra.Web.Infrastructure
                 .ForMember(d => d.PageSize, opt => opt.UseValue(1))
                 .ForMember(d => d.PageNumber, opt => opt.Ignore());
 
-            CreateMap<Story, StoryViewModel>();
+            CreateMap<Story, ViewModels.Shared.StoryViewModel>();
 
             CreateMap<SearchQuery, GetCharitiesRequest>()
                 .ForMember(d => d.OnlyApproved, opt => opt.UseValue(true))
@@ -147,11 +151,21 @@ namespace Sombra.Web.Infrastructure
                 .ForMember(d => d.OnlyUnapproved, opt => opt.Ignore());
 
             CreateMap<Story, ViewModels.Story.SearchResultViewModel>();
-            CreateMap<Story, ViewModels.Story.RandomStoryViewModel>();
+            CreateMap<Story, RandomStoryViewModel>();
 
             CreateMap<GetStoriesResponse, ViewModels.Story.SearchResultsViewModel>()
                 .ForMember(d => d.PageNumber, opt => opt.Ignore())
                 .ForMember(d => d.PageSize, opt => opt.Ignore());
+
+            CreateMap<StoryQuery, GetStoryByUrlRequest>()
+                .ForMember(d => d.CharityUrl, opt => opt.MapFrom(s => s.Subdomain))
+                .ForMember(d => d.StoryUrlComponent, opt => opt.MapFrom(s => s.Url));
+
+            CreateMap<Story, ViewModels.Story.StoryViewModel>();
+            CreateMap<GetRandomStoriesResponse, RelatedStoriesViewModel>()
+                .ForMember(d => d.Stories, opt => opt.MapFrom(s => s.Results));
+            CreateMap<Story, RelatedStoryViewModel>();
+
         }
     }
 }

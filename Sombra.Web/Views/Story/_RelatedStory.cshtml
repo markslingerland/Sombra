@@ -1,9 +1,10 @@
 ﻿@using Sombra.Web.Infrastructure.Extensions
-@model Sombra.Web.ViewModels.Story.SearchResultViewModel
+@model Sombra.Web.ViewModels.Story.RelatedStoryViewModel
 @{
     Layout = null;
 }
-<div class="column" style="background-image:url(@Model.CoverImage">
+
+<div class="column" style="background-image:url(@Model.CoverImage);">
     <a href="@($"{Html.SubdomainUrl(Model.CharityUrl)}/verhalen/{Model.UrlComponent}")" style="text-decoration:none;">
         <div class="text-column">
             <p>@Model.Title</p>

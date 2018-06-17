@@ -14,40 +14,46 @@
     <script src="~/js/story.js"></script>
 }
 @*Background Picture*@
-<div class="header-image" style="background-image:url(@Model.MainImage)"></div>
+<div class="header-image" style="background-image:url(@Model.CoverImage)"></div>
 
 <div class="story-container container">
     @*Profile picture*@
     <div class="story-logo">
         <div class="story-logo-container">
-            <div class="shape-frame" style="background-image:url(@Model.UserImage)">
+            <div class="shape-frame" style="background-image:url(@Model.AuthorProfileImage)">
             </div>
         </div>
-        <div class="profile-name">@Model.UserFirstName @Model.UserLastName</div>
+        <div class="profile-name">@Model.AuthorName</div>
     </div>
     @*title & story*@
     <div id="about">
         <div class="about-text">
             <h2>@Model.Title</h2>
-            <p>@Model.Story[0]</p>
-            <div class="story-image" style="background-image:url(@Model.MainImage)"></div>
-            <p>@Model.Story[1]</p>
-            <h1>“@Model.Quote”</h1>
-            <p>@Model.Story[2]</p>
+            <p>@Model.OpeningText</p>
+            <div class="story-image" style="background-image:url(@Model.StoryImage)"></div>
+            <p>@Model.CoreText</p>
+            <h1>“@Model.QuoteText”</h1>
+            <p>@Model.ConclusionText</p>
         </div>
-        @*Active acitons*@
-        <div class="slide-container">
-            <div class="main-carousel">
-                @foreach (var image in @Model.Images)
+        
+        @if (Model.Images.Any())
+        {
+            <div class="slide-container">
+                <div class="main-carousel">
+                    @foreach (var image in Model.Images)
+                    {
+                        <div id="image-slider">
+                            <div class="images" style="background-image:url(@image);"></div>
+                        </div>
+                    }
+                </div>
+                @if (Model.Images.Count > 2)
                 {
-                    <div id="image-slider">
-                        <div class="images" style="background-image:url(@image);"></div>
-                    </div>
+                    <div class="button button--previous"></div>
+                    <div class="button button--next"></div>
                 }
             </div>
-            <div class="button button--previous"></div>
-            <div class="button button--next"></div>
-        </div>
+        }
     </div>
 
 </div>
@@ -69,39 +75,6 @@
     </div>
 </div>
 
-<div id="other-story">
-    <div class="story-board">
-        <div class="other-story-logo">
-            <div class="other-story-logo-container">
-                <div class="other-profile-image " style="background-image:url(@Model.RandomStory.UserImage)">
-                </div>
-            </div>
-            <div class="profile-name">@Model.RandomStory.UserFirstName @Model.RandomStory.UserLastName</div>
-        </div>
-        <p>“@Model.RandomStory.Quote”</p>
-        <a href="#">Lees dit verhaal</a>
-    </div>
-</div>
+<div id="other-story"></div>
 
-<div id="more-stories">
-    <div class="more-stories-field">
-        <h3 class="title">Vergelijkbare verhalen</h3>
-        <div>
-            @foreach (var story in @Model.EqualStories)
-            {
-
-                <div class="column" style="background-image:url(@story.MainImage);">
-                    <a href="#" style="text-decoration:none;">
-                        <div class="text-column">
-                            <p>@story.Title</p>
-                            <span class="fading-text">Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris. Pellentesque habitat Nulla facilisi. Quisque ut consectet ipsum, at efficitur mauris….</span>
-                            <a class="fading-link">
-                                <br>Lees meer
-                            </a>
-                        </div>
-                    </a>
-                </div>
-            }
-        </div>
-    </div>
-</div>
+<div id="more-stories"></div>

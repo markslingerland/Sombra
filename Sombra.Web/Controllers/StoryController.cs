@@ -29,11 +29,17 @@ namespace Sombra.Web.Controllers
         }
 
         [HttpGet]
-        [Subdomain]
         [Route("verhalen/{url}")]
-        public IActionResult Detail(StoryQuery query)
+        public async Task<IActionResult> Detail(StoryQuery query)
         {
-            return View("Detail");
+            var request = _mapper.Map<GetStoryByUrlRequest>(query);
+            var response = await _bus.RequestAsync(request);
+
+            if (!response.IsRequestSuccessful) return new StatusCodeResult((int)HttpStatusCode.ServiceUnavailable);
+            if (!response.IsSuccess || !response.Story.IsApproved) return new StatusCodeResult((int)HttpStatusCode.NotFound);
+            var model = _mapper.Map<StoryViewModel>(response.Story); 
+
+            return View("Detail", model);
         }
 
         [HttpGet]
@@ -56,17 +62,31 @@ namespace Sombra.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetStory()
         {
-            var request = new GetStoriesRequest
+            var request = new GetRandomStoriesRequest
             {
-                OnlyApproved = true,
-                PageNumber = 1,
-                PageSize = 1
+                Amount = 1
             };
             var response = await _bus.RequestAsync(request);
             if (!response.IsRequestSuccessful) return new StatusCodeResult((int)HttpStatusCode.ServiceUnavailable);
+            if (!response.IsSuccess || !response.Results.Any()) return new StatusCodeResult((int)HttpStatusCode.NotFound);
 
             var model = _mapper.Map<RandomStoryViewModel>(response.Results.First());
             return PartialView("_RandomStory", model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetRelatedStories()
+        {
+            var request = new GetRandomStoriesRequest
+            {
+                Amount = 3
+            };
+            var response = await _bus.RequestAsync(request);
+            if (!response.IsRequestSuccessful) return new StatusCodeResult((int)HttpStatusCode.ServiceUnavailable);
+            if (!response.IsSuccess || !response.Results.Any()) return new StatusCodeResult((int)HttpStatusCode.NotFound);
+
+            var model = _mapper.Map<RelatedStoriesViewModel>(response);
+            return PartialView("_RelatedStoriesWrapper", model);
         }
     }
 }

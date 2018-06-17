@@ -291,6 +291,11 @@
 
 .column:hover .fading-link {
     opacity: 1;
+    color: #F3646F;
+}
+
+.column .fading-link:hover {
+    color: #F3646F;
 }
 
 .images {

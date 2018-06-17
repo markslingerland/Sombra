@@ -78,7 +78,13 @@ namespace Sombra.Web
             app.UseAuthentication();
 
             app.UseCors(
-                options => options.WithOrigins("http://*.ikdoneer.nu").AllowAnyMethod()
+                options => options
+                    .SetIsOriginAllowedToAllowWildcardSubdomains()
+                    .WithOrigins("http://*.ikdoneer.nu")
+                    .AllowAnyMethod()
+                    .AllowCredentials()
+                    .AllowAnyHeader()
+
             );
             app.UseMvc(Routing.Setup);
         }

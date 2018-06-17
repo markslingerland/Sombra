@@ -17,6 +17,7 @@ using Sombra.Messaging.Shared;
 using Sombra.Web.Areas.Development.Models;
 using Sombra.Web.ViewModels;
 using Sombra.Web.ViewModels.Charity;
+using Sombra.Web.ViewModels.Donate;
 using Sombra.Web.ViewModels.Home;
 using Sombra.Web.ViewModels.Shared;
 using GetCharitiesRequest = Sombra.Messaging.Requests.Charity.GetCharitiesRequest;
@@ -74,7 +75,7 @@ namespace Sombra.Web.Infrastructure
                 .ForMember(d => d.Key, opt => opt.MapFrom(s => s.CharityKey))
                 .ForMember(d => d.Name, opt => opt.MapFrom(s => s.CharityName));
 
-            CreateMap<CharityAction, CharityActionItemViewModel>();
+            CreateMap<Sombra.Messaging.Shared.CharityAction, CharityActionItemViewModel>();
             CreateMap<GetCharityActionsResponse, CharityActionsViewModel>()
                 .ForMember(d => d.CharityActions, opt => opt.MapFrom(s => s.Results));
 
@@ -102,7 +103,7 @@ namespace Sombra.Web.Infrastructure
             CreateMap<CharityQuery, GetCharityByUrlRequest>()
                 .ForMember(d => d.Url, opt => opt.MapFrom(s => s.Subdomain));
 
-            CreateMap<Charity, CharityViewModel>();
+            CreateMap<Sombra.Messaging.Shared.Charity, CharityViewModel>();
 
             CreateMap<DonationsInWeekByCharityQuery, GetCharityTotalRequest>()
                 .ForMember(d => d.NumberOfDonations, opt => opt.UseValue(3))
@@ -136,7 +137,14 @@ namespace Sombra.Web.Infrastructure
                 .ForMember(d => d.PageNumber, opt => opt.Ignore())
                 .ForMember(d => d.PageSize, opt => opt.Ignore());
 
-            CreateMap<Charity, SearchResultViewModel>();
+
+            CreateMap<Sombra.Messaging.Shared.Charity, SearchResultViewModel>();
+            CreateMap<Sombra.Messaging.Responses.Donate.Charity, ViewModels.Donate.Charity>();
+            CreateMap<KeyNamePair, ViewModels.Donate.CharityAction>();
+
+            CreateMap<DonateViewModel, MakeDonationRequest>()
+                .ForMember(d => d.UserKey, opt => opt.Ignore());
+            CreateMap<MakeDonationResponse, DonateResultViewModel>();
 
             CreateMap<ViewModels.Story.SearchQuery, GetStoriesRequest>()
                 .ForMember(d => d.AuthorUserKey, opt => opt.Ignore())
@@ -152,6 +160,7 @@ namespace Sombra.Web.Infrastructure
             CreateMap<GetStoriesResponse, ViewModels.Story.SearchResultsViewModel>()
                 .ForMember(d => d.PageNumber, opt => opt.Ignore())
                 .ForMember(d => d.PageSize, opt => opt.Ignore());
+
         }
     }
 }

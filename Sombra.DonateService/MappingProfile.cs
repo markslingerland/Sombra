@@ -51,13 +51,17 @@ namespace Sombra.DonateService
                 .ForMember(d => d.UserName, opt => opt.MapFrom(s => s.UserId.HasValue ? s.User.UserName : null))
                 .ForMember(d => d.ProfileImage, opt => opt.MapFrom(s => s.UserId.HasValue ? s.User.ProfileImage : null));
 
-            CreateMap<Charity, KeyNamePair>()
-                .ForMember(d => d.Key, opt => opt.MapFrom(s => s.CharityKey))
-                .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Name));
+            CreateMap<Charity, Sombra.Messaging.Responses.Donate.Charity>();
 
             CreateMap<CharityAction, KeyNamePair>()
                 .ForMember(d => d.Key, opt => opt.MapFrom(s => s.CharityActionKey))
                 .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Name));
+
+            CreateMap<MakeDonationRequest, User>()
+                .ForMember(d => d.UserKey, opt => opt.Ignore())
+                .ForMember(d => d.ProfileImage, opt => opt.Ignore())
+                .ForMember(d => d.CharityDonations, opt => opt.Ignore())
+                .ForMember(d => d.CharityActionDonations, opt => opt.Ignore());
         }
     }
 }

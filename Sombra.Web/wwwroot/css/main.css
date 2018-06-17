@@ -207,7 +207,7 @@ body {
 }
 
 .standard-text .big-button {
-    width: 250px;
+    width: 253px;
     height: 40px;
     border-radius: 8px;
     position: relative;
@@ -215,7 +215,7 @@ body {
 
 .standard-text .big-button span{
     font-family: 'Montserrat', sans-serif;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
@@ -223,8 +223,8 @@ body {
     letter-spacing: normal;
     text-align: left;
     position: absolute;
-    top: 10px;
-    left: 20px;
+    top: 9px;
+    left: 14px;
 }
 
 .standard-text .big-button a {

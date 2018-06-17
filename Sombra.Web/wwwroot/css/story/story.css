@@ -295,7 +295,7 @@
 
 .share-facebook {
     float: right;
-    margin-top: 20px;
+    margin-top: 25px;
     margin-right: 17px;
     margin-left: auto;
     width: 24px;
@@ -306,7 +306,7 @@
 
 .share-twitter {
     float: right;
-    margin-top: 20px;
+    margin-top: 25px;
     margin-right: 17px;
     margin-left: auto;
     width: 24px;
@@ -317,7 +317,7 @@
 
 .share-instagram {
     float: right;
-    margin-top: 20px;
+    margin-top: 25px;
     margin-left: auto;
     width: 24px;
     height: 24px;
@@ -554,6 +554,7 @@
     opacity: 0;
     transition: .6s ease-in;
     padding-left: 24px;
+    margin-top: 5px;
 }
 .fading-text {
     display: block;

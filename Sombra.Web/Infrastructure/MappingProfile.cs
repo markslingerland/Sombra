@@ -139,14 +139,12 @@ namespace Sombra.Web.Infrastructure
 
 
             CreateMap<Sombra.Messaging.Shared.Charity, SearchResultViewModel>();
-            CreateMap<Sombra.Messaging.Responses.Donate.Charity, Sombra.Web.ViewModels.Donate.Charity>();
-            CreateMap<KeyNamePair, Sombra.Web.ViewModels.Donate.CharityAction>();
+            CreateMap<Sombra.Messaging.Responses.Donate.Charity, ViewModels.Donate.Charity>();
+            CreateMap<KeyNamePair, ViewModels.Donate.CharityAction>();
 
             CreateMap<DonateViewModel, MakeDonationRequest>()
                 .ForMember(d => d.UserKey, opt => opt.Ignore());
             CreateMap<MakeDonationResponse, DonateResultViewModel>();
-
-            CreateMap<Sombra.Messaging.Shared.Charity, SearchResultViewModel>();
 
             CreateMap<ViewModels.Story.SearchQuery, GetStoriesRequest>()
                 .ForMember(d => d.AuthorUserKey, opt => opt.Ignore())

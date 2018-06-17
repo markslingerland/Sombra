@@ -25,7 +25,7 @@ namespace Sombra.DonateService
         {
             return new GetCharitiesResponse
             {
-                Charities = await _context.Charities.OrderBy(c => c.Name).ProjectToListAsync<KeyNamePair>(_mapper)
+                Charities = await _context.Charities.OrderBy(c => c.Name).ProjectToListAsync<Messaging.Responses.Donate.Charity>(_mapper)
             };
         }
     }

@@ -1,4 +1,96 @@
-﻿
+﻿var slogans = {};
+
+$('#form-donate').on('click', '#next-to-section-4', PostForm);
+$('#form-donate').on('click', '#next-to-section-3', SetSummary);
+
+$(document).ready(function() {
+    $.get('donate/getcharities', function( data ) {
+        var dropdownContent = $('#select-your-charity');
+        $.each(data, function (index, value){
+            slogans[value.charityKey] = value.slogan;
+            dropdownContent.append(`<option value="${value.charityKey}">${value.name}</option>`);
+        });
+
+        $('#select-your-charity').selectize({
+            onChange: CharitySelected,
+            sortField: 'text',
+            maxItems: 1,
+            create: false,
+            valueField: 'id',
+            labelField: 'title',
+            searchField: 'title',
+            placeholder: "Naam van het goede doel..."
+        });        
+      });
+});
+
+function SetSummary(){
+    var donateTo = $('#select-action').val() ? $('#select-action option:selected').text() : $('#select-your-charity option:selected').text();
+    $('#summary-donate-to').text(donateTo);
+    $('#summary-amount').text('€' + $('input[name="money"]').val());
+    $('#summary-period').text($('.payment-options input:checked').closest('.radio-holder').find('.radio-input-tag').text());
+
+    $('#summary-iban').text($('#select-your-bank option:selected').text());
+    $('#summary-donate-type').text($('.pay-option input:checked').closest('.radio-holder').find('.radio-input-tag').text());
+    $('#summary-first-name').text($('#person-firstname-2').val() || "-");
+    $('#summary-last-name').text($('#person-lastname-2').val() || "-");
+    $('#summary-postcode').text($('#person-postcode-2').val() || "-");
+    $('#summary-email').text($('input[type="email"]').val() || "-");
+    $('#summary-house-number').text($('#person-housenumber-2').val() || "-");
+    $('#summary-house-addition').text($('#person-addition-2').val() || "-");
+    $('#summary-birth-date').text($('#person-birth-day').val() != "" ? $('#person-birth-day').val() + "-" + $('#person-birth-month').val() + "-" + $('#person-birth-year').val() : "-")
+
+}
+
+function PostForm()
+{
+    var formData = new FormData();
+    formData.append("DonationType", $('input[name="pay-time"]').val());
+    formData.append("Amount", $('input[name="money"]').val());
+    formData.append("CharityKey", $('#select-your-charity').val());
+    formData.append("CharityActionKey", $('#select-action').val());
+    formData.append("__RequestVerificationToken", $('input[name="__RequestVerificationToken"]').val());
+    formData.append("UserName", $('#person-firstname-2').val() + $('#person-lastname-2').val());
+
+    for(var pair of formData.entries()) {
+        console.log(pair[0]+ ', '+ pair[1]); 
+     }
+
+    $.ajax({
+        type: 'POST',
+        url: '/doneren',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (data)
+        {
+            $('.section-4').html(data);
+        },
+        error: function (data) {
+            // In data zit je error. Ergens plakken
+            $('.error-message').text(data);
+        }
+    });
+}
+
+function CharitySelected(charityKey)
+{
+    if (!charityKey.length) return;
+    $('.charity-information').text(slogans[charityKey]);
+    if ($('input:radio[name="select"]:checked').val() == "charity-action")
+    {
+        $.get(`donate/getcharityactions?charityKey=${charityKey}`, function( data ) {
+            var dropdownActionContent = $('#select-action');
+            dropdownActionContent[0].selectize.destroy();
+            $.each(data, function (index, value){
+                dropdownActionContent.append(`<option value="${value.key}">${value.name}</option>`);
+            });
+            InitSelectAction();
+             
+          });
+    }
+}
+
 // SECTION 1
 $('#control_01').click(function () {
     if ($('#control_01').is(':checked')) {
@@ -18,39 +110,24 @@ $('#control_02').click(function () {
     }
 });
 
+function InitSelectAction()
+{
+    $('#select-action').selectize({
+        sortField: 'text',
+        maxItems: 1,
+        create: false,
+        valueField: 'id',
+        labelField: 'title',
+        searchField: 'title',
+        placeholder: "Naam van de actie..."
+    });  
+}
+InitSelectAction();
+
+
 $('input:radio[name="pay-time"]').click(function (){
     $(".section-1 .next-step-holder").css("display", "inline-block");
 })
-
-$('#select-your-charity').selectize({
-    sortField: 'text',
-    maxItems: 1,
-    create: false,
-    valueField: 'id',
-    labelField: 'title',
-    searchField: 'title',
-    placeholder: "Naam van het goed doel...",
-    options: [
-        { id: 1, title: 'Spectrometer', url: 'http://en.wikipedia.org/wiki/Spectrometers' },
-        { id: 2, title: 'Star Chart', url: 'http://en.wikipedia.org/wiki/Star_chart' },
-        { id: 3, title: 'Electrical Tape', url: 'http://en.wikipedia.org/wiki/Electrical_tape' }
-    ]
-});
-
-$('#select-action').selectize({
-    sortField: 'text',
-    maxItems: 1,
-    create: false,
-    valueField: 'id',
-    labelField: 'title',
-    searchField: 'title',
-    placeholder: "Naam van de actie...",
-    options: [
-        { id: 1, title: 'Spectrometer', url: 'http://en.wikipedia.org/wiki/Spectrometers' },
-        { id: 2, title: 'Star Chart', url: 'http://en.wikipedia.org/wiki/Star_chart' },
-        { id: 3, title: 'Electrical Tape', url: 'http://en.wikipedia.org/wiki/Electrical_tape' }
-    ]
-});
 
 $('#one-time').on('input', function () {
     var input = $(this);

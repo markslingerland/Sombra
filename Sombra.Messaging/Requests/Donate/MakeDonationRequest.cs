@@ -12,5 +12,6 @@ namespace Sombra.Messaging.Requests.Donate
         public decimal Amount { get; set; }
         public Guid CharityKey { get; set; }
         public Guid? CharityActionKey { get; set; }
+        public string UserName { get; set; }
     }
 }

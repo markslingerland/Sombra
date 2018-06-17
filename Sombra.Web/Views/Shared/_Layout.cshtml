@@ -26,6 +26,7 @@
 
             <div class="header-big-menu">
                 <ul class="monster-200">
+
                     <li><a href="@Html.BaseUrl(Url.Action("Search", "Charity"))">Goede doelen</a></li>
                     <li><a href="#">Acties</a></li>
                     <li><a href="@Html.BaseUrl(Url.Action("Index", "Story"))">Verhalen</a></li>
@@ -76,7 +77,7 @@
                             <ul>
                                 <li><label><span>Diensten voor</span></label></li>
                                 <li><a href="#">Donateurs</a></li>
-                                <li><a href="#">Goede doelen</a></li>
+                                <li><a href="@Url.Action("Search", "Charity")">Goede doelen</a></li>
                                 <li><a href="#">Acties</a></li>
                             </ul>
                         </div>

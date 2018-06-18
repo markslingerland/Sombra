@@ -49,13 +49,14 @@
 }
 
 .charity-logo-white {
-    width: 140px;
-    height: 50px;
-    top: 64px;
-    left: 21px;
+    width: 100%;
+    height: 100%;
+    background-size:70%;
+    margin-top: 35%;
+    margin-left:6%;
     position: absolute;
-    background-size: contain;
     background-repeat: no-repeat;
+    transform: rotate(18deg);
 }
 
 #about {
@@ -110,18 +111,48 @@
 }
 
 #about .donate-btn {
+    border-radius: 8px;
     width: 156px;
     height: 40px;
-    background-color: transparent;
-    border: none;
+    background-size: contain;
+    background-repeat: no-repeat;
     position: relative;
 }
 
-#about .donateSVG {
-    background-image: url("../../Assets/Doneernubutton.svg");
-    width: 156px;
-    height: 40px;
+#about .donate-btn span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    position: relative;
+    top: 8px;
+    left: 18px;
+    float: left;
+}
+
+#about .donate-btn .arrow {
+    background-image: url("../../Assets/icons/icon_arrow_white.svg");
+    width: 18px;
+    height: 14px;
+    background-size: contain;
+    position: relative;
+    top: 13px;
+    left: 12px;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+#about .donate-btn a {
     position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 500;
 }
 
 #charity-info {
@@ -151,7 +182,6 @@
 
 .container {
     position: relative;
-    font-family: Arial;
 }
 
 .category {
@@ -227,11 +257,12 @@
     margin-top: 80px;
 }
 
-.container {
+#the_story .container {
     padding: 0;
+    margin: 0;
 }
 
-.story_image {
+#the_story .story_image {
     width: 100%;
     height: 460px;
     background-position: center;
@@ -239,23 +270,24 @@
     background-size: cover;
 }
 
-.story_gradient {
+#the_story .story_gradient {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    opacity: 0.7;
     right: 0;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
 }
 
-#the_story .text_container {
+#the_story .story_image .text_container {
+    position: absolute;
     width: 100%;
     padding-left: 93px;
-    padding-right: 460px;
+    padding-right: 490px;
+    bottom: 50px;
 }
 
-#the_story .text_container span {
+#the_story .story_image .text_container span {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -265,14 +297,12 @@
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
-    position: absolute;
-    bottom: 180px;
 }
 
-.story-btn-holder {
+#the_story .story-btn-holder {
     position: absolute;
     right: 93px;
-    bottom: 58px;
+    bottom: 0px;
 }
 
 #the_story .text_container h3 {
@@ -286,8 +316,19 @@
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
-    position: absolute;
-    bottom: 70px;
+    margin-bottom: 7px;
+    margin-top: 5px;
+}
+
+#the_story .read-more-this-story {
+    font-size: 18px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+    text-decoration: underline;
+    bottom: 58px;
 }
 
 #the_story .text_container a {
@@ -300,18 +341,8 @@
     line-height: normal;
     letter-spacing: normal;
     text-align: left;
-    position: absolute;
     color: #ffffff;
-    bottom: 45px;
-    margin-bottom: 0;
-    margin-top: 0;
-}
-
-#the_story .text_container .secondary-button a {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    bottom: 58px;
 }
 
 /*Donation status*/
@@ -477,26 +508,11 @@
     margin-left: 8px;
 }
 
-#acties .acties-text {
-    max-width: 600px;
-    height: 115px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.56;
-    letter-spacing: normal;
-    color: #838383;
-    margin-bottom: 56px;
-    margin-left: 8px;
-}
-
 #acties .action-buttons {
     width: 100%;
     text-align: center;
     float: left;
-    margin-top: 54px;
+    margin-top: 84px;
 }
 
 #acties .action-buttons .all-actions, #acties .action-buttons .make-actions {

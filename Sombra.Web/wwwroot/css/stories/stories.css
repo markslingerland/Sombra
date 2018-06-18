@@ -800,3 +800,15 @@
     letter-spacing: normal;
     text-align: center;
 }
+
+#video-text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 450px;
+    margin-right: 207px;
+    color: white;
+    font-size: 40px;
+    font-family: 'Kalam', sans-serif;
+    font-weight: bold;
+}

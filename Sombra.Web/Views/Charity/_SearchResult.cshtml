@@ -7,8 +7,12 @@
         <img src="@Model.Logo" class="charity-logo">
         <div class="charity-background-gradient"></div>
     </div>
-
-    <a href="@($"{Html.SubdomainUrl(Model.Url)}/doneer")" class="charity-btn"></a>
+    
+    <div class="charity-btn colored-button">
+        <a href="@($"{Html.SubdomainUrl(Model.Url)}/doneer")"></a>
+        <div class="arrow"></div>
+        <span>Doneer nu</span>
+    </div>
 
     <div class="charity-text-holder">
         <h3 class="source-700 charity-title">

@@ -1,4 +1,5 @@
 ﻿var slogans = {};
+var subdomains = {};
 
 $('#form-donate').on('click', '#next-to-section-4', PostForm);
 $('#form-donate').on('click', '#next-to-section-3', SetSummary);
@@ -8,10 +9,11 @@ $(document).ready(function() {
         var dropdownContent = $('#select-your-charity');
         $.each(data, function (index, value){
             slogans[value.charityKey] = value.slogan;
+            subdomains[value.subdomainUrl] = value.charityKey;
             dropdownContent.append(`<option value="${value.charityKey}">${value.name}</option>`);
         });
 
-        $('#select-your-charity').selectize({
+        var dropdown = $('#select-your-charity').selectize({
             onChange: CharitySelected,
             sortField: 'text',
             maxItems: 1,
@@ -20,8 +22,13 @@ $(document).ready(function() {
             labelField: 'title',
             searchField: 'title',
             placeholder: "Naam van het goede doel..."
-        });        
-      });
+        });
+
+        if (subdomain.length) {
+            dropdown[0].selectize.setValue(subdomains[subdomain], false);
+        }
+
+    });
 });
 
 function SetSummary(){

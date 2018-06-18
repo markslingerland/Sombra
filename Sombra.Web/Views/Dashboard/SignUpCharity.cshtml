@@ -1,5 +1,6 @@
 @using Sombra.Core.Enums
 @using Sombra.Core.Extensions
+@using Sombra.Web.Infrastructure.Extensions
 @section Title{
     Aanmelden stichting of goed doel
 }
@@ -118,8 +119,9 @@
         </div>
 
         <div class="next-step-holder">
-            <div class="next-step">
-                <span class="clickable" id="button-toSection-2"></span>
+            <div class="next-step colored-button" id="button-toSection-2">
+                <div class="arrow"></div>
+                <span>Volgende stap</span>
             </div>
             <p class="error-message monster-300">Oeps, er is iets mis</p>
         </div>
@@ -167,7 +169,10 @@
         </div>
 
         <div class="next-step-holder">
-            <button class="next-step" id="button-toSection-3"></button>
+            <div class="next-step colored-button" id="button-toSection-3">
+                <div class="arrow"></div>
+                <span>Volgende stap</span>
+            </div>
         </div>
 
     </section>
@@ -203,10 +208,8 @@
             om de pagina in te delen, statistieken te bekijken en nog veel meer!
         </p>
 
-        <button class="close-donating-page monster-800">Pagina sluiten</button>
+        <button class="close-donating-page monster-800 blank-button" onclick="location.href='@Html.HomeUrl()'">Pagina sluiten</button>
 
 
     </section>
 </form>
-
-</div>

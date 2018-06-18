@@ -351,11 +351,11 @@ right: 0;
 }
 
 .carousel-cell .carousel-background .carousel-logo{
-   background-image: url("../../Assets/logo_ktms.jpg");
    width: 100px;
    height: 100px;
    background-size: contain;
    background-repeat: no-repeat;
+   background-position: center;
    margin-left: auto;
    margin-right: auto;
    padding-top: 25px;

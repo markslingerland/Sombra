@@ -7,6 +7,7 @@ namespace Sombra.Web.ViewModels.Shared
         public Guid CharityActionKey { get; set; }
         public string Name { get; set; }
         public string CoverImage { get; set; }
+        public string Logo { get; set; }
         public string OrganiserImage { get; set; }
         public string OrganiserUserName { get; set; }
         public decimal TargetAmount { get; set; }

@@ -92,6 +92,7 @@ namespace Sombra.Web.Controllers
             var request = _mapper.Map<GetStoriesRequest>(query);
             var response = await _bus.RequestAsync(request);
             if (!response.IsRequestSuccessful) return new StatusCodeResult((int)HttpStatusCode.ServiceUnavailable);
+            if (response.TotalNumberOfResults == 0) return new StatusCodeResult((int)HttpStatusCode.NotFound);
 
             var model = _mapper.Map<StoryViewModel>(response.Results.First());
             return PartialView("_CharityStory", model);

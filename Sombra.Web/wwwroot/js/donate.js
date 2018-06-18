@@ -4,7 +4,7 @@ $('#form-donate').on('click', '#next-to-section-4', PostForm);
 $('#form-donate').on('click', '#next-to-section-3', SetSummary);
 
 $(document).ready(function() {
-    $.get('donate/getcharities', function( data ) {
+    $.get(charitiesUrl, function( data ) {
         var dropdownContent = $('#select-your-charity');
         $.each(data, function (index, value){
             slogans[value.charityKey] = value.slogan;
@@ -79,7 +79,7 @@ function CharitySelected(charityKey)
     $('.charity-information').text(slogans[charityKey]);
     if ($('input:radio[name="select"]:checked').val() == "charity-action")
     {
-        $.get(`donate/getcharityactions?charityKey=${charityKey}`, function( data ) {
+        $.get(`${charityActionsUrl}?charityKey=${charityKey}`, function( data ) {
             var dropdownActionContent = $('#select-action');
             dropdownActionContent[0].selectize.destroy();
             $.each(data, function (index, value){

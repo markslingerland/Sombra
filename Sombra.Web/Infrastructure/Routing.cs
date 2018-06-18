@@ -17,6 +17,13 @@ namespace Sombra.Web.Infrastructure
                 template: "{action}",
                 defaults: new { controller = "Charity", action = "Index" });
 
+            routeBuilder.MapSubdomainRoute(
+                hostnames,
+                name: "SubdomainDonateRoute",
+                subdomain: $"{{{SubdomainViewModel.SUBDOMAIN_PARAMETER}}}",
+                template: "{controller}/{action}",
+                defaults: new { controller = "Charity", action = "Index" });
+
             routeBuilder.MapRoute(
                 hostnames,
                 name: "default",

@@ -561,20 +561,12 @@
 
 #acties .action-buttons .all-actions {
     margin-right: 16px;
-    background-image: linear-gradient(-140deg, #FDA23F 0%, #F3646F 100%);
-    color: white;
 }
 
 #acties .action-buttons .all-actions span {
     position: absolute;
     top: 7px;
     left: 16px;
-}
-
-#acties .action-buttons .make-actions {
-    background-color: white;
-    border: 1px solid #F88356;
-    color: #F88356;
 }
 
 #acties .action-buttons .make-actions span {

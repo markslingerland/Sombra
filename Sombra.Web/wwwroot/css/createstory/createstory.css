@@ -559,16 +559,6 @@ input[type=text] {
 }
 
 .send-button {
-    border: hidden;
-    width: 142px;
-    height: 40px;
-    border-radius: 8px;
-    margin-top: 80px;
-    margin-bottom: 60px;
-    background-image: url("../../Assets/Button_verstuur.svg");
-}
-
-/*.send-button {
     width: 142px;
     height: 40px;
     border-radius: 8px;
@@ -591,7 +581,8 @@ input[type=text] {
     text-align: center;
     position: relative;
     top: 8px;
-    left: 35px;
+    left: 20px;
+    float: left;
 }
 
 .send-button .arrow {
@@ -599,8 +590,9 @@ input[type=text] {
     width: 18px;
     height: 14px;
     background-size: contain;
-    position: absolute;
+    position: relative;
+    float: left;
     top: 13px;
     left: 12px;
     background-repeat: no-repeat;
-}*/
+}

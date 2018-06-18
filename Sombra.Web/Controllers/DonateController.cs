@@ -8,6 +8,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Sombra.Messaging.Requests.Donate;
 using Sombra.Web.Infrastructure.Messaging;
+using Sombra.Web.ViewModels;
 using Sombra.Web.ViewModels.Donate;
 
 namespace Sombra.Web.Controllers
@@ -24,9 +25,13 @@ namespace Sombra.Web.Controllers
         }
 
         [HttpGet("doneren")]
-        public IActionResult Index()
+        public IActionResult Index(SubdomainViewModel query)
         {
-            return View(new DonateViewModel());
+            var model = new DonateViewModel
+            {
+                Subdomain = query.Subdomain
+            };
+            return View(model);
         }
 
         [HttpPost("doneren")]
@@ -40,9 +45,11 @@ namespace Sombra.Web.Controllers
             if(!request.IsAnonymous){
                 if(HttpContext.User.Claims.Any(c => c.Type == ClaimTypes.Sid)){
                     request.UserKey = Guid.Parse(HttpContext.User.Claims.Single(c => c.Type == ClaimTypes.Sid).Value);
-                } else {
+                }
+                else
+                {
                     request.UserKey = null;
-                }                
+                }
             }
             var response = await _bus.RequestAsync(request);
             if(response.IsRequestSuccessful){

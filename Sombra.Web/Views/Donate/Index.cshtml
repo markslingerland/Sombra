@@ -12,6 +12,7 @@
     <script>
         var charitiesUrl = '@Html.BaseUrl(Url.Action("GetCharities", "Donate"))';
         var charityActionsUrl = '@Html.BaseUrl(Url.Action("GetCharityActions", "Donate"))';
+        var subdomain = '@Model.Subdomain';
     </script>
     <script src="~/js/donate.js"></script>
 }

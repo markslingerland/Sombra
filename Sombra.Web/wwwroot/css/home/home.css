@@ -535,12 +535,12 @@ text-decoration: underline;
 }
 
 #acties .action-buttons .all-actions, #acties .action-buttons .make-actions {
-width: 199px;
-height: 40px;
-border-radius: 8px;
-display: inline-block;
-position: relative;
-font-size: 19px;
+    width: 199px;
+    height: 40px;
+    border-radius: 8px;
+    display: inline-block;
+    position: relative;
+    font-size: 19px;
 }
 
 #acties .action-buttons .all-actions a , #acties .action-buttons .make-actions a {

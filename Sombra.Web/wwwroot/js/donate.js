@@ -34,7 +34,7 @@ $(document).ready(function() {
 function SetSummary(){
     var donateTo = $('#select-action').val() ? $('#select-action option:selected').text() : $('#select-your-charity option:selected').text();
     $('#summary-donate-to').text(donateTo);
-    $('#summary-amount').text('€' + $('input[name="money"]').val());
+    $('#summary-amount').text('€' + $('input[name="money"]:checked').val());
     $('#summary-period').text($('.payment-options input:checked').closest('.radio-holder').find('.radio-input-tag').text());
 
     $('#summary-iban').text($('#select-your-bank option:selected').text());
@@ -52,8 +52,8 @@ function SetSummary(){
 function PostForm()
 {
     var formData = new FormData();
-    formData.append("DonationType", $('input[name="pay-time"]').val());
-    formData.append("Amount", $('input[name="money"]').val());
+    formData.append("DonationType", $('input[name="pay-time"]:checked').val());
+    formData.append("Amount", $('input[name="money"]:checked').val());
     formData.append("CharityKey", $('#select-your-charity').val());
     formData.append("CharityActionKey", $('#select-action').val());
     formData.append("__RequestVerificationToken", $('input[name="__RequestVerificationToken"]').val());

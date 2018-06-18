@@ -1,24 +1,27 @@
 ﻿@using Sombra.Web.Infrastructure
 @model Sombra.Web.ViewModels.Charity.DonationsViewModel
-<div class="donations-relative">
-    <div class="text-container">
-        <span class="main-text">DEZE WEEK DONEERDE</span> <span class="ammount-people">@Model.NumberOfDonators</span> <span class="main-text">MENSEN TOTAAL</span> <span class="ammount-people">@Model.TotalDonatedAmount.ToFormattedString()</span>
-    </div>
-    <div class="latest-donations-holder">
-        @foreach (var donator in Model.Donations) {
-            <div class="donations-box">
-                <div class="donations-box-inside">
-                    <div class="img-box">
-                        <img class="profile-icon" src="@donator.ProfileImage" />
-                    </div>
-                    <div class="text-box">
-                        <span class="profile-text">@(!string.IsNullOrEmpty(donator.UserName) ? donator.UserName : "Anoniem") doneerde: </span><span class="donations-number">@donator.Amount.ToFormattedString()</span>
-                    </div>
-                    <div class="donation-date">
-                        <span class="date-text">@donator.DateTimeStamp.ToFormattedString()</span>
+@if (Model.Donations.Any())
+{
+    <div class="donations-relative">
+        <div class="text-container">
+            <span class="main-text">DEZE WEEK DONEERDE</span> <span class="ammount-people">@Model.NumberOfDonators</span> <span class="main-text">MENSEN TOTAAL</span> <span class="ammount-people">@Model.TotalDonatedAmount.ToFormattedString()</span>
+        </div>
+        <div class="latest-donations-holder">
+            @foreach (var donator in Model.Donations) {
+                <div class="donations-box">
+                    <div class="donations-box-inside">
+                        <div class="img-box">
+                            <img class="profile-icon" src="@donator.ProfileImage" />
+                        </div>
+                        <div class="text-box">
+                            <span class="profile-text">@(!string.IsNullOrEmpty(donator.UserName) ? donator.UserName : "Anoniem") doneerde: </span><span class="donations-number">@donator.Amount.ToFormattedString()</span>
+                        </div>
+                        <div class="donation-date">
+                            <span class="date-text">@donator.DateTimeStamp.ToFormattedString()</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
     </div>
-</div>
+}

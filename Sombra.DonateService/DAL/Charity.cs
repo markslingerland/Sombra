@@ -11,6 +11,7 @@ namespace Sombra.DonateService.DAL
         public string Slogan { get; set; }
         public string CoverImage { get; set; }
         public string ThankYou { get; set; }
+        public string Url { get; set; }
         public virtual ICollection<CharityAction> ChartityActions{ get; set; }
         public virtual ICollection<CharityDonation> ChartityDonations { get; set; }
     }

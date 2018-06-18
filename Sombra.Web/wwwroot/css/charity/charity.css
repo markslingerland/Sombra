@@ -43,6 +43,7 @@
     display: block;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     position: relative;
     transform: rotate(-18deg);
 }

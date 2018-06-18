@@ -110,6 +110,21 @@
 }
 
 #about .donate-btn {
+    width: 156px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    position: relative;
+}
+
+#about .donateSVG {
+    background-image: url("../../Assets/Doneernubutton.svg");
+    width: 156px;
+    height: 40px;
+    position: absolute;
+}
+
+/*#about .donate-btn {
     border-radius: 8px;
     width: 156px;
     height: 40px;
@@ -127,18 +142,18 @@
     letter-spacing: normal;
     text-align: center;
     position: relative;
-    top: 9px;
+    top: 8px;
     left: 35px;
 }
 
 #about .donate-btn .arrow {
     background-image: url("../../Assets/icons/icon_arrow_white.svg");
-    width: 11px;
-    height: 10px;
+    width: 18px;
+    height: 14px;
     background-size: contain;
-    position: relative;
-    top: 16px;
-    left: 16px;
+    position: absolute;
+    top: 13px;
+    left: 12px;;
     background-repeat: no-repeat;
 }
 
@@ -149,7 +164,7 @@
     left: 0;
     right: 0;
     z-index: 500;
-}
+}*/
 
 #charity-info {
     width: 1109px;

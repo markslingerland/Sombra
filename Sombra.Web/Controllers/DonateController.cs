@@ -89,5 +89,11 @@ namespace Sombra.Web.Controllers
             var charityActions = _mapper.Map<List<CharityAction>>(response.CharityActions);
             return Json(charityActions);
         }
+
+        [HttpGet]
+        public IActionResult Email()
+        {
+            return View("Email");
+        }
     }
 }

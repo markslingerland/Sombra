@@ -84,12 +84,12 @@
 
 #about .about-btn .small-arrow {
     background-image: url("../../Assets/icons/small-arrow-icon.svg");
-    width: 12px;
-    height: 10px;
+    width: 18px;
+    height: 14px;
     background-size: contain;
     position: absolute;
-    top: 15px;
-    left: 16px;
+    top: 13px;
+    left: 12px;
     background-repeat: no-repeat;
 }
 

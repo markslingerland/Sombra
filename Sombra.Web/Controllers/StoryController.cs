@@ -88,5 +88,11 @@ namespace Sombra.Web.Controllers
             var model = _mapper.Map<RelatedStoriesViewModel>(response);
             return PartialView("_RelatedStoriesWrapper", model);
         }
+
+        [HttpGet]
+        public IActionResult Facebook()
+        {
+            return View("Facebook", "Story");
+        }
     }
 }

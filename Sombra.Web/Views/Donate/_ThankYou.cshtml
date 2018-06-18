@@ -34,17 +34,17 @@
     <h3 class="donate-title monster-400">Het is gelukt!</h3>
 </div>
 
-<div class="thank-you-holder" style="background-image: url(@Model.CoverImage)">
+<div onclick="location.href='@Url.Action("Email", "Donate")'" class="thank-you-holder" style="background-image: url(@Model.CoverImage)">
     <div class="dark-gradient">
         <h3 class="monster-800">Bedankt voor je donatie!</h3>
     <p class="source-300">@Model.ThankYou</p>
     </div>
-        </div>
+</div>
 
 <div class="share-social-media">
     <p class="monster-700">DEEL OP SOCIAL MEDIA</p>
     <div class="social-media-icon facebook"></div>
-    <div class="social-media-icon twitter"></div>
+    <div onclick="location.href='https://twitter.com/ikdoneernu'" class="social-media-icon twitter pointer"></div>
     <div class="social-media-icon instagram"></div>
 </div>
 

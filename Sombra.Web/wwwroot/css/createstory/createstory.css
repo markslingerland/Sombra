@@ -559,6 +559,16 @@ input[type=text] {
 }
 
 .send-button {
+    border: hidden;
+    width: 142px;
+    height: 40px;
+    border-radius: 8px;
+    margin-top: 80px;
+    margin-bottom: 60px;
+    background-image: url("../../Assets/Button_verstuur.svg");
+}
+
+/*.send-button {
     width: 142px;
     height: 40px;
     border-radius: 8px;
@@ -580,17 +590,17 @@ input[type=text] {
     letter-spacing: normal;
     text-align: center;
     position: relative;
-    top: 9px;
+    top: 8px;
     left: 35px;
 }
 
 .send-button .arrow {
     background-image: url("../../Assets/icons/icon_arrow_white.svg");
-    width: 11px;
-    height: 10px;
+    width: 18px;
+    height: 14px;
     background-size: contain;
-    position: relative;
-    top: 16px;
-    left: 16px;
+    position: absolute;
+    top: 13px;
+    left: 12px;
     background-repeat: no-repeat;
-}
+}*/

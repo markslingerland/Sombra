@@ -4,7 +4,7 @@
 {
     <div class="donations-relative">
         <div class="text-container">
-            <span class="main-text">DEZE WEEK DONEERDE</span> <span class="ammount-people">@Model.NumberOfDonators</span> <span class="main-text">MENSEN TOTAAL</span> <span class="ammount-people">@Model.TotalDonatedAmount.ToFormattedString()</span>
+            <span class="main-text">DEZE WEEK DONEERDE</span> <span class="ammount-people">@Model.NumberOfDonators</span> <span class="main-text">MENSEN TOTAAL</span> <span class="ammount-people">&euro;@Model.TotalDonatedAmount.ToFormattedString()</span>
         </div>
         <div class="latest-donations-holder">
             @foreach (var donator in Model.Donations) {
@@ -14,7 +14,7 @@
                             <img class="profile-icon" src="@donator.ProfileImage" />
                         </div>
                         <div class="text-box">
-                            <span class="profile-text">@(!string.IsNullOrEmpty(donator.UserName) ? donator.UserName : "Anoniem") doneerde: </span><span class="donations-number">@donator.Amount.ToFormattedString()</span>
+                            <span class="profile-text">@(!string.IsNullOrEmpty(donator.UserName) ? donator.UserName : "Anoniem") doneerde: </span><span class="donations-number">&euro;@donator.Amount.ToFormattedString()</span>
                         </div>
                         <div class="donation-date">
                             <span class="date-text">@donator.DateTimeStamp.ToFormattedString()</span>

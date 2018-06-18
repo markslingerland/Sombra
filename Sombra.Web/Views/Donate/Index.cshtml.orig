@@ -142,10 +142,16 @@
             </div>
 
             <div class="next-step-holder">
+<<<<<<< HEAD
                 <div class="next-step colored-button" id="next-to-section-2">
                     <div class="arrow"></div>
                     <span>Volgende stap</span>
+                </div> 
+=======
+                <div class="next-step">
+                    <a id="next-to-section-2" class="clickable" href="#"></a>
                 </div>
+>>>>>>> master
             </div>
         </section>
 

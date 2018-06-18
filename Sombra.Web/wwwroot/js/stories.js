@@ -5,12 +5,12 @@ $('img').click(function () {
 });
 
 $(document).ready(function () {
-    $('#other-story').load('Story/GetStory');
+    $('#other-story').load(storyUrl);
     Search(1);
 });
 
 function Search(pageNumber) {
-    var url = `Story/GetStories?PageNumber=${pageNumber}`;
+    var url = `${storiesUrl}?PageNumber=${pageNumber}`;
     if (subdomain != '') url += `&Subdomain=${subdomain}`;
     $('#more-stories').load(url);
 }

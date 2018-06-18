@@ -19,8 +19,3 @@ $('.button--previous').on('click', function () {
 $('.button--next').on('click', function () {
     $carousel.flickity('next');
 });
-
-$(document).ready(function () {
-    $('#other-story').load('/Story/GetStory');
-    $('#more-stories').load('/Story/GetRelatedStories');
-});

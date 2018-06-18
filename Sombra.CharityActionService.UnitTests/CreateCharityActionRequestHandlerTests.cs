@@ -35,8 +35,8 @@ namespace Sombra.CharityActionService.UnitTests
                     IBAN = "",
                     Name = "",
                     Description = "0-IBAN",
-                    CoverImage = ""
-
+                    CoverImage = "",
+                    Logo = "Test"
                 };
 
                 using (var context = CharityActionContext.GetInMemoryContext())
@@ -65,6 +65,7 @@ namespace Sombra.CharityActionService.UnitTests
                     Assert.AreEqual(request.Name, context.CharityActions.Single().Name);
                     Assert.AreEqual(request.Description, context.CharityActions.Single().Description);
                     Assert.AreEqual(request.CoverImage, context.CharityActions.Single().CoverImage);
+                    Assert.AreEqual(request.Logo, context.CharityActions.Single().Logo);
                     Assert.IsFalse(context.CharityActions.Single().IsApproved);
                     Assert.IsTrue(response.IsSuccess);
                 }
@@ -93,8 +94,8 @@ namespace Sombra.CharityActionService.UnitTests
                     IBAN = "",
                     Name = "",
                     Description = "0-IBAN",
-                    CoverImage = ""
-
+                    CoverImage = "",
+                    Logo = "test"
                 };
 
                 using (var context = CharityActionContext.GetInMemoryContext())
@@ -145,8 +146,8 @@ namespace Sombra.CharityActionService.UnitTests
                     IBAN = "",
                     Name = "",
                     Description = "0-IBAN",
-                    CoverImage = ""
-
+                    CoverImage = "",
+                    Logo = "Test"
                 };
 
                 using (var context = CharityActionContext.GetInMemoryContext())

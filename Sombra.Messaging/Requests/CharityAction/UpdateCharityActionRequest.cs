@@ -17,6 +17,7 @@ namespace Sombra.Messaging.Requests.CharityAction
         public string CoverImage { get; set; }
         public string ThankYou { get; set; }
         public string UrlComponent { get; set; }
+        public string Logo { get; set; }
 
         public Guid OrganiserUserKey { get; set; }
         public string OrganiserImage { get; set; }

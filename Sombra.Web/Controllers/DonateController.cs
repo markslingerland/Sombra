@@ -25,13 +25,9 @@ namespace Sombra.Web.Controllers
         }
 
         [HttpGet("doneren")]
-        public IActionResult Index(SubdomainViewModel query)
+        public IActionResult Index()
         {
-            var model = new DonateViewModel
-            {
-                Subdomain = query.Subdomain
-            };
-            return View(model);
+            return View("Index");
         }
 
         [HttpPost("doneren")]

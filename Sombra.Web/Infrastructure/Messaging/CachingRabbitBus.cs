@@ -24,6 +24,9 @@ namespace Sombra.Web.Infrastructure.Messaging
         public async Task<TResponse> RequestAsync<TResponse>(IRequest<TResponse> request, CachingOptions options = CachingOptions.None)
             where TResponse : class, IResponse, new()
         {
+            // Caching disabled for Testing purposes
+            options = CachingOptions.SkipCache;
+
             if (options == CachingOptions.SkipCache) return await Bus.RequestAsync(request);
 
             if (request.GetType().GetCustomAttribute(typeof(CachableAttribute)) is CachableAttribute cacheAttribute)

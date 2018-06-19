@@ -36,7 +36,7 @@
         <div class="about-text">
             <h2>@Model.Title</h2>
             <p>@Model.OpeningText</p>
-            <div class="story-image" style="background-image:url(@Model.StoryImage)"></div>
+            <div class="story-image" style="background-image:url(@Model.StoryImage); background-size:cover; background-position:center;"></div>
             <p>@Model.CoreText</p>
             <h1>“@Model.QuoteText”</h1>
             <p>@Model.ConclusionText</p>
@@ -49,7 +49,7 @@
                     @foreach (var image in Model.Images)
                     {
                         <div id="image-slider">
-                            <div class="images" style="background-image:url(@image);"></div>
+                            <div class="images" style="background-image:url(@image); background-size:cover; background-position:center;"></div>
                         </div>
                     }
                 </div>

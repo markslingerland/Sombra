@@ -42,6 +42,7 @@ namespace Sombra.CharityActionService.UnitTests
                         Name = "",
                         Description = "0-IBAN",
                         CoverImage = "",
+                        Logo = "test",
                         Charity = charity
                     };
                     context.UserKeys.Add(user);
@@ -77,6 +78,7 @@ namespace Sombra.CharityActionService.UnitTests
                     Assert.AreEqual(response.CharityAction.Name, context.CharityActions.Single().Name);
                     Assert.AreEqual(response.CharityAction.Description, context.CharityActions.Single().Description);
                     Assert.AreEqual(response.CharityAction.CoverImage, context.CharityActions.Single().CoverImage);
+                    Assert.AreEqual(response.CharityAction.Logo, context.CharityActions.Single().Logo);
                     Assert.IsTrue(response.IsSuccess);
                 }
             }
@@ -114,6 +116,7 @@ namespace Sombra.CharityActionService.UnitTests
                         Name = "",
                         Description = "0-IBAN",
                         CoverImage = "",
+                        Logo = "",
                         Charity = charity
                     };
 

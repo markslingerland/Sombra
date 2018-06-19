@@ -351,6 +351,12 @@
     right: 93px;
     bottom: 0px;
 }
+#the_story .story-btn-holder a{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
 
 #the_story .text_container h3 {
     width: 556px;

@@ -25,7 +25,7 @@ namespace Sombra.IdentityService
             var credential = await _context.Credentials.Include(c => c.User)
                 .FirstOrDefaultAsync(c => c.CredentialType == message.LoginTypeCode && c.Identifier.Equals(message.Identifier, StringComparison.OrdinalIgnoreCase));
 
-            if (credential != null && Encryption.ValidatePassword(message.Secret, credential.Secret))
+            if (credential != null)
             {
                 if (!credential.User.IsActive)
                 {
@@ -37,6 +37,7 @@ namespace Sombra.IdentityService
                     response.UserKey = credential.User.UserKey;
                     response.UserName = credential.User.Name;
                     response.Role = credential.User.Role;
+                    response.EncrytedPassword = credential.Secret;
                 }
             }
             else

@@ -171,7 +171,7 @@ namespace Sombra.Web.Services
 
                 if (changePasswordViewModel.Password == changePasswordViewModel.VerifiedPassword)
                 {
-                    var changePasswordRequest = new ChangePasswordRequest(Core.Encryption.CreateHash(changePasswordViewModel.Password), securityToken);
+                    var changePasswordRequest = new ChangePasswordRequest(Encryption.CreateHash(changePasswordViewModel.Password), securityToken);
                     var response = await _bus.RequestAsync(changePasswordRequest);
                     return response.IsSuccess;
                 }

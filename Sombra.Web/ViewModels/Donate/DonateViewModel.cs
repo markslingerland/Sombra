@@ -3,7 +3,7 @@ using Sombra.Core.Enums;
 
 namespace Sombra.Web.ViewModels.Donate
 {
-    public class DonateViewModel : SubdomainViewModel
+    public class DonateViewModel
     {
         public bool IsAnonymous { get; set; }
         public DonationType DonationType { get; set; }

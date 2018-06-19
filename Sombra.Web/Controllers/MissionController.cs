@@ -4,7 +4,7 @@ namespace Sombra.Web.Controllers
 {
     public class MissionController : Controller
     {
-        [HttpGet]
+        [HttpGet("onze-missie")]
         public IActionResult Index()
         {
             return View();

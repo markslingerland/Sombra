@@ -13,7 +13,7 @@
         var charitiesUrl = '@Html.BaseUrl(Url.Action("GetCharities", "Donate"))';
         var charityActionsUrl = '@Html.BaseUrl(Url.Action("GetCharityActions", "Donate"))';
         var urlParts = window.location.href.split('.');
-        var subdomain = urlParts > 2 ? urlParts[0].match(/\/\/(.*)/)[1] : '';
+        var subdomain = urlParts.length > 2 ? urlParts[0].match(/\/\/(.*)/)[1] : '';
     </script>
     <script src="~/js/donate.js"></script>
 }

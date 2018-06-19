@@ -9,7 +9,7 @@
     </div>
     
     <div class="charity-btn colored-button">
-        <a href="@($"{Html.SubdomainUrl(Model.Url)}/doneer")"></a>
+        <a href="@($"{Html.SubdomainUrl(Model.Url)}{Url.Action("Index", "Donate")}")"></a>
         <div class="arrow"></div>
         <span>Doneer nu</span>
     </div>

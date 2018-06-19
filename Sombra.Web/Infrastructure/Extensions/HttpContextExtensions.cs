@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System;
+using Microsoft.AspNetCore.Http;
 using Sombra.Web.Infrastructure.Authentication;
 
 namespace Sombra.Web.Infrastructure.Extensions
@@ -7,7 +8,7 @@ namespace Sombra.Web.Infrastructure.Extensions
     {
         private static string _baseUrl;
         private static string _scheme;
-        private static string _host;
+        private static string _host = Environment.GetEnvironmentVariable("WEBSITE_DOMAIN");
 
         public static string GetBaseUrl(this HttpContext context)
         {

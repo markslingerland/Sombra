@@ -175,11 +175,12 @@
     border-bottom-right-radius: 80% 10%;
 }
 .breadcrum {
-    position:absolute;
+    position: absolute;
     display: block;
     height: 28px;
     margin-top: -280px;
-    text-align:left;
+    text-align: left;
+    -webkit-filter: drop-shadow(1px 1px 1px #838383);
 }
 .breadcrum a{
     float:left;

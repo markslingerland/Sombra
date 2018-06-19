@@ -23,6 +23,8 @@
 <div class="header-image" style="background-image:url(@Model.CoverImage)"></div>
 
 <div class="story-container container">
+    <div class="breadcrum"><a href="@Html.HomeUrl()"><div class="home-button"></div></a><img src="~/Assets/icons/icon_arrow_white.svg"><a href="@Html.BaseUrl(Url.Action("Index", "Story"))">Verhalen</a><img src="~/Assets/icons/icon_arrow_white.svg"><p>@Model.Title</p></div>
+
     @*Profile picture*@
     <div class="story-logo">
         <div class="story-logo-container">
@@ -41,7 +43,7 @@
             <h1>“@Model.QuoteText”</h1>
             <p>@Model.ConclusionText</p>
         </div>
-        
+
         @if (Model.Images.Any())
         {
             <div class="slide-container">

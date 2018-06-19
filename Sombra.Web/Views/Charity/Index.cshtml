@@ -35,6 +35,8 @@
 <div class="header-image" style="background-image:url(@Model.CoverImage)"></div>
 
 <div class="charity-container container">
+    <div class="breadcrum"><a href="@Html.HomeUrl()"><div class="home-button"></div></a><img src="~/Assets/icons/icon_arrow_white.svg"><a href="@Html.BaseUrl(Url.Action("Search", "Charity"))">Goede Doelen</a><img src="~/Assets/icons/icon_arrow_white.svg"><p>@Model.Name</p></div>
+
     @foreach (var category in Model.Category.GetIndividualFlags().Where(f => (Category)f != 0))
     {
         <div class="category">@category.GetDisplayName().ToUpper()</div>

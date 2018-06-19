@@ -174,6 +174,68 @@
     border-bottom-left-radius: 80% 10%;
     border-bottom-right-radius: 80% 10%;
 }
+.breadcrum {
+    position: absolute;
+    display: block;
+    height: 28px;
+    margin-top: -280px;
+    text-align: left;
+    -webkit-filter: drop-shadow(1px 1px 1px #838383);
+}
+.breadcrum a{
+    float:left;
+    height: 28px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    color: #ffffff;
+}
+    .breadcrum a:hover {
+        color:  #fda23f;
+    }
+
+.breadcrum p {
+    float: left;
+    height: 28px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    text-decoration: underline;
+    color: #ffffff;
+}
+.breadcrum img {
+    float: left;
+    height: 13px;
+    margin-top:8px;
+    margin-left: 17px;
+    margin-right: 17px;
+}
+
+.breadcrum .home-button {
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-top: 6px;
+    margin-right: 0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100%;
+    -webkit-mask-image: url(../../Assets/icons/Icon_kruimelnav.svg);
+    background-color: white;
+}
+
+.breadcrum .home-button:hover {
+    background-color: #fda23f;
+}
 
 .main-storyboard {
     display: block;
@@ -222,20 +284,6 @@
 }
 
 .kvk_ambi {
-    font-family: 'Source Sans Pro', sans-serif;
-    float: right;
-    margin-right: 18px;
-    margin-top: 2%;
-    font-size: 14px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    display: inline-block;
-    color: #838383;
-}
-.kvk_ambi:last-child {
     font-family: 'Source Sans Pro', sans-serif;
     float: right;
     margin-right: 26px;
@@ -304,6 +352,12 @@
     right: 93px;
     bottom: 0px;
 }
+#the_story .story-btn-holder a{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
 
 #the_story .text_container h3 {
     width: 556px;

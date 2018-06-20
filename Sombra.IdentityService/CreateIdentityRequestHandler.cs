@@ -11,7 +11,7 @@ using CredentialType = Sombra.Core.Enums.CredentialType;
 
 namespace Sombra.IdentityService
 {
-    public class CreateIdentityRequestHandler : IAsyncRequestHandler<CreateIdentityRequest, CreateIdentityResponse>
+    public class CreateIdentityRequestHandler : AsyncCrudRequestHandler<CreateIdentityRequest, CreateIdentityResponse>
     {
         private readonly AuthenticationContext _context;
 
@@ -20,21 +20,15 @@ namespace Sombra.IdentityService
             _context = context;
         }
 
-        public async Task<CreateIdentityResponse> Handle(CreateIdentityRequest message)
+        public override async Task<CreateIdentityResponse> Handle(CreateIdentityRequest message)
         {
-            if (message.UserKey == default) return new CreateIdentityResponse
-            {
-                ErrorType = ErrorType.InvalidKey
-            };
+            if (message.UserKey == default) return Error(ErrorType.InvalidKey);
 
             if (message.CredentialType == CredentialType.Email)
             {
                 if (await _context.Credentials.AnyAsync(c => c.CredentialType == CredentialType.Email && c.Identifier.Equals(message.Identifier, StringComparison.OrdinalIgnoreCase)))
                 {
-                    return new CreateIdentityResponse
-                    {
-                        ErrorType = ErrorType.EmailExists
-                    };
+                    return Error(ErrorType.EmailExists);
                 }
             }
 

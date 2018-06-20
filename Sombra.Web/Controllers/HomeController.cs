@@ -77,6 +77,12 @@ namespace Sombra.Web.Controllers
             return PartialView("_Story", model);
         }
 
+        [HttpGet("acties")]
+        public IActionResult CharityActions()
+        {
+            return View("CharityActions");
+        }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

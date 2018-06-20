@@ -12,6 +12,7 @@
 
 @section Scripts {
     <script>
+        $('#header-verhalen').addClass('selected');
         var subdomain = '@Model.Subdomain';
         var storyUrl = '@Html.BaseUrl(Url.Action("GetStory", "Story"))';
         var storiesUrl = '@Html.BaseUrl(Url.Action("GetStories", "Story"))';

@@ -597,160 +597,100 @@ input[type=text] {
     background-repeat: no-repeat;
 }
 
-/* CHeckbox  */
-
-.category-checkbox-holder {
-    /* float: right; */
-  }
-  .category-dropdown-holder {
-   /* width: 255px; */
-   /* float: right; */
-   position: relative;
-  }
-  
-  .category-dropdown {
+.select-charity {
     width: 790px;
     margin: auto;
-    height: 50px;
-    border-radius: 8px;
-    border: solid 1px #b1b1b1;
     position: relative;
-    cursor: pointer;
+    height: 50px;
     margin-top: 10px;
-    
-  }
-  
-  .category-dropdown p {
-   font-style: italic;
-   font-stretch: normal;
-   line-height: normal;
-   text-align: left;
-   width: 100%;
-   padding-top: 14px;
-   letter-spacing: normal;
-   opacity: 0.5;
-   color: #838383;
-   font-size: 18px;
-   padding-left: 20px;
-  }
-  
-  .category-dropdown i {
-   position: absolute;
-   top: 20px;
-   right: 21px;
-   color: #f88356;
-  }
-  
-  .category-dropdown-clicked {
-   border-bottom: none;
-   border-bottom-left-radius: 0;
-   border-bottom-right-radius: 0;
-  }
-  
-  .checkbox-dropdown {
-    width: 790px;
-    position: absolute;
-    left: 159px;
-    top: 42px;
-    border-left: solid 1px #b1b1b1;
     border-radius: 8px;
     border: solid 1px #b1b1b1;
-    border-top: none;
+  }
+  .select-charity .chevron {
+    background-image: url(../../Assets/icons/stroke-down.svg);
+    width: 18px;
+    height: 10px;
+    transform: rotate(-270deg);
+    position: absolute;
+    right: 18px;
+    top: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(0deg);
+  }
+  
+  .select-action {
+     display: none;
+     margin-top: 10px;
+  }
+  
+  .select-charity .selectize-control {
+    position: absolute;
+      top: 12px;
+      padding-left: 20px;
+      width: 100%;
+      font-size: 18px;
+      font-weight: 300;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #838383;
+      font-family: 'Source Sans Pro', sans-serif;
+  }
+  
+  
+  .select-charity .selectize-input input {
+   width: 80%!important;
+   border: none;
+   outline: none;
+  }
+  
+  .select-charity .selectize-input input::placeholder  {
+   font-style: italic;
+   }
+  
+  .select-charity .selectize-control .selectize-dropdown {
+    top: 27px!important;
+    border-radius: 8px;
+    width: 790px;
+    z-index: 200;
+    position: absolute;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    z-index: 201;
-    display: none;
+    left: -1px!important;
+    border-right: solid 1px #b1b1b1;
+    border-left: solid 1px #b1b1b1;
+    border-bottom: solid 1px #b1b1b1;
     background-color: white;
   }
+
+  .select-charity .selectize-input input::placeholder  {
+    font-style: italic;
+    opacity: 0.5;
+    }
+   
   
-  .checkbox-item p{
-   font-size: 14px;
-   font-style: normal;
-   font-stretch: normal;
-   line-height: 2.5;
-   letter-spacing: normal;
-   color: #838383;
-   text-align: left;
-   padding-left: 19px;
+  .select-charity .option {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
   }
   
-  .checkbox-dropdown label {
-   text-align: left;
-   font-style: normal;
-   font-stretch: normal;
-   line-height: 2.5;
-   letter-spacing: normal;
-   color: #838383;
-   font-size: 14px;
-   padding-top: 3px;
+  .select-charity .option:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
   }
   
-  .checkbo-container {
-   position: relative;
-   width: 100%;
-   padding-left: 19px;
-   cursor: pointer;
-   font-size: 22px;
-   -webkit-user-select: none;
-   -moz-user-select: none;
-   -ms-user-select: none;
-   user-select: none;
-   transition-duration: 0.25s;
+  .select-charity .option:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
   
-  .checkbo-container:hover {
-   background-color: #EAEAEA;
+  .select-charity .option:hover {
+    background-color: #EAEAEA;
   }
   
-  
-  /* Hide the browser's default checkbox */
-  .checkbo-container input {
-   position: absolute;
-   opacity: 0;
-   cursor: pointer;
-  }
-  
-  /* Create a custom checkbox */
-  .checkmark {
-   position: absolute;
-   top: 8px;
-   right: 11px;
-   height: 25px;
-   width: 25px;
-   /* background-color: #eee; */
-  }
-  
-  /* On mouse-over, add a grey background color */
-  .checkbo-container:hover input ~ .checkmark {
-   /* background-color: #ccc; */
-  }
-  
-  /* When the checkbox is checked, add a blue background */
-  .checkbo-container input:checked ~ .checkmark {
-   /* background-color: #2196F3; */
-  }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-   content: "";
-   position: absolute;
-   display: none;
-  }
-  
-  /* Show the checkmark when checked */
-  .checkbo-container input:checked ~ .checkmark:after {
-   display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .checkbo-container .checkmark:after {
-   left: 9px;
-   top: 5px;
-   width: 6px;
-   height: 13px;
-   border: solid #b8e986;
-   border-width: 0px 2px 2px 0px;
-   -webkit-transform: rotate(45deg);
-   -ms-transform: rotate(45deg);
-   transform: rotate(45deg);
+  .select-charity .selectize-dropdown-content {
+    /* padding-left: 15px; */
   }

@@ -48,27 +48,12 @@
         <div id="about">
             <div class="about-text">
                 <div class="title-container"><input class="title" type="text" id="fname" name="title" placeholder="Titel van jouw verhaal"></div>
-                <div class="category-checkbox-holder">
-
-            <div class="category-dropdown-holder">
-                <div class="category-dropdown">
-                    <p class="source-400">Selecteer categorieën voor het goede doel…</p>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="checkbox-dropdown">
-                    @foreach (var category in typeof(Category).GetFlagValues<Category>().Where(v => (int)v != 0))
-                    {
-                        <div>
-                            <label class="checkbo-container monster-300" data-category-id="@((int)category)">
-                                @category.GetDisplayName()
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    }
-                </div>
+                <div class="select-charity">
+                <div class="chevron"></div>
+                <select id="select-your-charity" name="new-charity" form="form-donate" required>
+                    <option></option>
+                </select>
             </div>
-        </div>
                 <div class="storypart-1-container"><textarea class="story" type="text" id="fname" name="story-part-1" placeholder="Typ hier de inleiding van jouw verhaal"></textarea></div>
                 <div class="story-image" id="story-image">
                     <input class="image-import" type="file" id="file" name="main-image" accept="image/*" />

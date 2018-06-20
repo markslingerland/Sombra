@@ -98,3 +98,26 @@ $('.category-dropdown').click(function(){
      $(this).prop('checked', false);
     }
  });
+ 
+
+ $('#select-your-charity').selectize({
+    sortField: 'text',
+    maxItems: 1,
+    create: false,
+    valueField: 'id',
+    labelField: 'title',
+    searchField: 'title',
+    placeholder: "BANK",
+    options: [
+        { id: 1, title: 'ABNA', url: 'http://en.wikipedia.org/wiki/Spectrometers' },
+        { id: 2, title: 'ASNB', url: 'http://en.wikipedia.org/wiki/Star_chart' },
+        { id: 3, title: 'BUNQ', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
+        { id: 4, title: 'FTSB', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
+        { id: 5, title: 'INGB', url: 'http://en.wikipedia.org/wiki/Star_chart' },
+        { id: 6, title: 'KNAB', url: 'http://en.wikipedia.org/wiki/Spectrometers' },
+        { id: 7, title: 'RABO', url: 'http://en.wikipedia.org/wiki/Star_chart' },
+        { id: 8, title: 'SNSB', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
+        { id: 9, title: 'TRIO', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
+        { id: 10, title: 'FVLB', url: 'http://en.wikipedia.org/wiki/Electrical_tape' }
+    ]
+});

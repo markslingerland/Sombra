@@ -188,7 +188,7 @@ $(".third-section").click(function(){
     $(".section-02").hide();
 });
 
-$(".section-02 #go-back").click(function(){
+$(".section-02 #go-back, .section-02 #edit").click(function(){
     $(".section-03").hide();
     $(".section-01").show();
     $(".section-02").hide();

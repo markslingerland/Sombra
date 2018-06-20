@@ -4,7 +4,7 @@
 {
     <div class="donations-relative">
         <div class="text-container">
-            <span class="main-text">DEZE WEEK DONEERDE</span> <span class="ammount-people">@Model.NumberOfDonators</span> <span class="main-text">MENSEN TOTAAL</span> <span class="ammount-people">&euro;@Model.TotalDonatedAmount.ToFormattedString()</span>
+            <span class="main-text">DEZE WEEK DONEERDE@(Model.NumberOfDonators == 1 ? "" : "N")</span> <span class="donation-big-number amount-people">@Model.NumberOfDonators</span> <span class="main-text">@(Model.NumberOfDonators == 1 ? "PERSOON" : "MENSEN") TOTAAL</span> <span class="donation-big-number amount-total">&euro;@Model.TotalDonatedAmount.ToFormattedString()</span>
         </div>
         <div class="latest-donations-holder">
             @foreach (var donator in Model.Donations) {

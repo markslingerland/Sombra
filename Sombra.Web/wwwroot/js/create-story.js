@@ -78,3 +78,23 @@
         }
     }
 });
+
+$('.category-dropdown').click(function(){
+    if ($('.checkbox-dropdown').hasClass("shown")) {
+     $('.checkbox-dropdown').hide();
+     $('.checkbox-dropdown').removeClass("shown");
+     $('.category-dropdown').removeClass("category-dropdown-clicked");
+ 
+    } else {
+     $('.checkbox-dropdown').show();
+     $('.checkbox-dropdown').addClass("shown");
+     $('.category-dropdown').addClass("category-dropdown-clicked");
+    }
+ });
+
+ let limitChecks = 2;
+ $('.checkbox-dropdown').on('change', 'input[type="checkbox"]', function(evt) {
+    if($(this).closest('.checkbox-dropdown').find(':checked').length > limitChecks) {
+     $(this).prop('checked', false);
+    }
+ });

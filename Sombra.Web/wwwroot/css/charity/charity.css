@@ -488,7 +488,7 @@
     bottom: 10px;
 }
 
-.ammount-people {
+.donation-big-number {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 40px;
     font-weight: 300;
@@ -499,6 +499,15 @@
     text-align: center;
     color: #838383;
     vertical-align: middle;
+}
+
+.amount-people {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.amount-total {
+    margin-left: 12px;
 }
 
 .numbers {

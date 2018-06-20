@@ -12,6 +12,7 @@
     <link rel="stylesheet" media="screen and (max-width: 768px)" href="~/css/charity/mobile.css" /> }
 @section Scripts {
     <script>
+        $('#header-goede-doelen').addClass('selected');
         $(document).ready(function() {
             $('#the_story').load('@Html.BaseUrl(Url.Action("GetCharityStory", "Charity", new { CharityKey = Model.CharityKey.ToString() }))');
             $('#donations').load('@Html.BaseUrl(Url.Action("GetCharityDonations", "Charity", new {CharityKey = Model.CharityKey.ToString()}))');
@@ -28,7 +29,7 @@
                     var $cellButtonGroup = $('.button-group--cells');
                     var $cellButtons = $cellButtonGroup.find('.button');
                 });
-            });
+        });
     </script>
 }
 

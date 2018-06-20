@@ -27,10 +27,10 @@
             <div class="header-big-menu">
                 <ul class="monster-200">
 
-                    <li><a href="@Html.BaseUrl(Url.Action("Search", "Charity"))">Goede doelen</a></li>
-                    <li><a href="#">Acties</a></li>
-                    <li><a href="@Html.BaseUrl(Url.Action("Index", "Story"))">Verhalen</a></li>
-                    <li><a href="@Html.BaseUrl(Url.Action("Index", "Mission"))">Onze missie</a></li>
+                    <li><a href="@Html.BaseUrl(Url.Action("Search", "Charity"))" id="header-goede-doelen">Goede doelen</a></li>
+                    <li><a href="@Html.BaseUrl(Url.Action("CharityActions", "Home"))" id="header-acties">Acties</a></li>
+                    <li><a href="@Html.BaseUrl(Url.Action("Index", "Story"))" id="header-verhalen">Verhalen</a></li>
+                    <li><a href="@Html.BaseUrl(Url.Action("Index", "Mission"))" id="header-missie">Onze missie</a></li>
                 </ul>
             </div>
 
@@ -68,7 +68,7 @@
                             <ul>
                                 <li><label><span>Ik Doneer Nu</span></label></li>
                                 <li><a href="@Html.BaseUrl(Url.Action("Search", "Charity"))">Goede doelen</a></li>
-                                <li><a href="#">Acties</a></li>
+                                <li><a href="@Html.BaseUrl(Url.Action("CharityActions", "Home"))">Acties</a></li>
                                 <li><a href="@Html.BaseUrl(Url.Action("Index", "Story"))">Verhalen</a></li>
                                 <li><a href="@Html.BaseUrl(Url.Action("Index", "Mission"))">Onze missie</a></li>
                                 <li><a href="#">Contact</a></li>
@@ -90,7 +90,7 @@
                         <div>
                             <ul>
                                 <li><label><span>Over doneren</span></label></li>
-                                <li><a href="#">ANBI-certificaat</a></li>
+                                <li><a href="#">ANBI</a></li>
                                 <li><a href="#">Belasting</a></li>
                                 <li><a href="#">Betalingen</a></li>
                                 <li><label><a href="@Html.BaseUrl(Url.Action("Index", "Donate"))">Doneer nu</a></label></li>

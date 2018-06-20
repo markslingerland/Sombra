@@ -156,6 +156,7 @@ $('#button-toSection-2').click(function(){
         $('.section-02').show();
         $('.section-03').hide();
         $(".error-message").css("display", "none");
+        setSummary();
     } else {
         $(".error-message").css("display", "inline-block");
     }
@@ -178,6 +179,7 @@ $(".second-section").click(function(){
     $(".section-02").show();
     $(".section-01").hide();
     $(".section-03").hide();
+    setSummary();
 });
 
 $(".third-section").click(function(){
@@ -211,3 +213,28 @@ $('.checkbox-dropdown').on('change', 'input[type="checkbox"]', function(evt) {
     $(this).prop('checked', false);
    }
 });
+
+
+let setSummary = function (){
+
+    $("#signUpCharity-name span").text($("#name-charity").val());
+
+    var categories = $('.checkbox-dropdown label:has(input[type="checkbox"]:checked)').map(function () {
+        return $(this).text().trim();
+    }).toArray().join(', ');
+
+    $("#signUpCharity-categories span").text(categories);
+    $("#signUpCharity-kvk span").text($("#kvk-number").val());
+
+    let ibanfirstNumber = $("#first-numbers").val();
+    let bank = $('#select-your-bank option:selected').text();
+    let ibanlastNumber = $("#last-numbers").val();
+
+    $("#signUpCharity-Iban span").text(ibanfirstNumber + bank + ibanlastNumber);
+
+    $("#signUpCharity-rekening span").text($("#card-holder").val());
+    $("#signUpCharity-contact span").text($("#name-contact").val());
+    $("#signUpCharity-mail span").text($("#email").val());
+
+
+}

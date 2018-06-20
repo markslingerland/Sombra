@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Sombra.Messaging.Requests.Story;
-using Sombra.Web.Infrastructure;
 using Sombra.Web.Infrastructure.Messaging;
 using Sombra.Web.ViewModels;
 using Sombra.Web.ViewModels.Story;

@@ -123,6 +123,9 @@ body {
     font-size: 18px;
 }
 
+#header .header-big-menu li a.selected {
+    font-weight: 700;
+}
 
 #header .header-icon-menu .icon-search {
     color: #fda23f;

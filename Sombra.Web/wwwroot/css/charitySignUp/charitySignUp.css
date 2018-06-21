@@ -868,17 +868,20 @@ padding-left: 35px;
 }
 
 .category-dropdown p {
- font-style: italic;
  font-stretch: normal;
  line-height: normal;
  text-align: left;
  width: 100%;
  padding-top: 14px;
  letter-spacing: normal;
- opacity: 0.5;
  color: #838383;
  font-size: 18px;
  padding-left: 20px;
+}
+
+.category-dropdown p.placeholder {
+    font-style: italic;
+    opacity: 0.5;
 }
 
 .category-dropdown i {

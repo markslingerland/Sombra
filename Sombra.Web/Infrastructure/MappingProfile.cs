@@ -173,6 +173,10 @@ namespace Sombra.Web.Infrastructure
             CreateMap<GetRandomStoriesResponse, RelatedStoriesViewModel>()
                 .ForMember(d => d.Stories, opt => opt.MapFrom(s => s.Results));
             CreateMap<Story, RelatedStoryViewModel>();
+
+            CreateMap<KeyNamePair, ViewModels.Dashboard.Charity>()
+                .ForMember(d => d.CharityKey, opt => opt.MapFrom(s => s.Key));
+
         }
     }
 }

@@ -1,3 +1,6 @@
+@using Sombra.Core.Enums;
+@using Sombra.Web.Infrastructure.Extensions
+
 @section Title{
     Dashboard
 }
@@ -72,7 +75,7 @@
 <div id="all-elements-container" class="container">
     <div class="row">
         <div class="col-md-12">
-            <a class="go-back-link" href="#">
+            <a class="go-back-link" href="@Html.HomeUrl()">
                 <span>
                     <img class="go-back-icon" src="~/Assets/dashboard/Icon_arrow-back.svg">
                 </span>

@@ -672,7 +672,6 @@
 }
 .insta-column img{
     float: left;
-    width: 255px;
     height: 255px;
     border-radius: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);

@@ -286,16 +286,15 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 }
 
 /* Selection 1 */
-
 .select-charity {
-  width: 630px;
-  position: relative;
-  margin-left: 190px;
-  height: 50px;
-  margin-top: 35px;
-  border-radius: 8px;
-  border: solid 1px #b1b1b1;
-  display: none;
+    width: 630px;
+    position: relative;
+    margin-left: 190px;
+    height: 50px;
+    margin-top: 35px;
+    border-radius: 8px;
+    border: solid 1px #b1b1b1;
+    display: none;
 }
 
 .select-action {
@@ -331,11 +330,10 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
 
 .select-charity .selectize-control .selectize-dropdown {
   top: 36px!important;
-  border-radius: 8px;
   width: 630px!important;
   z-index: 200;
   position: absolute;
-  left: -2px!important;
+  left: -1px!important;
   border: solid 1px #b1b1b1;
   background-color: white;
 }
@@ -345,23 +343,19 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   padding-bottom: 10px;
   padding-left: 20px;
 }
-
-.select-charity .option:first-child {
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  
+.select-charity .option:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
-.select-charity .option:last-child {
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+.select-charity:focus-within {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .select-charity .option:hover {
   background-color: #EAEAEA;
-}
-
-.select-charity .selectize-dropdown-content {
-  /* padding-left: 15px; */
 }
 
 .section-1-choose-amount {
@@ -520,6 +514,11 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   margin-left: 180px;
 }
 
+.select-bank:focus-within {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
 .select-bank .chevron {
   background-image: url(../../Assets/icons/stroke-down.svg);
   width: 18px;
@@ -531,6 +530,7 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   background-size: contain;
   background-repeat: no-repeat;
   transform: rotate(0deg);
+  border-radius: 8px;
 }
 
 .select-bank .option:hover {
@@ -542,14 +542,17 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
   }
 
   .select-bank .selectize-control .selectize-dropdown {
-    top: 40px!important;
-    border-radius: 8px;
     width: 630px!important;
-    z-index: 200;
-    position: absolute;
-    left: -2px!important;
     border: solid 1px #b1b1b1;
     background-color: white;
+    top: 36px!important;
+    z-index: 200;
+    position: absolute;
+    left: -16px!important;
+    border: solid 1px #b1b1b1;
+    background-color: white;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
   
   .select-bank .option {
@@ -557,30 +560,22 @@ section:nth-child(2), section:nth-child(3), section:nth-child(4){
     padding-bottom: 10px;
     padding-left: 20px;
   }
-  
-  .select-bank .option:first-child {
-    margin-top: 10px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-  }
-  
-  .select-bank .option:last-child {
-    margin-bottom: 10px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
 
 .select-bank {
-  /* position: absolute; */
+    /* position: absolute; */
     margin-top: 35px;
-    margin-left: 187px;
+    margin-left: 186px;
     width: 630px;
     height: 50px;
-    border-radius: 8px;
     border: solid 1px #b1b1b1;
     position: relative;
     display: none;
+    border-radius: 8px;
+}
 
+.select-bank .option:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 .select-bank .selectize-control {
@@ -604,20 +599,6 @@ font-family: 'Source Sans Pro', sans-serif;
   outline: none;
 }
 
-.select-bank .selectize-control .selectize-dropdown {
-  top: 36px!important;
-  border-radius: 8px;
-  z-index: 200;
-  position: absolute;
-  left: -15px!important;
-  border: solid 1px #b1b1b1;
-  background-color: white;
-}
-
-.select-bank .selectize-dropdown-content {
-padding-left: 15px;
-}
-
 .your-iban-holder {
     margin-top: 35px;
     margin-left: 187px;
@@ -627,7 +608,6 @@ padding-left: 15px;
     border: solid 1px #b1b1b1;
     position: relative;
     display: none;
-
 }
 
 .email-input-holder {

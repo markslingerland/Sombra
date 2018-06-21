@@ -847,24 +847,19 @@ padding-left: 35px;
 
 /* CHeckbox  */
 
-.category-checkbox-holder {
-  /* float: right; */
-}
 .category-dropdown-holder {
- /* width: 255px; */
- /* float: right; */
- position: relative;
+    width: 630px;
+    position: relative;
+    margin-top: 10px;
+    margin-left: 219px;
 }
 
 .category-dropdown {
-  width: 630px;
   height: 50px;
   border-radius: 8px;
   border: solid 1px #b1b1b1;
   position: relative;
   cursor: pointer;
-  margin-top: 10px;
-  margin-left: 219px;
 }
 
 .category-dropdown p {
@@ -900,7 +895,6 @@ padding-left: 35px;
 .checkbox-dropdown {
   width: 630px;
   position: absolute;
-  left: 219px;
   top: 50px;
   border-left: solid 1px #b1b1b1;
   border-radius: 8px;

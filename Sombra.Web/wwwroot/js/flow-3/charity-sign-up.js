@@ -246,4 +246,10 @@ let getDropdownResults = function () {
 
     $("#results-dropdown").text(categories);
     $("#results-dropdown").css("opacity", "1", "font-style", "normal");
+
+    if (categories == "") {
+        $("#results-dropdown").text("Selecteer categorieën voor het goede doel…");
+        $("#results-dropdown").css("opacity", "0.5", "font-style", "italic");
+    }
+
 }

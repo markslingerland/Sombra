@@ -651,9 +651,9 @@ input[type=text] {
    }
   
   .select-charity .selectize-control .selectize-dropdown {
-    top: 27px!important;
+    top: 27px !important;
     border-radius: 8px;
-    width: 790px;
+    width: 790px !important;
     z-index: 200;
     position: absolute;
     border-top-left-radius: 0;
@@ -689,8 +689,4 @@ input[type=text] {
   
   .select-charity .option:hover {
     background-color: #EAEAEA;
-  }
-  
-  .select-charity .selectize-dropdown-content {
-    /* padding-left: 15px; */
   }

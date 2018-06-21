@@ -11,6 +11,9 @@
     <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
 }
 @section Scripts {
+    <script>
+        var charitiesUrl = '@Html.BaseUrl(Url.Action("GetCharities", "Dashboard"))';
+    </script>
     <script src="~/js/create-story.js"></script>
 }
 <form action="" id="">

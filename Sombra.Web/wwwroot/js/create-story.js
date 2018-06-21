@@ -1,4 +1,4 @@
-﻿$("document").ready(function () {
+﻿$(document).ready(function () {
     document.getElementById('file-header').addEventListener('change', headerPic, true);
     document.getElementById('file-profile-picute').addEventListener('change', profilePic, true);
     document.getElementById('file').addEventListener('change', mainPic, true);
@@ -77,47 +77,21 @@
             reader.readAsDataURL(file);
         }
     }
-});
 
-$('.category-dropdown').click(function(){
-    if ($('.checkbox-dropdown').hasClass("shown")) {
-     $('.checkbox-dropdown').hide();
-     $('.checkbox-dropdown').removeClass("shown");
-     $('.category-dropdown').removeClass("category-dropdown-clicked");
- 
-    } else {
-     $('.checkbox-dropdown').show();
-     $('.checkbox-dropdown').addClass("shown");
-     $('.category-dropdown').addClass("category-dropdown-clicked");
-    }
- });
+    $.get(charitiesUrl, function(data) {
+        var dropdownContent = $('#select-your-charity');
+        $.each(data, function (index, value) {
+            dropdownContent.append(`<option value="${value.charityKey}">${value.name}</option>`);
+        });
 
- let limitChecks = 2;
- $('.checkbox-dropdown').on('change', 'input[type="checkbox"]', function(evt) {
-    if($(this).closest('.checkbox-dropdown').find(':checked').length > limitChecks) {
-     $(this).prop('checked', false);
-    }
- });
- 
-
- $('#select-your-charity').selectize({
-    sortField: 'text',
-    maxItems: 1,
-    create: false,
-    valueField: 'id',
-    labelField: 'title',
-    searchField: 'title',
-    placeholder: "BANK",
-    options: [
-        { id: 1, title: 'ABNA', url: 'http://en.wikipedia.org/wiki/Spectrometers' },
-        { id: 2, title: 'ASNB', url: 'http://en.wikipedia.org/wiki/Star_chart' },
-        { id: 3, title: 'BUNQ', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
-        { id: 4, title: 'FTSB', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
-        { id: 5, title: 'INGB', url: 'http://en.wikipedia.org/wiki/Star_chart' },
-        { id: 6, title: 'KNAB', url: 'http://en.wikipedia.org/wiki/Spectrometers' },
-        { id: 7, title: 'RABO', url: 'http://en.wikipedia.org/wiki/Star_chart' },
-        { id: 8, title: 'SNSB', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
-        { id: 9, title: 'TRIO', url: 'http://en.wikipedia.org/wiki/Electrical_tape' },
-        { id: 10, title: 'FVLB', url: 'http://en.wikipedia.org/wiki/Electrical_tape' }
-    ]
+        $('#select-your-charity').selectize({
+            sortField: 'text',
+            maxItems: 1,
+            create: false,
+            valueField: 'id',
+            labelField: 'title',
+            searchField: 'title',
+            placeholder: "Naam van het goede doel..."
+        });
+    });
 });

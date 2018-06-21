@@ -434,12 +434,16 @@ margin-bottom: 30px;
 }
 
 #charity-results .charity-holder .charity-background-image .charity-logo {
-    width: 50%;
-    height: 50%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin: auto;
-    z-index: 10;
+       max-width: 80%;
+       max-height: 50%;
+       background-size: contain;
+       background-repeat: no-repeat;
+       margin: auto;
+       z-index: 10;
+}
+
+#keywords-placeholder {
+    color: #838383;
 }
 
 #charity-results .charity-holder .charity-background-gradient {

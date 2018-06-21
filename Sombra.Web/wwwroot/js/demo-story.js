@@ -10,7 +10,8 @@ $(document).ready(function() {
     $('#label1-box').css('opacity', 0);    
     $('#shape-frame').css('background-image', `url(${"https://i.imgur.com/UxOA0Tj.jpg"})`);
     $('#story-image').css('background-image', `url(${"https://i.imgur.com/9CPkimC.jpg"})`);
-    setTimeout(function (){
-        $('#select-your-charity')[0].selectize.setValue('77b0b03f-4ad9-4939-9057-bc80bf51202a'); 
-      }, 100)
+    setTimeout(function() {
+            $('#select-your-charity')[0].selectize.setValue('77b0b03f-4ad9-4939-9057-bc80bf51202a');
+        },
+        1000);
 });

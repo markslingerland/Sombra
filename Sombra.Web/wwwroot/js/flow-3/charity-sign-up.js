@@ -246,10 +246,4 @@ let getDropdownResults = function () {
 
     $("#results-dropdown").text(categories);
     $("#results-dropdown").css("opacity", "1", "font-style", "normal");
-
 }
-
-
-// var categories = $('.checkbox-dropdown label:has(input[type="checkbox"]:checked)').map(function () {
-//     return $(this).text().trim();
-// }).toArray().join(', ');

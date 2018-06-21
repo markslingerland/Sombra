@@ -442,6 +442,10 @@ margin-bottom: 30px;
     max-width: 70%;
 }
 
+#keywords-placeholder {
+    color: #838383;
+}
+
 #charity-results .charity-holder .charity-background-gradient {
     width: 349px;
     height: 183.5px;

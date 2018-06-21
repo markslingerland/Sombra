@@ -596,3 +596,97 @@ input[type=text] {
     left: 12px;
     background-repeat: no-repeat;
 }
+
+.select-charity {
+    width: 790px;
+    margin: auto;
+    position: relative;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: solid 1px #b1b1b1;
+  }
+  .select-charity .chevron {
+    background-image: url(../../Assets/icons/stroke-down.svg);
+    width: 18px;
+    height: 10px;
+    transform: rotate(-270deg);
+    position: absolute;
+    right: 18px;
+    top: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(0deg);
+  }
+  
+  .select-action {
+     display: none;
+     margin-top: 10px;
+  }
+  
+  .select-charity .selectize-control {
+    position: absolute;
+      top: 12px;
+      padding-left: 20px;
+      width: 100%;
+      font-size: 18px;
+      font-weight: 300;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #838383;
+      font-family: 'Source Sans Pro', sans-serif;
+  }
+  
+  
+  .select-charity .selectize-input input {
+   width: 80%!important;
+   border: none;
+   outline: none;
+  }
+  
+  .select-charity .selectize-input input::placeholder  {
+   font-style: italic;
+   }
+  
+  .select-charity .selectize-control .selectize-dropdown {
+    top: 27px !important;
+    border-radius: 8px;
+    width: 790px !important;
+    z-index: 200;
+    position: absolute;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    left: -1px!important;
+    border-right: solid 1px #b1b1b1;
+    border-left: solid 1px #b1b1b1;
+    border-bottom: solid 1px #b1b1b1;
+    background-color: white;
+  }
+
+  .select-charity .selectize-input input::placeholder  {
+    font-style: italic;
+    opacity: 0.5;
+    }
+   
+  
+  .select-charity .option {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+  }
+  
+  .select-charity .option:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .select-charity .option:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  
+  .select-charity .option:hover {
+    background-color: #EAEAEA;
+  }

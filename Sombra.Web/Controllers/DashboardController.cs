@@ -5,7 +5,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Sombra.Messaging.Requests.Story;
 using Sombra.Web.Infrastructure.Messaging;
-using Sombra.Web.ViewModels.Donate;
+using Sombra.Web.ViewModels.Dashboard;
 
 namespace Sombra.Web.Controllers
 {

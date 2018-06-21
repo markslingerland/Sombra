@@ -1,4 +1,7 @@
-﻿@section Title{
+﻿@using Sombra.Core.Enums
+@using Sombra.Core.Extensions
+@using Sombra.Web.Infrastructure.Extensions
+@section Title{
     Deel jouw verhaal
 }
 
@@ -8,6 +11,9 @@
     <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
 }
 @section Scripts {
+    <script>
+        var charitiesUrl = '@Html.BaseUrl(Url.Action("GetCharities", "Dashboard"))';
+    </script>
     <script src="~/js/create-story.js"></script>
 }
 <form action="" id="">
@@ -45,6 +51,12 @@
         <div id="about">
             <div class="about-text">
                 <div class="title-container"><input class="title" type="text" id="fname" name="title" placeholder="Titel van jouw verhaal"></div>
+                <div class="select-charity">
+                <div class="chevron"></div>
+                <select id="select-your-charity" name="new-charity" form="form-donate" required>
+                    <option></option>
+                </select>
+            </div>
                 <div class="storypart-1-container"><textarea class="story" type="text" id="fname" name="story-part-1" placeholder="Typ hier de inleiding van jouw verhaal"></textarea></div>
                 <div class="story-image" id="story-image">
                     <input class="image-import" type="file" id="file" name="main-image" accept="image/*" />

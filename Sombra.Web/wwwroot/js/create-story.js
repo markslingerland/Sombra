@@ -1,4 +1,4 @@
-﻿$("document").ready(function () {
+﻿$(document).ready(function () {
     document.getElementById('file-header').addEventListener('change', headerPic, true);
     document.getElementById('file-profile-picute').addEventListener('change', profilePic, true);
     document.getElementById('file').addEventListener('change', mainPic, true);
@@ -77,4 +77,21 @@
             reader.readAsDataURL(file);
         }
     }
+
+    $.get(charitiesUrl, function(data) {
+        var dropdownContent = $('#select-your-charity');
+        $.each(data, function (index, value) {
+            dropdownContent.append(`<option value="${value.charityKey}">${value.name}</option>`);
+        });
+
+        $('#select-your-charity').selectize({
+            sortField: 'text',
+            maxItems: 1,
+            create: false,
+            valueField: 'id',
+            labelField: 'title',
+            searchField: 'title',
+            placeholder: "Naam van het goede doel..."
+        });
+    });
 });

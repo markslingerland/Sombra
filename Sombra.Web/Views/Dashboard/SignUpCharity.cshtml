@@ -32,14 +32,14 @@
 
         <div class="big-radio-button">
             <div class="radio-holder">
-                <input type="radio" id="charity" name="your-cause" value="1" checked>
+                <input type="radio" id="charity" name="your-cause" value="goed doel" checked>
                 <label for="charity" class="validatable">
                     <h2 class="source-600 radio-input-tag"> een goed doel</h2>
                 </label>
             </div>
 
             <div class="radio-holder">
-                <input type="radio" id="stichting" name="your-cause" value="2">
+                <input type="radio" id="stichting" name="your-cause" value="stichting">
                 <label for="stichting" class="validatable">
                     <h2 class="source-600 radio-input-tag"> een stichting</h2>
                 </label>
@@ -124,7 +124,7 @@
                 <div class="arrow"></div>
                 <span>Volgende stap</span>
             </div>
-            <p class="error-message monster-300">Oeps, er is iets mis</p>
+            <p class="error-message monster-300">Alle velden zijn verplicht!</p>
         </div>
     </section>
 
@@ -154,19 +154,19 @@
         <a class="closing"><span class="signUp-close"></span><span class="signUp-close"></span></a>
 
         <div class="payment-user-info-holder">
-            <div class="pen-icon second-section">
+            <div id="edit" class="pen-icon second-section">
                 <div class="pen-icon-image"></div>
             </div>
-            <p class="monster-600">Aanmelden van:<span class="monster-300">MS Moves</span></p>
-            <p class="monster-600">Naam:<span class="monster-300">MS Moves</span></p>
-            <p class="monster-600">Categorie(ën):<span class="monster-300">MS Moves</span></p>
-            <p class="monster-600">KvK-nummer:<span class="monster-300">MS Moves</span></p>
+            <p id="signUpCharity-cause" class="monster-600">Aanmelden van:<span class="monster-300">een goed doel</span></p>
+            <p id="signUpCharity-name" class="monster-600">Naam:<span class="monster-300">MS Moves</span></p>
+            <p id="signUpCharity-categories" class="monster-600">Categorie(ën):<span class="monster-300">Gezondheid</span></p>
+            <p id="signUpCharity-kvk" class="monster-600">KvK-nummer:<span class="monster-300">57655367</span></p>
             </br>
-            <p class="monster-600">IBAN:<span class="monster-300">MS Moves</span></p>
-            <p class="monster-600">Naam rekeninghouder:<span class="monster-300">MS Moves</span></p>
+            <p id="signUpCharity-Iban" class="monster-600">IBAN:<span class="monster-300">NL50ABNA0515241350</span></p>
+            <p id="signUpCharity-rekening" class="monster-600">Naam rekeninghouder:<span class="monster-300">Marcel Koeleman</span></p>
             </br>
-            <p class="monster-600">Naam contactpersoon:<span class="monster-300">MS Moves</span></p>
-            <p class="monster-600">E-mailadres:<span class="monster-300">MS Moves</span></p>
+            <p id="signUpCharity-contact" class="monster-600">Naam contactpersoon:<span class="monster-300">Marcel Koeleman</span></p>
+            <p id="signUpCharity-mail" class="monster-600">E-mailadres:<span class="monster-300">moveforms&commat;gmail.com</span></p>
         </div>
 
         <div class="next-step-holder">
@@ -205,8 +205,8 @@
         <p class="request-joining">
             Bedankt voor jouw aanmelding! Leuk dat je je bij ons platform wilt aansluiten.
             <br>
-            De aanmelding is momenteel in behandeling. Wij zullen eerst de gegevens controleren en ophalen voordat je toegang krijgt tot het profiel. In het profiel krijg je de mogelijkheid
-            om de pagina in te delen, statistieken te bekijken en nog veel meer!
+           Bedankt voor je aanmelding! Leuk dat je je bij ikdoneer.nu wilt aansluiten. De aanmelding is momenteel in behandeling en de gegevens worden gecontroleerd. Zodra je aanmelding is goedgekeurd, krijg je toegang tot een eigen profiel. Met dit profiel kun je jouw pagina indelen, statistieken bekijken en nog veel meer!
+
         </p>
 
         <button class="close-donating-page monster-800 blank-button" onclick="location.href='@Html.HomeUrl()'">Pagina sluiten</button>

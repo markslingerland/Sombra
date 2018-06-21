@@ -8,5 +8,6 @@ namespace Sombra.Messaging.Responses.Identity
         public Guid UserKey { get; set; }
         public string UserName { get; set; }
         public Role Role { get; set; }
+        public string EncrytedPassword { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using EasyNetQ;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using Sombra.Core;
 using Sombra.Core.Extensions;
 using Sombra.Messaging.Infrastructure;
 using Sombra.Messaging.Requests.Identity;
@@ -38,15 +39,17 @@ namespace Sombra.Web.Infrastructure.Authentication
         {
             var userLoginRequest = _mapper.Map<UserLoginRequest>(authenticationQuery);
             var userLoginResponse = await ValidateAsync(userLoginRequest);
+            var passwordCorrect = false;
 
-            if (userLoginResponse.IsSuccess)
+            if (userLoginResponse.IsSuccess && Encryption.ValidatePassword(authenticationQuery.Secret, userLoginResponse.EncrytedPassword))
             {
+                passwordCorrect = true;
                 await _httpContext.SignInAsync(
                     _authenticationScheme, CreatePrincipal(userLoginResponse), new AuthenticationProperties { IsPersistent = isPersistent }
                 );
             }
 
-            return new LoginResultViewModel { Success = userLoginResponse.IsSuccess };
+            return new LoginResultViewModel { Success = passwordCorrect };
         }
 
         private SombraPrincipal CreatePrincipal(UserLoginResponse userLoginResponse)

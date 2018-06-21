@@ -199,6 +199,7 @@ $('.category-dropdown').click(function(){
      $('.checkbox-dropdown').hide();
      $('.checkbox-dropdown').removeClass("shown");
      $('.category-dropdown').removeClass("category-dropdown-clicked");
+     getDropdownResults();
  
     } else {
      $('.checkbox-dropdown').show();
@@ -236,5 +237,19 @@ let setSummary = function (){
     $("#signUpCharity-contact span").text($("#name-contact").val());
     $("#signUpCharity-mail span").text($("#email").val());
 
+}
+
+let getDropdownResults = function () {
+    var categories = $('.checkbox-dropdown label:has(input[type="checkbox"]:checked)').map(function () {
+        return $(this).text().trim();
+    }).toArray().join(', ');
+
+    $("#results-dropdown").text(categories);
+    $("#results-dropdown").css("opacity", "1", "font-style", "normal");
+
+    if (categories == "") {
+        $("#results-dropdown").text("Selecteer categorieën voor het goede doel…");
+        $("#results-dropdown").css("opacity", "0.5", "font-style", "italic");
+    }
 
 }

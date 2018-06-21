@@ -38,8 +38,9 @@
             document.getElementById('label1-box').style.opacity = 0;
             document.getElementById('label1-box').style.color = "#fff";
             document.getElementById('label1-box').innerText = "Kies een andere foto of video";
-            document.getElementById('image1-box').style.opacity = 0;
-            document.getElementById('video1-box').style.opacity = 0;
+            $('#label1-box').addClass('has-shadow');
+            $('.image1-box').css('opacity', '0');
+            $('.video1-box').css('opacity', '0');
         };
         if (file) {
             reader.readAsDataURL(file);           
@@ -54,8 +55,9 @@
             document.getElementById('label2-box').style.opacity = 0;
             document.getElementById('label2-box').style.color = "#fff";
             document.getElementById('label2-box').innerText = "Kies een andere foto of video";
-            document.getElementById('image2-box').style.opacity = 0;
-            document.getElementById('video2-box').style.opacity = 0;
+            $('#label2-box').addClass('has-shadow');
+            $('.image2-box').css('opacity', '0');
+            $('.video2-box').css('opacity', '0');
         };
         if (file) {
             reader.readAsDataURL(file);
@@ -70,8 +72,9 @@
             document.getElementById('label3-box').style.opacity = 0;
             document.getElementById('label3-box').style.color = "#fff";
             document.getElementById('label3-box').innerText = "Kies een andere foto of video";
-            document.getElementById('image3-box').style.opacity = 0;
-            document.getElementById('video3-box').style.opacity = 0;
+            $('#label3-box').addClass('has-shadow');
+            $('.image3-box').css('opacity', '0');
+            $('.video3-box').css('opacity', '0');
         };
         if (file) {
             reader.readAsDataURL(file);

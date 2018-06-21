@@ -198,6 +198,10 @@ footer {
   text-decoration: underline;
 }
 
+.go-back-link:hover {
+    color: #f88356;
+  }
+
 .title {
   margin-top: 45px;
   font-size: 50px;

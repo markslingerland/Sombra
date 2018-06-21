@@ -33,23 +33,8 @@ $('#stichting').click(function () {
     }
 });
 
-$('input:radio[name="pay-time"]').click(function (){
+$('input:radio[name="pay-time"]').click(function() {
     $(".section-1 .next-step-holder").css("display", "inline-block");
-})
-
-$('#select-your-category').selectize({
-    sortField: 'text',
-    maxItems: 3,
-    create: false,
-    valueField: 'id',
-    labelField: 'title',
-    searchField: 'title',
-    placeholder: "Selecteer categorieën voor het goede doel...",
-    options: [
-        { id: 1, title: 'Cultuur', url: 'http://en.wikipedia.org/wiki/Spectrometers' },
-        { id: 2, title: 'Dieren', url: 'http://en.wikipedia.org/wiki/Star_chart' },
-        { id: 3, title: 'Geloof', url: 'http://en.wikipedia.org/wiki/Electrical_tape' }
-    ]
 });
 
 $('#select-your-bank').selectize({
@@ -194,26 +179,29 @@ $(".section-02 #go-back, .section-02 #edit").click(function(){
     $(".section-02").hide();
 });
 
-$('.category-dropdown').click(function(){
-    if ($('.checkbox-dropdown').hasClass("shown")) {
-     $('.checkbox-dropdown').hide();
-     $('.checkbox-dropdown').removeClass("shown");
-     $('.category-dropdown').removeClass("category-dropdown-clicked");
-     getDropdownResults();
- 
-    } else {
-     $('.checkbox-dropdown').show();
-     $('.checkbox-dropdown').addClass("shown");
-     $('.category-dropdown').addClass("category-dropdown-clicked");
-    }
- });
-
  let limitChecks = 2;
 $('.checkbox-dropdown').on('change', 'input[type="checkbox"]', function(evt) {
    if($(this).closest('.checkbox-dropdown').find(':checked').length > limitChecks) {
     $(this).prop('checked', false);
    }
 });
+
+$('.category-dropdown-holder').on('change', '.checkbox-dropdown input[type="checkbox"]', CategoryChanged);
+
+function CategoryChanged() {
+    var checkedOptions = $('.checkbox-dropdown label:has(input[type="checkbox"]:checked)');
+    var textField = $('.category-dropdown-holder .category-dropdown-text');
+    if (checkedOptions.length) {
+        var categories = checkedOptions.map(function () {
+            return $(this).text().trim();
+        }).toArray().join(', ');
+        textField.text(categories);
+        textField.removeClass('placeholder');
+    } else {
+        textField.text($('.category-dropdown').data('placeholder'));
+        textField.addClass('placeholder');
+    }
+}
 
 
 let setSummary = function (){
@@ -236,20 +224,5 @@ let setSummary = function (){
     $("#signUpCharity-rekening span").text($("#card-holder").val());
     $("#signUpCharity-contact span").text($("#name-contact").val());
     $("#signUpCharity-mail span").text($("#email").val());
-
-}
-
-let getDropdownResults = function () {
-    var categories = $('.checkbox-dropdown label:has(input[type="checkbox"]:checked)').map(function () {
-        return $(this).text().trim();
-    }).toArray().join(', ');
-
-    $("#results-dropdown").text(categories);
-    $("#results-dropdown").css("opacity", "1", "font-style", "normal");
-
-    if (categories == "") {
-        $("#results-dropdown").text("Selecteer categorieën voor het goede doel…");
-        $("#results-dropdown").css("opacity", "0.5", "font-style", "italic");
-    }
 
 }

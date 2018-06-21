@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$(document).ready(function() {
     $('#name-charity').val('Tear');
     $('#kvk-number').val('12345678');
     $('#kvk-number').val('12345678');
@@ -14,6 +14,6 @@ $( document ).ready(function() {
     var bankSelect = $('#select-your-bank');
     bankSelect[0].selectize.setValue(1, false);
 
-    var categorySelect = $('#select-your-category');
-    categorySelect[0].selectize.setValue(4, false);
+    $('.category-checkbox-holder').find('label[data-category-id="4"] input[type="checkbox"]').prop('checked', true);
+    CategoryChanged();
 });

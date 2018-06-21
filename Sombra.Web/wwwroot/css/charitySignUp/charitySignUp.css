@@ -461,7 +461,7 @@ font-family: 'Source Sans Pro', sans-serif;
 }
 
 .card-data #last-numbers {
-  width: 376px;
+  width: 375px;
   height: 50px;
   border-radius: 8px;
   border: solid 1px #b1b1b1;
@@ -847,38 +847,36 @@ padding-left: 35px;
 
 /* CHeckbox  */
 
-.category-checkbox-holder {
-  /* float: right; */
-}
 .category-dropdown-holder {
- /* width: 255px; */
- /* float: right; */
- position: relative;
+    width: 630px;
+    position: relative;
+    margin-top: 10px;
+    margin-left: 219px;
 }
 
 .category-dropdown {
-  width: 630px;
   height: 50px;
   border-radius: 8px;
   border: solid 1px #b1b1b1;
   position: relative;
   cursor: pointer;
-  margin-top: 10px;
-  margin-left: 218px;
 }
 
 .category-dropdown p {
- font-style: italic;
  font-stretch: normal;
  line-height: normal;
  text-align: left;
  width: 100%;
  padding-top: 14px;
  letter-spacing: normal;
- opacity: 0.5;
  color: #838383;
  font-size: 18px;
  padding-left: 20px;
+}
+
+.category-dropdown p.placeholder {
+    font-style: italic;
+    opacity: 0.5;
 }
 
 .category-dropdown i {
@@ -897,7 +895,6 @@ padding-left: 35px;
 .checkbox-dropdown {
   width: 630px;
   position: absolute;
-  left: 218px;
   top: 50px;
   border-left: solid 1px #b1b1b1;
   border-radius: 8px;

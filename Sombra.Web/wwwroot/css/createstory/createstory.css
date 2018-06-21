@@ -163,7 +163,6 @@ input[type=text] {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
     font-weight: 300;
-    font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
@@ -292,12 +291,11 @@ input[type=text] {
     font-family: 'Kalam', sans-serif;
     font-size: 30px;
     font-weight: 300;
-    font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
     color: #838383;
-    font-style: italic;
+    font-style: normal;
 }
 
 .title::-webkit-input-placeholder {
@@ -305,7 +303,6 @@ input[type=text] {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
     font-weight: 300;
-    font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
@@ -318,7 +315,6 @@ input[type=text] {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
     font-weight: 300;
-    font-style: normal;
     font-stretch: normal;
     letter-spacing: normal;
     color: #838383;
@@ -380,8 +376,8 @@ input[type=text] {
     cursor: pointer;
 }
 
-.story-image:hover label {
-    opacity: 1 !important;       
+.story-image:hover label.has-shadow {
+    opacity: 1 !important;
     text-shadow: 0px 0px 30px white,0px 0px 30px white,0px 0px 30px white,0px 0px 10px #553300,0px 0px 10px #553300;
     cursor: pointer;
 }
@@ -423,7 +419,7 @@ input[type=text] {
     cursor: pointer;
 }
 
-.story-image-2:hover label {
+.story-image-2:hover label.has-shadow {
     opacity: 1 !important;
     text-shadow: 0px 0px 30px white,0px 0px 30px white,0px 0px 30px white,0px 0px 10px #553300,0px 0px 10px #553300;
     cursor: pointer;
@@ -461,11 +457,11 @@ input[type=text] {
     cursor: pointer;
 }
 
-.story-image-3:hover label {
-    opacity: 1 !important;
-    text-shadow: 0px 0px 30px white,0px 0px 30px white,0px 0px 30px white,0px 0px 10px #553300,0px 0px 10px #553300;
-    cursor: pointer;
-}
+    .story-image-3:hover label.has-shadow {
+        opacity: 1 !important;
+        text-shadow: 0px 0px 30px white,0px 0px 30px white,0px 0px 30px white,0px 0px 10px #553300,0px 0px 10px #553300;
+        cursor: pointer;
+    }
 
 .image-import {
     width: 0.1px;

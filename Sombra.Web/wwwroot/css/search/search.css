@@ -543,3 +543,7 @@ margin-bottom: 30px;
     position: absolute;
     bottom: 12px;
 }
+
+#keywords-placeholder {
+    color: #838383;
+}

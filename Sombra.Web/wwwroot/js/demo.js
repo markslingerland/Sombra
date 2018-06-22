@@ -1,9 +1,7 @@
 $(document).ready(function() {
     $('#name-charity').val('Tear');
     $('#kvk-number').val('12345678');
-    $('#kvk-number').val('12345678');
     $('#first-numbers').val('01');
-    $('#kvk-number').val('12345678');
     $('#last-numbers').val('0123456789');
     $('#name-contact').val('Lars ter Kraaij');
     $('#card-holder').val('L. ter Kraaij');

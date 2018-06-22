@@ -1,4 +1,5 @@
-﻿@using Sombra.Core.Enums
+﻿@using Microsoft.AspNetCore.Http
+@using Sombra.Core.Enums
 @using Sombra.Core.Extensions
 @using Sombra.Web.Infrastructure.Extensions
 @section Title{
@@ -15,6 +16,10 @@
         var charitiesUrl = '@Html.BaseUrl(Url.Action("GetCharities", "Dashboard"))';
     </script>
     <script src="~/js/create-story.js"></script>
+    @if (Html.ViewContext.HttpContext.Session.GetString("demo") == "true")
+    {
+        @:<script src="/js/demo-story.js"></script>
+    }
 
 }
 <form action="" id="">

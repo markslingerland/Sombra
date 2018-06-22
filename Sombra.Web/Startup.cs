@@ -46,6 +46,9 @@ namespace Sombra.Web
             services.AddMemoryCache();
             services.AddCors();
 
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
             services.AddScoped(c => RabbitHutch.CreateBus(_rabbitMqConnectionString));
             services.AddScoped<ICachingBus, CachingRabbitBus>();
 
@@ -86,6 +89,7 @@ namespace Sombra.Web
                     .AllowAnyHeader()
 
             );
+            app.UseSession();
             app.UseMvc(Routing.Setup);
         }
 

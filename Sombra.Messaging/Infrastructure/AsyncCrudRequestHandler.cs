@@ -10,6 +10,7 @@ namespace Sombra.Messaging.Infrastructure
     {
         public abstract Task<TResponse> Handle(TRequest message);
 
-        public TResponse Error(ErrorType errorType) => new TResponse {ErrorType = errorType};
+        public TResponse Error(ErrorType errorType) => CrudResponse<TResponse>.Error(errorType);
+        public TResponse Success() => CrudResponse<TResponse>.Success();
     }
 }

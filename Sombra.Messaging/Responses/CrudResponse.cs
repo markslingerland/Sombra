@@ -8,6 +8,7 @@ namespace Sombra.Messaging.Responses
         public bool IsSuccess { get; set; }
         public ErrorType ErrorType { get; set; }
 
+        public static T Error(ErrorType errorType) => new T {ErrorType = errorType};
         public static T Success() => new T {IsSuccess = true};
     }
 }

@@ -5,7 +5,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Sombra.Messaging.Requests.Story;
 using Sombra.Web.Infrastructure.Messaging;
-using Sombra.Web.ViewModels;
 using Sombra.Web.ViewModels.Story;
 
 namespace Sombra.Web.Controllers
@@ -22,9 +21,9 @@ namespace Sombra.Web.Controllers
         }
 
         [HttpGet("verhalen")]
-        public IActionResult Index(SubdomainViewModel query)
+        public IActionResult Index()
         {
-            return View("Index", query);
+            return View("Index");
         }
 
         [HttpGet]

@@ -1,5 +1,4 @@
 ﻿@using Sombra.Web.Infrastructure.Extensions
-@model Sombra.Web.ViewModels.SubdomainViewModel
 @section Title{
     Verhalen
 }
@@ -13,7 +12,8 @@
 @section Scripts {
     <script>
         $('#header-verhalen').addClass('selected');
-        var subdomain = '@Model.Subdomain';
+        var urlParts = window.location.href.split('.');
+        var subdomain = urlParts > 2 ? urlParts[0].match(/\/\/(.*)/)[1] : '';
         var storyUrl = '@Html.BaseUrl(Url.Action("GetStory", "Story"))';
         var storiesUrl = '@Html.BaseUrl(Url.Action("GetStories", "Story"))';
     </script>

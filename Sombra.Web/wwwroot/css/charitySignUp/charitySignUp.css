@@ -813,18 +813,34 @@ padding-left: 35px;
 }
 
 .close-donating-page {
-  width: 182px;
-  height: 40px;
-  border-radius: 8px;
-  font-size: 18px;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  margin-left: 221px;
-  margin-top: 35px;
-  margin-bottom: 120px;
+    width: 182px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    margin-left: 221px;
+    margin-top: 35px;
+    margin-bottom: 120px;
+    cursor: pointer;
+    position: absolute;
+}
+
+.close-donating-page span {
+    top: 8px;
+    position: relative;
+}
+
+.close-donating-page a {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    position: absolute;
 }
 
 /* invalid  */

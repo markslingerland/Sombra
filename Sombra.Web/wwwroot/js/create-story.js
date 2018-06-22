@@ -19,11 +19,7 @@
         var file = document.getElementById("file-header").files[0];
         var reader = new FileReader();
         reader.onloadend = function () {
-            document.getElementById('header-image').style.backgroundImage = "url(" + reader.result + ")";
-            document.getElementById('label-box').style.opacity = 0;
-            document.getElementById('label-box').style.color = "#fff";
-            document.getElementById('label-box').innerText = "Kies een andere video";
-            document.getElementById('image-box').style.opacity = 0;
+            HeaderPicChanged(reader.result);
         };
         if (file) {
             reader.readAsDataURL(file);
@@ -34,16 +30,10 @@
         var file = document.getElementById("file").files[0];
         var reader = new FileReader();
         reader.onloadend = function () {
-            document.getElementById('story-image').style.backgroundImage = "url(" + reader.result + ")";           
-            document.getElementById('label1-box').style.opacity = 0;
-            document.getElementById('label1-box').style.color = "#fff";
-            document.getElementById('label1-box').innerText = "Kies een andere foto of video";
-            $('#label1-box').addClass('has-shadow');
-            $('.image1-box').css('opacity', '0');
-            $('.video1-box').css('opacity', '0');
+            MainPicChanged(reader.result);
         };
         if (file) {
-            reader.readAsDataURL(file);           
+            reader.readAsDataURL(file);
         } 
     }
 
@@ -51,13 +41,7 @@
         var file = document.getElementById("file-2").files[0];
         var reader = new FileReader();
         reader.onloadend = function () {
-            document.getElementById('story-image-2').style.backgroundImage = "url(" + reader.result + ")";
-            document.getElementById('label2-box').style.opacity = 0;
-            document.getElementById('label2-box').style.color = "#fff";
-            document.getElementById('label2-box').innerText = "Kies een andere foto of video";
-            $('#label2-box').addClass('has-shadow');
-            $('.image2-box').css('opacity', '0');
-            $('.video2-box').css('opacity', '0');
+            Second1PicChanged(reader.result);
         };
         if (file) {
             reader.readAsDataURL(file);
@@ -68,13 +52,7 @@
         var file = document.getElementById("file-3").files[0];
         var reader = new FileReader();
         reader.onloadend = function () {
-            document.getElementById('story-image-3').style.backgroundImage = "url(" + reader.result + ")";
-            document.getElementById('label3-box').style.opacity = 0;
-            document.getElementById('label3-box').style.color = "#fff";
-            document.getElementById('label3-box').innerText = "Kies een andere foto of video";
-            $('#label3-box').addClass('has-shadow');
-            $('.image3-box').css('opacity', '0');
-            $('.video3-box').css('opacity', '0');
+            Second2PicChanged(reader.result);
         };
         if (file) {
             reader.readAsDataURL(file);
@@ -98,3 +76,42 @@
         });
     });
 });
+
+function HeaderPicChanged(url) {
+    document.getElementById('header-image').style.backgroundImage = "url(" + url + ")";
+    document.getElementById('label-box').style.opacity = 0;
+    document.getElementById('label-box').style.color = "#fff";
+    document.getElementById('label-box').innerText = "Kies een andere video";
+    $('#label-box').addClass('has-shadow');
+    $('.image-box').css('opacity', '0');
+}
+
+function Second2PicChanged(url) {
+    document.getElementById('story-image-3').style.backgroundImage = "url(" + url + ")";
+    document.getElementById('label3-box').style.opacity = 0;
+    document.getElementById('label3-box').style.color = "#fff";
+    document.getElementById('label3-box').innerText = "Kies een andere foto of video";
+    $('#label3-box').addClass('has-shadow');
+    $('.image3-box').css('opacity', '0');
+    $('.video3-box').css('opacity', '0');
+}
+
+function Second1PicChanged(url) {
+    document.getElementById('story-image-2').style.backgroundImage = "url(" + url + ")";
+    document.getElementById('label2-box').style.opacity = 0;
+    document.getElementById('label2-box').style.color = "#fff";
+    document.getElementById('label2-box').innerText = "Kies een andere foto of video";
+    $('#label2-box').addClass('has-shadow');
+    $('.image2-box').css('opacity', '0');
+    $('.video2-box').css('opacity', '0');
+}
+
+function MainPicChanged(url) {
+    document.getElementById('story-image').style.backgroundImage = "url(" + url + ")";
+    document.getElementById('label1-box').style.opacity = 0;
+    document.getElementById('label1-box').style.color = "#fff";
+    document.getElementById('label1-box').innerText = "Kies een andere foto of video";
+    $('#label1-box').addClass('has-shadow');
+    $('.image1-box').css('opacity', '0');
+    $('.video1-box').css('opacity', '0');
+}

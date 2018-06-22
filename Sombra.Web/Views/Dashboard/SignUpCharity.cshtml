@@ -1,3 +1,4 @@
+@using Microsoft.AspNetCore.Http
 @using Sombra.Core.Enums
 @using Sombra.Core.Extensions
 @using Sombra.Web.Infrastructure.Extensions
@@ -9,7 +10,10 @@
 @section Scripts {
     <script src="~/js/category-dropdown.js"></script>
     <script src="~/js/flow-3/charity-sign-up.js"></script>
-    <script src="~/js/demo.js"></script>
+    @if (Html.ViewContext.HttpContext.Session.GetString("demo") == "true")
+    {
+        @:<script src="/js/demo.js"></script>
+    }
 }
 
 <div id="background-frame"></div>
@@ -204,12 +208,12 @@
         </div>
 
         <p class="request-joining">
-            Bedankt voor je aanmelding! Leuk dat je je bij ikdoneer.nu wilt aansluiten. 
-            De aanmelding is momenteel in behandeling en de gegevens worden gecontroleerd. 
-            Zodra je aanmelding is goedgekeurd, krijg je toegang tot een eigen profiel. 
+            Bedankt voor je aanmelding! Leuk dat je je bij ikdoneer.nu wilt aansluiten.
+            De aanmelding is momenteel in behandeling en de gegevens worden gecontroleerd.
+            Zodra je aanmelding is goedgekeurd, krijg je toegang tot een eigen profiel.
             Met dit profiel kun je jouw pagina indelen, statistieken bekijken en nog veel meer!
         </p>
-        
+
         <div class="close-donating-page monster-800 blank-button">
             <a href="@Html.HomeUrl()"></a>
             <span>Pagina sluiten</span>

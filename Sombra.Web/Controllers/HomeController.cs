@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sombra.Messaging.Requests.CharityAction;
 using Sombra.Messaging.Requests.Search;
@@ -81,6 +82,20 @@ namespace Sombra.Web.Controllers
         public IActionResult CharityActions()
         {
             return View("CharityActions");
+        }
+
+        [HttpGet("demo-inschakelen")]
+        public IActionResult EnableDemo()
+        {
+            HttpContext.Session.SetString("demo", "true");
+            return View("Index");
+        }
+
+        [HttpGet("demo-uitschakelen")]
+        public IActionResult DisableDemo()
+        {
+            HttpContext.Session.SetString("demo", "false");
+            return View("Index");
         }
 
         public IActionResult Error()

@@ -1,4 +1,5 @@
-﻿@section Title{
+﻿@using Sombra.Web.Infrastructure.Extensions
+@section Title{
     Missie
 }
 @section Styles{
@@ -10,4 +11,4 @@
     </script>
 }
 
-<img src="~/Assets/missiepage.png" style="width:100%;height:100%;" />
+<img onclick="location.href='@Html.BaseUrl(Url.Action("Index", "Donate"))'" src="~/Assets/missiepage.png" style="cursor:pointer;width:100%;height:100%;" />

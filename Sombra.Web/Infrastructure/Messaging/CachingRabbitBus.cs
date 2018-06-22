@@ -24,8 +24,6 @@ namespace Sombra.Web.Infrastructure.Messaging
         public async Task<TResponse> RequestAsync<TResponse>(IRequest<TResponse> request, CachingOptions options = CachingOptions.None)
             where TResponse : class, IResponse, new()
         {
-            // Caching disabled for Testing purposes
-            options = CachingOptions.SkipCache;
 
             if (options == CachingOptions.SkipCache) return await Bus.RequestAsync(request);
 
@@ -44,11 +42,14 @@ namespace Sombra.Web.Infrastructure.Messaging
 
                 if (options == CachingOptions.None)
                 {
-                    return await _cache.GetOrCreateAsync(cacheKey, async entry =>
-                    {
-                        entry.SlidingExpiration = cacheAttribute.LifeTime;
-                        return await Bus.RequestAsync(request);
-                    });
+                    var cachedResponse = _cache.Get<TResponse>(cacheKey);
+                    if (cachedResponse != null) return cachedResponse;
+
+                    var response = await Bus.RequestAsync(request);
+                    if (response.IsRequestSuccessful)
+                        _cache.Set(cacheKey, response, cacheAttribute.LifeTime);
+
+                    return response;
                 }
             }
 

@@ -25,3 +25,18 @@ $("#header-close-dropdown").click(function () {
   
 });
 
+var disclaimerCookieName = 'ikdoneernu-disclaimer';
+$(document).ready(function () {
+    var disclaimerCookie = localStorage.getItem(disclaimerCookieName);
+    if (disclaimerCookie != null) {
+        var now = new Date().getTime();
+        if (now - disclaimerCookie > 1209600)
+            $('#disclaimer-modal').modal('show');
+    } else {
+        $('#disclaimer-modal').modal('show');
+    }
+});
+
+$('#close-disclaimer-modal').on('click', function() {
+    localStorage.setItem(disclaimerCookieName, new Date().getTime());
+});

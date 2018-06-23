@@ -59,77 +59,78 @@
         @RenderBody()
         </div>
 
-        <footer>
-            <div class="footer-holder">
-                <div class="container"></div>
-                <div class="row">
-                    <div class="col-md-2">
-                        <div>
-                            <ul>
-                                <li><label><span>Ik Doneer Nu</span></label></li>
-                                <li><a href="@Html.BaseUrl(Url.Action("Search", "Charity"))">Goede doelen</a></li>
-                                <li><a href="@Html.BaseUrl(Url.Action("CharityActions", "Home"))">Acties</a></li>
-                                <li><a href="@Html.BaseUrl(Url.Action("Index", "Story"))">Verhalen</a></li>
-                                <li><a href="@Html.BaseUrl(Url.Action("Index", "Mission"))">Onze missie</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="@Html.BaseUrl(Url.Action("Index", "Dashboard"))">Log in</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div>
-                            <ul>
-                                <li><label><span>Diensten voor</span></label></li>
-                                <li><a href="#">Donateurs</a></li>
-                                <li><a href="@Url.Action("Search", "Charity")">Goede doelen</a></li>
-                                <li><a href="#">Acties</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div>
-                            <ul>
-                                <li><label><span>Over doneren</span></label></li>
-                                <li><a href="#">ANBI</a></li>
-                                <li><a href="#">Belasting</a></li>
-                                <li><a href="#">Betalingen</a></li>
-                                <li><label><a href="@Html.BaseUrl(Url.Action("Index", "Donate"))">Doneer nu</a></label></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6 updateArea">
-                        <label><a href="#">Updates</a></label>
-
-                        <p>Meld je aan voor de nieuwsvideo en blijf op de hoogte van de laatste updates.</p>
-
-                        <div class="sign-up-news">
-                            <form action="action_page.php" id="form1">
-
-                                <div class="email-holder">
-                                    <input type="text" placeholder="E-mailadres" name="mail" required>
-                                    <button type="submit" form="form1" value="Submit"><div class="footer-email-arrow"></div></button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-line"></div>
-                <div class="footer-info">
-                    <div class="footer-info-left">
-                        <p class="footer-copyright">&#xa9; 2018 ikdoneer.nu</p>
-                        <p class="footer-privacy">Privacy</p>
-                        <p class="footer-cookies">Cookies</p>
-                        <p class="footer-help">Help</p>
-                    </div>
-                    <div class="footer-info-right">
-                        <a href="https://facebook.com" class="footer-facebook"></a>
-                        <a href="https://twitter.com/ikdoneernu" class="footer-twitter"></a>
-                        <a href="https://instagram.com" class="footer-instagram"></a>
-                        <a href="https://youtube.com" class="footer-youtube"></a>
-                    </div>
+<footer>
+    <div class="footer-holder">
+        <div class="container"></div>
+        <div class="row">
+            <div class="col-md-2">
+                <div>
+                    <ul>
+                        <li><label><span>Ik Doneer Nu</span></label></li>
+                        <li><a href="@Html.BaseUrl(Url.Action("Search", "Charity"))">Goede doelen</a></li>
+                        <li><a href="@Html.BaseUrl(Url.Action("CharityActions", "Home"))">Acties</a></li>
+                        <li><a href="@Html.BaseUrl(Url.Action("Index", "Story"))">Verhalen</a></li>
+                        <li><a href="@Html.BaseUrl(Url.Action("Index", "Mission"))">Onze missie</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="@Html.BaseUrl(Url.Action("Index", "Dashboard"))">Log in</a></li>
+                    </ul>
                 </div>
             </div>
-    </footer>
+            <div class="col-md-2">
+                <div>
+                    <ul>
+                        <li><label><span>Diensten voor</span></label></li>
+                        <li><a href="#">Donateurs</a></li>
+                        <li><a href="@Url.Action("Search", "Charity")">Goede doelen</a></li>
+                        <li><a href="#">Acties</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div>
+                    <ul>
+                        <li><label><span>Over doneren</span></label></li>
+                        <li><a href="#">ANBI</a></li>
+                        <li><a href="#">Belasting</a></li>
+                        <li><a href="#">Betalingen</a></li>
+                        <li><label><a href="@Html.BaseUrl(Url.Action("Index", "Donate"))">Doneer nu</a></label></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 updateArea">
+                <label><a href="#">Updates</a></label>
+
+                <p>Meld je aan voor de nieuwsvideo en blijf op de hoogte van de laatste updates.</p>
+
+                <div class="sign-up-news">
+                    <form action="action_page.php" id="form1">
+
+                        <div class="email-holder">
+                            <input type="text" placeholder="E-mailadres" name="mail" required>
+                            <button type="submit" form="form1" value="Submit"><div class="footer-email-arrow"></div></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-line"></div>
+        <div class="footer-info">
+            <div class="footer-info-left">
+                <p class="footer-copyright">&#xa9; 2018 ikdoneer.nu</p>
+                <p class="footer-privacy">Privacy</p>
+                <p class="footer-cookies">Cookies</p>
+                <p class="footer-help">Help</p>
+            </div>
+            <div class="footer-info-right">
+                <a href="https://facebook.com" class="footer-facebook"></a>
+                <a href="https://twitter.com/ikdoneernu" class="footer-twitter"></a>
+                <a href="https://instagram.com" class="footer-instagram"></a>
+                <a href="https://youtube.com" class="footer-youtube"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+    @await Html.PartialAsync("_DisclaimerModal")
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>

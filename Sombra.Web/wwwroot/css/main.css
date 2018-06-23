@@ -829,3 +829,53 @@ input[type=number]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0;
 }
+
+#disclaimer-modal {
+    z-index: 9999;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(131, 131, 131);
+}
+
+#disclaimer-modal .modal-content {
+    border-color: #838383;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+#disclaimer-modal .modal-body {
+    padding-bottom: 0;
+}
+
+#disclaimer-modal .modal-footer {
+    border-top: none;
+    padding-top: 0;
+}
+
+#disclaimer-modal .big-button {
+    width: 156px;
+    height: 40px;
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+    float: right;
+}
+
+#disclaimer-modal .big-button span {
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    position: absolute;
+    top: 9px;
+    left: 14px;
+}
+
+#disclaimer-modal p {
+    line-height: 25px;
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Source Sans Pro', sans-serif;
+}

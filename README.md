@@ -60,7 +60,7 @@ docker-compose up
 
 ## Built With
 
-* [EasyNetQ](https://github.com/EasyNetQ/EasyNetQ/wiki/Introduction) - The framewore used to interact wiht RabbitMQ
+* [EasyNetQ](https://github.com/EasyNetQ/EasyNetQ/wiki/Introduction) - The framewore used to interact with RabbitMQ
 
 ## Authors
 
